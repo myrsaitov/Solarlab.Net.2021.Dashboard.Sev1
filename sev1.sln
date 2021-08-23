@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advertisements", "Advertisement\Advertisements.csproj", "{B943D660-D6DF-43DB-9BEB-4A06C0BAE9B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advertisements", "Advertisements\Advertisements.csproj", "{B943D660-D6DF-43DB-9BEB-4A06C0BAE9B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comments", "Commentary\Comments.csproj", "{2A8A365C-7148-4E47-920A-A673711503D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comments", "Comments\Comments.csproj", "{2A8A365C-7148-4E47-920A-A673711503D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity", "Identity\Identity.csproj", "{3A66F672-78ED-423B-94BB-3C18357834C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Images", "Pictures\Images.csproj", "{19AB40BD-E59A-4E80-8729-9E5F297BF6C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Images", "Images\Images.csproj", "{19AB40BD-E59A-4E80-8729-9E5F297BF6C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Userpics", "Userpics\Userpics.csproj", "{FD537FA9-2288-4F09-8A73-6E3EEFA90DD4}"
 EndProject
