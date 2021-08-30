@@ -28,17 +28,7 @@ namespace Sev1.Advertisements.Application.Services.Advertisement.Implementations
                 throw new AdvertisementNotFoundException(request.Id);
             }
 
-            var userId = await _identityService.GetCurrentUserId(cancellationToken);
 
-            var isAdmin = await _identityService.IsInRole(
-                userId,
-                RoleConstants.AdminRole,
-                cancellationToken);
-
-            if (!isAdmin && advertisement.OwnerId != userId)
-            {
-                throw new NoRightsException("Нет прав для выполнения операции.");
-            }
 
             advertisement.IsDeleted = false;
             advertisement.UpdatedAt = DateTime.UtcNow;
