@@ -5,9 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Advertisement\Validators\" />
-    <Folder Include="Application\Category\Validators\" />
-    <Folder Include="Application\Tag\Validators\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Tests\" />
   </ItemGroup>

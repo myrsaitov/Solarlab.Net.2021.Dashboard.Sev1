@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace sev1.Advertisements.Domain.Shared
+namespace Sev1.Advertisements.Domain.Shared
 {
     public abstract class Entity<TId>
     {
