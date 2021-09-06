@@ -1,6 +1,6 @@
 ﻿using MapsterMapper;
-using Sev1.Advertisements.Application.Repositories;
 using Sev1.Advertisements.Application.Services.Tag.Interfaces;
+using Sev1.Advertisements.DataAccess.Interfaces;
 
 namespace Sev1.Advertisements.Application.Services.Tag.Implementations
 {

@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Advertisements\Advertisements.AppServices.csproj" />
+    <ProjectReference Include="..\Advertisements.Domain\Advertisements.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,7 +6,6 @@ namespace Sev1.Advertisements.Api.Controllers.Tag
 {
     [Route("api/v1/tags")]
     [ApiController]
-    [Authorize]
     public partial class TagController : ControllerBase
     {
         private readonly ITagService _tagService;

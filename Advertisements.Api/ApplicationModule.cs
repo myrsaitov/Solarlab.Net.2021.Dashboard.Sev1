@@ -7,7 +7,7 @@ using Sev1.Advertisements.Application.Services.Category.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 
-namespace Sev1.Advertisements.Infrastructure
+namespace Sev1.Advertisements.Api
 {
     public static class ApplicationModule
     {

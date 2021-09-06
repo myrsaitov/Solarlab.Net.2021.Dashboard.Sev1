@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Sev1.Advertisements.DataAccess.Base;
 using Sev1.Advertisements.Domain;
 
-namespace Sev1.Advertisements.Application.Repositories
+namespace Sev1.Advertisements.DataAccess.Interfaces
 {
-    public interface IAdvertisementRepository : IRepository<Domain.Advertisement, int>
+    public interface IAdvertisementRepository : IRepository<Advertisement, int>
     {
-        Task<Domain.Advertisement> FindByIdWithUserInclude(
+        Task<Advertisement> FindByIdWithUserInclude(
             int id, 
             CancellationToken cancellationToken);
-        Task<Domain.Advertisement> FindByIdWithUserAndTagsInclude(
+        Task<Advertisement> FindByIdWithUserAndTagsInclude(
             int id,
             CancellationToken cancellationToken);
-        Task<Domain.Advertisement> FindByIdWithUserAndCategoryAndTags(
+        Task<Advertisement> FindByIdWithUserAndCategoryAndTags(
             int id, 
             CancellationToken cancellationToken);
-        Task<Domain.Advertisement> FindByIdWithUserAndImages(
+        Task<Advertisement> FindByIdWithUserAndImages(
     int id,
     CancellationToken cancellationToken);
         Task<int> CountWithOutDeleted(CancellationToken cancellationToken);

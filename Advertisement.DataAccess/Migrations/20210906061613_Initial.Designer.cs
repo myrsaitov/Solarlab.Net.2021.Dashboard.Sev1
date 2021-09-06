@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Sev1.Advertisements.Infrastructure.DataAccess;
+using Sev1.Advertisements.DataAccess;
 
 namespace Advertisements.DataAccess.Migrations
 {

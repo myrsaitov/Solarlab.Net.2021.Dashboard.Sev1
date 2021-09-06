@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Sev1.Advertisements.Infrastructure.DataAccess.EntitiesConfiguration
+namespace Sev1.Advertisements.DataAccess.EntitiesConfiguration
 {
     public class AdvertisementConfiguration : IEntityTypeConfiguration<Advertisement>
     {

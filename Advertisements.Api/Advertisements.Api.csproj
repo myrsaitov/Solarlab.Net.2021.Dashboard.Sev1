@@ -6,6 +6,19 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="App_Data\**" />
+      <Compile Remove="Controllers\Parser\**" />
+      <Content Remove="App_Data\**" />
+      <Content Remove="Controllers\Parser\**" />
+      <EmbeddedResource Remove="App_Data\**" />
+      <EmbeddedResource Remove="Controllers\Parser\**" />
+      <None Remove="App_Data\**" />
+      <None Remove="Controllers\Parser\**" />
+      <TypeScriptCompile Remove="App_Data\**" />
+      <TypeScriptCompile Remove="Controllers\Parser\**" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="ExpressionDebugger" Version="2.2.0" />
         <PackageReference Include="HtmlAgilityPack" Version="1.11.33" />
         <PackageReference Include="Mapster" Version="7.2.0" />
@@ -36,11 +49,6 @@
       <ProjectReference Include="..\Advertisements.Mapper\Advertisements.Mapper.csproj" />
      
       <ProjectReference Include="..\Advertisements\Advertisements.AppServices.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="App_Data\" />
-      <Folder Include="Controllers\Parser\" />
     </ItemGroup>
 
     <ItemGroup>

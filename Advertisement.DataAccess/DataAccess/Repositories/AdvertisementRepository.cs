@@ -1,14 +1,15 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Repositories;
 using Sev1.Advertisements.Domain;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System;
+using Sev1.Advertisements.DataAccess.Base;
+using Sev1.Advertisements.DataAccess.Interfaces;
 
-namespace Sev1.Advertisements.Infrastructure.DataAccess.Repositories
+namespace Sev1.Advertisements.DataAccess.Repositories
 {
     public sealed class AdvertisementRepository : EfRepository<Advertisement, int>, IAdvertisementRepository
     {

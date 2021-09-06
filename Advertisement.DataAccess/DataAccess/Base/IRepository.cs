@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Domain.Base;
 
-namespace Sev1.Advertisements.Application.Repositories
+namespace Sev1.Advertisements.DataAccess.Base
 {
     public interface IRepository<TEntity, in TId>
         where TEntity : Entity<TId>

@@ -1,10 +1,13 @@
 ﻿using Sev1.Advertisements.Domain;
-using Sev1.Advertisements.Infrastructure.DataAccess.EntitiesConfiguration;
+using Sev1.Advertisements.DataAccess.EntitiesConfiguration;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Sev1.Advertisements.Infrastructure.DataAccess
+namespace Sev1.Advertisements.DataAccess
 {
+    /// <summary>
+    /// Базовый контекст приложения.
+    /// </summary>
     public class DatabaseContext : DbContext
     {
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)

@@ -1,9 +1,9 @@
 ﻿using System;
-using Sev1.Advertisements.Application.Repositories;
-using Sev1.Advertisements.Infrastructure.DataAccess;
-using Sev1.Advertisements.Infrastructure.DataAccess.Repositories;
+using Sev1.Advertisements.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Sev1.Advertisements.DataAccess.Base;
+using Sev1.Advertisements.DataAccess.Interfaces;
 
 // Nugets:
 // Microsoft.EntityFrameworkCore
@@ -14,7 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 // Mapster
 // Mapster.DependencyInjection
 
-namespace Sev1.Advertisements.Infrastructure
+namespace Sev1.Advertisements.DataAccess
 {
     public static class DataAccessModule
     {

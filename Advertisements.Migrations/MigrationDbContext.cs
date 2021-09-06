@@ -1,4 +1,4 @@
-using Sev1.Advertisements.Infrastructure.DataAccess;
+using Sev1.Advertisements.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
 namespace Sev1.Advertisements.Migrations
