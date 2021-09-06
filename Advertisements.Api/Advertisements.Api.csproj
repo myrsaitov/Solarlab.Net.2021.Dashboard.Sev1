@@ -33,6 +33,8 @@
      
       <ProjectReference Include="..\Advertisement.DataAccess\Advertisements.DataAccess.csproj" />
      
+      <ProjectReference Include="..\Advertisements.Mapper\Advertisements.Mapper.csproj" />
+     
       <ProjectReference Include="..\Advertisements\Advertisements.AppServices.csproj" />
     </ItemGroup>
 

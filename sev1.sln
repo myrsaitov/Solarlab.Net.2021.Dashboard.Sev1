@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advertisements.DataAccess",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advertisements.Api", "Advertisements.Api\Advertisements.Api.csproj", "{59EFB640-4654-4571-BB48-3B34F8567691}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advertisements.Mapper", "Advertisements.Mapper\Advertisements.Mapper.csproj", "{28A209F7-84BA-4459-85F5-F98FD1D5053A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{59EFB640-4654-4571-BB48-3B34F8567691}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59EFB640-4654-4571-BB48-3B34F8567691}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59EFB640-4654-4571-BB48-3B34F8567691}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28A209F7-84BA-4459-85F5-F98FD1D5053A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28A209F7-84BA-4459-85F5-F98FD1D5053A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28A209F7-84BA-4459-85F5-F98FD1D5053A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28A209F7-84BA-4459-85F5-F98FD1D5053A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +86,7 @@ Global
 		{259DF462-9E85-4642-BAD8-F0B83944124E} = {ED6ADF59-8C35-4607-8C36-CA0D0CD83B80}
 		{A2A7F7A6-A3F1-4C3B-A0DC-20B165822BBC} = {6AC7FBCF-E4CE-4308-9A90-31FD18AB8956}
 		{59EFB640-4654-4571-BB48-3B34F8567691} = {7D5BB904-2AC3-41FA-A387-424AF9CC3A60}
+		{28A209F7-84BA-4459-85F5-F98FD1D5053A} = {6AC7FBCF-E4CE-4308-9A90-31FD18AB8956}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE633C48-C998-423E-8C40-A2514D5D900B}
