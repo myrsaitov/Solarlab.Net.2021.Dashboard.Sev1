@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Sev1.Advertisements.Domain.Shared;
+using Sev1.Advertisements.Domain.Base;
 
 namespace Sev1.Advertisements.Domain
 {

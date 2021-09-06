@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Services.Advertisement.Contracts;
 using Sev1.Advertisements.Application.Services.Advertisement.Contracts.Exceptions;
 using Sev1.Advertisements.Application.Services.Advertisement.Interfaces;
-using Sev1.Advertisements.Domain.Shared.Exceptions;
+using Sev1.Advertisements.Domain.Exceptions;
 
 namespace Sev1.Advertisements.Application.Services.Advertisement.Implementations
 {

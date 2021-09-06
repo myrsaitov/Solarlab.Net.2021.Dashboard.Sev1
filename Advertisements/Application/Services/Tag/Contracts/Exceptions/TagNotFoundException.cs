@@ -1,4 +1,4 @@
-﻿using Sev1.Advertisements.Domain.Shared.Exceptions;
+﻿using Sev1.Advertisements.Domain.Exceptions;
 
 namespace Sev1.Advertisements.Application.Services.Tag.Contracts.Exceptions
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Domain.Shared;
+using Sev1.Advertisements.Domain.Base;
 
 namespace Sev1.Advertisements.Application.Repositories
 {

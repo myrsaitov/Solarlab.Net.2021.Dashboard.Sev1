@@ -28,11 +28,9 @@ namespace Sev1.Advertisements.Application.Services.Advertisement.Implementations
                 throw new CategoryNotFoundException(request.CategoryId);
             }
 
-            string userId = await _identityService.GetCurrentUserId(cancellationToken);
 
             var advertisement = _mapper.Map<Domain.Advertisement>(request);
             advertisement.IsDeleted = false;
-            advertisement.OwnerId = userId;
             advertisement.CreatedAt = DateTime.UtcNow;
             advertisement.Category = category;
 
