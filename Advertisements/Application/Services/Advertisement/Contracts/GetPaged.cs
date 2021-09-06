@@ -2,7 +2,7 @@
 
 namespace Sev1.Advertisements.Application.Services.Advertisement.Contracts
 {
-    public static class GetPaged
+    public class GetPaged
     {
         public sealed class Response
         {

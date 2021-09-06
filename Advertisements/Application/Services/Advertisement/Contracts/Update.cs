@@ -2,7 +2,7 @@
 
 namespace Sev1.Advertisements.Application.Services.Advertisement.Contracts
 {
-    public static class Update
+    public class Update
     {
         public sealed class Request
         {

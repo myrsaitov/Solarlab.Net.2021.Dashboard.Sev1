@@ -1,6 +1,6 @@
 ﻿namespace Sev1.Advertisements.Application.Services.Category.Contracts
 {
-    public static class Delete
+    public class Delete
     {
         public sealed class Request
         {

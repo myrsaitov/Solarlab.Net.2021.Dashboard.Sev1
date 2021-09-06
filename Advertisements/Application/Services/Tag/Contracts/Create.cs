@@ -2,7 +2,7 @@
 
 namespace Sev1.Advertisements.Application.Services.Tag.Contracts
 {
-    public static class Create
+    public class Create
     {
         public sealed class Request
         {

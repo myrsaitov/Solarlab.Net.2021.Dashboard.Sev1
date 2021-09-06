@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Sev1.Advertisements.Application.Services.Contracts
 {
-    public static class Paged
+    public class Paged
     {
         public class Request
         {

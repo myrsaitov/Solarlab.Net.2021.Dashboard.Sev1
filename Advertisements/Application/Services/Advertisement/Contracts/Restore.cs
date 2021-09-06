@@ -1,6 +1,6 @@
 ﻿namespace Sev1.Advertisements.Application.Services.Advertisement.Contracts
 {
-    public static class Restore
+    public class Restore
     {
         public sealed class Request
         {

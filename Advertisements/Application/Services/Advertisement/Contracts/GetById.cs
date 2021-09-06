@@ -3,7 +3,7 @@ using Sev1.Advertisements.Application.Services.Contracts;
 
 namespace Sev1.Advertisements.Application.Services.Advertisement.Contracts
 {
-    public static class GetById
+    public class GetById
     {
         public sealed class Request
         {

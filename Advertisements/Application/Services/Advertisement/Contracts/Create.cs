@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Sev1.Advertisements.Application.Services.Advertisement.Contracts
 {
-    public static class Create
+    public class Create
     {
         public sealed class Request
         {

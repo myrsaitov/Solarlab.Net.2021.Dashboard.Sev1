@@ -1,6 +1,6 @@
 ﻿namespace Sev1.Advertisements.Application.Services.Category.Contracts
 {
-    public static class GetById
+    public class GetById
     {
         public sealed class Request
         {
