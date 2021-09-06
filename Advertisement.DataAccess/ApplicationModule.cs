@@ -11,6 +11,7 @@ namespace Sev1.Advertisements.Infrastructure
 {
     public static class ApplicationModule
     {
+        // Через IServiceCollection сервисы и добавляются в проект.
         public static IServiceCollection AddApplicationModule(this IServiceCollection services,
             IConfiguration configuration)
         {

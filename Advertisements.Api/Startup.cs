@@ -35,33 +35,21 @@ namespace Sev1.Advertisements.Api
             );
 
             services
-                .AddCors()
-                .AddApplicationModule(Configuration)
-                .AddHttpContextAccessor()
+                .AddCors() // Добавить сервис Cross-Origin Requests
+                .AddApplicationModule(Configuration) // Инжектирование наших сервисов
+                .AddHttpContextAccessor() // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
                 .AddDataAccessModule(configuration =>
 
 
                     configuration.InSqlServer(Configuration.GetConnectionString("SqlServerDb"))
 
-                );
+                ); // Подключение к БД через информацию в "ConnectionString"
 
 
             services.AddSwaggerModule();
 
-            //  Adding Angular ClientApp
-            //  https://rramname.medium.com/add-angular-7-0-client-application-to-asp-net-core-2-2-web-api-project-ce1617d1d38d
-            //
-            //  Need to install:
-            //    Microsoft.AspNetCore.SpaServices
-            //    Microsoft.AspNetCore.SpaServices.Extensions
-            //    Microsoft.CodeAnalysis
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
 
-
-            //Mapster
+            //Инженктируем Mapster
             services.AddSingleton(CategoryMapProfile.GetConfiguredMappingConfig());
             services.AddSingleton(AdvertisementMapProfile.GetConfiguredMappingConfig());
             services.AddSingleton(TagMapProfile.GetConfiguredMappingConfig());
@@ -89,43 +77,39 @@ namespace Sev1.Advertisements.Api
                 app.UseHsts();
             }
 
+            // Cross-Origin Requests
+            // Безопасность браузера предотвращает отправку веб-страницей запросов в домен, 
+            // отличный от того, который обслуживает веб-страницу. 
+            // Это ограничение называется политикой одинакового происхождения. 
+            // Политика того же происхождения не позволяет вредоносному сайту 
+            // читать конфиденциальные данные с другого сайта. 
+            // Иногда может потребоваться разрешить другим сайтам делать запросы к приложению из разных источников.
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyHeader()
                 .AllowAnyMethod());
 
+            // In the Startup.Configure method, 
+            // enable the middleware for serving the generated JSON document 
+            // and the Swagger UI:
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PublicApi v1"));
+            
+            // Обработка исключительных ситуаций
             app.UseApplicationException();
+
+
+            // Маршрутизация отвечает за сопоставление входящих HTTP-запросов
+            // и отправку этих запросов исполняемым конечным точкам приложения. 
             app.UseRouting();
 
-            app.UseAuthentication();
-            app.UseAuthorization();
-
+            // Конечные точки - это единицы приложения исполняемого кода обработки запросов.
+            // Конечные точки определяются в приложении и настраиваются при запуске приложения. 
+            // Процесс сопоставления конечных точек может извлекать значения из 
+            // URL-адреса запроса и предоставлять эти значения для обработки запроса. 
+            // Используя информацию о конечных точках из приложения, маршрутизация 
+            // также может генерировать URL-адреса, которые сопоставляются с конечными точками.
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
-
-
-            //  Adding Angular ClientApp
-            app.UseStaticFiles();
-            if (!env.IsDevelopment())
-            {
-                app.UseSpaStaticFiles();
-            }
-
-
-
-
-
-
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
-                {
-                    spa.UseAngularCliServer(npmScript: "start");
-                }
-            });
         }
     }
 }
