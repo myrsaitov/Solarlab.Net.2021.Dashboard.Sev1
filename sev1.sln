@@ -31,15 +31,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{7D5BB904
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{6AC7FBCF-E4CE-4308-9A90-31FD18AB8956}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advertisements.Domain", "Advertisements.Domain\Advertisements.Domain.csproj", "{A6E756E7-B801-4986-B8C5-C2E2AAF98BFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advertisements.Domain", "Advertisements.Domain\Advertisements.Domain.csproj", "{A6E756E7-B801-4986-B8C5-C2E2AAF98BFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advertisements.Contracts", "Advertisements.Contracts\Advertisements.Contracts.csproj", "{259DF462-9E85-4642-BAD8-F0B83944124E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advertisements.Contracts", "Advertisements.Contracts\Advertisements.Contracts.csproj", "{259DF462-9E85-4642-BAD8-F0B83944124E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advertisements.DataAccess", "Advertisement.DataAccess\Advertisements.DataAccess.csproj", "{A2A7F7A6-A3F1-4C3B-A0DC-20B165822BBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advertisements.DataAccess", "Advertisement.DataAccess\Advertisements.DataAccess.csproj", "{A2A7F7A6-A3F1-4C3B-A0DC-20B165822BBC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advertisements.Api", "Advertisements.Api\Advertisements.Api.csproj", "{59EFB640-4654-4571-BB48-3B34F8567691}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advertisements.Mapper", "Advertisements.Mapper\Advertisements.Mapper.csproj", "{28A209F7-84BA-4459-85F5-F98FD1D5053A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advertisements.Mapper", "Advertisements.Mapper\Advertisements.Mapper.csproj", "{28A209F7-84BA-4459-85F5-F98FD1D5053A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4A011B92-AE43-4F7F-9198-5F0C089EAFB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,7 @@ Global
 		{A2A7F7A6-A3F1-4C3B-A0DC-20B165822BBC} = {6AC7FBCF-E4CE-4308-9A90-31FD18AB8956}
 		{59EFB640-4654-4571-BB48-3B34F8567691} = {7D5BB904-2AC3-41FA-A387-424AF9CC3A60}
 		{28A209F7-84BA-4459-85F5-F98FD1D5053A} = {6AC7FBCF-E4CE-4308-9A90-31FD18AB8956}
+		{4A011B92-AE43-4F7F-9198-5F0C089EAFB4} = {D2F4EBEC-D6B8-466E-B25B-FB7709F5728E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE633C48-C998-423E-8C40-A2514D5D900B}
