@@ -1,6 +1,6 @@
 ﻿using Mapster;
 
-namespace Sev1.Advertisements.Mapper.MapProfiles
+namespace Sev1.Advertisements.MapsterMapper.MapProfiles
 {
     public class TagMapProfile
     {

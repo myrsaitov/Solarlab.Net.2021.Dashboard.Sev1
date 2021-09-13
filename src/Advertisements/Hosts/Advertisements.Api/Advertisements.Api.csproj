@@ -48,7 +48,7 @@
      
       <ProjectReference Include="..\..\Infrastructure\Advertisements.DataAccess\Advertisements.DataAccess.csproj" />
      
-      <ProjectReference Include="..\..\Infrastructure\Advertisements.Mapper\Advertisements.Mapper.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\Advertisements.Mapper\Advertisements.MapsterMapper.csproj" />
     </ItemGroup>
 
     <ItemGroup>

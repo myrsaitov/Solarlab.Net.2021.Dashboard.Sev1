@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Sev1.Advertisements.Mapper.MapProfiles;
+using Sev1.Advertisements.MapsterMapper.MapProfiles;
 using Microsoft.Extensions.Hosting;
 using Sev1.Advertisements.DataAccess;
 
