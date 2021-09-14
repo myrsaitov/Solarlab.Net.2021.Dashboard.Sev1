@@ -27,6 +27,7 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
         Task<Paged.Response<AdvertisementPagedDto>> GetPaged(
             Paged.Request request, 
             CancellationToken cancellationToken);
+
         Task<Paged.Response<AdvertisementPagedDto>> GetPaged(
             Expression<Func<Domain.Advertisement, bool>> predicate,
             Paged.Request request,
