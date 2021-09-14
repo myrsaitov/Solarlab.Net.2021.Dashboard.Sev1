@@ -1,4 +1,5 @@
 ﻿using Mapster;
+using Sev1.Advertisements.Application.Contracts.Tag;
 
 namespace Sev1.Advertisements.MapsterMapper.MapProfiles
 {
@@ -8,10 +9,10 @@ namespace Sev1.Advertisements.MapsterMapper.MapProfiles
         {
             var config = TypeAdapterConfig.GlobalSettings;
 
-            config.NewConfig<Application.Contracts.Tag.Create.Request, Domain.Tag>()
+            config.NewConfig<TagCreateDto, Domain.Tag>()
                 .Map(dest => dest.Body, src => src.Body);
 
-            config.NewConfig<Domain.Tag, Application.Contracts.Tag.GetById.Response>()
+            config.NewConfig<Domain.Tag, TagPagedDto>()
                 .Map(dest => dest.Body, src => src.Body);
 
             return config;

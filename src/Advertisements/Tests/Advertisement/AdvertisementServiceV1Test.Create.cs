@@ -15,7 +15,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task Create_Returns_Response_Success(
-            Create.Request request, 
+            AdvertisementCreateDto request, 
             CancellationToken cancellationToken, 
             int userId, 
             int contentId)
@@ -24,8 +24,6 @@ namespace Sev1.Advertisements.Tests.Advertisement
             var category = new Domain.Category();
 
             int tagId = 1;
-
-
 
             _categoryRepositoryMock
                 .Setup(_ => _.FindById(
@@ -58,7 +56,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Callback((Domain.Advertisement content, CancellationToken ct) => content.Id = contentId);
 
             // Act
-            var response = await _advertisementServiceV1.Create(
+            await _advertisementServiceV1.Create(
                 request, 
                 cancellationToken);
 
@@ -66,13 +64,11 @@ namespace Sev1.Advertisements.Tests.Advertisement
             _advertisementRepositoryMock.Verify();
             _categoryRepositoryMock.Verify();
             _tagRepositoryMock.Verify();
-            Assert.NotNull(response);
-            Assert.NotEqual(default, response.Id);
         }
         [Theory]
         [AutoData]
         public async Task Create_Throws_Exception_When_Category_Is_Null(
-        Create.Request request,
+        AdvertisementCreateDto request,
             CancellationToken cancellationToken)
         {
             // Act
@@ -84,7 +80,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [InlineAutoData(null)]
         public async Task Create_Throws_Exception_When_Request_Is_Null(
-            Create.Request request, 
+            AdvertisementCreateDto request, 
             CancellationToken cancellationToken)
         {
             // Act

@@ -1,5 +1,5 @@
 ﻿using Sev1.Advertisements.DataAccess.Interfaces;
-using Sev1.Advertisements.Application.Services.Category.Implementations;
+using Sev1.Advertisements.Application.Implementations.Category;
 using Moq;
 using MapsterMapper;
 using Mapster;

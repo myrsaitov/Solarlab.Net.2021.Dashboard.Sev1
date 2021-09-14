@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Services.Advertisement.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
+using Sev1.Advertisements.Application.Interfaces;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {

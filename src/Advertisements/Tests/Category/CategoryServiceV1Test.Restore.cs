@@ -15,7 +15,7 @@ namespace Sev1.Advertisements.Tests.Category
         [Theory]
         [AutoData]
         public async Task Restore_Returns_Response_Success(
-            Restore.Request request, 
+            int id, 
             CancellationToken cancellationToken, 
             int userId,
             int categoryId)
@@ -41,7 +41,7 @@ namespace Sev1.Advertisements.Tests.Category
 
             // Act
             await _categoryServiceV1.Restore(
-                request, 
+                id, 
                 cancellationToken);
 
             // Assert
@@ -50,7 +50,7 @@ namespace Sev1.Advertisements.Tests.Category
         [Theory]
         [AutoData]
         public async Task Restore_Throws_Exception_When_No_Rights(
-            Restore.Request request,
+            int id,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -69,31 +69,31 @@ namespace Sev1.Advertisements.Tests.Category
             // Act
             await Assert.ThrowsAsync<NoRightsException>(
                 async () => await _categoryServiceV1.Restore(
-                    request,
+                    id,
                     cancellationToken));
         }
         [Theory]
         [AutoData]
         public async Task Restore_Throws_Exception_When_Category_Is_Null(
-            Restore.Request request,
+            int id,
             CancellationToken cancellationToken)
         {
             // Act
             await Assert.ThrowsAsync<CategoryNotFoundException>(
                 async () => await _categoryServiceV1.Restore(
-                    request,
+                    id,
                     cancellationToken));
         }
         [Theory]
         [InlineAutoData(null)]
         public async Task Restore_Throws_Exception_When_Request_Is_Null(
-            Restore.Request request, 
+            int id, 
             CancellationToken cancellationToken)
         {
             // Act
             await Assert.ThrowsAsync<ArgumentNullException>(
                 async () => await _categoryServiceV1.Restore(
-                    request, 
+                    id, 
                     cancellationToken));
         }
     }

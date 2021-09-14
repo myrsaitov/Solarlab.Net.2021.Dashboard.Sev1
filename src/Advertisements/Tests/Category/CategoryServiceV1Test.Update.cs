@@ -15,7 +15,7 @@ namespace Sev1.Advertisements.Tests.Category
         [Theory]
         [AutoData]
         public async Task Update_Returns_Response_Success(
-            Update.Request request,
+            CategoryUpdateDto request,
             CancellationToken cancellationToken,
             int userId,
             int categoryId)
@@ -64,12 +64,12 @@ namespace Sev1.Advertisements.Tests.Category
             // Assert
             _categoryRepositoryMock.Verify();
             Assert.NotNull(response);
-            Assert.NotEqual(default, response.Id);
+            Assert.NotEqual(default, response);
         }
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_No_Rights(
-            Update.Request request,
+            CategoryUpdateDto request,
             CancellationToken cancellationToken,
             int categoryId)
         {
@@ -96,7 +96,7 @@ namespace Sev1.Advertisements.Tests.Category
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_Category_Is_Null(
-            Update.Request request,
+            CategoryUpdateDto request,
             CancellationToken cancellationToken)
         {
             // Act
@@ -108,7 +108,7 @@ namespace Sev1.Advertisements.Tests.Category
         [Theory]
         [InlineAutoData(null)]
         public async Task Update_Throws_Exception_When_Request_Is_Null(
-            Update.Request request,
+            CategoryUpdateDto request,
             CancellationToken cancellationToken)
         {
             // Act

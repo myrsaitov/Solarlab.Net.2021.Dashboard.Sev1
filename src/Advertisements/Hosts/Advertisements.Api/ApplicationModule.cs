@@ -1,9 +1,7 @@
-﻿using Sev1.Advertisements.Application.Services.Advertisement.Implementations;
-using Sev1.Advertisements.Application.Services.Advertisement.Interfaces;
-using Sev1.Advertisements.Application.Services.Tag.Implementations;
-using Sev1.Advertisements.Application.Services.Tag.Interfaces;
-using Sev1.Advertisements.Application.Services.Category.Implementations;
-using Sev1.Advertisements.Application.Services.Category.Interfaces;
+﻿using Sev1.Advertisements.Application.Implementations.Advertisement;
+using Sev1.Advertisements.Application.Implementations.Tag;
+using Sev1.Advertisements.Application.Implementations.Category;
+using Sev1.Advertisements.Application.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 

@@ -54,7 +54,7 @@ namespace Sev1.Advertisements.Tests.Tag
             Assert.NotNull(response);
             Assert.Equal(tagCount, response.Total);
             Assert.Equal(tagCount, response.Items.Count());
-            Assert.IsType<Paged.Response<GetById.Response>>(response);
+            Assert.IsType<Paged.Response<TagPagedDto>>(response);
         }
         [Theory]
         [AutoData]
@@ -80,7 +80,7 @@ namespace Sev1.Advertisements.Tests.Tag
             Assert.NotNull(response);
             Assert.Equal(tagCount, response.Total);
             Assert.Equal(tagCount, response.Items.Count());
-            Assert.IsType<Paged.Response<GetById.Response>>(response);
+            Assert.IsType<Paged.Response<TagPagedDto>>(response);
         }
         [Theory]
         [InlineAutoData(null)]

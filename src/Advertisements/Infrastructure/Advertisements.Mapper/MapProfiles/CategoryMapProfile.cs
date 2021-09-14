@@ -1,4 +1,5 @@
 ﻿using Mapster;
+using Sev1.Advertisements.Application.Contracts.Category;
 
 namespace Sev1.Advertisements.MapsterMapper.MapProfiles
 {
@@ -8,16 +9,16 @@ namespace Sev1.Advertisements.MapsterMapper.MapProfiles
         {
             var config = TypeAdapterConfig.GlobalSettings;
 
-            config.NewConfig<Application.Contracts.Category.Create.Request, Domain.Category>()
+            config.NewConfig<CategoryCreateDto, Domain.Category>()
                 .Map(dest => dest.Name, src => src.Name)
                 .Map(dest => dest.ParentCategoryId, src => src.ParentCategoryId);
 
-            config.NewConfig<Application.Contracts.Category.Update.Request, Domain.Category>()
+            config.NewConfig<CategoryUpdateDto, Domain.Category>()
                 .Map(dest => dest.Id, src => src.Id)
                 .Map(dest => dest.Name, src => src.Name)
                 .Map(dest => dest.ParentCategoryId, src => src.ParentCategoryId);
 
-            config.NewConfig<Domain.Category, Application.Contracts.Category.GetById.Response>()
+            config.NewConfig<Domain.Category, CategoryDto>()
                 .Map(dest => dest.Name, src => src.Name)
                 .Map(dest => dest.ParentCategoryId, src => src.ParentCategoryId)
                 .Map(dest => dest.IsDeleted, src => src.IsDeleted);

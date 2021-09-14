@@ -12,9 +12,11 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
     {
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> GetPaged([FromQuery] GetPagedAdvertisementRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetPaged(
+            [FromQuery] GetPagedAdvertisementRequest request, 
+            CancellationToken cancellationToken)
         {
-            var result = new Paged.Response<GetPaged.Response>();
+            var result = new Paged.Response<AdvertisementPagedDto>();
 
             if((request.SearchStr is null) 
                 && (request.UserName is null) 
@@ -73,21 +75,18 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
                 }, cancellationToken);
             }
 
-
             return Ok(result);
         }
 
         [HttpGet("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetById(
-            int id, 
+            [FromRoute] int id, 
             CancellationToken cancellationToken)
         {
-            var found = await _advertisementService.GetById(new GetById.Request
-            {
-                Id = id
-            },
-            cancellationToken);
+            var found = await _advertisementService.GetById(
+                id,
+                cancellationToken);
 
             return Ok(found);
         }

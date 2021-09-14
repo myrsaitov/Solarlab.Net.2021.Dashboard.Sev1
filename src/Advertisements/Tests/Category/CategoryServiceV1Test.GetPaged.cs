@@ -57,7 +57,7 @@ namespace Sev1.Advertisements.Tests.Category
             Assert.NotNull(response);
             Assert.Equal(categoryCount, response.Total);
             Assert.Equal(categoryCount, response.Items.Count());
-            Assert.IsType<Paged.Response<GetById.Response>>(response);
+            Assert.IsType<Paged.Response<CategoryDto>>(response);
         }
         [Theory]
         [AutoData]
@@ -85,7 +85,7 @@ namespace Sev1.Advertisements.Tests.Category
             Assert.NotNull(response);
             Assert.Equal(categoryCount, response.Total);
             Assert.Equal(categoryCount, response.Items.Count());
-            Assert.IsType<Paged.Response<GetById.Response>>(response);
+            Assert.IsType<Paged.Response<CategoryDto>>(response);
         }
         [Theory]
         [InlineAutoData(null)]

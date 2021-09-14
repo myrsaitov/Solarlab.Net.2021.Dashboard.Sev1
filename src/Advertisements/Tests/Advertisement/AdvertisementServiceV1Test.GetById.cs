@@ -1,5 +1,4 @@
-﻿using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Sev1.Advertisements.Application.Exceptions;
+﻿using Sev1.Advertisements.Application.Exceptions;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,7 +14,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task GetById_Returns_Response_Success(
-            GetById.Request request, 
+            int id, 
             CancellationToken cancellationToken, 
             int userId,
             string contentTitle,
@@ -57,7 +56,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // Act
             var response = await _advertisementServiceV1.GetById(
-                request, 
+                id, 
                 cancellationToken);
 
             // Assert
@@ -68,25 +67,25 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task GetById_Throws_Exception_When_Advertisement_Is_Null(
-            GetById.Request request,
+            int id,
             CancellationToken cancellationToken)
         {
             // Act
             await Assert.ThrowsAsync<AdvertisementNotFoundException>(
                 async () => await _advertisementServiceV1.GetById(
-                    request,
+                    id,
                     cancellationToken));
         }
         [Theory]
         [InlineAutoData(null)]
         public async Task GetById_Throws_Exception_When_Request_Is_Null(
-            GetById.Request request, 
+            int id, 
             CancellationToken cancellationToken)
         {
             // Act
             await Assert.ThrowsAsync<ArgumentNullException>(
                 async () => await _advertisementServiceV1.GetById(
-                    request, 
+                    id, 
                     cancellationToken));
         }
     }
