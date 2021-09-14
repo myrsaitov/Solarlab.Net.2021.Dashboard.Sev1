@@ -12,31 +12,28 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {
         public async Task<int> Update(
-            AdvertisementUpdateDto request,
+            AdvertisementUpdateDto model,
             CancellationToken cancellationToken)
         {
-            if (request is null)
+            if (model is null)
             {
-                throw new ArgumentNullException(nameof(request));
+                throw new ArgumentNullException(nameof(model));
             }
 
             var advertisement = await _advertisementRepository.FindByIdWithUserAndCategoryAndTags(
-                request.Id,
+                model.Id,
                 cancellationToken);
 
             if (advertisement == null)
             {
-                throw new AdvertisementNotFoundException(request.Id);
+                throw new AdvertisementNotFoundException(model.Id);
             }
 
-
-
-
-
-            advertisement.Title = request.Title;
-            advertisement.Body = request.Body;
-            advertisement.Price = request.Price;
-            advertisement.CategoryId = request.CategoryId;
+            // TODO Mapper
+            advertisement.Title = model.Title;
+            advertisement.Body = model.Body;
+            advertisement.Price = model.Price;
+            advertisement.CategoryId = model.CategoryId;
 
             advertisement.IsDeleted = false;
             advertisement.UpdatedAt = DateTime.UtcNow;
@@ -57,9 +54,9 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             }
             advertisement.Tags.Clear();
 
-            if (request.TagBodies is not null)
+            if (model.TagBodies is not null)
             {
-                foreach (string body in request.TagBodies)
+                foreach (string body in model.TagBodies)
                 {
                     if (body.Length > 0)
                     {

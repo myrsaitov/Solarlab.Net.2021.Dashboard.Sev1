@@ -10,10 +10,10 @@ namespace Sev1.Advertisements.Application.Interfaces
     public interface IAdvertisementService
     {
         Task Create(
-            AdvertisementCreateDto request, 
+            AdvertisementCreateDto model, 
             CancellationToken cancellationToken);
         Task<int> Update(
-            AdvertisementUpdateDto request, 
+            AdvertisementUpdateDto model, 
             CancellationToken cancellationToken);
         Task Delete(
             int id,

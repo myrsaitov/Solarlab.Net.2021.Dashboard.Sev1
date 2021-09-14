@@ -6,39 +6,43 @@ using Sev1.Advertisements.Application.Exceptions;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Sev1.Advertisements.Application.Interfaces;
 using Sev1.Advertisements.Application.Contracts.Tag;
+using Sev1.Advertisements.Application.Validators;
+using System.Linq;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {
         public async Task Create(
-            AdvertisementCreateDto request, 
+            AdvertisementCreateDto model, 
             CancellationToken cancellationToken)
         {
-            if (request is null)
+            // Fluent Validation
+            var validator = new AdvertisementCreateDtoValidator();
+            var result = await validator.ValidateAsync(model);
+            if (!result.IsValid)
             {
-                throw new ArgumentNullException(nameof(request));
+                throw new AdvertisementCreateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
             var category = await _categoryRepository.FindById(
-                request.CategoryId,
+                model.CategoryId,
                 cancellationToken);
 
             if (category is null)
             {
-                throw new CategoryNotFoundException(request.CategoryId);
+                throw new CategoryNotFoundException(model.CategoryId);
             }
 
-
-            var advertisement = _mapper.Map<Domain.Advertisement>(request);
+            var advertisement = _mapper.Map<Domain.Advertisement>(model);
             advertisement.IsDeleted = false;
             advertisement.CreatedAt = DateTime.UtcNow;
             advertisement.Category = category;
 
-            if (request.TagBodies is not null)
+            if (model.TagBodies is not null)
             {
                 advertisement.Tags = new List<Domain.Tag>();
-                foreach (string body in request.TagBodies)
+                foreach (string body in model.TagBodies)
                 {
                     if (body.Length > 0)
                     {
