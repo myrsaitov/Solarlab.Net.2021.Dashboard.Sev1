@@ -1,5 +1,5 @@
-﻿using Sev1.Advertisements.Application.Services.Advertisement.Contracts;
-using Sev1.Advertisements.Application.Services.Advertisement.Contracts.Exceptions;
+﻿using Sev1.Advertisements.Application.Contracts.Advertisement;
+using Sev1.Advertisements.Application.Exceptions;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;

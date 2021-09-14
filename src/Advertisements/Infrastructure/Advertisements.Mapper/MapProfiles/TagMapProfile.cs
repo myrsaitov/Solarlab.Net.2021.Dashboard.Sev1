@@ -8,10 +8,10 @@ namespace Sev1.Advertisements.MapsterMapper.MapProfiles
         {
             var config = TypeAdapterConfig.GlobalSettings;
 
-            config.NewConfig<Application.Services.Tag.Contracts.Create.Request, Domain.Tag>()
+            config.NewConfig<Application.Contracts.Tag.Create.Request, Domain.Tag>()
                 .Map(dest => dest.Body, src => src.Body);
 
-            config.NewConfig<Domain.Tag, Application.Services.Tag.Contracts.GetById.Response>()
+            config.NewConfig<Domain.Tag, Application.Contracts.Tag.GetById.Response>()
                 .Map(dest => dest.Body, src => src.Body);
 
             return config;

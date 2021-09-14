@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Services.Advertisement.Contracts;
-using Sev1.Advertisements.Application.Services.Advertisement.Contracts.Exceptions;
+using Sev1.Advertisements.Application.Contracts.Advertisement;
+using Sev1.Advertisements.Application.Exceptions;
 using Sev1.Advertisements.Application.Services.Advertisement.Interfaces;
 
 namespace Sev1.Advertisements.Application.Services.Advertisement.Implementations

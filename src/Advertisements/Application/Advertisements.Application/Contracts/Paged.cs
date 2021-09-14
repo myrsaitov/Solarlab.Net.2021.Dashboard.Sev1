@@ -1,7 +1,6 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Sev1.Advertisements.Application.Services.Contracts
+namespace Sev1.Advertisements.Application.Contracts
 {
     public class Paged
     {

@@ -1,6 +1,6 @@
-﻿namespace Sev1.Advertisements.Application.Services.Category.Contracts
+﻿namespace Sev1.Advertisements.Application.Contracts.Category
 {
-    public class Delete
+    public class Restore
     {
         public sealed class Request
         {

@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace Sev1.Advertisements.Application.Services.Advertisement.Contracts
+namespace Sev1.Advertisements.Application.Contracts.Advertisement
 {
-    public class Create
+    public class Update
     {
         public sealed class Request
         {
+            public int Id { get; set; }
             public string Title { get; set; }
             public string Body { get; set; }
             public decimal Price { get; set; }
             public int CategoryId { get; set; }
-            public string OwnerId { get; set; }
-
             public string[] TagBodies { get; set; }
         }
         public sealed class Response

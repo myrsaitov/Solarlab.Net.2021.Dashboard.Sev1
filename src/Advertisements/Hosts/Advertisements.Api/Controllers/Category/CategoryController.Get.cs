@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Services.Category.Contracts;
+using Sev1.Advertisements.Application.Contracts.Category;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Services.Contracts;
+using Sev1.Advertisements.Application.Contracts;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {

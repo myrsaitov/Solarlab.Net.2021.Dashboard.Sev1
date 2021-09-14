@@ -29,4 +29,8 @@
     <ProjectReference Include="..\..\Infrastructure\Advertisements.DataAccess\Advertisements.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Validators\" />
+  </ItemGroup>
+
 </Project>

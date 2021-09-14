@@ -1,17 +1,18 @@
-﻿namespace Sev1.Advertisements.Application.Services.Tag.Contracts
+﻿using System;
+
+namespace Sev1.Advertisements.Application.Contracts.Category
 {
-    public class GetById
+    public class Update
     {
         public sealed class Request
         {
             public int Id { get; set; }
+            public string Name { get; set; }
+            public int? ParentCategoryId { get; set; }
         }
-
         public sealed class Response
         {
             public int Id { get; set; }
-            public string Body { get; set; }
-            public int Count { get; set; }
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Services.Tag.Interfaces;
-using Sev1.Advertisements.Application.Services.Tag.Contracts;
+using Sev1.Advertisements.Application.Contracts.Tag;
 using System;
 using System.Linq;
-using Sev1.Advertisements.Application.Services.Contracts;
+using Sev1.Advertisements.Application.Contracts;
 
 namespace Sev1.Advertisements.Application.Services.Tag.Implementations
 {

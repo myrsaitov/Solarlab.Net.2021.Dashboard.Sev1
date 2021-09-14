@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
-using Sev1.Advertisements.Application.Services.Contracts;
-using Sev1.Advertisements.Application.Services.Advertisement.Contracts;
+using Sev1.Advertisements.Application.Contracts;
+using Sev1.Advertisements.Application.Contracts.Advertisement;
 using System.Linq;
 using System;
 

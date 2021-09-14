@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Services.Advertisement.Contracts;
+using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Services.Contracts;
+using Sev1.Advertisements.Application.Contracts;
 using System.Linq;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement

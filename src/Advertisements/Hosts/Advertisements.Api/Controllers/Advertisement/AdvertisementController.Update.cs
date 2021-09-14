@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Services.Advertisement.Contracts;
+using Sev1.Advertisements.Application.Contracts.Advertisement;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {

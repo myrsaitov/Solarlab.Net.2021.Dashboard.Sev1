@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Services.Contracts;
+using Sev1.Advertisements.Application.Contracts;
 
 namespace Sev1.Advertisements.Api.Controllers.Tag
 {

@@ -1,4 +1,4 @@
-﻿namespace Sev1.Advertisements.Application.Services.Advertisement.Contracts
+﻿namespace Sev1.Advertisements.Application.Contracts.Category
 {
     public class Delete
     {

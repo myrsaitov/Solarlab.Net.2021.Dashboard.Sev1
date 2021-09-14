@@ -1,4 +1,4 @@
-﻿using Sev1.Advertisements.Application.Services.Category.Contracts;
+﻿using Sev1.Advertisements.Application.Contracts.Category;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;

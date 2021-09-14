@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Services.Category.Contracts.Exceptions;
-using Sev1.Advertisements.Application.Services.Advertisement.Contracts;
-using Sev1.Advertisements.Application.Services.Advertisement.Contracts.Exceptions;
+using Sev1.Advertisements.Application.Exceptions;
+using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Sev1.Advertisements.Application.Services.Advertisement.Interfaces;
 
 namespace Sev1.Advertisements.Application.Services.Advertisement.Implementations
@@ -41,7 +40,7 @@ namespace Sev1.Advertisements.Application.Services.Advertisement.Implementations
             advertisement.IsDeleted = false;
             advertisement.UpdatedAt = DateTime.UtcNow;
 
-            var categoryRequest = new Category.Contracts.GetById.Request()
+            var categoryRequest = new Contracts.Category.GetById.Request()
             {
                 Id = advertisement.CategoryId
             };
@@ -73,7 +72,7 @@ namespace Sev1.Advertisements.Application.Services.Advertisement.Implementations
 
                         if (tag == null)
                         {
-                            var tagRequest = new Tag.Contracts.Create.Request()
+                            var tagRequest = new Contracts.Tag.Create.Request()
                             {
                                 Body = body
                             };

@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Services.Category.Contracts;
-using Sev1.Advertisements.Application.Services.Contracts;
+using Sev1.Advertisements.Application.Contracts.Category;
+using Sev1.Advertisements.Application.Contracts;
 
 namespace Sev1.Advertisements.Application.Services.Category.Interfaces
 {

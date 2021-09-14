@@ -1,15 +1,7 @@
-﻿using System;
-using Sev1.Advertisements.Application.Services.Contracts;
-
-namespace Sev1.Advertisements.Application.Services.Advertisement.Contracts
+﻿namespace Sev1.Advertisements.Application.Contracts.Advertisement
 {
-    public class GetById
+    public class GetPaged
     {
-        public sealed class Request
-        {
-            public int Id { get; set; }
-        }
-
         public sealed class Response
         {
             public int Id { get; set; }
@@ -17,7 +9,8 @@ namespace Sev1.Advertisements.Application.Services.Advertisement.Contracts
             public string Body { get; set; }
             public decimal Price { get; set; }
             public string CreatedAt { get; set; }
-            public int? CategoryId { get; set; }
+            public int CategoryId { get; set; }
+            public string CategoryName { get; set; }
             public bool IsDeleted { get; set; }
             public string[] Tags { get; set; }
         }

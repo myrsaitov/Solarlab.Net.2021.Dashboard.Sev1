@@ -1,4 +1,4 @@
-﻿using Sev1.Advertisements.Application.Services.Advertisement.Contracts;
+﻿using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -6,8 +6,7 @@ using Xunit;
 using AutoFixture.Xunit2;
 using System.Linq.Expressions;
 using System;
-using Sev1.Advertisements.Application.Services.Advertisement.Contracts.Exceptions;
-using Sev1.Advertisements.Application.Services.Category.Contracts.Exceptions;
+using Sev1.Advertisements.Application.Exceptions;
 using Sev1.Advertisements.Domain.Exceptions;
 
 namespace Sev1.Advertisements.Tests.Advertisement

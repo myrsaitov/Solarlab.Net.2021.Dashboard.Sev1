@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Sev1.Advertisements.Application.Services.Tag.Contracts
+﻿namespace Sev1.Advertisements.Application.Contracts.Tag
 {
     public class Create
     {
