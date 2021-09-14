@@ -1,10 +1,11 @@
 ﻿using FluentValidation;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Sev1.Advertisements.Application.Validators.Base;
+using Sev1.Advertisements.Application.Validators.Tag;
 
-namespace Sev1.Advertisements.Application.Validators
+namespace Sev1.Advertisements.Application.Validators.Advertisement
 {
-    public class AdvertisementUpdateDtoValidator : NullReferenceAbstractValidator<AdvertisementCreateDto>
+    public class AdvertisementUpdateDtoValidator : NullReferenceAbstractValidator<AdvertisementUpdateDto>
     {
         public AdvertisementUpdateDtoValidator()
         {
@@ -40,10 +41,8 @@ namespace Sev1.Advertisements.Application.Validators
                 .NotEmpty().WithMessage("CategoryId не заполнен!")
                 .InclusiveBetween(1, int.MaxValue);
 
-            // Пользователь Id
-            RuleFor(x => x.OwnerId)
-                .NotNull()
-                .NotEmpty().WithMessage("OwnerId не заполнен!");
+            // Проверка массива строк TagBodies
+            RuleForEach(x => x.TagBodies).SetValidator(new TagBodyValidator());
         }
     }
 }

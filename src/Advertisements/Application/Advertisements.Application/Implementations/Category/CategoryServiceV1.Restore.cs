@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Category;
 using Sev1.Advertisements.Application.Exceptions;
-using Sev1.Advertisements.Application.Interfaces;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Sev1.Advertisements.Application.Exceptions.Category;
+using Sev1.Advertisements.Application.Interfaces.Category;
+using Sev1.Advertisements.Application.Validators.Advertisement;
 using Sev1.Advertisements.Domain.Base;
 
 namespace Sev1.Advertisements.Application.Implementations.Category
@@ -14,10 +18,13 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             int id,
             CancellationToken cancellationToken)
         {
-            /*if (request is null)
+            // Fluent Validation
+            var validator = new CategoryIdValidator();
+            var result = await validator.ValidateAsync(id);
+            if (!result.IsValid)
             {
-                throw new ArgumentNullException(nameof(request));
-            }*/
+                throw new CategoryIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
+            }
 
             var category = await _categoryRepository.FindById(
                 id, 

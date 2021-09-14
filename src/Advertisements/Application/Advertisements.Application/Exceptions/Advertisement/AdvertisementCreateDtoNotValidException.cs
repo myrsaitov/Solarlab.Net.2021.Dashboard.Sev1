@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sev1.Advertisements.Application.Exceptions
+namespace Sev1.Advertisements.Application.Exceptions.Advertisement
 {
     public class AdvertisementCreateDtoNotValidException : ApplicationException
     {

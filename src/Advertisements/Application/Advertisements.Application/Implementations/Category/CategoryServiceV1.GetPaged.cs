@@ -4,7 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Category;
 using Sev1.Advertisements.Application.Contracts;
-using Sev1.Advertisements.Application.Interfaces;
+using Sev1.Advertisements.Application.Interfaces.Category;
+using Sev1.Advertisements.Application.Validators.GetPaged;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
 
 namespace Sev1.Advertisements.Application.Implementations.Category
 {
@@ -14,10 +16,14 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             Paged.Request request, 
             CancellationToken cancellationToken)
         {
-            if (request is null)
+            // Fluent Validation
+            var validator = new GetPagedRequestValidator();
+            var result = await validator.ValidateAsync(request);
+            if (!result.IsValid)
             {
-                throw new ArgumentNullException(nameof(request));
+                throw new GetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
+
             var total = await _categoryRepository.Count(cancellationToken);
 
             var offset = request.Page * request.PageSize;

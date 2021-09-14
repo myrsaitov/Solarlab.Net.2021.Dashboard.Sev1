@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Exceptions;
-using Sev1.Advertisements.Application.Interfaces;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Sev1.Advertisements.Application.Interfaces.Advertisement;
+using Sev1.Advertisements.Application.Validators.Advertisement;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
@@ -12,10 +14,13 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             int id,
             CancellationToken cancellationToken)
         {
-            /*if (request is null)
+            // Fluent Validation
+            var validator = new AdvertisementIdValidator();
+            var result = await validator.ValidateAsync(id);
+            if (!result.IsValid)
             {
-                throw new ArgumentNullException(nameof(request));
-            }*/
+                throw new AdvertisementIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
+            }
 
             var advertisement = await _advertisementRepository.FindByIdWithUserInclude(
                 id,

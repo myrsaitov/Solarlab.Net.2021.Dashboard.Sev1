@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Category;
 using Sev1.Advertisements.Application.Contracts;
 
-namespace Sev1.Advertisements.Application.Interfaces
+namespace Sev1.Advertisements.Application.Interfaces.Category
 {
     public interface ICategoryService
     {

@@ -1,8 +1,9 @@
 ﻿using FluentValidation;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Sev1.Advertisements.Application.Validators.Base;
+using Sev1.Advertisements.Application.Validators.Tag;
 
-namespace Sev1.Advertisements.Application.Validators
+namespace Sev1.Advertisements.Application.Validators.Advertisement
 {
     public class AdvertisementCreateDtoValidator : NullReferenceAbstractValidator<AdvertisementCreateDto>
     {
@@ -45,10 +46,8 @@ namespace Sev1.Advertisements.Application.Validators
                 .NotNull()
                 .NotEmpty().WithMessage("OwnerId не заполнен!");
 
-            // Tag TODO
-            //RuleFor(x => x.TagBodies).SetCollectionValidator(
-            //    new AccountValidator("Accounts")
-            //);
+            // Проверка массива строк TagBodies
+            RuleForEach(x => x.TagBodies).SetValidator(new TagBodyValidator());
         }
     }
 }

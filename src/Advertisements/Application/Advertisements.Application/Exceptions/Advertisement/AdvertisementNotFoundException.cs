@@ -1,6 +1,6 @@
 ﻿using Sev1.Advertisements.Domain.Exceptions;
 
-namespace Sev1.Advertisements.Application.Exceptions
+namespace Sev1.Advertisements.Application.Exceptions.Advertisement
 {
     public sealed class AdvertisementNotFoundException : NotFoundException
     {

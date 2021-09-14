@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Exceptions;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Sev1.Advertisements.Application.Interfaces;
+using Sev1.Advertisements.Application.Interfaces.Advertisement;
 using Sev1.Advertisements.Application.Contracts.Tag;
+using Sev1.Advertisements.Application.Validators.Advertisement;
+using System.Linq;
+using Sev1.Advertisements.Application.Exceptions.Category;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
@@ -15,9 +18,12 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             AdvertisementUpdateDto model,
             CancellationToken cancellationToken)
         {
-            if (model is null)
+            // Fluent Validation
+            var validator = new AdvertisementUpdateDtoValidator();
+            var result = await validator.ValidateAsync(model);
+            if (!result.IsValid)
             {
-                throw new ArgumentNullException(nameof(model));
+                throw new AdvertisementUpdateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
             var advertisement = await _advertisementRepository.FindByIdWithUserAndCategoryAndTags(

@@ -3,29 +3,33 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Category;
 using System.Collections.Generic;
-using Sev1.Advertisements.Application.Interfaces;
+using Sev1.Advertisements.Application.Interfaces.Category;
+using Sev1.Advertisements.Application.Validators.Advertisement;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using System.Linq;
 
 namespace Sev1.Advertisements.Application.Implementations.Category
 {
     public sealed partial class CategoryServiceV1 : ICategoryService
     {
         public async Task<int> Create(
-            CategoryCreateDto request, 
+            CategoryCreateDto model, 
             CancellationToken cancellationToken)
         {
-            if (request is null)
+            // Fluent Validation
+            var validator = new CategoryCreateDtoValidator();
+            var result = await validator.ValidateAsync(model);
+            if (!result.IsValid)
             {
-                throw new ArgumentNullException(nameof(request));
+                throw new CategoryCreateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
-
-
-            var category = _mapper.Map<Domain.Category>(request);
+            var category = _mapper.Map<Domain.Category>(model);
             category.IsDeleted = false;
             category.CreatedAt = DateTime.UtcNow;
             await _categoryRepository.Save(category, cancellationToken);
 
-            var parentCategoryIdNulable = request.ParentCategoryId;
+            var parentCategoryIdNulable = model.ParentCategoryId;
             if (parentCategoryIdNulable != null)
             {
                 int parentCategoryId = (int)parentCategoryIdNulable;

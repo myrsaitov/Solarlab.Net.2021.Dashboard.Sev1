@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Sev1.Advertisements.Application.Contracts;
 
-namespace Sev1.Advertisements.Application.Interfaces
+namespace Sev1.Advertisements.Application.Interfaces.Advertisement
 {
     public interface IAdvertisementService
     {

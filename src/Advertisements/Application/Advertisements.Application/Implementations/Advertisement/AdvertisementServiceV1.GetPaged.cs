@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Sev1.Advertisements.Application.Interfaces;
+using Sev1.Advertisements.Application.Interfaces.Advertisement;
 using Sev1.Advertisements.Application.Contracts;
 using System.Linq.Expressions;
+using Sev1.Advertisements.Application.Validators.GetPaged;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
@@ -16,9 +18,12 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             Paged.Request request,
             CancellationToken cancellationToken)
         {
-            if (request is null)
+            // Fluent Validation
+            var validator = new GetPagedRequestValidator();
+            var result = await validator.ValidateAsync(request);
+            if (!result.IsValid)
             {
-                throw new ArgumentNullException(nameof(request));
+                throw new GetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
             var offset = request.Page * request.PageSize;

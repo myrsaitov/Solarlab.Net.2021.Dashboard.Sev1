@@ -4,7 +4,9 @@ using Sev1.Advertisements.Application.Contracts.Tag;
 using System;
 using System.Linq;
 using Sev1.Advertisements.Application.Contracts;
-using Sev1.Advertisements.Application.Interfaces;
+using Sev1.Advertisements.Application.Interfaces.Tag;
+using Sev1.Advertisements.Application.Validators.GetPaged;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
 
 namespace Sev1.Advertisements.Application.Implementations.Tag
 {
@@ -14,9 +16,12 @@ namespace Sev1.Advertisements.Application.Implementations.Tag
             Paged.Request request, 
             CancellationToken cancellationToken)
         {
-            if (request is null)
+            // Fluent Validation
+            var validator = new GetPagedRequestValidator();
+            var result = await validator.ValidateAsync(request);
+            if (!result.IsValid)
             {
-                throw new ArgumentNullException(nameof(request));
+                throw new GetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
             var total = await _tagRepository.Count(cancellationToken);
