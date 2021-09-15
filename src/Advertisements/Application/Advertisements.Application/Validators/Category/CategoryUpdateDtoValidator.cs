@@ -23,7 +23,10 @@ namespace Sev1.Advertisements.Application.Validators.Advertisement
             RuleFor(x => x.Name)
                 .NotNull()
                 .NotEmpty().WithMessage("Name не заполнен!")
-                .Matches("[a-zA-Z0-9_]*")
+                
+                // The bracketed characters [a-zA-Z0-9] mean that any letter(regardless of case) or digit will match.
+                // The * (asterisk) following the brackets indicates that the bracketed characters occur 0 or more times.
+                .Matches("[a-zA-Z0-9]*")
                 .MaximumLength(100);
 
             // ParentCategoryId категории
