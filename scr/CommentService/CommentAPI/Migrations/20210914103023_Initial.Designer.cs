@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CommentAPI.Migrations
 {
     [DbContext(typeof(CommentDBContext))]
-    [Migration("20210823095124_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210914103023_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,11 +27,14 @@ namespace CommentAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AdvertesmentId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("AuthorId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ChatId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("CommentStatus")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
@@ -41,7 +44,7 @@ namespace CommentAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comment");
                 });
 #pragma warning restore 612, 618
         }

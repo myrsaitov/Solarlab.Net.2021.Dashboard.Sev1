@@ -10,7 +10,7 @@ namespace Domain.Entities
     public class Comment
     {
         /// <summary>
-        /// Id
+        /// Id коментария
         /// </summary>
         [Key]
         public Guid Id { get; set; }
@@ -31,9 +31,9 @@ namespace Domain.Entities
         public CommentStatus CommentStatus { get; set; }
 
         /// <summary>
-        /// Id объявления, к которому прикреплён коментарий
+        /// Id чата
         /// </summary>
-        public Guid AdvertesmentId { get; set; }
+        public Guid ChatId { get; set; }
 
         /// <summary>
         /// Id автора
