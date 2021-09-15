@@ -37,7 +37,8 @@ namespace CommentAPI
             string connection = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<CommentDBContext>(options =>
-                options.UseSqlServer(connection, b => b.MigrationsAssembly("CommentAPI")));
+                options.UseSqlServer(connection, b => b.MigrationsAssembly("CommentMigrations")));
+            //Sev1.Advertisements.DataAccess.DataAccessModule
 
 
             services.AddScoped<ICommentService, CommentService>();

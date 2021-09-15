@@ -26,6 +26,7 @@
     <ProjectReference Include="..\..\Infrastructure\Mapper\Mapper.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Repository\Repository.csproj" />
     <ProjectReference Include="..\Filters\Filters.csproj" />
+    <ProjectReference Include="..\WebApplication1.Migrations\WebApplication1.Migrations.csproj"> /
   </ItemGroup>
 
 </Project>
