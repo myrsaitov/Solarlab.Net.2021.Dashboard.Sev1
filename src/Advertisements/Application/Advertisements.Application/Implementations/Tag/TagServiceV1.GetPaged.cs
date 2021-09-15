@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Tag;
 using System;
 using System.Linq;
-using Sev1.Advertisements.Application.Contracts;
+using Sev1.Advertisements.Application.Contracts.GetPaged;
 using Sev1.Advertisements.Application.Interfaces.Tag;
 using Sev1.Advertisements.Application.Validators.GetPaged;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
@@ -12,8 +12,8 @@ namespace Sev1.Advertisements.Application.Implementations.Tag
 {
     public sealed partial class TagServiceV1 : ITagService
     {
-        public async Task<Paged.Response<TagPagedDto>> GetPaged(
-            Paged.Request request, 
+        public async Task<GetPagedResponse<TagPagedDto>> GetPaged(
+            GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
             // Fluent Validation
@@ -30,7 +30,7 @@ namespace Sev1.Advertisements.Application.Implementations.Tag
 
             if (total == 0)
             {
-                return new Paged.Response<TagPagedDto>
+                return new GetPagedResponse<TagPagedDto>
                 {
                     Items = Array.Empty<TagPagedDto>(),
                     Total = total,
@@ -45,7 +45,7 @@ namespace Sev1.Advertisements.Application.Implementations.Tag
                 cancellationToken);
 
 
-            return new Paged.Response<TagPagedDto>
+            return new GetPagedResponse<TagPagedDto>
             {
                 Items = entities.Select(entity => _mapper.Map<TagPagedDto>(entity)),
                 Total = total,

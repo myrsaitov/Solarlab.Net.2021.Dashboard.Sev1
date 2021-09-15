@@ -12,14 +12,12 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(
-            CategoryCreateDto request, 
+            [FromBody] CategoryCreateDto model, 
             CancellationToken cancellationToken)
         {
-            var response = await _categoryService.Create(new CategoryCreateDto
-            {
-                Name = request.Name,
-                ParentCategoryId = request.ParentCategoryId
-            }, cancellationToken);
+            var response = await _categoryService.Create(
+                model, 
+                cancellationToken);
 
             return Created($"api/v1/categories/{response}", new { });
         }

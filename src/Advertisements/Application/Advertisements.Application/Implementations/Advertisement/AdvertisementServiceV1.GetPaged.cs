@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Sev1.Advertisements.Application.Interfaces.Advertisement;
-using Sev1.Advertisements.Application.Contracts;
+using Sev1.Advertisements.Application.Contracts.GetPaged;
 using System.Linq.Expressions;
 using Sev1.Advertisements.Application.Validators.GetPaged;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
@@ -14,8 +14,8 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {
-        public async Task<Paged.Response<AdvertisementPagedDto>> GetPaged(
-            Paged.Request request,
+        public async Task<GetPagedAdvertisementResponse> GetPaged(
+            GetPagedAdvertisementRequest request,
             CancellationToken cancellationToken)
         {
             // Fluent Validation
@@ -32,7 +32,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
 
             if (total == 0)
             {
-                return new Paged.Response<AdvertisementPagedDto>
+                return new GetPagedAdvertisementResponse
                 {
                     Items = Array.Empty<AdvertisementPagedDto>(),
                     Total = total,
@@ -47,7 +47,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 cancellationToken
             );
 
-            return new Paged.Response<AdvertisementPagedDto>
+            return new GetPagedAdvertisementResponse
             {
                 Items = entities.Select(entity => _mapper.Map<AdvertisementPagedDto>(entity)),
                 Total = total,
@@ -55,14 +55,17 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 Limit = request.PageSize
             };
         }
-        public async Task<Paged.Response<AdvertisementPagedDto>> GetPaged(
+        public async Task<GetPagedResponse<AdvertisementPagedDto>> GetPaged(
             Expression<Func<Domain.Advertisement, bool>> predicate,
-            Paged.Request request,
+            GetPagedAdvertisementRequest request,
             CancellationToken cancellationToken)
         {
-            if (request is null)
+            // Fluent Validation
+            var validator = new GetPagedRequestValidator();
+            var result = await validator.ValidateAsync(request);
+            if (!result.IsValid)
             {
-                throw new ArgumentNullException(nameof(request));
+                throw new GetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
             var total = await _advertisementRepository.CountWithOutDeleted(
@@ -73,7 +76,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
 
             if (total == 0)
             {
-                return new Paged.Response<AdvertisementPagedDto>
+                return new GetPagedResponse<AdvertisementPagedDto>
                 {
                     Items = Array.Empty<AdvertisementPagedDto>(),
                     Total = total,
@@ -89,7 +92,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 cancellationToken
             );
 
-            return new Paged.Response<AdvertisementPagedDto>
+            return new GetPagedResponse<AdvertisementPagedDto>
             {
                 Items = entities.Select(entity => entity.Adapt<AdvertisementPagedDto>()),
                 Total = total,

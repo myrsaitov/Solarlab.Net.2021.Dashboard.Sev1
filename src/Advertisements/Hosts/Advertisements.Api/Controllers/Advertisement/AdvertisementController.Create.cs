@@ -12,11 +12,11 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         [ProducesResponseType(StatusCodes.Status201Created)]
         //[Authorize]
         public async Task<IActionResult> Create(
-            [FromBody] AdvertisementCreateDto request, 
+            [FromBody] AdvertisementCreateDto model, 
             CancellationToken cancellationToken)
         {
             await _advertisementService.Create(
-                request, 
+                model, 
                 cancellationToken);
 
             return Created(string.Empty, null);

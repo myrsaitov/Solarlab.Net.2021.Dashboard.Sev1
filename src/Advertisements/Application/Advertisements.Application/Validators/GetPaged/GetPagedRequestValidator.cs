@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Sev1.Advertisements.Application.Contracts;
+using Sev1.Advertisements.Application.Contracts.GetPaged;
 using Sev1.Advertisements.Application.Validators.Base;
 
 namespace Sev1.Advertisements.Application.Validators.GetPaged
@@ -7,7 +7,7 @@ namespace Sev1.Advertisements.Application.Validators.GetPaged
     /// <summary>
     /// Валидатор GetPaged
     /// </summary>
-    public class GetPagedRequestValidator : NullReferenceAbstractValidator<Paged.Request>
+    public class GetPagedRequestValidator : NullReferenceAbstractValidator<GetPagedRequest>
     {
         public GetPagedRequestValidator()
         {

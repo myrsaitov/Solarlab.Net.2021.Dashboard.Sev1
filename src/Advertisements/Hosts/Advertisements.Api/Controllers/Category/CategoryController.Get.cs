@@ -1,9 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Category;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Contracts;
+using Sev1.Advertisements.Application.Contracts.GetPaged;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {
@@ -15,7 +14,7 @@ namespace Sev1.Advertisements.Api.Controllers.Category
             [FromQuery] GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
-            var result = await _categoryService.GetPaged(new Paged.Request
+            var result = await _categoryService.GetPaged(new GetPagedRequest
             {
                 PageSize = request.PageSize,
                 Page = request.Page

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Category;
-using Sev1.Advertisements.Application.Contracts;
+using Sev1.Advertisements.Application.Contracts.GetPaged;
 using Sev1.Advertisements.Application.Interfaces.Category;
 using Sev1.Advertisements.Application.Validators.GetPaged;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
@@ -12,8 +12,8 @@ namespace Sev1.Advertisements.Application.Implementations.Category
 {
     public sealed partial class CategoryServiceV1 : ICategoryService
     {
-        public async Task<Paged.Response<CategoryDto>> GetPaged(
-            Paged.Request request, 
+        public async Task<GetPagedResponse<CategoryDto>> GetPaged(
+            GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
             // Fluent Validation
@@ -30,7 +30,7 @@ namespace Sev1.Advertisements.Application.Implementations.Category
 
             if (total == 0)
             {
-                return new Paged.Response<CategoryDto>
+                return new GetPagedResponse<CategoryDto>
                 {
                     Items = Array.Empty<CategoryDto>(),
                     Total = total,
@@ -45,7 +45,7 @@ namespace Sev1.Advertisements.Application.Implementations.Category
                 cancellationToken
             );
 
-            return new Paged.Response<CategoryDto>
+            return new GetPagedResponse<CategoryDto>
             {
                 Items = entities.Select(entity => _mapper.Map<CategoryDto>(entity)),
                 Total = total,

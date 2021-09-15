@@ -11,11 +11,11 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         [HttpPut("update/{id:int}")] // TODO
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Update(
-            CategoryUpdateDto request, 
+            [FromBody] CategoryUpdateDto model, 
             CancellationToken cancellationToken)
         {
             await _categoryService.Update(
-                request, 
+                model,
                 cancellationToken);
 
             return NoContent();

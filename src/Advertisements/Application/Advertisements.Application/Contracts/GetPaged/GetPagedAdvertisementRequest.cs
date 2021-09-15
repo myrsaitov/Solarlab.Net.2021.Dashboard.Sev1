@@ -1,4 +1,4 @@
-﻿namespace Sev1.Advertisements.Api.Controllers
+﻿namespace Sev1.Advertisements.Application.Contracts.GetPaged
 {
     public class GetPagedAdvertisementRequest : GetPagedRequest
     {

@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Category;
-using Sev1.Advertisements.Application.Contracts;
+using Sev1.Advertisements.Application.Contracts.GetPaged;
 
 namespace Sev1.Advertisements.Application.Interfaces.Category
 {
@@ -63,8 +63,8 @@ namespace Sev1.Advertisements.Application.Interfaces.Category
         /// <param name="request">Параметры пагинации</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<Paged.Response<CategoryDto>> GetPaged(
-            Paged.Request request, 
+        Task<GetPagedResponse<CategoryDto>> GetPaged(
+            GetPagedRequest request, 
             CancellationToken cancellationToken);
     }
 }

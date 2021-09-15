@@ -12,10 +12,12 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         [ProducesResponseType(StatusCodes.Status201Created)]
         //[Authorize]
         public async Task<IActionResult> Update(
-            [FromBody] AdvertisementUpdateDto request, 
+            [FromBody] AdvertisementUpdateDto model, 
             CancellationToken cancellationToken)
         {
-            await _advertisementService.Update(request, cancellationToken);
+            await _advertisementService.Update(
+                model, 
+                cancellationToken);
             
             //  Creates a Microsoft.AspNetCore.Mvc.NoContentResult object that produces an empty
             //  Microsoft.AspNetCore.Http.StatusCodes.Status204NoContent response.

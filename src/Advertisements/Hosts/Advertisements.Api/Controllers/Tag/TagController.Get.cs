@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Contracts;
+using Sev1.Advertisements.Application.Contracts.GetPaged;
 
 namespace Sev1.Advertisements.Api.Controllers.Tag
 {
@@ -15,7 +15,7 @@ namespace Sev1.Advertisements.Api.Controllers.Tag
             CancellationToken cancellationToken)
         {
             var result = await _tagService.GetPaged(
-                new Paged.Request
+                new GetPagedRequest
                 {
                     PageSize = request.PageSize,
                     Page = request.Page

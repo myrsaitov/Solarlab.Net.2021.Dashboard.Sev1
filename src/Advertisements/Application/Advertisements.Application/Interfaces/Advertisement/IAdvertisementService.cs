@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Sev1.Advertisements.Application.Contracts;
+using Sev1.Advertisements.Application.Contracts.GetPaged;
 
 namespace Sev1.Advertisements.Application.Interfaces.Advertisement
 {
@@ -58,8 +59,15 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
         Task<AdvertisementDto> GetById(
             int id, 
             CancellationToken cancellationToken);
-        Task<Paged.Response<AdvertisementPagedDto>> GetPaged(
-            Paged.Request request, 
+
+        /// <summary>
+        /// Возвращает объявления с пагинацией
+        /// </summary>
+        /// <param name="request">Параметры пагинации</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<GetPagedAdvertisementResponse> GetPaged(
+            GetPagedAdvertisementRequest request, 
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -69,9 +77,9 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
         /// <param name="request">Параметры пагинации</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<Paged.Response<AdvertisementPagedDto>> GetPaged(
+        Task<GetPagedAdvertisementResponse> GetPaged(
             Expression<Func<Domain.Advertisement, bool>> predicate,
-            Paged.Request request,
+            GetPagedAdvertisementRequest request,
             CancellationToken cancellationToken);
     }
 }
