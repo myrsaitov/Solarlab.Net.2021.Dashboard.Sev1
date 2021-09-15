@@ -34,7 +34,7 @@ namespace Sev1.Advertisements.Api
                 .AddDataAccessModule(configuration =>
 
 
-                    configuration.InSqlServer(Configuration.GetConnectionString("SqlServerDb"))
+                    configuration.InSqlServer(Configuration.GetConnectionString("Connection_Skarfe"))
 
                 ); // ����������� � �� ����� ���������� � "ConnectionString"
 

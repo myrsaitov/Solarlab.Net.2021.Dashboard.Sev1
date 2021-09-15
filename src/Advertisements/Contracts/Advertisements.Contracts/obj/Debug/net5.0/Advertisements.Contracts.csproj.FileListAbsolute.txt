@@ -1,0 +1,11 @@
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Contracts\Advertisements.Contracts\bin\Debug\net5.0\Advertisements.Contracts.deps.json
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Contracts\Advertisements.Contracts\bin\Debug\net5.0\Advertisements.Contracts.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Contracts\Advertisements.Contracts\bin\Debug\net5.0\ref\Advertisements.Contracts.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Contracts\Advertisements.Contracts\bin\Debug\net5.0\Advertisements.Contracts.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Contracts\Advertisements.Contracts\obj\Debug\net5.0\Advertisements.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Contracts\Advertisements.Contracts\obj\Debug\net5.0\Advertisements.Contracts.AssemblyInfoInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Contracts\Advertisements.Contracts\obj\Debug\net5.0\Advertisements.Contracts.AssemblyInfo.cs
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Contracts\Advertisements.Contracts\obj\Debug\net5.0\Advertisements.Contracts.csproj.CoreCompileInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Contracts\Advertisements.Contracts\obj\Debug\net5.0\Advertisements.Contracts.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Contracts\Advertisements.Contracts\obj\Debug\net5.0\ref\Advertisements.Contracts.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Contracts\Advertisements.Contracts\obj\Debug\net5.0\Advertisements.Contracts.pdb

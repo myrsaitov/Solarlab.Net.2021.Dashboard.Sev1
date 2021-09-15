@@ -1,0 +1,11 @@
+C:\_Projects\SolarLab_Proj_EDU\src\Identity\Hosts\Identity.Api\bin\Debug\net5.0\Identity.Api.deps.json
+C:\_Projects\SolarLab_Proj_EDU\src\Identity\Hosts\Identity.Api\bin\Debug\net5.0\Identity.Api.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Identity\Hosts\Identity.Api\bin\Debug\net5.0\ref\Identity.Api.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Identity\Hosts\Identity.Api\bin\Debug\net5.0\Identity.Api.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Identity\Hosts\Identity.Api\obj\Debug\net5.0\Identity.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\_Projects\SolarLab_Proj_EDU\src\Identity\Hosts\Identity.Api\obj\Debug\net5.0\Identity.Api.AssemblyInfoInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Identity\Hosts\Identity.Api\obj\Debug\net5.0\Identity.Api.AssemblyInfo.cs
+C:\_Projects\SolarLab_Proj_EDU\src\Identity\Hosts\Identity.Api\obj\Debug\net5.0\Identity.Api.csproj.CoreCompileInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Identity\Hosts\Identity.Api\obj\Debug\net5.0\Identity.Api.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Identity\Hosts\Identity.Api\obj\Debug\net5.0\ref\Identity.Api.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Identity\Hosts\Identity.Api\obj\Debug\net5.0\Identity.Api.pdb

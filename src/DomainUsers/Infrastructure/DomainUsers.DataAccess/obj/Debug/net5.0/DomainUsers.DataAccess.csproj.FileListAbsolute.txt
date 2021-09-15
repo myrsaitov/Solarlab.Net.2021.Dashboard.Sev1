@@ -1,0 +1,12 @@
+C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\bin\Debug\net5.0\DomainUsers.DataAccess.deps.json
+C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\bin\Debug\net5.0\DomainUsers.DataAccess.dll
+C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\bin\Debug\net5.0\ref\DomainUsers.DataAccess.dll
+C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\bin\Debug\net5.0\DomainUsers.DataAccess.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\DomainUsers.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\DomainUsers.DataAccess.AssemblyInfoInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\DomainUsers.DataAccess.AssemblyInfo.cs
+C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\DomainUsers.DataAccess.csproj.CoreCompileInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\DomainUsers.DataAccess.dll
+C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\ref\DomainUsers.DataAccess.dll
+C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\DomainUsers.DataAccess.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\DomainUsers.DataAccess.csproj.AssemblyReference.cache

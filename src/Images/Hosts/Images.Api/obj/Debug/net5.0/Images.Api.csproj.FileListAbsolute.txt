@@ -1,0 +1,11 @@
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Hosts\Images.Api\bin\Debug\net5.0\Images.Api.deps.json
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Hosts\Images.Api\bin\Debug\net5.0\Images.Api.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Hosts\Images.Api\bin\Debug\net5.0\ref\Images.Api.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Hosts\Images.Api\bin\Debug\net5.0\Images.Api.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Hosts\Images.Api\obj\Debug\net5.0\Images.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Hosts\Images.Api\obj\Debug\net5.0\Images.Api.AssemblyInfoInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Hosts\Images.Api\obj\Debug\net5.0\Images.Api.AssemblyInfo.cs
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Hosts\Images.Api\obj\Debug\net5.0\Images.Api.csproj.CoreCompileInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Hosts\Images.Api\obj\Debug\net5.0\Images.Api.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Hosts\Images.Api\obj\Debug\net5.0\ref\Images.Api.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Hosts\Images.Api\obj\Debug\net5.0\Images.Api.pdb
