@@ -17,7 +17,9 @@ namespace Sev1.Advertisements.DataAccess.Repositories
         {
         }
 
-        public async Task<Advertisement> FindByIdWithUserInclude(int id, CancellationToken cancellationToken)
+        public async Task<Advertisement> FindByIdWithUserInclude(
+            int id, 
+            CancellationToken cancellationToken)
         {
             return await DbСontext
                 .Set<Advertisement>()
@@ -43,14 +45,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .Include(a => a.Tags)
                 .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
         }
-        public async Task<Advertisement> FindByIdWithUserAndImages(int id, CancellationToken cancellationToken)
-        {
-            return await DbСontext
-                .Set<Advertisement>()
-                //.Include(a => a.Owner)
-                //.Include(a => a.Images)
-                .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
-        }
+
         public async Task<int> CountWithOutDeleted(CancellationToken cancellationToken)
         {
             var data = DbСontext
