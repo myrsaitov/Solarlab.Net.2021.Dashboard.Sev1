@@ -24,7 +24,7 @@ namespace Contracts
         /// <summary>
         /// Id объявления, к которому прикреплён коментарий
         /// </summary>
-        public Guid AdvertesmentId { get; set; }
+        public Guid ChatId { get; set; }
 
         /// <summary>
         /// Id автора

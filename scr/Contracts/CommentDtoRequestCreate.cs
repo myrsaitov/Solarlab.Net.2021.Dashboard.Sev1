@@ -9,7 +9,7 @@ namespace Contracts
         /// Id объявления, к которому прикреплён коментарий
         /// </summary>
         [Required]
-        public Guid AdvertesmentId { get; set; }
+        public Guid ChatId { get; set; }
 
         /// <summary>
         /// Id автора

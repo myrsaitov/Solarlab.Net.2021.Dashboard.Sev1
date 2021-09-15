@@ -10,7 +10,7 @@ namespace Contracts
         /// </summary>
         [Required]
         [MaxLength (255)]
-        [MinLength (3)]
+        [MinLength (2)]
         public String Message { get; set; }
     }
 }
