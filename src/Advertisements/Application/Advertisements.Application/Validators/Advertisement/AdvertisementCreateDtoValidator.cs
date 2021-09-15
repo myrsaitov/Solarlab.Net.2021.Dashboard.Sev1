@@ -5,6 +5,9 @@ using Sev1.Advertisements.Application.Validators.Tag;
 
 namespace Sev1.Advertisements.Application.Validators.Advertisement
 {
+    /// <summary>
+    /// Валидатор DTO при создании объявления
+    /// </summary>
     public class AdvertisementCreateDtoValidator : NullReferenceAbstractValidator<AdvertisementCreateDto>
     {
         public AdvertisementCreateDtoValidator()

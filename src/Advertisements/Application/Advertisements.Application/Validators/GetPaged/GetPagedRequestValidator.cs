@@ -4,11 +4,11 @@ using Sev1.Advertisements.Application.Validators.Base;
 
 namespace Sev1.Advertisements.Application.Validators.GetPaged
 {
+    /// <summary>
+    /// Валидатор GetPaged
+    /// </summary>
     public class GetPagedRequestValidator : NullReferenceAbstractValidator<Paged.Request>
     {
-        /// <summary>
-        /// Валидатор GetPaged
-        /// </summary>
         public GetPagedRequestValidator()
         {
             // Общая проверка

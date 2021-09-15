@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 
 namespace Sev1.Advertisements.Application.Validators.Base
 {
+    /// <summary>
+    /// Базовый валидатор с функционалом NullArgumentException
+    /// </summary>
+    /// <typeparam name="T">Класс объекта для валидации</typeparam>
     public class NullReferenceAbstractValidator<T> : AbstractValidator<T>
     {
         public override Task<ValidationResult> ValidateAsync(ValidationContext<T> context, CancellationToken cancellation = default)

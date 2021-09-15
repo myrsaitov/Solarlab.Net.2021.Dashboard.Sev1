@@ -3,6 +3,9 @@ using Sev1.Advertisements.Application.Validators.Base;
 
 namespace Sev1.Advertisements.Application.Validators.Advertisement
 {
+    /// <summary>
+    /// Валидатор Id объявления
+    /// </summary>
     public class AdvertisementIdValidator : AbstractValidator<int>
     {
         public AdvertisementIdValidator()

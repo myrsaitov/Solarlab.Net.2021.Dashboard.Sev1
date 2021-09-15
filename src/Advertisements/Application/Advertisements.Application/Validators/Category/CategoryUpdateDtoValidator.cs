@@ -4,6 +4,9 @@ using Sev1.Advertisements.Application.Validators.Base;
 
 namespace Sev1.Advertisements.Application.Validators.Advertisement
 {
+    /// <summary>
+    /// Валидатор DTO при обновлении категории
+    /// </summary>
     public class CategoryUpdateDtoValidator : NullReferenceAbstractValidator<CategoryUpdateDto>
     {
         public CategoryUpdateDtoValidator()

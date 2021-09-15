@@ -2,11 +2,11 @@
 
 namespace Sev1.Advertisements.Application.Validators.Tag
 {
+    /// <summary>
+    /// Валидатор одного TagBody
+    /// </summary>
     public class TagBodyValidator : AbstractValidator<string>
     {
-        /// <summary>
-        /// Валидатор одного TagBody
-        /// </summary>
         public TagBodyValidator()
         {
             RuleFor(x => x)

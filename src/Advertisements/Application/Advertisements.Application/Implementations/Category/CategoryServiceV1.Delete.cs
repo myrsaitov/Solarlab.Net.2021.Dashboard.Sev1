@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Exceptions;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
 using Sev1.Advertisements.Application.Exceptions.Category;
 using Sev1.Advertisements.Application.Interfaces.Category;
