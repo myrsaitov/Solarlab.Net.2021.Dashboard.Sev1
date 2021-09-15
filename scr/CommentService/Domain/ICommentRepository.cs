@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Domain
@@ -16,26 +17,32 @@ namespace Domain
         /// <param name="id">Id коментария</param>
         /// <returns></returns>
         public Task<Comment> GetCommentAsync(Guid id);
-        
+
         /// <summary>
         /// Получить все коментарии, прикреплённые к объявлению
         /// </summary>
         /// <param name="id">Id объявления</param>
         /// <returns></returns>
-        public Task<List<Comment>> GetAdvertismentCommentsAsync(Guid id);
+        public Task<List<Comment>> GetCommentsByChatIdAsync(Guid id, int PageSize, int PageNumber, CancellationToken token);
+
+        /// <summary>
+        /// Удалить все коментарии, прикреплённые к чату
+        /// </summary>
+        /// <param name="id">Id чата</param>
+        public Task DeleteCommentsByChatIdAsync(Guid id);
 
         /// <summary>
         /// Создать коментарий
         /// </summary>
         /// <param name="comment">Коментарий</param>
-        public Task AddCommentAsync(Comment comment);
+        public Task<Guid> AddCommentAsync(Comment comment);
 
         /// <summary>
         /// Изменить коментарий
         /// </summary>
         /// <param name="comment">Коментарий</param>
         /// <returns></returns>
-        public Task UpdateCommentAsync(Comment comment);
+        public Task<Guid> UpdateCommentAsync(Comment comment);
 
         /// <summary>
         /// Удалить коментарий

@@ -1,10 +1,11 @@
 ﻿using Domain;
-using Domain.Exceptions;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Contracts;
 using System;
 using System.Threading.Tasks;
+using Filters;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading;
 
 namespace CommentAPI.Controllers
 {
@@ -13,6 +14,7 @@ namespace CommentAPI.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    [ServiceFilter(typeof(CommentExceptionFilter))]
     public class CommentController : ControllerBase
     {
         private readonly ILogger<CommentController> _logger;
@@ -27,63 +29,62 @@ namespace CommentAPI.Controllers
         }
 
         /// <summary>
-        /// Получить комментарий через Id
+        /// Получить все коментарии, прикреплённые к чату
         /// </summary>
-        /// <param name="dto"></param>
-        /// <returns></returns>
         /// <response code="200">Ok</response>
-        /// <response code="404">Not Found</response>
-        [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] CommentDtoRequestGet dto)
+        [HttpGet("GetCommentsByChatIdAsync")]
+        public async Task<IActionResult> GetCommentsByChatId([FromQuery] CommentDtoRequestGetByChatId dto)
         {
-            try
+            var token = HttpContext.RequestAborted;
+
+            if (ModelState.IsValid)
             {
-                return Ok(await _commentService.GetCommentAsync(dto));
+                return Ok(await _commentService.GetCommentsByChatIdAsync(dto, token));
             }
-            catch (NotFoundException e) 
-            {
-                return NotFound();
-            }
+            return BadRequest();
         }
 
         /// <summary>
-        /// Получить все коментарии, прикреплённые к объявлению
-        /// 200
+        /// Удалить все коментарии, прикреплённые к чату
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Chat Id</param>
         /// <returns></returns>
         /// <response code="200">Ok</response>
-        [HttpGet("GetCommentsByAdvertismentId")]
-        public async Task<IActionResult> GetCommentsByAdvertismentId([FromQuery] Guid id)
+        [HttpDelete("DeleteCommentsByChatId")]
+        public async Task<IActionResult> DeleteCommentsByChatId([FromQuery] Guid id)
         {
-            // TODO: Передавать признак а не ID
-            return Ok(await _commentService.GetCommentsByAdvertismentIdAsync(id));
+            if (ModelState.IsValid)
+            {
+                await _commentService.DeleteCommentsByChatIdAsync(id);
+                return Ok();
+            }
+            return BadRequest();
         }
 
         /// <summary>
         /// Создать комментарий
         /// </summary>
         /// <param name="dto"></param>
-        /// <returns></returns>
+        /// <returns>Id созданного комментария</returns>
         /// <response code="201">Created</response>
         /// <response code="400">Bad Request</response>
         [HttpPost]
+        [ProducesResponseType(typeof(Guid), 201)]
         public async Task<IActionResult> Add([FromForm] CommentDtoRequestCreate dto)
         {
             if (ModelState.IsValid)
             {
-                await _commentService.AddCommentAsync(dto);
-                return Created("", null);
+                var result = await _commentService.AddCommentAsync(dto);
+                return Created("", result);
             }
             return BadRequest();
         }
 
         /// <summary>
         /// Изменить комментарий
-        /// 200/400/404
         /// </summary>
         /// <param name="dto"></param>
-        /// <returns></returns>
+        /// <returns>Id обновлённого комментария</returns>
         /// <response code="200">Ok</response>
         /// <response code="400">Bad Request</response>
         /// <response code="404">Not Found</response>
@@ -92,21 +93,14 @@ namespace CommentAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    await _commentService.UpdateCommentAsync(dto);
-                    return Ok();
-                } catch (NotFoundException e)
-                {
-                    return NotFound();
-                }
+                var result = await _commentService.UpdateCommentAsync(dto);
+                return Ok(result);
             }
             return BadRequest();
         }
 
         /// <summary>
         /// Удалить комментирий
-        /// 200/404
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
@@ -115,15 +109,12 @@ namespace CommentAPI.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete([FromQuery] CommentDtoRequestDelete dto)
         {
-            try
+            if (ModelState.IsValid)
             {
                 await _commentService.DeleteCommentAsync(dto);
                 return Ok();
             }
-            catch (NotFoundException e)
-            {
-                return NotFound();
-            }            
+            return BadRequest();
         }
     }
 }

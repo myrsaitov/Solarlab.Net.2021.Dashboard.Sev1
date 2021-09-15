@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System.IO;
 using Mapper;
+using Filters;
 
 namespace CommentAPI
 {
@@ -33,6 +34,7 @@ namespace CommentAPI
                 var filePath = Path.Combine(System.AppContext.BaseDirectory, "CommentAPI.xml");
                 c.IncludeXmlComments(filePath);
             });
+
             string connection = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<CommentDBContext>(options =>
@@ -40,6 +42,8 @@ namespace CommentAPI
 
 
             services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<CommentExceptionFilter>();
+
 
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddAutoMapper(typeof(CommentMapperProfile));

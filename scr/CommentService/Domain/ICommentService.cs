@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Domain
@@ -10,33 +11,34 @@ namespace Domain
     /// </summary>
     public interface ICommentService
     {
-        /// <summary>
-        /// Получить коментарий по его Id
-        /// </summary>
-        /// <param name="id">Id коментария</param>
-        /// <returns></returns>
-        public Task<CommentDtoResponce> GetCommentAsync(CommentDtoRequestGet dto);
         
         /// <summary>
         /// Получить все коментарии, прикреплённые к объявлению
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Id чата</param>
         /// <returns></returns>
-        public Task<List<CommentDtoResponce>> GetCommentsByAdvertismentIdAsync(Guid id);
+        public Task<List<CommentDtoResponce>> GetCommentsByChatIdAsync(CommentDtoRequestGetByChatId dto, CancellationToken token);
+
+        /// <summary>
+        /// Удалить все коментарии, прикреплённые к чату
+        /// </summary>
+        /// <param name="id">Id чата</param>
+        /// <returns></returns>
+        public Task DeleteCommentsByChatIdAsync(Guid id);
 
         /// <summary>
         /// Создать коментарий
         /// </summary>
         /// <param name="comment">Коментарий</param>
         /// <returns></returns>
-        public Task AddCommentAsync(CommentDtoRequestCreate dto);
+        public Task<Guid> AddCommentAsync(CommentDtoRequestCreate dto);
 
         /// <summary>
         /// Изменить коментарий
         /// </summary>
         /// <param name="comment">Коментарий</param>
         /// <returns></returns>
-        public Task UpdateCommentAsync(CommentDtoRequestUpdate dto);
+        public Task<Guid> UpdateCommentAsync(CommentDtoRequestUpdate dto);
 
         /// <summary>
         /// Удалить коментарий
