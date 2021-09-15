@@ -8,7 +8,7 @@ namespace Domain.Exceptions
 {
     public class NotFoundException : Exception
     {
-        public NotFoundException() : base(String.Format("Item Not Found")) 
+        public NotFoundException(String Message) : base(String.Format(Message))
         {
         }
     }
