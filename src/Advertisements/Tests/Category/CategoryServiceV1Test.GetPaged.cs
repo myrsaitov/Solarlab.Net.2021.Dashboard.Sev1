@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
-using Sev1.Advertisements.Application.Services.Contracts;
-using Sev1.Advertisements.Application.Services.Category.Contracts;
+using Sev1.Advertisements.Application.Contracts.Category;
 using System.Linq;
 using System;
+using Sev1.Advertisements.Application.Contracts.GetPaged;
 
 namespace Sev1.Advertisements.Tests.Category
 {
@@ -16,7 +16,7 @@ namespace Sev1.Advertisements.Tests.Category
         [Theory]
         [AutoData]
         public async Task GetPaged_Returns_Response_Success(
-            Paged.Request request, 
+            GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -57,12 +57,12 @@ namespace Sev1.Advertisements.Tests.Category
             Assert.NotNull(response);
             Assert.Equal(categoryCount, response.Total);
             Assert.Equal(categoryCount, response.Items.Count());
-            Assert.IsType<Paged.Response<GetById.Response>>(response);
+            Assert.IsType<GetPagedResponse<CategoryDto>>(response);
         }
         [Theory]
         [AutoData]
         public async Task GetPaged_Returns_Response_Success_Total_eq_0(
-            Paged.Request request,
+            GetPagedRequest request,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -85,12 +85,12 @@ namespace Sev1.Advertisements.Tests.Category
             Assert.NotNull(response);
             Assert.Equal(categoryCount, response.Total);
             Assert.Equal(categoryCount, response.Items.Count());
-            Assert.IsType<Paged.Response<GetById.Response>>(response);
+            Assert.IsType<GetPagedResponse<CategoryDto>>(response);
         }
         [Theory]
         [InlineAutoData(null)]
         public async Task GetPaged_Throws_Exception_When_Request_Is_Null(
-            Paged.Request request, 
+            GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
             // Act

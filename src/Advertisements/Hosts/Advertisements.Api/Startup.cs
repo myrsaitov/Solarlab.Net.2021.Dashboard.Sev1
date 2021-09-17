@@ -28,25 +28,45 @@ namespace Sev1.Advertisements.Api
             );
 
             services
-                .AddCors() // �������� ������ Cross-Origin Requests
-                .AddApplicationModule(Configuration) // �������������� ����� ��������
-                .AddHttpContextAccessor() // ������������� ��� ����������� ��� HTTP ���������� �� ��������� HTTP-�������.
+                .AddCors() // Добавить сервис Cross-Origin Requests
+                .AddApplicationModule(Configuration) // Инжектирование наших сервисов
+                .AddHttpContextAccessor() // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
                 .AddDataAccessModule(configuration =>
 
 
                     configuration.InSqlServer(Configuration.GetConnectionString("SqlServerDb"))
 
-                ); // ����������� � �� ����� ���������� � "ConnectionString"
+                ); // Подключение к БД через информацию в "ConnectionString"
 
 
             services.AddSwaggerModule();
 
 
-            //������������ Mapster
+            // Инжектируем Mapster
+            //
+            // AddSingleton():
+            //
+            // As the name implies, AddSingleton() method 
+            // creates a Singleton service. A Singleton service 
+            // is created when it is first requested. 
+            // This same instance is then used by all the 
+            // subsequent requests. So in general, a Singleton service 
+            // is created only one time per application 
+            // and that single instance is used throughout 
+            // the application life time.
             services.AddSingleton(CategoryMapProfile.GetConfiguredMappingConfig());
             services.AddSingleton(AdvertisementMapProfile.GetConfiguredMappingConfig());
             services.AddSingleton(TagMapProfile.GetConfiguredMappingConfig());
 
+
+            // AddScoped():
+            //
+            // This method creates a Scoped service.
+            // A new instance of a Scoped service is created
+            // once per request within the scope.
+            // For example, in a web application it creates 1 instance
+            // per each http request but uses the same instance
+            // in the other calls within that same web request.
             services.AddScoped<IMapper, ServiceMapper>();
             
             services.AddApplicationException(config => { config.DefaultErrorStatusCode = 500; });
@@ -71,12 +91,12 @@ namespace Sev1.Advertisements.Api
             }
 
             // Cross-Origin Requests
-            // ������������ �������� ������������� �������� ���-��������� �������� � �����, 
-            // �������� �� ����, ������� ����������� ���-��������. 
-            // ��� ����������� ���������� ��������� ����������� �������������. 
-            // �������� ���� �� ������������� �� ��������� ������������ ����� 
-            // ������ ���������������� ������ � ������� �����. 
-            // ������ ����� ������������� ��������� ������ ������ ������ ������� � ���������� �� ������ ����������.
+            // Безопасность браузера предотвращает отправку веб-страницей запросов в домен, 
+            // отличный от того, который обслуживает веб-страницу. 
+            // Это ограничение называется политикой одинакового происхождения. 
+            // Политика того же происхождения не позволяет вредоносному сайту 
+            // читать конфиденциальные данные с другого сайта. 
+            // Иногда может потребоваться разрешить другим сайтам делать запросы к приложению из разных источников.
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyHeader()
@@ -87,21 +107,21 @@ namespace Sev1.Advertisements.Api
             // and the Swagger UI:
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PublicApi v1"));
-            
-            // ��������� �������������� ��������
+
+            // Обработка исключительных ситуаций
             app.UseApplicationException();
 
 
-            // ������������� �������� �� ������������� �������� HTTP-��������
-            // � �������� ���� �������� ����������� �������� ������ ����������. 
+            // Маршрутизация отвечает за сопоставление входящих HTTP-запросов
+            // и отправку этих запросов исполняемым конечным точкам приложения. 
             app.UseRouting();
 
-            // �������� ����� - ��� ������� ���������� ������������ ���� ��������� ��������.
-            // �������� ����� ������������ � ���������� � ������������� ��� ������� ����������. 
-            // ������� ������������� �������� ����� ����� ��������� �������� �� 
-            // URL-������ ������� � ������������� ��� �������� ��� ��������� �������. 
-            // ��������� ���������� � �������� ������ �� ����������, ������������� 
-            // ����� ����� ������������ URL-������, ������� �������������� � ��������� �������.
+            // Конечные точки - это единицы приложения исполняемого кода обработки запросов.
+            // Конечные точки определяются в приложении и настраиваются при запуске приложения. 
+            // Процесс сопоставления конечных точек может извлекать значения из 
+            // URL-адреса запроса и предоставлять эти значения для обработки запроса. 
+            // Используя информацию о конечных точках из приложения, маршрутизация 
+            // также может генерировать URL-адреса, которые сопоставляются с конечными точками.
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }

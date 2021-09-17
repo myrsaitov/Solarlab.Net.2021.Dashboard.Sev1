@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Services.Category.Contracts;
+using Sev1.Advertisements.Application.Contracts.Category;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {
@@ -11,24 +11,15 @@ namespace Sev1.Advertisements.Api.Controllers.Category
     {
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> Create(CategoryCreateRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> Create(
+            [FromBody] CategoryCreateDto model, 
+            CancellationToken cancellationToken)
         {
-            var response = await _categoryService.Create(new Create.Request
-            {
-                Name = request.Name,
-                ParentCategoryId = request.ParentCategoryId
-            }, cancellationToken);
+            var response = await _categoryService.Create(
+                model, 
+                cancellationToken);
 
-            return Created($"api/v1/categories/{response.Id}", new { });
-        }
-        public sealed class CategoryCreateRequest
-        {
-            [Required]
-            [MaxLength(100)]
-            public string Name { get; set; }
-
-            [Range(1, 100_000_000_000)]
-            public int? ParentCategoryId { get; set; }
+            return Created($"api/v1/categories/{response}", new { });
         }
     }
 }

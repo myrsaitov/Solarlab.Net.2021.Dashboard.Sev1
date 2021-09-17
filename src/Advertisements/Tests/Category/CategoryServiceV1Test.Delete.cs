@@ -1,12 +1,13 @@
-﻿using Sev1.Advertisements.Application.Services.Category.Contracts;
+﻿using Sev1.Advertisements.Application.Contracts.Category;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System;
-using Sev1.Advertisements.Application.Services.Category.Contracts.Exceptions;
+using Sev1.Advertisements.Application.Exceptions;
 using Sev1.Advertisements.Domain.Exceptions;
+using Sev1.Advertisements.Application.Exceptions.Category;
 
 namespace Sev1.Advertisements.Tests.Category
 {
@@ -15,7 +16,7 @@ namespace Sev1.Advertisements.Tests.Category
         [Theory]
         [AutoData]
         public async Task Delete_Returns_Response_Success(
-            Delete.Request request, 
+            int id, 
             CancellationToken cancellationToken, 
             int userId,
             int categoryId)
@@ -39,7 +40,7 @@ namespace Sev1.Advertisements.Tests.Category
 
             // Act
             await _categoryServiceV1.Delete(
-                request, 
+                id, 
                 cancellationToken);
 
             // Assert
@@ -48,7 +49,7 @@ namespace Sev1.Advertisements.Tests.Category
         [Theory]
         [AutoData]
         public async Task Delete_Throws_Exception_When_No_Rights(
-            Delete.Request request,
+            int id,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -64,31 +65,31 @@ namespace Sev1.Advertisements.Tests.Category
             // Act
             await Assert.ThrowsAsync<NoRightsException>(
                 async () => await _categoryServiceV1.Delete(
-                    request,
+                    id,
                     cancellationToken));
         }
         [Theory]
         [AutoData]
         public async Task Delete_Throws_Exception_When_Category_Is_Null(
-            Delete.Request request,
+            int id,
             CancellationToken cancellationToken)
         {
             // Act
             await Assert.ThrowsAsync<CategoryNotFoundException>(
                 async () => await _categoryServiceV1.Delete(
-                    request,
+                    id,
                     cancellationToken));
         }
         [Theory]
         [InlineAutoData(null)]
         public async Task Delete_Throws_Exception_When_Request_Is_Null(
-            Delete.Request request, 
+            int id, 
             CancellationToken cancellationToken)
         {
             // Act
             await Assert.ThrowsAsync<ArgumentNullException>(
                 async () => await _categoryServiceV1.Delete(
-                    request, 
+                    id, 
                     cancellationToken));
         }
     }

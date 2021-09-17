@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Services.Tag.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
+using Sev1.Advertisements.Application.Interfaces.Tag;
 
 namespace Sev1.Advertisements.Api.Controllers.Tag
 {

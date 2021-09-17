@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Domain;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +12,9 @@ namespace Sev1.Advertisements.DataAccess.Repositories
         public CategoryRepository(DatabaseContext dbСontext) : base(dbСontext)
         {
         }
-        public async Task<Category> FindByIdWithParentAndChilds(int id, CancellationToken cancellationToken)
+        public async Task<Category> FindByIdWithParentAndChilds(
+            int id, 
+            CancellationToken cancellationToken)
         {
             return await DbСontext
                 .Set<Category>()

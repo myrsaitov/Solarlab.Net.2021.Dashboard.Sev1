@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Services.Category.Interfaces;
+using Sev1.Advertisements.Application.Interfaces.Category;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {

@@ -1,4 +1,4 @@
-﻿using Sev1.Advertisements.Application.Services.Advertisement.Contracts;
+﻿using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -6,9 +6,10 @@ using Xunit;
 using AutoFixture.Xunit2;
 using System.Linq.Expressions;
 using System;
-using Sev1.Advertisements.Application.Services.Advertisement.Contracts.Exceptions;
-using Sev1.Advertisements.Application.Services.Category.Contracts.Exceptions;
+using Sev1.Advertisements.Application.Exceptions;
 using Sev1.Advertisements.Domain.Exceptions;
+using Sev1.Advertisements.Application.Exceptions.Category;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
@@ -17,7 +18,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task Update_Returns_Response_Success(
-            Update.Request request,
+            AdvertisementUpdateDto request,
             CancellationToken cancellationToken,
             int userId,
             int contentId,
@@ -96,12 +97,12 @@ namespace Sev1.Advertisements.Tests.Advertisement
             _categoryRepositoryMock.Verify();
             _tagRepositoryMock.Verify();
             Assert.NotNull(response);
-            Assert.NotEqual(default, response.Id);
+            Assert.NotEqual(default, response);
         }
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_Category_is_Null(
-            Update.Request request,
+            AdvertisementUpdateDto request,
             CancellationToken cancellationToken,
             int userId,
             int contentId)
@@ -130,7 +131,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_No_Rights(
-             Update.Request request,
+            AdvertisementUpdateDto request,
             CancellationToken cancellationToken,
             int userId,
             int contentId)
@@ -159,7 +160,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_Advertisement_Is_Null(
-            Update.Request request,
+            AdvertisementUpdateDto request,
             CancellationToken cancellationToken)
         {
             // Act
@@ -171,7 +172,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [InlineAutoData(null)]
         public async Task Update_Throws_Exception_When_Request_Is_Null(
-            Update.Request request,
+            AdvertisementUpdateDto request,
             CancellationToken cancellationToken)
         {
             // Act
@@ -179,7 +180,6 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 async () => await _advertisementServiceV1.Update(
                     request, 
                     cancellationToken));
-
         }
     }
 }

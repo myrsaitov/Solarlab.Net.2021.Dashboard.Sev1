@@ -1,6 +1,6 @@
 ﻿using Sev1.Advertisements.DataAccess.Interfaces;
 using Sev1.Advertisements.MapsterMapper.MapProfiles;
-using Sev1.Advertisements.Application.Services.Tag.Implementations;
+using Sev1.Advertisements.Application.Implementations.Tag;
 using Moq;
 using MapsterMapper;
 using Mapster;

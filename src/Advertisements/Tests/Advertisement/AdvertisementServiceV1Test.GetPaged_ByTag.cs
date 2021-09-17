@@ -1,4 +1,4 @@
-﻿using Sev1.Advertisements.Application.Services.Advertisement.Contracts;
+﻿using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,8 +7,8 @@ using AutoFixture.Xunit2;
 using System.Collections.Generic;
 using System;
 using System.Linq.Expressions;
-using Sev1.Advertisements.Application.Services.Contracts;
 using System.Linq;
+using Sev1.Advertisements.Application.Contracts.GetPaged;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
@@ -17,7 +17,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task GetPaged_ByTag_Returns_Response_Success(
-            Paged.Request request,
+            GetPagedRequest request,
             CancellationToken cancellationToken,
             int userId,
             string contentTitle,
@@ -93,12 +93,12 @@ namespace Sev1.Advertisements.Tests.Advertisement
             Assert.NotNull(response);
             Assert.Equal(contentCount, response.Total);
             Assert.Equal(contentCount, response.Items.Count());
-            Assert.IsType<Paged.Response<GetPaged.Response>>(response);
+            Assert.IsType<GetPagedResponse<AdvertisementPagedDto>>(response);
         }
         [Theory]
         [AutoData]
         public async Task GetPaged_ByTag_Returns_Response_Success_Total_eq_0(
-            Paged.Request request,
+            GetPagedRequest request,
             CancellationToken cancellationToken,
             Expression<Func<Domain.Advertisement, bool>> predicate)
         {
@@ -125,12 +125,12 @@ namespace Sev1.Advertisements.Tests.Advertisement
             Assert.NotNull(response);
             Assert.Equal(contentCount, response.Total);
             Assert.Equal(contentCount, response.Items.Count());
-            Assert.IsType<Paged.Response<GetPaged.Response>>(response);
+            Assert.IsType<GetPagedResponse<AdvertisementPagedDto>>(response);
         }
         [Theory]
         [InlineAutoData(null)]
         public async Task GetPaged_ByTag_Throws_Exception_When_Request_Is_Null(
-            Paged.Request request,
+            GetPagedRequest request,
             CancellationToken cancellationToken,
             Expression<Func<Domain.Advertisement, bool>> predicate)
         {
