@@ -55,7 +55,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 Limit = request.PageSize
             };
         }
-        public async Task<GetPagedResponse<AdvertisementPagedDto>> GetPaged(
+        public async Task<GetPagedAdvertisementResponse> GetPaged(
             Expression<Func<Domain.Advertisement, bool>> predicate,
             GetPagedAdvertisementRequest request,
             CancellationToken cancellationToken)
@@ -76,7 +76,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
 
             if (total == 0)
             {
-                return new GetPagedResponse<AdvertisementPagedDto>
+                return new GetPagedAdvertisementResponse
                 {
                     Items = Array.Empty<AdvertisementPagedDto>(),
                     Total = total,
@@ -92,7 +92,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 cancellationToken
             );
 
-            return new GetPagedResponse<AdvertisementPagedDto>
+            return new GetPagedAdvertisementResponse
             {
                 Items = entities.Select(entity => entity.Adapt<AdvertisementPagedDto>()),
                 Total = total,
