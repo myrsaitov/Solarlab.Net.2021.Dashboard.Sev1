@@ -11,7 +11,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
     public partial class AdvertisementController
     {
         [HttpGet]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<IActionResult> GetPaged(
             [FromQuery] GetPagedAdvertisementRequest request, 
             CancellationToken cancellationToken)
@@ -24,7 +24,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         }
 
         [HttpGet("{id}")]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<IActionResult> GetById(
             [FromRoute] int id, 
             CancellationToken cancellationToken)
