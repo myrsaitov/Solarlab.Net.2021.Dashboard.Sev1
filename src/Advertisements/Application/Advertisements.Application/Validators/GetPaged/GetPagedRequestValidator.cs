@@ -19,7 +19,7 @@ namespace Sev1.Advertisements.Application.Validators.GetPaged
             // Проверка Page
             RuleFor(x => x.Page)
                 .NotNull()
-                .NotEmpty().WithMessage("Page is null!")
+                //.NotEmpty().WithMessage("Page is null!")
                 .InclusiveBetween(0, int.MaxValue);
 
             // Проверка PageSize
