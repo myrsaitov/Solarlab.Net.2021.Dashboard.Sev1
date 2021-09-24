@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Contracts;
-using Domain.Entities;
+using Comments.Contracts;
+using Comments.Domain.Entities;
 
-namespace Mapper
+namespace Comments.Mapper
 {
     public class CommentMapperProfile : Profile
     {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yN+90ASxSqJ3uTtsl1t2DXHIaq/p9lFpqJ7usZakQ95tg0f+p1K//491xxIoivH04YYG0HeSXZyjqaFE4wuc1g==",
+  "dgSpecHash": "hrk+jBptRMHqvmGvia1W3o59JsTyGn6nv0rKflngEN+wuoGezDJtC+gj+kabP2ek0y0an6pWvQ6bAseNxt4RDw==",
   "success": true,
-  "projectFilePath": "C:\\_Projects\\SolarLab_Proj_EDU\\src\\DomainUsers\\Infrastructure\\DomainUsers.Repository\\DomainUsers.Repository.csproj",
+  "projectFilePath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\DomainUsers\\Infrastructure\\DomainUsers.Repository\\DomainUsers.Repository.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

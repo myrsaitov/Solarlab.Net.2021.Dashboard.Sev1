@@ -1,15 +1,15 @@
-﻿using Contracts;
+﻿using Comments.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Services
+namespace Comments.Services
 {
     /// <summary>
     /// Сервис комментариев
     /// </summary>
-    public interface ICommentService
+    public interface ICommentsService
     {
         
         /// <summary>

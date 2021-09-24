@@ -1,13 +1,7 @@
-﻿using Domain.Entities;
-using Infrastructure.Persistance.Configuration;
+﻿using Comments.Repository.Persistance.Configuration;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Repository.Persistance
+namespace Comments.Repository.Persistance
 {
     /// <summary>
     /// Контекст БД коментариев

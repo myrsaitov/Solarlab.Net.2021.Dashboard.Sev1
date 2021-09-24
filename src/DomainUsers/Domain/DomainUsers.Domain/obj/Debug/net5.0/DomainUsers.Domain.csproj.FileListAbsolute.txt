@@ -10,3 +10,14 @@ C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Domain\DomainUsers.Domain\obj\Deb
 C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Domain\DomainUsers.Domain\obj\Debug\net5.0\ref\DomainUsers.Domain.dll
 C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Domain\DomainUsers.Domain\obj\Debug\net5.0\DomainUsers.Domain.pdb
 C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Domain\DomainUsers.Domain\obj\Debug\net5.0\DomainUsers.Domain.csproj.AssemblyReference.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Domain\DomainUsers.Domain\bin\Debug\net5.0\DomainUsers.Domain.deps.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Domain\DomainUsers.Domain\bin\Debug\net5.0\DomainUsers.Domain.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Domain\DomainUsers.Domain\bin\Debug\net5.0\ref\DomainUsers.Domain.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Domain\DomainUsers.Domain\bin\Debug\net5.0\DomainUsers.Domain.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Domain\DomainUsers.Domain\obj\Debug\net5.0\DomainUsers.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Domain\DomainUsers.Domain\obj\Debug\net5.0\DomainUsers.Domain.AssemblyInfoInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Domain\DomainUsers.Domain\obj\Debug\net5.0\DomainUsers.Domain.AssemblyInfo.cs
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Domain\DomainUsers.Domain\obj\Debug\net5.0\DomainUsers.Domain.csproj.CoreCompileInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Domain\DomainUsers.Domain\obj\Debug\net5.0\DomainUsers.Domain.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Domain\DomainUsers.Domain\obj\Debug\net5.0\ref\DomainUsers.Domain.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Domain\DomainUsers.Domain\obj\Debug\net5.0\DomainUsers.Domain.pdb

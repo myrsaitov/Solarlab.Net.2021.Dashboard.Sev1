@@ -1,8 +1,8 @@
-﻿using Contracts.Base;
-using Contracts.Enums;
+﻿using Comments.Contracts.Base;
+using Comments.Contracts.Enums;
 using System;
 
-namespace Contracts
+namespace Comments.Contracts
 {
     public class CommentDtoResponce : BaseDto
     {

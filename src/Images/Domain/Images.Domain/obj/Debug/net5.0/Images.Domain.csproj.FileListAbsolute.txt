@@ -9,3 +9,14 @@ C:\_Projects\SolarLab_Proj_EDU\src\Images\Domain\Images.Domain\obj\Debug\net5.0\
 C:\_Projects\SolarLab_Proj_EDU\src\Images\Domain\Images.Domain\obj\Debug\net5.0\Images.Domain.dll
 C:\_Projects\SolarLab_Proj_EDU\src\Images\Domain\Images.Domain\obj\Debug\net5.0\ref\Images.Domain.dll
 C:\_Projects\SolarLab_Proj_EDU\src\Images\Domain\Images.Domain\obj\Debug\net5.0\Images.Domain.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Domain\Images.Domain\bin\Debug\net5.0\Images.Domain.deps.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Domain\Images.Domain\bin\Debug\net5.0\Images.Domain.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Domain\Images.Domain\bin\Debug\net5.0\ref\Images.Domain.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Domain\Images.Domain\bin\Debug\net5.0\Images.Domain.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Domain\Images.Domain\obj\Debug\net5.0\Images.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Domain\Images.Domain\obj\Debug\net5.0\Images.Domain.AssemblyInfoInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Domain\Images.Domain\obj\Debug\net5.0\Images.Domain.AssemblyInfo.cs
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Domain\Images.Domain\obj\Debug\net5.0\Images.Domain.csproj.CoreCompileInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Domain\Images.Domain\obj\Debug\net5.0\Images.Domain.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Domain\Images.Domain\obj\Debug\net5.0\ref\Images.Domain.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Domain\Images.Domain\obj\Debug\net5.0\Images.Domain.pdb

@@ -147,21 +147,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9C774C8C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advertisements.Tests", "src\Advertisements\Tests\Advertisements.Tests.csproj", "{D89C952C-C20F-4C96-9527-EA436B7A1C62}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "src\Comments\Application\CommentService\Services.csproj", "{A621138B-BF4E-4DD4-BE00-0E720675A0C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comments.Services", "src\Comments\Application\CommentService\Comments.Services.csproj", "{A621138B-BF4E-4DD4-BE00-0E720675A0C7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\Comments\Domain\Domain.csproj", "{637CB98A-6B9E-48C7-AD01-A801A733CEFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comments.Domain", "src\Comments\Domain\Comments.Domain.csproj", "{637CB98A-6B9E-48C7-AD01-A801A733CEFD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommentAPI", "src\Comments\Hosts\CommentAPI\CommentAPI.csproj", "{181B10A9-E3E4-4847-B1ED-9FC8AF8E5BD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comments.API", "src\Comments\Hosts\CommentAPI\Comments.API.csproj", "{181B10A9-E3E4-4847-B1ED-9FC8AF8E5BD9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Filters", "src\Comments\Hosts\Filters\Filters.csproj", "{5AADF18B-D7CD-44C4-9096-C8EE6803E639}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comments.Migrations", "src\Comments\Infrastructure\CommentMigrations\Comments.Migrations.csproj", "{1F19C173-2B91-4AAC-9F97-36DF59BE222B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommentMigrations", "src\Comments\Infrastructure\CommentMigrations\CommentMigrations.csproj", "{1F19C173-2B91-4AAC-9F97-36DF59BE222B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comments.Mapper", "src\Comments\Infrastructure\Mapper\Comments.Mapper.csproj", "{593AB8D3-17A8-41DA-8936-354E476D2EF0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mapper", "src\Comments\Infrastructure\Mapper\Mapper.csproj", "{593AB8D3-17A8-41DA-8936-354E476D2EF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comments.Repository", "src\Comments\Infrastructure\Repository\Comments.Repository.csproj", "{1DA3E9CC-202D-4669-9907-2C1CD4F56433}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "src\Comments\Infrastructure\Repository\Repository.csproj", "{1DA3E9CC-202D-4669-9907-2C1CD4F56433}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "src\Comments\Contracts\Contracts.csproj", "{EE7D6ED3-32C8-4D44-9B9A-5AC9D7AA7E95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comments.Contracts", "src\Comments\Contracts\Comments.Contracts.csproj", "{EE7D6ED3-32C8-4D44-9B9A-5AC9D7AA7E95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -321,10 +319,6 @@ Global
 		{181B10A9-E3E4-4847-B1ED-9FC8AF8E5BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{181B10A9-E3E4-4847-B1ED-9FC8AF8E5BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{181B10A9-E3E4-4847-B1ED-9FC8AF8E5BD9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5AADF18B-D7CD-44C4-9096-C8EE6803E639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5AADF18B-D7CD-44C4-9096-C8EE6803E639}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5AADF18B-D7CD-44C4-9096-C8EE6803E639}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5AADF18B-D7CD-44C4-9096-C8EE6803E639}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1F19C173-2B91-4AAC-9F97-36DF59BE222B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1F19C173-2B91-4AAC-9F97-36DF59BE222B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F19C173-2B91-4AAC-9F97-36DF59BE222B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -420,7 +414,6 @@ Global
 		{A621138B-BF4E-4DD4-BE00-0E720675A0C7} = {ECE6E442-0FD9-42AB-B0AD-F0084B3E3475}
 		{637CB98A-6B9E-48C7-AD01-A801A733CEFD} = {657DA465-87B8-42D3-893F-BA8EC3249DC6}
 		{181B10A9-E3E4-4847-B1ED-9FC8AF8E5BD9} = {9DEFF6A3-7145-4B8F-9CBA-E8CC9514A364}
-		{5AADF18B-D7CD-44C4-9096-C8EE6803E639} = {9DEFF6A3-7145-4B8F-9CBA-E8CC9514A364}
 		{1F19C173-2B91-4AAC-9F97-36DF59BE222B} = {B2047E6C-868F-495F-AC15-C8005FB36EF1}
 		{593AB8D3-17A8-41DA-8936-354E476D2EF0} = {B2047E6C-868F-495F-AC15-C8005FB36EF1}
 		{1DA3E9CC-202D-4669-9907-2C1CD4F56433} = {B2047E6C-868F-495F-AC15-C8005FB36EF1}

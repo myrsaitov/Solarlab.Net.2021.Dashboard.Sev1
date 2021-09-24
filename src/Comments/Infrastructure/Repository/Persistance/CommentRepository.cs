@@ -1,17 +1,17 @@
-﻿using Domain.Entities;
-using Domain.Exceptions;
+﻿using Comments.Domain.Entities;
+using Comments.Domain.Exceptions;
+using Comments.Services;
 using Microsoft.EntityFrameworkCore;
-using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Repository.Persistance
+namespace Comments.Repository.Persistance
 {
     /// <inheritdoc/>
-    public class CommentRepository : ICommentRepository
+    public class CommentRepository : ICommentsRepository
     {
         private readonly CommentDBContext _context;
         private readonly DbSet<Comment> _dbSet;

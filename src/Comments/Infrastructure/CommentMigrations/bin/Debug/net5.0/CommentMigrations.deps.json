@@ -8,8 +8,8 @@
     ".NETCoreApp,Version=v5.0": {
       "CommentMigrations/1.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Tools": "5.0.9",
-          "Repository": "1.0.0"
+          "Comments.Repository": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Tools": "5.0.9"
         },
         "runtime": {
           "CommentMigrations.dll": {}
@@ -1070,40 +1070,40 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
-      "Contracts/1.0.0": {
+      "Comments.Contracts/1.0.0": {
         "runtime": {
-          "Contracts.dll": {}
+          "Comments.Contracts.dll": {}
         }
       },
-      "Domain/1.0.0": {
+      "Comments.Domain/1.0.0": {
         "dependencies": {
           "AutoMapper": "10.1.1",
-          "Contracts": "1.0.0",
+          "Comments.Contracts": "1.0.0",
           "System.Linq.Expressions": "4.3.0"
         },
         "runtime": {
-          "Domain.dll": {}
+          "Comments.Domain.dll": {}
         }
       },
-      "Repository/1.0.0": {
+      "Comments.Repository/1.0.0": {
         "dependencies": {
+          "Comments.Services": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.9",
           "Microsoft.EntityFrameworkCore.Relational": "5.0.9",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.9",
-          "Services": "1.0.0",
           "System.Linq.Expressions": "4.3.0"
         },
         "runtime": {
-          "Repository.dll": {}
+          "Comments.Repository.dll": {}
         }
       },
-      "Services/1.0.0": {
+      "Comments.Services/1.0.0": {
         "dependencies": {
-          "Contracts": "1.0.0",
-          "Domain": "1.0.0"
+          "Comments.Contracts": "1.0.0",
+          "Comments.Domain": "1.0.0"
         },
         "runtime": {
-          "Services.dll": {}
+          "Comments.Services.dll": {}
         }
       }
     }
@@ -1800,22 +1800,22 @@
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
-    "Contracts/1.0.0": {
+    "Comments.Contracts/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Domain/1.0.0": {
+    "Comments.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Repository/1.0.0": {
+    "Comments.Repository/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Services/1.0.0": {
+    "Comments.Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

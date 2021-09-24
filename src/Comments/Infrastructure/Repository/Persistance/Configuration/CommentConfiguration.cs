@@ -1,8 +1,8 @@
-﻿using Domain.Entities;
+﻿using Comments.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.Persistance.Configuration
+namespace Comments.Repository.Persistance.Configuration
 {
     public class CommentConfiguration : IEntityTypeConfiguration<Comment>
     {

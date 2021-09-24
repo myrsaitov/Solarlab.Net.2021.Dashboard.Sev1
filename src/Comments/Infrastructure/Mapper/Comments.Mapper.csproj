@@ -6,11 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Contracts\Contracts.csproj" />
+    <ProjectReference Include="..\..\Contracts\Comments.Contracts.csproj" />
+    <ProjectReference Include="..\..\Domain\Comments.Domain.csproj" />
   </ItemGroup>
 
 </Project>

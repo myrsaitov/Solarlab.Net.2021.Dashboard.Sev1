@@ -1,9 +1,8 @@
-﻿using Contracts.Base;
-using Contracts.ValidationAttributes;
-using System;
+﻿using Comments.Contracts.Base;
+using Comments.Contracts.ValidationAttributes;
 using System.ComponentModel.DataAnnotations;
 
-namespace Contracts
+namespace Comments.Contracts
 {
     public class CommentDtoRequestGetByChatId : BaseDto
     {

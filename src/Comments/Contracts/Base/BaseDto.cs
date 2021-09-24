@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contracts.Base
+namespace Comments.Contracts.Base
 {
     public class BaseDto
     {

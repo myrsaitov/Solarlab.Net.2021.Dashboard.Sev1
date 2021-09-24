@@ -9,3 +9,14 @@ C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.Reposi
 C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.Repository\obj\Debug\net5.0\DomainUsers.Repository.dll
 C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.Repository\obj\Debug\net5.0\ref\DomainUsers.Repository.dll
 C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.Repository\obj\Debug\net5.0\DomainUsers.Repository.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.Repository\bin\Debug\net5.0\DomainUsers.Repository.deps.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.Repository\bin\Debug\net5.0\DomainUsers.Repository.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.Repository\bin\Debug\net5.0\ref\DomainUsers.Repository.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.Repository\bin\Debug\net5.0\DomainUsers.Repository.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.Repository\obj\Debug\net5.0\DomainUsers.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.Repository\obj\Debug\net5.0\DomainUsers.Repository.AssemblyInfoInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.Repository\obj\Debug\net5.0\DomainUsers.Repository.AssemblyInfo.cs
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.Repository\obj\Debug\net5.0\DomainUsers.Repository.csproj.CoreCompileInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.Repository\obj\Debug\net5.0\DomainUsers.Repository.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.Repository\obj\Debug\net5.0\ref\DomainUsers.Repository.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.Repository\obj\Debug\net5.0\DomainUsers.Repository.pdb

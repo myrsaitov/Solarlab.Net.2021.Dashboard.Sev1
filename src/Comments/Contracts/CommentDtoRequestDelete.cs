@@ -1,6 +1,6 @@
-﻿using Contracts.Base;
+﻿using Comments.Contracts.Base;
 
-namespace Contracts
+namespace Comments.Contracts
 {
     public class CommentDtoRequestDelete : BaseDto
     {

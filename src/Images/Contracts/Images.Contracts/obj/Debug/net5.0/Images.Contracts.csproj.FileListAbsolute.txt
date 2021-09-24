@@ -9,3 +9,14 @@ C:\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\obj\Debug\n
 C:\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.dll
 C:\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\ref\Images.Contracts.dll
 C:\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\bin\Debug\net5.0\Images.Contracts.deps.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\bin\Debug\net5.0\Images.Contracts.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\bin\Debug\net5.0\ref\Images.Contracts.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\bin\Debug\net5.0\Images.Contracts.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.AssemblyInfoInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.AssemblyInfo.cs
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.csproj.CoreCompileInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\ref\Images.Contracts.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.pdb

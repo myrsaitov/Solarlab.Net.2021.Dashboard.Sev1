@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain.Exceptions
+namespace Comments.Domain.Exceptions
 {
     public class NotFoundException : Exception
     {

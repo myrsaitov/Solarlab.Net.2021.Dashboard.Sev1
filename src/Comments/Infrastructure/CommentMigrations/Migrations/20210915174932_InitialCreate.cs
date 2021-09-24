@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CommentMigrations.Migrations
+namespace Comments.Migrations.Migrations
 {
     public partial class InitialCreate : Migration
     {

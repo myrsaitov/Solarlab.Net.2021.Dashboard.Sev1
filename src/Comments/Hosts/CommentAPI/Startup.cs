@@ -1,5 +1,7 @@
-using Filters;
-using Mapper;
+using Comments.API.Filters;
+using Comments.Mapper;
+using Comments.Repository.Persistance;
+using Comments.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -7,11 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Repository.Persistance;
-using Services;
 using System.IO;
 
-namespace CommentAPI
+namespace Comments.API
 {
     public class Startup
     {
@@ -40,11 +40,11 @@ namespace CommentAPI
                 options.UseSqlServer(connection, b => b.MigrationsAssembly("CommentMigrations")));
 
 
-            services.AddScoped<ICommentService, CommentService>();
-            services.AddScoped<CommentExceptionFilter>();
+            services.AddScoped<ICommentsService, CommentsService>();
+            services.AddScoped<CommentsExceptionFilter>();
 
 
-            services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<ICommentsRepository, CommentRepository>();
             services.AddAutoMapper(typeof(CommentMapperProfile));
         }
 

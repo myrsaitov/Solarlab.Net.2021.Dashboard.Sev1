@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contracts.ValidationAttributes
+namespace Comments.Contracts.ValidationAttributes
 {
     /// <summary>
     /// Атрибут: больше чем число (int)

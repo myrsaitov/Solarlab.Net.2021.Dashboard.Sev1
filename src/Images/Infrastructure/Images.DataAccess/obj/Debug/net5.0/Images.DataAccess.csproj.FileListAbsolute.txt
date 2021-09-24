@@ -9,3 +9,14 @@ C:\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\obj\D
 C:\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.dll
 C:\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\ref\Images.DataAccess.dll
 C:\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\bin\Debug\net5.0\Images.DataAccess.deps.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\bin\Debug\net5.0\Images.DataAccess.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\bin\Debug\net5.0\ref\Images.DataAccess.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\bin\Debug\net5.0\Images.DataAccess.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.AssemblyInfoInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.AssemblyInfo.cs
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.csproj.CoreCompileInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\ref\Images.DataAccess.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.pdb

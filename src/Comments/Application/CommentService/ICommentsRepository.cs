@@ -1,15 +1,15 @@
-﻿using Domain.Entities;
+﻿using Comments.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Services
+namespace Comments.Services
 {
     /// <summary>
     /// Интерфейс репозитория комментариев
     /// </summary>
-    public interface ICommentRepository
+    public interface ICommentsRepository
     {
         /// <summary>
         /// Получить комментарий по его Id

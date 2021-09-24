@@ -1,8 +1,8 @@
-﻿using Contracts.Enums;
+﻿using Comments.Contracts.Enums;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Entities
+namespace Comments.Domain.Entities
 {
     /// <summary>
     /// Сущьность коментария

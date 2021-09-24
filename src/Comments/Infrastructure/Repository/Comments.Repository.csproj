@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Application\CommentService\Services.csproj" />
+    <ProjectReference Include="..\..\Application\CommentService\Comments.Services.csproj" />
   </ItemGroup>
 
 </Project>

@@ -10,3 +10,14 @@ C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Contracts\DomainUsers.Contracts\o
 C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Contracts\DomainUsers.Contracts\obj\Debug\net5.0\ref\DomainUsers.Contracts.dll
 C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Contracts\DomainUsers.Contracts\obj\Debug\net5.0\DomainUsers.Contracts.pdb
 C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Contracts\DomainUsers.Contracts\obj\Debug\net5.0\DomainUsers.Contracts.csproj.AssemblyReference.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Contracts\DomainUsers.Contracts\bin\Debug\net5.0\DomainUsers.Contracts.deps.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Contracts\DomainUsers.Contracts\bin\Debug\net5.0\DomainUsers.Contracts.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Contracts\DomainUsers.Contracts\bin\Debug\net5.0\ref\DomainUsers.Contracts.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Contracts\DomainUsers.Contracts\bin\Debug\net5.0\DomainUsers.Contracts.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Contracts\DomainUsers.Contracts\obj\Debug\net5.0\DomainUsers.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Contracts\DomainUsers.Contracts\obj\Debug\net5.0\DomainUsers.Contracts.AssemblyInfoInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Contracts\DomainUsers.Contracts\obj\Debug\net5.0\DomainUsers.Contracts.AssemblyInfo.cs
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Contracts\DomainUsers.Contracts\obj\Debug\net5.0\DomainUsers.Contracts.csproj.CoreCompileInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Contracts\DomainUsers.Contracts\obj\Debug\net5.0\DomainUsers.Contracts.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Contracts\DomainUsers.Contracts\obj\Debug\net5.0\ref\DomainUsers.Contracts.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Contracts\DomainUsers.Contracts\obj\Debug\net5.0\DomainUsers.Contracts.pdb

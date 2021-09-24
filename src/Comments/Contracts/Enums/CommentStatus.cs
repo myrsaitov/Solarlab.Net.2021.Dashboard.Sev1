@@ -1,4 +1,4 @@
-﻿namespace Contracts.Enums
+﻿namespace Comments.Contracts.Enums
 {
     /// <summary>
     /// Статус сообщения : Обычное, Изменённое, Новое

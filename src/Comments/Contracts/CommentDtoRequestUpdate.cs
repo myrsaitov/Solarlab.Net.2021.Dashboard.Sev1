@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Contracts
+namespace Comments.Contracts
 {
     public class CommentDtoRequestUpdate : CommentDtoRequestBase
     {

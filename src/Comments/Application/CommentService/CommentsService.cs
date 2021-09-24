@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using Contracts;
-using Contracts.Enums;
-using Domain.Entities;
+using Comments.Contracts;
+using Comments.Contracts.Enums;
+using Comments.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Services
+namespace Comments.Services
 {
     /// <inheritdoc/>
 
@@ -15,12 +15,12 @@ namespace Services
     ///     1. Проверить существует ли пользователь при добавлении/изменении/удалении комментария.
     ///     2. Проверить авторизирован ли пользователь
 
-    public class CommentService : ICommentService
+    public class CommentsService : ICommentsService
     {
-        private readonly ICommentRepository _repository;
+        private readonly ICommentsRepository _repository;
         private readonly IMapper _mapper;
 
-        public CommentService(ICommentRepository repository, IMapper mapper)
+        public CommentsService(ICommentsRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Comments.API</name>
+    </assembly>
+    <members>
+        <member name="T:Comments.API.Controllers.CommentController">
+            <summary>
+            API комментариев
+            </summary>
+        </member>
+        <member name="M:Comments.API.Controllers.CommentController.#ctor(Microsoft.Extensions.Logging.ILogger{Comments.API.Controllers.CommentController},Comments.Services.ICommentsService)">
+            <param name="logger"></param>
+            <param name="commentService"></param>
+        </member>
+        <member name="M:Comments.API.Controllers.CommentController.GetCommentsByChatId(Comments.Contracts.CommentDtoRequestGetByChatId)">
+            <summary>
+            Получить все коментарии, прикреплённые к чату
+            </summary>
+            <response code="200">Ok</response>
+        </member>
+        <member name="M:Comments.API.Controllers.CommentController.DeleteCommentsByChatId(System.Guid)">
+            <summary>
+            Удалить все коментарии, прикреплённые к чату
+            </summary>
+            <param name="id">Chat Id</param>
+            <returns></returns>
+            <response code="200">Ok</response>
+        </member>
+        <member name="M:Comments.API.Controllers.CommentController.Add(Comments.Contracts.CommentDtoRequestCreate)">
+            <summary>
+            Создать комментарий
+            </summary>
+            <param name="dto"></param>
+            <returns>Id созданного комментария</returns>
+            <response code="201">Created</response>
+            <response code="400">Bad Request</response>
+        </member>
+        <member name="M:Comments.API.Controllers.CommentController.Update(Comments.Contracts.CommentDtoRequestUpdate)">
+            <summary>
+            Изменить комментарий
+            </summary>
+            <param name="dto"></param>
+            <returns>Id обновлённого комментария</returns>
+            <response code="200">Ok</response>
+            <response code="400">Bad Request</response>
+            <response code="404">Not Found</response>
+        </member>
+        <member name="M:Comments.API.Controllers.CommentController.Delete(Comments.Contracts.CommentDtoRequestDelete)">
+            <summary>
+            Удалить комментирий
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Ok</response>
+            <response code="404">Not Found</response>
+        </member>
+    </members>
+</doc>

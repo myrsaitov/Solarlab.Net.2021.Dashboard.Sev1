@@ -10,3 +10,14 @@ C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAc
 C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\ref\DomainUsers.DataAccess.dll
 C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\DomainUsers.DataAccess.pdb
 C:\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\DomainUsers.DataAccess.csproj.AssemblyReference.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\bin\Debug\net5.0\DomainUsers.DataAccess.deps.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\bin\Debug\net5.0\DomainUsers.DataAccess.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\bin\Debug\net5.0\ref\DomainUsers.DataAccess.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\bin\Debug\net5.0\DomainUsers.DataAccess.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\DomainUsers.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\DomainUsers.DataAccess.AssemblyInfoInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\DomainUsers.DataAccess.AssemblyInfo.cs
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\DomainUsers.DataAccess.csproj.CoreCompileInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\DomainUsers.DataAccess.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\ref\DomainUsers.DataAccess.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\DomainUsers\Infrastructure\DomainUsers.DataAccess\obj\Debug\net5.0\DomainUsers.DataAccess.pdb

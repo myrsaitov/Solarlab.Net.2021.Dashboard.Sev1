@@ -1,27 +1,27 @@
 ﻿using Microsoft.Extensions.Logging;
-using Contracts;
 using System;
 using System.Threading.Tasks;
-using Filters;
 using Microsoft.AspNetCore.Mvc;
-using Services;
+using Comments.Services;
+using Comments.Contracts;
+using Comments.API.Filters;
 
-namespace CommentAPI.Controllers
+namespace Comments.API.Controllers
 {
     /// <summary>
     /// API комментариев
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    [ServiceFilter(typeof(CommentExceptionFilter))]
+    [ServiceFilter(typeof(CommentsExceptionFilter))]
     public class CommentController : ControllerBase
     {
         private readonly ILogger<CommentController> _logger;
-        private readonly ICommentService _commentService;
+        private readonly ICommentsService _commentService;
 
         /// <param name="logger"></param>
         /// <param name="commentService"></param>
-        public CommentController(ILogger<CommentController> logger, ICommentService commentService)
+        public CommentController(ILogger<CommentController> logger, ICommentsService commentService)
         {
             _logger = logger;
             _commentService = commentService;
