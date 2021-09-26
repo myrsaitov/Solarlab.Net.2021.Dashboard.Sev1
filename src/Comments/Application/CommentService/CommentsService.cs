@@ -34,34 +34,34 @@ namespace Comments.Services
         }
 
         /// <inheritdoc/>
-        public async Task DeleteCommentsByChatIdAsync(Guid id)
+        public async Task DeleteCommentsByChatIdAsync(Guid id, CancellationToken token)
         {
-            await _repository.DeleteCommentsByChatIdAsync(id);
+            await _repository.DeleteCommentsByChatIdAsync(id, token);
         }
 
         /// <inheritdoc/>
-        public async Task<Guid> AddCommentAsync(CommentDtoRequestCreate dto)
+        public async Task<Guid> AddCommentAsync(CommentDtoRequestCreate dto, CancellationToken token)
         {
             var comment = _mapper.Map<Comment>(dto);
             comment.CreationTime = DateTime.Now;
 
-            return await _repository.AddCommentAsync(comment);
+            return await _repository.AddCommentAsync(comment, token);
         }
 
         /// <inheritdoc/>
-        public async Task<Guid> UpdateCommentAsync(CommentDtoRequestUpdate dto)
+        public async Task<Guid> UpdateCommentAsync(CommentDtoRequestUpdate dto, CancellationToken token)
         {
-            var comment = await _repository.GetCommentAsync(dto.Id);
+            var comment = await _repository.GetCommentAsync(dto.Id, token);
             comment.CommentStatus = CommentStatus.Changed;
             comment.Message = dto.Message;
 
-            return await _repository.UpdateCommentAsync(comment);
+            return await _repository.UpdateCommentAsync(comment, token);
         }
 
         /// <inheritdoc/>
-        public async Task DeleteCommentAsync(CommentDtoRequestDelete dto)
+        public async Task DeleteCommentAsync(CommentDtoRequestDelete dto, CancellationToken token)
         {
-            await _repository.DeleteCommentAsync(dto.Id);
+            await _repository.DeleteCommentAsync(dto.Id, token);
         }
     }
 }

@@ -11,6 +11,6 @@ namespace Comments.Contracts
         [Required]
         [MaxLength (255)]
         [MinLength (2)]
-        public String Message { get; set; }
+        public string Message { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace Comments.Domain.Entities
         /// <summary>
         /// Текст сообщения
         /// </summary>
-        public String Message { get; set; }
+        public string Message { get; set; }
 
         /// <summary>
         /// Дата создания

@@ -24,27 +24,27 @@ namespace Comments.Services
         /// </summary>
         /// <param name="id">Id чата</param>
         /// <returns></returns>
-        public Task DeleteCommentsByChatIdAsync(Guid id);
+        public Task DeleteCommentsByChatIdAsync(Guid id, CancellationToken token);
 
         /// <summary>
         /// Создать коментарий
         /// </summary>
         /// <param name="comment">Коментарий</param>
         /// <returns></returns>
-        public Task<Guid> AddCommentAsync(CommentDtoRequestCreate dto);
+        public Task<Guid> AddCommentAsync(CommentDtoRequestCreate dto, CancellationToken token);
 
         /// <summary>
         /// Изменить коментарий
         /// </summary>
         /// <param name="comment">Коментарий</param>
         /// <returns></returns>
-        public Task<Guid> UpdateCommentAsync(CommentDtoRequestUpdate dto);
+        public Task<Guid> UpdateCommentAsync(CommentDtoRequestUpdate dto, CancellationToken token);
 
         /// <summary>
         /// Удалить коментарий
         /// </summary>
         /// <param name="id">Id коментария</param>
         /// <returns></returns>
-        public Task DeleteCommentAsync(CommentDtoRequestDelete dto);
+        public Task DeleteCommentAsync(CommentDtoRequestDelete dto, CancellationToken token);
     }
 }

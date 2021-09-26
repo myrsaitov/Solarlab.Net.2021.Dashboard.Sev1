@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Comments.Services;
 using Comments.Contracts;
 using Comments.API.Filters;
+using System.Threading;
 
 namespace Comments.API.Controllers
 {
@@ -31,11 +32,9 @@ namespace Comments.API.Controllers
         /// Получить все коментарии, прикреплённые к чату
         /// </summary>
         /// <response code="200">Ok</response>
-        [HttpGet("GetCommentsByChatIdAsync")]
-        public async Task<IActionResult> GetCommentsByChatId([FromQuery] CommentDtoRequestGetByChatId dto)
+        [HttpGet("GetCommentsByChatId")]
+        public async Task<IActionResult> GetCommentsByChatId([FromQuery] CommentDtoRequestGetByChatId dto, CancellationToken token = default)
         {
-            var token = HttpContext.RequestAborted;
-
             if (ModelState.IsValid)
             {
                 return Ok(await _commentService.GetCommentsByChatIdAsync(dto, token));
@@ -50,11 +49,11 @@ namespace Comments.API.Controllers
         /// <returns></returns>
         /// <response code="200">Ok</response>
         [HttpDelete("DeleteCommentsByChatId")]
-        public async Task<IActionResult> DeleteCommentsByChatId([FromQuery] Guid id)
+        public async Task<IActionResult> DeleteCommentsByChatId([FromQuery] Guid id, CancellationToken token = default)
         {
             if (ModelState.IsValid)
             {
-                await _commentService.DeleteCommentsByChatIdAsync(id);
+                await _commentService.DeleteCommentsByChatIdAsync(id, token);
                 return Ok();
             }
             return BadRequest();
@@ -69,11 +68,11 @@ namespace Comments.API.Controllers
         /// <response code="400">Bad Request</response>
         [HttpPost]
         [ProducesResponseType(typeof(Guid), 201)]
-        public async Task<IActionResult> Add([FromForm] CommentDtoRequestCreate dto)
+        public async Task<IActionResult> Add([FromForm] CommentDtoRequestCreate dto, CancellationToken token = default)
         {
             if (ModelState.IsValid)
             {
-                var result = await _commentService.AddCommentAsync(dto);
+                var result = await _commentService.AddCommentAsync(dto, token);
                 return Created("", result);
             }
             return BadRequest();
@@ -88,11 +87,11 @@ namespace Comments.API.Controllers
         /// <response code="400">Bad Request</response>
         /// <response code="404">Not Found</response>
         [HttpPut]
-        public async Task<IActionResult> Update([FromForm] CommentDtoRequestUpdate dto)
+        public async Task<IActionResult> Update([FromForm] CommentDtoRequestUpdate dto, CancellationToken token = default)
         {
             if (ModelState.IsValid)
             {
-                var result = await _commentService.UpdateCommentAsync(dto);
+                var result = await _commentService.UpdateCommentAsync(dto, token);
                 return Ok(result);
             }
             return BadRequest();
@@ -106,11 +105,11 @@ namespace Comments.API.Controllers
         /// <response code="200">Ok</response>
         /// <response code="404">Not Found</response>
         [HttpDelete]
-        public async Task<IActionResult> Delete([FromQuery] CommentDtoRequestDelete dto)
+        public async Task<IActionResult> Delete([FromQuery] CommentDtoRequestDelete dto, CancellationToken token = default)
         {
             if (ModelState.IsValid)
             {
-                await _commentService.DeleteCommentAsync(dto);
+                await _commentService.DeleteCommentAsync(dto, token);
                 return Ok();
             }
             return BadRequest();

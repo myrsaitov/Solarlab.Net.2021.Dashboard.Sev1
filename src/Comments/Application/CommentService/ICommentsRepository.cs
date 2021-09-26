@@ -16,7 +16,7 @@ namespace Comments.Services
         /// </summary>
         /// <param name="id">Id коментария</param>
         /// <returns></returns>
-        public Task<Comment> GetCommentAsync(Guid id);
+        public Task<Comment> GetCommentAsync(Guid id, CancellationToken token);
 
         /// <summary>
         /// Получить все коментарии, прикреплённые к объявлению
@@ -29,25 +29,25 @@ namespace Comments.Services
         /// Удалить все коментарии, прикреплённые к чату
         /// </summary>
         /// <param name="id">Id чата</param>
-        public Task DeleteCommentsByChatIdAsync(Guid id);
+        public Task DeleteCommentsByChatIdAsync(Guid id, CancellationToken token);
 
         /// <summary>
         /// Создать коментарий
         /// </summary>
         /// <param name="comment">Коментарий</param>
-        public Task<Guid> AddCommentAsync(Comment comment);
+        public Task<Guid> AddCommentAsync(Comment comment, CancellationToken token);
 
         /// <summary>
         /// Изменить коментарий
         /// </summary>
         /// <param name="comment">Коментарий</param>
         /// <returns></returns>
-        public Task<Guid> UpdateCommentAsync(Comment comment);
+        public Task<Guid> UpdateCommentAsync(Comment comment, CancellationToken token);
 
         /// <summary>
         /// Удалить коментарий
         /// </summary>
         /// <param name="id">Id коментария</param>
-        public Task DeleteCommentAsync(Guid id);
+        public Task DeleteCommentAsync(Guid id, CancellationToken token);
     }
 }

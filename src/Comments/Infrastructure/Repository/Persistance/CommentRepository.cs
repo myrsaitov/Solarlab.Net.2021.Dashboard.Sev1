@@ -24,9 +24,9 @@ namespace Comments.Repository.Persistance
         }
 
         /// <inheritdoc/>
-        public async Task<Comment> GetCommentAsync(Guid id)
+        public async Task<Comment> GetCommentAsync(Guid id, CancellationToken token)
         {
-            var result = await _dbSet.FirstOrDefaultAsync(c => c.Id == id);
+            var result = await _dbSet.FirstOrDefaultAsync(c => c.Id == id, token);
 
             if (result == null)
             {
@@ -43,34 +43,34 @@ namespace Comments.Repository.Persistance
         }
 
         /// <inheritdoc/>
-        public async Task DeleteCommentsByChatIdAsync(Guid id)
+        public async Task DeleteCommentsByChatIdAsync(Guid id, CancellationToken token)
         {
 
             var comments = _dbSet.Where(c => c.ChatId == id);
             _dbSet.RemoveRange(comments);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(token);
         }
 
         /// <inheritdoc/> 
-        public async Task<Guid> AddCommentAsync(Comment comment)
+        public async Task<Guid> AddCommentAsync(Comment comment, CancellationToken token)
         {
-            await _dbSet.AddAsync(comment);
-            await _context.SaveChangesAsync();
+            await _dbSet.AddAsync(comment, token);
+            await _context.SaveChangesAsync(token);
             return comment.Id;
         }
 
         /// <inheritdoc/>
-        public async Task<Guid> UpdateCommentAsync(Comment comment)
+        public async Task<Guid> UpdateCommentAsync(Comment comment, CancellationToken token)
         {
             _dbSet.Update(comment);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(token);
             return comment.Id;
         }
 
         /// <inheritdoc/>
-        public async Task DeleteCommentAsync(Guid id)
+        public async Task DeleteCommentAsync(Guid id, CancellationToken token)
         {
-            var comment = await _dbSet.FirstOrDefaultAsync(c => c.Id == id);
+            var comment = await _dbSet.FirstOrDefaultAsync(c => c.Id == id, token);
             if (comment == null)
             {
                 throw new NotFoundException(id.ToString());

@@ -9,7 +9,7 @@ namespace Comments.Contracts
         /// <summary>
         /// Текст сообщения
         /// </summary>
-        public String Message { get; set; }
+        public string Message { get; set; }
 
         /// <summary>
         /// Дата создания
@@ -29,6 +29,6 @@ namespace Comments.Contracts
         /// <summary>
         /// Id автора
         /// </summary>
-        public String AuthorName { get; set; }
+        public string AuthorName { get; set; }
     }
 }

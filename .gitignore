@@ -4,6 +4,7 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 Sev1.sln.DotSettings.user
+*.cache
 
 *.mkm.txt
 
