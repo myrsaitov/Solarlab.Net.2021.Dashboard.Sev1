@@ -1,21 +1,21 @@
 ﻿using FluentValidation;
-using Sev1.Accounts.Application.Contracts.Advertisement;
+using Sev1.Accounts.Application.Contracts.Account;
 using Sev1.Accounts.Application.Validators.Base;
 using Sev1.Accounts.Application.Validators.Tag;
 
-namespace Sev1.Accounts.Application.Validators.Advertisement
+namespace Sev1.Accounts.Application.Validators.Account
 {
     /// <summary>
     /// Валидатор DTO при создании объявления
     /// </summary>
-    public class AdvertisementCreateDtoValidator : NullReferenceAbstractValidator<AdvertisementCreateDto>
+    public class AccountCreateDtoValidator : NullReferenceAbstractValidator<AccountCreateDto>
     {
-        public AdvertisementCreateDtoValidator()
+        public AccountCreateDtoValidator()
         {
             // Общая проверка
             RuleFor(x => x)
                 .NotNull()
-                .NotEmpty().WithMessage("AdvertisementCreateDto is null!");
+                .NotEmpty().WithMessage("AccountCreateDto is null!");
 
             // Название объявления
             RuleFor(x => x.Title)

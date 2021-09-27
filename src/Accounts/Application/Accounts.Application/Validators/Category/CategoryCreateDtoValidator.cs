@@ -2,7 +2,7 @@
 using Sev1.Accounts.Application.Contracts.Category;
 using Sev1.Accounts.Application.Validators.Base;
 
-namespace Sev1.Accounts.Application.Validators.Advertisement
+namespace Sev1.Accounts.Application.Validators.Account
 {
     /// <summary>
     /// Валидатор DTO при создании категории

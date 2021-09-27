@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Sev1.Accounts.Api.Controllers.Advertisement
+namespace Sev1.Accounts.Api.Controllers.Account
 {
-    public partial class AdvertisementController
+    public partial class AccountController
     {
         [HttpDelete("{id:int}")]
         //[Authorize]

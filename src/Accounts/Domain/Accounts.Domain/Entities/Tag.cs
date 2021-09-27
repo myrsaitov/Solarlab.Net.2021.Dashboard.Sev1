@@ -20,6 +20,6 @@ namespace Sev1.Accounts.Domain
         /// <summary>
         /// Объявления, связанные с этим ярлыком
         /// </summary>
-        public virtual ICollection<Advertisement> Accounts { get; set; }
+        public virtual ICollection<Account> Accounts { get; set; }
     }
 }

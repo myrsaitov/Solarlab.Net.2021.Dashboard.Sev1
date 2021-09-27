@@ -5,18 +5,18 @@ using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
 using Sev1.Accounts.Application.Contracts.GetPaged;
-using Sev1.Accounts.Application.Contracts.Advertisement;
+using Sev1.Accounts.Application.Contracts.Account;
 using System.Linq;
 using System;
 
-namespace Sev1.Accounts.Tests.Advertisement
+namespace Sev1.Accounts.Tests.Account
 {
-    public partial class AdvertisementServiceV1Test
+    public partial class AccountServiceV1Test
     {
         [Theory]
         [AutoData]
         public async Task GetPaged_Returns_Response_Success(
-            GetPagedAdvertisementRequest request, 
+            GetPagedAccountRequest request, 
             CancellationToken cancellationToken, 
             int userId,
             string contentTitle,
@@ -27,11 +27,11 @@ namespace Sev1.Accounts.Tests.Advertisement
             // Arrange
             int contentCount = 3;
 
-            var responce = new List<Domain.Advertisement>();
+            var responce = new List<Domain.Account>();
 
             for (int contentId = 1; contentId <= contentCount; contentId++)
             {
-                var content = new Domain.Advertisement()
+                var content = new Domain.Account()
                 {
                     Id = contentId,
                     Title = contentTitle,
@@ -80,18 +80,18 @@ namespace Sev1.Accounts.Tests.Advertisement
             Assert.NotNull(response);
             Assert.Equal(contentCount, response.Total);
             Assert.Equal(contentCount, response.Items.Count());
-            Assert.IsType<GetPagedResponse<AdvertisementPagedDto>>(response);
+            Assert.IsType<GetPagedResponse<AccountPagedDto>>(response);
         }
         [Theory]
         [AutoData]
         public async Task GetPaged_Returns_Response_Success_Total_eq_0(
-            GetPagedAdvertisementRequest request,
+            GetPagedAccountRequest request,
             CancellationToken cancellationToken)
         {
             // Arrange
             int contentCount = 0;
 
-            var responce = new List<Domain.Advertisement>();
+            var responce = new List<Domain.Account>();
 
             _advertisementRepositoryMock
                 .Setup(_ => _.Count(It.IsAny<CancellationToken>()))
@@ -115,12 +115,12 @@ namespace Sev1.Accounts.Tests.Advertisement
             Assert.NotNull(response);
             Assert.Equal(contentCount, response.Total);
             Assert.Equal(contentCount, response.Items.Count());
-            Assert.IsType<GetPagedResponse<AdvertisementPagedDto>>(response);
+            Assert.IsType<GetPagedResponse<AccountPagedDto>>(response);
         }
         [Theory]
         [InlineAutoData(null)]
         public async Task GetPaged_Throws_Exception_When_Request_Is_Null(
-            GetPagedAdvertisementRequest request, 
+            GetPagedAccountRequest request, 
             CancellationToken cancellationToken)
         {
             // Act

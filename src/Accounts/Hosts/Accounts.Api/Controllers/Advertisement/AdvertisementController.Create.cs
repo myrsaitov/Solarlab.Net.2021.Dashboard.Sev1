@@ -2,17 +2,17 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Accounts.Application.Contracts.Advertisement;
+using Sev1.Accounts.Application.Contracts.Account;
 
-namespace Sev1.Accounts.Api.Controllers.Advertisement
+namespace Sev1.Accounts.Api.Controllers.Account
 {
-    public partial class AdvertisementController
+    public partial class AccountController
     {
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         //[Authorize]
         public async Task<IActionResult> Create(
-            [FromBody] AdvertisementCreateDto model, 
+            [FromBody] AccountCreateDto model, 
             CancellationToken cancellationToken)
         {
             await _advertisementService.Create(

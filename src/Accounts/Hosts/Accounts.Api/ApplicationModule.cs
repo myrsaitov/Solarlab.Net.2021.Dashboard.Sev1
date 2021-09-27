@@ -1,7 +1,7 @@
-﻿using Sev1.Accounts.Application.Implementations.Advertisement;
+﻿using Sev1.Accounts.Application.Implementations.Account;
 using Sev1.Accounts.Application.Implementations.Tag;
 using Sev1.Accounts.Application.Implementations.Category;
-using Sev1.Accounts.Application.Interfaces.Advertisement;
+using Sev1.Accounts.Application.Interfaces.Account;
 using Sev1.Accounts.Application.Interfaces.Category;
 using Sev1.Accounts.Application.Interfaces.Tag;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +24,7 @@ namespace Sev1.Accounts.Api
             // per each http request but uses the same instance
             // in the other calls within that same web request.
             services.AddScoped<ICategoryService, CategoryServiceV1>();
-            services.AddScoped<IAdvertisementService, AdvertisementServiceV1>();
+            services.AddScoped<IAccountService, AccountServiceV1>();
             services.AddScoped<ITagService, TagServiceV1>();
 
             return services;

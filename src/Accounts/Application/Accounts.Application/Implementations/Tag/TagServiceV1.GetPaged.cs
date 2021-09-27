@@ -6,7 +6,7 @@ using System.Linq;
 using Sev1.Accounts.Application.Contracts.GetPaged;
 using Sev1.Accounts.Application.Interfaces.Tag;
 using Sev1.Accounts.Application.Validators.GetPaged;
-using Sev1.Accounts.Application.Exceptions.Advertisement;
+using Sev1.Accounts.Application.Exceptions.Account;
 
 namespace Sev1.Accounts.Application.Implementations.Tag
 {

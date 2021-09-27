@@ -2,13 +2,13 @@
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Accounts.Application.Contracts.Advertisement;
+using Sev1.Accounts.Application.Contracts.Account;
 using Sev1.Accounts.Application.Contracts;
 using Sev1.Accounts.Application.Contracts.GetPaged;
 
-namespace Sev1.Accounts.Application.Interfaces.Advertisement
+namespace Sev1.Accounts.Application.Interfaces.Account
 {
-    public interface IAdvertisementService
+    public interface IAccountService
     {
         /// <summary>
         /// Создает новое объявление
@@ -17,7 +17,7 @@ namespace Sev1.Accounts.Application.Interfaces.Advertisement
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Create(
-            AdvertisementCreateDto model, 
+            AccountCreateDto model, 
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Sev1.Accounts.Application.Interfaces.Advertisement
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<int> Update(
-            AdvertisementUpdateDto model, 
+            AccountUpdateDto model, 
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Sev1.Accounts.Application.Interfaces.Advertisement
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<AdvertisementDto> GetById(
+        Task<AccountDto> GetById(
             int id, 
             CancellationToken cancellationToken);
 
@@ -66,8 +66,8 @@ namespace Sev1.Accounts.Application.Interfaces.Advertisement
         /// <param name="request">Параметры пагинации</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<GetPagedAdvertisementResponse> GetPaged(
-            GetPagedAdvertisementRequest request, 
+        Task<GetPagedAccountResponse> GetPaged(
+            GetPagedAccountRequest request, 
             CancellationToken cancellationToken);
     }
 }

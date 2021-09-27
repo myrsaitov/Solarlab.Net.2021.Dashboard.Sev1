@@ -1,6 +1,6 @@
-﻿namespace Sev1.Accounts.Application.Contracts.Advertisement
+﻿namespace Sev1.Accounts.Application.Contracts.Account
 {
-    public class AdvertisementUpdateDto
+    public class AccountUpdateDto
     {
         public int Id { get; set; }
         public string Title { get; set; }

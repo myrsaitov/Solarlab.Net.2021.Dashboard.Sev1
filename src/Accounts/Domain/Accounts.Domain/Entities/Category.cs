@@ -24,6 +24,6 @@ namespace Sev1.Accounts.Domain
         /// <summary>
         /// Коллекция связанных объявлений
         /// </summary>
-        public virtual ICollection<Advertisement> Accounts { get; set; }
+        public virtual ICollection<Account> Accounts { get; set; }
     }
 }

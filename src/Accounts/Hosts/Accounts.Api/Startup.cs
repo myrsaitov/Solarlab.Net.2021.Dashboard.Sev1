@@ -55,7 +55,7 @@ namespace Sev1.Accounts.Api
             // and that single instance is used throughout 
             // the application life time.
             services.AddSingleton(CategoryMapProfile.GetConfiguredMappingConfig());
-            services.AddSingleton(AdvertisementMapProfile.GetConfiguredMappingConfig());
+            services.AddSingleton(AccountMapProfile.GetConfiguredMappingConfig());
             services.AddSingleton(TagMapProfile.GetConfiguredMappingConfig());
 
 

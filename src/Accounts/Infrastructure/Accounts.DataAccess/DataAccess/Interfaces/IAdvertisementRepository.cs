@@ -11,7 +11,7 @@ namespace Sev1.Accounts.DataAccess.Interfaces
     /// <summary>
     /// Репозиторий объявлений
     /// </summary>
-    public interface IAdvertisementRepository : IRepository<Advertisement, int>
+    public interface IAccountRepository : IRepository<Account, int>
     {
         /// <summary>
         /// Возвращает объявление
@@ -20,7 +20,7 @@ namespace Sev1.Accounts.DataAccess.Interfaces
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<Advertisement> FindByIdWithUserInclude(
+        Task<Account> FindByIdWithUserInclude(
             int id, 
             CancellationToken cancellationToken);
 
@@ -31,7 +31,7 @@ namespace Sev1.Accounts.DataAccess.Interfaces
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<Advertisement> FindByIdWithUserAndTagsInclude(
+        Task<Account> FindByIdWithUserAndTagsInclude(
             int id,
             CancellationToken cancellationToken);
 
@@ -43,7 +43,7 @@ namespace Sev1.Accounts.DataAccess.Interfaces
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<Advertisement> FindByIdWithUserAndCategoryAndTags(
+        Task<Account> FindByIdWithUserAndCategoryAndTags(
             int id, 
             CancellationToken cancellationToken);
 
@@ -63,7 +63,7 @@ namespace Sev1.Accounts.DataAccess.Interfaces
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<int> CountWithOutDeleted(
-            Expression<Func<Advertisement, bool>> predicate,
+            Expression<Func<Account, bool>> predicate,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Sev1.Accounts.DataAccess.Interfaces
         /// <param name="limit">Количество объявлений на странице</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<IEnumerable<Advertisement>> GetPagedWithTagsAndOwnerAndCategoryInclude(
+        Task<IEnumerable<Account>> GetPagedWithTagsAndOwnerAndCategoryInclude(
             int offset,
             int limit,
             CancellationToken cancellationToken);
@@ -86,8 +86,8 @@ namespace Sev1.Accounts.DataAccess.Interfaces
         /// <param name="limit">Количество объявлений на странице</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<IEnumerable<Advertisement>> GetPagedWithTagsAndOwnerAndCategoryInclude(
-            Expression<Func<Advertisement, bool>> predicate,
+        Task<IEnumerable<Account>> GetPagedWithTagsAndOwnerAndCategoryInclude(
+            Expression<Func<Account, bool>> predicate,
             int offset,
             int limit,
             CancellationToken cancellationToken);

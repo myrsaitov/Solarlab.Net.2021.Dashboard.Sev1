@@ -1,11 +1,11 @@
 ﻿using Sev1.Accounts.Domain.Exceptions;
 
-namespace Sev1.Accounts.Application.Exceptions.Advertisement
+namespace Sev1.Accounts.Application.Exceptions.Account
 {
-    public sealed class AdvertisementNotFoundException : NotFoundException
+    public sealed class AccountNotFoundException : NotFoundException
     {
         private const string MessageTemplate = "Объявление с таким ID[{0}] не было найдено.";
-        public AdvertisementNotFoundException(int advertisementId) : base(string.Format(MessageTemplate, advertisementId))
+        public AccountNotFoundException(int advertisementId) : base(string.Format(MessageTemplate, advertisementId))
         {
         }
     }

@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sev1.Accounts.Application.Interfaces.Advertisement;
+using Sev1.Accounts.Application.Interfaces.Account;
 
-namespace Sev1.Accounts.Api.Controllers.Advertisement
+namespace Sev1.Accounts.Api.Controllers.Account
 {
     [Route("api/v1/advertisements")]
     [ApiController]
     //[Authorize]
-    public partial class AdvertisementController : ControllerBase
+    public partial class AccountController : ControllerBase
     {
-        private readonly IAdvertisementService _advertisementService;
-        public AdvertisementController(IAdvertisementService advertisementService) => _advertisementService = advertisementService;
+        private readonly IAccountService _advertisementService;
+        public AccountController(IAccountService advertisementService) => _advertisementService = advertisementService;
     }
 }

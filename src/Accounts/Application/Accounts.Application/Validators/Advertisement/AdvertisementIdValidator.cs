@@ -1,19 +1,19 @@
 ﻿using FluentValidation;
 using Sev1.Accounts.Application.Validators.Base;
 
-namespace Sev1.Accounts.Application.Validators.Advertisement
+namespace Sev1.Accounts.Application.Validators.Account
 {
     /// <summary>
     /// Валидатор Id объявления
     /// </summary>
-    public class AdvertisementIdValidator : AbstractValidator<int>
+    public class AccountIdValidator : AbstractValidator<int>
     {
-        public AdvertisementIdValidator()
+        public AccountIdValidator()
         {
             // Проверка Id
             RuleFor(x => x)
                 .NotNull()
-                .NotEmpty().WithMessage("AdvertisementId is null!")
+                .NotEmpty().WithMessage("AccountId is null!")
                 .InclusiveBetween(1, int.MaxValue);
         }
     }

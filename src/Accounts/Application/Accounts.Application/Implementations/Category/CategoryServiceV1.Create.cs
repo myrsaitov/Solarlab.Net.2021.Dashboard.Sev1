@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using Sev1.Accounts.Application.Contracts.Category;
 using System.Collections.Generic;
 using Sev1.Accounts.Application.Interfaces.Category;
-using Sev1.Accounts.Application.Validators.Advertisement;
-using Sev1.Accounts.Application.Exceptions.Advertisement;
+using Sev1.Accounts.Application.Validators.Account;
+using Sev1.Accounts.Application.Exceptions.Account;
 using System.Linq;
 
 namespace Sev1.Accounts.Application.Implementations.Category

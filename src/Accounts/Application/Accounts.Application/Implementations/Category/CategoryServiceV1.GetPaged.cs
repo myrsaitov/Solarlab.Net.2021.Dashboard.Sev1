@@ -6,7 +6,7 @@ using Sev1.Accounts.Application.Contracts.Category;
 using Sev1.Accounts.Application.Contracts.GetPaged;
 using Sev1.Accounts.Application.Interfaces.Category;
 using Sev1.Accounts.Application.Validators.GetPaged;
-using Sev1.Accounts.Application.Exceptions.Advertisement;
+using Sev1.Accounts.Application.Exceptions.Account;
 
 namespace Sev1.Accounts.Application.Implementations.Category
 {

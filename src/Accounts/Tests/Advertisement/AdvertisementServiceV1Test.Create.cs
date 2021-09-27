@@ -1,4 +1,4 @@
-﻿using Sev1.Accounts.Application.Contracts.Advertisement;
+﻿using Sev1.Accounts.Application.Contracts.Account;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,14 +9,14 @@ using System;
 using Sev1.Accounts.Application.Exceptions;
 using Sev1.Accounts.Application.Exceptions.Category;
 
-namespace Sev1.Accounts.Tests.Advertisement
+namespace Sev1.Accounts.Tests.Account
 {
-    public partial class AdvertisementServiceV1Test
+    public partial class AccountServiceV1Test
     {
         [Theory]
         [AutoData]
         public async Task Create_Returns_Response_Success(
-            AdvertisementCreateDto request, 
+            AccountCreateDto request, 
             CancellationToken cancellationToken, 
             int userId, 
             int contentId)
@@ -52,9 +52,9 @@ namespace Sev1.Accounts.Tests.Advertisement
 
             _advertisementRepositoryMock
                 .Setup(_ => _.Save(
-                    It.IsAny<Domain.Advertisement>(), 
+                    It.IsAny<Domain.Account>(), 
                     It.IsAny<CancellationToken>()))
-                .Callback((Domain.Advertisement content, CancellationToken ct) => content.Id = contentId);
+                .Callback((Domain.Account content, CancellationToken ct) => content.Id = contentId);
 
             // Act
             await _advertisementServiceV1.Create(
@@ -69,7 +69,7 @@ namespace Sev1.Accounts.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task Create_Throws_Exception_When_Category_Is_Null(
-        AdvertisementCreateDto request,
+        AccountCreateDto request,
             CancellationToken cancellationToken)
         {
             // Act
@@ -81,7 +81,7 @@ namespace Sev1.Accounts.Tests.Advertisement
         [Theory]
         [InlineAutoData(null)]
         public async Task Create_Throws_Exception_When_Request_Is_Null(
-            AdvertisementCreateDto request, 
+            AccountCreateDto request, 
             CancellationToken cancellationToken)
         {
             // Act

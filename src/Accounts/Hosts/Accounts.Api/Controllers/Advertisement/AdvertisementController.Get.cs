@@ -1,19 +1,19 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Accounts.Application.Contracts.Advertisement;
+using Sev1.Accounts.Application.Contracts.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Sev1.Accounts.Application.Contracts.GetPaged;
 
-namespace Sev1.Accounts.Api.Controllers.Advertisement
+namespace Sev1.Accounts.Api.Controllers.Account
 {
-    public partial class AdvertisementController
+    public partial class AccountController
     {
         [HttpGet]
         //[AllowAnonymous]
         public async Task<IActionResult> GetPaged(
-            [FromQuery] GetPagedAdvertisementRequest request, 
+            [FromQuery] GetPagedAccountRequest request, 
             CancellationToken cancellationToken)
         {
             var result = await _advertisementService.GetPaged(

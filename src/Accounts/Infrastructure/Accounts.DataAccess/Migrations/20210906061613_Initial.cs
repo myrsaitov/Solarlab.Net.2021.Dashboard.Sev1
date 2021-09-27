@@ -71,7 +71,7 @@ namespace Accounts.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TagAdvertisement",
+                name: "TagAccount",
                 columns: table => new
                 {
                     AccountsId = table.Column<int>(type: "int", nullable: false),
@@ -79,15 +79,15 @@ namespace Accounts.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TagAdvertisement", x => new { x.AccountsId, x.TagsId });
+                    table.PrimaryKey("PK_TagAccount", x => new { x.AccountsId, x.TagsId });
                     table.ForeignKey(
-                        name: "FK_TagAdvertisement_Accounts_AccountsId",
+                        name: "FK_TagAccount_Accounts_AccountsId",
                         column: x => x.AccountsId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_TagAdvertisement_Tags_TagsId",
+                        name: "FK_TagAccount_Tags_TagsId",
                         column: x => x.TagsId,
                         principalTable: "Tags",
                         principalColumn: "Id",
@@ -118,15 +118,15 @@ namespace Accounts.DataAccess.Migrations
                 column: "ParentCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TagAdvertisement_TagsId",
-                table: "TagAdvertisement",
+                name: "IX_TagAccount_TagsId",
+                table: "TagAccount",
                 column: "TagsId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TagAdvertisement");
+                name: "TagAccount");
 
             migrationBuilder.DropTable(
                 name: "Accounts");

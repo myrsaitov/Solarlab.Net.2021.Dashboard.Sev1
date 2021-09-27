@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace Sev1.Accounts.Application.Exceptions.Advertisement
+namespace Sev1.Accounts.Application.Exceptions.Account
 {
-    public class AdvertisementCreateDtoNotValidException : ApplicationException
+    public class AccountCreateDtoNotValidException : ApplicationException
     {
-        public AdvertisementCreateDtoNotValidException(string message) : base(message)
+        public AccountCreateDtoNotValidException(string message) : base(message)
         {
         }
     }

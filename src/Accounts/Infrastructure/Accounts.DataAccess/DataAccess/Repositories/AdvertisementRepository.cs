@@ -11,33 +11,33 @@ using Sev1.Accounts.DataAccess.Interfaces;
 
 namespace Sev1.Accounts.DataAccess.Repositories
 {
-    public sealed class AdvertisementRepository : EfRepository<Advertisement, int>, IAdvertisementRepository
+    public sealed class AccountRepository : EfRepository<Account, int>, IAccountRepository
     {
-        public AdvertisementRepository(DatabaseContext dbСontext) : base(dbСontext)
+        public AccountRepository(DatabaseContext dbСontext) : base(dbСontext)
         {
         }
 
-        public async Task<Advertisement> FindByIdWithUserInclude(
+        public async Task<Account> FindByIdWithUserInclude(
             int id, 
             CancellationToken cancellationToken)
         {
             return await DbСontext
-                .Set<Advertisement>()
+                .Set<Account>()
                 //.Include(a => a.Owner)
                 .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
         }
-        public async Task<Advertisement> FindByIdWithUserAndTagsInclude(int id, CancellationToken cancellationToken)
+        public async Task<Account> FindByIdWithUserAndTagsInclude(int id, CancellationToken cancellationToken)
         {
             return await DbСontext
-                .Set<Advertisement>()
+                .Set<Account>()
                 //.Include(a => a.Owner)
                 .Include(a => a.Tags)
                 .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
         }
-        public async Task<Advertisement> FindByIdWithUserAndCategoryAndTags(int id, CancellationToken cancellationToken)
+        public async Task<Account> FindByIdWithUserAndCategoryAndTags(int id, CancellationToken cancellationToken)
         {
             return await DbСontext
-                .Set<Advertisement>()
+                .Set<Account>()
                 //.Include(a => a.Owner)
                 .Include(a => a.Category)
                 .Include(a => a.Category.ChildCategories)
@@ -49,7 +49,7 @@ namespace Sev1.Accounts.DataAccess.Repositories
         public async Task<int> CountWithOutDeleted(CancellationToken cancellationToken)
         {
             var data = DbСontext
-                .Set<Advertisement>()
+                .Set<Account>()
                 .AsNoTracking(); ;
 
             return await data
@@ -57,11 +57,11 @@ namespace Sev1.Accounts.DataAccess.Repositories
                 .CountAsync(cancellationToken);
         }
         public async Task<int> CountWithOutDeleted(
-            Expression<Func<Advertisement, bool>> predicate,
+            Expression<Func<Account, bool>> predicate,
             CancellationToken cancellationToken)
         {
             var data = DbСontext
-                .Set<Advertisement>()
+                .Set<Account>()
                 .AsNoTracking(); ;
 
             return await data
@@ -69,13 +69,13 @@ namespace Sev1.Accounts.DataAccess.Repositories
                 .Where(predicate)
                 .CountAsync(cancellationToken);
         }
-        public async Task<IEnumerable<Advertisement>> GetPagedWithTagsAndOwnerAndCategoryInclude(
+        public async Task<IEnumerable<Account>> GetPagedWithTagsAndOwnerAndCategoryInclude(
             int offset,
             int limit,
             CancellationToken cancellationToken)
         {
             var data = DbСontext
-                .Set<Advertisement>()
+                .Set<Account>()
                 .Include(a => a.Tags)
                 //.Include(a => a.Owner)
                 .Include(a => a.Category)
@@ -88,14 +88,14 @@ namespace Sev1.Accounts.DataAccess.Repositories
                 .Take(limit)
                 .ToListAsync(cancellationToken);
         }
-        public async Task<IEnumerable<Advertisement>> GetPagedWithTagsAndOwnerAndCategoryInclude(
-            Expression<Func<Advertisement, bool>> predicate,
+        public async Task<IEnumerable<Account>> GetPagedWithTagsAndOwnerAndCategoryInclude(
+            Expression<Func<Account, bool>> predicate,
             int offset,
             int limit,
             CancellationToken cancellationToken)
         {
             var data = DbСontext
-                .Set<Advertisement>()
+                .Set<Account>()
                 .Include(a => a.Tags)
                 //.Include(a => a.Owner)
                 .Include(a => a.Category)

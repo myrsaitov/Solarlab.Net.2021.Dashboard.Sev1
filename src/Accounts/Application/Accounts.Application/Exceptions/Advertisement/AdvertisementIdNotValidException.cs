@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace Sev1.Accounts.Application.Exceptions.Advertisement
+namespace Sev1.Accounts.Application.Exceptions.Account
 {
-    public class AdvertisementIdNotValidException : ApplicationException
+    public class AccountIdNotValidException : ApplicationException
     {
-        public AdvertisementIdNotValidException(string message) : base(message)
+        public AccountIdNotValidException(string message) : base(message)
         {
         }
     }

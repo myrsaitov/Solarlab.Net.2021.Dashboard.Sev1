@@ -6,11 +6,11 @@ using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
 using System;
-using Sev1.Accounts.Application.Exceptions.Advertisement;
+using Sev1.Accounts.Application.Exceptions.Account;
 
-namespace Sev1.Accounts.Tests.Advertisement
+namespace Sev1.Accounts.Tests.Account
 {
-    public partial class AdvertisementServiceV1Test
+    public partial class AccountServiceV1Test
     {
         [Theory]
         [AutoData]
@@ -24,7 +24,7 @@ namespace Sev1.Accounts.Tests.Advertisement
             int categoryId)
         {
             // Arrange
-            var content = new Domain.Advertisement()
+            var content = new Domain.Account()
             {
                 Title = contentTitle,
                 Body = contentBody,
@@ -67,12 +67,12 @@ namespace Sev1.Accounts.Tests.Advertisement
         }
         [Theory]
         [AutoData]
-        public async Task GetById_Throws_Exception_When_Advertisement_Is_Null(
+        public async Task GetById_Throws_Exception_When_Account_Is_Null(
             int id,
             CancellationToken cancellationToken)
         {
             // Act
-            await Assert.ThrowsAsync<AdvertisementNotFoundException>(
+            await Assert.ThrowsAsync<AccountNotFoundException>(
                 async () => await _advertisementServiceV1.GetById(
                     id,
                     cancellationToken));

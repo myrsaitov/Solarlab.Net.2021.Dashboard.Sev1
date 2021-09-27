@@ -2,28 +2,28 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Accounts.Application.Exceptions.Advertisement;
-using Sev1.Accounts.Application.Contracts.Advertisement;
-using Sev1.Accounts.Application.Interfaces.Advertisement;
+using Sev1.Accounts.Application.Exceptions.Account;
+using Sev1.Accounts.Application.Contracts.Account;
+using Sev1.Accounts.Application.Interfaces.Account;
 using Sev1.Accounts.Application.Contracts.Tag;
-using Sev1.Accounts.Application.Validators.Advertisement;
+using Sev1.Accounts.Application.Validators.Account;
 using System.Linq;
 using Sev1.Accounts.Application.Exceptions.Category;
 
-namespace Sev1.Accounts.Application.Implementations.Advertisement
+namespace Sev1.Accounts.Application.Implementations.Account
 {
-    public sealed partial class AdvertisementServiceV1 : IAdvertisementService
+    public sealed partial class AccountServiceV1 : IAccountService
     {
         public async Task Create(
-            AdvertisementCreateDto model, 
+            AccountCreateDto model, 
             CancellationToken cancellationToken)
         {
             // Fluent Validation
-            var validator = new AdvertisementCreateDtoValidator();
+            var validator = new AccountCreateDtoValidator();
             var result = await validator.ValidateAsync(model);
             if (!result.IsValid)
             {
-                throw new AdvertisementCreateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
+                throw new AccountCreateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
             var category = await _categoryRepository.FindById(
@@ -35,7 +35,7 @@ namespace Sev1.Accounts.Application.Implementations.Advertisement
                 throw new CategoryNotFoundException(model.CategoryId);
             }
 
-            var advertisement = _mapper.Map<Domain.Advertisement>(model);
+            var advertisement = _mapper.Map<Domain.Account>(model);
             advertisement.IsDeleted = false;
             advertisement.CreatedAt = DateTime.UtcNow;
             advertisement.Category = category;

@@ -6,11 +6,11 @@ using Xunit;
 using AutoFixture.Xunit2;
 using System;
 using Sev1.Accounts.Domain.Exceptions;
-using Sev1.Accounts.Application.Exceptions.Advertisement;
+using Sev1.Accounts.Application.Exceptions.Account;
 
-namespace Sev1.Accounts.Tests.Advertisement
+namespace Sev1.Accounts.Tests.Account
 {
-    public partial class AdvertisementServiceV1Test
+    public partial class AccountServiceV1Test
     {
         [Theory]
         [AutoData]
@@ -21,7 +21,7 @@ namespace Sev1.Accounts.Tests.Advertisement
             int contentId)
         {
             // Arrange
-            var content = new Domain.Advertisement()
+            var content = new Domain.Account()
             {
                 //OwnerId = userId.ToString()
             };
@@ -37,9 +37,9 @@ namespace Sev1.Accounts.Tests.Advertisement
 
             _advertisementRepositoryMock
                 .Setup(_ => _.Save(
-                    It.IsAny<Domain.Advertisement>(),
+                    It.IsAny<Domain.Account>(),
                     It.IsAny<CancellationToken>()))
-                .Callback((Domain.Advertisement content, CancellationToken ct) => content.Id = contentId);
+                .Callback((Domain.Account content, CancellationToken ct) => content.Id = contentId);
 
             // Act
             await _advertisementServiceV1.Restore(
@@ -57,7 +57,7 @@ namespace Sev1.Accounts.Tests.Advertisement
             int userId)
         {
             // Arrange
-            var content = new Domain.Advertisement()
+            var content = new Domain.Account()
             {
                 //OwnerId = userId.ToString()
             };
@@ -78,12 +78,12 @@ namespace Sev1.Accounts.Tests.Advertisement
         }
         [Theory]
         [AutoData]
-        public async Task Restore_Throws_Exception_When_Advertisement_Is_Null(
+        public async Task Restore_Throws_Exception_When_Account_Is_Null(
             int id ,
             CancellationToken cancellationToken)
         {
             // Act
-            await Assert.ThrowsAsync<AdvertisementNotFoundException>(
+            await Assert.ThrowsAsync<AccountNotFoundException>(
                 async () => await _advertisementServiceV1.Restore(
                     id,
                     cancellationToken));

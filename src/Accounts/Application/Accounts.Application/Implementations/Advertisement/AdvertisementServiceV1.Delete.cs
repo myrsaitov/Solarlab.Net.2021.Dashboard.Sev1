@@ -2,24 +2,24 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Accounts.Application.Exceptions.Advertisement;
-using Sev1.Accounts.Application.Interfaces.Advertisement;
-using Sev1.Accounts.Application.Validators.Advertisement;
+using Sev1.Accounts.Application.Exceptions.Account;
+using Sev1.Accounts.Application.Interfaces.Account;
+using Sev1.Accounts.Application.Validators.Account;
 
-namespace Sev1.Accounts.Application.Implementations.Advertisement
+namespace Sev1.Accounts.Application.Implementations.Account
 {
-    public sealed partial class AdvertisementServiceV1 : IAdvertisementService
+    public sealed partial class AccountServiceV1 : IAccountService
     {
         public async Task Delete(
             int id,
             CancellationToken cancellationToken)
         {
             // Fluent Validation
-            var validator = new AdvertisementIdValidator();
+            var validator = new AccountIdValidator();
             var result = await validator.ValidateAsync(id);
             if (!result.IsValid)
             {
-                throw new AdvertisementIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
+                throw new AccountIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
             var advertisement = await _advertisementRepository.FindByIdWithUserAndTagsInclude(
@@ -28,7 +28,7 @@ namespace Sev1.Accounts.Application.Implementations.Advertisement
 
             if (advertisement == null)
             {
-                throw new AdvertisementNotFoundException(id);
+                throw new AccountNotFoundException(id);
             }
 
             advertisement.IsDeleted = true;

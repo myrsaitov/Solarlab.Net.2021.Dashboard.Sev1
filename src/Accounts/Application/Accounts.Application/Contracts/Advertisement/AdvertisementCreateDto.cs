@@ -1,6 +1,6 @@
-﻿namespace Sev1.Accounts.Application.Contracts.Advertisement
+﻿namespace Sev1.Accounts.Application.Contracts.Account
 {
-    public class AdvertisementCreateDto
+    public class AccountCreateDto
     {
         public string Title { get; set; }
         public string Body { get; set; }

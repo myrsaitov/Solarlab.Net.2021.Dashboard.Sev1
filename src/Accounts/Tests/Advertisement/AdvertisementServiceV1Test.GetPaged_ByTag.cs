@@ -1,4 +1,4 @@
-﻿using Sev1.Accounts.Application.Contracts.Advertisement;
+﻿using Sev1.Accounts.Application.Contracts.Account;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,14 +10,14 @@ using System.Linq.Expressions;
 using System.Linq;
 using Sev1.Accounts.Application.Contracts.GetPaged;
 
-namespace Sev1.Accounts.Tests.Advertisement
+namespace Sev1.Accounts.Tests.Account
 {
-    public partial class AdvertisementServiceV1Test
+    public partial class AccountServiceV1Test
     {
         [Theory]
         [AutoData]
         public async Task GetPaged_ByTag_Returns_Response_Success(
-            GetPagedAdvertisementRequest request,
+            GetPagedAccountRequest request,
             CancellationToken cancellationToken,
             int userId,
             string contentTitle,
@@ -29,11 +29,11 @@ namespace Sev1.Accounts.Tests.Advertisement
             // Arrange
             int contentCount = 3;
 
-            var responce = new List<Domain.Advertisement>();
+            var responce = new List<Domain.Account>();
 
             for (int contentId = 1; contentId <= contentCount; contentId++)
             {
-                var content = new Domain.Advertisement()
+                var content = new Domain.Account()
                 {
                     Id = contentId,
                     Title = contentTitle,
@@ -68,14 +68,14 @@ namespace Sev1.Accounts.Tests.Advertisement
 
             _advertisementRepositoryMock
                 .Setup(_ => _.Count(
-                    It.IsAny<Expression<Func<Domain.Advertisement, bool>>>(),
+                    It.IsAny<Expression<Func<Domain.Account, bool>>>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(contentCount)
                 .Verifiable();
 
             _advertisementRepositoryMock
                 .Setup(_ => _.GetPagedWithTagsAndOwnerAndCategoryInclude(
-                    It.IsAny<Expression<Func<Domain.Advertisement, bool>>>(),
+                    It.IsAny<Expression<Func<Domain.Account, bool>>>(),
                     It.IsAny<int>(),
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
@@ -93,23 +93,23 @@ namespace Sev1.Accounts.Tests.Advertisement
             Assert.NotNull(response);
             Assert.Equal(contentCount, response.Total);
             Assert.Equal(contentCount, response.Items.Count());
-            Assert.IsType<GetPagedResponse<AdvertisementPagedDto>>(response);
+            Assert.IsType<GetPagedResponse<AccountPagedDto>>(response);
         }
         [Theory]
         [AutoData]
         public async Task GetPaged_ByTag_Returns_Response_Success_Total_eq_0(
-            GetPagedAdvertisementRequest request,
+            GetPagedAccountRequest request,
             CancellationToken cancellationToken,
-            Expression<Func<Domain.Advertisement, bool>> predicate)
+            Expression<Func<Domain.Account, bool>> predicate)
         {
             // Arrange
             int contentCount = 0;
 
-            var responce = new List<Domain.Advertisement>();
+            var responce = new List<Domain.Account>();
 
             _advertisementRepositoryMock
                 .Setup(_ => _.Count(
-                    It.IsAny<Expression<Func<Domain.Advertisement, bool>>>(),
+                    It.IsAny<Expression<Func<Domain.Account, bool>>>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(contentCount)
                 .Verifiable();
@@ -125,14 +125,14 @@ namespace Sev1.Accounts.Tests.Advertisement
             Assert.NotNull(response);
             Assert.Equal(contentCount, response.Total);
             Assert.Equal(contentCount, response.Items.Count());
-            Assert.IsType<GetPagedResponse<AdvertisementPagedDto>>(response);
+            Assert.IsType<GetPagedResponse<AccountPagedDto>>(response);
         }
         [Theory]
         [InlineAutoData(null)]
         public async Task GetPaged_ByTag_Throws_Exception_When_Request_Is_Null(
-            GetPagedAdvertisementRequest request,
+            GetPagedAccountRequest request,
             CancellationToken cancellationToken,
-            Expression<Func<Domain.Advertisement, bool>> predicate)
+            Expression<Func<Domain.Account, bool>> predicate)
         {
             // Act
             await Assert.ThrowsAsync<ArgumentNullException>(

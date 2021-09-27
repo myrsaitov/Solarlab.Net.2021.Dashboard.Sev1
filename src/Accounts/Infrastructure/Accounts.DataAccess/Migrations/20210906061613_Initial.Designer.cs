@@ -21,7 +21,7 @@ namespace Accounts.DataAccess.Migrations
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AdvertisementTag", b =>
+            modelBuilder.Entity("AccountTag", b =>
                 {
                     b.Property<int>("AccountsId")
                         .HasColumnType("int");
@@ -33,10 +33,10 @@ namespace Accounts.DataAccess.Migrations
 
                     b.HasIndex("TagsId");
 
-                    b.ToTable("TagAdvertisement");
+                    b.ToTable("TagAccount");
                 });
 
-            modelBuilder.Entity("Sev1.Accounts.Domain.Advertisement", b =>
+            modelBuilder.Entity("Sev1.Accounts.Domain.Account", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -168,9 +168,9 @@ namespace Accounts.DataAccess.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("AdvertisementTag", b =>
+            modelBuilder.Entity("AccountTag", b =>
                 {
-                    b.HasOne("Sev1.Accounts.Domain.Advertisement", null)
+                    b.HasOne("Sev1.Accounts.Domain.Account", null)
                         .WithMany()
                         .HasForeignKey("AccountsId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -183,7 +183,7 @@ namespace Accounts.DataAccess.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Sev1.Accounts.Domain.Advertisement", b =>
+            modelBuilder.Entity("Sev1.Accounts.Domain.Account", b =>
                 {
                     b.HasOne("Sev1.Accounts.Domain.Category", "Category")
                         .WithMany("Accounts")

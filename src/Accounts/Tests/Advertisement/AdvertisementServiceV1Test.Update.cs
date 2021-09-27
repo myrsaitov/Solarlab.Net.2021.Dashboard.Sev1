@@ -1,4 +1,4 @@
-﻿using Sev1.Accounts.Application.Contracts.Advertisement;
+﻿using Sev1.Accounts.Application.Contracts.Account;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,16 +9,16 @@ using System;
 using Sev1.Accounts.Application.Exceptions;
 using Sev1.Accounts.Domain.Exceptions;
 using Sev1.Accounts.Application.Exceptions.Category;
-using Sev1.Accounts.Application.Exceptions.Advertisement;
+using Sev1.Accounts.Application.Exceptions.Account;
 
-namespace Sev1.Accounts.Tests.Advertisement
+namespace Sev1.Accounts.Tests.Account
 {
-    public partial class AdvertisementServiceV1Test
+    public partial class AccountServiceV1Test
     {
         [Theory]
         [AutoData]
         public async Task Update_Returns_Response_Success(
-            AdvertisementUpdateDto request,
+            AccountUpdateDto request,
             CancellationToken cancellationToken,
             int userId,
             int contentId,
@@ -30,7 +30,7 @@ namespace Sev1.Accounts.Tests.Advertisement
                 Id = categoryId
             };
 
-            var content = new Domain.Advertisement()
+            var content = new Domain.Account()
             {
                 Id = contentId,
 
@@ -83,9 +83,9 @@ namespace Sev1.Accounts.Tests.Advertisement
 
             _advertisementRepositoryMock
                 .Setup(_ => _.Save(
-                    It.IsAny<Domain.Advertisement>(),
+                    It.IsAny<Domain.Account>(),
                     It.IsAny<CancellationToken>()))
-                .Callback((Domain.Advertisement content, CancellationToken ct) => content.Id = contentId);
+                .Callback((Domain.Account content, CancellationToken ct) => content.Id = contentId);
 
             // Act
             var response = await _advertisementServiceV1.Update(
@@ -102,13 +102,13 @@ namespace Sev1.Accounts.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_Category_is_Null(
-            AdvertisementUpdateDto request,
+            AccountUpdateDto request,
             CancellationToken cancellationToken,
             int userId,
             int contentId)
         {
             // Arrange
-            var content = new Domain.Advertisement()
+            var content = new Domain.Account()
             {
                 Id = contentId,
 
@@ -131,13 +131,13 @@ namespace Sev1.Accounts.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_No_Rights(
-            AdvertisementUpdateDto request,
+            AccountUpdateDto request,
             CancellationToken cancellationToken,
             int userId,
             int contentId)
         {
             // Arrange
-            var content = new Domain.Advertisement()
+            var content = new Domain.Account()
             {
                 Id = contentId,
 
@@ -159,12 +159,12 @@ namespace Sev1.Accounts.Tests.Advertisement
         }
         [Theory]
         [AutoData]
-        public async Task Update_Throws_Exception_When_Advertisement_Is_Null(
-            AdvertisementUpdateDto request,
+        public async Task Update_Throws_Exception_When_Account_Is_Null(
+            AccountUpdateDto request,
             CancellationToken cancellationToken)
         {
             // Act
-            await Assert.ThrowsAsync<AdvertisementNotFoundException>(
+            await Assert.ThrowsAsync<AccountNotFoundException>(
                 async () => await _advertisementServiceV1.Update(
                     request,
                     cancellationToken));
@@ -172,7 +172,7 @@ namespace Sev1.Accounts.Tests.Advertisement
         [Theory]
         [InlineAutoData(null)]
         public async Task Update_Throws_Exception_When_Request_Is_Null(
-            AdvertisementUpdateDto request,
+            AccountUpdateDto request,
             CancellationToken cancellationToken)
         {
             // Act

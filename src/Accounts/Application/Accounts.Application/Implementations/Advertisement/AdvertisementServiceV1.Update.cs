@@ -2,28 +2,28 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Accounts.Application.Exceptions.Advertisement;
-using Sev1.Accounts.Application.Contracts.Advertisement;
-using Sev1.Accounts.Application.Interfaces.Advertisement;
+using Sev1.Accounts.Application.Exceptions.Account;
+using Sev1.Accounts.Application.Contracts.Account;
+using Sev1.Accounts.Application.Interfaces.Account;
 using Sev1.Accounts.Application.Contracts.Tag;
-using Sev1.Accounts.Application.Validators.Advertisement;
+using Sev1.Accounts.Application.Validators.Account;
 using System.Linq;
 using Sev1.Accounts.Application.Exceptions.Category;
 
-namespace Sev1.Accounts.Application.Implementations.Advertisement
+namespace Sev1.Accounts.Application.Implementations.Account
 {
-    public sealed partial class AdvertisementServiceV1 : IAdvertisementService
+    public sealed partial class AccountServiceV1 : IAccountService
     {
         public async Task<int> Update(
-            AdvertisementUpdateDto model,
+            AccountUpdateDto model,
             CancellationToken cancellationToken)
         {
             // Fluent Validation
-            var validator = new AdvertisementUpdateDtoValidator();
+            var validator = new AccountUpdateDtoValidator();
             var result = await validator.ValidateAsync(model);
             if (!result.IsValid)
             {
-                throw new AdvertisementUpdateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
+                throw new AccountUpdateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
             var advertisement = await _advertisementRepository.FindByIdWithUserAndCategoryAndTags(
@@ -32,7 +32,7 @@ namespace Sev1.Accounts.Application.Implementations.Advertisement
 
             if (advertisement == null)
             {
-                throw new AdvertisementNotFoundException(model.Id);
+                throw new AccountNotFoundException(model.Id);
             }
 
             // TODO Mapper

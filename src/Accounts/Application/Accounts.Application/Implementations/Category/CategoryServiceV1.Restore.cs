@@ -4,10 +4,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Accounts.Application.Contracts.Category;
 using Sev1.Accounts.Application.Exceptions;
-using Sev1.Accounts.Application.Exceptions.Advertisement;
+using Sev1.Accounts.Application.Exceptions.Account;
 using Sev1.Accounts.Application.Exceptions.Category;
 using Sev1.Accounts.Application.Interfaces.Category;
-using Sev1.Accounts.Application.Validators.Advertisement;
+using Sev1.Accounts.Application.Validators.Account;
 using Sev1.Accounts.Domain.Base;
 
 namespace Sev1.Accounts.Application.Implementations.Category

@@ -3,19 +3,19 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Accounts.Application.Contracts.Advertisement;
-using Sev1.Accounts.Application.Interfaces.Advertisement;
+using Sev1.Accounts.Application.Contracts.Account;
+using Sev1.Accounts.Application.Interfaces.Account;
 using Sev1.Accounts.Application.Contracts.GetPaged;
 using System.Linq.Expressions;
 using Sev1.Accounts.Application.Validators.GetPaged;
-using Sev1.Accounts.Application.Exceptions.Advertisement;
+using Sev1.Accounts.Application.Exceptions.Account;
 
-namespace Sev1.Accounts.Application.Implementations.Advertisement
+namespace Sev1.Accounts.Application.Implementations.Account
 {
-    public sealed partial class AdvertisementServiceV1 : IAdvertisementService
+    public sealed partial class AccountServiceV1 : IAccountService
     {
-        public async Task<GetPagedAdvertisementResponse> GetPaged(
-            GetPagedAdvertisementRequest request,
+        public async Task<GetPagedAccountResponse> GetPaged(
+            GetPagedAccountRequest request,
             CancellationToken cancellationToken)
         {
             // Fluent Validation
@@ -29,7 +29,7 @@ namespace Sev1.Accounts.Application.Implementations.Advertisement
             // Вычислить смещение (skip)
             var offset = request.Page * request.PageSize;
             
-            Expression<Func<Domain.Advertisement, bool>> predicate = default;
+            Expression<Func<Domain.Account, bool>> predicate = default;
             // Если нет параметров поиска, выводим без какой-либо фильтрации
             if ((request.SearchStr is null)
                 && (request.UserName is null)
@@ -88,9 +88,9 @@ namespace Sev1.Accounts.Application.Implementations.Advertisement
             // Если объявления не найдены, то возвращаем "пустой" ответ 
             if (total == 0)
             {
-                return new GetPagedAdvertisementResponse
+                return new GetPagedAccountResponse
                 {
-                    Items = Array.Empty<AdvertisementPagedDto>(),
+                    Items = Array.Empty<AccountPagedDto>(),
                     Total = 0,
                     Offset = offset,
                     Limit = request.PageSize
@@ -106,9 +106,9 @@ namespace Sev1.Accounts.Application.Implementations.Advertisement
                     request.PageSize,
                     cancellationToken);
 
-                return new GetPagedAdvertisementResponse
+                return new GetPagedAccountResponse
                 {
-                    Items = entities.Select(entity => _mapper.Map<AdvertisementPagedDto>(entity)),
+                    Items = entities.Select(entity => _mapper.Map<AccountPagedDto>(entity)),
                     Total = total,
                     Offset = offset,
                     Limit = request.PageSize
@@ -123,9 +123,9 @@ namespace Sev1.Accounts.Application.Implementations.Advertisement
                     request.PageSize,
                     cancellationToken);
 
-                return new GetPagedAdvertisementResponse
+                return new GetPagedAccountResponse
                 {
-                    Items = entities.Select(entity => _mapper.Map<AdvertisementPagedDto>(entity)),
+                    Items = entities.Select(entity => _mapper.Map<AccountPagedDto>(entity)),
                     Total = total,
                     Offset = offset,
                     Limit = request.PageSize

@@ -3,7 +3,7 @@ using Sev1.Accounts.Domain.Base;
 
 namespace Sev1.Accounts.Domain
 {
-    public class Advertisement : EntityMutable<int>
+    public class Account : EntityMutable<int>
     {
         /// <summary>
         /// Заголовок объявления
