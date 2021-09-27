@@ -84,7 +84,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // Act
             var response = await _advertisementServiceV1.GetPaged(
-                a => a.Tags.Any(t => t.Body == tagSearch), 
+                //a => a.Tags.Any(t => t.Body == tagSearch), 
                 request, 
                 cancellationToken);
 
@@ -116,7 +116,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // Act
             var response = await _advertisementServiceV1.GetPaged(
-                predicate,
+                //predicate,
                 request,
                 cancellationToken);
 
@@ -137,7 +137,6 @@ namespace Sev1.Advertisements.Tests.Advertisement
             // Act
             await Assert.ThrowsAsync<ArgumentNullException>(
                 async () => await _advertisementServiceV1.GetPaged(
-                    predicate, 
                     request, 
                     cancellationToken));
         }
