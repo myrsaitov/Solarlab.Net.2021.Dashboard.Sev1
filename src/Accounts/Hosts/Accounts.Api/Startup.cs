@@ -54,10 +54,7 @@ namespace Sev1.Accounts.Api
             // is created only one time per application 
             // and that single instance is used throughout 
             // the application life time.
-            services.AddSingleton(CategoryMapProfile.GetConfiguredMappingConfig());
             services.AddSingleton(AccountMapProfile.GetConfiguredMappingConfig());
-            services.AddSingleton(TagMapProfile.GetConfiguredMappingConfig());
-
 
             // AddScoped():
             //

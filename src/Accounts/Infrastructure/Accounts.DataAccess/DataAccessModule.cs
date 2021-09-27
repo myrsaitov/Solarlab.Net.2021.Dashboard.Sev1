@@ -57,9 +57,6 @@ namespace Sev1.Accounts.DataAccess
             // in the other calls within that same web request.
             moduleConfiguration.Services.AddScoped(typeof(IRepository<,>), typeof(EfRepository<,>));
             moduleConfiguration.Services.AddScoped<IAccountRepository, AccountRepository>();
-            moduleConfiguration.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-            moduleConfiguration.Services.AddScoped<ITagRepository, TagRepository>();
-
         }
     }
 }

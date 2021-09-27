@@ -15,15 +15,10 @@ namespace Sev1.Accounts.DataAccess
         }
 
         public DbSet<Account> Accounts { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Tag> Tags { get; set; }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AccountConfiguration());
-            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-            modelBuilder.ApplyConfiguration(new TagConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
