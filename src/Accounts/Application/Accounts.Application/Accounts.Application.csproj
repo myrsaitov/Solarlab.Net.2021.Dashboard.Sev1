@@ -16,6 +16,7 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="10.3.3" />
     <PackageReference Include="Mapster" Version="7.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.9">
       <PrivateAssets>all</PrivateAssets>
@@ -28,6 +29,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\Accounts.Domain\Accounts.Domain.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Accounts.DataAccess\Accounts.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Exceptions\Mail\" />
   </ItemGroup>
 
 </Project>
