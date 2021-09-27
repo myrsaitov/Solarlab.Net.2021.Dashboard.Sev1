@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Category;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Accounts.Application.Contracts.Category;
+using Sev1.Accounts.Application.Contracts.GetPaged;
 
-namespace Sev1.Advertisements.Application.Interfaces.Category
+namespace Sev1.Accounts.Application.Interfaces.Category
 {
     public interface ICategoryService
     {

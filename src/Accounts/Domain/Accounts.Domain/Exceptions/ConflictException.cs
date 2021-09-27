@@ -1,6 +1,6 @@
-﻿using Sev1.Advertisements.Domain.Base;
+﻿using Sev1.Accounts.Domain.Base;
 
-namespace Sev1.Advertisements.Domain.Exceptions
+namespace Sev1.Accounts.Domain.Exceptions
 {
     /// <summary>
     /// Доменное исключение при конфликте

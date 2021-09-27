@@ -1,4 +1,4 @@
-namespace Sev1.Advertisements.Contracts.Region
+namespace Sev1.Accounts.Contracts.Region
 {
     public class RegionDto : DtoBase
     {

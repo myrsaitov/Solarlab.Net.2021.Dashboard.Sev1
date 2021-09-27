@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Sev1.Advertisements.Contracts.Comments;
-using Sev1.Advertisements.Contracts.Enums;
+using Sev1.Accounts.Contracts.Comments;
+using Sev1.Accounts.Contracts.Enums;
 
-namespace Sev1.Advertisements.Contracts.Post
+namespace Sev1.Accounts.Contracts.Post
 {
     public class PostDto : DtoBase
     {

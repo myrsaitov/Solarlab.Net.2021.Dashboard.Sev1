@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Interfaces.Advertisement;
+using Sev1.Accounts.Application.Interfaces.Advertisement;
 
-namespace Sev1.Advertisements.Api.Controllers.Advertisement
+namespace Sev1.Accounts.Api.Controllers.Advertisement
 {
     [Route("api/v1/advertisements")]
     [ApiController]

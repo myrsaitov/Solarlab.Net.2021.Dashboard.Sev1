@@ -1,14 +1,14 @@
-﻿using Sev1.Advertisements.Application.Exceptions;
+﻿using Sev1.Accounts.Application.Exceptions;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System;
-using Sev1.Advertisements.Domain.Exceptions;
-using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Sev1.Accounts.Domain.Exceptions;
+using Sev1.Accounts.Application.Exceptions.Advertisement;
 
-namespace Sev1.Advertisements.Tests.Advertisement
+namespace Sev1.Accounts.Tests.Advertisement
 {
     public partial class AdvertisementServiceV1Test
     {

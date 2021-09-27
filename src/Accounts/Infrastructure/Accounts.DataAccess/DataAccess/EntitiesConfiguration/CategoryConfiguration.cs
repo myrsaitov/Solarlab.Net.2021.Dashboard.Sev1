@@ -1,9 +1,9 @@
 ﻿using System;
-using Sev1.Advertisements.Domain;
+using Sev1.Accounts.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Sev1.Advertisements.DataAccess.EntitiesConfiguration
+namespace Sev1.Accounts.DataAccess.EntitiesConfiguration
 {
     public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {

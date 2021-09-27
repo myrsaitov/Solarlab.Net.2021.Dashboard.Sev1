@@ -1,11 +1,11 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Domain;
+using Sev1.Accounts.Domain;
 using Microsoft.EntityFrameworkCore;
-using Sev1.Advertisements.DataAccess.Base;
-using Sev1.Advertisements.DataAccess.Interfaces;
+using Sev1.Accounts.DataAccess.Base;
+using Sev1.Accounts.DataAccess.Interfaces;
 
-namespace Sev1.Advertisements.DataAccess.Repositories
+namespace Sev1.Accounts.DataAccess.Repositories
 {
     public sealed class CategoryRepository : EfRepository<Category, int>, ICategoryRepository
     {

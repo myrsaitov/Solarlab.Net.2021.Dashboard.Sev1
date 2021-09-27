@@ -1,7 +1,7 @@
 ﻿using Mapster;
-using Sev1.Advertisements.Application.Contracts.Tag;
+using Sev1.Accounts.Application.Contracts.Tag;
 
-namespace Sev1.Advertisements.MapsterMapper.MapProfiles
+namespace Sev1.Accounts.MapsterMapper.MapProfiles
 {
     public class TagMapProfile
     {

@@ -3,9 +3,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Contracts.Category;
+using Sev1.Accounts.Application.Contracts.Category;
 
-namespace Sev1.Advertisements.Api.Controllers.Category
+namespace Sev1.Accounts.Api.Controllers.Category
 {
     public partial class CategoryController
     {

@@ -1,4 +1,4 @@
-﻿namespace Sev1.Advertisements.Application.Contracts.Advertisement
+﻿namespace Sev1.Accounts.Application.Contracts.Advertisement
 {
     public class AdvertisementPagedDto
     {

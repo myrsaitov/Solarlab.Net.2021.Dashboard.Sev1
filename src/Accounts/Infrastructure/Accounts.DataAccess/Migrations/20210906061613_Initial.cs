@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Advertisements.DataAccess.Migrations
+namespace Accounts.DataAccess.Migrations
 {
     public partial class Initial : Migration
     {
@@ -46,7 +46,7 @@ namespace Advertisements.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Advertisements",
+                name: "Accounts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -61,9 +61,9 @@ namespace Advertisements.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Advertisements", x => x.Id);
+                    table.PrimaryKey("PK_Accounts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Advertisements_Categories_CategoryId",
+                        name: "FK_Accounts_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
@@ -74,16 +74,16 @@ namespace Advertisements.DataAccess.Migrations
                 name: "TagAdvertisement",
                 columns: table => new
                 {
-                    AdvertisementsId = table.Column<int>(type: "int", nullable: false),
+                    AccountsId = table.Column<int>(type: "int", nullable: false),
                     TagsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TagAdvertisement", x => new { x.AdvertisementsId, x.TagsId });
+                    table.PrimaryKey("PK_TagAdvertisement", x => new { x.AccountsId, x.TagsId });
                     table.ForeignKey(
-                        name: "FK_TagAdvertisement_Advertisements_AdvertisementsId",
-                        column: x => x.AdvertisementsId,
-                        principalTable: "Advertisements",
+                        name: "FK_TagAdvertisement_Accounts_AccountsId",
+                        column: x => x.AccountsId,
+                        principalTable: "Accounts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -108,8 +108,8 @@ namespace Advertisements.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Advertisements_CategoryId",
-                table: "Advertisements",
+                name: "IX_Accounts_CategoryId",
+                table: "Accounts",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
@@ -129,7 +129,7 @@ namespace Advertisements.DataAccess.Migrations
                 name: "TagAdvertisement");
 
             migrationBuilder.DropTable(
-                name: "Advertisements");
+                name: "Accounts");
 
             migrationBuilder.DropTable(
                 name: "Tags");

@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Accounts.Application.Contracts.GetPaged;
 
-namespace Sev1.Advertisements.Api.Controllers.Tag
+namespace Sev1.Accounts.Api.Controllers.Tag
 {
     public partial class TagController
     {

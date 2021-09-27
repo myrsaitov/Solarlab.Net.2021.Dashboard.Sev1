@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
-using Sev1.Advertisements.Application.Contracts.Category;
+using Sev1.Accounts.Application.Contracts.Category;
 using System.Linq;
 using System;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Accounts.Application.Contracts.GetPaged;
 
-namespace Sev1.Advertisements.Tests.Category
+namespace Sev1.Accounts.Tests.Category
 {
     public partial class CategoryServiceV1Test
     {

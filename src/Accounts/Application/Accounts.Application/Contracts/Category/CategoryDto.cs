@@ -1,4 +1,4 @@
-﻿namespace Sev1.Advertisements.Application.Contracts.Category
+﻿namespace Sev1.Accounts.Application.Contracts.Category
 {
     public class CategoryDto
     {

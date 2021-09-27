@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sev1.Advertisements.Domain.Base
+namespace Sev1.Accounts.Domain.Base
 {
     /// <summary>
     /// Базовое доменное исключение

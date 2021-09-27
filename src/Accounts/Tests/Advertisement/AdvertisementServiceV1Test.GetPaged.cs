@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
+using Sev1.Accounts.Application.Contracts.GetPaged;
+using Sev1.Accounts.Application.Contracts.Advertisement;
 using System.Linq;
 using System;
 
-namespace Sev1.Advertisements.Tests.Advertisement
+namespace Sev1.Accounts.Tests.Advertisement
 {
     public partial class AdvertisementServiceV1Test
     {

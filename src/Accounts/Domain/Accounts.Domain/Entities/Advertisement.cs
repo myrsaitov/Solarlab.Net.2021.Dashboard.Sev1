@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Sev1.Advertisements.Domain.Base;
+using Sev1.Accounts.Domain.Base;
 
-namespace Sev1.Advertisements.Domain
+namespace Sev1.Accounts.Domain
 {
     public class Advertisement : EntityMutable<int>
     {

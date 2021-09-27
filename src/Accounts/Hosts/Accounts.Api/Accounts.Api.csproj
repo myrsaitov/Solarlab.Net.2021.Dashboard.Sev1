@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <RootNamespace>Sev1.Advertisements.Api</RootNamespace>
+        <RootNamespace>Sev1.Accounts.Api</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -44,11 +44,11 @@
 
     <ItemGroup>
      
-      <ProjectReference Include="..\..\Application\Advertisements.Application\Advertisements.Application.csproj" />
+      <ProjectReference Include="..\..\Application\Accounts.Application\Accounts.Application.csproj" />
      
-      <ProjectReference Include="..\..\Infrastructure\Advertisements.DataAccess\Advertisements.DataAccess.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\Accounts.DataAccess\Accounts.DataAccess.csproj" />
      
-      <ProjectReference Include="..\..\Infrastructure\Advertisements.Mapper\Advertisements.MapsterMapper.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\Accounts.Mapper\Accounts.MapsterMapper.csproj" />
     </ItemGroup>
 
     <ItemGroup>

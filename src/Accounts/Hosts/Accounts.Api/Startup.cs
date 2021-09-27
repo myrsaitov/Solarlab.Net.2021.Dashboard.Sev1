@@ -1,15 +1,15 @@
 using MapsterMapper;
-using Sev1.Advertisements.Api.Controllers;
+using Sev1.Accounts.Api.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Sev1.Advertisements.MapsterMapper.MapProfiles;
+using Sev1.Accounts.MapsterMapper.MapProfiles;
 using Microsoft.Extensions.Hosting;
-using Sev1.Advertisements.DataAccess;
+using Sev1.Accounts.DataAccess;
 
-namespace Sev1.Advertisements.Api
+namespace Sev1.Accounts.Api
 {
     public class Startup
     {

@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Sev1.Advertisements.Application.Validators.Tag
+namespace Sev1.Accounts.Application.Validators.Tag
 {
     /// <summary>
     /// Валидатор одного TagBody

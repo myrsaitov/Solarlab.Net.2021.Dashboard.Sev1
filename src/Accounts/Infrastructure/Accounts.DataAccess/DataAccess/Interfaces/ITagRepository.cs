@@ -1,7 +1,7 @@
-﻿using Sev1.Advertisements.DataAccess.Base;
-using Sev1.Advertisements.Domain;
+﻿using Sev1.Accounts.DataAccess.Base;
+using Sev1.Accounts.Domain;
 
-namespace Sev1.Advertisements.DataAccess.Interfaces
+namespace Sev1.Accounts.DataAccess.Interfaces
 {
     /// <summary>
     /// Репозиторий Tag

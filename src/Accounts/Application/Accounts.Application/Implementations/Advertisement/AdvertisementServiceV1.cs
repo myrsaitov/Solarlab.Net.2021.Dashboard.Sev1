@@ -1,8 +1,8 @@
 ﻿using MapsterMapper;
-using Sev1.Advertisements.Application.Interfaces.Advertisement;
-using Sev1.Advertisements.DataAccess.Interfaces;
+using Sev1.Accounts.Application.Interfaces.Advertisement;
+using Sev1.Accounts.DataAccess.Interfaces;
 
-namespace Sev1.Advertisements.Application.Implementations.Advertisement
+namespace Sev1.Accounts.Application.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {

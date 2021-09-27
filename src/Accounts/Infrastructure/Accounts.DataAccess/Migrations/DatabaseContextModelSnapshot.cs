@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Sev1.Advertisements.DataAccess;
+using Sev1.Accounts.DataAccess;
 
-namespace Advertisements.DataAccess.Migrations
+namespace Accounts.DataAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
     partial class DatabaseContextModelSnapshot : ModelSnapshot
@@ -21,20 +21,20 @@ namespace Advertisements.DataAccess.Migrations
 
             modelBuilder.Entity("AdvertisementTag", b =>
                 {
-                    b.Property<int>("AdvertisementsId")
+                    b.Property<int>("AccountsId")
                         .HasColumnType("int");
 
                     b.Property<int>("TagsId")
                         .HasColumnType("int");
 
-                    b.HasKey("AdvertisementsId", "TagsId");
+                    b.HasKey("AccountsId", "TagsId");
 
                     b.HasIndex("TagsId");
 
                     b.ToTable("TagAdvertisement");
                 });
 
-            modelBuilder.Entity("Sev1.Advertisements.Domain.Advertisement", b =>
+            modelBuilder.Entity("Sev1.Accounts.Domain.Advertisement", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -66,10 +66,10 @@ namespace Advertisements.DataAccess.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Advertisements");
+                    b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("Sev1.Advertisements.Domain.Category", b =>
+            modelBuilder.Entity("Sev1.Accounts.Domain.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -143,7 +143,7 @@ namespace Advertisements.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Sev1.Advertisements.Domain.Tag", b =>
+            modelBuilder.Entity("Sev1.Accounts.Domain.Tag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -168,23 +168,23 @@ namespace Advertisements.DataAccess.Migrations
 
             modelBuilder.Entity("AdvertisementTag", b =>
                 {
-                    b.HasOne("Sev1.Advertisements.Domain.Advertisement", null)
+                    b.HasOne("Sev1.Accounts.Domain.Advertisement", null)
                         .WithMany()
-                        .HasForeignKey("AdvertisementsId")
+                        .HasForeignKey("AccountsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Sev1.Advertisements.Domain.Tag", null)
+                    b.HasOne("Sev1.Accounts.Domain.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Sev1.Advertisements.Domain.Advertisement", b =>
+            modelBuilder.Entity("Sev1.Accounts.Domain.Advertisement", b =>
                 {
-                    b.HasOne("Sev1.Advertisements.Domain.Category", "Category")
-                        .WithMany("Advertisements")
+                    b.HasOne("Sev1.Accounts.Domain.Category", "Category")
+                        .WithMany("Accounts")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -192,18 +192,18 @@ namespace Advertisements.DataAccess.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Sev1.Advertisements.Domain.Category", b =>
+            modelBuilder.Entity("Sev1.Accounts.Domain.Category", b =>
                 {
-                    b.HasOne("Sev1.Advertisements.Domain.Category", "ParentCategory")
+                    b.HasOne("Sev1.Accounts.Domain.Category", "ParentCategory")
                         .WithMany("ChildCategories")
                         .HasForeignKey("ParentCategoryId");
 
                     b.Navigation("ParentCategory");
                 });
 
-            modelBuilder.Entity("Sev1.Advertisements.Domain.Category", b =>
+            modelBuilder.Entity("Sev1.Accounts.Domain.Category", b =>
                 {
-                    b.Navigation("Advertisements");
+                    b.Navigation("Accounts");
 
                     b.Navigation("ChildCategories");
                 });

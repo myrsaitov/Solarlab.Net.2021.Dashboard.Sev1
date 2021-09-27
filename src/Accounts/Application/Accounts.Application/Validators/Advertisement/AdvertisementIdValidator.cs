@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Sev1.Advertisements.Application.Validators.Base;
+using Sev1.Accounts.Application.Validators.Base;
 
-namespace Sev1.Advertisements.Application.Validators.Advertisement
+namespace Sev1.Accounts.Application.Validators.Advertisement
 {
     /// <summary>
     /// Валидатор Id объявления

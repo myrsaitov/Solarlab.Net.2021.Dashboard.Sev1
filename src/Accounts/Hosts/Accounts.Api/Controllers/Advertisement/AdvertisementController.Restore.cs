@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Sev1.Advertisements.Api.Controllers.Advertisement
+namespace Sev1.Accounts.Api.Controllers.Advertisement
 {
     public partial class AdvertisementController
     {

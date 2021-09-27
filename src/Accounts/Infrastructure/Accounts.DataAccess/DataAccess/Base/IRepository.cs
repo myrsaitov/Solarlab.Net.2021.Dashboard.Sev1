@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Domain.Base;
+using Sev1.Accounts.Domain.Base;
 
-namespace Sev1.Advertisements.DataAccess.Base
+namespace Sev1.Accounts.DataAccess.Base
 {
     /// <summary>
     /// Базовый репозиторий

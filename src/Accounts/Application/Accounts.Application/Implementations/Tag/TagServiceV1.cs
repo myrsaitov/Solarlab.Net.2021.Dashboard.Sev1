@@ -1,8 +1,8 @@
 ﻿using MapsterMapper;
-using Sev1.Advertisements.Application.Interfaces.Tag;
-using Sev1.Advertisements.DataAccess.Interfaces;
+using Sev1.Accounts.Application.Interfaces.Tag;
+using Sev1.Accounts.DataAccess.Interfaces;
 
-namespace Sev1.Advertisements.Application.Implementations.Tag
+namespace Sev1.Accounts.Application.Implementations.Tag
 {
     public sealed partial class TagServiceV1 : ITagService
     {

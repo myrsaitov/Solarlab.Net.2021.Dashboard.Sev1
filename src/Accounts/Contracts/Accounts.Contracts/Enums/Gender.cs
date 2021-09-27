@@ -1,4 +1,4 @@
-namespace Sev1.Advertisements.Contracts.Enums
+namespace Sev1.Accounts.Contracts.Enums
 {
     /// <summary>
     /// Пол.

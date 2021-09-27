@@ -4,10 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Domain.Base;
+using Sev1.Accounts.Domain.Base;
 using Microsoft.EntityFrameworkCore;
 
-namespace Sev1.Advertisements.DataAccess.Base
+namespace Sev1.Accounts.DataAccess.Base
 {
     public class EfRepository<TEntity, TId> : IRepository<TEntity, TId>
         where TEntity : Entity<TId>

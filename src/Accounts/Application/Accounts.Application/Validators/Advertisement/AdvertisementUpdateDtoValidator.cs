@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Sev1.Advertisements.Application.Validators.Base;
-using Sev1.Advertisements.Application.Validators.Tag;
+using Sev1.Accounts.Application.Contracts.Advertisement;
+using Sev1.Accounts.Application.Validators.Base;
+using Sev1.Accounts.Application.Validators.Tag;
 
-namespace Sev1.Advertisements.Application.Validators.Advertisement
+namespace Sev1.Accounts.Application.Validators.Advertisement
 {
     /// <summary>
     /// Валидатор DTO при обновлении объявления

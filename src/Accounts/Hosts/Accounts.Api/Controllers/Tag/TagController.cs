@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Interfaces.Tag;
+using Sev1.Accounts.Application.Interfaces.Tag;
 
-namespace Sev1.Advertisements.Api.Controllers.Tag
+namespace Sev1.Accounts.Api.Controllers.Tag
 {
     [Route("api/v1/tags")]
     [ApiController]

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Exceptions.Advertisement;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Sev1.Advertisements.Application.Interfaces.Advertisement;
-using Sev1.Advertisements.Application.Contracts.Tag;
-using Sev1.Advertisements.Application.Validators.Advertisement;
+using Sev1.Accounts.Application.Exceptions.Advertisement;
+using Sev1.Accounts.Application.Contracts.Advertisement;
+using Sev1.Accounts.Application.Interfaces.Advertisement;
+using Sev1.Accounts.Application.Contracts.Tag;
+using Sev1.Accounts.Application.Validators.Advertisement;
 using System.Linq;
-using Sev1.Advertisements.Application.Exceptions.Category;
+using Sev1.Accounts.Application.Exceptions.Category;
 
-namespace Sev1.Advertisements.Application.Implementations.Advertisement
+namespace Sev1.Accounts.Application.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Sev1.Advertisements.Contracts.Comments
+namespace Sev1.Accounts.Contracts.Comments
 {
     /// <summary>
     /// Модель представления комментариев к объявлению.

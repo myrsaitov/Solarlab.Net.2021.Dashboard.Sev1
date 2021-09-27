@@ -2,11 +2,11 @@
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Sev1.Advertisements.Application.Contracts;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Accounts.Application.Contracts.Advertisement;
+using Sev1.Accounts.Application.Contracts;
+using Sev1.Accounts.Application.Contracts.GetPaged;
 
-namespace Sev1.Advertisements.Application.Interfaces.Advertisement
+namespace Sev1.Accounts.Application.Interfaces.Advertisement
 {
     public interface IAdvertisementService
     {

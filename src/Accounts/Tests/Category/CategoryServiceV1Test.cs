@@ -1,12 +1,12 @@
-﻿using Sev1.Advertisements.DataAccess.Interfaces;
-using Sev1.Advertisements.Application.Implementations.Category;
+﻿using Sev1.Accounts.DataAccess.Interfaces;
+using Sev1.Accounts.Application.Implementations.Category;
 using Moq;
 using MapsterMapper;
 using Mapster;
 using System.Linq.Expressions;
-using Sev1.Advertisements.MapsterMapper.MapProfiles;
+using Sev1.Accounts.MapsterMapper.MapProfiles;
 
-namespace Sev1.Advertisements.Tests.Category
+namespace Sev1.Accounts.Tests.Category
 {
     public partial class CategoryServiceV1Test
     {

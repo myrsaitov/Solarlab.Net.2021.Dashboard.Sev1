@@ -1,7 +1,7 @@
 using System;
-using Sev1.Advertisements.Contracts.Enums;
+using Sev1.Accounts.Contracts.Enums;
 
-namespace Sev1.Advertisements.Contracts.User
+namespace Sev1.Accounts.Contracts.User
 {
     public class UserDto : DtoBase
     {

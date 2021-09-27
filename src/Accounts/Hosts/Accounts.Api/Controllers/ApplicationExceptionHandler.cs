@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Sev1.Advertisements.Domain.Base;
-using Sev1.Advertisements.Domain.Exceptions;
+using Sev1.Accounts.Domain.Base;
+using Sev1.Accounts.Domain.Exceptions;
 
-namespace Sev1.Advertisements.Api.Controllers
+namespace Sev1.Accounts.Api.Controllers
 {
     public class ApplicationExceptionHandler
     {

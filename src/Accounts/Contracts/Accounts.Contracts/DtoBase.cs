@@ -1,6 +1,6 @@
 using System;
 
-namespace Sev1.Advertisements.Contracts
+namespace Sev1.Accounts.Contracts
 {
     /// <summary>
     /// Базовый класс DTO.

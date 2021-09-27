@@ -1,6 +1,6 @@
-﻿using Sev1.Advertisements.Domain.Exceptions;
+﻿using Sev1.Accounts.Domain.Exceptions;
 
-namespace Sev1.Advertisements.Application.Exceptions.Tag
+namespace Sev1.Accounts.Application.Exceptions.Tag
 {
     public sealed class TagNotFoundException : NotFoundException
     {

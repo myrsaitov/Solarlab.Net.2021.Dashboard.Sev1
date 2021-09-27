@@ -1,13 +1,13 @@
-﻿using Sev1.Advertisements.Application.Implementations.Advertisement;
-using Sev1.Advertisements.Application.Implementations.Tag;
-using Sev1.Advertisements.Application.Implementations.Category;
-using Sev1.Advertisements.Application.Interfaces.Advertisement;
-using Sev1.Advertisements.Application.Interfaces.Category;
-using Sev1.Advertisements.Application.Interfaces.Tag;
+﻿using Sev1.Accounts.Application.Implementations.Advertisement;
+using Sev1.Accounts.Application.Implementations.Tag;
+using Sev1.Accounts.Application.Implementations.Category;
+using Sev1.Accounts.Application.Interfaces.Advertisement;
+using Sev1.Accounts.Application.Interfaces.Category;
+using Sev1.Accounts.Application.Interfaces.Tag;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 
-namespace Sev1.Advertisements.Api
+namespace Sev1.Accounts.Api
 {
     public static class ApplicationModule
     {

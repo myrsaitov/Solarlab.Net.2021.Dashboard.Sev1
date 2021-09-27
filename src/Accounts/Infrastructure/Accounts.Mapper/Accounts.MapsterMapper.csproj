@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Application\Advertisements.Application\Advertisements.Application.csproj" />
-    <ProjectReference Include="..\..\Domain\Advertisements.Domain\Advertisements.Domain.csproj" />
+    <ProjectReference Include="..\..\Application\Accounts.Application\Accounts.Application.csproj" />
+    <ProjectReference Include="..\..\Domain\Accounts.Domain\Accounts.Domain.csproj" />
   </ItemGroup>
 
 </Project>

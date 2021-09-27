@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Domain.Base;
+using Sev1.Accounts.Domain.Base;
 
-namespace Sev1.Advertisements.Repository.Interfaces
+namespace Sev1.Accounts.Repository.Interfaces
 {
     public interface IRepository<TEntity, in TId>
         where TEntity : Entity<TId>

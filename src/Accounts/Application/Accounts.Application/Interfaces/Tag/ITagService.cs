@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
-using Sev1.Advertisements.Application.Contracts.Tag;
+using Sev1.Accounts.Application.Contracts.GetPaged;
+using Sev1.Accounts.Application.Contracts.Tag;
 
-namespace Sev1.Advertisements.Application.Interfaces.Tag
+namespace Sev1.Accounts.Application.Interfaces.Tag
 {
     public interface ITagService
     {

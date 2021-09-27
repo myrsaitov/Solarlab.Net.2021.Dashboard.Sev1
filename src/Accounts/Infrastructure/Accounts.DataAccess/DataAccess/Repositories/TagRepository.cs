@@ -1,8 +1,8 @@
-﻿using Sev1.Advertisements.DataAccess.Base;
-using Sev1.Advertisements.DataAccess.Interfaces;
-using Sev1.Advertisements.Domain;
+﻿using Sev1.Accounts.DataAccess.Base;
+using Sev1.Accounts.DataAccess.Interfaces;
+using Sev1.Accounts.Domain;
 
-namespace Sev1.Advertisements.DataAccess.Repositories
+namespace Sev1.Accounts.DataAccess.Repositories
 {
     public sealed class TagRepository : EfRepository<Tag, int>, ITagRepository
     {

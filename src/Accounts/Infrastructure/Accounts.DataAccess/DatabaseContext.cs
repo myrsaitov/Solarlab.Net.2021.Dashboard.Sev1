@@ -1,9 +1,9 @@
-﻿using Sev1.Advertisements.Domain;
-using Sev1.Advertisements.DataAccess.EntitiesConfiguration;
+﻿using Sev1.Accounts.Domain;
+using Sev1.Accounts.DataAccess.EntitiesConfiguration;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Sev1.Advertisements.DataAccess
+namespace Sev1.Accounts.DataAccess
 {
     /// <summary>
     /// Базовый контекст приложения.
@@ -14,7 +14,7 @@ namespace Sev1.Advertisements.DataAccess
         {
         }
 
-        public DbSet<Advertisement> Advertisements { get; set; }
+        public DbSet<Advertisement> Accounts { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Tag> Tags { get; set; }
 

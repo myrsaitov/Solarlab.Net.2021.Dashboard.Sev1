@@ -1,4 +1,4 @@
-﻿using Sev1.Advertisements.Application.Contracts.Advertisement;
+﻿using Sev1.Accounts.Application.Contracts.Advertisement;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,9 +8,9 @@ using System.Collections.Generic;
 using System;
 using System.Linq.Expressions;
 using System.Linq;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Accounts.Application.Contracts.GetPaged;
 
-namespace Sev1.Advertisements.Tests.Advertisement
+namespace Sev1.Accounts.Tests.Advertisement
 {
     public partial class AdvertisementServiceV1Test
     {

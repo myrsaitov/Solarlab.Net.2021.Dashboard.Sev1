@@ -1,13 +1,13 @@
-﻿using Sev1.Advertisements.Application.Contracts.Category;
+﻿using Sev1.Accounts.Application.Contracts.Category;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System;
-using Sev1.Advertisements.Domain.Exceptions;
+using Sev1.Accounts.Domain.Exceptions;
 
-namespace Sev1.Advertisements.Tests.Category
+namespace Sev1.Accounts.Tests.Category
 {
     public partial class CategoryServiceV1Test
     {

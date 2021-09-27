@@ -1,12 +1,12 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
+using Sev1.Accounts.Application.Contracts.Advertisement;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Accounts.Application.Contracts.GetPaged;
 
-namespace Sev1.Advertisements.Api.Controllers.Advertisement
+namespace Sev1.Accounts.Api.Controllers.Advertisement
 {
     public partial class AdvertisementController
     {

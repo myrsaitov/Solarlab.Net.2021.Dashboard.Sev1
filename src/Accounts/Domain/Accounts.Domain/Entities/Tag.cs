@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Sev1.Advertisements.Domain.Base;
+using Sev1.Accounts.Domain.Base;
 
-namespace Sev1.Advertisements.Domain
+namespace Sev1.Accounts.Domain
 {
     public class Tag : Entity<int>
     {
@@ -20,6 +20,6 @@ namespace Sev1.Advertisements.Domain
         /// <summary>
         /// Объявления, связанные с этим ярлыком
         /// </summary>
-        public virtual ICollection<Advertisement> Advertisements { get; set; }
+        public virtual ICollection<Advertisement> Accounts { get; set; }
     }
 }

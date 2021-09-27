@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
-using Sev1.Advertisements.Application.Contracts.Tag;
+using Sev1.Accounts.Application.Contracts.Tag;
 using System;
 using System.Linq;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Accounts.Application.Contracts.GetPaged;
 
-namespace Sev1.Advertisements.Tests.Tag
+namespace Sev1.Accounts.Tests.Tag
 {
     public partial class TagServiceV1Test
     {

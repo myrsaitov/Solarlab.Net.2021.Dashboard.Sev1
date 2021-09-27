@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Interfaces.Category;
+using Sev1.Accounts.Application.Interfaces.Category;
 
-namespace Sev1.Advertisements.Api.Controllers.Category
+namespace Sev1.Accounts.Api.Controllers.Category
 {
     [Route("api/v1/categories")]
     [ApiController]

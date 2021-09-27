@@ -1,8 +1,8 @@
-﻿using Sev1.Advertisements.Domain;
+﻿using Sev1.Accounts.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Sev1.Advertisements.DataAccess.EntitiesConfiguration
+namespace Sev1.Accounts.DataAccess.EntitiesConfiguration
 {
     public class AdvertisementConfiguration : IEntityTypeConfiguration<Advertisement>
     {
@@ -13,7 +13,7 @@ namespace Sev1.Advertisements.DataAccess.EntitiesConfiguration
             builder.Property(con => con.UpdatedAt).IsRequired(false);
             builder.Property(con => con.Price).HasColumnType("money");
             builder.HasMany(con => con.Tags)
-                .WithMany(t => t.Advertisements)
+                .WithMany(t => t.Accounts)
                 .UsingEntity(j => j.ToTable("TagAdvertisement"));
         }
     }

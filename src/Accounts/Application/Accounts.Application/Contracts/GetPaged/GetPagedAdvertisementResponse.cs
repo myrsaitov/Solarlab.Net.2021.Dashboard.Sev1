@@ -1,6 +1,6 @@
-﻿using Sev1.Advertisements.Application.Contracts.Advertisement;
+﻿using Sev1.Accounts.Application.Contracts.Advertisement;
 
-namespace Sev1.Advertisements.Application.Contracts.GetPaged
+namespace Sev1.Accounts.Application.Contracts.GetPaged
 {
     public class GetPagedAdvertisementResponse : GetPagedResponse<AdvertisementPagedDto>
     {

@@ -1,12 +1,12 @@
-﻿using Sev1.Advertisements.DataAccess.Interfaces;
+﻿using Sev1.Accounts.DataAccess.Interfaces;
 using Moq;
 using MapsterMapper;
 using Mapster;
 using System.Linq.Expressions;
-using Sev1.Advertisements.MapsterMapper.MapProfiles;
-using Sev1.Advertisements.Application.Implementations.Advertisement;
+using Sev1.Accounts.MapsterMapper.MapProfiles;
+using Sev1.Accounts.Application.Implementations.Advertisement;
 
-namespace Sev1.Advertisements.Tests.Advertisement
+namespace Sev1.Accounts.Tests.Advertisement
 {
     public partial class AdvertisementServiceV1Test
     {
