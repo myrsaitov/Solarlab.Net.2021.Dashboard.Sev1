@@ -1,13 +1,13 @@
-﻿using Sev1.Accounts.Application.Implementations.DomainUser;
-using Sev1.Accounts.Application.Implementations.Tag;
-using Sev1.Accounts.Application.Implementations.DomainUser;
-using Sev1.Accounts.Application.Interfaces.DomainUser;
-using Sev1.Accounts.Application.Interfaces.DomainUser;
-using Sev1.Accounts.Application.Interfaces.Tag;
+﻿using Sev1.Advertisements.Application.Implementations.Advertisement;
+using Sev1.Advertisements.Application.Implementations.Tag;
+using Sev1.Advertisements.Application.Implementations.Category;
+using Sev1.Advertisements.Application.Interfaces.Advertisement;
+using Sev1.Advertisements.Application.Interfaces.Category;
+using Sev1.Advertisements.Application.Interfaces.Tag;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 
-namespace Sev1.Accounts.Api
+namespace Sev1.Advertisements.Api
 {
     public static class ApplicationModule
     {
@@ -23,8 +23,8 @@ namespace Sev1.Accounts.Api
             // For example, in a web application it creates 1 instance
             // per each http request but uses the same instance
             // in the other calls within that same web request.
-            services.AddScoped<IDomainUserService, DomainUserServiceV1>();
-            services.AddScoped<IDomainUserService, DomainUserServiceV1>();
+            services.AddScoped<ICategoryService, CategoryServiceV1>();
+            services.AddScoped<IAdvertisementService, AdvertisementServiceV1>();
             services.AddScoped<ITagService, TagServiceV1>();
 
             return services;

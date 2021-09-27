@@ -3,7 +3,7 @@ using FluentValidation.Results;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sev1.Accounts.Application.Validators.Base
+namespace Sev1.Advertisements.Application.Validators.Base
 {
     /// <summary>
     /// Базовый валидатор с функционалом NullArgumentException

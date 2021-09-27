@@ -5,18 +5,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="10.3.3" />
+    <Compile Remove="Application\**" />
+    <Compile Remove="Tests\**" />
+    <EmbeddedResource Remove="Application\**" />
+    <EmbeddedResource Remove="Tests\**" />
+    <None Remove="Application\**" />
+    <None Remove="Tests\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\Accounts.Domain\Accounts.Domain.csproj" />
+    <PackageReference Include="FluentValidation" Version="10.3.3" />
+    <PackageReference Include="Mapster" Version="7.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
   </ItemGroup>
 
-  <Target Name="BeforeBuild">
-    <!-- Remove obj folder -->
-    <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
-    <!-- Remove bin folder -->
-    <RemoveDir Directories="$(BaseOutputPath)" />
-  </Target>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Advertisements.Domain\Advertisements.Domain.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Advertisements.DataAccess\Advertisements.DataAccess.csproj" />
+  </ItemGroup>
 
 </Project>

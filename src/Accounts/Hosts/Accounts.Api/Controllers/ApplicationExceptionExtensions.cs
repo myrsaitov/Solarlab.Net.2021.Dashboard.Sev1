@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Sev1.Accounts.Api.Controllers
+namespace Sev1.Advertisements.Api.Controllers
 {
     public static class ApplicationExceptionExtensions
     {

@@ -1,15 +1,15 @@
 using MapsterMapper;
-using Sev1.Accounts.Api.Controllers;
+using Sev1.Advertisements.Api.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Sev1.Accounts.MapsterMapper.MapProfiles;
+using Sev1.Advertisements.MapsterMapper.MapProfiles;
 using Microsoft.Extensions.Hosting;
-using Sev1.Accounts.DataAccess;
+using Sev1.Advertisements.DataAccess;
 
-namespace Sev1.Accounts.Api
+namespace Sev1.Advertisements.Api
 {
     public class Startup
     {
@@ -54,8 +54,8 @@ namespace Sev1.Accounts.Api
             // is created only one time per application 
             // and that single instance is used throughout 
             // the application life time.
-            services.AddSingleton(DomainUserMapProfile.GetConfiguredMappingConfig());
-            services.AddSingleton(DomainUserMapProfile.GetConfiguredMappingConfig());
+            services.AddSingleton(CategoryMapProfile.GetConfiguredMappingConfig());
+            services.AddSingleton(AdvertisementMapProfile.GetConfiguredMappingConfig());
             services.AddSingleton(TagMapProfile.GetConfiguredMappingConfig());
 
 
