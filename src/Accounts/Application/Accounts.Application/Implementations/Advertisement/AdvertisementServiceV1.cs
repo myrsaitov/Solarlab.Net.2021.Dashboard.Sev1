@@ -7,17 +7,17 @@ namespace Sev1.Accounts.Application.Implementations.Account
     public sealed partial class AccountServiceV1 : IAccountService
     {
         private readonly ICategoryRepository _categoryRepository;
-        private readonly IAccountRepository _advertisementRepository;
+        private readonly IAccountRepository _accountRepository;
         private readonly ITagRepository _tagRepository;
         private readonly IMapper _mapper;
 
         public AccountServiceV1(
-            IAccountRepository advertisementRepository, 
+            IAccountRepository accountRepository, 
             ICategoryRepository categoryRepository, 
             ITagRepository tagRepository, 
             IMapper mapper)
         {
-            _advertisementRepository = advertisementRepository;
+            _accountRepository = accountRepository;
             _categoryRepository = categoryRepository;
             _tagRepository = tagRepository;
             _mapper = mapper;

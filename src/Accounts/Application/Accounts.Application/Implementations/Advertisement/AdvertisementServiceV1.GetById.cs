@@ -23,16 +23,16 @@ namespace Sev1.Accounts.Application.Implementations.Account
                 throw new AccountIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
-            var advertisement = await _advertisementRepository.FindByIdWithUserAndCategoryAndTags(
+            var account = await _accountRepository.FindByIdWithUserAndCategoryAndTags(
                 id,
                 cancellationToken);
 
-            if (advertisement == null)
+            if (account == null)
             {
                 throw new AccountNotFoundException(id);
             }
 
-            var response = _mapper.Map<AccountDto>(advertisement);
+            var response = _mapper.Map<AccountDto>(account);
 
             return response;
         }

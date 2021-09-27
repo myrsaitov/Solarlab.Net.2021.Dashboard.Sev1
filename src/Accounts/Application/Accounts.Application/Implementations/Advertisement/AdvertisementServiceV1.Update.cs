@@ -26,39 +26,39 @@ namespace Sev1.Accounts.Application.Implementations.Account
                 throw new AccountUpdateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
-            var advertisement = await _advertisementRepository.FindByIdWithUserAndCategoryAndTags(
+            var account = await _accountRepository.FindByIdWithUserAndCategoryAndTags(
                 model.Id,
                 cancellationToken);
 
-            if (advertisement == null)
+            if (account == null)
             {
                 throw new AccountNotFoundException(model.Id);
             }
 
             // TODO Mapper
-            advertisement.Title = model.Title;
-            advertisement.Body = model.Body;
-            advertisement.Price = model.Price;
-            advertisement.CategoryId = model.CategoryId;
+            account.Title = model.Title;
+            account.Body = model.Body;
+            account.Price = model.Price;
+            account.CategoryId = model.CategoryId;
 
-            advertisement.IsDeleted = false;
-            advertisement.UpdatedAt = DateTime.UtcNow;
+            account.IsDeleted = false;
+            account.UpdatedAt = DateTime.UtcNow;
 
             var category = await _categoryRepository.FindById(
-                advertisement.CategoryId,
+                account.CategoryId,
                 cancellationToken);
 
             if (category == null)
             {
-                throw new CategoryNotFoundException(advertisement.CategoryId);
+                throw new CategoryNotFoundException(account.CategoryId);
             }
 
-            advertisement.Category = category;
-            if (advertisement.Tags == null)
+            account.Category = category;
+            if (account.Tags == null)
             {
-                advertisement.Tags = new List<Domain.Tag>();
+                account.Tags = new List<Domain.Tag>();
             }
-            advertisement.Tags.Clear();
+            account.Tags.Clear();
 
             if (model.TagBodies is not null)
             {
@@ -92,16 +92,16 @@ namespace Sev1.Accounts.Application.Implementations.Account
                             await _tagRepository.Save(tag, cancellationToken);
                         }
 
-                        advertisement.Tags.Add(tag);
+                        account.Tags.Add(tag);
                     }
                 }
             }
 
-            await _advertisementRepository.Save(
-                advertisement, 
+            await _accountRepository.Save(
+                account, 
                 cancellationToken);
 
-            return advertisement.Id;
+            return account.Id;
         }
     }
 }

@@ -39,12 +39,12 @@ namespace Sev1.Accounts.Tests.Account
 
             int tagId = 1;
 
-            _advertisementRepositoryMock
+            _accountRepositoryMock
                 .Setup(_ => _.FindByIdWithUserAndCategoryAndTags(
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(content)
-                .Callback((int _advertisementId, CancellationToken ct) => content.Id = _advertisementId)
+                .Callback((int _accountId, CancellationToken ct) => content.Id = _accountId)
                 .Verifiable();
 
 
@@ -81,19 +81,19 @@ namespace Sev1.Accounts.Tests.Account
                     It.IsAny<Domain.Tag>(),
                     It.IsAny<CancellationToken>()));
 
-            _advertisementRepositoryMock
+            _accountRepositoryMock
                 .Setup(_ => _.Save(
                     It.IsAny<Domain.Account>(),
                     It.IsAny<CancellationToken>()))
                 .Callback((Domain.Account content, CancellationToken ct) => content.Id = contentId);
 
             // Act
-            var response = await _advertisementServiceV1.Update(
+            var response = await _accountServiceV1.Update(
                 request, 
                 cancellationToken);
 
             // Assert
-            _advertisementRepositoryMock.Verify();
+            _accountRepositoryMock.Verify();
             _categoryRepositoryMock.Verify();
             _tagRepositoryMock.Verify();
             Assert.NotNull(response);
@@ -114,17 +114,17 @@ namespace Sev1.Accounts.Tests.Account
 
             };
 
-            _advertisementRepositoryMock
+            _accountRepositoryMock
                 .Setup(_ => _.FindByIdWithUserAndCategoryAndTags(
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(content)
-                .Callback((int _advertisementId, CancellationToken ct) => content.Id = _advertisementId);
+                .Callback((int _accountId, CancellationToken ct) => content.Id = _accountId);
 
 
             // Act
             await Assert.ThrowsAsync<CategoryNotFoundException>(
-                async () => await _advertisementServiceV1.Update(
+                async () => await _accountServiceV1.Update(
                     request,
                     cancellationToken));
         }
@@ -143,17 +143,17 @@ namespace Sev1.Accounts.Tests.Account
 
             };
 
-            _advertisementRepositoryMock
+            _accountRepositoryMock
                 .Setup(_ => _.FindByIdWithUserAndCategoryAndTags(
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(content)
-                .Callback((int _advertisementId, CancellationToken ct) => content.Id = _advertisementId);
+                .Callback((int _accountId, CancellationToken ct) => content.Id = _accountId);
 
 
             // Act
             await Assert.ThrowsAsync<NoRightsException>(
-                async () => await _advertisementServiceV1.Update(
+                async () => await _accountServiceV1.Update(
                     request,
                     cancellationToken));
         }
@@ -165,7 +165,7 @@ namespace Sev1.Accounts.Tests.Account
         {
             // Act
             await Assert.ThrowsAsync<AccountNotFoundException>(
-                async () => await _advertisementServiceV1.Update(
+                async () => await _accountServiceV1.Update(
                     request,
                     cancellationToken));
         }
@@ -177,7 +177,7 @@ namespace Sev1.Accounts.Tests.Account
         {
             // Act
             await Assert.ThrowsAsync<ArgumentNullException>(
-                async () => await _advertisementServiceV1.Update(
+                async () => await _accountServiceV1.Update(
                     request, 
                     cancellationToken));
         }

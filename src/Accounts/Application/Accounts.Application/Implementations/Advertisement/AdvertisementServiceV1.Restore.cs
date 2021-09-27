@@ -22,21 +22,21 @@ namespace Sev1.Accounts.Application.Implementations.Account
                 throw new AccountIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
-            var advertisement = await _advertisementRepository.FindByIdWithUserInclude(
+            var account = await _accountRepository.FindByIdWithUserInclude(
                 id,
                 cancellationToken);
 
-            if (advertisement == null)
+            if (account == null)
             {
                 throw new AccountNotFoundException(id);
             }
 
 
 
-            advertisement.IsDeleted = false;
-            advertisement.UpdatedAt = DateTime.UtcNow;
-            await _advertisementRepository.Save(
-                advertisement, 
+            account.IsDeleted = false;
+            account.UpdatedAt = DateTime.UtcNow;
+            await _accountRepository.Save(
+                account, 
                 cancellationToken);
         }
     }

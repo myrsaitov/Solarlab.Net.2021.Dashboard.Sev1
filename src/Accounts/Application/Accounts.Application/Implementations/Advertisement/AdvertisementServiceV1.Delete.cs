@@ -22,20 +22,20 @@ namespace Sev1.Accounts.Application.Implementations.Account
                 throw new AccountIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
-            var advertisement = await _advertisementRepository.FindByIdWithUserAndTagsInclude(
+            var account = await _accountRepository.FindByIdWithUserAndTagsInclude(
                 id,
                 cancellationToken);
 
-            if (advertisement == null)
+            if (account == null)
             {
                 throw new AccountNotFoundException(id);
             }
 
-            advertisement.IsDeleted = true;
-            advertisement.UpdatedAt = DateTime.UtcNow;
+            account.IsDeleted = true;
+            account.UpdatedAt = DateTime.UtcNow;
 
             // TODO Сделать нормальный подсчет количества Tags
-            foreach (var tag in advertisement.Tags)
+            foreach (var tag in account.Tags)
             {
                 if (tag.Count > 0)
                 {
@@ -44,7 +44,7 @@ namespace Sev1.Accounts.Application.Implementations.Account
                 }
             }
 
-            await _advertisementRepository.Save(advertisement, cancellationToken);
+            await _accountRepository.Save(account, cancellationToken);
         }
     }
 }

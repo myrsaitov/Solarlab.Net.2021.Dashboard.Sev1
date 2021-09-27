@@ -47,21 +47,21 @@ namespace Sev1.Accounts.Tests.Account
                 content.Tags.Add(tag);
             }
 
-            _advertisementRepositoryMock
+            _accountRepositoryMock
                 .Setup(_ => _.FindByIdWithUserAndCategoryAndTags(
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(content)
-                .Callback((int _advertisementId, CancellationToken ct) => content.Id = _advertisementId)
+                .Callback((int _accountId, CancellationToken ct) => content.Id = _accountId)
                 .Verifiable();
 
             // Act
-            var response = await _advertisementServiceV1.GetById(
+            var response = await _accountServiceV1.GetById(
                 id, 
                 cancellationToken);
 
             // Assert
-            _advertisementRepositoryMock.Verify();
+            _accountRepositoryMock.Verify();
             Assert.NotNull(response);
             Assert.NotEqual(default, response.Id);
         }
@@ -73,7 +73,7 @@ namespace Sev1.Accounts.Tests.Account
         {
             // Act
             await Assert.ThrowsAsync<AccountNotFoundException>(
-                async () => await _advertisementServiceV1.GetById(
+                async () => await _accountServiceV1.GetById(
                     id,
                     cancellationToken));
         }
@@ -85,7 +85,7 @@ namespace Sev1.Accounts.Tests.Account
         {
             // Act
             await Assert.ThrowsAsync<ArgumentNullException>(
-                async () => await _advertisementServiceV1.GetById(
+                async () => await _accountServiceV1.GetById(
                     id, 
                     cancellationToken));
         }

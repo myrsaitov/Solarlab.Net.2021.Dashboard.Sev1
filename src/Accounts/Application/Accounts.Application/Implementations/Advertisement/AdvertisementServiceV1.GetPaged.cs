@@ -75,12 +75,12 @@ namespace Sev1.Accounts.Application.Implementations.Account
             if (predicate == default)
             {
                 // Если параметры поиска не заданы
-                total = await _advertisementRepository.CountWithOutDeleted(cancellationToken);
+                total = await _accountRepository.CountWithOutDeleted(cancellationToken);
             }
             else
             {
                 // Если параметры поиска заданы
-                total = await _advertisementRepository.CountWithOutDeleted(
+                total = await _accountRepository.CountWithOutDeleted(
                     predicate,
                     cancellationToken);
             }
@@ -101,7 +101,7 @@ namespace Sev1.Accounts.Application.Implementations.Account
             if (predicate == default)
             {
                 // Вернуть объявления без фильтра
-                var entities = await _advertisementRepository.GetPagedWithTagsAndOwnerAndCategoryInclude(
+                var entities = await _accountRepository.GetPagedWithTagsAndOwnerAndCategoryInclude(
                     offset,
                     request.PageSize,
                     cancellationToken);
@@ -117,7 +117,7 @@ namespace Sev1.Accounts.Application.Implementations.Account
             else
             {
                 // Вернуть объявления по фильтру
-                var entities = await _advertisementRepository.GetPagedWithTagsAndOwnerAndCategoryInclude(
+                var entities = await _accountRepository.GetPagedWithTagsAndOwnerAndCategoryInclude(
                     predicate,
                     offset,
                     request.PageSize,

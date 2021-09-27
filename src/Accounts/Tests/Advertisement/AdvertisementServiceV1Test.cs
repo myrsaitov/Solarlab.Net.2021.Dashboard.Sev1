@@ -10,15 +10,15 @@ namespace Sev1.Accounts.Tests.Account
 {
     public partial class AccountServiceV1Test
     {
-        private Mock<IAccountRepository> _advertisementRepositoryMock;
+        private Mock<IAccountRepository> _accountRepositoryMock;
         private Mock<ICategoryRepository> _categoryRepositoryMock;
         private Mock<ITagRepository> _tagRepositoryMock;
         private IMapper _mapper;
         
-        private AccountServiceV1 _advertisementServiceV1;
+        private AccountServiceV1 _accountServiceV1;
         public AccountServiceV1Test()
         {
-            _advertisementRepositoryMock = new Mock<IAccountRepository>();
+            _accountRepositoryMock = new Mock<IAccountRepository>();
             _categoryRepositoryMock = new Mock<ICategoryRepository>();
             _tagRepositoryMock = new Mock<ITagRepository>();
 
@@ -29,8 +29,8 @@ namespace Sev1.Accounts.Tests.Account
             CategoryMapProfile.GetConfiguredMappingConfig().Compile();
             TagMapProfile.GetConfiguredMappingConfig().Compile();
 
-            _advertisementServiceV1 = new AccountServiceV1(
-                _advertisementRepositoryMock.Object,
+            _accountServiceV1 = new AccountServiceV1(
+                _accountRepositoryMock.Object,
                 _categoryRepositoryMock.Object, 
                 _tagRepositoryMock.Object, 
                 _mapper);

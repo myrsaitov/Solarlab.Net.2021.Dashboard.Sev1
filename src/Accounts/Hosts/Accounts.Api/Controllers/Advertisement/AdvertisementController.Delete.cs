@@ -12,7 +12,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
             [FromRoute] int id, 
             CancellationToken cancellationToken)
         {
-            await _advertisementService.Delete(
+            await _accountService.Delete(
                 id, 
                 cancellationToken);
 

@@ -26,27 +26,27 @@ namespace Sev1.Accounts.Tests.Account
                 //OwnerId = userId.ToString()
             };
 
-            _advertisementRepositoryMock
+            _accountRepositoryMock
                 .Setup(_ => _.FindByIdWithUserInclude(
                     It.IsAny<int>(), 
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(content)
-                .Callback((int _advertisementId, CancellationToken ct) => content.Id = _advertisementId)
+                .Callback((int _accountId, CancellationToken ct) => content.Id = _accountId)
                 .Verifiable();
 
-            _advertisementRepositoryMock
+            _accountRepositoryMock
                 .Setup(_ => _.Save(
                     It.IsAny<Domain.Account>(), 
                     It.IsAny<CancellationToken>()))
                 .Callback((Domain.Account content, CancellationToken ct) => content.Id = contentId);
 
             // Act
-            await _advertisementServiceV1.Delete(
+            await _accountServiceV1.Delete(
                 id, 
                 cancellationToken);
 
             // Assert
-            _advertisementRepositoryMock.Verify();
+            _accountRepositoryMock.Verify();
         }
         [Theory]
         [AutoData]
@@ -62,12 +62,12 @@ namespace Sev1.Accounts.Tests.Account
                 //OwnerId = userId.ToString()
             };
 
-            _advertisementRepositoryMock
+            _accountRepositoryMock
                 .Setup(_ => _.FindByIdWithUserInclude(It.IsAny<int>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(content)
-                .Callback((int _advertisementId, CancellationToken ct) => content.Id = _advertisementId);
+                .Callback((int _accountId, CancellationToken ct) => content.Id = _accountId);
 
-            _advertisementRepositoryMock
+            _accountRepositoryMock
                 .Setup(_ => _.Save(
                     It.IsAny<Domain.Account>(), 
                     It.IsAny<CancellationToken>()))
@@ -75,7 +75,7 @@ namespace Sev1.Accounts.Tests.Account
 
             // Act
             await Assert.ThrowsAsync<NoRightsException>(
-                async () => await _advertisementServiceV1.Delete(
+                async () => await _accountServiceV1.Delete(
                     id, 
                     cancellationToken));
         }
@@ -87,7 +87,7 @@ namespace Sev1.Accounts.Tests.Account
         {
             // Act
             await Assert.ThrowsAsync<AccountNotFoundException>(
-                async () => await _advertisementServiceV1.Delete(
+                async () => await _accountServiceV1.Delete(
                     id, 
                     cancellationToken));
         }
@@ -99,7 +99,7 @@ namespace Sev1.Accounts.Tests.Account
         {
             // Act
             await Assert.ThrowsAsync<ArgumentNullException>(
-                async () => await _advertisementServiceV1.Delete(
+                async () => await _accountServiceV1.Delete(
                     Id, 
                     cancellationToken));
         }

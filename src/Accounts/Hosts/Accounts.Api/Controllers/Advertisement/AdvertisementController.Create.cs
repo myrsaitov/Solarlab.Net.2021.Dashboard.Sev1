@@ -15,7 +15,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
             [FromBody] AccountCreateDto model, 
             CancellationToken cancellationToken)
         {
-            await _advertisementService.Create(
+            await _accountService.Create(
                 model, 
                 cancellationToken);
 

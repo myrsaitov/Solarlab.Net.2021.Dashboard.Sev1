@@ -66,14 +66,14 @@ namespace Sev1.Accounts.Tests.Account
                 responce.Add(content);
             }
 
-            _advertisementRepositoryMock
+            _accountRepositoryMock
                 .Setup(_ => _.Count(
                     It.IsAny<Expression<Func<Domain.Account, bool>>>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(contentCount)
                 .Verifiable();
 
-            _advertisementRepositoryMock
+            _accountRepositoryMock
                 .Setup(_ => _.GetPagedWithTagsAndOwnerAndCategoryInclude(
                     It.IsAny<Expression<Func<Domain.Account, bool>>>(),
                     It.IsAny<int>(),
@@ -83,13 +83,13 @@ namespace Sev1.Accounts.Tests.Account
                 .Verifiable();
 
             // Act
-            var response = await _advertisementServiceV1.GetPaged(
+            var response = await _accountServiceV1.GetPaged(
                 a => a.Tags.Any(t => t.Body == tagSearch), 
                 request, 
                 cancellationToken);
 
             // Assert
-            _advertisementRepositoryMock.Verify();
+            _accountRepositoryMock.Verify();
             Assert.NotNull(response);
             Assert.Equal(contentCount, response.Total);
             Assert.Equal(contentCount, response.Items.Count());
@@ -107,7 +107,7 @@ namespace Sev1.Accounts.Tests.Account
 
             var responce = new List<Domain.Account>();
 
-            _advertisementRepositoryMock
+            _accountRepositoryMock
                 .Setup(_ => _.Count(
                     It.IsAny<Expression<Func<Domain.Account, bool>>>(),
                     It.IsAny<CancellationToken>()))
@@ -115,13 +115,13 @@ namespace Sev1.Accounts.Tests.Account
                 .Verifiable();
 
             // Act
-            var response = await _advertisementServiceV1.GetPaged(
+            var response = await _accountServiceV1.GetPaged(
                 predicate,
                 request,
                 cancellationToken);
 
             // Assert
-            _advertisementRepositoryMock.Verify();
+            _accountRepositoryMock.Verify();
             Assert.NotNull(response);
             Assert.Equal(contentCount, response.Total);
             Assert.Equal(contentCount, response.Items.Count());
@@ -136,7 +136,7 @@ namespace Sev1.Accounts.Tests.Account
         {
             // Act
             await Assert.ThrowsAsync<ArgumentNullException>(
-                async () => await _advertisementServiceV1.GetPaged(
+                async () => await _accountServiceV1.GetPaged(
                     predicate, 
                     request, 
                     cancellationToken));

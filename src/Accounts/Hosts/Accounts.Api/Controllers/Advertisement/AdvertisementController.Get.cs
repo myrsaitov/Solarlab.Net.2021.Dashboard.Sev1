@@ -16,7 +16,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
             [FromQuery] GetPagedAccountRequest request, 
             CancellationToken cancellationToken)
         {
-            var result = await _advertisementService.GetPaged(
+            var result = await _accountService.GetPaged(
                 request, 
                 cancellationToken);
 
@@ -29,7 +29,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
             [FromRoute] int id, 
             CancellationToken cancellationToken)
         {
-            var found = await _advertisementService.GetById(
+            var found = await _accountService.GetById(
                 id,
                 cancellationToken);
 

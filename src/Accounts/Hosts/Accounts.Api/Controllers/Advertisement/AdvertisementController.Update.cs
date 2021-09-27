@@ -15,7 +15,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
             [FromBody] AccountUpdateDto model, 
             CancellationToken cancellationToken)
         {
-            await _advertisementService.Update(
+            await _accountService.Update(
                 model, 
                 cancellationToken);
             

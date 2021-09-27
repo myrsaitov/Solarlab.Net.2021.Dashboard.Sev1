@@ -35,14 +35,14 @@ namespace Sev1.Accounts.Application.Implementations.Account
                 throw new CategoryNotFoundException(model.CategoryId);
             }
 
-            var advertisement = _mapper.Map<Domain.Account>(model);
-            advertisement.IsDeleted = false;
-            advertisement.CreatedAt = DateTime.UtcNow;
-            advertisement.Category = category;
+            var account = _mapper.Map<Domain.Account>(model);
+            account.IsDeleted = false;
+            account.CreatedAt = DateTime.UtcNow;
+            account.Category = category;
 
             if (model.TagBodies is not null)
             {
-                advertisement.Tags = new List<Domain.Tag>();
+                account.Tags = new List<Domain.Tag>();
                 foreach (string body in model.TagBodies)
                 {
                     if (body.Length > 0)
@@ -73,13 +73,13 @@ namespace Sev1.Accounts.Application.Implementations.Account
                             await _tagRepository.Save(tag, cancellationToken);
                         }
 
-                        advertisement.Tags.Add(tag);
+                        account.Tags.Add(tag);
                     }
                 }
             }
 
-            await _advertisementRepository.Save(
-                advertisement, 
+            await _accountRepository.Save(
+                account, 
                 cancellationToken);
         }
     }
