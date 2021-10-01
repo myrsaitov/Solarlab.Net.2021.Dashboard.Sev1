@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <title>Sevito</title>
+  <link href="/src/styles.css" rel="stylesheet">
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+
+</head>
+
+<body>
+
+  <header class="header">
+    <a class="logo" href="#">
+      <img src="/src/img/Logo.png" alt="Sevito" width="80">
+    </a>
+
+    <div class="nav">
+      <div class="nav_links">
+        <a href="#">Главная</a>
+        <a href="#">Каталог</a>
+        <a href="#">О нас</a>
+      </div>
+      <div class="button_nav">
+        <button class="button">Подать объявление</button>
+        <button class="button">Войти</button>
+        <button class="button">Регистрация</button>
+
+      </div>
+    </div>
+  </header>
+  <!-- здесь заканчивается шапка -->
+
+  <main class="catalog-grid">
+    <!-- здесь начинается авторизация -->
+    <div class="authorization form ">
+      <form action="#" method="post" class="form_authorization">
+        <fieldset>
+          <legend>Вход</legend>
+          <div>
+            <label for="e-mail">Электронная почта</label>
+            <input type="email" value="" id="e-mail" placeholder="Введите вашу почту" required>
+          </div>
+          <div>
+            <label for="password">Пароль</label>
+            <input type="text" value="" id="password" placeholder="Введите пароль" required>
+          </div>
+          <div class="button_authorization">
+            <input type="submit" value="Войти">
+          </div>
+          <a href="">Забыли пароль</a>
+          <a href="">Регистрация </a>
+        </fieldset>
+      </form>
+    </div>
+    <!-- здесь заканчивается авторизация -->
+    <!-- здесь начинается регистрация -->
+    <div class="registration form">
+      <form action="#" method="post" class="form_registration">
+        <fieldset>
+          <legend>Форма регистрации</legend>
+          <div>
+            <label for="name">Ваше имя</label>
+            <input type="text" value="" id="name" placeholder="Введите ваше имя (логин)" required>
+          </div>
+          <div>
+            <label for="e-mail">Электронная почта</label>
+            <input type="email" value="" id="e-mail" placeholder="Введите вашу почту" required>
+          </div>
+          <div>
+            <label for="tel">Номер телефона</label>
+            <input type="tel" name="tel" pattern="+[0-9]{1}([0-9]{3})[0-9]{3}-[0-9]{3}-[0-9]{2}"
+              placeholder="+x (xxx)xxx-xx-xx" no-required>
+          </div>
+          <div>
+            <label for="password_reg">Пароль</label>
+            <input type="text" value="" id="password_reg" placeholder="Введите пароль" required>
+          </div>
+          <div>
+            <label for="password-repeat">Подтверждения пароля</label>
+            <input type="text" value="" id="password-repeat" placeholder="Повторите пароль" required>
+          </div>
+          <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI">
+          </div>
+          <input type="submit" value="Зарегистрироваться">
+        </fieldset>
+      </form>
+    </div>
+
+    <!-- здесь начинается регистрация -->
+    <!-- здесь начинается добавление/редактирование объявления -->
+    <div class="create_announcement form">
+      <form action="#" method="post" class="form_announcement" enctype="multipart/form-data">
+        <fieldset>
+          <legend>Добавление нового объявления</legend>
+
+
+          <div>
+            <label for="name">Наименование товара</label>
+            <input type="text" value="" id="name" placeholder="" required>
+          </div>
+
+          <div>
+            <label for="price">Цена (в рублях)</label>
+            <input type="number" min="1" id="price" required>
+          </div>
+
+          <div>
+            <label for="name">Описание товара</label>
+            <input type="text" value="" id="name" placeholder="">
+          </div>
+          <div>
+            <label for="download-image">Загрузить изображение</label>
+            <input type="file" id="download-image" name="download-image">
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <!-- здесь заканчивается добавление новое объявления -->
+
+
+
+    
+
+
+
+
+
+ 
+
+
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-social">
+      <a class="social-btn social-btn-vk" href="#">Вконтакте</a>
+      <a class="social-btn social-btn-fb" href="#">Фейсбук</a>
+      <a class="social-btn social-btn-in" href="#">Инстаграм</a>
+    </div>
+    <div class="footer-copyright"> © 2021-2021 ООО «Севито». Все права защищены.</div>
+  </footer>
+
+</body>
+
+</html>
