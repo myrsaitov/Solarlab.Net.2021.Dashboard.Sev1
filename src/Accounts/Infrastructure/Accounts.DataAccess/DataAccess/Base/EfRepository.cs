@@ -13,7 +13,9 @@ namespace Sev1.Accounts.DataAccess.Base
     public class EfRepository<TEntity, TId> : IRepository<TEntity, TId>
         where TEntity : Entity<TId>
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected readonly DatabaseContext DbСontext;
 
         public EfRepository(DatabaseContext dbСontext)
