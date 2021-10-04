@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Accounts.Domain.Base;
 
-namespace Sev1.Accounts.DataAccess.Base
+namespace Sev1.Accounts.Application.Repository.Base
 {
     /// <summary>
     /// Базовый репозиторий

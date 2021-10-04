@@ -1,10 +1,10 @@
-﻿using Sev1.Advertisements.DataAccess.Interfaces;
-using Sev1.Advertisements.MapsterMapper.MapProfiles;
+﻿using Sev1.Advertisements.MapsterMapper.MapProfiles;
 using Sev1.Advertisements.Application.Implementations.Tag;
 using Moq;
 using MapsterMapper;
 using Mapster;
 using System.Linq.Expressions;
+using Sev1.Advertisements.Application.Repositories.Tag;
 
 namespace Sev1.Advertisements.Tests.Tag
 {

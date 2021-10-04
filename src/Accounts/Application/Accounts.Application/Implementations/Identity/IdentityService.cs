@@ -12,7 +12,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Sev1.Accounts.Application.Contracts.Identity;
+using Sev1.Accounts.Application.Exceptions.Identity;
 using Sev1.Accounts.Application.Interfaces.Identity;
+using Sev1.Accounts.Domain.Exceptions;
 
 namespace Sev1.Accounts.Application.Implementations.Identity
 {
@@ -22,12 +24,12 @@ namespace Sev1.Accounts.Application.Implementations.Identity
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IConfiguration _configuration;
 
-        public IdentityService(IHttpContextAccessor httpContextAccessor, UserManager<IdentityUser> userManager, IConfiguration configuration, IMailService mailService)
+        public IdentityService(IHttpContextAccessor httpContextAccessor, UserManager<IdentityUser> userManager, IConfiguration configuration/*, IMailService mailService*/)
         {
             _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
             _configuration = configuration;
-            _mailService = mailService;
+            //_mailService = mailService;
         }
 
         public Task<string> GetCurrentUserId(CancellationToken cancellationToken = default)
@@ -70,7 +72,7 @@ namespace Sev1.Accounts.Application.Implementations.Identity
                 var encodedToken = HttpUtility.UrlEncode(token);
                 var message = $"<a href=\"{_configuration["ApiUri"]}api/v1/users/confirm?userId={identityUser.Id}&token={encodedToken}\">Нажми меня</a>";
 
-                await _mailService.Send(request.Email, "Подтверди почту!", message, cancellationToken);
+                //await _mailService.Send(request.Email, "Подтверди почту!", message, cancellationToken);
 
                 return new CreateUser.Response
                 {

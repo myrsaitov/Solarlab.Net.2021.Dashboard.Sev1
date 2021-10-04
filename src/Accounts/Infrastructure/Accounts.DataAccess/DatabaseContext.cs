@@ -1,6 +1,8 @@
 ﻿using Sev1.Accounts.Domain;
 using Sev1.Accounts.DataAccess.EntitiesConfiguration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Sev1.Accounts.Application.Contracts.Identity;
 
 namespace Sev1.Accounts.DataAccess
 {

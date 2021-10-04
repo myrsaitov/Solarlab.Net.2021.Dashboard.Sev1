@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Domain.Base;
 
-namespace Sev1.Advertisements.DataAccess.Base
+namespace Sev1.Advertisements.Application.Repositories.Base
 {
     /// <summary>
     /// Базовый репозиторий

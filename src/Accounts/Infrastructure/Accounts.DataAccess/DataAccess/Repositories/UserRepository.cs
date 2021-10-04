@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Sev1.Accounts.Application.Repository.User;
 using Sev1.Accounts.DataAccess.Base;
-using Sev1.Accounts.DataAccess.Interfaces;
 using Sev1.Accounts.Domain;
 using System.Linq;
 using System.Threading;

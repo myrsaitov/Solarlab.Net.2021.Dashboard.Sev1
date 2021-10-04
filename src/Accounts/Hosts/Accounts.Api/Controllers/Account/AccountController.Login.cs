@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Accounts.Application.Contracts.Account;
+using Sev1.Accounts.Application.Contracts.Identity;
 
 namespace Sev1.Accounts.Api.Controllers.Account
 {

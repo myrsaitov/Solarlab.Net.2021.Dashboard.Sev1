@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Accounts.Domain.Base;
 using Microsoft.EntityFrameworkCore;
+using Sev1.Accounts.Application.Repository.Base;
 
 namespace Sev1.Accounts.DataAccess.Base
 {

@@ -1,14 +1,13 @@
-﻿using System.Threading;
+﻿using Sev1.Advertisements.Application.Repositories.Base;
+using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.DataAccess.Base;
-using Sev1.Advertisements.Domain;
 
-namespace Sev1.Advertisements.DataAccess.Interfaces
+namespace Sev1.Advertisements.Application.Repositories.Category
 {
     /// <summary>
     /// Репозиторий категорий
     /// </summary>
-    public interface ICategoryRepository : IRepository<Category, int>
+    public interface ICategoryRepository : IRepository<Domain.Category, int>
     {
         /// <summary>
         /// Возвращает категорию вместе с прикрепленными
@@ -17,6 +16,6 @@ namespace Sev1.Advertisements.DataAccess.Interfaces
         /// <param name="id">Id категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public Task<Category> FindByIdWithParentAndChilds(int id, CancellationToken cancellationToken);
+        public Task<Domain.Category> FindByIdWithParentAndChilds(int id, CancellationToken cancellationToken);
     }
 }

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Sev1.Advertisements.Domain;
 using Microsoft.EntityFrameworkCore;
 using Sev1.Advertisements.DataAccess.Base;
-using Sev1.Advertisements.DataAccess.Interfaces;
+using Sev1.Advertisements.Application.Repositories.Category;
 
 namespace Sev1.Advertisements.DataAccess.Repositories
 {

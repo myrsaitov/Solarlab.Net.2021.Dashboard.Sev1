@@ -1,5 +1,5 @@
-﻿using Sev1.Advertisements.DataAccess.Base;
-using Sev1.Advertisements.DataAccess.Interfaces;
+﻿using Sev1.Advertisements.Application.Repositories.Tag;
+using Sev1.Advertisements.DataAccess.Base;
 using Sev1.Advertisements.Domain;
 
 namespace Sev1.Advertisements.DataAccess.Repositories

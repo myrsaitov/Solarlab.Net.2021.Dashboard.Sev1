@@ -1,7 +1,7 @@
 ﻿using MapsterMapper;
 using Sev1.Accounts.Application.Interfaces.Identity;
 using Sev1.Accounts.Application.Interfaces.User;
-using Sev1.Accounts.DataAccess.Interfaces;
+using Sev1.Accounts.Application.Repository.User;
 
 namespace Sev1.Accounts.Application.Implementations.User
 {

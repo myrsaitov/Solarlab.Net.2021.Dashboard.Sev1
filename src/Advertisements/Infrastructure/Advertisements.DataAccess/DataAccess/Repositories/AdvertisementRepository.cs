@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System;
 using Sev1.Advertisements.DataAccess.Base;
-using Sev1.Advertisements.DataAccess.Interfaces;
+using Sev1.Advertisements.Application.Repositories.Advertisement;
 
 namespace Sev1.Advertisements.DataAccess.Repositories
 {
