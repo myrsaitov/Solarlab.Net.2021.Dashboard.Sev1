@@ -1,12 +1,12 @@
 ﻿using System;
-using Sev1.Advertisements.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Sev1.Advertisements.DataAccess.Base;
 using Sev1.Advertisements.Application.Repositories.Base;
 using Sev1.Advertisements.Application.Repositories.Advertisement;
 using Sev1.Advertisements.Application.Repositories.Category;
 using Sev1.Advertisements.Application.Repositories.Tag;
+using Sev1.Advertisements.Repository.Base;
+using Sev1.Advertisements.DataAccess.Repositories;
 
 // Nugets:
 // Microsoft.EntityFrameworkCore

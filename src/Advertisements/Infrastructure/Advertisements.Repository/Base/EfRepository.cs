@@ -8,7 +8,7 @@ using Sev1.Advertisements.Domain.Base;
 using Microsoft.EntityFrameworkCore;
 using Sev1.Advertisements.Application.Repositories.Base;
 
-namespace Sev1.Advertisements.DataAccess.Base
+namespace Sev1.Advertisements.Repository.Base
 {
     public class EfRepository<TEntity, TId> : IRepository<TEntity, TId>
         where TEntity : Entity<TId>

@@ -6,10 +6,10 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System;
-using Sev1.Advertisements.DataAccess.Base;
 using Sev1.Advertisements.Application.Repositories.Advertisement;
+using Sev1.Advertisements.Repository.Base;
 
-namespace Sev1.Advertisements.DataAccess.Repositories
+namespace Sev1.Advertisements.Repository.Repositories
 {
     public sealed class AdvertisementRepository : EfRepository<Advertisement, int>, IAdvertisementRepository
     {

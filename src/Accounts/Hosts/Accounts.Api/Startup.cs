@@ -36,8 +36,8 @@ namespace Sev1.Accounts.Api
 
                     configuration.InSqlServer(Configuration.GetConnectionString("SqlServerDb"))
 
-                ); // Подключение к БД через информацию в "ConnectionString"
-
+                ) // Подключение к БД через информацию в "ConnectionString"
+                .AddIdentity(Configuration);
 
             services.AddSwaggerModule();
 
