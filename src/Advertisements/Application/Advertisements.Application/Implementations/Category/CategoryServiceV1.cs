@@ -1,7 +1,6 @@
 ﻿using MapsterMapper;
-
 using Sev1.Advertisements.Application.Interfaces.Category;
-using Sev1.Advertisements.DataAccess.Interfaces;
+using Sev1.Advertisements.Application.Repositories.Category;
 
 namespace Sev1.Advertisements.Application.Implementations.Category
 {

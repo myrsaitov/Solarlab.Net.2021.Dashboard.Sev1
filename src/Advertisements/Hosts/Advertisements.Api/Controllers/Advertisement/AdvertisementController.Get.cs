@@ -11,7 +11,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
     public partial class AdvertisementController
     {
         [HttpGet]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<IActionResult> GetPaged(
             [FromQuery] GetPagedAdvertisementRequest request, 
             CancellationToken cancellationToken)
@@ -19,76 +19,12 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
             var result = await _advertisementService.GetPaged(
                 request, 
                 cancellationToken);
-            
-            
-            
-            /*
-            
-            var result = new GetPagedResponse<AdvertisementPagedDto>();
-
-            if((request.SearchStr is null) 
-                && (request.UserName is null) 
-                && (request.CategoryId is null) 
-                && (request.Tag is null))
-            {
-                result = await _advertisementService.GetPaged(new GetPagedRequest
-                {
-                    PageSize = request.PageSize,
-                    Page = request.Page
-                }, cancellationToken);
-            }
-            else if ((request.SearchStr is not null) 
-                && (request.UserName is null) 
-                && (request.CategoryId is null) 
-                && (request.Tag is null))
-            {
-                // Общий поиск
-                result = await _advertisementService.GetPaged(
-                    o => o.Body.ToLower().Contains(request.SearchStr.ToLower())  // В теле объявления
-                    || o.Title.ToLower().Contains(request.SearchStr.ToLower())  // В названии объявления
-                    || o.Category.Name.ToLower().Contains(request.SearchStr.ToLower()) // По имени категории
-                    || o.Tags.Select(a => a.Body).ToArray().Contains(request.SearchStr.ToLower()), // По  tag
-                    new GetPagedRequest
-                    {
-                        PageSize = request.PageSize,
-                        Page = request.Page
-                    }, cancellationToken);
-            }
-            else if ((request.SearchStr is null) 
-                && (request.UserName is null) 
-                && (request.CategoryId is not null) 
-                && (request.Tag is null))
-            {
-                // Поиск по CategoryId
-                result = await _advertisementService.GetPaged(
-                    a => a.CategoryId == request.CategoryId,
-                    new GetPagedRequest
-                    {
-                        PageSize = request.PageSize,
-                        Page = request.Page
-                    }, cancellationToken);
-            }
-            else if ((request.SearchStr is null) 
-                && (request.UserName is null) 
-                && (request.CategoryId is null) 
-                && (request.Tag is not null))
-            {
-                // Поиск по Tag
-                result = await _advertisementService.GetPaged(
-                    a => a.Tags.Any(t => t.Body == request.Tag),
-                    new GetPagedRequest
-                {
-                    PageSize = request.PageSize,
-                    Page = request.Page
-                }, cancellationToken);
-            }
-            */
 
             return Ok(result);
         }
 
         [HttpGet("{id}")]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<IActionResult> GetById(
             [FromRoute] int id, 
             CancellationToken cancellationToken)

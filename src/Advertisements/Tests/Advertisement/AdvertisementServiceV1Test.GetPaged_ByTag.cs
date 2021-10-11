@@ -17,7 +17,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task GetPaged_ByTag_Returns_Response_Success(
-            GetPagedRequest request,
+            GetPagedAdvertisementRequest request,
             CancellationToken cancellationToken,
             int userId,
             string contentTitle,
@@ -84,7 +84,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // Act
             var response = await _advertisementServiceV1.GetPaged(
-                a => a.Tags.Any(t => t.Body == tagSearch), 
+                //a => a.Tags.Any(t => t.Body == tagSearch), 
                 request, 
                 cancellationToken);
 
@@ -98,7 +98,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task GetPaged_ByTag_Returns_Response_Success_Total_eq_0(
-            GetPagedRequest request,
+            GetPagedAdvertisementRequest request,
             CancellationToken cancellationToken,
             Expression<Func<Domain.Advertisement, bool>> predicate)
         {
@@ -116,7 +116,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // Act
             var response = await _advertisementServiceV1.GetPaged(
-                predicate,
+                //predicate,
                 request,
                 cancellationToken);
 
@@ -130,14 +130,13 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [InlineAutoData(null)]
         public async Task GetPaged_ByTag_Throws_Exception_When_Request_Is_Null(
-            GetPagedRequest request,
+            GetPagedAdvertisementRequest request,
             CancellationToken cancellationToken,
             Expression<Func<Domain.Advertisement, bool>> predicate)
         {
             // Act
             await Assert.ThrowsAsync<ArgumentNullException>(
                 async () => await _advertisementServiceV1.GetPaged(
-                    predicate, 
                     request, 
                     cancellationToken));
         }

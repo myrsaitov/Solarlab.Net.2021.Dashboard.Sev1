@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\Advertisements.Domain\Advertisements.Domain.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\Advertisements.DataAccess\Advertisements.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

@@ -69,17 +69,5 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
         Task<GetPagedAdvertisementResponse> GetPaged(
             GetPagedAdvertisementRequest request, 
             CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Возвращает объявления с пагинацией и поиском
-        /// </summary>
-        /// <param name="predicate">Параметр поиск</param>
-        /// <param name="request">Параметры пагинации</param>
-        /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <returns></returns>
-        Task<GetPagedAdvertisementResponse> GetPaged(
-            Expression<Func<Domain.Advertisement, bool>> predicate,
-            GetPagedAdvertisementRequest request,
-            CancellationToken cancellationToken);
     }
 }

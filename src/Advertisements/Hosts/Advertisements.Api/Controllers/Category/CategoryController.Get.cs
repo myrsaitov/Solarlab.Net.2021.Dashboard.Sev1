@@ -9,7 +9,7 @@ namespace Sev1.Advertisements.Api.Controllers.Category
     public partial class CategoryController
     {
         [HttpGet]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<IActionResult> GetPaged(
             [FromQuery] GetPagedRequest request, 
             CancellationToken cancellationToken)
@@ -24,7 +24,7 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         }
 
         [HttpGet("{id}")]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<IActionResult> GetById(
             [FromRoute] int id, 
             CancellationToken cancellationToken)

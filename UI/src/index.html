@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Sevito</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/src/styles.scss" rel="stylesheet">
+  <link href="/src/normalize.css" rel="stylesheet">
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+</head>
+ <body>
+
+    <header class="header">
+      <a class="logo" href="#">
+        <img src="/assets/Logo.png" alt="Sevito" width="80">
+      </a>
+  
+      <div class="nav">
+        <!-- <div class="nav_links">
+          <a href="#">Главная</a>
+          <a href="#">Каталог</a>
+          <a href="#">О нас</a>
+        </div> -->
+        <div class="button_nav">
+          <button class="button">Подать объявление</button>
+          <button class="button">Войти</button>
+          <button class="button">Регистрация</button>
+  
+        </div>
+      </div>
+    </header>
+    <!-- здесь заканчивается шапка -->
+  
+    <main class="catalog-grid">
+      <!-- здесь начинается авторизация -->
+      <div class="authorization form hidden ">
+        <form action="#" method="post" class="form_authorization">
+          <fieldset>
+            <legend>Вход</legend>
+            <div>
+              <label for="e-mail">Электронная почта</label>
+              <input type="email" value="" id="e-mail" placeholder="Введите вашу почту" required>
+            </div>
+            <div>
+              <label for="password">Пароль</label>
+              <input type="text" value="" id="password" placeholder="Введите пароль" required>
+            </div>
+            <div class="button_authorization">
+              <input type="submit" value="Войти">
+            </div>
+            <a href="">Забыли пароль</a>
+            <a href="">Регистрация </a>
+          </fieldset>
+        </form>
+      </div>
+      <!-- здесь заканчивается авторизация -->
+      <!-- здесь начинается регистрация -->
+      <div class="registration form hidden ">
+        <form action="#" method="post" class="form_registration">
+          <fieldset>
+            <legend>Форма регистрации</legend>
+            <div>
+              <label for="name">Ваше имя</label>
+              <input type="text" value="" id="name" placeholder="Введите ваше имя (логин)" required>
+            </div>
+            <div>
+              <label for="e-mail">Электронная почта</label>
+              <input type="email" value="" id="e-mail" placeholder="Введите вашу почту" required>
+            </div>
+            <div>
+              <label for="tel">Номер телефона</label>
+              <input type="tel" name="tel" pattern="+[0-9]{1}([0-9]{3})[0-9]{3}-[0-9]{3}-[0-9]{2}"
+                placeholder="+x (xxx)xxx-xx-xx" no-required>
+            </div>
+            <div>
+              <label for="password_reg">Пароль</label>
+              <input type="text" value="" id="password_reg" placeholder="Введите пароль" required>
+            </div>
+            <div>
+              <label for="password-repeat">Подтверждения пароля</label>
+              <input type="text" value="" id="password-repeat" placeholder="Повторите пароль" required>
+            </div>
+            <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI">
+            </div>
+            <input type="submit" value="Зарегистрироваться">
+          </fieldset>
+        </form>
+      </div>
+  
+      <!-- здесь заканчивается регистрация -->
+      <!-- здесь начинается добавление/редактирование объявления -->
+      <div class="create_announcement form hidden" >
+        <form action="#" method="post" class="form_announcement" enctype="multipart/form-data">
+          <fieldset>
+            <legend>Добавление/ Изменение объявления</legend>
+  
+  
+            <div>
+              <label for="name">Наименование товара</label>
+              <input type="text" value="" id="name" placeholder="" class="input_announcement" required >
+            </div>
+  
+            <div>
+              <label for="price">Цена (в рублях)</label>
+              <input type="number" min="1" id="price" class="input_announcement"  required>
+            </div>
+  
+            <div>
+              <label for="name">Описание товара</label>
+              <textarea name="name" id="name" rows="5"></textarea>  
+            </div>
+            <div>
+              <label for="adress">Адрес</label>
+              <textarea name="adress" id="adress" rows="3" ></textarea>
+            </div>
+            <div>
+              <label for="download-image">Загрузить изображение</label>
+              <input type="file" id="download-image" name="download-image">
+            </div>
+            <div class="button_create_announcement">
+              <input type="submit" value="Добавить новое объявление">
+            </div>
+            <div class="button_edit_announcement">
+              <input type="submit" value="Внести изменения">
+            </div>
+            <div class="button_delete_announcement">
+              <input type="submit" value="Удалить объявление">
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <!-- здесь заканчивается добавление/редактирование объявления -->
+      <!-- здесь начинается макет карточки -->
+       <div class="hidden"> <!-- временный див, что бы работал hidden -->
+  <div class="cart">
+  <div class="cart-1c "><span class="name">Автомобиль</span></div>
+  <div class="cart-2c"><span class="price">700 000 Р</span> </div>
+  <div class="cart-1c">
+    <img src="/assets/Lada.jpg" alt="Изображение товара" class="image_cart" >
+  </div>
+  <div class="cart-2c">Продам машину в идеальном состоянии!</div>
+  <div class="cart-1c">89781111111</div>
+  <div class="cart-2c">Иван</div>
+  <div class="cart-1c">Адрес</div>
+  <div class="cart-1c">Комментарии</div>
+  </div>
+  </div>
+    <!-- здесь заканчивается макет карточки -->
+  
+  <!-- каталог карточек -->
+  <div class="hidden"> <!-- временный див, что бы работал hidden -->
+  <div class="cart_users_flex ">
+  <div class="cart_users">
+    <div class="">
+      <img src="/assets/Lada.jpg" alt="Изображение товара" class="image_cart" >
+    </div>
+   <div class=""><span class="">Автомобиль</span></div> 
+   <div class=""><span class="">700 000 Р</span> </div>
+   <div class="">Адрес</div>
+   <div class="">Дата добавления товара</div>
+  </div>
+  <div class="cart_users">
+    <div class="">
+      <img src="/assets/Lada.jpg" alt="Изображение товара" class="image_cart" >
+    </div>
+   <div class=""><span class="">Автомобиль</span></div> 
+   <div class=""><span class="">700 000 Р</span> </div>
+   <div class="">Адрес</div>
+   <div class="">Дата добавления товара</div>
+  </div>
+  <div class="cart_users">
+    <div class="">
+      <img src="/assets/Lada.jpg" alt="Изображение товара" class="image_cart" >
+    </div>
+   <div class=""><span class="">Автомобиль</span></div> 
+   <div class=""><span class="">700 000 Р</span> </div>
+   <div class="">Адрес</div>
+   <div class="">Дата добавления товара</div>
+  </div>
+  <div class="cart_users">
+    <div class="">
+      <img src="/assets/Lada.jpg" alt="Изображение товара" class="image_cart" >
+    </div>
+   <div class=""><span class="">Автомобиль</span></div> 
+   <div class=""><span class="">700 000 Р</span> </div>
+   <div class="">Адрес</div>
+   <div class="">Дата добавления товара</div>
+  </div>
+  <div class="cart_users">
+    <div class="">
+      <img src="/assets/Lada.jpg" alt="Изображение товара" class="image_cart" >
+    </div>
+   <div class=""><span class="">Автомобиль</span></div> 
+   <div class=""><span class="">700 000 Р</span> </div>
+   <div class="">Адрес</div>
+   <div class="">Дата добавления товара</div>
+  </div>
+  <div class="cart_users">
+    <div class="">
+      <img src="/assets/Lada.jpg" alt="Изображение товара" class="image_cart" >
+    </div>
+   <div class=""><span class="">Автомобиль</span></div> 
+   <div class=""><span class="">700 000 Р</span> </div>
+   <div class="">Адрес</div>
+   <div class="">Дата добавления товара</div>
+  </div>
+  <div class="cart_users">
+    <div class="">
+      <img src="/assets/Lada.jpg" alt="Изображение товара" class="image_cart" >
+    </div>
+   <div class=""><span class="">Автомобиль</span></div> 
+   <div class=""><span class="">700 000 Р</span> </div>
+   <div class="">Адрес</div>
+   <div class="">Дата добавления товара</div>
+  </div>
+  <div class="cart_users">
+    <div class="">
+      <img src="/assets/Lada.jpg" alt="Изображение товара" class="image_cart" >
+    </div>
+   <div class=""><span class="">Автомобиль</span></div> 
+   <div class=""><span class="">700 000 Р</span> </div>
+   <div class="">Адрес</div>
+   <div class="">Дата добавления товара</div>
+  </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+    </main>
+  
+    <footer class="footer">
+      <div class="footer-social">
+        <a class="social-btn social-btn-vk" href="#">
+          <img src="/assets/vk.png" alt="Вконтакте" height="50"></a>
+        <a class="social-btn social-btn-fb" href="#">
+          <img src="/assets//fb.png" alt="Фейсбук" height="45"></a>
+        <a class="social-btn social-btn-in" href="#">
+          <img src="/assets/instagram.png" alt="Инстаграм" height="50"></a>
+        <a class="social-btn social-btn-yb" href="#">
+          <img src="/assets/youtube.png" alt="YouTube" height="50"></a>
+        <a class="social-btn social-btn-tg" href="#">
+          <img src="/assets/telegram.png" alt="Telegram" height="50">
+        </a>
+      </div>
+      <div class="footer-copyright"> © 2021-2021 ООО «Севито». Все права защищены.</div>
+    </footer>
+  
+  
+    <app-root></app-root>
+</body>
+</html>
