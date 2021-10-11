@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NotificationsEmail.API</name>
+    </assembly>
+    <members>
+        <member name="T:NotificationsEmail.API.Controllers.NotificationsEmailController">
+            <summary>
+            API Сервиса нотификации по почте
+            </summary>
+        </member>
+        <member name="M:NotificationsEmail.API.Controllers.NotificationsEmailController.SendEmail(NotificationsEmail.Contracts.LetterDto)">
+            <summary>
+            Отправить Email
+            </summary>
+            <param name="dto">Письмо</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
