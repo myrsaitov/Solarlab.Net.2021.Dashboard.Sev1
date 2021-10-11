@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System;
 using Sev1.Advertisements.Application.Repositories.Advertisement;
-using Sev1.Advertisements.Repository.Base;
+using Sev1.Advertisements.DataAccess.Base;
 
-namespace Sev1.Advertisements.Repository.Repositories
+namespace Sev1.Advertisements.DataAccess.Repositories
 {
     public sealed class AdvertisementRepository : EfRepository<Advertisement, int>, IAdvertisementRepository
     {

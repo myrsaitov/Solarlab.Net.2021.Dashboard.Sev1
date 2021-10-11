@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using Sev1.Advertisements.Domain;
 using Microsoft.EntityFrameworkCore;
 using Sev1.Advertisements.Application.Repositories.Category;
-using Sev1.Advertisements.Repository.Base;
+using Sev1.Advertisements.DataAccess.Base;
 
-namespace Sev1.Advertisements.Repository.Repositories
+namespace Sev1.Advertisements.DataAccess.Repositories
 {
     public sealed class CategoryRepository : EfRepository<Category, int>, ICategoryRepository
     {

@@ -25,7 +25,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Advertisements.Application\Advertisements.Application.csproj" />
     <ProjectReference Include="..\..\Domain\Advertisements.Domain\Advertisements.Domain.csproj" />
-    <ProjectReference Include="..\Advertisements.Repository\Advertisements.Repository.csproj" />
   </ItemGroup>
 
 </Project>
