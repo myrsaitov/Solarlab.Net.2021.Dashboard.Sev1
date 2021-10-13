@@ -12,22 +12,22 @@ namespace NotificationsEmail.Domain.Enums
     public enum LetterStatus
     {
         /// <summary>
-        /// 0 - Новое сообщение
-        /// </summary>
-        New,
-
-        /// <summary>
-        /// 1 - Попытка отправить сообщение
-        /// </summary>
-        Trying,
-
-        /// <summary>
-        /// 2 - Сообщение отправлено
+        /// Сообщение отправлено
         /// </summary>
         Sent,
 
         /// <summary>
-        /// 3 - Произошла ошибка при отправки сообщения
+        /// Новое сообщение
+        /// </summary>
+        New,
+
+        /// <summary>
+        /// Попытка отправить сообщение
+        /// </summary>
+        Trying,
+
+        /// <summary>
+        /// Произошла ошибка при отправки сообщения
         /// </summary>
         Failed
     }

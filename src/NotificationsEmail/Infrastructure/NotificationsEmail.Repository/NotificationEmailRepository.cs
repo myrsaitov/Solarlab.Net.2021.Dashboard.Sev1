@@ -40,7 +40,7 @@ namespace NotificationsEmail.Repository
         /// <inheritdoc/>
         public async Task<List<Letter>> GetNotSendedLettersForLastDay()
         {
-            var letters = await _dbSet.Where(letter => (letter.Status == LetterStatus.New) || (letter.Status == LetterStatus.Trying)
+            var letters = await _dbSet.Where(letter => (letter.Status == LetterStatus.New || letter.Status == LetterStatus.Trying)
                                             && letter.SendRequesDate > DateTime.Now.AddHours(-24)).ToListAsync();
             return letters;
         }

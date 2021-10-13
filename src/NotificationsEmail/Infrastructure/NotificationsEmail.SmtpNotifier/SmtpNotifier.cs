@@ -27,7 +27,7 @@ namespace NotificationsEmail.Notification
             emailMessage.From.Add(new MailboxAddress(_configuration.GetSection("EmailName").Value, 
                                                     _configuration.GetSection("EmailAddress").Value));
             //Установить имя и адрес получателя
-            emailMessage.To.Add(new MailboxAddress("", email));
+            emailMessage.To.Add(new MailboxAddress(string.Empty, email));
             //Тема сообщения
             emailMessage.Subject = subject;
             //Текст сообщения

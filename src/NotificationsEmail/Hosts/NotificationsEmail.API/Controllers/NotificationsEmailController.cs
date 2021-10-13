@@ -2,10 +2,6 @@
 using Microsoft.Extensions.Logging;
 using NotificationsEmail.Contracts;
 using NotificationsEmail.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NotificationsEmail.API.Controllers
 {
@@ -35,7 +31,7 @@ namespace NotificationsEmail.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                _notificationEmailService.SendEmailAsync(dto);
+                _notificationEmailService.SendNewEmailAsync(dto);
                 return Ok();
             }
             return BadRequest();
