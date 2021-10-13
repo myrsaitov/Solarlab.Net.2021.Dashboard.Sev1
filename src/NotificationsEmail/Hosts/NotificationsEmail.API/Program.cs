@@ -20,7 +20,7 @@ namespace NotificationsEmail.API
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    config.AddJsonFile("smtpConfiguration.json", optional: false, reloadOnChange: false);
+                    config.AddJsonFile("smtpConfiguration.json", optional: false, reloadOnChange: false);   // конфигурация SMTP сервиса
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

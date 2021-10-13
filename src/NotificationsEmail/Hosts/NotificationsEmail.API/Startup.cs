@@ -11,6 +11,9 @@ using NotificationsEmail.Mapper;
 using NotificationsEmail.Repository;
 using Microsoft.OpenApi.Models;
 using System.IO;
+using NotificationsEmail.ScheduledSender;
+using Quartz.Spi;
+using Quartz;
 
 namespace NotificationsEmail.API
 {
@@ -33,12 +36,16 @@ namespace NotificationsEmail.API
             services.AddControllersWithViews();
 
             services.AddAutoMapper(typeof(LetterMapperProfile));
-
             services.AddScoped<INotificationEmailRepository, NotificationEmailRepository>();
+            services.AddScoped<IEmailSender, SmtpNotifier>();
 
-            services.AddSingleton<INotificationEmailService, NotificationEmailService>();
+            services.AddScoped<INotificationEmailService, NotificationEmailService>();
 
-            services.AddSingleton<IEmailSender, SmtpNotifier>();
+            // Сервис проверки писем из БД по расписанию
+            services.AddHostedService<NotificationScheduler>();
+            services.AddSingleton<IJobFactory, SingletonJobFactory>();
+            services.AddSingleton<ScheduledNotificationService>();
+
 
             services.AddSwaggerGen(swagger =>
             {
@@ -70,17 +77,14 @@ namespace NotificationsEmail.API
 
             app.UseStaticFiles();
 
-            //Запуск сервиса нотификации (для проверки пропущенных писем в БД)
-            app.ApplicationServices.GetService<INotificationEmailService>();
-
             //app.UseHttpsRedirection();
-            //app.UseRouting();
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute(
-            //        name: "default",
-            //        pattern: "{controller=Home}/{action=Index}/{id?}");
-            //});
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }
