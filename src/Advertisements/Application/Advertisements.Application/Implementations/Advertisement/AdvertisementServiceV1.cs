@@ -12,7 +12,6 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
         private readonly IAdvertisementRepository _advertisementRepository;
         private readonly ITagRepository _tagRepository;
         private readonly IMapper _mapper;
-
         public AdvertisementServiceV1(
             IAdvertisementRepository advertisementRepository, 
             ICategoryRepository categoryRepository, 
