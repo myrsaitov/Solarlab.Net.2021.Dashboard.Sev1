@@ -197,7 +197,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationsEmail.Notifica
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationsEmail.Tests", "src\NotificationsEmail\Tests\NotificationsEmail.Tests\NotificationsEmail.Tests.csproj", "{B66C279F-8C77-403E-A77D-A0EC482AD791}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsEmail.ScheduledSender", "src\NotificationsEmail\Application\NotificationsEmail.ScheduledSender\NotificationsEmail.ScheduledSender.csproj", "{04B14461-0164-48A1-BA95-A2CBD1635D30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationsEmail.ScheduledSender", "src\NotificationsEmail\Application\NotificationsEmail.ScheduledSender\NotificationsEmail.ScheduledSender.csproj", "{04B14461-0164-48A1-BA95-A2CBD1635D30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
