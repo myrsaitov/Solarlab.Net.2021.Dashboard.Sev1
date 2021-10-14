@@ -43,6 +43,13 @@ namespace Comments.Repository.Persistance
         }
 
         /// <inheritdoc/>
+        public async Task<int> GetTotalPagesByChatIdAsync(Guid id, int PageSize, CancellationToken token)
+        {
+            var totalComments = await _dbSet.CountAsync(c => c.ChatId == id, token);
+            return (int) Math.Ceiling(totalComments / (double)PageSize);
+        }
+
+        /// <inheritdoc/>
         public async Task DeleteCommentsByChatIdAsync(Guid id, CancellationToken token)
         {
 

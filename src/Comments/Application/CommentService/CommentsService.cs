@@ -34,6 +34,12 @@ namespace Comments.Services
         }
 
         /// <inheritdoc/>
+        public async Task<int> CountPagesAsync(Guid id, int pageSize, CancellationToken token)
+        {
+            return await _repository.GetTotalPagesByChatIdAsync(id, pageSize, token);
+        }
+
+        /// <inheritdoc/>
         public async Task DeleteCommentsByChatIdAsync(Guid id, CancellationToken token)
         {
             await _repository.DeleteCommentsByChatIdAsync(id, token);

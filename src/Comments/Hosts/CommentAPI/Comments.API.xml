@@ -19,6 +19,12 @@
             </summary>
             <response code="200">Ok</response>
         </member>
+        <member name="M:Comments.API.Controllers.CommentController.CountPagesByChatId(Comments.Contracts.CommentDtoRequestCountPagesByChatId,System.Threading.CancellationToken)">
+            <summary>
+            Посчитать количество страниц комментариев в чате
+            </summary>
+            <response code="200">Ok</response>
+        </member>
         <member name="M:Comments.API.Controllers.CommentController.DeleteCommentsByChatId(System.Guid,System.Threading.CancellationToken)">
             <summary>
             Удалить все коментарии, прикреплённые к чату

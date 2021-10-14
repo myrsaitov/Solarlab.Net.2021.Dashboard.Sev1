@@ -43,6 +43,20 @@ namespace Comments.API.Controllers
         }
 
         /// <summary>
+        /// Посчитать количество страниц комментариев в чате
+        /// </summary>
+        /// <response code="200">Ok</response>
+        [HttpGet("CountPagesByChatId")]
+        public async Task<IActionResult> CountPagesByChatId([FromQuery] CommentDtoRequestCountPagesByChatId dto, CancellationToken token = default)
+        {
+            if (ModelState.IsValid)
+            {
+                return Ok(await _commentService.CountPagesAsync(dto.Id, dto.PageSize, token));
+            }
+            return BadRequest();
+        }
+
+        /// <summary>
         /// Удалить все коментарии, прикреплённые к чату
         /// </summary>
         /// <param name="id">Chat Id</param>

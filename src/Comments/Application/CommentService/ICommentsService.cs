@@ -27,6 +27,15 @@ namespace Comments.Services
         public Task DeleteCommentsByChatIdAsync(Guid id, CancellationToken token);
 
         /// <summary>
+        /// Посчитать количество страниц комментариев в чате
+        /// </summary>
+        /// <param name="id">Id чата</param>
+        /// <param name="pageSize">Размер страницы</param>
+        /// <param name="token">CancellationToken</param>
+        /// <returns></returns>
+        public Task<int> CountPagesAsync(Guid id, int pageSize, CancellationToken token);
+
+        /// <summary>
         /// Создать коментарий
         /// </summary>
         /// <param name="comment">Коментарий</param>
