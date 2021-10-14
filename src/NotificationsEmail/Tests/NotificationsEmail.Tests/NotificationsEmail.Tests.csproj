@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Application\NotificationsEmail.Services\NotificationsEmail.Services.csproj" />
+    <ProjectReference Include="..\..\Hosts\NotificationsEmail.API\NotificationsEmail.API.csproj" />
     <ProjectReference Include="..\..\Infrastructure\NotificationsEmail.Mapper\NotificationsEmail.Mapper.csproj" />
     <ProjectReference Include="..\..\Infrastructure\NotificationsEmail.Repository\NotificationsEmail.Repository.csproj" />
   </ItemGroup>

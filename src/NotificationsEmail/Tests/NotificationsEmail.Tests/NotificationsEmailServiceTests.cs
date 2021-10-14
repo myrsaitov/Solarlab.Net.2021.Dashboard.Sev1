@@ -1,5 +1,4 @@
 using AutoFixture;
-using AutoFixture.Xunit2;
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
@@ -7,7 +6,6 @@ using NotificationsEmail.Contracts;
 using NotificationsEmail.Domain.Entities;
 using NotificationsEmail.Domain.Enums;
 using NotificationsEmail.Mapper;
-using NotificationsEmail.Repository;
 using NotificationsEmail.Services;
 using NotificationsEmail.Services.Interfaces;
 using System;

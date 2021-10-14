@@ -35,10 +35,12 @@ namespace NotificationsEmail.API
 
             services.AddControllersWithViews();
 
+            // Инфраструктура
             services.AddAutoMapper(typeof(LetterMapperProfile));
             services.AddScoped<INotificationEmailRepository, NotificationEmailRepository>();
             services.AddScoped<IEmailSender, SmtpNotifier>();
 
+            // Сервис нотификации
             services.AddScoped<INotificationEmailService, NotificationEmailService>();
 
             // Сервис проверки писем из БД по расписанию
