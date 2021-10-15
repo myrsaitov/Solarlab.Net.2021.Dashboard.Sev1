@@ -1,4 +1,4 @@
-﻿using Sev1.Advertisements.Application.Services.Category.Contracts;
+﻿using Sev1.Advertisements.Application.Contracts.Category;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,7 +14,7 @@ namespace Sev1.Advertisements.Tests.Category
         [Theory]
         [AutoData]
         public async Task Create_Returns_Response_Success(
-            Create.Request request, 
+            CategoryCreateDto request, 
             CancellationToken cancellationToken, 
             int userId, 
             int categoryId)
@@ -44,12 +44,12 @@ namespace Sev1.Advertisements.Tests.Category
             // Assert
             _categoryRepositoryMock.Verify();
             Assert.NotNull(response);
-            Assert.NotEqual(default, response.Id);
+            Assert.NotEqual(default, response);
         }
         [Theory]
         [AutoData]
         public async Task Create_Throws_Exception_When_No_Rights(
-            Create.Request request,
+            CategoryCreateDto request,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -64,7 +64,7 @@ namespace Sev1.Advertisements.Tests.Category
         [Theory]
         [InlineAutoData(null)]
         public async Task Create_Throws_Exception_When_Request_Is_Null(
-            Create.Request request, 
+            CategoryCreateDto request, 
             CancellationToken cancellationToken)
         {
             // Act

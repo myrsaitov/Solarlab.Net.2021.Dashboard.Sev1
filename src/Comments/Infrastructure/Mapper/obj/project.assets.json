@@ -1807,28 +1807,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ICStorm\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Storm\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Comments\\Infrastructure\\Mapper\\Comments.Mapper.csproj",
+      "projectUniqueName": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Comments\\Infrastructure\\Mapper\\Comments.Mapper.csproj",
       "projectName": "Comments.Mapper",
-      "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Comments\\Infrastructure\\Mapper\\Comments.Mapper.csproj",
-      "packagesPath": "C:\\Users\\ICStorm\\.nuget\\packages\\",
-      "outputPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Comments\\Infrastructure\\Mapper\\obj\\",
+      "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Comments\\Infrastructure\\Mapper\\Comments.Mapper.csproj",
+      "packagesPath": "C:\\Users\\Storm\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Comments\\Infrastructure\\Mapper\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ICStorm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Storm\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -1841,11 +1838,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Comments\\Contracts\\Comments.Contracts.csproj": {
-              "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Comments\\Contracts\\Comments.Contracts.csproj"
+            "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Comments\\Contracts\\Comments.Contracts.csproj": {
+              "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Comments\\Contracts\\Comments.Contracts.csproj"
             },
-            "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Comments\\Domain\\Comments.Domain.csproj": {
-              "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Comments\\Domain\\Comments.Domain.csproj"
+            "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Comments\\Domain\\Comments.Domain.csproj": {
+              "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Comments\\Domain\\Comments.Domain.csproj"
             }
           }
         }
@@ -1880,7 +1877,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

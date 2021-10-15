@@ -20,3 +20,14 @@ C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Mappe
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Mapper\obj\Debug\net5.0\Images.Mapper.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Mapper\obj\Debug\net5.0\ref\Images.Mapper.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Mapper\obj\Debug\net5.0\Images.Mapper.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Mapper\bin\Debug\net5.0\Images.Mapper.deps.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Mapper\bin\Debug\net5.0\Images.Mapper.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Mapper\bin\Debug\net5.0\ref\Images.Mapper.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Mapper\bin\Debug\net5.0\Images.Mapper.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Mapper\obj\Debug\net5.0\Images.Mapper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Mapper\obj\Debug\net5.0\Images.Mapper.AssemblyInfoInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Mapper\obj\Debug\net5.0\Images.Mapper.AssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Mapper\obj\Debug\net5.0\Images.Mapper.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Mapper\obj\Debug\net5.0\Images.Mapper.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Mapper\obj\Debug\net5.0\ref\Images.Mapper.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Mapper\obj\Debug\net5.0\Images.Mapper.pdb

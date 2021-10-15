@@ -20,3 +20,14 @@ C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Domain\Userpics.Domain\ob
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Domain\Userpics.Domain\obj\Debug\net5.0\Userpics.Domain.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Domain\Userpics.Domain\obj\Debug\net5.0\ref\Userpics.Domain.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Domain\Userpics.Domain\obj\Debug\net5.0\Userpics.Domain.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Domain\Userpics.Domain\bin\Debug\net5.0\Userpics.Domain.deps.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Domain\Userpics.Domain\bin\Debug\net5.0\Userpics.Domain.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Domain\Userpics.Domain\bin\Debug\net5.0\ref\Userpics.Domain.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Domain\Userpics.Domain\bin\Debug\net5.0\Userpics.Domain.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Domain\Userpics.Domain\obj\Debug\net5.0\Userpics.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Domain\Userpics.Domain\obj\Debug\net5.0\Userpics.Domain.AssemblyInfoInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Domain\Userpics.Domain\obj\Debug\net5.0\Userpics.Domain.AssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Domain\Userpics.Domain\obj\Debug\net5.0\Userpics.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Domain\Userpics.Domain\obj\Debug\net5.0\Userpics.Domain.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Domain\Userpics.Domain\obj\Debug\net5.0\ref\Userpics.Domain.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Domain\Userpics.Domain\obj\Debug\net5.0\Userpics.Domain.pdb

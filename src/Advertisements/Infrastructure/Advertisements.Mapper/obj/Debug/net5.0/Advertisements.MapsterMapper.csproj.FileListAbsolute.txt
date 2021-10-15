@@ -36,3 +36,20 @@ C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Infrastructure\Adve
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Infrastructure\Advertisements.Mapper\obj\Debug\net5.0\Advertisements.MapsterMapper.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Infrastructure\Advertisements.Mapper\obj\Debug\net5.0\ref\Advertisements.MapsterMapper.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Infrastructure\Advertisements.Mapper\obj\Debug\net5.0\Advertisements.MapsterMapper.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\bin\Debug\net5.0\Advertisements.MapsterMapper.deps.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\bin\Debug\net5.0\Advertisements.MapsterMapper.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\bin\Debug\net5.0\ref\Advertisements.MapsterMapper.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\bin\Debug\net5.0\Advertisements.MapsterMapper.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\bin\Debug\net5.0\Advertisements.Application.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\bin\Debug\net5.0\Advertisements.Domain.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\bin\Debug\net5.0\Advertisements.Application.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\bin\Debug\net5.0\Advertisements.Domain.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\obj\Debug\net5.0\Advertisements.MapsterMapper.csproj.AssemblyReference.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\obj\Debug\net5.0\Advertisements.MapsterMapper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\obj\Debug\net5.0\Advertisements.MapsterMapper.AssemblyInfoInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\obj\Debug\net5.0\Advertisements.MapsterMapper.AssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\obj\Debug\net5.0\Advertisements.MapsterMapper.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\obj\Debug\net5.0\Advertisements.MapsterMapper.csproj.CopyComplete
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\obj\Debug\net5.0\Advertisements.MapsterMapper.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\obj\Debug\net5.0\ref\Advertisements.MapsterMapper.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.Mapper\obj\Debug\net5.0\Advertisements.MapsterMapper.pdb

@@ -1,11 +1,12 @@
-﻿using Sev1.Advertisements.DataAccess.Interfaces;
-using Sev1.Advertisements.Application.Services.Advertisement.Implementations;
-using Moq;
+﻿using Moq;
 using MapsterMapper;
 using Mapster;
 using System.Linq.Expressions;
-using System.Linq;
 using Sev1.Advertisements.MapsterMapper.MapProfiles;
+using Sev1.Advertisements.Application.Implementations.Advertisement;
+using Sev1.Advertisements.Application.Repositories.Advertisement;
+using Sev1.Advertisements.Application.Repositories.Category;
+using Sev1.Advertisements.Application.Repositories.Tag;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {

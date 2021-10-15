@@ -37,7 +37,7 @@ namespace Comments.API
             string connection = Configuration.GetConnectionString("Connection_Skarfe");
 
             services.AddDbContext<CommentDBContext>(options =>
-                options.UseSqlServer(connection, b => b.MigrationsAssembly("CommentMigrations")));
+                options.UseSqlServer(connection, b => b.MigrationsAssembly("Comments.Migrations")));
 
 
             services.AddScoped<ICommentsService, CommentsService>();

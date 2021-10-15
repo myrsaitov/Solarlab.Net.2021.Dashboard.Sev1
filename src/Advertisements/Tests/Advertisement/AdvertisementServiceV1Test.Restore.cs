@@ -1,5 +1,4 @@
-﻿using Sev1.Advertisements.Application.Services.Advertisement.Contracts;
-using Sev1.Advertisements.Application.Services.Advertisement.Contracts.Exceptions;
+﻿using Sev1.Advertisements.Application.Exceptions;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,6 +6,7 @@ using Xunit;
 using AutoFixture.Xunit2;
 using System;
 using Sev1.Advertisements.Domain.Exceptions;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
@@ -15,7 +15,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task Restore_Returns_Response_Success(
-            Restore.Request request, 
+            int id, 
             CancellationToken cancellationToken, 
             int userId,
             int contentId)
@@ -43,7 +43,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // Act
             await _advertisementServiceV1.Restore(
-                request, 
+                id, 
                 cancellationToken);
 
             // Assert
@@ -52,7 +52,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task Restore_Throws_Exception_When_No_Rights(
-            Restore.Request request,
+            int id,
             CancellationToken cancellationToken,
             int userId)
         {
@@ -73,32 +73,32 @@ namespace Sev1.Advertisements.Tests.Advertisement
             // Act
             await Assert.ThrowsAsync<NoRightsException>(
                 async () => await _advertisementServiceV1.Restore(
-                    request,
+                    id,
                     cancellationToken));
         }
         [Theory]
         [AutoData]
         public async Task Restore_Throws_Exception_When_Advertisement_Is_Null(
-            Restore.Request request,
+            int id ,
             CancellationToken cancellationToken)
         {
             // Act
             await Assert.ThrowsAsync<AdvertisementNotFoundException>(
                 async () => await _advertisementServiceV1.Restore(
-                    request,
+                    id,
                     cancellationToken));
         }
         [Theory]
         [InlineAutoData(null)]
         public async Task Restore_Throws_Exception_When_Request_Is_Null(
-            Restore.Request request, 
+            int id, 
             CancellationToken cancellationToken
             )
         {
             // Act
             await Assert.ThrowsAsync<ArgumentNullException>(
                 async () => await _advertisementServiceV1.Restore(
-                    request, 
+                    id, 
                     cancellationToken));
         }
     }

@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Hosts\\Advertisements.Api\\Advertisements.Api.csproj": {}
+    "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Hosts\\Advertisements.Api\\Advertisements.Api.csproj": {}
   },
   "projects": {
-    "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj": {
+    "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj",
         "projectName": "Advertisements.Application",
-        "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj",
-        "packagesPath": "C:\\Users\\ICStorm\\.nuget\\packages\\",
-        "outputPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Application\\Advertisements.Application\\obj\\",
+        "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj",
+        "packagesPath": "C:\\Users\\Storm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Application\\Advertisements.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ICStorm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Storm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -34,11 +32,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj": {
-                "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj"
-              },
-              "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Infrastructure\\Advertisements.DataAccess\\Advertisements.DataAccess.csproj": {
-                "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Infrastructure\\Advertisements.DataAccess\\Advertisements.DataAccess.csproj"
+              "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj": {
+                "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj"
               }
             }
           }
@@ -53,6 +48,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[10.3.3, )"
+            },
             "Mapster": {
               "target": "Package",
               "version": "[7.2.0, )"
@@ -91,28 +90,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj": {
+    "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj",
         "projectName": "Advertisements.Domain",
-        "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj",
-        "packagesPath": "C:\\Users\\ICStorm\\.nuget\\packages\\",
-        "outputPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Domain\\Advertisements.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj",
+        "packagesPath": "C:\\Users\\Storm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Domain\\Advertisements.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ICStorm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Storm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -157,28 +154,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Hosts\\Advertisements.Api\\Advertisements.Api.csproj": {
+    "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Hosts\\Advertisements.Api\\Advertisements.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Hosts\\Advertisements.Api\\Advertisements.Api.csproj",
+        "projectUniqueName": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Hosts\\Advertisements.Api\\Advertisements.Api.csproj",
         "projectName": "Advertisements.Api",
-        "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Hosts\\Advertisements.Api\\Advertisements.Api.csproj",
-        "packagesPath": "C:\\Users\\ICStorm\\.nuget\\packages\\",
-        "outputPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Hosts\\Advertisements.Api\\obj\\",
+        "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Hosts\\Advertisements.Api\\Advertisements.Api.csproj",
+        "packagesPath": "C:\\Users\\Storm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Hosts\\Advertisements.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ICStorm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Storm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -191,14 +186,14 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj": {
-                "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj"
+              "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj": {
+                "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj"
               },
-              "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Infrastructure\\Advertisements.DataAccess\\Advertisements.DataAccess.csproj": {
-                "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Infrastructure\\Advertisements.DataAccess\\Advertisements.DataAccess.csproj"
+              "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Infrastructure\\Advertisements.DataAccess\\Advertisements.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Infrastructure\\Advertisements.DataAccess\\Advertisements.DataAccess.csproj"
               },
-              "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Infrastructure\\Advertisements.Mapper\\Advertisements.MapsterMapper.csproj": {
-                "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Infrastructure\\Advertisements.Mapper\\Advertisements.MapsterMapper.csproj"
+              "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Infrastructure\\Advertisements.Mapper\\Advertisements.MapsterMapper.csproj": {
+                "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Infrastructure\\Advertisements.Mapper\\Advertisements.MapsterMapper.csproj"
               }
             }
           }
@@ -296,28 +291,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Infrastructure\\Advertisements.DataAccess\\Advertisements.DataAccess.csproj": {
+    "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Infrastructure\\Advertisements.DataAccess\\Advertisements.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Infrastructure\\Advertisements.DataAccess\\Advertisements.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Infrastructure\\Advertisements.DataAccess\\Advertisements.DataAccess.csproj",
         "projectName": "Advertisements.DataAccess",
-        "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Infrastructure\\Advertisements.DataAccess\\Advertisements.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\ICStorm\\.nuget\\packages\\",
-        "outputPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Infrastructure\\Advertisements.DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Infrastructure\\Advertisements.DataAccess\\Advertisements.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\Storm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Infrastructure\\Advertisements.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ICStorm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Storm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -330,8 +323,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj": {
-                "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj"
+              "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj": {
+                "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj"
+              },
+              "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj": {
+                "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj"
               }
             }
           }
@@ -402,28 +398,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Infrastructure\\Advertisements.Mapper\\Advertisements.MapsterMapper.csproj": {
+    "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Infrastructure\\Advertisements.Mapper\\Advertisements.MapsterMapper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Infrastructure\\Advertisements.Mapper\\Advertisements.MapsterMapper.csproj",
+        "projectUniqueName": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Infrastructure\\Advertisements.Mapper\\Advertisements.MapsterMapper.csproj",
         "projectName": "Advertisements.MapsterMapper",
-        "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Infrastructure\\Advertisements.Mapper\\Advertisements.MapsterMapper.csproj",
-        "packagesPath": "C:\\Users\\ICStorm\\.nuget\\packages\\",
-        "outputPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Infrastructure\\Advertisements.Mapper\\obj\\",
+        "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Infrastructure\\Advertisements.Mapper\\Advertisements.MapsterMapper.csproj",
+        "packagesPath": "C:\\Users\\Storm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Infrastructure\\Advertisements.Mapper\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ICStorm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Storm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -436,11 +430,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj": {
-                "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj"
+              "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj": {
+                "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Application\\Advertisements.Application\\Advertisements.Application.csproj"
               },
-              "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj": {
-                "projectPath": "C:\\__Projects\\_Projects\\SolarLab_Proj_EDU\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj"
+              "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj": {
+                "projectPath": "C:\\Users\\Storm\\Documents\\_SolarLab_Project — merge\\src\\Advertisements\\Domain\\Advertisements.Domain\\Advertisements.Domain.csproj"
               }
             }
           }
@@ -479,7 +473,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

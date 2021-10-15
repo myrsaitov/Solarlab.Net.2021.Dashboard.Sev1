@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
-using Sev1.Advertisements.Application.Services.Contracts;
-using Sev1.Advertisements.Application.Services.Tag.Contracts;
+using Sev1.Advertisements.Application.Contracts.Tag;
 using System;
 using System.Linq;
+using Sev1.Advertisements.Application.Contracts.GetPaged;
 
 namespace Sev1.Advertisements.Tests.Tag
 {
@@ -16,7 +16,7 @@ namespace Sev1.Advertisements.Tests.Tag
         [Theory]
         [AutoData]
         public async Task GetPaged_Returns_Response_Success(
-            Paged.Request request, 
+            GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -54,12 +54,12 @@ namespace Sev1.Advertisements.Tests.Tag
             Assert.NotNull(response);
             Assert.Equal(tagCount, response.Total);
             Assert.Equal(tagCount, response.Items.Count());
-            Assert.IsType<Paged.Response<GetById.Response>>(response);
+            Assert.IsType<GetPagedResponse<TagPagedDto>>(response);
         }
         [Theory]
         [AutoData]
         public async Task GetPaged_Returns_Response_Success_Total_eq_0(
-            Paged.Request request,
+            GetPagedRequest request,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -80,12 +80,12 @@ namespace Sev1.Advertisements.Tests.Tag
             Assert.NotNull(response);
             Assert.Equal(tagCount, response.Total);
             Assert.Equal(tagCount, response.Items.Count());
-            Assert.IsType<Paged.Response<GetById.Response>>(response);
+            Assert.IsType<GetPagedResponse<TagPagedDto>>(response);
         }
         [Theory]
         [InlineAutoData(null)]
         public async Task GetPaged_Throws_Exception_When_Request_Is_Null(
-            Paged.Request request, 
+            GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
             // Act

@@ -1,19 +1,20 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Services.Category.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Services.Contracts;
+using Sev1.Advertisements.Application.Contracts.GetPaged;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {
     public partial class CategoryController
     {
         [HttpGet]
-        [AllowAnonymous]
-        public async Task<IActionResult> GetPaged([FromQuery] GetPagedRequest request, CancellationToken cancellationToken)
+        //[AllowAnonymous]
+        public async Task<IActionResult> GetPaged(
+            [FromQuery] GetPagedRequest request, 
+            CancellationToken cancellationToken)
         {
-            var result = await _categoryService.GetPaged(new Paged.Request
+            var result = await _categoryService.GetPaged(new GetPagedRequest
             {
                 PageSize = request.PageSize,
                 Page = request.Page
@@ -23,14 +24,15 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         }
 
         [HttpGet("{id}")]
-        [AllowAnonymous]
-        public async Task<IActionResult> GetById(int id, CancellationToken cancellationToken)
+        //[AllowAnonymous]
+        public async Task<IActionResult> GetById(
+            [FromRoute] int id, 
+            CancellationToken cancellationToken)
         {
 
-            var found = await _categoryService.GetById(new GetById.Request
-            {
-                Id = id
-            }, cancellationToken);
+            var found = await _categoryService.GetById(
+                id,
+                cancellationToken);
 
             return Ok(found);
         }

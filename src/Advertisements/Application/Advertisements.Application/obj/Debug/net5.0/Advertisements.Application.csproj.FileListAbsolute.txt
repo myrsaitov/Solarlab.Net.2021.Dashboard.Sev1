@@ -38,3 +38,21 @@ C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Application\Adverti
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Application\Advertisements.Application\obj\Debug\net5.0\ref\Advertisements.Application.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Application\Advertisements.Application\obj\Debug\net5.0\Advertisements.Application.pdb
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Application\Advertisements.Application\obj\Debug\net5.0\Advertisements.Application.genruntimeconfig.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\bin\Debug\net5.0\Advertisements.Application.deps.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\bin\Debug\net5.0\Advertisements.Application.runtimeconfig.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\bin\Debug\net5.0\Advertisements.Application.runtimeconfig.dev.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\bin\Debug\net5.0\Advertisements.Application.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\bin\Debug\net5.0\ref\Advertisements.Application.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\bin\Debug\net5.0\Advertisements.Application.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\bin\Debug\net5.0\Advertisements.Domain.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\bin\Debug\net5.0\Advertisements.Domain.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\obj\Debug\net5.0\Advertisements.Application.csproj.AssemblyReference.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\obj\Debug\net5.0\Advertisements.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\obj\Debug\net5.0\Advertisements.Application.AssemblyInfoInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\obj\Debug\net5.0\Advertisements.Application.AssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\obj\Debug\net5.0\Advertisements.Application.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\obj\Debug\net5.0\Advertisements.Application.csproj.CopyComplete
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\obj\Debug\net5.0\Advertisements.Application.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\obj\Debug\net5.0\ref\Advertisements.Application.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\obj\Debug\net5.0\Advertisements.Application.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Application\Advertisements.Application\obj\Debug\net5.0\Advertisements.Application.genruntimeconfig.cache

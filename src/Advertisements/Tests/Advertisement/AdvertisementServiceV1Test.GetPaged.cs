@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
-using Sev1.Advertisements.Application.Services.Contracts;
-using Sev1.Advertisements.Application.Services.Advertisement.Contracts;
+using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Advertisements.Application.Contracts.Advertisement;
 using System.Linq;
 using System;
 
@@ -16,7 +16,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task GetPaged_Returns_Response_Success(
-            Paged.Request request, 
+            GetPagedAdvertisementRequest request, 
             CancellationToken cancellationToken, 
             int userId,
             string contentTitle,
@@ -80,12 +80,12 @@ namespace Sev1.Advertisements.Tests.Advertisement
             Assert.NotNull(response);
             Assert.Equal(contentCount, response.Total);
             Assert.Equal(contentCount, response.Items.Count());
-            Assert.IsType<Paged.Response<GetPaged.Response>>(response);
+            Assert.IsType<GetPagedResponse<AdvertisementPagedDto>>(response);
         }
         [Theory]
         [AutoData]
         public async Task GetPaged_Returns_Response_Success_Total_eq_0(
-            Paged.Request request,
+            GetPagedAdvertisementRequest request,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -115,12 +115,12 @@ namespace Sev1.Advertisements.Tests.Advertisement
             Assert.NotNull(response);
             Assert.Equal(contentCount, response.Total);
             Assert.Equal(contentCount, response.Items.Count());
-            Assert.IsType<Paged.Response<GetPaged.Response>>(response);
+            Assert.IsType<GetPagedResponse<AdvertisementPagedDto>>(response);
         }
         [Theory]
         [InlineAutoData(null)]
         public async Task GetPaged_Throws_Exception_When_Request_Is_Null(
-            Paged.Request request, 
+            GetPagedAdvertisementRequest request, 
             CancellationToken cancellationToken)
         {
             // Act

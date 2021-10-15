@@ -20,3 +20,14 @@ C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataA
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\ref\Images.DataAccess.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.DataAccess\bin\Debug\net5.0\Images.DataAccess.deps.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.DataAccess\bin\Debug\net5.0\Images.DataAccess.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.DataAccess\bin\Debug\net5.0\ref\Images.DataAccess.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.DataAccess\bin\Debug\net5.0\Images.DataAccess.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.AssemblyInfoInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.AssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\ref\Images.DataAccess.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.DataAccess\obj\Debug\net5.0\Images.DataAccess.pdb

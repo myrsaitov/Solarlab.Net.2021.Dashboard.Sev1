@@ -20,3 +20,14 @@ C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Application\Userpics.Appl
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Application\Userpics.Application\obj\Debug\net5.0\Userpics.Application.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Application\Userpics.Application\obj\Debug\net5.0\ref\Userpics.Application.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Application\Userpics.Application\obj\Debug\net5.0\Userpics.Application.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Application\Userpics.Application\bin\Debug\net5.0\Userpics.Application.deps.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Application\Userpics.Application\bin\Debug\net5.0\Userpics.Application.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Application\Userpics.Application\bin\Debug\net5.0\ref\Userpics.Application.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Application\Userpics.Application\bin\Debug\net5.0\Userpics.Application.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Application\Userpics.Application\obj\Debug\net5.0\Userpics.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Application\Userpics.Application\obj\Debug\net5.0\Userpics.Application.AssemblyInfoInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Application\Userpics.Application\obj\Debug\net5.0\Userpics.Application.AssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Application\Userpics.Application\obj\Debug\net5.0\Userpics.Application.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Application\Userpics.Application\obj\Debug\net5.0\Userpics.Application.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Application\Userpics.Application\obj\Debug\net5.0\ref\Userpics.Application.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Application\Userpics.Application\obj\Debug\net5.0\Userpics.Application.pdb

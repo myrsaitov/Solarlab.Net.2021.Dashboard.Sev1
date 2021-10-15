@@ -20,3 +20,14 @@ C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.M
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.Mapper\obj\Debug\net5.0\Userpics.Mapper.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.Mapper\obj\Debug\net5.0\ref\Userpics.Mapper.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.Mapper\obj\Debug\net5.0\Userpics.Mapper.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.Mapper\bin\Debug\net5.0\Userpics.Mapper.deps.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.Mapper\bin\Debug\net5.0\Userpics.Mapper.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.Mapper\bin\Debug\net5.0\ref\Userpics.Mapper.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.Mapper\bin\Debug\net5.0\Userpics.Mapper.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.Mapper\obj\Debug\net5.0\Userpics.Mapper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.Mapper\obj\Debug\net5.0\Userpics.Mapper.AssemblyInfoInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.Mapper\obj\Debug\net5.0\Userpics.Mapper.AssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.Mapper\obj\Debug\net5.0\Userpics.Mapper.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.Mapper\obj\Debug\net5.0\Userpics.Mapper.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.Mapper\obj\Debug\net5.0\ref\Userpics.Mapper.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.Mapper\obj\Debug\net5.0\Userpics.Mapper.pdb

@@ -20,3 +20,14 @@ C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Hosts\Images.Api\obj\Debug\
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Hosts\Images.Api\obj\Debug\net5.0\Images.Api.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Hosts\Images.Api\obj\Debug\net5.0\ref\Images.Api.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Hosts\Images.Api\obj\Debug\net5.0\Images.Api.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Hosts\Images.Api\bin\Debug\net5.0\Images.Api.deps.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Hosts\Images.Api\bin\Debug\net5.0\Images.Api.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Hosts\Images.Api\bin\Debug\net5.0\ref\Images.Api.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Hosts\Images.Api\bin\Debug\net5.0\Images.Api.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Hosts\Images.Api\obj\Debug\net5.0\Images.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Hosts\Images.Api\obj\Debug\net5.0\Images.Api.AssemblyInfoInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Hosts\Images.Api\obj\Debug\net5.0\Images.Api.AssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Hosts\Images.Api\obj\Debug\net5.0\Images.Api.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Hosts\Images.Api\obj\Debug\net5.0\Images.Api.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Hosts\Images.Api\obj\Debug\net5.0\ref\Images.Api.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Hosts\Images.Api\obj\Debug\net5.0\Images.Api.pdb

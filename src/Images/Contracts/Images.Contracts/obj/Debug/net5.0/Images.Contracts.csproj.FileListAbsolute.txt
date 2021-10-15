@@ -20,3 +20,15 @@ C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\ref\Images.Contracts.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Contracts\Images.Contracts\bin\Debug\net5.0\Images.Contracts.deps.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Contracts\Images.Contracts\bin\Debug\net5.0\Images.Contracts.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Contracts\Images.Contracts\bin\Debug\net5.0\ref\Images.Contracts.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Contracts\Images.Contracts\bin\Debug\net5.0\Images.Contracts.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.csproj.AssemblyReference.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.AssemblyInfoInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.AssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\ref\Images.Contracts.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Contracts\Images.Contracts\obj\Debug\net5.0\Images.Contracts.pdb

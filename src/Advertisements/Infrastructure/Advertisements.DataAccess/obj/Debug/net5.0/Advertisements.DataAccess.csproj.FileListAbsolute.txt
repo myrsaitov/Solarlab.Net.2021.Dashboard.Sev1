@@ -34,3 +34,23 @@ C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Infrastructure\Adve
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Infrastructure\Advertisements.DataAccess\obj\Debug\net5.0\ref\Advertisements.DataAccess.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Infrastructure\Advertisements.DataAccess\obj\Debug\net5.0\Advertisements.DataAccess.pdb
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Infrastructure\Advertisements.DataAccess\obj\Debug\net5.0\Advertisements.DataAccess.genruntimeconfig.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\bin\Debug\net5.0\Advertisements.DataAccess.deps.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\bin\Debug\net5.0\Advertisements.DataAccess.runtimeconfig.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\bin\Debug\net5.0\Advertisements.DataAccess.runtimeconfig.dev.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\bin\Debug\net5.0\Advertisements.DataAccess.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\bin\Debug\net5.0\ref\Advertisements.DataAccess.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\bin\Debug\net5.0\Advertisements.DataAccess.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\bin\Debug\net5.0\Advertisements.Application.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\bin\Debug\net5.0\Advertisements.Domain.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\bin\Debug\net5.0\Advertisements.Application.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\bin\Debug\net5.0\Advertisements.Domain.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\obj\Debug\net5.0\Advertisements.DataAccess.csproj.AssemblyReference.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\obj\Debug\net5.0\Advertisements.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\obj\Debug\net5.0\Advertisements.DataAccess.AssemblyInfoInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\obj\Debug\net5.0\Advertisements.DataAccess.AssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\obj\Debug\net5.0\Advertisements.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\obj\Debug\net5.0\Advertisements.DataAccess.csproj.CopyComplete
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\obj\Debug\net5.0\Advertisements.DataAccess.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\obj\Debug\net5.0\ref\Advertisements.DataAccess.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\obj\Debug\net5.0\Advertisements.DataAccess.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Infrastructure\Advertisements.DataAccess\obj\Debug\net5.0\Advertisements.DataAccess.genruntimeconfig.cache

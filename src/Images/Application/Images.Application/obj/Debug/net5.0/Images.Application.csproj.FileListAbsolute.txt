@@ -20,3 +20,15 @@ C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Application\Images.Applicat
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Application\Images.Application\obj\Debug\net5.0\Images.Application.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Application\Images.Application\obj\Debug\net5.0\ref\Images.Application.dll
 C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Application\Images.Application\obj\Debug\net5.0\Images.Application.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Application\Images.Application\bin\Debug\net5.0\Images.Application.deps.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Application\Images.Application\bin\Debug\net5.0\Images.Application.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Application\Images.Application\bin\Debug\net5.0\ref\Images.Application.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Application\Images.Application\bin\Debug\net5.0\Images.Application.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Application\Images.Application\obj\Debug\net5.0\Images.Application.csproj.AssemblyReference.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Application\Images.Application\obj\Debug\net5.0\Images.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Application\Images.Application\obj\Debug\net5.0\Images.Application.AssemblyInfoInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Application\Images.Application\obj\Debug\net5.0\Images.Application.AssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Application\Images.Application\obj\Debug\net5.0\Images.Application.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Application\Images.Application\obj\Debug\net5.0\Images.Application.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Application\Images.Application\obj\Debug\net5.0\ref\Images.Application.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Application\Images.Application\obj\Debug\net5.0\Images.Application.pdb

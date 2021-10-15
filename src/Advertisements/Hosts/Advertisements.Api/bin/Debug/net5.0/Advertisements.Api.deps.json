@@ -389,6 +389,17 @@
           "lib/netstandard2.0/ExpressionTranslator.dll": {}
         }
       },
+      "FluentValidation/10.3.3": {
+        "runtime": {
+          "lib/net5.0/FluentValidation.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "10.3.3.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/FluentValidation.dll": {}
+        }
+      },
       "HtmlAgilityPack/1.11.33": {
         "runtime": {
           "lib/netstandard2.0/HtmlAgilityPack.dll": {
@@ -2488,8 +2499,8 @@
       },
       "Advertisements.Application/1.0.0": {
         "dependencies": {
-          "Advertisements.DataAccess": "1.0.0",
           "Advertisements.Domain": "1.0.0",
+          "FluentValidation": "10.3.3",
           "Mapster": "7.2.0",
           "Microsoft.EntityFrameworkCore": "5.0.9",
           "Microsoft.Extensions.Configuration": "5.0.0",
@@ -2504,6 +2515,7 @@
       },
       "Advertisements.DataAccess/1.0.0": {
         "dependencies": {
+          "Advertisements.Application": "1.0.0",
           "Advertisements.Domain": "1.0.0",
           "Mapster": "7.2.0",
           "Mapster.DependencyInjection": "1.0.0",
@@ -4253,6 +4265,13 @@
       "sha512": "sha512-68tAC3uI4jGhcuKVCebQkMEVCAzu8OMHhbGYIGpMdaL3KYUQiLk3cwyCO3I4me65K3NtzSI9gSI/gPfOkPIJZw==",
       "path": "expressiontranslator/2.2.0",
       "hashPath": "expressiontranslator.2.2.0.nupkg.sha512"
+    },
+    "FluentValidation/10.3.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sgRC+7q4mnmDHE9ehk2cvb+FDTy/gtw5iBoKFY3FVp1ZwFsLS0kIcdSpNlCO3XyyNIzZI2ca8I/YiFG9pM6x0Q==",
+      "path": "fluentvalidation/10.3.3",
+      "hashPath": "fluentvalidation.10.3.3.nupkg.sha512"
     },
     "HtmlAgilityPack/1.11.33": {
       "type": "package",
