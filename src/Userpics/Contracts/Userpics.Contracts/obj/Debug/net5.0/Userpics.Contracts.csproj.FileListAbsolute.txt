@@ -1,0 +1,34 @@
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\bin\Debug\net5.0\Userpics.Contracts.deps.json
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\bin\Debug\net5.0\Userpics.Contracts.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\bin\Debug\net5.0\ref\Userpics.Contracts.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\bin\Debug\net5.0\Userpics.Contracts.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.AssemblyInfoInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.AssemblyInfo.cs
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.csproj.CoreCompileInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\ref\Userpics.Contracts.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\bin\Debug\net5.0\Userpics.Contracts.deps.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\bin\Debug\net5.0\Userpics.Contracts.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\bin\Debug\net5.0\ref\Userpics.Contracts.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\bin\Debug\net5.0\Userpics.Contracts.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.AssemblyInfoInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.AssemblyInfo.cs
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.csproj.CoreCompileInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\ref\Userpics.Contracts.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Contracts\Userpics.Contracts\bin\Debug\net5.0\Userpics.Contracts.deps.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Contracts\Userpics.Contracts\bin\Debug\net5.0\Userpics.Contracts.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Contracts\Userpics.Contracts\bin\Debug\net5.0\ref\Userpics.Contracts.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Contracts\Userpics.Contracts\bin\Debug\net5.0\Userpics.Contracts.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.csproj.AssemblyReference.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.AssemblyInfoInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.AssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\ref\Userpics.Contracts.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Contracts\Userpics.Contracts\obj\Debug\net5.0\Userpics.Contracts.pdb

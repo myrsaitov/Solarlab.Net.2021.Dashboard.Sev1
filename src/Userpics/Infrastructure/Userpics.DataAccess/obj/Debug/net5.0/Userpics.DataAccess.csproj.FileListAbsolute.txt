@@ -1,0 +1,33 @@
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\bin\Debug\net5.0\Userpics.DataAccess.deps.json
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\bin\Debug\net5.0\Userpics.DataAccess.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\bin\Debug\net5.0\ref\Userpics.DataAccess.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\bin\Debug\net5.0\Userpics.DataAccess.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.AssemblyInfoInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.AssemblyInfo.cs
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.csproj.CoreCompileInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\ref\Userpics.DataAccess.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\bin\Debug\net5.0\Userpics.DataAccess.deps.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\bin\Debug\net5.0\Userpics.DataAccess.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\bin\Debug\net5.0\ref\Userpics.DataAccess.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\bin\Debug\net5.0\Userpics.DataAccess.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.AssemblyInfoInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.AssemblyInfo.cs
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.csproj.CoreCompileInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\ref\Userpics.DataAccess.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.DataAccess\bin\Debug\net5.0\Userpics.DataAccess.deps.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.DataAccess\bin\Debug\net5.0\Userpics.DataAccess.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.DataAccess\bin\Debug\net5.0\ref\Userpics.DataAccess.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.DataAccess\bin\Debug\net5.0\Userpics.DataAccess.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.AssemblyInfoInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.AssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\ref\Userpics.DataAccess.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Userpics\Infrastructure\Userpics.DataAccess\obj\Debug\net5.0\Userpics.DataAccess.pdb

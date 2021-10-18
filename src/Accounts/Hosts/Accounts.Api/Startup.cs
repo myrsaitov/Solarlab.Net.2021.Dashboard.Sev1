@@ -34,7 +34,7 @@ namespace Sev1.Accounts.Api
                 .AddDataAccessModule(configuration =>
 
 
-                    configuration.InSqlServer(Configuration.GetConnectionString("SqlServerDb"))
+                    configuration.InSqlServer(Configuration.GetConnectionString("Connection_Skarfe"))
 
                 ) // Подключение к БД через информацию в "ConnectionString"
                 .AddIdentity(Configuration);

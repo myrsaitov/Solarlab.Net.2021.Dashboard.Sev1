@@ -1,0 +1,534 @@
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\appsettings.Development.json
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\appsettings.json
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\launchSettings.json
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.exe
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.deps.json
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.runtimeconfig.json
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.runtimeconfig.dev.json
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ref\Advertisements.Api.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Castle.Core.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ExpressionDebugger.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ExpressionTranslator.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\HtmlAgilityPack.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Humanizer.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Mapster.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Mapster.Core.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Mapster.DependencyInjection.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.NodeServices.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.SpaServices.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.SpaServices.Extensions.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Composition.AttributedModel.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Composition.Convention.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Composition.Hosting.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Composition.Runtime.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Composition.TypedParts.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Runtime.Caching.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Text.Json.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\TurnerSoftware.RobotsExclusionTools.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\TurnerSoftware.SitemapTools.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Application.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.DataAccess.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Domain.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.MapsterMapper.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Application.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.DataAccess.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.MapsterMapper.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Domain.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.csproj.AssemblyReference.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.AssemblyInfoInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.AssemblyInfo.cs
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.csproj.CoreCompileInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\staticwebassets\Advertisements.Api.StaticWebAssets.Manifest.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\staticwebassets\Advertisements.Api.StaticWebAssets.xml
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\scopedcss\bundle\Advertisements.Api.styles.css
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.RazorTargetAssemblyInfo.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.csproj.CopyComplete
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\ref\Advertisements.Api.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.genruntimeconfig.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\appsettings.Development.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\appsettings.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\launchSettings.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.exe
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.deps.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.runtimeconfig.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.runtimeconfig.dev.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ref\Advertisements.Api.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Castle.Core.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ExpressionDebugger.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ExpressionTranslator.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\HtmlAgilityPack.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Humanizer.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Mapster.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Mapster.Core.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Mapster.DependencyInjection.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.NodeServices.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.SpaServices.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.SpaServices.Extensions.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Composition.AttributedModel.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Composition.Convention.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Composition.Hosting.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Composition.Runtime.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Composition.TypedParts.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Runtime.Caching.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Text.Json.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\TurnerSoftware.RobotsExclusionTools.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\TurnerSoftware.SitemapTools.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Application.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.DataAccess.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Domain.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.MapsterMapper.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Application.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.DataAccess.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.MapsterMapper.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Domain.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.csproj.AssemblyReference.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.AssemblyInfoInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.AssemblyInfo.cs
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.csproj.CoreCompileInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\staticwebassets\Advertisements.Api.StaticWebAssets.Manifest.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\staticwebassets\Advertisements.Api.StaticWebAssets.xml
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\scopedcss\bundle\Advertisements.Api.styles.css
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.RazorTargetAssemblyInfo.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.csproj.CopyComplete
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\ref\Advertisements.Api.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.genruntimeconfig.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\launchSettings.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\appsettings.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.exe
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.deps.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.runtimeconfig.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.runtimeconfig.dev.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ref\Advertisements.Api.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Api.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Castle.Core.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ExpressionDebugger.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ExpressionTranslator.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\FluentValidation.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\HtmlAgilityPack.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Humanizer.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Mapster.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Mapster.Core.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Mapster.DependencyInjection.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.NodeServices.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.SpaServices.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.AspNetCore.SpaServices.Extensions.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Composition.AttributedModel.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Composition.Convention.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Composition.Hosting.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Composition.Runtime.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Composition.TypedParts.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Runtime.Caching.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\System.Text.Json.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\TurnerSoftware.RobotsExclusionTools.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\TurnerSoftware.SitemapTools.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Application.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.DataAccess.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Domain.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.MapsterMapper.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Application.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.DataAccess.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.MapsterMapper.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\bin\Debug\net5.0\Advertisements.Domain.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.csproj.AssemblyReference.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.AssemblyInfoInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.AssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\staticwebassets\Advertisements.Api.StaticWebAssets.Manifest.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\staticwebassets\Advertisements.Api.StaticWebAssets.xml
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\scopedcss\bundle\Advertisements.Api.styles.css
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.RazorTargetAssemblyInfo.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\ref\Advertisements.Api.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Advertisements\Hosts\Advertisements.Api\obj\Debug\net5.0\Advertisements.Api.genruntimeconfig.cache

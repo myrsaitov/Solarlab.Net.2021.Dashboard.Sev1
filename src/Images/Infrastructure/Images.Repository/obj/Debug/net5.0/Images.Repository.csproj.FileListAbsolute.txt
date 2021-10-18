@@ -1,0 +1,33 @@
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\bin\Debug\net5.0\Images.Repository.deps.json
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\bin\Debug\net5.0\Images.Repository.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\bin\Debug\net5.0\ref\Images.Repository.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\bin\Debug\net5.0\Images.Repository.pdb
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.AssemblyInfoInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.AssemblyInfo.cs
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.csproj.CoreCompileInputs.cache
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\ref\Images.Repository.dll
+C:\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\bin\Debug\net5.0\Images.Repository.deps.json
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\bin\Debug\net5.0\Images.Repository.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\bin\Debug\net5.0\ref\Images.Repository.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\bin\Debug\net5.0\Images.Repository.pdb
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.AssemblyInfoInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.AssemblyInfo.cs
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.csproj.CoreCompileInputs.cache
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\ref\Images.Repository.dll
+C:\__Projects\_Projects\SolarLab_Proj_EDU\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Repository\bin\Debug\net5.0\Images.Repository.deps.json
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Repository\bin\Debug\net5.0\Images.Repository.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Repository\bin\Debug\net5.0\ref\Images.Repository.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Repository\bin\Debug\net5.0\Images.Repository.pdb
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.AssemblyInfoInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.AssemblyInfo.cs
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\ref\Images.Repository.dll
+C:\Users\Storm\Documents\_SolarLab_Project — merge\src\Images\Infrastructure\Images.Repository\obj\Debug\net5.0\Images.Repository.pdb

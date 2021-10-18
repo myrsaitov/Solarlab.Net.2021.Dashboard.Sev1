@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Comments.API</name>
+    </assembly>
+    <members>
+        <member name="T:Comments.API.Controllers.CommentController">
+            <summary>
+            API комментариев
+            </summary>
+        </member>
+        <member name="M:Comments.API.Controllers.CommentController.#ctor(Microsoft.Extensions.Logging.ILogger{Comments.API.Controllers.CommentController},Comments.Services.ICommentsService)">
+            <param name="logger"></param>
+            <param name="commentService"></param>
+        </member>
+        <member name="M:Comments.API.Controllers.CommentController.GetCommentsByChatId(Comments.Contracts.CommentDtoRequestGetByChatId,System.Threading.CancellationToken)">
+            <summary>
+            Получить все коментарии, прикреплённые к чату
+            </summary>
+            <response code="200">Ok</response>
+        </member>
+        <member name="M:Comments.API.Controllers.CommentController.CountPagesByChatId(Comments.Contracts.CommentDtoRequestCountPagesByChatId,System.Threading.CancellationToken)">
+            <summary>
+            Посчитать количество страниц комментариев в чате
+            </summary>
+            <response code="200">Ok</response>
+        </member>
+        <member name="M:Comments.API.Controllers.CommentController.DeleteCommentsByChatId(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Удалить все коментарии, прикреплённые к чату
+            </summary>
+            <param name="id">Chat Id</param>
+            <returns></returns>
+            <response code="200">Ok</response>
+        </member>
+        <member name="M:Comments.API.Controllers.CommentController.Add(Comments.Contracts.CommentDtoRequestCreate,System.Threading.CancellationToken)">
+            <summary>
+            Создать комментарий
+            </summary>
+            <param name="dto"></param>
+            <returns>Id созданного комментария</returns>
+            <response code="201">Created</response>
+            <response code="400">Bad Request</response>
+        </member>
+        <member name="M:Comments.API.Controllers.CommentController.Update(Comments.Contracts.CommentDtoRequestUpdate,System.Threading.CancellationToken)">
+            <summary>
+            Изменить комментарий
+            </summary>
+            <param name="dto"></param>
+            <returns>Id обновлённого комментария</returns>
+            <response code="200">Ok</response>
+            <response code="400">Bad Request</response>
+            <response code="404">Not Found</response>
+        </member>
+        <member name="M:Comments.API.Controllers.CommentController.Delete(Comments.Contracts.CommentDtoRequestDelete,System.Threading.CancellationToken)">
+            <summary>
+            Удалить комментирий
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Ok</response>
+            <response code="404">Not Found</response>
+        </member>
+        <member name="T:Comments.API.Filters.CommentsExceptionFilter">
+            <summary>
+            Фильтр ошибок для контроллера, атрибут
+            Ловт NotFounException и другие, возврощает Response со статус кодом 404/500
+            </summary>
+        </member>
+        <member name="M:Comments.API.Filters.CommentsExceptionFilter.OnExceptionAsync(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            Ловит ошибку "NotFoundException", возвращает 404 код и сообщение и ID сущности
+            Ловит другие ошибки, возвращает код 500
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
