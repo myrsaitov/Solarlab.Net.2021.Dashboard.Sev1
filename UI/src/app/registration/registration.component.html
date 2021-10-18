@@ -1,0 +1,61 @@
+<div class="registration form ">
+   <form action="#" method="post" class="form_registration">
+     <fieldset>
+       <legend>Форма регистрации</legend>
+       <div>
+       <mat-form-field class="login" appearance="outline">
+         <mat-label>Введите ваше имя</mat-label>
+         <input matInput type="text" [(ngModel)]="value" required>
+         <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+           <mat-icon>close</mat-icon>
+         </button>
+       </mat-form-field>
+       </div>
+       <div>
+       <mat-form-field class="example-full-width" appearance="outline">
+         <mat-label >Введите вашу почту</mat-label>
+         <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" required>
+         <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+           Введите корректный адрес
+         </mat-error>
+         <mat-error *ngIf="emailFormControl.hasError('required')">
+           Email is <strong>required</strong>
+         </mat-error>
+       </mat-form-field>
+      </div>
+      <div>
+       <mat-form-field class="example-full-width" appearance="outline">
+         <mat-label>Telephone</mat-label>
+         <span matPrefix>+7 &nbsp;</span>
+         <input type="tel" matInput placeholder="123-45-67-890" required>
+         <mat-icon matSuffix>mode_edit</mat-icon>
+       </mat-form-field>
+      </div>
+        <div class="password">
+         <mat-form-field appearance="outline" >
+           <mat-label>Введите Ваш пароль</mat-label>
+           <input matInput [type]="hide ? 'password' : 'text'" required>
+           <button class="button_log" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+           </button>
+         </mat-form-field>
+       </div>
+       <div>
+         <div class="password">
+            <mat-form-field appearance="outline" >
+              <mat-label>Повторите пароль</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" required>
+              <button class="button_log" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+         </div>
+       <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI">
+       </div>
+       <div >
+         <button mat-raised-button color="primary" class="button_registration">Зарегистрироваться</button>
+         </div>
+     </fieldset>
+   </form>
+ </div>

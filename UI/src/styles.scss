@@ -2,7 +2,6 @@
 body {
   background-color: #FBFBFB;
   min-width: 1280px;
-
 }
 
 .header {
@@ -18,7 +17,6 @@ body {
 
 .catalog-grid {
   display: flex;
-
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -57,6 +55,12 @@ body {
 
 }
 
+.button_log {
+  border: none;
+  background-color: #FBFBFB;
+}
+
+
 .form_authorization,
 .form_registration,
 .form_announcement {
@@ -65,15 +69,16 @@ body {
   justify-self: center;
 }
 
-.form div {
-  width: 400px;
-  display: flex;
-  justify-content: space-between;
-  padding: 5px;
-}
+// .form div {
+//   width: 400px;
+//   display: flex;
+//   justify-content: space-between;
+//   padding: 5px;
+//   margin: 5px;
+// }
 
 .hidden {
-  display: no ne;
+  display: none;
 
 }
 
@@ -86,24 +91,9 @@ body {
   margin-right: 2px;
 }
 
-.cart {
-  display: grid;
-  grid-template-columns: auto auto;
-  align-self: center;
-  max-width: 1600px;
-  column-gap: 150px;
-  row-gap: 30px;
-}
 
-.cart-1c {
-  grid-column: 1/1;
-  font-size: 20px;
-}
 
-.cart-2c {
-  grid-column: 2/2;
-  font-size: 20px;
-}
+
 
 .name,
 .price {
@@ -143,4 +133,14 @@ textarea#adress {
   display: flex;
   flex-wrap: wrap;
   max-width: 1300px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
