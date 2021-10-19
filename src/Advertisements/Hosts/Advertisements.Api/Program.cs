@@ -10,6 +10,14 @@ namespace Sev1.Advertisements.Api
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+
+            // Run()
+            // Этот метод добавляет middleware-компонент в виде Run[Middleware],
+            // который выполнится в конце конвейера.Как правило,
+            // он действует как замыкающее middleware и добавляется
+            // в конце конвейера запросов, поскольку не может вызывать
+            // следующий middleware - компонент.
+            // https://habr.com/ru/company/otus/blog/528692/
         }
 
         // Абстракция инициализации программы
