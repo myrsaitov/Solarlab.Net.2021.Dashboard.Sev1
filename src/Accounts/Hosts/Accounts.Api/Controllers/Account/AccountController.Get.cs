@@ -15,7 +15,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
             var currentUserId = await _identityService.GetCurrentUserId(cancellationToken);
             var domainUser = await _userService.Get(currentUserId, cancellationToken);
             
-            return Ok(domainUser);
+            return Ok(domainUser.Id);
         }
     }
 }

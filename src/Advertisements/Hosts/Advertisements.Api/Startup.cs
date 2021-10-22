@@ -17,6 +17,7 @@ using Sev1.Advertisements.Application.Implementations.Tag;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Collections.Generic;
+using System;
 
 namespace Sev1.Advertisements.Api
 {
@@ -66,7 +67,7 @@ namespace Sev1.Advertisements.Api
 
                 // Добавить сервис Cross-Origin Requests
                 .AddCors()
-                
+
                 // Инжектирование наших сервисов
                 .AddScoped<ICategoryService, CategoryServiceV1>()
                 .AddScoped<IAdvertisementService, AdvertisementServiceV1>()
@@ -80,7 +81,7 @@ namespace Sev1.Advertisements.Api
                     configuration.InSqlServer(Configuration.GetConnectionString("SqlServerDb"))
                 )
 
-                // Подключение Swagger
+            // Подключение Swagger
                 .AddSwaggerGen(c =>
                 {
                     c.CustomSchemaIds(type => type.FullName.Replace("+", "_"));
@@ -240,11 +241,11 @@ namespace Sev1.Advertisements.Api
             // This middleware is used to route requests.
             app.UseRouting();
 
-            app.UseAuthentication();
+            //app.UseAuthentication();
             
             // This middleware is used to authorizes a user to access
             // secure resources.
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             // Конечные точки - это единицы приложения исполняемого кода обработки запросов.
             // Конечные точки определяются в приложении и настраиваются при запуске приложения. 

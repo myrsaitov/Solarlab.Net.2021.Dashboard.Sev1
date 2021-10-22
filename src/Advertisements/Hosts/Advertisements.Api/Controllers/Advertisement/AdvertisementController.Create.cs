@@ -1,10 +1,11 @@
-﻿using System.Net.Http;
+﻿using System.Net;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Net.Http.Headers;
+using Newtonsoft.Json.Linq;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
@@ -18,13 +19,10 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
             [FromBody] AdvertisementCreateDto model, 
             CancellationToken cancellationToken)
         {
-            // Токен
-            var accessToken = Request.Headers[HeaderNames.Authorization];
-            var apiClient = new HttpClient();
-            //apiClient.SetBearerToken(accessToken);
-
+            var accessToken = HttpContext.Request.Headers["Authorization"];
 
             await _advertisementService.Create(
+                accessToken,
                 model, 
                 cancellationToken);
 
