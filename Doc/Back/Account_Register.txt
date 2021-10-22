@@ -1,0 +1,101 @@
+        [HttpPost("register")] 
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public async Task<IActionResult> Register(
+            UserRegisterRequest request,
+            CancellationToken cancellationToken)
+        {
+            var registrationResult = await _userService.Register(
+                new Register.Request
+                {
+                    UserName = request.UserName,
+                    Email = request.Email,
+                    Password = request.Password,
+                    FirstName = request.FirstName,
+                    LastName = request.LastName,
+                    MiddleName = request.MiddleName
+                },
+                cancellationToken);
+
+            return Created($"api/v1/account/{registrationResult.UserId}", new { });
+        }
+
+
+
+
+
+        public async Task<Register.Response> Register(
+            Register.Request registerRequest, 
+            CancellationToken cancellationToken)
+        {
+            RegisterRequestValidator validator = new();
+            var result = await validator.ValidateAsync(registerRequest);
+
+            if (!result.IsValid)
+            {
+                throw new UserRegisteredException(string.Join(';', result.Errors.Select(x => x.ErrorMessage)));
+            }
+
+            CreateUser.Response response = await _identityService.CreateUser(
+                _mapper.Map<CreateUser.Request>(registerRequest),
+                cancellationToken);
+
+            if (response.IsSuccess)
+            {
+                var domainUser = new Domain.User
+                {
+                    Id = response.UserId,
+                    UserName = registerRequest.UserName,
+                    FirstName = registerRequest.FirstName,
+                    LastName = registerRequest.LastName,
+                    MiddleName = registerRequest.MiddleName,
+                    CreatedAt = DateTime.UtcNow
+                };
+
+                await _userRepository.Save(domainUser, cancellationToken);
+
+                return _mapper.Map<Register.Response>(response);
+            }
+
+            throw new UserRegisteredException(string.Join(';', response.Errors));
+        }
+
+
+
+        public async Task<CreateUser.Response> CreateUser(CreateUser.Request request, CancellationToken cancellationToken = default)
+        {
+            var existedUser = await _userManager.FindByNameAsync(request.UserName);
+            if (existedUser != null)
+            {
+                throw new ConflictException("Пользователь с таким именем уже существует");
+            }
+
+            var identityUser = new IdentityUser
+            {
+                UserName = request.UserName,
+                Email = request.Email
+            };
+
+            var identityResult = await _userManager.CreateAsync(identityUser, request.Password);
+
+            if (identityResult.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(identityUser, request.Role);
+                var token = await _userManager.GenerateEmailConfirmationTokenAsync(identityUser);
+                var encodedToken = HttpUtility.UrlEncode(token);
+                var message = $"<a href=\"{_configuration["ApiUri"]}api/v1/users/confirm?userId={identityUser.Id}&token={encodedToken}\">Нажми меня</a>";
+
+                //await _mailService.Send(request.Email, "Подтверди почту!", message, cancellationToken);
+
+                return new CreateUser.Response
+                {
+                    UserId = identityUser.Id,
+                    IsSuccess = true
+                };
+            }
+
+            return new CreateUser.Response
+            {
+                IsSuccess = false,
+                Errors = identityResult.Errors.Select(x => x.Description).ToArray()
+            };
+        }

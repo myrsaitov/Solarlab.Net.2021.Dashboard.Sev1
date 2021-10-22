@@ -14,5 +14,9 @@ namespace Sev1.Accounts.Application.Interfaces.User
         Task Update(
             Update.Request request, 
             CancellationToken cancellationToken);
+
+        Task<Domain.User> Get(
+            string userId,
+            CancellationToken cancellationToken);
     }
 }

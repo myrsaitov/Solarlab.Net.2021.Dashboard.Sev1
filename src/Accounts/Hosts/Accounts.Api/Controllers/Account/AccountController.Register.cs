@@ -34,7 +34,10 @@ namespace Sev1.Accounts.Api.Controllers.Account
             public string Password { get; set; }
         }
 
-        [HttpPost("register")]
+        // [HttpPost("<route>")]
+        // Creates a new Microsoft.AspNetCore.Mvc.HttpPostAttribute
+        // with the given route template.
+        [HttpPost("register")] 
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Register(
             UserRegisterRequest request,
