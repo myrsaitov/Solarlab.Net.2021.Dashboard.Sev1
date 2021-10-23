@@ -18,6 +18,8 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Collections.Generic;
 using System;
+using Sev1.Advertisements.Application.Interfaces.User;
+using Sev1.Advertisements.Application.Implementations.User;
 
 namespace Sev1.Advertisements.Api
 {
@@ -72,6 +74,7 @@ namespace Sev1.Advertisements.Api
                 .AddScoped<ICategoryService, CategoryServiceV1>()
                 .AddScoped<IAdvertisementService, AdvertisementServiceV1>()
                 .AddScoped<ITagService, TagServiceV1>()
+                .AddScoped<IUserService, UserServiceV1>()
 
                 // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
                 .AddHttpContextAccessor()

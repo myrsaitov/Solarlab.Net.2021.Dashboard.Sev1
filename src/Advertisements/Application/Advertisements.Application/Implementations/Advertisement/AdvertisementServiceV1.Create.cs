@@ -18,12 +18,11 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {
         public async Task Create(
-            string accessToken,
             AdvertisementCreateDto model,
             CancellationToken cancellationToken)
         {
             // WebClient
-            string param = "";
+            /*string param = "";
             string url = "https://localhost:44377/api/v1/accounts/user";
             using (var client = new WebClient())
             {
@@ -38,7 +37,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 {
                     throw new NoRightsException("Ошибка авторизации"); // TODO
                 }
-            }
+            }*/
 
 
             // Fluent Validation

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sev1.Advertisements.Application.Interfaces.Advertisement;
+using Sev1.Advertisements.Application.Interfaces.User;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
@@ -9,6 +10,13 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
     public partial class AdvertisementController : ControllerBase
     {
         private readonly IAdvertisementService _advertisementService;
-        public AdvertisementController(IAdvertisementService advertisementService) => _advertisementService = advertisementService;
+        private readonly IUserService _userService;
+        public AdvertisementController(
+            IAdvertisementService advertisementService,
+            IUserService userService)
+        { 
+            _advertisementService = advertisementService;
+            _userService = userService;
+        }
     }
 }

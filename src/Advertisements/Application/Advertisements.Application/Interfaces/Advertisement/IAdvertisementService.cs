@@ -17,7 +17,6 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Create(
-            string accessToken,
             AdvertisementCreateDto model, 
             CancellationToken cancellationToken);
 

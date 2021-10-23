@@ -20,9 +20,11 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
             CancellationToken cancellationToken)
         {
             var accessToken = HttpContext.Request.Headers["Authorization"];
+            var currentUserId = await _userService.GetCurrentUserId(accessToken, cancellationToken);
+
+            model.OwnerId = currentUserId;
 
             await _advertisementService.Create(
-                accessToken,
                 model, 
                 cancellationToken);
 
