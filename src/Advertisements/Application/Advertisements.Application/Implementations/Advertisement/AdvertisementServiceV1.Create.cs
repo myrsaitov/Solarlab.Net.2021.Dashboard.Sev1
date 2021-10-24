@@ -14,6 +14,13 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {
+        /// <summary>
+        /// Создать объявление
+        /// </summary>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="model">DTO</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task Create(
             string accessToken,
             AdvertisementCreateDto model,

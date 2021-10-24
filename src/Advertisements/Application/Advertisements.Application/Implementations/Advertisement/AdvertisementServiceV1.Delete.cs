@@ -11,13 +11,22 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {
+        /// <summary>
+        /// Удаляет объявление
+        /// </summary>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="id">Id объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task Delete(
             string accessToken,
             int id,
             CancellationToken cancellationToken)
         {
             // Получаем Id текущего пользователя
-            var currentUserId = await _userRepository.GetCurrentUserId(accessToken, cancellationToken);
+            var currentUserId = await _userRepository.GetCurrentUserId(
+                accessToken, 
+                cancellationToken);
 
             // Fluent Validation
             var validator = new AdvertisementIdValidator();
@@ -38,17 +47,26 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 throw new AdvertisementNotFoundException(id);
             }
 
-            // Пользователь может удалять только свои собственные объявления
-            if(advertisement.OwnerId != currentUserId)
+            // Пользователь может удалять объявление:
+            //  - если он администратор;
+            //  - если он модератор;
+            //  - если он создал это объявление.
+            var isAdmin = await _userRepository.IsAdmin(
+                accessToken, 
+                cancellationToken);
+            var isModerator = await _userRepository.IsModerator(
+                accessToken, 
+                cancellationToken);
+            var isOwner = (advertisement.OwnerId == currentUserId);
+            if(!(isAdmin||isModerator||isOwner))
             {
-                // Но только если он не модератор или админ
-                if (!await _userRepository.IsAdmin(accessToken, cancellationToken))
-                {
-                    throw new NoRightsException("Не хватает прав удалить объявление!");
-                }
+                throw new NoRightsException("Не хватает прав удалить объявление!");
             }
 
+            // Объявленние не удаляется, а лишь помечается удаленным
             advertisement.IsDeleted = true;
+
+            // Обновляется дата редактирования
             advertisement.UpdatedAt = DateTime.UtcNow;
 
             // TODO Сделать нормальный подсчет количества Tags
@@ -57,11 +75,16 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 if (tag.Count > 0)
                 {
                     tag.Count -= 1;
-                    await _tagRepository.Save(tag, cancellationToken);
+                    await _tagRepository.Save(
+                        tag, 
+                        cancellationToken);
                 }
             }
 
-            await _advertisementRepository.Save(advertisement, cancellationToken);
+            // Сохраняем изменения в базу
+            await _advertisementRepository.Save(
+                advertisement, 
+                cancellationToken);
         }
     }
 }

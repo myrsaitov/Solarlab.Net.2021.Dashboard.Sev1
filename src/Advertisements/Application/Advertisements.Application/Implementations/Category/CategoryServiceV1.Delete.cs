@@ -12,13 +12,22 @@ namespace Sev1.Advertisements.Application.Implementations.Category
 {
     public sealed partial class CategoryServiceV1 : ICategoryService
     {
+        /// <summary>
+        /// Удалить категорию (только админ или модератор)
+        /// </summary>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="id">Id категории</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task Delete(
             string accessToken,
             int id,
             CancellationToken cancellationToken)
         {
             // Получаем Id текущего пользователя
-            var currentUserId = await _userRepository.GetCurrentUserId(accessToken, cancellationToken);
+            var currentUserId = await _userRepository.GetCurrentUserId(
+                accessToken, 
+                cancellationToken);
 
             // Fluent Validation
             var validator = new CategoryIdValidator();
@@ -28,21 +37,39 @@ namespace Sev1.Advertisements.Application.Implementations.Category
                 throw new CategoryIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
-            var category = await _categoryRepository.FindById(id, cancellationToken);
+            // Достать из базы категорию по Id
+            var category = await _categoryRepository.FindById(
+                id, 
+                cancellationToken);
             if (category == null)
             {
                 throw new CategoryNotFoundException(id);
             }
 
-            // Тут только модератор и админ
-            if (!await _userRepository.IsAdmin(accessToken, cancellationToken))
+            // Пользователь может удалить категорию:
+            //  - если он администратор;
+            //  - если он модератор;
+            var isAdmin = await _userRepository.IsAdmin(
+                accessToken,
+                cancellationToken);
+            var isModerator = await _userRepository.IsModerator(
+                accessToken,
+                cancellationToken);
+            if (!(isAdmin || isModerator))
             {
-                throw new NoRightsException("Только модератор или админ!");
+                throw new NoRightsException("Удалить категорию может только модератор или админ!");
             }
 
+            // Категория не удаляется, а лишь помечается удаленной
             category.IsDeleted = true;
+
+            // Сохраняем время редактирования
             category.UpdatedAt = DateTime.UtcNow;
-            await _categoryRepository.Save(category, cancellationToken);
+
+            // Изменения в базу
+            await _categoryRepository.Save(
+                category, 
+                cancellationToken);
         }
     }
 }

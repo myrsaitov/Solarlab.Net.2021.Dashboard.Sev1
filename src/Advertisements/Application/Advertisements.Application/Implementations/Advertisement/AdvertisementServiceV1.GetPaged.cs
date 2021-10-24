@@ -13,6 +13,12 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {
+        /// <summary>
+        /// Получить пагинированные объявления
+        /// </summary>
+        /// <param name="request">Запрос на пагинацию</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task<GetPagedAdvertisementResponse> GetPaged(
             GetPagedAdvertisementRequest request,
             CancellationToken cancellationToken)

@@ -24,5 +24,15 @@ namespace Sev1.Advertisements.Application.Repositories.User
         Task<bool> IsAdmin(
             string accessToken,
             CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Возвращает проверку на роль модератора
+        /// </summary>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<bool> IsModerator(
+            string accessToken,
+            CancellationToken cancellationToken);
     }
 }

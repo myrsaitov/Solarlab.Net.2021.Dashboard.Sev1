@@ -45,7 +45,6 @@ namespace Sev1.Accounts.Application.Implementations.Identity
             {
                 throw new IdentityUserNotFoundException("Пользователь не найден");
             }
-
             return await _userManager.IsInRoleAsync(identityUser, role);
         }
 

@@ -62,5 +62,32 @@ namespace Sev1.Advertisements.Application.Repositories.User
                 }
             }
         }
+        public async Task<bool> IsModerator(
+            string accessToken,
+            CancellationToken cancellationToken)
+        {
+            string param = "";
+            string url = "https://localhost:44377/api/v1/accounts/ismoderator";
+            using (var client = new WebClient())
+            {
+                client.Headers.Add("content-type", "application/json");
+                client.Headers.Add("Authorization", accessToken);
+                try
+                {
+                    var data = await client.UploadDataTaskAsync(url, "POST", Encoding.UTF8.GetBytes(param));
+                    var response = Encoding.ASCII.GetString(data);
+                    if (response == "true")
+                    {
+                        return true;
+                    }
+
+                    return false;
+                }
+                catch (WebException ex)
+                {
+                    throw new NoRightsException("Ошибка авторизации: " + ex);
+                }
+            }
+        }
     }
 }

@@ -13,6 +13,13 @@ namespace Sev1.Advertisements.Application.Implementations.Category
 {
     public sealed partial class CategoryServiceV1 : ICategoryService
     {
+        /// <summary>
+        /// Редактировать категорию (только админ или модератор)
+        /// </summary>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="model">DTO</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task<int> Update(
             string accessToken,
             CategoryUpdateDto model,
@@ -38,10 +45,18 @@ namespace Sev1.Advertisements.Application.Implementations.Category
                 throw new CategoryNotFoundException(model.Id);
             }
 
-            // Тут только модератор и админ
-            if (!await _userRepository.IsAdmin(accessToken, cancellationToken))
+            // Пользователь может обновить категорию:
+            //  - если он администратор;
+            //  - если он модератор;
+            var isAdmin = await _userRepository.IsAdmin(
+                accessToken,
+                cancellationToken);
+            var isModerator = await _userRepository.IsModerator(
+                accessToken,
+                cancellationToken);
+            if (!(isAdmin || isModerator))
             {
-                throw new NoRightsException("Только модератор или админ!");
+                throw new NoRightsException("Обновить категорию может только модератор или админ!");
             }
 
             category = _mapper.Map<Domain.Category>(model);

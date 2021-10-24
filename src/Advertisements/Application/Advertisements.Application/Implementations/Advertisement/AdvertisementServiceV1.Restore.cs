@@ -11,6 +11,13 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {
+        /// <summary>
+        /// Восстановить объявление
+        /// </summary>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task Restore(
             string accessToken,
             int id,
@@ -36,14 +43,20 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 throw new AdvertisementNotFoundException(id);
             }
 
-            // Пользователь может восстанавливать только свои собственные объявления
-            if (advertisement.OwnerId != currentUserId)
+            // Пользователь может восстановить объявление:
+            //  - если он администратор;
+            //  - если он модератор;
+            //  - если он создал это объявление.
+            var isAdmin = await _userRepository.IsAdmin(
+                accessToken,
+                cancellationToken);
+            var isModerator = await _userRepository.IsModerator(
+                accessToken,
+                cancellationToken);
+            var isOwner = (advertisement.OwnerId == currentUserId);
+            if (!(isAdmin || isModerator || isOwner))
             {
-                // Но только если он не модератор или админ
-                if (!await _userRepository.IsAdmin(accessToken, cancellationToken))
-                {
-                    throw new NoRightsException("Не хватает прав восстановить объявление!");
-                }
+                throw new NoRightsException("Не хватает прав восстановить объявление!");
             }
 
             advertisement.IsDeleted = false;

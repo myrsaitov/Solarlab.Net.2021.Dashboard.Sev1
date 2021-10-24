@@ -13,6 +13,13 @@ namespace Sev1.Advertisements.Application.Implementations.Category
 {
     public sealed partial class CategoryServiceV1 : ICategoryService
     {
+        /// <summary>
+        /// Создать категорию (только админ или модератор)
+        /// </summary>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="model">DTO</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task<int> Create(
             string accessToken,
             CategoryCreateDto model, 
@@ -29,17 +36,27 @@ namespace Sev1.Advertisements.Application.Implementations.Category
                 throw new CategoryCreateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
-            // Тут только модератор и админ
-            if(!await _userRepository.IsAdmin(accessToken, cancellationToken))
+            // Пользователь может создать категорию:
+            //  - если он администратор;
+            //  - если он модератор;
+            var isAdmin = await _userRepository.IsAdmin(
+                accessToken,
+                cancellationToken);
+            var isModerator = await _userRepository.IsModerator(
+                accessToken,
+                cancellationToken);
+            if (!(isAdmin || isModerator))
             {
                 throw new NoRightsException("Только модератор или админ!");
             }
 
+            // Создаем категорию
             var category = _mapper.Map<Domain.Category>(model);
             category.IsDeleted = false;
             category.CreatedAt = DateTime.UtcNow;
             await _categoryRepository.Save(category, cancellationToken);
 
+            // Редактируем родительскую категорию, если есть
             var parentCategoryIdNulable = model.ParentCategoryId;
             if (parentCategoryIdNulable != null)
             {
