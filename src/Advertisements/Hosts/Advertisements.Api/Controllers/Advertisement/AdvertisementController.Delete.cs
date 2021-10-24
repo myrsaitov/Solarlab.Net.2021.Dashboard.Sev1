@@ -7,12 +7,12 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
     public partial class AdvertisementController
     {
         [HttpDelete("{id:int}")]
-        //[Authorize]
         public async Task<IActionResult> Delete(
             [FromRoute] int id, 
             CancellationToken cancellationToken)
         {
             await _advertisementService.Delete(
+                HttpContext.Request.Headers["Authorization"],
                 id, 
                 cancellationToken);
 

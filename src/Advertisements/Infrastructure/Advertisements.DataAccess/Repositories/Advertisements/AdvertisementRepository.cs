@@ -30,7 +30,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
         {
             return await DbСontext
                 .Set<Advertisement>()
-                //.Include(a => a.Owner)
+                .Include(a => a.OwnerId)
                 .Include(a => a.Tags)
                 .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
         }

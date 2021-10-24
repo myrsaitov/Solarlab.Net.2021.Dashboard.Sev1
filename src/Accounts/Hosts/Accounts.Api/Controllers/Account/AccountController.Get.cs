@@ -29,7 +29,6 @@ namespace Sev1.Accounts.Api.Controllers.Account
             return Ok(domainUser);
         }
 
-        [Authorize]
         [HttpPost("user")]
         public async Task<IActionResult> GetUserById(
             string userId,

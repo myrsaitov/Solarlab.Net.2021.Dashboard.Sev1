@@ -6,7 +6,6 @@ using Xunit;
 using AutoFixture.Xunit2;
 using System.Linq.Expressions;
 using System;
-using Sev1.Advertisements.Application.Exceptions;
 using Sev1.Advertisements.Application.Exceptions.Category;
 
 namespace Sev1.Advertisements.Tests.Advertisement

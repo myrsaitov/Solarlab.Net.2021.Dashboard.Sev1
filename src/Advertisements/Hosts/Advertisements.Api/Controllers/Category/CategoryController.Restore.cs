@@ -13,6 +13,7 @@ namespace Sev1.Advertisements.Api.Controllers.Category
             CancellationToken cancellationToken)
         {
             await _categoryService.Restore(
+                HttpContext.Request.Headers["Authorization"],
                 id,
                 cancellationToken);
 

@@ -30,5 +30,10 @@ namespace Sev1.Advertisements.Domain
         /// Коллекция связанных Tag
         /// </summary>
         public virtual ICollection<Tag> Tags { get; set; }
+
+        /// <summary>
+        /// Создатель объявления
+        /// </summary>
+        public string OwnerId { get; set; }
     }
 }

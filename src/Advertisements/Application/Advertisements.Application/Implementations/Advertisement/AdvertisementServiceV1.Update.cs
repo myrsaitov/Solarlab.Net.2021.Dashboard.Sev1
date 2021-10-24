@@ -9,15 +9,20 @@ using Sev1.Advertisements.Application.Contracts.Tag;
 using Sev1.Advertisements.Application.Validators.Advertisement;
 using System.Linq;
 using Sev1.Advertisements.Application.Exceptions.Category;
+using Sev1.Advertisements.Domain.Exceptions;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {
         public async Task<int> Update(
+            string accessToken,
             AdvertisementUpdateDto model,
             CancellationToken cancellationToken)
         {
+            // Получаем Id текущего пользователя
+            var currentUserId = await _userRepository.GetCurrentUserId(accessToken, cancellationToken);
+
             // Fluent Validation
             var validator = new AdvertisementUpdateDtoValidator();
             var result = await validator.ValidateAsync(model);
@@ -33,6 +38,12 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             if (advertisement == null)
             {
                 throw new AdvertisementNotFoundException(model.Id);
+            }
+
+            // Обычный пользователь может обновлять только свои собственные объявления
+            if (advertisement.OwnerId != currentUserId)
+            {
+                throw new NoRightsException("Не хватает прав редактировать объявление!");
             }
 
             // TODO Mapper

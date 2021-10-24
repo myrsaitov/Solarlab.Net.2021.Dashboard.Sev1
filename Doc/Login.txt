@@ -22,4 +22,3 @@ Zxs123!@#$%^&*()
   "middleName": "Michailovich",
   "password": "Zxs123!@#$%^&*()"
 }
-

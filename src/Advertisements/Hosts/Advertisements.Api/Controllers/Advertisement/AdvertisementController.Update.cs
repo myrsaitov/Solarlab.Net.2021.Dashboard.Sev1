@@ -10,12 +10,12 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
     {
         [HttpPut("update/{id:int}")]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        //[Authorize]
         public async Task<IActionResult> Update(
             [FromBody] AdvertisementUpdateDto model, 
             CancellationToken cancellationToken)
         {
             await _advertisementService.Update(
+                HttpContext.Request.Headers["Authorization"],
                 model, 
                 cancellationToken);
             

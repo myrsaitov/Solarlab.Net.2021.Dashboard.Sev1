@@ -1,11 +1,7 @@
-﻿using System.Net;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
@@ -19,12 +15,16 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
             [FromBody] AdvertisementCreateDto model, 
             CancellationToken cancellationToken)
         {
-            var accessToken = HttpContext.Request.Headers["Authorization"];
-            var currentUserId = await _userService.GetCurrentUserId(accessToken, cancellationToken);
+            // Получаем JWT-токен из headers
+            //var accessToken = HttpContext.Request.Headers["Authorization"];
+            // Получаем userId текущего пользователя по токену
+            //var currentUserId = await _userService.GetCurrentUserId(accessToken, cancellationToken);
+            // Если пользователь существует, то вписываем его Id в модель и
+            //model.OwnerId = currentUserId;
 
-            model.OwnerId = currentUserId;
 
             await _advertisementService.Create(
+                HttpContext.Request.Headers["Authorization"],
                 model, 
                 cancellationToken);
 

@@ -10,41 +10,49 @@ namespace Sev1.Advertisements.Application.Interfaces.Category
         /// <summary>
         /// Создает новую категорию
         /// </summary>
+        /// <param name="accessToken">JWT-токен</param>
         /// <param name="model">Модель DTO категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<int> Create(
-            CategoryCreateDto model, 
+            string accessToken,
+            CategoryCreateDto model,
             CancellationToken cancellationToken);
 
         /// <summary>
         /// Обновляет существующую категорию
         /// </summary>
+        /// <param name="accessToken">JWT-токен</param>
         /// <param name="model">Модель DTO категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<int> Update(
-            CategoryUpdateDto request, 
+            string accessToken,
+            CategoryUpdateDto request,
             CancellationToken cancellationToken);
 
         /// <summary>
         /// Удаляет категорию по Id
         /// </summary>
+        /// <param name="accessToken">JWT-токен</param>
         /// <param name="id">Id категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Delete(
-            int id, 
+            string accessToken,
+            int id,
             CancellationToken cancellationToken);
 
         /// <summary>
         /// Восстанавливает категорию по Id
         /// </summary>
+        /// <param name="accessToken">JWT-токен</param>
         /// <param name="id">Id категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Restore(
-            int id, 
+            string accessToken,
+            int id,
             CancellationToken cancellationToken);
 
         /// <summary>

@@ -9,36 +9,21 @@ using Sev1.Advertisements.Application.Contracts.Tag;
 using Sev1.Advertisements.Application.Validators.Advertisement;
 using System.Linq;
 using Sev1.Advertisements.Application.Exceptions.Category;
-using System.Net;
-using System.Text;
-using Sev1.Advertisements.Domain.Exceptions;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {
         public async Task Create(
+            string accessToken,
             AdvertisementCreateDto model,
             CancellationToken cancellationToken)
         {
-            // WebClient
-            /*string param = "";
-            string url = "https://localhost:44377/api/v1/accounts/user";
-            using (var client = new WebClient())
-            {
-                client.Headers.Add("content-type", "application/json");
-                client.Headers.Add("Authorization", accessToken);
-                try
-                {
-                    string userId = Encoding.ASCII.GetString(client.UploadData(url, "POST", Encoding.UTF8.GetBytes(param)));
-                    model.OwnerId = userId;
-                }
-                catch (WebException ex)
-                {
-                    throw new NoRightsException("Ошибка авторизации"); // TODO
-                }
-            }*/
+            // Получаем Id текущего пользователя
+            var currentUserId = await _userRepository.GetCurrentUserId(accessToken, cancellationToken);
 
+            // Если авторизация успешная, то дополняем модель
+            model.OwnerId = currentUserId;
 
             // Fluent Validation
             var validator = new AdvertisementCreateDtoValidator();
@@ -48,6 +33,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 throw new AdvertisementCreateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
+            // Проверка категории на существование
             var category = await _categoryRepository.FindById(
                 model.CategoryId,
                 cancellationToken);
@@ -57,11 +43,13 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 throw new CategoryNotFoundException(model.CategoryId);
             }
 
+            // Дополняем модель
             var advertisement = _mapper.Map<Domain.Advertisement>(model);
             advertisement.IsDeleted = false;
             advertisement.CreatedAt = DateTime.UtcNow;
             advertisement.Category = category;
 
+            // Добавляем таги
             if (model.TagBodies is not null)
             {
                 advertisement.Tags = new List<Domain.Tag>();
@@ -100,6 +88,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 }
             }
 
+            // Сохраняем в базе
             await _advertisementRepository.Save(
                 advertisement, 
                 cancellationToken);

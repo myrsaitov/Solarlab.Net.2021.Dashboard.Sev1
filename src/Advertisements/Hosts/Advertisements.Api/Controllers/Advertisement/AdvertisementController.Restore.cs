@@ -7,12 +7,12 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
     public partial class AdvertisementController
     {
         [HttpPut("{id:int}")]
-        //[Authorize]
         public async Task<IActionResult> Restore(
             [FromRoute] int id, 
             CancellationToken cancellationToken)
         {
             await _advertisementService.Restore(
+                HttpContext.Request.Headers["Authorization"],
                 id,
                 cancellationToken);
             

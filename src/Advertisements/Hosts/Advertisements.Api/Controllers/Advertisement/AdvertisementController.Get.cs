@@ -1,9 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using Sev1.Advertisements.Application.Contracts.GetPaged;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
@@ -11,7 +8,6 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
     public partial class AdvertisementController
     {
         [HttpGet]
-        //[AllowAnonymous]
         public async Task<IActionResult> GetPaged(
             [FromQuery] GetPagedAdvertisementRequest request, 
             CancellationToken cancellationToken)
@@ -24,7 +20,6 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         }
 
         [HttpGet("{id}")]
-        //[AllowAnonymous]
         public async Task<IActionResult> GetById(
             [FromRoute] int id, 
             CancellationToken cancellationToken)

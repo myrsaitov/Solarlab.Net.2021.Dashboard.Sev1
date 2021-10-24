@@ -17,9 +17,7 @@ using Sev1.Advertisements.Application.Implementations.Tag;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Collections.Generic;
-using System;
-using Sev1.Advertisements.Application.Interfaces.User;
-using Sev1.Advertisements.Application.Implementations.User;
+using Sev1.Advertisements.Application.Repositories.User;
 
 namespace Sev1.Advertisements.Api
 {
@@ -74,7 +72,9 @@ namespace Sev1.Advertisements.Api
                 .AddScoped<ICategoryService, CategoryServiceV1>()
                 .AddScoped<IAdvertisementService, AdvertisementServiceV1>()
                 .AddScoped<ITagService, TagServiceV1>()
-                .AddScoped<IUserService, UserServiceV1>()
+
+                // Инжектирование "репозитория" (работает через webclient) User
+                .AddScoped<IUserRepository, UserRepository>()
 
                 // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
                 .AddHttpContextAccessor()
