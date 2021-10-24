@@ -1,0 +1,59 @@
+ <div class="authorization form ">
+<form [formGroup]="formGroup" (ngSubmit)="submit()">
+  <fieldset>
+    <legend>Вход</legend>
+      <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label for="email" >Введите вашу почту</mat-label>
+            <input  type="email" 
+              matInput
+              class="form-control" 
+              [class.is-invalid]="emailControl?.invalid && emailControl?.touched"  
+              id="email" 
+              formControlName="email"
+              placeholder="Ex. pat@example.com">
+              
+              <mat-error class="invalid-feedback" *ngIf="emailControl?.hasError('required') && emailControl?.hasError('email') ">
+                Введите корректный адрес
+        </mat-error>
+        <mat-error *ngIf="emailControl?.hasError('required')">
+          Ввод почты <strong>обязателен</strong>
+        </mat-error>
+    </mat-form-field>
+  
+    <div class="password" >
+      <mat-form-field appearance="outline" >
+        <mat-label for="password">Введите Ваш пароль</mat-label>
+        <input
+         matInput [type]="hide ? 'password' : 'text'"  
+      [class.is-invalid]="passwordControl?.invalid && passwordControl?.touched" 
+      class="form-control"
+      id="password"
+      formControlName="password">
+      <mat-error *ngIf="passwordControl?.hasError('required')">
+        Ввод пароля <strong>обязателен</strong>
+      </mat-error>
+      <mat-error *ngIf="passwordControl?.hasError('minlength')">
+        Пароль должен содержать больше 8 символов
+      </mat-error>
+       <button class="button_log" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+       </button>
+       </mat-form-field>
+    </div>
+    <div>
+      <button type="submit" mat-raised-button color="primary" class="button_authorization">Войти</button>
+    </div>
+      <a mat-raised-button href="#" target="_blank" color="primary" class="button_authorization">Забыли пароль</a>
+         <a mat-raised-button href="#" target="_blank" color="primary" class="button_authorization">Регистрация</a>
+  </fieldset>
+</form>
+
+</div>
+<!-- <pre>
+  {{emailControl?.errors | json}}
+  
+  </pre>
+<pre>
+{{passwordControl?.errors | json}}
+
+</pre> -->

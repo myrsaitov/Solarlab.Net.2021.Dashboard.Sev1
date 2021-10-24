@@ -1,7 +1,6 @@
+import { AuthService, UserLoginDTO } from './../services/auth.service'; 
 import { Component, OnInit } from '@angular/core';
-import {MatInputModule} from '@angular/material/input';
-import { MatSliderModule } from '@angular/material/slider';
-import {FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,12 +12,20 @@ import {FormControl, Validators} from '@angular/forms';
 
 
 export class LoginComponent {
-  // title = 'my-app'; 
-  hide = true;
-  value = ''
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
+  
+
+   constructor(private _authService: AuthService, private router: Router) { }
+
+  login(loginModel: any) {
+    const model: UserLoginDTO = {
+       email: loginModel.username,
+       password: loginModel.password
+    }
+     this.router.navigateByUrl('/') 
+     this._authService.login(loginModel).subscribe(res => {    // что это ?
+ 
+     });
+  }
+  
 }
 

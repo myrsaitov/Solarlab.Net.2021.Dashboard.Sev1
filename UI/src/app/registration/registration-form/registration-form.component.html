@@ -1,0 +1,123 @@
+<div class="registration form ">
+   <form [formGroup]="formGroup" (ngSubmit)="submit()" class="form_registration">
+     <fieldset>
+       <legend>Форма регистрации</legend>
+       <div>
+       <mat-form-field class="login" appearance="outline">
+         <mat-label>Введите ваш имя</mat-label>
+         <input  type="text" 
+                    matInput
+                    class="form-control" 
+                    [class.is-invalid]="loginControl?.invalid && loginControl?.touched"  
+                    id="login" 
+                    formControlName="login">
+                    <mat-error matSuffix class="invalid-feedback" *ngIf="loginControl?.hasError('required') && loginControl?.hasError('login') ">
+                     Введите имя
+             </mat-error>
+             <mat-error *ngIf="loginControl?.hasError('required')">
+               Ввод имени <strong>обязателен</strong>
+             </mat-error>
+       </mat-form-field>
+       </div>
+     <div>
+       <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label for="email" >Введите вашу почту</mat-label>
+                  <input  type="email" 
+                    matInput
+                    class="form-control" 
+                    [class.is-invalid]="emailControl?.invalid && emailControl?.touched"  
+                    id="email" 
+                    formControlName="email"
+                    placeholder="Ex. pat@example.com">
+                    
+                    <mat-error class="invalid-feedback" *ngIf="emailControl?.hasError('required') && emailControl?.hasError('email') ">
+                      Введите корректный адрес
+              </mat-error>
+              <mat-error *ngIf="emailControl?.hasError('required')">
+                Ввод почты <strong>обязателен</strong>
+              </mat-error>
+          </mat-form-field>
+      </div>
+
+
+      <div>
+         <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label for="tel" >Telephone</mat-label>
+              <span matPrefix>+7 &nbsp;</span>
+                    <input  type="tel" 
+                    matInput 
+                      class="form-control" 
+                      [class.is-invalid]="telControl?.invalid && telControl?.touched"  
+                      id="tel" 
+                      formControlName="tel"
+                      placeholder="123-45-67-890">
+                  <mat-error *ngIf="emailControl?.hasError('required')">
+                  Ввод телефона <strong>обязателен</strong>
+                </mat-error>
+                <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+        </div>
+
+      <!-- <div>
+       <mat-form-field class="example-full-width" appearance="outline">
+         <mat-label>Telephone</mat-label>
+         <span matPrefix>+7 &nbsp;</span>
+         <input type="tel" matInput placeholder="123-45-67-890" required>
+         <mat-icon matSuffix>mode_edit</mat-icon>
+       </mat-form-field>
+      </div> -->
+
+     <div class="password" >
+         <mat-form-field appearance="outline" >
+           <mat-label for="password">Введите Ваш пароль</mat-label>
+           <input
+            matInput [type]="hide ? 'password' : 'text'"  
+         [class.is-invalid]="passwordControl?.invalid && passwordControl?.touched" 
+         class="form-control"
+         id="password"
+         formControlName="password">
+         <mat-error *ngIf="passwordControl?.hasError('required')">
+           Ввод пароля <strong>обязателен</strong>
+         </mat-error>
+         <mat-error *ngIf="passwordControl?.hasError('minlength')">
+           Пароль должен содержать больше 8 символов
+         </mat-error>
+          <button class="button_log" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          </mat-form-field>
+       </div>
+
+
+       <div class="password" >
+         <mat-form-field appearance="outline" >
+           <mat-label for="repeat-password">Повторите Ваш пароль</mat-label>
+           <input
+            matInput [type]="hide ? 'password' : 'text'"  
+         [class.is-invalid]="repeatPasswordControl?.invalid && repeatPasswordControl?.touched" 
+         class="form-control"
+         id="repeat-password"
+         formControlName="repeatPassword">
+         <mat-error *ngIf="repeatPasswordControl?.hasError('required')">
+           Ввод пароля <strong>обязателен</strong>
+         </mat-error>
+         <mat-error *ngIf="repeatPasswordControl?.hasError('minlength')">
+           Пароль должен содержать больше 8 символов
+         </mat-error>
+          <button class="button_log" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          </mat-form-field>
+       </div>
+
+       <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI">
+      </div>
+
+          
+       
+       <div>
+         <button type="submit" mat-raised-button color="primary" class="button_registration">Зарегистрироваться</button>
+         </div>
+     </fieldset>
+   </form>
+ </div>

@@ -18,6 +18,11 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { CardComponent } from './card/card.component';
 import {MatCardModule} from '@angular/material/card';
+import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { LoginFormComponent } from './login/login-form/login-form.component';
+import { RegistrationFormComponent } from './registration/registration-form/registration-form.component';
 
 
 @NgModule({
@@ -26,7 +31,12 @@ import {MatCardModule} from '@angular/material/card';
     LoginComponent,
     RegistrationComponent,
     AnnouncementComponent,
-    CardComponent
+    CardComponent,
+    CreateAnnouncementComponent,
+    HeaderComponent,
+    FooterComponent,
+    LoginFormComponent,
+    RegistrationFormComponent
     
   ],
   imports: [
