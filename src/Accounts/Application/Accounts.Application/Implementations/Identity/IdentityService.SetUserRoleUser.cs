@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Accounts.Application.Contracts.Identity;
 using Sev1.Accounts.Application.Exceptions.Identity;
@@ -27,8 +28,20 @@ namespace Sev1.Accounts.Application.Implementations.Identity
                     throw new IdentityUserNotFoundException("Пользователь не найден");
                 }
 
-                // Меняем роль
-                await _userManager.AddToRoleAsync(identityUser, RoleConstants.UserRole);
+                // Удаляем роль админа
+                await _userManager.RemoveFromRoleAsync(
+                    identityUser,
+                    RoleConstants.AdminRole);
+
+                // Удаляем роль модератора
+                await _userManager.RemoveFromRoleAsync(
+                    identityUser,
+                    RoleConstants.ModeratorRole);
+
+                // Ставим роль юзера
+                await _userManager.AddToRoleAsync(
+                    identityUser, 
+                    RoleConstants.UserRole);
             }
             else
             {

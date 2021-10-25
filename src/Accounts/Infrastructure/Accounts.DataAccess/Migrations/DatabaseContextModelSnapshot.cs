@@ -48,22 +48,22 @@ namespace Accounts.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d3300ca5-846f-4e6b-ac5f-1d3933115e67",
-                            ConcurrencyStamp = "0b177a07-3c43-456d-9196-68e3c4f3fc31",
+                            Id = "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3",
+                            ConcurrencyStamp = "0e1ee038-0b1e-4217-a67d-362f13b9806f",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "18ulo0d2-5ju8-4e29-adrd-a257ffew2a15",
-                            ConcurrencyStamp = "8acf557d-778b-4623-911e-27aefd0e9358",
+                            Id = "c373fe1b-9e38-498b-9729-6c719222b00d",
+                            ConcurrencyStamp = "f70497fb-4c9f-4498-a917-1e4030b14e61",
                             Name = "Moderator",
                             NormalizedName = "MODERATOR"
                         },
                         new
                         {
-                            Id = "185230d2-58d8-4e29-aefd-a257fb82a150",
-                            ConcurrencyStamp = "bc957002-2b9d-4cf5-8657-6ced0ed6ab6e",
+                            Id = "589a1f42-d43c-4315-8e02-432f64e02bc0",
+                            ConcurrencyStamp = "c6b317ec-6f1c-4f6d-bba8-1ae01c136215",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -156,8 +156,18 @@ namespace Accounts.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "98b651a-c9aa-4731-9996-57352d525f7e",
-                            RoleId = "d3300ca5-846f-4e6b-ac5f-1d3933115e67"
+                            UserId = "757d5290-d036-4757-85ae-827b59e92cd3",
+                            RoleId = "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3"
+                        },
+                        new
+                        {
+                            UserId = "a0d74199-2ad5-4d2f-a184-eb52f5bf9094",
+                            RoleId = "c373fe1b-9e38-498b-9729-6c719222b00d"
+                        },
+                        new
+                        {
+                            UserId = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
+                            RoleId = "589a1f42-d43c-4315-8e02-432f64e02bc0"
                         });
                 });
 
@@ -247,17 +257,45 @@ namespace Accounts.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "98b651a-c9aa-4731-9996-57352d525f7e",
+                            Id = "757d5290-d036-4757-85ae-827b59e92cd3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9a77d8fa-3a8a-4aeb-b90c-f7e24ba70dc0",
+                            ConcurrencyStamp = "5741a49d-5955-47d7-add7-dc082e2f8dbb",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEbom8L5r5pfV1XXBj32GNc54kZXHqiO2tcAyTUB7NM2gZTY92e2NABiUBikujwgcw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHUzKoirS1g61iR7vYv+9u4sCvCmrbTLH0IvY4+eQmC2AHfRzJSR2YUNSVu8FUS7ig==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "55691a3d-2326-4f02-a7e8-ed7bef923d18",
+                            SecurityStamp = "3a141d63-a488-4789-9997-f2a5708cb403",
                             TwoFactorEnabled = false,
                             UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = "a0d74199-2ad5-4d2f-a184-eb52f5bf9094",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "857f84e0-31ce-410c-997e-60633c827134",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedUserName = "MODERATOR",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDk8EqCqc12fBaDHZ5g1/BuNibH+WwCnWtHTOXXeZ/iSwDm1u/4FSpa0qErDpNQhNw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "e5e695a6-7ca8-4fe4-9c8d-c9f8adc6e40f",
+                            TwoFactorEnabled = false,
+                            UserName = "moderator"
+                        },
+                        new
+                        {
+                            Id = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "645dae49-8073-4215-9dcb-af270300abae",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedUserName = "USER",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAuN+aFF/LWfQ479/pT2iKeLcK6yWI401edpyqUjbRrfL82ZR4FbGq1okgJ0c65WBw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "f472dcfb-d598-475a-97c0-8988664fc240",
+                            TwoFactorEnabled = false,
+                            UserName = "user"
                         });
                 });
 
@@ -302,6 +340,38 @@ namespace Accounts.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DomainUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "757d5290-d036-4757-85ae-827b59e92cd3",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "admin1",
+                            IsDeleted = false,
+                            LastName = "admin2",
+                            MiddleName = "admin3",
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = "a0d74199-2ad5-4d2f-a184-eb52f5bf9094",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "moderator1",
+                            IsDeleted = false,
+                            LastName = "moderator2",
+                            MiddleName = "moderator3",
+                            UserName = "moderator"
+                        },
+                        new
+                        {
+                            Id = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "user1",
+                            IsDeleted = false,
+                            LastName = "user2",
+                            MiddleName = "user3",
+                            UserName = "user"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

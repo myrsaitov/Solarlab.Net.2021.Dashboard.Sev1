@@ -27,8 +27,20 @@ namespace Sev1.Accounts.Application.Implementations.Identity
                     throw new IdentityUserNotFoundException("Пользователь не найден");
                 }
 
-                // Меняем роль
-                await _userManager.AddToRoleAsync(identityUser, RoleConstants.ModeratorRole);
+                // Удаляем роль админа
+                await _userManager.RemoveFromRoleAsync(
+                    identityUser,
+                    RoleConstants.AdminRole);
+
+                // Удаляем роль юзера
+                await _userManager.RemoveFromRoleAsync(
+                    identityUser,
+                    RoleConstants.UserRole); 
+
+                 // Ставим роль модератора
+                 await _userManager.AddToRoleAsync(
+                     identityUser, 
+                     RoleConstants.ModeratorRole);
             }
             else
             {
