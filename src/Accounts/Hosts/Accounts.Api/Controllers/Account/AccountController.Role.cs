@@ -71,6 +71,23 @@ namespace Sev1.Accounts.Api.Controllers.Account
         }
 
         /// <summary>
+        /// Сделать пользователя юзером
+        /// </summary>
+        /// <param name="userId">Id пользователя</param>
+        /// <param name="cancellationToken">Маркер отмены</param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpPost("setuserroleuser")]
+        public async Task<IActionResult> SetUserRoleUser(
+            string userId,
+            CancellationToken cancellationToken)
+        {
+            return Ok(await _identityService.SetUserRoleUser(
+                userId,
+                cancellationToken));
+        }
+
+        /// <summary>
         /// Сделать пользователя модератором
         /// </summary>
         /// <param name="userId">Id пользователя</param>
@@ -83,6 +100,23 @@ namespace Sev1.Accounts.Api.Controllers.Account
             CancellationToken cancellationToken)
         {
             return Ok(await _identityService.SetUserRoleModerator(
+                userId,
+                cancellationToken));
+        }
+
+        /// <summary>
+        /// Сделать пользователя админом
+        /// </summary>
+        /// <param name="userId">Id пользователя</param>
+        /// <param name="cancellationToken">Маркер отмены</param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpPost("setuserroleadmin")]
+        public async Task<IActionResult> SetUserRoleAdmin(
+            string userId,
+            CancellationToken cancellationToken)
+        {
+            return Ok(await _identityService.SetUserRoleAdmin(
                 userId,
                 cancellationToken));
         }

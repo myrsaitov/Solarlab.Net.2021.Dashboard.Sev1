@@ -12,15 +12,19 @@ namespace Sev1.Accounts.Application.Implementations.Identity
             CancellationToken cancellationToken = default)
         {
             var currentUserId = await GetCurrentUserId(cancellationToken);
+            if (currentUserId == null)
+            {
+                throw new IdentityUserNotFoundException("Пользователь не найден");
+            }
 
             var isAdmin = await IsInRole(currentUserId, RoleConstants.AdminRole, cancellationToken);
-            if (isAdmin)
+            if(isAdmin)
             {
                 return RoleConstants.AdminRole.ToString().ToLower();
             }
 
             var isModerator = await IsInRole(currentUserId, RoleConstants.ModeratorRole, cancellationToken);
-            if (isModerator)
+            if(isModerator)
             {
                 return RoleConstants.ModeratorRole.ToString().ToLower();
             }

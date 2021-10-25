@@ -10,7 +10,7 @@ using Sev1.Accounts.DataAccess;
 namespace Accounts.DataAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20211025154110_UserWereAdded")]
+    [Migration("20211025162003_UserWereAdded")]
     partial class UserWereAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,21 +51,21 @@ namespace Accounts.DataAccess.Migrations
                         new
                         {
                             Id = "d3300ca5-846f-4e6b-ac5f-1d3933115e67",
-                            ConcurrencyStamp = "3dc49f91-6908-4077-9372-dc32f7b90625",
+                            ConcurrencyStamp = "0b177a07-3c43-456d-9196-68e3c4f3fc31",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "18ulo0d2-5ju8-4e29-adrd-a257ffew2a15",
-                            ConcurrencyStamp = "0d0bdfba-a495-422b-9b8d-83125e9f4a0d",
+                            ConcurrencyStamp = "8acf557d-778b-4623-911e-27aefd0e9358",
                             Name = "Moderator",
                             NormalizedName = "MODERATOR"
                         },
                         new
                         {
                             Id = "185230d2-58d8-4e29-aefd-a257fb82a150",
-                            ConcurrencyStamp = "464a2bf3-b175-446a-804f-5381afeccf1b",
+                            ConcurrencyStamp = "bc957002-2b9d-4cf5-8657-6ced0ed6ab6e",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -158,7 +158,7 @@ namespace Accounts.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "98b651ae-c9aa-4731-9996-57352d525f7e",
+                            UserId = "98b651a-c9aa-4731-9996-57352d525f7e",
                             RoleId = "d3300ca5-846f-4e6b-ac5f-1d3933115e67"
                         });
                 });
@@ -249,15 +249,15 @@ namespace Accounts.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "98b651ae-c9aa-4731-9996-57352d525f7e",
+                            Id = "98b651a-c9aa-4731-9996-57352d525f7e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "751b9269-859b-4f43-bbb9-ba67a5fc055b",
+                            ConcurrencyStamp = "9a77d8fa-3a8a-4aeb-b90c-f7e24ba70dc0",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAuDPsCed+kSjJ2+Tte9eMAgXGtysWttQC3yh3h3XIpFweH3QdaZeKWo28X1QCX1XA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEbom8L5r5pfV1XXBj32GNc54kZXHqiO2tcAyTUB7NM2gZTY92e2NABiUBikujwgcw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ed477c88-da11-4b87-bc17-8bac12be5bb2",
+                            SecurityStamp = "55691a3d-2326-4f02-a7e8-ed7bef923d18",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });

@@ -175,20 +175,20 @@ namespace Accounts.DataAccess.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "d3300ca5-846f-4e6b-ac5f-1d3933115e67", "3dc49f91-6908-4077-9372-dc32f7b90625", "Admin", "ADMIN" },
-                    { "18ulo0d2-5ju8-4e29-adrd-a257ffew2a15", "0d0bdfba-a495-422b-9b8d-83125e9f4a0d", "Moderator", "MODERATOR" },
-                    { "185230d2-58d8-4e29-aefd-a257fb82a150", "464a2bf3-b175-446a-804f-5381afeccf1b", "User", "USER" }
+                    { "d3300ca5-846f-4e6b-ac5f-1d3933115e67", "0b177a07-3c43-456d-9196-68e3c4f3fc31", "Admin", "ADMIN" },
+                    { "18ulo0d2-5ju8-4e29-adrd-a257ffew2a15", "8acf557d-778b-4623-911e-27aefd0e9358", "Moderator", "MODERATOR" },
+                    { "185230d2-58d8-4e29-aefd-a257fb82a150", "bc957002-2b9d-4cf5-8657-6ced0ed6ab6e", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "98b651ae-c9aa-4731-9996-57352d525f7e", 0, "751b9269-859b-4f43-bbb9-ba67a5fc055b", null, false, false, null, null, "ADMIN", "AQAAAAEAACcQAAAAEAuDPsCed+kSjJ2+Tte9eMAgXGtysWttQC3yh3h3XIpFweH3QdaZeKWo28X1QCX1XA==", null, false, "ed477c88-da11-4b87-bc17-8bac12be5bb2", false, "admin" });
+                values: new object[] { "98b651a-c9aa-4731-9996-57352d525f7e", 0, "9a77d8fa-3a8a-4aeb-b90c-f7e24ba70dc0", null, false, false, null, null, "ADMIN", "AQAAAAEAACcQAAAAEEbom8L5r5pfV1XXBj32GNc54kZXHqiO2tcAyTUB7NM2gZTY92e2NABiUBikujwgcw==", null, false, "55691a3d-2326-4f02-a7e8-ed7bef923d18", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "d3300ca5-846f-4e6b-ac5f-1d3933115e67", "98b651ae-c9aa-4731-9996-57352d525f7e" });
+                values: new object[] { "d3300ca5-846f-4e6b-ac5f-1d3933115e67", "98b651a-c9aa-4731-9996-57352d525f7e" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

@@ -29,10 +29,17 @@ namespace Sev1.Accounts.Application.Interfaces.Identity
         Task<string> GetCurrentUserRole(
             CancellationToken cancellationToken);
 
+        Task<string> SetUserRoleUser(
+            string userId,
+            CancellationToken cancellationToken = default);
+
         Task<string> SetUserRoleModerator(
             string userId,
             CancellationToken cancellationToken = default);
 
+        Task<string> SetUserRoleAdmin(
+            string userId,
+            CancellationToken cancellationToken = default);
 
         /*Task<bool> ConfirmEmail(
             string userId, 
