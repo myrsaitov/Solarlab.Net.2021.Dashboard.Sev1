@@ -32,6 +32,7 @@ namespace Sev1.Accounts.DataAccess
         {
             var ADMIN_ROLE_ID = "d3300ca5-846f-4e6b-ac5f-1d3933115e67";
             var ADMIN_ID = "98b651ae-c9aa-4731-9996-57352d525f7e";
+            var MODERATOR_ROLE_ID = "18ulo0d2-5ju8-4e29-adrd-a257ffew2a15";
             var USER_ROLE_ID = "185230d2-58d8-4e29-aefd-a257fb82a150";
 
             modelBuilder.Entity<IdentityRole>(x =>
@@ -43,6 +44,12 @@ namespace Sev1.Accounts.DataAccess
                         Id = ADMIN_ROLE_ID,
                         Name = RoleConstants.AdminRole,
                         NormalizedName = "ADMIN"
+                    },
+                    new IdentityRole
+                    {
+                        Id = MODERATOR_ROLE_ID,
+                        Name = RoleConstants.ModeratorRole,
+                        NormalizedName = "MODERATOR"
                     },
                     new IdentityRole
                     {

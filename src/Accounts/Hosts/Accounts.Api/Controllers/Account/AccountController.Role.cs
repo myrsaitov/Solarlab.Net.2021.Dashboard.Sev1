@@ -50,21 +50,8 @@ namespace Sev1.Accounts.Api.Controllers.Account
         public async Task<IActionResult> GetCurrentUserRole(
             CancellationToken cancellationToken)
         {
-            var currentUserId = await _identityService.GetCurrentUserId(cancellationToken);
-            
-            var isAdmin = await _identityService.IsInRole(currentUserId, RoleConstants.AdminRole, cancellationToken);
-            if(isAdmin)
-            {
-                return Ok(RoleConstants.AdminRole.ToString().ToLower());
-            }
-            
-            var isModerator = await _identityService.IsInRole(currentUserId, RoleConstants.ModeratorRole, cancellationToken);
-            if (isModerator)
-            {
-                return Ok(RoleConstants.ModeratorRole.ToString().ToLower());
-            }
-
-            return Ok(RoleConstants.UserRole.ToString().ToLower());
+            return Ok(await _identityService.GetCurrentUserRole(
+                cancellationToken));
         }
 
         /// <summary>
@@ -78,19 +65,9 @@ namespace Sev1.Accounts.Api.Controllers.Account
             string userId,
             CancellationToken cancellationToken)
         {
-            var isAdmin = await _identityService.IsInRole(userId, RoleConstants.AdminRole, cancellationToken);
-            if (isAdmin)
-            {
-                return Ok(RoleConstants.AdminRole.ToString().ToLower());
-            }
-
-            var isModerator = await _identityService.IsInRole(userId, RoleConstants.ModeratorRole, cancellationToken);
-            if (isModerator)
-            {
-                return Ok(RoleConstants.ModeratorRole.ToString().ToLower());
-            }
-
-            return Ok(RoleConstants.UserRole.ToString().ToLower());
+            return Ok(await _identityService.GetUserRoleById(
+                userId,
+                cancellationToken));
         }
 
         /// <summary>
@@ -100,26 +77,14 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="cancellationToken">Маркер отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("setuserasmoderator")]
-        public async Task<IActionResult> SetUserAsModerator(
+        [HttpPost("setuserrolemoderator")]
+        public async Task<IActionResult> SetUserRoleModerator(
             string userId,
             CancellationToken cancellationToken)
         {
-            /*var currentUserId = await _identityService.GetCurrentUserId(cancellationToken);
-
-            var isAdmin = await _identityService.IsInRole(currentUserId, RoleConstants.AdminRole, cancellationToken);
-            if (isAdmin)
-            {
-                return Ok(RoleConstants.AdminRole.ToString().ToLower());
-            }
-
-            var isModerator = await _identityService.IsInRole(currentUserId, RoleConstants.ModeratorRole, cancellationToken);
-            if (isModerator)
-            {
-                return Ok(RoleConstants.ModeratorRole.ToString().ToLower());
-            }*/
-
-            return Ok();
+            return Ok(await _identityService.SetUserRoleModerator(
+                userId,
+                cancellationToken));
         }
     }
 }
