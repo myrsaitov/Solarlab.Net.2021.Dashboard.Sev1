@@ -30,11 +30,11 @@ namespace Comments.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
 
-                var filePath = Path.Combine(System.AppContext.BaseDirectory, "CommentAPI.xml");
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "Comments.API.xml");
                 c.IncludeXmlComments(filePath);
             });
 
-            string connection = Configuration.GetConnectionString("Connection_Skarfe");
+            string connection = Configuration.GetConnectionString("RemoteConnection");
 
             services.AddDbContext<CommentDBContext>(options =>
                 options.UseSqlServer(connection, b => b.MigrationsAssembly("Comments.Migrations")));
@@ -51,19 +51,13 @@ namespace Comments.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
             {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-                });
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
             app.UseStaticFiles();
 
             app.UseRouting();

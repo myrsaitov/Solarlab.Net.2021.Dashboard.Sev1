@@ -34,7 +34,7 @@ namespace Sev1.Advertisements.Api
                 .AddDataAccessModule(configuration =>
 
 
-                    configuration.InSqlServer(Configuration.GetConnectionString("Connection_Skarfe"))
+                    configuration.InSqlServer(Configuration.GetConnectionString("RemoteConnection"))
 
                 ); // Подключение к БД через информацию в "ConnectionString"
 
