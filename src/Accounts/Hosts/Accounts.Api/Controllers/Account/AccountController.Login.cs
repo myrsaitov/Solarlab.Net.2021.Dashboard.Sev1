@@ -8,6 +8,12 @@ namespace Sev1.Accounts.Api.Controllers.Account
 {
     public partial class AccountController
     {
+        /// <summary>
+        /// Идентификация пользователя
+        /// </summary>
+        /// <param name="request">Логин (e-mail) и пароль</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpPost("login")]
         public async Task<IActionResult> Login(
             UserLoginRequest request,

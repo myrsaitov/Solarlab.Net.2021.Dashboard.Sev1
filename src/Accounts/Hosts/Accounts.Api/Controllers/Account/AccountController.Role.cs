@@ -105,7 +105,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
             string userId,
             CancellationToken cancellationToken)
         {
-            var currentUserId = await _identityService.(cancellationToken);
+            /*var currentUserId = await _identityService.GetCurrentUserId(cancellationToken);
 
             var isAdmin = await _identityService.IsInRole(currentUserId, RoleConstants.AdminRole, cancellationToken);
             if (isAdmin)
@@ -117,10 +117,9 @@ namespace Sev1.Accounts.Api.Controllers.Account
             if (isModerator)
             {
                 return Ok(RoleConstants.ModeratorRole.ToString().ToLower());
-            }
+            }*/
 
-            return Ok(RoleConstants.UserRole.ToString().ToLower());
+            return Ok();
         }
-
     }
 }

@@ -37,6 +37,13 @@ namespace Sev1.Accounts.Api.Controllers.Account
         // [HttpPost("<route>")]
         // Creates a new Microsoft.AspNetCore.Mvc.HttpPostAttribute
         // with the given route template.
+        
+        /// <summary>
+        /// Регистрация пользователя
+        /// </summary>
+        /// <param name="request">Данные с формы регистрации</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         [HttpPost("register")] 
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Register(
