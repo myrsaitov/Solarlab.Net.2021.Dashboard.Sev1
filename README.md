@@ -1,6 +1,12 @@
 # Introduction 
 TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
 
+#Docker-Compose
+1. Загрузить файлы docker-compose.yml и docker_compose_up_scr
+2. 		sudo docker-compose pull
+3. 		chmod +x ./docker_compose_up_scr
+4. 		./docker_compose_up_scr
+
 # Getting Started
 TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
 1.	Installation process
