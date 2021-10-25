@@ -23,6 +23,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { RegistrationFormComponent } from './registration/registration-form/registration-form.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { RegistrationFormComponent } from './registration/registration-form/regi
     HeaderComponent,
     FooterComponent,
     LoginFormComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    AdminComponent
     
   ],
   imports: [

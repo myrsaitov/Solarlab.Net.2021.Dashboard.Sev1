@@ -22,7 +22,7 @@ export class LoginComponent {
        password: loginModel.password
     }
      this.router.navigateByUrl('/') 
-     this._authService.login(loginModel).subscribe(res => {    // что это ?
+     this._authService.login(loginModel).subscribe(res => {    
  
      });
   }

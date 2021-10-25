@@ -4,21 +4,33 @@
    </a>
 
    <div class="nav">
-     <!-- <div class="nav_links">
-       <a href="#">Главная</a>
-       <a href="#">Каталог</a>
-       <a href="#">О нас</a>
-     </div> -->
-     <div class="button_nav">
-      <a routerLink="сreate-аnnouncement">
+       <div class="button_nav">
+       <a *ngIf="!authService.isAuth" routerLink="сreate-аnnouncement">
+        <button mat-raised-button color="primary" class="button_header">Подать объявление</button>
+       </a>
+
+       <a *ngIf="!authService.isAuth" routerLink="authentication">
+        <button mat-raised-button color="primary" class="button_header">Войти</button>
+       </a>
+
+       <a *ngIf="!authService.isAuth" routerLink="registration">
+        <button mat-raised-button color="primary" class="button_header">Регистрация</button>
+       </a>
+       
+       <button *ngIf="authService.isAuth" mat-raised-button color="primary" class="button_header" (click)="authService.logout()">Выйти</button>
+       
+
+      <!-- <a routerLink="сreate-аnnouncement">
        <button class="button">Подать объявление</button>
-      </a>
-      <a routerLink="authentication">
+      </a> -->
+      <!-- <a routerLink="authentication">
        <button class="button">Войти</button>
       </a>
       <a routerLink="registration">
        <button class="button">Регистрация</button>
-      </a>
+      </a> -->
      </div>
    </div> 
  </header>
+
+ 

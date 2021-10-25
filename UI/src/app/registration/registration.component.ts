@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import { AuthService, UserLoginDTO } from './../services/auth.service'; 
+import { AuthService, UserRegisterDTO } from './../services/auth.service'; 
 
 @Component({
   selector: 'app-registration',
@@ -15,15 +15,10 @@ export class RegistrationComponent {
   ngOnInit(): void {
   }
 
-  // registration(event: UserRegisterDTO) {
-  //      this._authService.register(event).subscribe(res => {
-  //        console.log(res);
-  //      });
-  // }
-
-
-  registration (event: any ) {  //после в ивенте прописать UserRegisterDTO, сделана как затычка
-
-
-  }
+   registration(event: UserRegisterDTO) {
+        this._authService.register(event).subscribe(res => {
+          console.log(res);
+        });
+   }
+ 
 }
