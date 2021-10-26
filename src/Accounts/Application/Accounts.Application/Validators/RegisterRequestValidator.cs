@@ -9,7 +9,9 @@ namespace Sev1.Accounts.Application.Validators
         {
             RuleFor(x => x.UserName)
                 .NotEmpty().WithMessage("UserName не заполнен!")
-                .Matches("[a-zA-Z0-9_]*")
+                // Никнейм, не может начинаться с цифры,
+                // только английские буквы
+                .Matches("[a-zA-Z_][a-zA-Z0-9_]*")
                 .MinimumLength(5)
                 .MaximumLength(50);
             RuleFor(x => x.Email)
@@ -17,19 +19,42 @@ namespace Sev1.Accounts.Application.Validators
                 .EmailAddress().WithMessage("Адрес не валидный!");
             RuleFor(x => x.Password)
                 .NotEmpty().WithMessage("Password не заполнен!")
-                .Matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[+!@#$%^&*]).{6,20}")
+
+                // Опережающая (lookahead) проверка (https://learn.javascript.ru/regexp-lookahead-lookbehind)
+                // "^": указывает на начало строки;
+                // "$": указывает на конец строки;
+                // "(?=": is the start of a look-ahead group
+                // ".*?": is a non-greedy match against anything or nothing
+                // "[A-Z]": is a character set containing the upper case ASCII letters A through to Z
+                // ")": is the end of the look-ahead group
+                // Match if the string contains:
+                // "(?=.*?[A-Z])": an upper case letter,
+                // "(?=.*?[a-z])": and a lower case letter,
+                // "(?=.*?[0-9])": and a digit,
+                // "(?=.*?[#?!@$%^&*-])": and a non-alphanumeric,
+                // ".{6,20}": and consists of 6 to 20 characters.
+                .Matches("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,20}$")
                 .MinimumLength(6)
                 .MaximumLength(20);
             RuleFor(x => x.FirstName)
-                .Matches("[A-Z][a-z]*").WithMessage("FirstName не валидный!")
+                // Только русские и английские буквы.
+                // Пробелов и других символов нет.
+                // Первая буква заглавная.
+                .Matches("[A-ZА-ЯЁ][a-zа-яё]*").WithMessage("FirstName не валидный!")
                 .MinimumLength(1)
                 .MaximumLength(50);
             RuleFor(x => x.LastName)
-                .Matches("[A-Z][a-z]*").WithMessage("LastName не валидный!")
+                // Только русские и английские буквы.
+                // Пробелов и других символов нет.
+                // Первая буква заглавная.
+                .Matches("[A-ZА-ЯЁ][a-zа-яё]*").WithMessage("LastName не валидный!")
                 .MinimumLength(1)
                 .MaximumLength(50);
             RuleFor(x => x.MiddleName)
-                .Matches("[A-Z][a-z]*").WithMessage("MiddleName не валидный!")
+                // Только русские и английские буквы.
+                // Пробелов и других символов нет.
+                // Первая буква заглавная.
+                .Matches("[A-ZА-ЯЁ][a-zа-яё]*").WithMessage("MiddleName не валидный!")
                 .MinimumLength(1)
                 .MaximumLength(50);
         }
