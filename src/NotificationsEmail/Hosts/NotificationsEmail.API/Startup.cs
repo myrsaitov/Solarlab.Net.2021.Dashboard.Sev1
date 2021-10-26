@@ -28,8 +28,12 @@ namespace NotificationsEmail.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string connection = Configuration.GetConnectionString("RemoteConnection");
 
+#if DEBUG
+            string connection = Configuration.GetConnectionString("RemoteConnection");
+#else
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+#endif
             services.AddDbContext<NotificationEmailDBContext>(options =>
                     options.UseSqlServer(connection, b => b.MigrationsAssembly("NotificationsEmail.Migrations")));
 

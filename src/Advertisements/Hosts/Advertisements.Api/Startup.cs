@@ -32,10 +32,11 @@ namespace Sev1.Advertisements.Api
                 .AddApplicationModule(Configuration) // Инжектирование наших сервисов
                 .AddHttpContextAccessor() // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
                 .AddDataAccessModule(configuration =>
-
-
+#if DEBUG
                     configuration.InSqlServer(Configuration.GetConnectionString("RemoteConnection"))
-
+#else
+                    configuration.InSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+#endif
                 ); // Подключение к БД через информацию в "ConnectionString"
 
 
