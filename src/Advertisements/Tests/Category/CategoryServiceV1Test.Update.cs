@@ -15,9 +15,9 @@ namespace Sev1.Advertisements.Tests.Category
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="accessToken"></param>
-        /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="request">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <param name="userId"></param>
         /// <param name="categoryId"></param>
         /// <returns></returns>
@@ -87,9 +87,9 @@ namespace Sev1.Advertisements.Tests.Category
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="accessToken"></param>
-        /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="request">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <param name="categoryId"></param>
         /// <returns></returns>
         [Theory]
@@ -127,9 +127,9 @@ namespace Sev1.Advertisements.Tests.Category
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="accessToken"></param>
-        /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="request">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
@@ -149,9 +149,9 @@ namespace Sev1.Advertisements.Tests.Category
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="accessToken"></param>
-        /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="request">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null)]

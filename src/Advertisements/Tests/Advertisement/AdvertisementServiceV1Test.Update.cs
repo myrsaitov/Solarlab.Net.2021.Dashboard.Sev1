@@ -18,9 +18,9 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="accessToken"></param>
-        /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="request">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <param name="userId"></param>
         /// <param name="advertisementId"></param>
         /// <param name="categoryId"></param>
@@ -121,9 +121,9 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="accessToken"></param>
-        /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="request">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <param name="userId"></param>
         /// <param name="advertisementId"></param>
         /// <returns></returns>
@@ -164,9 +164,9 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="accessToken"></param>
-        /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="request">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <param name="userId"></param>
         /// <param name="advertisementId"></param>
         /// <returns></returns>
@@ -206,9 +206,9 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="accessToken"></param>
-        /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="request">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
@@ -228,9 +228,9 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="accessToken"></param>
-        /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="request">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null)]

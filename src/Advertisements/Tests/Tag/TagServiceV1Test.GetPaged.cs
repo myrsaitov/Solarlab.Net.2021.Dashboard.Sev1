@@ -16,8 +16,8 @@ namespace Sev1.Advertisements.Tests.Tag
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="request">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
@@ -66,8 +66,8 @@ namespace Sev1.Advertisements.Tests.Tag
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="request">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
@@ -103,8 +103,8 @@ namespace Sev1.Advertisements.Tests.Tag
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="request">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null)]

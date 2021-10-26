@@ -15,8 +15,8 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// 
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
-        /// <param name="id"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="id">Id объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <param name="userId"></param>
         /// <param name="advertisementId"></param>
         /// <returns></returns>
@@ -67,8 +67,8 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// 
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
-        /// <param name="id"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="id">Id объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <param name="userId"></param>
         /// <param name="advertisementId"></param>
         /// <returns></returns>
@@ -116,8 +116,8 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// 
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
-        /// <param name="id"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="id">Id объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
@@ -138,8 +138,8 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// 
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
-        /// <param name="Id"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="Id">Id объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null)]

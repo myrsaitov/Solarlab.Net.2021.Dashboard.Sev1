@@ -14,7 +14,7 @@ namespace Sev1.Advertisements.Tests.Category
         /// 
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
@@ -50,7 +50,7 @@ namespace Sev1.Advertisements.Tests.Category
         /// 
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
@@ -69,7 +69,7 @@ namespace Sev1.Advertisements.Tests.Category
         /// 
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null)]

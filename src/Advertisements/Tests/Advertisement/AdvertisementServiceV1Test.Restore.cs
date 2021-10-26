@@ -14,9 +14,9 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="accessToken"></param>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="id"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <param name="userId"></param>
         /// <param name="advertisementId"></param>
         /// <returns></returns>
@@ -67,9 +67,9 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="accessToken"></param>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="id"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <param name="userId"></param>
         /// <returns></returns>
         [Theory]
@@ -106,9 +106,9 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="accessToken"></param>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="id"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
@@ -128,9 +128,9 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="accessToken"></param>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="id"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null)]

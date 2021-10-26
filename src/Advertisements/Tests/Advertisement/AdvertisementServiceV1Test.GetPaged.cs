@@ -17,7 +17,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// 
         /// </summary>
         /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <param name="userId"></param>
         /// <param name="advertisementTitle"></param>
         /// <param name="advertisementBody"></param>
@@ -98,7 +98,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// 
         /// </summary>
         /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
@@ -140,7 +140,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// 
         /// </summary>
         /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null)]
