@@ -7,6 +7,12 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
     public partial class AdvertisementController
     {
+        /// <summary>
+        /// Возвращает объявления с пагинацией (и поиском)
+        /// </summary>
+        /// <param name="request">Запрос на пагинацию и поиск</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetPaged(
             [FromQuery] GetPagedAdvertisementRequest request, 
@@ -19,6 +25,12 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
             return Ok(result);
         }
 
+        /// <summary>
+        /// Возвращает объявление по Id
+        /// </summary>
+        /// <param name="id">Id объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(
             [FromRoute] int id, 

@@ -8,9 +8,14 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
     public partial class AdvertisementController
     {
+        /// <summary>
+        /// Создает новое объявление
+        /// </summary>
+        /// <param name="model">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        //[Authorize]
         public async Task<IActionResult> Create(
             [FromBody] AdvertisementCreateDto model, 
             CancellationToken cancellationToken)

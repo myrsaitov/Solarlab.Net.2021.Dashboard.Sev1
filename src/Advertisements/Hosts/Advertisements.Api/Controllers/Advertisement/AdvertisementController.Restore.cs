@@ -6,6 +6,12 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
     public partial class AdvertisementController
     {
+        /// <summary>
+        /// Восстанавливает удаленные объявления
+        /// </summary>
+        /// <param name="id">Id объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Restore(
             [FromRoute] int id, 

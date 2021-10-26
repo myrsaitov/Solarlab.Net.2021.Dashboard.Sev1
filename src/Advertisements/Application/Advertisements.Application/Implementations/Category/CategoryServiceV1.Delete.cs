@@ -24,6 +24,10 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             int id,
             CancellationToken cancellationToken)
         {
+            // TODO
+            // что будет с объявлениями у удаленной категории?
+            // может их тоже удалить?
+
             // Получаем Id текущего пользователя
             var currentUserId = await _userRepository.GetCurrentUserId(
                 accessToken, 

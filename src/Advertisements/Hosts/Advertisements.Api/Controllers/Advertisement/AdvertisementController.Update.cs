@@ -8,6 +8,12 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
     public partial class AdvertisementController
     {
+        /// <summary>
+        /// Редактирует объявление
+        /// </summary>
+        /// <param name="model">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         [HttpPut("update/{id:int}")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Update(

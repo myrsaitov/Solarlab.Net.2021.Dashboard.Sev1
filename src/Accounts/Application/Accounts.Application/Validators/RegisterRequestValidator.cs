@@ -24,7 +24,7 @@ namespace Sev1.Accounts.Application.Validators
                 // "^": указывает на начало строки;
                 // "$": указывает на конец строки;
                 // "(?=": is the start of a look-ahead group
-                // ".*?": is a non-greedy match against anything or nothing
+                // ".*?": is a non-greedy match against anything or nothing (https://www.computerworld.com/article/2786107/regular-expression-tutorial-part-5--greedy-and-non-greedy-quantification.html)
                 // "[A-Z]": is a character set containing the upper case ASCII letters A through to Z
                 // ")": is the end of the look-ahead group
                 // Match if the string contains:

@@ -6,6 +6,12 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
     public partial class AdvertisementController
     {
+        /// <summary>
+        /// Удалает объявление (из БД не удаляет, но помечает, что оно удалено)
+        /// </summary>
+        /// <param name="id">Id объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(
             [FromRoute] int id, 

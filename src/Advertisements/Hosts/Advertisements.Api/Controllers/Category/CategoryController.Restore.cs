@@ -7,6 +7,12 @@ namespace Sev1.Advertisements.Api.Controllers.Category
 {
     public partial class CategoryController
     {
+        /// <summary>
+        /// Восстанавливает удаленную категорию по Id
+        /// </summary>
+        /// <param name="id">Id категории</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Restore(
             [FromRoute] int id, 

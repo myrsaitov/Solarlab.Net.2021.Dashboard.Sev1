@@ -17,11 +17,13 @@ namespace Sev1.Accounts.Api
                 c.CustomSchemaIds(type => type.FullName.Replace("+", "_"));
 
                 //The generated Swagger JSON file will have these properties.
-                c.SwaggerDoc("v1", new OpenApiInfo 
-                { 
-                    Title = "PublicApi", 
-                    Version = "v1" 
-                });
+                c.SwaggerDoc(
+                    "v1",
+                    new OpenApiInfo 
+                    { 
+                        Title = "PublicApi", 
+                        Version = "v1" 
+                    });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n 

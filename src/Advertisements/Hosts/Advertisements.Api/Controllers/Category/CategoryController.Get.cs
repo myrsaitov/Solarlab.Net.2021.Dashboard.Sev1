@@ -8,8 +8,13 @@ namespace Sev1.Advertisements.Api.Controllers.Category
 {
     public partial class CategoryController
     {
+        /// <summary>
+        /// Возвращает категории с пагинацией
+        /// </summary>
+        /// <param name="request">Запрос на пагинацию</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         [HttpGet]
-        //[AllowAnonymous]
         public async Task<IActionResult> GetPaged(
             [FromQuery] GetPagedRequest request, 
             CancellationToken cancellationToken)
@@ -23,6 +28,12 @@ namespace Sev1.Advertisements.Api.Controllers.Category
             return Ok(result);
         }
 
+        /// <summary>
+        /// Возвращает категорию по Id
+        /// </summary>
+        /// <param name="id">Id категории</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         //[AllowAnonymous]
         public async Task<IActionResult> GetById(
