@@ -6,7 +6,6 @@ using Xunit;
 using AutoFixture.Xunit2;
 using System.Linq.Expressions;
 using System;
-using Sev1.Advertisements.Application.Exceptions;
 using Sev1.Advertisements.Domain.Exceptions;
 using Sev1.Advertisements.Application.Exceptions.Category;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
@@ -15,13 +14,25 @@ namespace Sev1.Advertisements.Tests.Advertisement
 {
     public partial class AdvertisementServiceV1Test
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <param name="userId"></param>
+        /// <param name="advertisementId"></param>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Update_Returns_Response_Success(
+            string accessToken,
             AdvertisementUpdateDto request,
             CancellationToken cancellationToken,
             int userId,
-            int contentId,
+            int advertisementId,
             int categoryId)
         {
             // Arrange
@@ -30,9 +41,9 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 Id = categoryId
             };
 
-            var content = new Domain.Advertisement()
+            var advertisement = new Domain.Advertisement()
             {
-                Id = contentId,
+                Id = advertisementId,
 
                 CategoryId = categoryId
             };
@@ -43,8 +54,10 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Setup(_ => _.FindByIdWithUserAndCategoryAndTags(
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
-                .ReturnsAsync(content)
-                .Callback((int _advertisementId, CancellationToken ct) => content.Id = _advertisementId)
+                .ReturnsAsync(advertisement)
+                .Callback((
+                    int _advertisementId,
+                    CancellationToken ct) => advertisement.Id = _advertisementId)
                 .Verifiable();
 
 
@@ -53,7 +66,9 @@ namespace Sev1.Advertisements.Tests.Advertisement
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(category)
-                .Callback((int _categoryId, CancellationToken ct) => category.Id = _categoryId)
+                .Callback((
+                    int _categoryId,
+                    CancellationToken ct) => category.Id = _categoryId)
                 .Verifiable();
 
 
@@ -85,10 +100,13 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Setup(_ => _.Save(
                     It.IsAny<Domain.Advertisement>(),
                     It.IsAny<CancellationToken>()))
-                .Callback((Domain.Advertisement content, CancellationToken ct) => content.Id = contentId);
+                .Callback((
+                    Domain.Advertisement advertisement,
+                    CancellationToken ct) => advertisement.Id = advertisementId);
 
             // Act
             var response = await _advertisementServiceV1.Update(
+                accessToken,
                 request, 
                 cancellationToken);
 
@@ -99,18 +117,29 @@ namespace Sev1.Advertisements.Tests.Advertisement
             Assert.NotNull(response);
             Assert.NotEqual(default, response);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <param name="userId"></param>
+        /// <param name="advertisementId"></param>
+        /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_Category_is_Null(
+            string accessToken,
             AdvertisementUpdateDto request,
             CancellationToken cancellationToken,
             int userId,
-            int contentId)
+            int advertisementId)
         {
             // Arrange
-            var content = new Domain.Advertisement()
+            var advertisement = new Domain.Advertisement()
             {
-                Id = contentId,
+                Id = advertisementId,
 
             };
 
@@ -118,66 +147,102 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Setup(_ => _.FindByIdWithUserAndCategoryAndTags(
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
-                .ReturnsAsync(content)
-                .Callback((int _advertisementId, CancellationToken ct) => content.Id = _advertisementId);
+                .ReturnsAsync(advertisement)
+                .Callback((
+                    int _advertisementId,
+                    CancellationToken ct) => advertisement.Id = _advertisementId);
 
 
             // Act
             await Assert.ThrowsAsync<CategoryNotFoundException>(
                 async () => await _advertisementServiceV1.Update(
+                    accessToken,
                     request,
                     cancellationToken));
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <param name="userId"></param>
+        /// <param name="advertisementId"></param>
+        /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_No_Rights(
+            string accessToken,
             AdvertisementUpdateDto request,
             CancellationToken cancellationToken,
             int userId,
-            int contentId)
+            int advertisementId)
         {
             // Arrange
-            var content = new Domain.Advertisement()
+            var advertisement = new Domain.Advertisement()
             {
-                Id = contentId,
-
+                Id = advertisementId,
             };
 
             _advertisementRepositoryMock
                 .Setup(_ => _.FindByIdWithUserAndCategoryAndTags(
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
-                .ReturnsAsync(content)
-                .Callback((int _advertisementId, CancellationToken ct) => content.Id = _advertisementId);
+                .ReturnsAsync(advertisement)
+                .Callback((
+                    int _advertisementId,
+                    CancellationToken ct) => advertisement.Id = _advertisementId);
 
 
             // Act
             await Assert.ThrowsAsync<NoRightsException>(
                 async () => await _advertisementServiceV1.Update(
+                    accessToken,
                     request,
                     cancellationToken));
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_Advertisement_Is_Null(
+            string accessToken,
             AdvertisementUpdateDto request,
             CancellationToken cancellationToken)
         {
             // Act
             await Assert.ThrowsAsync<AdvertisementNotFoundException>(
                 async () => await _advertisementServiceV1.Update(
+                    accessToken,
                     request,
                     cancellationToken));
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [Theory]
         [InlineAutoData(null)]
         public async Task Update_Throws_Exception_When_Request_Is_Null(
+            string accessToken,
             AdvertisementUpdateDto request,
             CancellationToken cancellationToken)
         {
             // Act
             await Assert.ThrowsAsync<ArgumentNullException>(
                 async () => await _advertisementServiceV1.Update(
+                    accessToken,
                     request, 
                     cancellationToken));
         }

@@ -13,6 +13,12 @@ namespace Sev1.Advertisements.Tests.Tag
 {
     public partial class TagServiceV1Test
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task GetPaged_Returns_Response_Success(
@@ -56,6 +62,13 @@ namespace Sev1.Advertisements.Tests.Tag
             Assert.Equal(tagCount, response.Items.Count());
             Assert.IsType<GetPagedResponse<TagPagedDto>>(response);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task GetPaged_Returns_Response_Success_Total_eq_0(
@@ -78,10 +91,21 @@ namespace Sev1.Advertisements.Tests.Tag
             // Assert
             _tagRepositoryMock.Verify();
             Assert.NotNull(response);
-            Assert.Equal(tagCount, response.Total);
-            Assert.Equal(tagCount, response.Items.Count());
+            Assert.Equal(
+                tagCount,
+                response.Total);
+            Assert.Equal(
+                tagCount,
+                response.Items.Count());
             Assert.IsType<GetPagedResponse<TagPagedDto>>(response);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [Theory]
         [InlineAutoData(null)]
         public async Task GetPaged_Throws_Exception_When_Request_Is_Null(
@@ -96,4 +120,3 @@ namespace Sev1.Advertisements.Tests.Tag
         }
     }
 }
-

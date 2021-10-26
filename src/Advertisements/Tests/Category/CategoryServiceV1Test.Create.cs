@@ -11,12 +11,22 @@ namespace Sev1.Advertisements.Tests.Category
 {
     public partial class CategoryServiceV1Test
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <param name="userId"></param>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Create_Returns_Response_Success(
-            CategoryCreateDto request, 
-            CancellationToken cancellationToken, 
-            int userId, 
+            string accessToken,
+            CategoryCreateDto request,
+            CancellationToken cancellationToken,
+            int userId,
             int categoryId)
         {
             // Arrange
@@ -27,18 +37,23 @@ namespace Sev1.Advertisements.Tests.Category
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(category)
-                .Callback((int _categoryId, CancellationToken ct) => category.Id = _categoryId)
+                .Callback((
+                    int _categoryId, 
+                    CancellationToken ct) => category.Id = _categoryId)
                 .Verifiable();
 
             _categoryRepositoryMock
                 .Setup(_ => _.Save(
                     It.IsAny<Domain.Category>(),
                     It.IsAny<CancellationToken>()))
-                .Callback((Domain.Category category, CancellationToken ct) => category.Id = categoryId);
+                .Callback((
+                    Domain.Category category, 
+                    CancellationToken ct) => category.Id = categoryId);
 
             // Act
             var response = await _categoryServiceV1.Create(
-                request, 
+                accessToken,
+                request,
                 cancellationToken);
 
             // Assert
@@ -46,9 +61,18 @@ namespace Sev1.Advertisements.Tests.Category
             Assert.NotNull(response);
             Assert.NotEqual(default, response);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Create_Throws_Exception_When_No_Rights(
+            string accessToken,
             CategoryCreateDto request,
             CancellationToken cancellationToken)
         {
@@ -58,19 +82,30 @@ namespace Sev1.Advertisements.Tests.Category
             // Act
             await Assert.ThrowsAsync<NoRightsException>(
                 async () => await _categoryServiceV1.Create(
+                    accessToken,
                     request,
                     cancellationToken));
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [Theory]
         [InlineAutoData(null)]
         public async Task Create_Throws_Exception_When_Request_Is_Null(
+            string accessToken,
             CategoryCreateDto request, 
             CancellationToken cancellationToken)
         {
             // Act
             await Assert.ThrowsAsync<ArgumentNullException>(
                 async () => await _categoryServiceV1.Create(
-                    request, 
+                    accessToken,
+                    request,
                     cancellationToken));
         }
     }

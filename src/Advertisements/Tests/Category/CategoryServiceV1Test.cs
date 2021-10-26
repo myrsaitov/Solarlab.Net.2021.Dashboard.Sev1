@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using Sev1.Advertisements.MapsterMapper.MapProfiles;
 using Sev1.Advertisements.Application.Repositories.Category;
 using Sev1.Advertisements.Application.Repositories.Tag;
+using Sev1.Advertisements.Application.Repositories.User;
 
 namespace Sev1.Advertisements.Tests.Category
 {
@@ -13,6 +14,7 @@ namespace Sev1.Advertisements.Tests.Category
     {
         private Mock<ICategoryRepository> _categoryRepositoryMock;
         private Mock<ITagRepository> _tagRepositoryMock;
+        private Mock<IUserRepository> _userRepositoryMock;
         private IMapper _mapper;
         
         private CategoryServiceV1 _categoryServiceV1;
@@ -20,6 +22,7 @@ namespace Sev1.Advertisements.Tests.Category
         {
             _categoryRepositoryMock = new Mock<ICategoryRepository>();
             _tagRepositoryMock = new Mock<ITagRepository>();
+            _userRepositoryMock = new Mock<IUserRepository>();
 
             TypeAdapterConfig.GlobalSettings.Compiler = exp => exp.CompileWithDebugInfo();
             _mapper = new Mapper();
@@ -28,6 +31,7 @@ namespace Sev1.Advertisements.Tests.Category
 
             _categoryServiceV1 = new CategoryServiceV1(
                 _categoryRepositoryMock.Object,
+                _userRepositoryMock.Object,
                 _mapper);
         }
     }

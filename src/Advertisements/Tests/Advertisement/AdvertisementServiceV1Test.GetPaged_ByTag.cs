@@ -14,30 +14,42 @@ namespace Sev1.Advertisements.Tests.Advertisement
 {
     public partial class AdvertisementServiceV1Test
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <param name="userId"></param>
+        /// <param name="advertisementTitle"></param>
+        /// <param name="advertisementBody"></param>
+        /// <param name="tagBodies"></param>
+        /// <param name="categoryId"></param>
+        /// <param name="tagSearch"></param>
+        /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task GetPaged_ByTag_Returns_Response_Success(
             GetPagedAdvertisementRequest request,
             CancellationToken cancellationToken,
             int userId,
-            string contentTitle,
-            string contentBody,
+            string advertisementTitle,
+            string advertisementBody,
             string[] tagBodies,
             int categoryId,
             string tagSearch)
         {
             // Arrange
-            int contentCount = 3;
+            int advertisementCount = 3;
 
             var responce = new List<Domain.Advertisement>();
 
-            for (int contentId = 1; contentId <= contentCount; contentId++)
+            for (int advertisementId = 1; advertisementId <= advertisementCount; advertisementId++)
             {
-                var content = new Domain.Advertisement()
+                var advertisement = new Domain.Advertisement()
                 {
-                    Id = contentId,
-                    Title = contentTitle,
-                    Body = contentBody,
+                    Id = advertisementId,
+                    Title = advertisementTitle,
+                    Body = advertisementBody,
                     //OwnerId = userId.ToString(),
                     Category = new Domain.Category()
                     {
@@ -54,23 +66,23 @@ namespace Sev1.Advertisements.Tests.Advertisement
                         Id = tagId++,
                         Body = body
                     };
-                    content.Tags.Add(tag);
+                    advertisement.Tags.Add(tag);
                 }
 
-                content.Tags.Add(new Domain.Tag()
+                advertisement.Tags.Add(new Domain.Tag()
                 {
                     Id = tagId,
                     Body = tagSearch
                 });
 
-                responce.Add(content);
+                responce.Add(advertisement);
             }
 
             _advertisementRepositoryMock
                 .Setup(_ => _.Count(
                     It.IsAny<Expression<Func<Domain.Advertisement, bool>>>(),
                     It.IsAny<CancellationToken>()))
-                .ReturnsAsync(contentCount)
+                .ReturnsAsync(advertisementCount)
                 .Verifiable();
 
             _advertisementRepositoryMock
@@ -91,10 +103,18 @@ namespace Sev1.Advertisements.Tests.Advertisement
             // Assert
             _advertisementRepositoryMock.Verify();
             Assert.NotNull(response);
-            Assert.Equal(contentCount, response.Total);
-            Assert.Equal(contentCount, response.Items.Count());
+            Assert.Equal(advertisementCount, response.Total);
+            Assert.Equal(advertisementCount, response.Items.Count());
             Assert.IsType<GetPagedResponse<AdvertisementPagedDto>>(response);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task GetPaged_ByTag_Returns_Response_Success_Total_eq_0(
@@ -103,7 +123,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             Expression<Func<Domain.Advertisement, bool>> predicate)
         {
             // Arrange
-            int contentCount = 0;
+            int advertisementCount = 0;
 
             var responce = new List<Domain.Advertisement>();
 
@@ -111,7 +131,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Setup(_ => _.Count(
                     It.IsAny<Expression<Func<Domain.Advertisement, bool>>>(),
                     It.IsAny<CancellationToken>()))
-                .ReturnsAsync(contentCount)
+                .ReturnsAsync(advertisementCount)
                 .Verifiable();
 
             // Act
@@ -123,10 +143,18 @@ namespace Sev1.Advertisements.Tests.Advertisement
             // Assert
             _advertisementRepositoryMock.Verify();
             Assert.NotNull(response);
-            Assert.Equal(contentCount, response.Total);
-            Assert.Equal(contentCount, response.Items.Count());
+            Assert.Equal(advertisementCount, response.Total);
+            Assert.Equal(advertisementCount, response.Items.Count());
             Assert.IsType<GetPagedResponse<AdvertisementPagedDto>>(response);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         [Theory]
         [InlineAutoData(null)]
         public async Task GetPaged_ByTag_Throws_Exception_When_Request_Is_Null(

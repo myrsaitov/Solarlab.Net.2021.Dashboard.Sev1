@@ -13,6 +13,12 @@ namespace Sev1.Advertisements.Tests.Category
 {
     public partial class CategoryServiceV1Test
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task GetPaged_Returns_Response_Success(
@@ -59,6 +65,13 @@ namespace Sev1.Advertisements.Tests.Category
             Assert.Equal(categoryCount, response.Items.Count());
             Assert.IsType<GetPagedResponse<CategoryDto>>(response);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task GetPaged_Returns_Response_Success_Total_eq_0(
@@ -87,6 +100,13 @@ namespace Sev1.Advertisements.Tests.Category
             Assert.Equal(categoryCount, response.Items.Count());
             Assert.IsType<GetPagedResponse<CategoryDto>>(response);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [Theory]
         [InlineAutoData(null)]
         public async Task GetPaged_Throws_Exception_When_Request_Is_Null(
@@ -101,4 +121,3 @@ namespace Sev1.Advertisements.Tests.Category
         }
     }
 }
-

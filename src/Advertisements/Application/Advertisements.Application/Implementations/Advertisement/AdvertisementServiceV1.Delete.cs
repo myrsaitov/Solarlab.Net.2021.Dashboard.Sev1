@@ -27,7 +27,11 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             var currentUserId = await _userRepository.GetCurrentUserId(
                 accessToken, 
                 cancellationToken);
-
+            if(currentUserId == null)
+            {
+                throw new NoRightsException("Ошибка авторизации!");
+            }
+            
             // Fluent Validation
             var validator = new AdvertisementIdValidator();
             var result = await validator.ValidateAsync(id);

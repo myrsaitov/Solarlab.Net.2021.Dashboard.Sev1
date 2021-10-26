@@ -25,7 +25,13 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             CancellationToken cancellationToken)
         {
             // Получаем Id текущего пользователя
-            var currentUserId = await _userRepository.GetCurrentUserId(accessToken, cancellationToken);
+            var currentUserId = await _userRepository.GetCurrentUserId(
+                accessToken, 
+                cancellationToken);
+            if(currentUserId == null)
+            {
+                throw new NoRightsException("Ошибка авторизации!");
+            }
 
             // Fluent Validation
             var validator = new CategoryIdValidator();

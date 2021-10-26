@@ -20,14 +20,6 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
             [FromBody] AdvertisementCreateDto model, 
             CancellationToken cancellationToken)
         {
-            // Получаем JWT-токен из headers
-            //var accessToken = HttpContext.Request.Headers["Authorization"];
-            // Получаем userId текущего пользователя по токену
-            //var currentUserId = await _userService.GetCurrentUserId(accessToken, cancellationToken);
-            // Если пользователь существует, то вписываем его Id в модель и
-            //model.OwnerId = currentUserId;
-
-
             await _advertisementService.Create(
                 HttpContext.Request.Headers["Authorization"],
                 model, 

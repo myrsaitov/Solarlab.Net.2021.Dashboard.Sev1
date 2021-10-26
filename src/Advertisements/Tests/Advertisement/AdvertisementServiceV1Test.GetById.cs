@@ -12,22 +12,33 @@ namespace Sev1.Advertisements.Tests.Advertisement
 {
     public partial class AdvertisementServiceV1Test
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <param name="userId"></param>
+        /// <param name="advertisementTitle"></param>
+        /// <param name="advertisementBody"></param>
+        /// <param name="tagBodies"></param>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task GetById_Returns_Response_Success(
             int id, 
             CancellationToken cancellationToken, 
             int userId,
-            string contentTitle,
-            string contentBody,
+            string advertisementTitle,
+            string advertisementBody,
             string[] tagBodies,
             int categoryId)
         {
             // Arrange
-            var content = new Domain.Advertisement()
+            var advertisement = new Domain.Advertisement()
             {
-                Title = contentTitle,
-                Body = contentBody,
+                Title = advertisementTitle,
+                Body = advertisementBody,
                 //OwnerId = userId.ToString(),
                 Category = new Domain.Category()
                 {
@@ -44,15 +55,17 @@ namespace Sev1.Advertisements.Tests.Advertisement
                     Id = tagId++,
                     Body = body
                 };
-                content.Tags.Add(tag);
+                advertisement.Tags.Add(tag);
             }
 
             _advertisementRepositoryMock
                 .Setup(_ => _.FindByIdWithUserAndCategoryAndTags(
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
-                .ReturnsAsync(content)
-                .Callback((int _advertisementId, CancellationToken ct) => content.Id = _advertisementId)
+                .ReturnsAsync(advertisement)
+                .Callback((
+                    int _advertisementId, 
+                    CancellationToken ct) => advertisement.Id = _advertisementId)
                 .Verifiable();
 
             // Act
@@ -65,6 +78,13 @@ namespace Sev1.Advertisements.Tests.Advertisement
             Assert.NotNull(response);
             Assert.NotEqual(default, response.Id);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task GetById_Throws_Exception_When_Advertisement_Is_Null(
@@ -77,6 +97,13 @@ namespace Sev1.Advertisements.Tests.Advertisement
                     id,
                     cancellationToken));
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [Theory]
         [InlineAutoData(null)]
         public async Task GetById_Throws_Exception_When_Request_Is_Null(

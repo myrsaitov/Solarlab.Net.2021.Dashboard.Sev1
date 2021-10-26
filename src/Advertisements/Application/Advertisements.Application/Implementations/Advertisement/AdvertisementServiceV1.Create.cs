@@ -9,6 +9,7 @@ using Sev1.Advertisements.Application.Contracts.Tag;
 using Sev1.Advertisements.Application.Validators.Advertisement;
 using System.Linq;
 using Sev1.Advertisements.Application.Exceptions.Category;
+using Sev1.Advertisements.Domain.Exceptions;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
@@ -27,7 +28,13 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             CancellationToken cancellationToken)
         {
             // Получаем Id текущего пользователя
-            var currentUserId = await _userRepository.GetCurrentUserId(accessToken, cancellationToken);
+            var currentUserId = await _userRepository.GetCurrentUserId(
+                accessToken, 
+                cancellationToken);
+            if(currentUserId == null)
+            {
+                throw new NoRightsException("Ошибка авторизации!");
+            }
 
             // Если авторизация успешная, то дополняем модель
             model.OwnerId = currentUserId;

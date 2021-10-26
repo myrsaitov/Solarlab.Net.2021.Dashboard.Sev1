@@ -22,6 +22,11 @@ namespace Sev1.Accounts.Application.Implementations.User
             }
 
             var currentUserId = await _identityService.GetCurrentUserId(cancellationToken);
+            if(currentUserId == null)
+            {
+                throw new NoRightsException("Пользователь не найден!");
+            }
+            
             if (domainUser.Id != currentUserId)
             {
                 throw new NoRightsException("Нет прав");
