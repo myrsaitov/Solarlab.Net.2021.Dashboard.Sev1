@@ -3,7 +3,9 @@ version: "3"
 services:
   accounts:
     image: skarfe/accounts
-    build: src/Accounts/
+    build:
+        context: ./
+        dockerfile: Dockerfile_Accounts
     ports:
       - 49171:80
     extra_hosts:
@@ -11,7 +13,9 @@ services:
 
   advertisements:
     image: skarfe/advertisements
-    build: src/Advertisements/
+    build:
+        context: ./
+        dockerfile: Dockerfile_Advertisements
     ports:
       - 49172:80
     extra_hosts:
@@ -19,7 +23,9 @@ services:
 
   comments:
     image: skarfe/comments
-    build: src/Comments/
+    build:
+        context: ./
+        dockerfile: Dockerfile_Comments
     ports:
       - 49173:80
     extra_hosts:
@@ -27,7 +33,9 @@ services:
 
   notificationsemail:
     image: skarfe/notificationsemail
-    build: src/NotificationsEmail/
+    build:
+        context: ./
+        dockerfile: Dockerfile_NotificationsEmail
     ports:
       - 49174:80
     extra_hosts:
@@ -35,6 +43,8 @@ services:
 
   ui:
     image: skarfe/ui
-    build: UI
+    build:
+        context: ./
+        dockerfile: Dockerfile_UI
     ports:
       - 80:80

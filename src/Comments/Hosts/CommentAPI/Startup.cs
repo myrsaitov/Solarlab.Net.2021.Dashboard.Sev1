@@ -34,7 +34,11 @@ namespace Comments.API
                 c.IncludeXmlComments(filePath);
             });
 
+#if DEBUG
             string connection = Configuration.GetConnectionString("RemoteConnection");
+#else
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+#endif
 
             services.AddDbContext<CommentDBContext>(options =>
                 options.UseSqlServer(connection, b => b.MigrationsAssembly("Comments.Migrations")));

@@ -1,8 +1,0 @@
-mkdir UI
-mkdir src
-mkdir src/Accounts/
-mkdir src/Advertisements
-mkdir src/Comments
-mkdir src/NotificationsEmail
-
-sudo docker-compose up -d
