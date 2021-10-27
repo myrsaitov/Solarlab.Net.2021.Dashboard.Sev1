@@ -57,7 +57,7 @@ namespace Sev1.Advertisements.Tests.Category
                 cancellationToken);
 
             // Assert
-            _categoryRepositoryMock.Verify();
+            _categoryRepositoryMock.Verify(); // Вызывался ли данный мок?
         }
 
         /// <summary>

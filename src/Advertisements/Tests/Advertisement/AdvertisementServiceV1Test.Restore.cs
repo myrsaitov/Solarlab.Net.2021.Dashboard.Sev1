@@ -36,7 +36,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             };
 
             _advertisementRepositoryMock
-                .Setup(_ => _.FindByIdWithUserInclude(
+                .Setup(_ => _.FindById(
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(advertisement)
@@ -61,7 +61,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 cancellationToken);
 
             // Assert
-            _advertisementRepositoryMock.Verify();
+            _advertisementRepositoryMock.Verify(); // Вызывался ли данный мок?
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             };
 
             _advertisementRepositoryMock
-                .Setup(_ => _.FindByIdWithUserInclude(
+                .Setup(_ => _.FindById(
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(advertisement)

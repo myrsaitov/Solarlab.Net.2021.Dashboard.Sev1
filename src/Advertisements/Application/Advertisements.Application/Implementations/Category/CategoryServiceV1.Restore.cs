@@ -28,7 +28,11 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             var autorizedStatus = await _userRepository.GetAutorizedStatus(
                 accessToken,
                 cancellationToken);
-
+            if (autorizedStatus is null)
+            {
+                throw new NoRightsException("Ошибка авторизации!");
+            }
+            
             // Fluent Validation
             var validator = new CategoryIdValidator();
             var result = await validator.ValidateAsync(id);

@@ -29,7 +29,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 throw new AdvertisementIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
-            var advertisement = await _advertisementRepository.FindByIdWithUserAndCategoryAndTags(
+            var advertisement = await _advertisementRepository.FindByIdWithCategoriesAndTags(
                 id,
                 cancellationToken);
 

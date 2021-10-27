@@ -14,23 +14,12 @@ namespace Sev1.Advertisements.Application.Repositories.Advertisement
     {
         /// <summary>
         /// Возвращает объявление
-        /// с прикрепленным автором этого объявления
-        /// </summary>
-        /// <param name="id">Id объявления</param>
-        /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <returns></returns>
-        Task<Domain.Advertisement> FindByIdWithUserInclude(
-            int id, 
-            CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Возвращает объявление
         /// с прикрепленным автором этого объявления и связанными Tags
         /// </summary>
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<Domain.Advertisement> FindByIdWithUserAndTagsInclude(
+        Task<Domain.Advertisement> FindByIdWithTagsInclude(
             int id,
             CancellationToken cancellationToken);
 
@@ -42,7 +31,7 @@ namespace Sev1.Advertisements.Application.Repositories.Advertisement
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<Domain.Advertisement> FindByIdWithUserAndCategoryAndTags(
+        Task<Domain.Advertisement> FindByIdWithCategoriesAndTags(
             int id, 
             CancellationToken cancellationToken);
 
@@ -72,7 +61,7 @@ namespace Sev1.Advertisements.Application.Repositories.Advertisement
         /// <param name="limit">Количество объявлений на странице</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<IEnumerable<Domain.Advertisement>> GetPagedWithTagsAndOwnerIdAndCategoryInclude(
+        Task<IEnumerable<Domain.Advertisement>> GetPagedWithTagsAndCategoryInclude(
             int offset,
             int limit,
             CancellationToken cancellationToken);
@@ -85,7 +74,7 @@ namespace Sev1.Advertisements.Application.Repositories.Advertisement
         /// <param name="limit">Количество объявлений на странице</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<IEnumerable<Domain.Advertisement>> GetPagedWithTagsAndOwnerIdAndCategoryInclude(
+        Task<IEnumerable<Domain.Advertisement>> GetPagedWithTagsAndCategoryInclude(
             Expression<Func<Domain.Advertisement, bool>> predicate,
             int offset,
             int limit,

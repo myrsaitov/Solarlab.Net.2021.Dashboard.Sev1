@@ -17,22 +17,14 @@ namespace Sev1.Advertisements.DataAccess.Repositories
         {
         }
 
-        public async Task<Advertisement> FindByIdWithUserInclude(
-            int id, 
-            CancellationToken cancellationToken)
-        {
-            return await DbСontext
-                .Set<Advertisement>()
-                .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
-        }
-        public async Task<Advertisement> FindByIdWithUserAndTagsInclude(int id, CancellationToken cancellationToken)
+        public async Task<Advertisement> FindByIdWithTagsInclude(int id, CancellationToken cancellationToken)
         {
             return await DbСontext
                 .Set<Advertisement>()
                 .Include(a => a.Tags)
                 .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
         }
-        public async Task<Advertisement> FindByIdWithUserAndCategoryAndTags(int id, CancellationToken cancellationToken)
+        public async Task<Advertisement> FindByIdWithCategoriesAndTags(int id, CancellationToken cancellationToken)
         {
             return await DbСontext
                 .Set<Advertisement>()
@@ -66,7 +58,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .Where(predicate)
                 .CountAsync(cancellationToken);
         }
-        public async Task<IEnumerable<Advertisement>> GetPagedWithTagsAndOwnerIdAndCategoryInclude(
+        public async Task<IEnumerable<Advertisement>> GetPagedWithTagsAndCategoryInclude(
             int offset,
             int limit,
             CancellationToken cancellationToken)
@@ -84,7 +76,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .Take(limit)
                 .ToListAsync(cancellationToken);
         }
-        public async Task<IEnumerable<Advertisement>> GetPagedWithTagsAndOwnerIdAndCategoryInclude(
+        public async Task<IEnumerable<Advertisement>> GetPagedWithTagsAndCategoryInclude(
             Expression<Func<Advertisement, bool>> predicate,
             int offset,
             int limit,

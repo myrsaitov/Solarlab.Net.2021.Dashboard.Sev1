@@ -27,7 +27,11 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             var autorizedStatus = await _userRepository.GetAutorizedStatus(
                 accessToken,
                 cancellationToken);
-
+            if (autorizedStatus is null)
+            {
+                throw new NoRightsException("Ошибка авторизации!");
+            }
+            
             // Fluent Validation
             var validator = new AdvertisementIdValidator();
             var result = await validator.ValidateAsync(id);
@@ -37,7 +41,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             }
 
             // Достаем объявление из базы
-            var advertisement = await _advertisementRepository.FindByIdWithUserAndTagsInclude(
+            var advertisement = await _advertisementRepository.FindByIdWithTagsInclude(
                 id,
                 cancellationToken);
 

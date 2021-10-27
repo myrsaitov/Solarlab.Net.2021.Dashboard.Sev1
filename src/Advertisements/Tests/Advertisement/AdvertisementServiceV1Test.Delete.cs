@@ -6,6 +6,7 @@ using AutoFixture.Xunit2;
 using System;
 using Sev1.Advertisements.Domain.Exceptions;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Advertisements.Contracts;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
@@ -28,11 +29,16 @@ namespace Sev1.Advertisements.Tests.Advertisement
             // Arrange
 
             // Чтобы пройти проверку на авторизацию
+            var autorizedStatus = new GetAutorizedStatusResponse()
+            {
+                UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
+                Role = "user"
+            };
             _userRepositoryMock
-                .Setup(_ => _.GetCurrentUserId(
+                .Setup(_ => _.GetAutorizedStatus(
                 It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
                 It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
-                .ReturnsAsync("24cb4b25-c819-45ab-8755-d95120fbb868")
+                .ReturnsAsync(autorizedStatus)
                 .Verifiable();
 
             // "Достаем" объявление из базы
@@ -41,7 +47,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 OwnerId = "24cb4b25-c819-45ab-8755-d95120fbb868"
             };
             _advertisementRepositoryMock
-                .Setup(_ => _.FindByIdWithUserInclude(
+                .Setup(_ => _.FindByIdWithTagsInclude(
                     It.IsAny<int>(), 
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(advertisement)
@@ -56,7 +62,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                     It.IsAny<CancellationToken>()))
                 .Callback((
                     Domain.Advertisement advertisement,
-                    CancellationToken ct) => advertisement.Id = advertisementId);
+                    CancellationToken ct) => advertisement.Id = id);
 
             // Act
             await _advertisementServiceV1.Delete(
@@ -65,7 +71,8 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 cancellationToken);
 
             // Assert
-            _advertisementRepositoryMock.Verify();
+            _userRepositoryMock.Verify(); // Вызывался ли данный мок?
+            _advertisementRepositoryMock.Verify(); // Вызывался ли данный мок?
         }
 
         /// <summary>
@@ -93,7 +100,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             };
 
             _advertisementRepositoryMock
-                .Setup(_ => _.FindByIdWithUserInclude(
+                .Setup(_ => _.FindById(
                     It.IsAny<int>(), 
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(advertisement)

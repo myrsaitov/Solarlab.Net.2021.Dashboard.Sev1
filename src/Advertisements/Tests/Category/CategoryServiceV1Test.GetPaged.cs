@@ -59,7 +59,7 @@ namespace Sev1.Advertisements.Tests.Category
                 cancellationToken);
 
             // Assert
-            _categoryRepositoryMock.Verify();
+            _categoryRepositoryMock.Verify(); // Вызывался ли данный мок?
             Assert.NotNull(response);
             Assert.Equal(categoryCount, response.Total);
             Assert.Equal(categoryCount, response.Items.Count());
@@ -94,7 +94,7 @@ namespace Sev1.Advertisements.Tests.Category
                 cancellationToken);
 
             // Assert
-            _categoryRepositoryMock.Verify();
+            _categoryRepositoryMock.Verify(); // Вызывался ли данный мок?
             Assert.NotNull(response);
             Assert.Equal(categoryCount, response.Total);
             Assert.Equal(categoryCount, response.Items.Count());

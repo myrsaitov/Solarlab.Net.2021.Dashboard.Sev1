@@ -56,7 +56,7 @@ namespace Sev1.Advertisements.Tests.Tag
                 cancellationToken);
 
             // Assert
-            _tagRepositoryMock.Verify();
+            _tagRepositoryMock.Verify(); // Вызывался ли данный мок?
             Assert.NotNull(response);
             Assert.Equal(tagCount, response.Total);
             Assert.Equal(tagCount, response.Items.Count());
@@ -89,7 +89,7 @@ namespace Sev1.Advertisements.Tests.Tag
                 cancellationToken);
 
             // Assert
-            _tagRepositoryMock.Verify();
+            _tagRepositoryMock.Verify(); // Вызывался ли данный мок?
             Assert.NotNull(response);
             Assert.Equal(
                 tagCount,

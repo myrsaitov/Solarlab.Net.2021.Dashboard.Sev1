@@ -59,7 +59,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             }
 
             _advertisementRepositoryMock
-                .Setup(_ => _.FindByIdWithUserAndCategoryAndTags(
+                .Setup(_ => _.FindByIdWithCategoriesAndTags(
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(advertisement)
@@ -74,7 +74,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 cancellationToken);
 
             // Assert
-            _advertisementRepositoryMock.Verify();
+            _advertisementRepositoryMock.Verify(); // Вызывался ли данный мок?
             Assert.NotNull(response);
             Assert.NotEqual(default, response.Id);
         }

@@ -51,7 +51,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             int tagId = 1;
 
             _advertisementRepositoryMock
-                .Setup(_ => _.FindByIdWithUserAndCategoryAndTags(
+                .Setup(_ => _.FindByIdWithCategoriesAndTags(
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(advertisement)
@@ -111,9 +111,9 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 cancellationToken);
 
             // Assert
-            _advertisementRepositoryMock.Verify();
-            _categoryRepositoryMock.Verify();
-            _tagRepositoryMock.Verify();
+            _advertisementRepositoryMock.Verify(); // Вызывался ли данный мок?
+            _categoryRepositoryMock.Verify(); // Вызывался ли данный мок?
+            _tagRepositoryMock.Verify(); // Вызывался ли данный мок?
             Assert.NotNull(response);
             Assert.NotEqual(default, response);
         }
@@ -144,7 +144,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             };
 
             _advertisementRepositoryMock
-                .Setup(_ => _.FindByIdWithUserAndCategoryAndTags(
+                .Setup(_ => _.FindByIdWithCategoriesAndTags(
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(advertisement)
@@ -186,7 +186,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             };
 
             _advertisementRepositoryMock
-                .Setup(_ => _.FindByIdWithUserAndCategoryAndTags(
+                .Setup(_ => _.FindByIdWithCategoriesAndTags(
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(advertisement)

@@ -74,7 +74,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Verifiable();
 
             _advertisementRepositoryMock
-                .Setup(_ => _.GetPagedWithTagsAndOwnerIdAndCategoryInclude(
+                .Setup(_ => _.GetPagedWithTagsAndCategoryInclude(
                     It.IsAny<int>(),
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
@@ -87,7 +87,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 cancellationToken);
 
             // Assert
-            _advertisementRepositoryMock.Verify();
+            _advertisementRepositoryMock.Verify(); // Вызывался ли данный мок?
             Assert.NotNull(response);
             Assert.Equal(advertisementCount, response.Total);
             Assert.Equal(advertisementCount, response.Items.Count());
@@ -117,7 +117,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Verifiable();
 
             _advertisementRepositoryMock
-                .Setup(_ => _.GetPagedWithTagsAndOwnerIdAndCategoryInclude(
+                .Setup(_ => _.GetPagedWithTagsAndCategoryInclude(
                     It.IsAny<int>(),
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
@@ -129,7 +129,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 cancellationToken);
 
             // Assert
-            _advertisementRepositoryMock.Verify();
+            _advertisementRepositoryMock.Verify(); // Вызывался ли данный мок?
             Assert.NotNull(response);
             Assert.Equal(advertisementCount, response.Total);
             Assert.Equal(advertisementCount, response.Items.Count());
