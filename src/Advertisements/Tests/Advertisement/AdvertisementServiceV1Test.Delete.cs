@@ -308,27 +308,5 @@ namespace Sev1.Advertisements.Tests.Advertisement
                     id, 
                     cancellationToken));
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
-        /// <param name="Id">Id объявления</param>
-        /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <returns></returns>
-        [Theory]
-        [InlineAutoData(null)]
-        public async Task Delete_Throws_Exception_When_Request_Is_Null(
-            string accessToken,
-            int Id, 
-            CancellationToken cancellationToken)
-        {
-            // Act
-            await Assert.ThrowsAsync<ArgumentNullException>(
-                async () => await _advertisementServiceV1.Delete(
-                    accessToken,
-                    Id, 
-                    cancellationToken));
-        }
     }
 }
