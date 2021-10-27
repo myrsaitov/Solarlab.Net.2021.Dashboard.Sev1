@@ -86,7 +86,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Verifiable();
 
             _advertisementRepositoryMock
-                .Setup(_ => _.GetPagedWithTagsAndOwnerAndCategoryInclude(
+                .Setup(_ => _.GetPagedWithTagsAndOwnerIdAndCategoryInclude(
                     It.IsAny<Expression<Func<Domain.Advertisement, bool>>>(),
                     It.IsAny<int>(),
                     It.IsAny<int>(),

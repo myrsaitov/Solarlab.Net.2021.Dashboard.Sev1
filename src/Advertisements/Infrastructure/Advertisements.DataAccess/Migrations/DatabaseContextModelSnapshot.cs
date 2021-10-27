@@ -105,42 +105,42 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2021, 10, 24, 0, 1, 1, 210, DateTimeKind.Utc).AddTicks(4809),
+                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(1538),
                             IsDeleted = false,
                             Name = "Транспорт"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2021, 10, 24, 0, 1, 1, 210, DateTimeKind.Utc).AddTicks(6591),
+                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3025),
                             IsDeleted = false,
                             Name = "Недвижимость"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2021, 10, 24, 0, 1, 1, 210, DateTimeKind.Utc).AddTicks(6601),
+                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3035),
                             IsDeleted = false,
                             Name = "Мебель"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2021, 10, 24, 0, 1, 1, 210, DateTimeKind.Utc).AddTicks(6604),
+                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3038),
                             IsDeleted = false,
                             Name = "Одежда"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2021, 10, 24, 0, 1, 1, 210, DateTimeKind.Utc).AddTicks(6609),
+                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3040),
                             IsDeleted = false,
                             Name = "Бытовая техника"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2021, 10, 24, 0, 1, 1, 210, DateTimeKind.Utc).AddTicks(6611),
+                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3041),
                             IsDeleted = false,
                             Name = "Книги"
                         });

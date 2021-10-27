@@ -106,7 +106,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             if (predicate == default)
             {
                 // Вернуть объявления без фильтра
-                var entities = await _advertisementRepository.GetPagedWithTagsAndOwnerAndCategoryInclude(
+                var entities = await _advertisementRepository.GetPagedWithTagsAndOwnerIdAndCategoryInclude(
                     offset,
                     request.PageSize,
                     cancellationToken);
@@ -122,7 +122,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             else
             {
                 // Вернуть объявления по фильтру
-                var entities = await _advertisementRepository.GetPagedWithTagsAndOwnerAndCategoryInclude(
+                var entities = await _advertisementRepository.GetPagedWithTagsAndOwnerIdAndCategoryInclude(
                     predicate,
                     offset,
                     request.PageSize,

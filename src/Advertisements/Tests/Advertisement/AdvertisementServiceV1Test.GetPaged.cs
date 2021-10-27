@@ -74,7 +74,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Verifiable();
 
             _advertisementRepositoryMock
-                .Setup(_ => _.GetPagedWithTagsAndOwnerAndCategoryInclude(
+                .Setup(_ => _.GetPagedWithTagsAndOwnerIdAndCategoryInclude(
                     It.IsAny<int>(),
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))
@@ -117,7 +117,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Verifiable();
 
             _advertisementRepositoryMock
-                .Setup(_ => _.GetPagedWithTagsAndOwnerAndCategoryInclude(
+                .Setup(_ => _.GetPagedWithTagsAndOwnerIdAndCategoryInclude(
                     It.IsAny<int>(),
                     It.IsAny<int>(),
                     It.IsAny<CancellationToken>()))

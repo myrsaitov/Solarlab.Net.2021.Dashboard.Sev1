@@ -15,7 +15,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
     public partial class AdvertisementServiceV1Test
     {
         /// <summary>
-        /// Проверка создания объявления
+        /// Проверка удачного создания объявления
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="model">DTO-модель</param>
@@ -55,6 +55,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // Id тага, который "возвращается" из базы
             int tagId = 1;
+            // "Поиск" тага в базе
             _tagRepositoryMock
                 .Setup(_ => _.FindWhere(
                     It.IsAny<Expression<Func<Domain.Tag, bool>>>(), // проверяет, что параметр имеет указанный тип <>
@@ -66,11 +67,13 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 })
                 .Verifiable();
 
+            // "Сохранение" тага в базе
             _tagRepositoryMock
                 .Setup(_ => _.Save(
                     It.IsAny<Domain.Tag>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())); // проверяет, что параметр имеет указанный тип <>
 
+            // "Сохранение" объявления в базе
             _advertisementRepositoryMock
                 .Setup(_ => _.Save(
                     It.IsAny<Domain.Advertisement>(), // проверяет, что параметр имеет указанный тип <>

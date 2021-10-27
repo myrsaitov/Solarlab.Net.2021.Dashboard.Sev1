@@ -20,14 +20,10 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             AdvertisementUpdateDto model,
             CancellationToken cancellationToken)
         {
-            // Получаем Id текущего пользователя
-            var currentUserId = await _userRepository.GetCurrentUserId(
-                accessToken, 
+            // Проверяем, авторизирован ли пользователь, получаем его Id и Role
+            var autorizedStatus = await _userRepository.GetAutorizedStatus(
+                accessToken,
                 cancellationToken);
-            if(currentUserId == null)
-            {
-                throw new NoRightsException("Ошибка авторизации!");
-            }
 
             // Fluent Validation
             var validator = new AdvertisementUpdateDtoValidator();
@@ -47,7 +43,8 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             }
 
             // Обычный пользователь может обновлять только свои собственные объявления
-            if (advertisement.OwnerId != currentUserId)
+            // TODO Может ли модератор или админ редактировать чужие объявления?
+            if (advertisement.OwnerId != autorizedStatus.UserId)
             {
                 throw new NoRightsException("Не хватает прав редактировать объявление!");
             }

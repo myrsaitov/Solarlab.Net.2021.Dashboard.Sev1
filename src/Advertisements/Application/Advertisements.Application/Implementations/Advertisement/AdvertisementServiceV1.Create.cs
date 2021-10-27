@@ -9,7 +9,6 @@ using Sev1.Advertisements.Application.Contracts.Tag;
 using Sev1.Advertisements.Application.Validators.Advertisement;
 using System.Linq;
 using Sev1.Advertisements.Application.Exceptions.Category;
-using Sev1.Advertisements.Domain.Exceptions;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
@@ -27,14 +26,10 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             AdvertisementCreateDto model,
             CancellationToken cancellationToken)
         {
-            // Получаем Id текущего пользователя
-            var currentUserId = await _userRepository.GetCurrentUserId(
-                accessToken, 
+            // Проверяем, авторизирован ли пользователь, получаем его Id и Role
+            var autorizedStatus = await _userRepository.GetAutorizedStatus(
+                accessToken,
                 cancellationToken);
-            if(currentUserId == null)
-            {
-                throw new NoRightsException("Ошибка авторизации!");
-            }
 
             // Fluent Validation
             var validator = new AdvertisementCreateDtoValidator();
@@ -45,7 +40,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             }
 
             // Если авторизация успешная, то дополняем модель (после валидации)
-            model.OwnerId = currentUserId;
+            model.OwnerId = autorizedStatus.UserId;
 
             // Проверка категории на существование
             var category = await _categoryRepository.FindById(

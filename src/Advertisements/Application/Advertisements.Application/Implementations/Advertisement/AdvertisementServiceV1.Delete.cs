@@ -23,15 +23,11 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             int id,
             CancellationToken cancellationToken)
         {
-            // Получаем Id текущего пользователя
-            var currentUserId = await _userRepository.GetCurrentUserId(
-                accessToken, 
+            // Проверяем, авторизирован ли пользователь, получаем его Id и Role
+            var autorizedStatus = await _userRepository.GetAutorizedStatus(
+                accessToken,
                 cancellationToken);
-            if(currentUserId == null)
-            {
-                throw new NoRightsException("Ошибка авторизации!");
-            }
-            
+
             // Fluent Validation
             var validator = new AdvertisementIdValidator();
             var result = await validator.ValidateAsync(id);
@@ -55,14 +51,10 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             //  - если он администратор;
             //  - если он модератор;
             //  - если он создал это объявление.
-            var isAdmin = await _userRepository.IsAdmin(
-                accessToken, 
-                cancellationToken);
-            var isModerator = await _userRepository.IsModerator(
-                accessToken, 
-                cancellationToken);
-            var isOwner = (advertisement.OwnerId == currentUserId);
-            if(!(isAdmin||isModerator||isOwner))
+            var isAdmin = (autorizedStatus.Role == "admin");
+            var isModerator = (autorizedStatus.Role == "moderator");
+            var isOwnerId = (advertisement.OwnerId == autorizedStatus.UserId);
+            if(!(isAdmin||isModerator||isOwnerId))
             {
                 throw new NoRightsException("Не хватает прав удалить объявление!");
             }

@@ -28,14 +28,10 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             // что будет с объявлениями у удаленной категории?
             // может их тоже удалить?
 
-            // Получаем Id текущего пользователя
-            var currentUserId = await _userRepository.GetCurrentUserId(
-                accessToken, 
+            // Проверяем, авторизирован ли пользователь, получаем его Id и Role
+            var autorizedStatus = await _userRepository.GetAutorizedStatus(
+                accessToken,
                 cancellationToken);
-            if(currentUserId == null)
-            {
-                throw new NoRightsException("Ошибка авторизации!");
-            }
 
             // Fluent Validation
             var validator = new CategoryIdValidator();
@@ -57,12 +53,8 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             // Пользователь может удалить категорию:
             //  - если он администратор;
             //  - если он модератор;
-            var isAdmin = await _userRepository.IsAdmin(
-                accessToken,
-                cancellationToken);
-            var isModerator = await _userRepository.IsModerator(
-                accessToken,
-                cancellationToken);
+            var isAdmin = (autorizedStatus.Role == "admin");
+            var isModerator = (autorizedStatus.Role == "moderator");
             if (!(isAdmin || isModerator))
             {
                 throw new NoRightsException("Удалить категорию может только модератор или админ!");

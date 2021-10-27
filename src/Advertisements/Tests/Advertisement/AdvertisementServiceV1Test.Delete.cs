@@ -12,29 +12,34 @@ namespace Sev1.Advertisements.Tests.Advertisement
     public partial class AdvertisementServiceV1Test
     {
         /// <summary>
-        /// 
+        /// Проверка удачного удаления объявления
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <param name="userId"></param>
-        /// <param name="advertisementId"></param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Delete_Returns_Response_Success(
             string accessToken,
             int id, 
-            CancellationToken cancellationToken, 
-            int userId,
-            int advertisementId)
+            CancellationToken cancellationToken)
         {
             // Arrange
+
+            // Чтобы пройти проверку на авторизацию
+            _userRepositoryMock
+                .Setup(_ => _.GetCurrentUserId(
+                It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
+                It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync("24cb4b25-c819-45ab-8755-d95120fbb868")
+                .Verifiable();
+
+            // "Достаем" объявление из базы
             var advertisement = new Domain.Advertisement()
             {
-                //OwnerId = userId.ToString()
+                OwnerId = "24cb4b25-c819-45ab-8755-d95120fbb868"
             };
-
             _advertisementRepositoryMock
                 .Setup(_ => _.FindByIdWithUserInclude(
                     It.IsAny<int>(), 

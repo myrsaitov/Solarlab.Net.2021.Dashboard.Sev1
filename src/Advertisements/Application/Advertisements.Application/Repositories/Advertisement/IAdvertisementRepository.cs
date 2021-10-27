@@ -72,7 +72,7 @@ namespace Sev1.Advertisements.Application.Repositories.Advertisement
         /// <param name="limit">Количество объявлений на странице</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<IEnumerable<Domain.Advertisement>> GetPagedWithTagsAndOwnerAndCategoryInclude(
+        Task<IEnumerable<Domain.Advertisement>> GetPagedWithTagsAndOwnerIdAndCategoryInclude(
             int offset,
             int limit,
             CancellationToken cancellationToken);
@@ -85,7 +85,7 @@ namespace Sev1.Advertisements.Application.Repositories.Advertisement
         /// <param name="limit">Количество объявлений на странице</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<IEnumerable<Domain.Advertisement>> GetPagedWithTagsAndOwnerAndCategoryInclude(
+        Task<IEnumerable<Domain.Advertisement>> GetPagedWithTagsAndOwnerIdAndCategoryInclude(
             Expression<Func<Domain.Advertisement, bool>> predicate,
             int offset,
             int limit,
