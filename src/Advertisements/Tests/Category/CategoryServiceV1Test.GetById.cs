@@ -27,13 +27,13 @@ namespace Sev1.Advertisements.Tests.Category
 
             _categoryRepositoryMock
                 .Setup(_ => _.FindByIdWithParentAndChilds(
-                    It.IsAny<int>(),
-                    It.IsAny<CancellationToken>()))
-                .ReturnsAsync(category)
-                .Callback((
+                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(category) // в результате выполнения возвращает объект
+                .Callback(( // Используем передаваемые в мок аргументы для имитации логики
                     int _categoryId,
                     CancellationToken ct) => category.Id = _categoryId)
-                .Verifiable();
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Act
             var response = await _categoryServiceV1.GetById(

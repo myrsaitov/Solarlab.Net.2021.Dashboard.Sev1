@@ -41,8 +41,8 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Setup(_ => _.GetAutorizedStatus(
                 It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
                 It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
-                .ReturnsAsync(autorizedStatus)
-                .Verifiable();
+                .ReturnsAsync(autorizedStatus) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Чтобы пройти валидацию, правим tags
             model.TagBodies = new string[3] { "111", "222", "333" };
@@ -53,11 +53,11 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Setup(_ => _.FindById(
                     It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
-                .ReturnsAsync(category)
-                .Callback((
+                .ReturnsAsync(category) // в результате выполнения возвращает объект
+                .Callback(( // Используем передаваемые в мок аргументы для имитации логики
                     int _categoryId, 
                     CancellationToken ct) => category.Id = _categoryId)
-                .Verifiable();
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Id тага, который "возвращается" из базы
             int tagId = 1;
@@ -70,8 +70,8 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 {
                     Id = tagId,
                     Body = model.TagBodies[tagId++ - 1]
-                })
-                .Verifiable();
+                }) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // "Сохранение" тага в базе
             _tagRepositoryMock
@@ -84,7 +84,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Setup(_ => _.Save(
                     It.IsAny<Domain.Advertisement>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
-                .Callback((
+                .Callback(( // Используем передаваемые в мок аргументы для имитации логики
                     Domain.Advertisement advertisement, 
                     CancellationToken ct) => advertisement.Id = 1); // Id "созданного" объявления
 
@@ -151,8 +151,8 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Setup(_ => _.GetAutorizedStatus(
                 It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
                 It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
-                .ReturnsAsync(autorizedStatus)
-                .Verifiable();
+                .ReturnsAsync(autorizedStatus) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Чтобы пройти валидацию, правим tags
             model.TagBodies = new string[3] { "111", "222", "333" };
@@ -163,8 +163,8 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Setup(_ => _.FindById(
                     It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
-                .ReturnsAsync(category)
-                .Verifiable();
+                .ReturnsAsync(category) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Act
             await Assert.ThrowsAsync<CategoryNotFoundException>(
@@ -200,8 +200,8 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .Setup(_ => _.GetAutorizedStatus(
                 It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
                 It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
-                .ReturnsAsync(autorizedStatus)
-                .Verifiable();
+                .ReturnsAsync(autorizedStatus) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Act
             await Assert.ThrowsAsync<AdvertisementCreateDtoNotValidException>(

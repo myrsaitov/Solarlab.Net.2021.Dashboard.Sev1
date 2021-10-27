@@ -70,14 +70,18 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             advertisement.UpdatedAt = DateTime.UtcNow;
 
             // TODO Сделать нормальный подсчет количества Tags
-            foreach (var tag in advertisement.Tags)
+            // Убираем из количества объявлений по данному тагу единицу
+            if (advertisement.Tags is not null)
             {
-                if (tag.Count > 0)
+                foreach (var tag in advertisement.Tags)
                 {
-                    tag.Count -= 1;
-                    await _tagRepository.Save(
-                        tag, 
-                        cancellationToken);
+                    if (tag.Count > 0)
+                    {
+                        tag.Count -= 1;
+                        await _tagRepository.Save(
+                            tag,
+                            cancellationToken);
+                    }
                 }
             }
 

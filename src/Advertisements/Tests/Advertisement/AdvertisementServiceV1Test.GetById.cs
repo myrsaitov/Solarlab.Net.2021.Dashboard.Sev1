@@ -60,13 +60,13 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             _advertisementRepositoryMock
                 .Setup(_ => _.FindByIdWithCategoriesAndTags(
-                    It.IsAny<int>(),
-                    It.IsAny<CancellationToken>()))
-                .ReturnsAsync(advertisement)
-                .Callback((
+                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(advertisement) // в результате выполнения возвращает объект
+                .Callback(( // Используем передаваемые в мок аргументы для имитации логики
                     int _advertisementId, 
                     CancellationToken ct) => advertisement.Id = _advertisementId)
-                .Verifiable();
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Act
             var response = await _advertisementServiceV1.GetById(

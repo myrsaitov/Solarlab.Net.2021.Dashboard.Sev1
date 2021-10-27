@@ -52,55 +52,55 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             _advertisementRepositoryMock
                 .Setup(_ => _.FindByIdWithCategoriesAndTags(
-                    It.IsAny<int>(),
-                    It.IsAny<CancellationToken>()))
-                .ReturnsAsync(advertisement)
-                .Callback((
+                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(advertisement) // в результате выполнения возвращает объект
+                .Callback(( // Используем передаваемые в мок аргументы для имитации логики
                     int _advertisementId,
                     CancellationToken ct) => advertisement.Id = _advertisementId)
-                .Verifiable();
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
 
             _categoryRepositoryMock
                 .Setup(_ => _.FindById(
-                    It.IsAny<int>(),
-                    It.IsAny<CancellationToken>()))
-                .ReturnsAsync(category)
-                .Callback((
+                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(category) // в результате выполнения возвращает объект
+                .Callback(( // Используем передаваемые в мок аргументы для имитации логики
                     int _categoryId,
                     CancellationToken ct) => category.Id = _categoryId)
-                .Verifiable();
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
 
             _categoryRepositoryMock
                 .Setup(_ => _.FindById(
-                    It.IsAny<int>(),
-                    It.IsAny<CancellationToken>()))
-                .ReturnsAsync(category)
-                .Callback(() => category.Id = categoryId)
-                .Verifiable();
+                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(category) // в результате выполнения возвращает объект
+                .Callback(() => category.Id = categoryId) //TODO  // Используем передаваемые в мок аргументы для имитации логики
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             _tagRepositoryMock
                 .Setup(_ => _.FindWhere(
-                    It.IsAny<Expression<Func<Domain.Tag, bool>>>(),
-                    It.IsAny<CancellationToken>()))
+                    It.IsAny<Expression<Func<Domain.Tag, bool>>>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(() => new Domain.Tag()
                 {
                     Id = tagId,
                     Body = request.TagBodies[tagId++ - 1]
-                })
-                .Verifiable();
+                }) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             _tagRepositoryMock
                 .Setup(_ => _.Save(
-                    It.IsAny<Domain.Tag>(),
-                    It.IsAny<CancellationToken>()));
+                    It.IsAny<Domain.Tag>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())); // проверяет, что параметр имеет указанный тип <>
 
             _advertisementRepositoryMock
                 .Setup(_ => _.Save(
-                    It.IsAny<Domain.Advertisement>(),
-                    It.IsAny<CancellationToken>()))
-                .Callback((
+                    It.IsAny<Domain.Advertisement>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .Callback(( // Используем передаваемые в мок аргументы для имитации логики
                     Domain.Advertisement advertisement,
                     CancellationToken ct) => advertisement.Id = advertisementId);
 
@@ -145,10 +145,10 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             _advertisementRepositoryMock
                 .Setup(_ => _.FindByIdWithCategoriesAndTags(
-                    It.IsAny<int>(),
-                    It.IsAny<CancellationToken>()))
-                .ReturnsAsync(advertisement)
-                .Callback((
+                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(advertisement) // в результате выполнения возвращает объект
+                .Callback(( // Используем передаваемые в мок аргументы для имитации логики
                     int _advertisementId,
                     CancellationToken ct) => advertisement.Id = _advertisementId);
 
@@ -187,10 +187,10 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             _advertisementRepositoryMock
                 .Setup(_ => _.FindByIdWithCategoriesAndTags(
-                    It.IsAny<int>(),
-                    It.IsAny<CancellationToken>()))
-                .ReturnsAsync(advertisement)
-                .Callback((
+                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(advertisement) // в результате выполнения возвращает объект
+                .Callback(( // Используем передаваемые в мок аргументы для имитации логики
                     int _advertisementId,
                     CancellationToken ct) => advertisement.Id = _advertisementId);
 

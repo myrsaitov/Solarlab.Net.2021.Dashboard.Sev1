@@ -38,17 +38,17 @@ namespace Sev1.Advertisements.Tests.Tag
             }
 
             _tagRepositoryMock
-                .Setup(_ => _.Count(It.IsAny<CancellationToken>()))
-                .ReturnsAsync(tagCount)
-                .Verifiable();
+                .Setup(_ => _.Count(It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(tagCount) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             _tagRepositoryMock
                 .Setup(_ => _.GetPaged(
-                    It.IsAny<int>(),
-                    It.IsAny<int>(),
-                    It.IsAny<CancellationToken>()))
-                .ReturnsAsync(responce)
-                .Verifiable();
+                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(responce) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Act
             var response = await _tagServiceV1.GetPaged(
@@ -79,9 +79,9 @@ namespace Sev1.Advertisements.Tests.Tag
             var tagCount = 0;
 
             _tagRepositoryMock
-                .Setup(_ => _.Count(It.IsAny<CancellationToken>()))
-                .ReturnsAsync(tagCount)
-                .Verifiable();
+                .Setup(_ => _.Count(It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(tagCount) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Act
             var response = await _tagServiceV1.GetPaged(

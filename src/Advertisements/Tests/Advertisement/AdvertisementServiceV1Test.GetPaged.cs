@@ -69,17 +69,17 @@ namespace Sev1.Advertisements.Tests.Advertisement
             }
 
             _advertisementRepositoryMock
-                .Setup(_ => _.Count(It.IsAny<CancellationToken>()))
-                .ReturnsAsync(advertisementCount)
-                .Verifiable();
+                .Setup(_ => _.Count(It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(advertisementCount) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             _advertisementRepositoryMock
                 .Setup(_ => _.GetPagedWithTagsAndCategoryInclude(
-                    It.IsAny<int>(),
-                    It.IsAny<int>(),
-                    It.IsAny<CancellationToken>()))
-                .ReturnsAsync(responce)
-                .Verifiable();
+                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(responce) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Act
             var response = await _advertisementServiceV1.GetPaged(
@@ -112,16 +112,16 @@ namespace Sev1.Advertisements.Tests.Advertisement
             var responce = new List<Domain.Advertisement>();
 
             _advertisementRepositoryMock
-                .Setup(_ => _.Count(It.IsAny<CancellationToken>()))
-                .ReturnsAsync(0)
-                .Verifiable();
+                .Setup(_ => _.Count(It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(0) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             _advertisementRepositoryMock
                 .Setup(_ => _.GetPagedWithTagsAndCategoryInclude(
-                    It.IsAny<int>(),
-                    It.IsAny<int>(),
-                    It.IsAny<CancellationToken>()))
-                .ReturnsAsync(responce);
+                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(responce); // в результате выполнения возвращает объект
 
             // Act
             var response = await _advertisementServiceV1.GetPaged(
