@@ -4,38 +4,45 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
-using System;
 using Sev1.Advertisements.Domain.Exceptions;
-using Sev1.Advertisements.Application.Exceptions.Category;
+using Advertisements.Contracts;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
 
 namespace Sev1.Advertisements.Tests.Category
 {
     public partial class CategoryServiceV1Test
     {
         /// <summary>
-        /// 
+        /// Проверка создания категории админом
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
-        /// <param name="request">DTO-модель</param>
+        /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <param name="userId"></param>
-        /// <param name="categoryId"></param>
         /// <returns></returns>
         [Theory]
         [AutoData]
-        public async Task Update_Returns_Response_Success(
+        public async Task Update_ByAdmin_Returns_Response_Success(
             string accessToken,
-            CategoryUpdateDto request,
-            CancellationToken cancellationToken,
-            int userId,
-            int categoryId)
+            CategoryUpdateDto model,
+            CancellationToken cancellationToken)
         {
             // Arrange
-            var category = new Domain.Category()
+
+            // Чтобы пройти проверку на авторизацию
+            var autorizedStatus = new GetAutorizedStatusResponse()
             {
-                Id = categoryId
+                UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
+                Role = "admin"
             };
+            _userRepositoryMock
+                .Setup(_ => _.GetAutorizedStatus(
+                It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
+                It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(autorizedStatus) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
+            // Объект категории, который "возвращается" из базы
+            var category = new Domain.Category();
             _categoryRepositoryMock
                 .Setup(_ => _.FindById(
                     It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
@@ -46,66 +53,58 @@ namespace Sev1.Advertisements.Tests.Category
                     CancellationToken ct) => category.Id = _categoryId)
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
-            _categoryRepositoryMock
-                .Setup(_ => _.FindById(
-                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
-                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
-                .ReturnsAsync(category) // в результате выполнения возвращает объект
-                .Callback(( // Используем передаваемые в мок аргументы для имитации логики
-                    int _categoryId,
-                    CancellationToken ct) => category.Id = _categoryId)
-                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
-
-            _categoryRepositoryMock
-                .Setup(_ => _.FindById(
-                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
-                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
-                .ReturnsAsync(category) // в результате выполнения возвращает объект
-                .Callback(() => category.Id = categoryId) //TODO  // Используем передаваемые в мок аргументы для имитации логики
-                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
-
+            // "Сохраняет" в базу категорию
+            model.Name = "Category"; // Чтобы пройти валидацию
             _categoryRepositoryMock
                 .Setup(_ => _.Save(
                     It.IsAny<Domain.Category>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
-                .Callback(( // Используем передаваемые в мок аргументы для имитации логики
+               .Callback(( // Используем передаваемые в мок аргументы для имитации логики
                     Domain.Category category,
-                    CancellationToken ct) => category.Id = categoryId);
+                    CancellationToken ct) => category.Id = 1); // Id "созданной" категории
 
             // Act
             var response = await _categoryServiceV1.Update(
                 accessToken,
-                request, 
+                model,
                 cancellationToken);
 
             // Assert
             _categoryRepositoryMock.Verify(); // Вызывался ли данный мок?
-            Assert.NotNull(response);
             Assert.NotEqual(default, response);
         }
 
         /// <summary>
-        /// 
+        /// Проверка создания категории модератором
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
-        /// <param name="request">DTO-модель</param>
+        /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <param name="categoryId"></param>
         /// <returns></returns>
         [Theory]
         [AutoData]
-        public async Task Update_Throws_Exception_When_No_Rights(
+        public async Task Update_ByModerator_Returns_Response_Success(
             string accessToken,
-            CategoryUpdateDto request,
-            CancellationToken cancellationToken,
-            int categoryId)
+            CategoryUpdateDto model,
+            CancellationToken cancellationToken)
         {
             // Arrange
-            var category = new Domain.Category()
-            {
-                Id = categoryId
-            };
 
+            // Чтобы пройти проверку на авторизацию
+            var autorizedStatus = new GetAutorizedStatusResponse()
+            {
+                UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
+                Role = "moderator"
+            };
+            _userRepositoryMock
+                .Setup(_ => _.GetAutorizedStatus(
+                It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
+                It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(autorizedStatus) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // Объект категории, который "возвращается" из базы
+            var category = new Domain.Category();
             _categoryRepositoryMock
                 .Setup(_ => _.FindById(
                     It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
@@ -113,58 +112,124 @@ namespace Sev1.Advertisements.Tests.Category
                 .ReturnsAsync(category) // в результате выполнения возвращает объект
                 .Callback(( // Используем передаваемые в мок аргументы для имитации логики
                     int _categoryId,
-                    CancellationToken ct) => category.Id = _categoryId);
+                    CancellationToken ct) => category.Id = _categoryId)
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
+            // "Сохраняет" в базу категорию
+            model.Name = "Category"; // Чтобы пройти валидацию
+            _categoryRepositoryMock
+                .Setup(_ => _.Save(
+                    It.IsAny<Domain.Category>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+               .Callback(( // Используем передаваемые в мок аргументы для имитации логики
+                    Domain.Category category,
+                    CancellationToken ct) => category.Id = 1); // Id "созданной" категории
+
+            // Act
+            var response = await _categoryServiceV1.Update(
+                accessToken,
+                model,
+                cancellationToken);
+
+            // Assert
+            _categoryRepositoryMock.Verify(); // Вызывался ли данный мок?
+            Assert.NotEqual(default, response);
+        }
+
+        /// <summary>
+        /// Проверка исключения при создании категории юзером
+        /// </summary>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="model">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [Theory]
+        [AutoData]
+        public async Task Update_ByUser_Throws_Exception_When_No_Rights(
+            string accessToken,
+            CategoryUpdateDto model,
+            CancellationToken cancellationToken)
+        {
+            // Arrange
+
+            // Чтобы пройти проверку на авторизацию
+            var autorizedStatus = new GetAutorizedStatusResponse()
+            {
+                UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
+                Role = "user"
+            };
+            _userRepositoryMock
+                .Setup(_ => _.GetAutorizedStatus(
+                It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
+                It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(autorizedStatus) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // Объект категории, который "возвращается" из базы
+            var category = new Domain.Category();
+            _categoryRepositoryMock
+                .Setup(_ => _.FindById(
+                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(category) // в результате выполнения возвращает объект
+                .Callback(( // Используем передаваемые в мок аргументы для имитации логики
+                    int _categoryId,
+                    CancellationToken ct) => category.Id = _categoryId)
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // "Сохраняет" в базу категорию
+            model.Name = "Category"; // Чтобы пройти валидацию
+            _categoryRepositoryMock
+                .Setup(_ => _.Save(
+                    It.IsAny<Domain.Category>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+               .Callback(( // Используем передаваемые в мок аргументы для имитации логики
+                    Domain.Category category,
+                    CancellationToken ct) => category.Id = 1); // Id "созданной" категории
 
             // Act
             await Assert.ThrowsAsync<NoRightsException>(
                 async () => await _categoryServiceV1.Update(
                     accessToken,
-                    request,
+                    model,
                     cancellationToken));
         }
 
         /// <summary>
-        /// 
+        /// Проверка исключения при отсутствии аргумента
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
-        /// <param name="request">DTO-модель</param>
+        /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
-        [AutoData]
-        public async Task Update_Throws_Exception_When_Category_Is_Null(
-            string accessToken,
-            CategoryUpdateDto request,
-            CancellationToken cancellationToken)
-        {
-            // Act
-            await Assert.ThrowsAsync<CategoryNotFoundException>(
-                async () => await _categoryServiceV1.Update(
-                    accessToken,
-                    request,
-                    cancellationToken));
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
-        /// <param name="request">DTO-модель</param>
-        /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <returns></returns>
-        [Theory]
-        [InlineAutoData(null)]
+        [InlineAutoData(null, null)]
         public async Task Update_Throws_Exception_When_Request_Is_Null(
             string accessToken,
-            CategoryUpdateDto request,
+            CategoryUpdateDto model,
             CancellationToken cancellationToken)
         {
+            // Arrange
+
+            // Чтобы пройти проверку на авторизацию
+            accessToken = "Token";
+            var autorizedStatus = new GetAutorizedStatusResponse()
+            {
+                UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
+                Role = "user"
+            };
+            _userRepositoryMock
+                .Setup(_ => _.GetAutorizedStatus(
+                It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
+                It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(autorizedStatus) // в результате выполнения возвращает объект
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
             // Act
-            await Assert.ThrowsAsync<ArgumentNullException>(
+            await Assert.ThrowsAsync<CategoryUpdateDtoNotValidException>(
                 async () => await _categoryServiceV1.Update(
                     accessToken,
-                    request, 
+                    model,
                     cancellationToken));
         }
     }

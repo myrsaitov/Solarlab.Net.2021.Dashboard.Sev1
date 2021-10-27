@@ -21,7 +21,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <returns></returns>
         [Theory]
         [AutoData]
-        public async Task DeleteByOwner_Returns_Response_Success(
+        public async Task Delete_ByOwner_Returns_Response_Success(
             string accessToken,
             int id, 
             CancellationToken cancellationToken)
@@ -85,7 +85,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <returns></returns>
         [Theory]
         [AutoData]
-        public async Task DeleteByModerator_Returns_Response_Success(
+        public async Task Delete_ByModerator_Returns_Response_Success(
             string accessToken,
             int id,
             CancellationToken cancellationToken)
@@ -149,7 +149,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <returns></returns>
         [Theory]
         [AutoData]
-        public async Task DeleteByAdmin_Returns_Response_Success(
+        public async Task Delete_ByAdmin_Returns_Response_Success(
             string accessToken,
             int id,
             CancellationToken cancellationToken)

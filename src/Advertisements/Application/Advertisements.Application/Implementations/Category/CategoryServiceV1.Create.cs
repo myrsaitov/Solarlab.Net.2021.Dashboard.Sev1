@@ -33,7 +33,7 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             {
                 throw new NoRightsException("Ошибка авторизации!");
             }
-            
+
             // Fluent Validation
             var validator = new CategoryCreateDtoValidator();
             var result = await validator.ValidateAsync(model);

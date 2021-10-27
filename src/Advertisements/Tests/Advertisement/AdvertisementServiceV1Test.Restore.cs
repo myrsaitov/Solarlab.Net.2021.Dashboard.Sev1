@@ -21,7 +21,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <returns></returns>
         [Theory]
         [AutoData]
-        public async Task RestoreByOwner_Returns_Response_Success(
+        public async Task Restore_ByOwner_Returns_Response_Success(
             string accessToken,
             int id,
             CancellationToken cancellationToken)
@@ -85,7 +85,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <returns></returns>
         [Theory]
         [AutoData]
-        public async Task RestoreByModerator_Returns_Response_Success(
+        public async Task Restore_ByModerator_Returns_Response_Success(
             string accessToken,
             int id,
             CancellationToken cancellationToken)
@@ -149,7 +149,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <returns></returns>
         [Theory]
         [AutoData]
-        public async Task RestoreByAdmin_Returns_Response_Success(
+        public async Task Restore_ByAdmin_Returns_Response_Success(
             string accessToken,
             int id,
             CancellationToken cancellationToken)
