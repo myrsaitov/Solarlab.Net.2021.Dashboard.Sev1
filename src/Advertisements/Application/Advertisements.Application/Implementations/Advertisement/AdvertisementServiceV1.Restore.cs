@@ -40,7 +40,9 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 throw new AdvertisementIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
-            var advertisement = await _advertisementRepository.FindById(
+            // TODO Нужно сделать, чтобы при восстановлении
+            // объявления обновлялись счетчики тагов
+            var advertisement = await _advertisementRepository.FindByIdWithTagsInclude(
                 id,
                 cancellationToken);
 

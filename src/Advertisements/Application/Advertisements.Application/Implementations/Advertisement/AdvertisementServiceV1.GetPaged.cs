@@ -108,6 +108,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 request.PageSize,
                 cancellationToken);
 
+            // Создание обёртки (wrapper)
             return new GetPagedAdvertisementResponse
             {
                 Items = entities.Select(entity => _mapper.Map<AdvertisementPagedDto>(entity)),

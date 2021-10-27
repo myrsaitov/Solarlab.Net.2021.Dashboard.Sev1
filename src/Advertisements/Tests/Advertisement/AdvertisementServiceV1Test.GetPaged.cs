@@ -261,7 +261,6 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 tagBodies);
         }
 
-
         /// <summary>
         /// Проверка исключения, если аргумент не проходит валидацию
         /// </summary>

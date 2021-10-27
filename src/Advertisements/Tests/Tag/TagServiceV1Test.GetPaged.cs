@@ -5,9 +5,9 @@ using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
 using Sev1.Advertisements.Application.Contracts.Tag;
-using System;
 using System.Linq;
 using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
 
 namespace Sev1.Advertisements.Tests.Tag
 {
@@ -113,7 +113,7 @@ namespace Sev1.Advertisements.Tests.Tag
             CancellationToken cancellationToken)
         {
             // Act
-            await Assert.ThrowsAsync<ArgumentNullException>(
+            await Assert.ThrowsAsync<GetPagedRequestNotValidException>(
                 async () => await _tagServiceV1.GetPaged(
                     request, 
                     cancellationToken));
