@@ -37,15 +37,15 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             Expression<Func<Domain.Advertisement, bool>> predicate = default;
             // Если нет параметров поиска, выводим без какой-либо фильтрации
             if ((request.SearchStr is null)
-                && (request.UserName is null)
+                && (request.UserId is null)
                 && (request.CategoryId is null)
                  && (request.Tag is null))
             {
-                predicate = default;
+                predicate = a => true; // Фильтрация отсутствует
             }
             // Если пришли параметры поиска
             else if ((request.SearchStr is not null)
-                && (request.UserName is null)
+                && (request.UserId is null)
                 && (request.CategoryId is null)
                 && (request.Tag is null))
             {
@@ -54,10 +54,19 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                     o => o.Body.ToLower().Contains(request.SearchStr.ToLower())  // В теле объявления
                     || o.Title.ToLower().Contains(request.SearchStr.ToLower())  // В названии объявления
                     || o.Category.Name.ToLower().Contains(request.SearchStr.ToLower()) // По имени категории
-                    || o.Tags.Select(a => a.Body).ToArray().Contains(request.SearchStr.ToLower()); // По  tag
+                    || o.Tags.Select(a => a.Body).ToArray().Contains(request.SearchStr.ToLower()); // По tag
             }
             else if ((request.SearchStr is null)
-                && (request.UserName is null)
+                && (request.UserId is not null)
+                 && (request.CategoryId is null)
+                && (request.Tag is null))
+            {
+                // Поиск по UserId
+                predicate =
+                    a => a.OwnerId == request.UserId;
+            }
+            else if ((request.SearchStr is null)
+                && (request.UserId is null)
                 && (request.CategoryId is not null)
                 && (request.Tag is null))
             {
@@ -66,7 +75,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                     a => a.CategoryId == request.CategoryId;
             }
             else if ((request.SearchStr is null)
-                && (request.UserName is null)
+                && (request.UserId is null)
                 && (request.CategoryId is null)
                 && (request.Tag is not null))
             {
@@ -76,19 +85,9 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             }
 
             // Подсчет общего количества объявлений
-            int total = default;
-            if (predicate == default)
-            {
-                // Если параметры поиска не заданы
-                total = await _advertisementRepository.CountWithOutDeleted(cancellationToken);
-            }
-            else
-            {
-                // Если параметры поиска заданы
-                total = await _advertisementRepository.CountWithOutDeleted(
-                    predicate,
-                    cancellationToken);
-            }
+            var total = await _advertisementRepository.CountWithOutDeleted(
+                predicate,
+                cancellationToken);
 
             // Если объявления не найдены, то возвращаем "пустой" ответ 
             if (total == 0)
@@ -103,39 +102,19 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             }
 
             // Если объявления найдены
-            if (predicate == default)
-            {
-                // Вернуть объявления без фильтра
-                var entities = await _advertisementRepository.GetPagedWithTagsAndCategoryInclude(
-                    offset,
-                    request.PageSize,
-                    cancellationToken);
+            var entities = await _advertisementRepository.GetPagedWithTagsAndCategoryInclude(
+                predicate,
+                offset,
+                request.PageSize,
+                cancellationToken);
 
-                return new GetPagedAdvertisementResponse
-                {
-                    Items = entities.Select(entity => _mapper.Map<AdvertisementPagedDto>(entity)),
-                    Total = total,
-                    Offset = offset,
-                    Limit = request.PageSize
-                };
-            }
-            else
+            return new GetPagedAdvertisementResponse
             {
-                // Вернуть объявления по фильтру
-                var entities = await _advertisementRepository.GetPagedWithTagsAndCategoryInclude(
-                    predicate,
-                    offset,
-                    request.PageSize,
-                    cancellationToken);
-
-                return new GetPagedAdvertisementResponse
-                {
-                    Items = entities.Select(entity => _mapper.Map<AdvertisementPagedDto>(entity)),
-                    Total = total,
-                    Offset = offset,
-                    Limit = request.PageSize
-                };
-            }
+                Items = entities.Select(entity => _mapper.Map<AdvertisementPagedDto>(entity)),
+                Total = total,
+                Offset = offset,
+                Limit = request.PageSize
+            };
         }
     }
 }

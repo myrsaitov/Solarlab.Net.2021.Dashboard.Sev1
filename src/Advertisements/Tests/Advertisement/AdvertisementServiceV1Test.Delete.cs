@@ -266,7 +266,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         }
 
         /// <summary>
-        /// 
+        /// Проверка исключения, если в базе нет объявления с таким Id
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="id">Id объявления</param>
@@ -306,6 +306,43 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 async () => await _advertisementServiceV1.Delete(
                     accessToken,
                     id, 
+                    cancellationToken));
+        }
+
+        /// <summary>
+        /// Проверка исключения, если не прошли валидацию Id
+        /// </summary>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <param name="id">Id объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [Theory]
+        [InlineAutoData(null, null, null)]
+        public async Task Delete_Throws_Exception_When_Id_Is_Not_Valid(
+            string accessToken,
+            int id,
+            CancellationToken cancellationToken)
+        {
+            // Arrange
+
+            // Чтобы пройти проверку на авторизацию
+            accessToken = "token";
+            var autorizedStatus = new GetAutorizedStatusResponse()
+            {
+                UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
+                Role = "user"
+            };
+            _userRepositoryMock
+                .Setup(_ => _.GetAutorizedStatus(
+                It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
+                It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(autorizedStatus); // в результате выполнения возвращает объект
+
+            // Act
+            await Assert.ThrowsAsync<AdvertisementIdNotValidException>(
+                async () => await _advertisementServiceV1.Delete(
+                    accessToken,
+                    id,
                     cancellationToken));
         }
     }

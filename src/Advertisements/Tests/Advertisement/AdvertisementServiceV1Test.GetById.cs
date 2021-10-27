@@ -13,33 +13,36 @@ namespace Sev1.Advertisements.Tests.Advertisement
     public partial class AdvertisementServiceV1Test
     {
         /// <summary>
-        /// 
+        /// Проверка получения объявления по Id
         /// </summary>
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <param name="userId"></param>
-        /// <param name="advertisementTitle"></param>
-        /// <param name="advertisementBody"></param>
-        /// <param name="tagBodies"></param>
-        /// <param name="categoryId"></param>
+        /// <param name="userId">Id пользователя</param>
+        /// <param name="advertisementTitle">Заголовок объявления</param>
+        /// <param name="advertisementBody">Тело объявления</param>
+        /// <param name="tagBodies">Таги</param>
+        /// <param name="userId">Id пользователя, который создал объявление</param>
+        /// <param name="categoryId">Id категории</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task GetById_Returns_Response_Success(
             int id, 
             CancellationToken cancellationToken, 
-            int userId,
             string advertisementTitle,
             string advertisementBody,
             string[] tagBodies,
+            string userId,
             int categoryId)
         {
             // Arrange
+
+            // Объект, который возвращается из базы
             var advertisement = new Domain.Advertisement()
             {
                 Title = advertisementTitle,
                 Body = advertisementBody,
-                //OwnerId = userId.ToString(),
+                OwnerId = userId,
                 Category = new Domain.Category()
                 {
                     Id = categoryId
@@ -47,6 +50,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 Tags = new List<Domain.Tag>()
             };
 
+            // Заполняем таги
             int tagId = 1;
             foreach (string body in tagBodies)
             {
@@ -58,6 +62,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 advertisement.Tags.Add(tag);
             }
 
+            // "Достаем" из базы
             _advertisementRepositoryMock
                 .Setup(_ => _.FindByIdWithCategoriesAndTags(
                     It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
@@ -80,7 +85,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         }
 
         /// <summary>
-        /// 
+        /// Проверка исключения, если в базе нет объявления с таким Id
         /// </summary>
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
@@ -91,6 +96,18 @@ namespace Sev1.Advertisements.Tests.Advertisement
             int id,
             CancellationToken cancellationToken)
         {
+            // Arrange
+
+            // Объект, который возвращается из базы
+            Domain.Advertisement advertisement = null;
+
+            // "Достаем" из базы
+            _advertisementRepositoryMock
+                .Setup(_ => _.FindByIdWithCategoriesAndTags(
+                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                .ReturnsAsync(advertisement); // в результате выполнения возвращает объект
+ 
             // Act
             await Assert.ThrowsAsync<AdvertisementNotFoundException>(
                 async () => await _advertisementServiceV1.GetById(
@@ -99,19 +116,19 @@ namespace Sev1.Advertisements.Tests.Advertisement
         }
 
         /// <summary>
-        /// 
+        /// Проверка исключения, если аргумент не проходит валидацию
         /// </summary>
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
-        [InlineAutoData(null)]
+        [InlineAutoData(null,null)]
         public async Task GetById_Throws_Exception_When_Request_Is_Null(
             int id, 
             CancellationToken cancellationToken)
         {
             // Act
-            await Assert.ThrowsAsync<ArgumentNullException>(
+            await Assert.ThrowsAsync<AdvertisementIdNotValidException>(
                 async () => await _advertisementServiceV1.GetById(
                     id, 
                     cancellationToken));

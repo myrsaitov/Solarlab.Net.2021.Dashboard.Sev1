@@ -37,14 +37,6 @@ namespace Sev1.Advertisements.Application.Repositories.Advertisement
 
         /// <summary>
         /// Возвращает количество объявлений,
-        /// которые не "удалены"
-        /// </summary>
-        /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <returns></returns>
-        Task<int> CountWithOutDeleted(CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Возвращает количество объявлений,
         /// которые не "удалены" с фильтром
         /// </summary>
         /// <param name="predicate">Параметры фильтра</param>
@@ -52,18 +44,6 @@ namespace Sev1.Advertisements.Application.Repositories.Advertisement
         /// <returns></returns>
         Task<int> CountWithOutDeleted(
             Expression<Func<Domain.Advertisement, bool>> predicate,
-            CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Возвращает объявления с пагинацией
-        /// </summary>
-        /// <param name="offset">Сколько объявлений пропущено</param>
-        /// <param name="limit">Количество объявлений на странице</param>
-        /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <returns></returns>
-        Task<IEnumerable<Domain.Advertisement>> GetPagedWithTagsAndCategoryInclude(
-            int offset,
-            int limit,
             CancellationToken cancellationToken);
 
         /// <summary>
