@@ -1,3 +1,6 @@
 https://jasonwatmore.com/post/2021/06/02/net-5-create-and-validate-jwt-tokens-use-custom-jwt-middleware
 https://jasonwatmore.com/post/2021/05/25/net-5-simple-api-for-authentication-registration-and-user-management
 https://fuse8.ru/articles/using-asp-net-core-identity-and-jwt
+
+// Check Token Validated with Custom Authorize Attribute
+https://jasonwatmore.com/post/2021/06/02/net-5-create-and-validate-jwt-tokens-use-custom-jwt-middleware

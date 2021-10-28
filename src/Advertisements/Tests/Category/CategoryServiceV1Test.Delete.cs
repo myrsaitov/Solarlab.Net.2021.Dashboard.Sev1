@@ -5,7 +5,7 @@ using Xunit;
 using AutoFixture.Xunit2;
 using Sev1.Advertisements.Domain.Exceptions;
 using Sev1.Advertisements.Application.Exceptions.Category;
-using Advertisements.Contracts;
+using Advertisements.Contracts.Contracts.User;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
 
 namespace Sev1.Advertisements.Tests.Category

@@ -82,7 +82,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             {
                 foreach (string body in model.TagBodies)
                 {
-                    if (body.Length > 0)
+                    if (!string.IsNullOrWhiteSpace(body))
                     {
                         var tag = await _tagRepository.FindWhere(
                         a => a.Body == body,

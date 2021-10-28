@@ -3,10 +3,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
-using System;
 using Sev1.Advertisements.Domain.Exceptions;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
-using Advertisements.Contracts;
+using Advertisements.Contracts.Contracts.User;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {

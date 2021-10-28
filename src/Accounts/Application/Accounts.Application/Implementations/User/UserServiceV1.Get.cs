@@ -11,7 +11,7 @@ namespace Sev1.Accounts.Application.Implementations.User
             string userId, 
             CancellationToken cancellationToken)
         {
-            var domainUser = await _userApiClient.FindById(userId, cancellationToken);
+            var domainUser = await _userRepository.FindById(userId, cancellationToken);
             if (domainUser == null)
             {
                 throw new UserNotFoundException($"Пользователь с идентификатором {userId} не найден");

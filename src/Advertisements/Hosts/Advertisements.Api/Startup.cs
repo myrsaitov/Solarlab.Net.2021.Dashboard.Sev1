@@ -21,6 +21,7 @@ using System.Reflection;
 using System.IO;
 using System;
 using Sev1.Advertisements.Contracts.ApiClients.User;
+using Microsoft.AspNetCore.Identity;
 
 namespace Sev1.Advertisements.Api
 {
@@ -169,7 +170,7 @@ namespace Sev1.Advertisements.Api
             // per each http request but uses the same instance
             // in the other calls within that same web request.
             services.AddScoped<IMapper, ServiceMapper>();
-            
+
             services.AddApplicationException(config => { config.DefaultErrorStatusCode = 500; });
         }
 

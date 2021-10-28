@@ -34,20 +34,22 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             // Вычислить смещение (skip)
             var offset = request.Page * request.PageSize;
             
-            Expression<Func<Domain.Advertisement, bool>> predicate = default;
+            // Параметр поиска в базе
+            Expression<Func<Domain.Advertisement, bool>> predicate = a => true;
+
             // Если нет параметров поиска, выводим без какой-либо фильтрации
-            if ((request.SearchStr is null)
-                && (request.UserId is null)
+            if ((string.IsNullOrWhiteSpace(request.SearchStr))
+                && (string.IsNullOrWhiteSpace(request.UserId))
                 && (request.CategoryId is null)
-                 && (request.Tag is null))
+                && (string.IsNullOrWhiteSpace(request.Tag)))
             {
                 predicate = a => true; // Фильтрация отсутствует
             }
             // Если пришли параметры поиска
-            else if ((request.SearchStr is not null)
-                && (request.UserId is null)
+            else if ((!string.IsNullOrWhiteSpace(request.SearchStr))
+                && (string.IsNullOrWhiteSpace(request.UserId))
                 && (request.CategoryId is null)
-                && (request.Tag is null))
+                && (string.IsNullOrWhiteSpace(request.Tag)))
             {
                 // Общий поиск
                 predicate =
@@ -56,28 +58,28 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                     || o.Category.Name.ToLower().Contains(request.SearchStr.ToLower()) // По имени категории
                     || o.Tags.Select(a => a.Body).ToArray().Contains(request.SearchStr.ToLower()); // По tag
             }
-            else if ((request.SearchStr is null)
-                && (request.UserId is not null)
-                 && (request.CategoryId is null)
-                && (request.Tag is null))
+            else if ((string.IsNullOrWhiteSpace(request.SearchStr))
+                && (!string.IsNullOrWhiteSpace(request.UserId))
+                && (request.CategoryId is null)
+                && (string.IsNullOrWhiteSpace(request.Tag)))
             {
                 // Поиск по UserId
                 predicate =
                     a => a.OwnerId == request.UserId;
             }
-            else if ((request.SearchStr is null)
-                && (request.UserId is null)
-                && (request.CategoryId is not null)
-                && (request.Tag is null))
+            else if ((string.IsNullOrWhiteSpace(request.SearchStr))
+                && (string.IsNullOrWhiteSpace(request.UserId))
+                && (!(request.CategoryId is null))
+                && (string.IsNullOrWhiteSpace(request.Tag)))
             {
                 // Поиск по CategoryId
                 predicate =
                     a => a.CategoryId == request.CategoryId;
             }
-            else if ((request.SearchStr is null)
-                && (request.UserId is null)
-                && (request.CategoryId is null)
-                && (request.Tag is not null))
+            else if ((string.IsNullOrWhiteSpace(request.SearchStr))
+                && (string.IsNullOrWhiteSpace(request.UserId))
+                && ((request.CategoryId is null))
+                && (!string.IsNullOrWhiteSpace(request.Tag)))
             {
                 // Поиск по Tag
                 predicate =

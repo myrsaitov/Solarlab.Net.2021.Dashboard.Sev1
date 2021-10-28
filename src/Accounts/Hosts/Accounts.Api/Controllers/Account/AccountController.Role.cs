@@ -9,38 +9,6 @@ namespace Sev1.Accounts.Api.Controllers.Account
     public partial class AccountController
     {
         /// <summary>
-        /// Проверка на роль админа
-        /// </summary>
-        /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <returns></returns>
-        [Authorize]
-        [HttpPost("isadmin")]
-        public async Task<IActionResult> IsAdmin(
-            CancellationToken cancellationToken)
-        {
-            var currentUserId = await _identityService.GetCurrentUserId(cancellationToken);
-            var isAdmin = await _identityService.IsInRole(currentUserId, RoleConstants.AdminRole, cancellationToken);
-
-            return Ok(isAdmin.ToString().ToLower());
-        }
-
-        /// <summary>
-        /// Проверка на роль модератора
-        /// </summary>
-        /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <returns></returns>
-        [Authorize]
-        [HttpPost("ismoderator")]
-        public async Task<IActionResult> IsModerator(
-            CancellationToken cancellationToken)
-        {
-            var currentUserId = await _identityService.GetCurrentUserId(cancellationToken);
-            var isModerator = await _identityService.IsInRole(currentUserId, RoleConstants.ModeratorRole, cancellationToken);
-
-            return Ok(isModerator.ToString().ToLower());
-        }
-
-        /// <summary>
         /// Возвращает роль текущего авторизированного пользователя
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>

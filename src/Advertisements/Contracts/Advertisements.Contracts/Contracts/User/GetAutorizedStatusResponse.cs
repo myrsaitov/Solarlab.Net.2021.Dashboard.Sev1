@@ -1,4 +1,4 @@
-﻿namespace Advertisements.Contracts
+﻿namespace Advertisements.Contracts.Contracts.User
 {
     public class GetAutorizedStatusResponse
     {

@@ -9,7 +9,7 @@ using System;
 using Sev1.Advertisements.Application.Exceptions.Category;
 using Sev1.Advertisements.Domain.Exceptions;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
-using Advertisements.Contracts;
+using Advertisements.Contracts.Contracts.User;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
@@ -69,7 +69,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .ReturnsAsync(() => new Domain.Tag()
                 {
                     Id = tagId,
-                    Body = model.TagBodies[tagId++ - 1]
+                    Body = model.TagBodies[1]
                 }) // в результате выполнения возвращает объект
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 

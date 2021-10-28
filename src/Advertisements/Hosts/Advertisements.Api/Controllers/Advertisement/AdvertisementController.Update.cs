@@ -14,7 +14,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        [HttpPut("update/{id:int}")]
+        [HttpPut("update")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Update(
             [FromBody] AdvertisementUpdateDto model, 

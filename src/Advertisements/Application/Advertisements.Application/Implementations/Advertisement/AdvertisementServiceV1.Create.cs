@@ -69,7 +69,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 advertisement.Tags = new List<Domain.Tag>();
                 foreach (string body in model.TagBodies)
                 {
-                    if (body.Length > 0)
+                    if (!string.IsNullOrWhiteSpace(body))
                     {
                         var tag = await _tagRepository.FindWhere(
                             a => a.Body == body,
