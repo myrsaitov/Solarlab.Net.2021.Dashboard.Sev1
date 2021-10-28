@@ -77,7 +77,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         }
 
         /// <summary>
-        /// Проверка удачного удаления объявления пользователем-owner
+        /// Проверка удачного удаления объявления модератором
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="id">Id объявления</param>
@@ -141,7 +141,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         }
 
         /// <summary>
-        /// Проверка удачного удаления объявления пользователем-owner
+        /// Проверка удачного удаления объявления админом
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="id">Id объявления</param>

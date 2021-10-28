@@ -1,11 +1,9 @@
-﻿using Sev1.Advertisements.Application.Exceptions;
-using Moq;
+﻿using Moq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
-using System;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
 
 namespace Sev1.Advertisements.Tests.Advertisement

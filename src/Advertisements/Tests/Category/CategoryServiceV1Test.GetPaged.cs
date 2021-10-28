@@ -8,13 +8,14 @@ using Sev1.Advertisements.Application.Contracts.Category;
 using System.Linq;
 using System;
 using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
 
 namespace Sev1.Advertisements.Tests.Category
 {
     public partial class CategoryServiceV1Test
     {
         /// <summary>
-        /// 
+        /// Проверка удачного запроса на пагинацию
         /// </summary>
         /// <param name="request"></param>
         /// <param name="cancellationToken">Маркёр отмены</param>
@@ -114,7 +115,7 @@ namespace Sev1.Advertisements.Tests.Category
             CancellationToken cancellationToken)
         {
             // Act
-            await Assert.ThrowsAsync<ArgumentNullException>(
+            await Assert.ThrowsAsync<GetPagedRequestNotValidException>(
                 async () => await _categoryServiceV1.GetPaged(
                     request, 
                     cancellationToken));

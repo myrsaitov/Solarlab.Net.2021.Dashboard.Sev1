@@ -5,6 +5,7 @@ using Xunit;
 using AutoFixture.Xunit2;
 using System;
 using Sev1.Advertisements.Application.Exceptions.Category;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
 
 namespace Sev1.Advertisements.Tests.Category
 {
@@ -23,7 +24,10 @@ namespace Sev1.Advertisements.Tests.Category
             CancellationToken cancellationToken)
         {
             // Arrange
-            var category = new Domain.Category();
+            var category = new Domain.Category()
+            {
+                Name = "Category"
+            };
 
             _categoryRepositoryMock
                 .Setup(_ => _.FindByIdWithParentAndChilds(
@@ -47,7 +51,7 @@ namespace Sev1.Advertisements.Tests.Category
         }
 
         /// <summary>
-        /// 
+        /// Проверка исключения на отсутствие категории в базе
         /// </summary>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Маркёр отмены</param>
@@ -66,7 +70,7 @@ namespace Sev1.Advertisements.Tests.Category
         }
 
         /// <summary>
-        /// 
+        /// Проверка исключения на невалидный аргумент
         /// </summary>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Маркёр отмены</param>
@@ -78,7 +82,7 @@ namespace Sev1.Advertisements.Tests.Category
             CancellationToken cancellationToken)
         {
             // Act
-            await Assert.ThrowsAsync<ArgumentNullException>(
+            await Assert.ThrowsAsync<CategoryIdNotValidException>(
                 async () => await _categoryServiceV1.GetById(
                     id, 
                     cancellationToken));
