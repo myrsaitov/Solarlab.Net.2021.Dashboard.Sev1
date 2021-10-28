@@ -57,7 +57,7 @@ namespace Sev1.Accounts.DataAccess
             // per each http request but uses the same instance
             // in the other calls within that same web request.
             moduleConfiguration.Services.AddScoped(typeof(IRepository<,>), typeof(EfRepository<,>));
-            moduleConfiguration.Services.AddScoped<IUserRepository, UserRepository>();
+            moduleConfiguration.Services.AddScoped<IUserApiClient, UserApiClient>();
         }
     }
 }

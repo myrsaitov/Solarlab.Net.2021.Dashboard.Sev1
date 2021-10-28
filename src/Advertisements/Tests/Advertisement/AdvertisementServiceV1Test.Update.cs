@@ -38,7 +38,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
                 Role = "user"
             };
-            _userRepositoryMock
+            _userApiClientMock
                 .Setup(_ => _.GetAutorizedStatus(
                 It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
                 It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
@@ -111,7 +111,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 cancellationToken);
 
             // Assert
-            _userRepositoryMock.Verify(); // Вызывался ли данный мок?
+            _userApiClientMock.Verify(); // Вызывался ли данный мок?
             _advertisementRepositoryMock.Verify(); // Вызывался ли данный мок?
             _categoryRepositoryMock.Verify(); // Вызывался ли данный мок?
             _tagRepositoryMock.Verify(); // Вызывался ли данный мок?
@@ -163,7 +163,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
                 Role = "user"
             };
-            _userRepositoryMock
+            _userApiClientMock
                 .Setup(_ => _.GetAutorizedStatus(
                 It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
                 It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
@@ -200,7 +200,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
                 Role = "user"
             };
-            _userRepositoryMock
+            _userApiClientMock
                 .Setup(_ => _.GetAutorizedStatus(
                 It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
                 It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
@@ -250,7 +250,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
                 Role = "user"
             };
-            _userRepositoryMock
+            _userApiClientMock
                 .Setup(_ => _.GetAutorizedStatus(
                 It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
                 It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>

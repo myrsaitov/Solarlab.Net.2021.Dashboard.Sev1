@@ -24,7 +24,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             CancellationToken cancellationToken)
         {
             // Проверяем, авторизирован ли пользователь, получаем его Id и Role
-            var autorizedStatus = await _userRepository.GetAutorizedStatus(
+            var autorizedStatus = await _userApiClient.GetAutorizedStatus(
                 accessToken,
                 cancellationToken);
             if (autorizedStatus is null)

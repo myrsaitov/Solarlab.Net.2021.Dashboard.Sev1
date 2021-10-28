@@ -2,9 +2,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sev1.Advertisements.Application.Repositories.User
+namespace Sev1.Advertisements.Contracts.ApiClients.User
 {
-    public interface IUserRepository
+    public interface IUserApiClient
     {
         /// <summary>
         /// Возвращает userId текущего зарегистрированного пользователя

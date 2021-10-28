@@ -6,13 +6,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Sev1.Advertisements.Application.Repositories.User
+namespace Sev1.Advertisements.Contracts.ApiClients.User
 {
-    public sealed partial class UserRepository : IUserRepository
+    public sealed partial class UserApiClient : IUserApiClient
     {
         public object Newtonsoft { get; private set; }
 
-        public UserRepository()
+        public UserApiClient()
         {
         }
 

@@ -17,10 +17,10 @@ using Sev1.Advertisements.Application.Implementations.Tag;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Collections.Generic;
-using Sev1.Advertisements.Application.Repositories.User;
 using System.Reflection;
 using System.IO;
 using System;
+using Sev1.Advertisements.Contracts.ApiClients.User;
 
 namespace Sev1.Advertisements.Api
 {
@@ -76,8 +76,8 @@ namespace Sev1.Advertisements.Api
                 .AddScoped<IAdvertisementService, AdvertisementServiceV1>()
                 .AddScoped<ITagService, TagServiceV1>()
 
-                // Инжектирование "репозитория" (работает через webclient) User
-                .AddScoped<IUserRepository, UserRepository>()
+                // Инжектирование API-клиента User
+                .AddScoped<IUserApiClient, UserApiClient>()
 
                 // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
                 .AddHttpContextAccessor()

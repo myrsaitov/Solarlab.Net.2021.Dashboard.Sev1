@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Sev1.Accounts.Application.Repository.User
 {
-    public interface IUserRepository : IRepository<Domain.User, string>
+    public interface IUserApiClient : IRepository<Domain.User, string>
     {
         Task<Domain.User> FindByUserName(
             string userName,

@@ -15,7 +15,7 @@ namespace Sev1.Accounts.Application.Implementations.User
             Update.Request request, 
             CancellationToken cancellationToken)
         {
-            var domainUser = await _userRepository.FindById(request.Id, cancellationToken);
+            var domainUser = await _userApiClient.FindById(request.Id, cancellationToken);
             if (domainUser == null)
             {
                 throw new UserNotFoundException($"Пользователь с идентификатором {request.Id} не найден");
@@ -37,7 +37,7 @@ namespace Sev1.Accounts.Application.Implementations.User
             domainUser.MiddleName = request.MiddleName;
             domainUser.UpdatedAt = DateTime.UtcNow;
 
-            await _userRepository.Save(domainUser, cancellationToken);
+            await _userApiClient.Save(domainUser, cancellationToken);
         }
     }
 }

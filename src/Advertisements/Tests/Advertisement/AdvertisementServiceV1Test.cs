@@ -7,7 +7,7 @@ using Sev1.Advertisements.Application.Implementations.Advertisement;
 using Sev1.Advertisements.Application.Repositories.Advertisement;
 using Sev1.Advertisements.Application.Repositories.Category;
 using Sev1.Advertisements.Application.Repositories.Tag;
-using Sev1.Advertisements.Application.Repositories.User;
+using Sev1.Advertisements.Contracts.ApiClients.User;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
@@ -16,7 +16,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         private Mock<IAdvertisementRepository> _advertisementRepositoryMock;
         private Mock<ICategoryRepository> _categoryRepositoryMock;
         private Mock<ITagRepository> _tagRepositoryMock;
-        private Mock<IUserRepository> _userRepositoryMock;
+        private Mock<IUserApiClient> _userApiClientMock;
         private IMapper _mapper;
         
         private AdvertisementServiceV1 _advertisementServiceV1;
@@ -25,7 +25,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             _advertisementRepositoryMock = new Mock<IAdvertisementRepository>();
             _categoryRepositoryMock = new Mock<ICategoryRepository>();
             _tagRepositoryMock = new Mock<ITagRepository>();
-            _userRepositoryMock = new Mock<IUserRepository>();
+            _userApiClientMock = new Mock<IUserApiClient>();
 
 
             TypeAdapterConfig.GlobalSettings.Compiler = exp => exp.CompileWithDebugInfo();
@@ -38,7 +38,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 _advertisementRepositoryMock.Object,
                 _categoryRepositoryMock.Object,
                 _tagRepositoryMock.Object,
-                _userRepositoryMock.Object,
+                _userApiClientMock.Object,
                 _mapper);
         }
     }

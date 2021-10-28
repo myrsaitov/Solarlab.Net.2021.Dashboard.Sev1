@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Sev1.Accounts.DataAccess.Repositories
 {
-    public sealed class UserRepository : EfRepository<User, string>, IUserRepository
+    public sealed class UserApiClient : EfRepository<User, string>, IUserApiClient
     {
-        public UserRepository(DatabaseContext dbСontext) : base(dbСontext)
+        public UserApiClient(DatabaseContext dbСontext) : base(dbСontext)
         {
         }
         public async Task<User> FindByUserName(

@@ -7,15 +7,15 @@ namespace Sev1.Accounts.Application.Implementations.User
 {
     public sealed partial class UserServiceV1 : IUserService
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUserApiClient _userApiClient;
         private readonly IIdentityService _identityService;
         private readonly IMapper _mapper;
         public UserServiceV1(
-            IUserRepository userRepository, 
+            IUserApiClient userApiClient, 
             IIdentityService identityService,
             IMapper mapper)
         {
-            _userRepository = userRepository;
+            _userApiClient = userApiClient;
             _identityService = identityService;
             _mapper = mapper;
         }
