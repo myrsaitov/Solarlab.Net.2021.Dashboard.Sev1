@@ -12,12 +12,12 @@ namespace Sev1.Accounts.Application.Implementations.Identity
         {
             var claimsPrincipal = _httpContextAccessor.HttpContext?.User;
             var currentUserId = _userManager.GetUserId(claimsPrincipal);
-            var role = await GetCurrentUserRole(cancellationToken);
+            var roles = await GetCurrentUserRoles(cancellationToken);
 
             return new GetAutorizedStatusResponse
             {
                 UserId = currentUserId,
-                Role = role
+                Roles = roles
             };
         }
     }

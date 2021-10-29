@@ -1,5 +1,6 @@
 ﻿using Sev1.Accounts.Application.Contracts.Identity;
 using Sev1.Accounts.Contracts;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -62,7 +63,7 @@ namespace Sev1.Accounts.Application.Interfaces.Identity
         /// <param name="userId">Id пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<string> GetUserRoleById(
+        Task<IEnumerable<string>> GetUserRolesById(
             string userId,
             CancellationToken cancellationToken);
 
@@ -71,37 +72,29 @@ namespace Sev1.Accounts.Application.Interfaces.Identity
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<string> GetCurrentUserRole(
+        Task<IEnumerable<string>> GetCurrentUserRoles(
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Изменить роль пользователя на юзер
+        /// Добавляет пользователя в указанную роль 
         /// </summary>
         /// <param name="userId">Id пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<string> SetUserRoleUser(
+        Task AddToRole(
             string userId,
+            string role,
             CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Изменить роль пользователя на модератор
+        /// Убирает пользователя из указанной роли
         /// </summary>
         /// <param name="userId">Id пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<string> AddToModeratorRole(
+        Task RemoveFromRole(
             string userId,
-            CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Изменить роль пользователя на админ
-        /// </summary>
-        /// <param name="userId">Id пользователя</param>
-        /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <returns></returns>
-        Task<string> AddToAdminRole(
-            string userId,
+            string role,
             CancellationToken cancellationToken = default);
 
         /*Task<bool> ConfirmEmail(

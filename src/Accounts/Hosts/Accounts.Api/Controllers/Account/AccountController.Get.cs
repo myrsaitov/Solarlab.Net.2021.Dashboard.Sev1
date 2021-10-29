@@ -44,6 +44,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="userId">Id пользователя</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPost("user")]
         public async Task<IActionResult> GetUserById(
             string userId,

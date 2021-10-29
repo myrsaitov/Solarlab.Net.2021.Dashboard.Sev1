@@ -41,7 +41,6 @@ namespace Sev1.Accounts.Api
 
             services.AddSwaggerModule();
 
-
             // Инжектируем Mapster
             //
             // AddSingleton():

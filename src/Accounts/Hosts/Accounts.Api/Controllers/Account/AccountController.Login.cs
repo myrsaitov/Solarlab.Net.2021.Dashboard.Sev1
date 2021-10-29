@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.Accounts.Application.Contracts.Identity;
+using Sev1.Accounts.Contracts;
 
 namespace Sev1.Accounts.Api.Controllers.Account
 {
@@ -14,6 +15,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="request">Логин и пароль (user/user; moderator/moderator; admin/admin)</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(
             UserLoginRequest request,
@@ -28,15 +30,6 @@ namespace Sev1.Accounts.Api.Controllers.Account
                 cancellationToken);
 
             return Ok(token);
-        }
-
-        public class UserLoginRequest
-        {
-            [Required]
-            public string UserName { get; set; }
-
-            [Required]
-            public string Password { get; set; }
         }
     }
 }

@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using System.Web;
 using Sev1.Accounts.Application.Contracts.Identity;
 using Sev1.Accounts.Application.Interfaces.Identity;
-using Sev1.Accounts.Domain;
 using Sev1.Accounts.Domain.Exceptions;
 
 namespace Sev1.Accounts.Application.Implementations.Identity

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Accounts.Application.Contracts.Identity;
+using Sev1.Accounts.Contracts;
 
 namespace Sev1.Accounts.Api.Controllers.Account
 {
@@ -14,62 +14,69 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("getcurrentuserrole")]
-        public async Task<IActionResult> GetCurrentUserRole(
+        [HttpPost("getcurrentuserroles")]
+        public async Task<IActionResult> GetCurrentUserRoles(
             CancellationToken cancellationToken)
         {
-            return Ok(await _identityService.GetCurrentUserRole(
+            return Ok(await _identityService.GetCurrentUserRoles(
                 cancellationToken));
         }
 
         /// <summary>
         /// Возвращает роль пользователя по Id
         /// </summary>
-        /// <param name="userId"></param>
+        /// <param name="userId">Id пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        [HttpPost("getuserrole")]
-        public async Task<IActionResult> GetUserRole(
+        [Authorize]
+        [HttpPost("getuserroles")]
+        public async Task<IActionResult> GetUserRoles(
             string userId,
             CancellationToken cancellationToken)
         {
-            return Ok(await _identityService.GetUserRoleById(
+            return Ok(await _identityService.GetUserRolesById(
                 userId,
                 cancellationToken));
         }
 
         /// <summary>
-        /// Сделать пользователя модератором
+        /// Добавляет указанного пользователя в указанную роль
         /// </summary>
-        /// <param name="userId">Id пользователя</param>
+        /// <param name="request">Id пользователя и роль</param>
         /// <param name="cancellationToken">Маркер отмены</param>
         /// <returns></returns>
-        [Authorize(Roles = "Moderator")]
-        [HttpPost("addtomoderatorsrole")]
-        public async Task<IActionResult> AddToModeratorsRole(
-            string userId,
+        [Authorize(Roles = "Admin, Moderator")]
+        [HttpPost("role-add")]
+        public async Task<IActionResult> AddToRole(
+            UserRoleRequest request,
             CancellationToken cancellationToken)
         {
-            return Ok(await _identityService.AddToModeratorRole(
-                userId,
-                cancellationToken));
+            await _identityService.AddToRole(
+                request.UserId,
+                request.Role,
+                cancellationToken);
+
+            return Ok();
         }
 
         /// <summary>
-        /// Сделать пользователя админом
+        /// Убирает указанного пользователя из указанной роли
         /// </summary>
-        /// <param name="userId">Id пользователя</param>
+        /// <param name="request">Id пользователя и роль</param>
         /// <param name="cancellationToken">Маркер отмены</param>
         /// <returns></returns>
-        [Authorize(Roles = "ADMIN")]
-        [HttpPost("addtoadmins")]
-        public async Task<IActionResult> AddToAdminRole(
-            string userId,
+        [Authorize(Roles = "Admin, Moderator")]
+        [HttpPost("role-remove")]
+        public async Task<IActionResult> RemoveFromRole(
+            UserRoleRequest request,
             CancellationToken cancellationToken)
         {
-            return Ok(await _identityService.AddToAdminRole(
-                userId,
-                cancellationToken));
+            await _identityService.RemoveFromRole(
+                request.UserId,
+                request.Role,
+                cancellationToken);
+
+            return Ok();
         }
     }
 }
