@@ -20,7 +20,7 @@ namespace Sev1.Accounts.MapsterMapper.MapProfiles
 
             config.NewConfig<Register.Request, CreateUser.Request>()
                 .Map(dest => dest.UserName, src => src.UserName)
-                .Map(dest => dest.Role, src => RoleConstants.UserRole);
+                .Map(dest => dest.Role, src => RoleConstants.User);
 
             return config;
         }

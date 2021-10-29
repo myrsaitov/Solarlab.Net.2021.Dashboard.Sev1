@@ -41,19 +41,19 @@ namespace Sev1.Accounts.DataAccess
                     new IdentityRole
                     {
                         Id = ADMIN_ROLE_ID,
-                        Name = RoleConstants.AdminRole,
+                        Name = RoleConstants.Admin.ToString(),
                         NormalizedName = "ADMIN"
                     },
                     new IdentityRole
                     {
                         Id = MODERATOR_ROLE_ID,
-                        Name = RoleConstants.ModeratorRole,
+                        Name = RoleConstants.Moderator.ToString(),
                         NormalizedName = "MODERATOR"
                     },
                     new IdentityRole
                     {
                         Id = USER_ROLE_ID,
-                        Name = RoleConstants.UserRole,
+                        Name = RoleConstants.User.ToString(),
                         NormalizedName = "USER"
                     }
                 });

@@ -90,7 +90,7 @@ namespace Sev1.Accounts.Application.Interfaces.Identity
         /// <param name="userId">Id пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<string> SetUserRoleModerator(
+        Task<string> AddToModeratorRole(
             string userId,
             CancellationToken cancellationToken = default);
 
@@ -100,7 +100,7 @@ namespace Sev1.Accounts.Application.Interfaces.Identity
         /// <param name="userId">Id пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<string> SetUserRoleAdmin(
+        Task<string> AddToAdminRole(
             string userId,
             CancellationToken cancellationToken = default);
 

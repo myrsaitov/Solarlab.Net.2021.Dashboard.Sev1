@@ -9,12 +9,19 @@ namespace Sev1.Accounts.Application.Implementations.Identity
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
 
-        public IdentityService(IHttpContextAccessor httpContextAccessor, UserManager<IdentityUser> userManager, IConfiguration configuration/*, IMailService mailService*/)
+        public IdentityService(
+            IHttpContextAccessor httpContextAccessor, 
+            UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager,
+            IConfiguration configuration
+            /*, IMailService mailService*/)
         {
             _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
+            _roleManager = roleManager;
             _configuration = configuration;
             //_mailService = mailService;
         }

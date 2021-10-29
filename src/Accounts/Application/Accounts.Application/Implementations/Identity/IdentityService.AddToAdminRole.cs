@@ -9,7 +9,7 @@ namespace Sev1.Accounts.Application.Implementations.Identity
 {
     public partial class IdentityService : IIdentityService
     {
-        public async Task<string> SetUserRoleAdmin(
+        public async Task<string> AddToAdminRole(
             string userId,
             CancellationToken cancellationToken = default)
         {
@@ -17,7 +17,7 @@ namespace Sev1.Accounts.Application.Implementations.Identity
             var currentUserRole = await GetCurrentUserRole();
 
             // Если его роль админ, то добавлем роль админа
-            if ((currentUserRole == RoleConstants.AdminRole.ToLower()))
+            if ((currentUserRole == RoleConstants.Admin.ToString().ToLower()))
             {
                 // Вычисляем пользователя по Id
                 var identityUser = await _userManager.FindByIdAsync(userId);
@@ -29,17 +29,17 @@ namespace Sev1.Accounts.Application.Implementations.Identity
                 // Удаляем роль модератора
                 await _userManager.RemoveFromRoleAsync(
                     identityUser,
-                    RoleConstants.ModeratorRole);
+                    RoleConstants.Moderator.ToString());
 
                 // Удаляем роль юзера
                 await _userManager.RemoveFromRoleAsync(
                     identityUser,
-                    RoleConstants.UserRole);
+                    RoleConstants.User.ToString());
 
                 // Ставим роль админа
                 await _userManager.AddToRoleAsync(
                     identityUser, 
-                    RoleConstants.AdminRole);
+                    RoleConstants.Admin.ToString());
             }
             else
             {

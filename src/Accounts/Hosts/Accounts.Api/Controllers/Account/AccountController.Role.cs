@@ -39,35 +39,18 @@ namespace Sev1.Accounts.Api.Controllers.Account
         }
 
         /// <summary>
-        /// Сделать пользователя юзером
-        /// </summary>
-        /// <param name="userId">Id пользователя</param>
-        /// <param name="cancellationToken">Маркер отмены</param>
-        /// <returns></returns>
-        [Authorize]
-        [HttpPost("setuserroleuser")]
-        public async Task<IActionResult> SetUserRoleUser(
-            string userId,
-            CancellationToken cancellationToken)
-        {
-            return Ok(await _identityService.SetUserRoleUser(
-                userId,
-                cancellationToken));
-        }
-
-        /// <summary>
         /// Сделать пользователя модератором
         /// </summary>
         /// <param name="userId">Id пользователя</param>
         /// <param name="cancellationToken">Маркер отмены</param>
         /// <returns></returns>
-        [Authorize]
-        [HttpPost("setuserrolemoderator")]
-        public async Task<IActionResult> SetUserRoleModerator(
+        [Authorize(Roles = "Moderator")]
+        [HttpPost("addtomoderatorsrole")]
+        public async Task<IActionResult> AddToModeratorsRole(
             string userId,
             CancellationToken cancellationToken)
         {
-            return Ok(await _identityService.SetUserRoleModerator(
+            return Ok(await _identityService.AddToModeratorRole(
                 userId,
                 cancellationToken));
         }
@@ -78,13 +61,13 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="userId">Id пользователя</param>
         /// <param name="cancellationToken">Маркер отмены</param>
         /// <returns></returns>
-        [Authorize]
-        [HttpPost("setuserroleadmin")]
-        public async Task<IActionResult> SetUserRoleAdmin(
+        [Authorize(Roles = "ADMIN")]
+        [HttpPost("addtoadmins")]
+        public async Task<IActionResult> AddToAdminRole(
             string userId,
             CancellationToken cancellationToken)
         {
-            return Ok(await _identityService.SetUserRoleAdmin(
+            return Ok(await _identityService.AddToAdminRole(
                 userId,
                 cancellationToken));
         }

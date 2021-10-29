@@ -18,8 +18,8 @@ namespace Sev1.Accounts.Application.Implementations.Identity
             var currentUserRole = await GetCurrentUserRole();
 
             // Если его роль модератор или админ, то добавлем роль админа
-            if ((currentUserRole == RoleConstants.ModeratorRole.ToLower()) ||
-                (currentUserRole == RoleConstants.AdminRole.ToLower()))
+            if ((currentUserRole == RoleConstants.Moderator.ToString().ToLower()) ||
+                (currentUserRole == RoleConstants.Admin.ToString().ToLower()))
             {
                 // Вычисляем пользователя по Id
                 var identityUser = await _userManager.FindByIdAsync(userId);
@@ -31,17 +31,17 @@ namespace Sev1.Accounts.Application.Implementations.Identity
                 // Удаляем роль админа
                 await _userManager.RemoveFromRoleAsync(
                     identityUser,
-                    RoleConstants.AdminRole);
+                    RoleConstants.Admin.ToString());
 
                 // Удаляем роль модератора
                 await _userManager.RemoveFromRoleAsync(
                     identityUser,
-                    RoleConstants.ModeratorRole);
+                    RoleConstants.Moderator.ToString());
 
                 // Ставим роль юзера
                 await _userManager.AddToRoleAsync(
                     identityUser, 
-                    RoleConstants.UserRole);
+                    RoleConstants.User.ToString());
             }
             else
             {

@@ -17,19 +17,25 @@ namespace Sev1.Accounts.Application.Implementations.Identity
                 throw new IdentityUserNotFoundException("Пользователь не найден");
             }
 
-            var isAdmin = await IsInRole(currentUserId, RoleConstants.AdminRole, cancellationToken);
-            if(isAdmin)
+            var isAdmin = await IsInRole(
+                currentUserId,
+                RoleConstants.Admin.ToString(),
+                cancellationToken);
+            if (isAdmin)
             {
-                return RoleConstants.AdminRole.ToString().ToLower();
+                return RoleConstants.Admin.ToString().ToLower();
             }
 
-            var isModerator = await IsInRole(currentUserId, RoleConstants.ModeratorRole, cancellationToken);
-            if(isModerator)
+            var isModerator = await IsInRole(
+                currentUserId,
+                RoleConstants.Moderator.ToString(),
+                cancellationToken);
+            if (isModerator)
             {
-                return RoleConstants.ModeratorRole.ToString().ToLower();
+                return RoleConstants.Moderator.ToString().ToLower();
             }
 
-            return RoleConstants.UserRole.ToString().ToLower();
+            return RoleConstants.User.ToString().ToLower();
         }
     }
 }
