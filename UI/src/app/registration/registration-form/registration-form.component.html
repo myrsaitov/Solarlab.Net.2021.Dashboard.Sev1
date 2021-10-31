@@ -50,8 +50,8 @@
                       [class.is-invalid]="telControl?.invalid && telControl?.touched"  
                       id="tel" 
                       formControlName="tel"
-                      placeholder="123-45-67-890">
-                  <mat-error *ngIf="emailControl?.hasError('required')">
+                      placeholder="1234567890">
+                  <mat-error *ngIf="telControl?.hasError('required')">
                   Ввод телефона <strong>обязателен</strong>
                 </mat-error>
                 <mat-icon matSuffix>mode_edit</mat-icon>

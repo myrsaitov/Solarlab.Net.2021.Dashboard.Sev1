@@ -1,4 +1,4 @@
-import { AuthService, UserLoginDTO } from './../services/auth.service'; 
+import { AuthService, IUserLoginDTO } from './../services/auth.service'; 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -17,8 +17,8 @@ export class LoginComponent {
    constructor(private _authService: AuthService, private router: Router) { }
 
   login(loginModel: any) {
-    const model: UserLoginDTO = {
-       email: loginModel.username,
+    const model: IUserLoginDTO = {
+      email: loginModel.email,  
        password: loginModel.password
     }
      this.router.navigateByUrl('/') 
@@ -26,6 +26,10 @@ export class LoginComponent {
  
      });
   }
+ 
   
 }
+
+
+
 

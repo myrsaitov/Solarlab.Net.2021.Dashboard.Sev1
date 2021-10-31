@@ -14,8 +14,8 @@ export class LoginFormComponent {
   hide = true;
     value = ''
   formGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)])
+    email: new FormControl('', [Validators.required/*, Validators.email*/]),
+    password: new FormControl('', [Validators.required/*, Validators.minLength(8)*/])
     
   })
 
@@ -36,6 +36,6 @@ export class LoginFormComponent {
       return;
     }
 
-    this.submitEvent.next(this.formGroup.value); // надо понять
+    this.submitEvent.next(this.formGroup.value); 
   }
 }

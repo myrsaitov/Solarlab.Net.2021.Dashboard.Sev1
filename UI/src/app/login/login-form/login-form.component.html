@@ -12,7 +12,7 @@
               formControlName="email"
               placeholder="Ex. pat@example.com">
               
-              <mat-error class="invalid-feedback" *ngIf="emailControl?.hasError('required') && emailControl?.hasError('email') ">
+              <mat-error class="invalid-feedback" *ngIf="emailControl?.hasError('required') && emailControl?.hasError('email')">
                 Введите корректный адрес
         </mat-error>
         <mat-error *ngIf="emailControl?.hasError('required')">
@@ -49,11 +49,11 @@
 </form>
 
 </div>
-<!-- <pre>
+ <!-- <pre>
   {{emailControl?.errors | json}}
   
   </pre>
 <pre>
 {{passwordControl?.errors | json}}
 
-</pre> -->
+</pre>  -->

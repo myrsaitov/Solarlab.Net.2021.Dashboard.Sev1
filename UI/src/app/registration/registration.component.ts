@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import { AuthService, UserRegisterDTO } from './../services/auth.service'; 
+import { AuthService, IUserRegisterDTO } from './../services/auth.service'; 
 
 @Component({
   selector: 'app-registration',
@@ -15,7 +15,7 @@ export class RegistrationComponent {
   ngOnInit(): void {
   }
 
-   registration(event: UserRegisterDTO) {
+   registration(event: IUserRegisterDTO) {
         this._authService.register(event).subscribe(res => {
           console.log(res);
         });
