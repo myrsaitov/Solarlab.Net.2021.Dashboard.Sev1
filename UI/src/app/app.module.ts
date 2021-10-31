@@ -25,7 +25,9 @@ import { LoginFormComponent } from './login/login-form/login-form.component';
 import { RegistrationFormComponent } from './registration/registration-form/registration-form.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
-
+import { CreateAnnouncementFormComponent } from './create-announcement/create-announcement-form/create-announcement-form.component';
+import { FileUploadModule } from 'ng2-file-upload';
+import { UploadComponent } from './create-announcement/create-announcement-form/upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { AdminComponent } from './admin/admin.component';
     FooterComponent,
     LoginFormComponent,
     RegistrationFormComponent,
-    AdminComponent
+    AdminComponent,
+    CreateAnnouncementFormComponent,
+      UploadComponent
     
   ],
   imports: [
@@ -53,6 +57,7 @@ import { AdminComponent } from './admin/admin.component';
     MatIconModule,
     ReactiveFormsModule,
     MatButtonModule,
+    FileUploadModule,
     MatCardModule    
   ],
   providers: [],

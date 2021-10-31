@@ -6,7 +6,7 @@ import {catchError, tap, switchMap} from 'rxjs/operators';
 export interface UserRegisterDTO {
   login: string;
   email: string;
-  tel: number;
+  tel: string;
   password: string;
   repeatPassword: string;
 }
@@ -14,6 +14,13 @@ export interface UserRegisterDTO {
 export interface UserLoginDTO{
   email: string;
   password: string;
+}
+
+export interface АnnouncementDTO{
+  nameProduct: string;
+  priceProduct: string;
+  descriptionProduct: string;
+  addressProduct: string;
 }
 
 @Injectable({
@@ -50,5 +57,9 @@ export class AuthService {
 
   register(model: UserRegisterDTO) { //регистрация нового пользователя
     return this._http.post(`${this._apiUrl}/register`, model); //отправить в бек данные с регистрацией
+  }
+
+  create(model: АnnouncementDTO) { //добавление нового объявления
+    return this._http.post(`${this._apiUrl}/create`, model); //отправить в бек данные с обьявлением
   }
 }

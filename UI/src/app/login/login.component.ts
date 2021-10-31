@@ -18,7 +18,7 @@ export class LoginComponent {
 
   login(loginModel: any) {
     const model: UserLoginDTO = {
-       email: loginModel.username,
+       email: loginModel.email,  
        password: loginModel.password
     }
      this.router.navigateByUrl('/') 
@@ -26,6 +26,10 @@ export class LoginComponent {
  
      });
   }
+ 
   
 }
+
+
+
 

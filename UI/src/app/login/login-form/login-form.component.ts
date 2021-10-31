@@ -36,6 +36,6 @@ export class LoginFormComponent {
       return;
     }
 
-    this.submitEvent.next(this.formGroup.value); // надо понять
+    this.submitEvent.next(this.formGroup.value); 
   }
 }

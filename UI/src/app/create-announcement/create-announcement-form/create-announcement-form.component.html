@@ -1,0 +1,92 @@
+<div class="create_announcement form " >
+   <form action="#" method="post" class="form_announcement" enctype="multipart/form-data">
+     <fieldset>
+       <legend>Добавить объявление </legend>
+ 
+<div>
+      <mat-form-field appearance="outline">
+         <mat-label for="nameProduct" >Наименование товара</mat-label>
+               <input  type="text" 
+                 matInput
+                 class="form-control" 
+                 [class.is-invalid]="nameProductControl?.invalid && nameProductControl?.touched"  
+                 id="nameProduct" 
+                 formControlName="nameProduct">
+                 <mat-error *ngIf="nameProductControl?.hasError('required')">
+                  Введите наименование <strong>товара</strong>
+                </mat-error>
+        </mat-form-field>  
+      </div>
+      <div>
+        <mat-form-field appearance="outline" floatLabel="always">
+          <mat-label for="priceProduct" >Цена товара</mat-label>
+                <input  type="number" 
+                min="0"
+                  matInput
+                  class="form-control" 
+                  [class.is-invalid]="priceProductControl?.invalid && priceProductControl?.touched"  
+                  id="priceProduct" 
+                  formControlName="priceProduct">
+                  <span matPrefix></span>
+                  <span matSuffix> &nbsp;руб.</span>
+                  <mat-error *ngIf="priceProductControl?.hasError('required')">
+                   Введите цену <strong>товара</strong>
+                 </mat-error>
+         </mat-form-field>  
+        </div>
+
+        <div>
+          <mat-form-field appearance="outline">
+             <mat-label for="descriptionProduct" >Описание товара</mat-label>
+                   <input  type="text" 
+                     matInput
+                     class="form-control" 
+                     [class.is-invalid]="descriptionProductControl?.invalid && descriptionProductControl?.touched"  
+                     id="descriptionProduct" 
+                     formControlName="descriptionProduct">
+                     <mat-error *ngIf="descriptionProductControl?.hasError('required')">
+                      Введите описание <strong>товара</strong>
+                    </mat-error>
+            </mat-form-field>  
+          </div>
+          <div>
+            <mat-form-field appearance="outline">
+               <mat-label for="addressProduct" >Адрес</mat-label>
+                     <input  type="text" 
+                       matInput
+                       class="form-control" 
+                       [class.is-invalid]="addressProductControl?.invalid && addressProductControl?.touched"  
+                       id="addressProduct" 
+                       formControlName="addressProduct">
+                       <mat-error *ngIf="addressProductControl?.hasError('required')">
+                        Введите адрес <strong>товара</strong>
+                      </mat-error>
+              </mat-form-field>  
+            </div>
+<app-upload></app-upload>
+
+
+            
+<!-- <div>
+            <input ng2FileSelect type="file" accept="" [uploader]="uploader"/>
+          </div> -->
+            <input hidden="true" type="file" id="file-input">
+            <!-- <label for="file-input">
+              <a md-raised-button class="btn_file"><i class="material-icons">file_upload</i> 
+                Загрузить изображение товара
+              </a>
+            </label> -->
+
+            <div >
+              <button type="submit" mat-raised-button color="primary" class="button_announcement" >Добавить новое обьявление</button>
+              
+              <a routerLink="/">
+                <button mat-raised-button color="primary" class="button_announcement">Отменить</button>
+               </a>
+              
+              </div>
+
+       
+     </fieldset>
+   </form>
+ </div>
