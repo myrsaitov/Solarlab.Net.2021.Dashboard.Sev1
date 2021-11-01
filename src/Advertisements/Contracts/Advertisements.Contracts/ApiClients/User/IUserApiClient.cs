@@ -12,7 +12,7 @@ namespace Sev1.Advertisements.Contracts.ApiClients.User
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<GetAutorizedStatusResponse> GetAutorizedStatus(
+        Task<ValidateTokenResponse> ValidateToken(
             string accessToken,
             CancellationToken cancellationToken);
     }

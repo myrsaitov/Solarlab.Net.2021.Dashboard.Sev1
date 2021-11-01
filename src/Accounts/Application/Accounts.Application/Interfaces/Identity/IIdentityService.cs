@@ -22,7 +22,7 @@ namespace Sev1.Accounts.Application.Interfaces.Identity
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<GetAutorizedStatusResponse> GetAutorizedStatus(
+        Task<ValidateTokenResponse> ValidateToken(
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -56,6 +56,8 @@ namespace Sev1.Accounts.Application.Interfaces.Identity
         Task<CreateToken.Response> CreateToken(
             CreateToken.Request request, 
             CancellationToken cancellationToken);
+
+
 
         /// <summary>
         /// Возвращает роль пользователя по Id

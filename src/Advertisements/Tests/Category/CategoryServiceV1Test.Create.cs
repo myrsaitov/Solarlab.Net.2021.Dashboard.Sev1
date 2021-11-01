@@ -29,13 +29,13 @@ namespace Sev1.Advertisements.Tests.Category
             // Arrange
 
             // Чтобы пройти проверку на авторизацию
-            var autorizedStatus = new GetAutorizedStatusResponse()
+            var autorizedStatus = new ValidateTokenResponse()
             {
                 UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
                 Role = "admin"
             };
             _userApiClientMock
-                .Setup(_ => _.GetAutorizedStatus(
+                .Setup(_ => _.ValidateToken(
                 It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
                 It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(autorizedStatus) // в результате выполнения возвращает объект
@@ -79,13 +79,13 @@ namespace Sev1.Advertisements.Tests.Category
             // Arrange
 
             // Чтобы пройти проверку на авторизацию
-            var autorizedStatus = new GetAutorizedStatusResponse()
+            var autorizedStatus = new ValidateTokenResponse()
             {
                 UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
                 Role = "moderator"
             };
             _userApiClientMock
-                .Setup(_ => _.GetAutorizedStatus(
+                .Setup(_ => _.ValidateToken(
                 It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
                 It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(autorizedStatus) // в результате выполнения возвращает объект
@@ -129,13 +129,13 @@ namespace Sev1.Advertisements.Tests.Category
             // Arrange
 
             // Чтобы пройти проверку на авторизацию
-            var autorizedStatus = new GetAutorizedStatusResponse()
+            var autorizedStatus = new ValidateTokenResponse()
             {
                 UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
                 Role = "user"
             };
             _userApiClientMock
-                .Setup(_ => _.GetAutorizedStatus(
+                .Setup(_ => _.ValidateToken(
                 It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
                 It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(autorizedStatus) // в результате выполнения возвращает объект
@@ -177,13 +177,13 @@ namespace Sev1.Advertisements.Tests.Category
 
             // Чтобы пройти проверку на авторизацию
             accessToken = "Token";
-            var autorizedStatus = new GetAutorizedStatusResponse()
+            var autorizedStatus = new ValidateTokenResponse()
             {
                 UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
                 Role = "user"
             };
             _userApiClientMock
-                .Setup(_ => _.GetAutorizedStatus(
+                .Setup(_ => _.ValidateToken(
                 It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
                 It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(autorizedStatus) // в результате выполнения возвращает объект

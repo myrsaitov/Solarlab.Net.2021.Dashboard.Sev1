@@ -14,7 +14,7 @@ namespace Sev1.Advertisements.Contracts.ApiClients.User
         {
         }
 
-        public async Task<GetAutorizedStatusResponse> GetAutorizedStatus(
+        public async Task<ValidateTokenResponse> ValidateToken(
             string accessToken,
             CancellationToken cancellationToken)
         {
@@ -24,7 +24,7 @@ namespace Sev1.Advertisements.Contracts.ApiClients.User
             }
 
             string param = "";
-            string url = "https://localhost:44377/api/v1/accounts/getautorizedstatus";
+            string url = "https://localhost:44377/api/v1/accounts/validate-token";
             using (var client = new WebClient())
             {
                 client.Headers.Add("content-type", "application/json");
@@ -34,7 +34,7 @@ namespace Sev1.Advertisements.Contracts.ApiClients.User
                     var data = await client.UploadDataTaskAsync(url, "POST", Encoding.UTF8.GetBytes(param));
                     var jsonString = Encoding.ASCII.GetString(data);
 
-                    GetAutorizedStatusResponse res = JsonConvert.DeserializeObject<GetAutorizedStatusResponse>(jsonString);
+                    ValidateTokenResponse res = JsonConvert.DeserializeObject<ValidateTokenResponse>(jsonString);
 
                     return res;
                 }

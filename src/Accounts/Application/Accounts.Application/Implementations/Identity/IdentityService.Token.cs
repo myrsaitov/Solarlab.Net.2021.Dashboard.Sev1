@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using Sev1.Accounts.Application.Contracts.Identity;
 using Sev1.Accounts.Application.Exceptions.Identity;
 using Sev1.Accounts.Application.Interfaces.Identity;
+using Sev1.Accounts.Contracts;
 using Sev1.Accounts.Domain.Exceptions;
 
 namespace Sev1.Accounts.Application.Implementations.Identity
@@ -75,6 +76,20 @@ namespace Sev1.Accounts.Application.Implementations.Identity
             return new CreateToken.Response
             {
                 Token = new JwtSecurityTokenHandler().WriteToken(token)
+            };
+        }
+
+        public async Task<ValidateTokenResponse> ValidateToken(
+                 CancellationToken cancellationToken = default)
+        {
+            var claimsPrincipal = _httpContextAccessor.HttpContext?.User;
+            var currentUserId = _userManager.GetUserId(claimsPrincipal);
+            var roles = await GetCurrentUserRoles(cancellationToken);
+
+            return new ValidateTokenResponse
+            {
+                UserId = currentUserId,
+                Roles = roles
             };
         }
     }

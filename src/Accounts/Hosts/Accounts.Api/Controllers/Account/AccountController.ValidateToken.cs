@@ -8,16 +8,17 @@ namespace Sev1.Accounts.Api.Controllers.Account
     public partial class AccountController
     {
         /// <summary>
-        /// Возвращает Id и роль текущего авторизированного пользователя
+        /// Возвращает Id и роль текущего 
+        /// авторизированного пользователя
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("getautorizedstatus")]
-        public async Task<IActionResult> GetAutorizedStatus(
+        [HttpPost("validate-token")]
+        public async Task<IActionResult> ValidateToken(
             CancellationToken cancellationToken)
         {
-            return Ok(await _identityService.GetAutorizedStatus(
+            return Ok(await _identityService.ValidateToken(
                 cancellationToken));
         }
     }
