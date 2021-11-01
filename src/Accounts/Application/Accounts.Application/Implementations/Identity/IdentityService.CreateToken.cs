@@ -16,40 +16,62 @@ namespace Sev1.Accounts.Application.Implementations.Identity
 {
     public partial class IdentityService : IIdentityService
     {
-        public async Task<CreateToken.Response> CreateToken(CreateToken.Request request, CancellationToken cancellationToken = default)
+        public async Task<CreateToken.Response> CreateToken(
+            CreateToken.Request request, 
+            CancellationToken cancellationToken = default)
         {
-            var identityUser = await _userManager.FindByNameAsync(request.Username);
+            // Проверка, существует ли пользователь с таким именем
+            var identityUser = await _userManager.FindByNameAsync(
+                request.Username);
             if (identityUser == null)
             {
                 throw new IdentityUserNotFoundException("Пользователь не найден");
             }
 
-            var passwordCheckResult = await _userManager.CheckPasswordAsync(identityUser, request.Password);
+            // Проверка пароля
+            var passwordCheckResult = await _userManager.CheckPasswordAsync(
+                identityUser, 
+                request.Password);
             if (!passwordCheckResult)
             {
                 throw new NoRightsException("Неправильный логин или пароль");
             }
 
+            // Создаем клайм
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, request.Username),
-                new Claim(ClaimTypes.NameIdentifier, identityUser.Id)
+                new Claim(
+                    ClaimTypes.Name,
+                    request.Username),
+
+                new Claim(
+                    ClaimTypes.NameIdentifier,
+                    identityUser.Id)
             };
 
+            // Узнаем роли пользователя и добавляем в клаймы
             var userRoles = await _userManager.GetRolesAsync(identityUser);
-            claims.AddRange(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
+            claims.AddRange(
+                userRoles.Select(
+                    role => new Claim(
+                        ClaimTypes.Role,
+                        role)));
 
+            // Создаем объект с параметрами для генерации токена
             var token = new JwtSecurityToken
             (
                 claims: claims,
-                expires: DateTime.UtcNow.AddDays(60),
-                notBefore: DateTime.UtcNow,
+                expires: DateTime.UtcNow.AddDays(60), // Продолжительность жизни токена
+                notBefore: DateTime.UtcNow,           // Дата и время создания токена
                 signingCredentials: new SigningCredentials(
-                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Token:Key"])),
-                    SecurityAlgorithms.HmacSha256
+                    new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(
+                            _configuration["Token:Key"])), // Ключ из appsettings.json
+                    SecurityAlgorithms.HmacSha256          // Выбираем алгоритм шифрования
                 )
             );
 
+            // Генерируем токен
             return new CreateToken.Response
             {
                 Token = new JwtSecurityTokenHandler().WriteToken(token)
