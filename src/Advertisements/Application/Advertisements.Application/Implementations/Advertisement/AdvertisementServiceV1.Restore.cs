@@ -41,8 +41,9 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             }
 
             // Пользователь может восстановить объявление:
-            //  - если он создал это объявление.
-            var isOwnerId = (advertisement.OwnerId != _userProvider.GetUserId());
+            //  - если он создал это объявление;
+            //  - модератор и администратор не могут это сделать;
+            var isOwnerId = (advertisement.OwnerId == _userProvider.GetUserId());
             if (!isOwnerId)
             {
                 throw new NoRightsException("Вы не создали это объявление!");

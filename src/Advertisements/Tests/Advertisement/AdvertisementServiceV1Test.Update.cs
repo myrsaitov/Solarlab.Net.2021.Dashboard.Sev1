@@ -31,6 +31,12 @@ namespace Sev1.Advertisements.Tests.Advertisement
             // Чтобы пройти валидацию, правим tags
             model.TagBodies = new string[3] { "111", "222", "333" };
 
+            // "Возвращаем" польователя, который "восстанавливает" это объявление
+            _userProviderMock
+                .Setup(_ => _.GetUserId())
+                .Returns("24cb4b25-c819-45ab-8755-d95120fbb868") // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
             // Объект категории, который "возвращается" из базы
             var category = new Domain.Category();
             _categoryRepositoryMock
@@ -106,12 +112,49 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
-        [InlineAutoData(null)] //accessToken = null, а остальное автозаполняется
+        [AutoData] //accessToken = null, а остальное автозаполняется
         public async Task Update_Throws_Exception_When_CurrentUserId_Is_Null(
             AdvertisementUpdateDto model,
             CancellationToken cancellationToken)
         {
             {
+                // Arrange
+
+                // Чтобы пройти валидацию, правим tags
+                model.TagBodies = new string[3] { "111", "222", "333" };
+
+                // Объект категории, который "возвращается" из базы
+                var category = new Domain.Category();
+                _categoryRepositoryMock
+                    .Setup(_ => _.FindById(
+                        It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                        It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                    .ReturnsAsync(category) // в результате выполнения возвращает объект
+                    .Callback(( // Используем передаваемые в мок аргументы для имитации логики
+                        int _categoryId,
+                        CancellationToken ct) => category.Id = _categoryId)
+                    .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+                // Объект объявления, который "возвращается" из базы
+                var advertisement = new Domain.Advertisement()
+                {
+                    OwnerId = "24cb4b25-c819-45ab-8755-d95120fbb868"
+                };
+                _advertisementRepositoryMock
+                    .Setup(_ => _.FindByIdWithCategoriesAndTags(
+                        It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                        It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
+                    .ReturnsAsync(advertisement) // в результате выполнения возвращает объект
+                    .Callback(( // Используем передаваемые в мок аргументы для имитации логики
+                        int _advertisementId,
+                        CancellationToken ct) => advertisement.Id = _advertisementId)
+                    .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+                // "Возвращаем" польователя, который "восстанавливает" это объявление
+                _userProviderMock
+                    .Setup(_ => _.GetUserId())
+                    .Returns(""); // возвращает в результате выполнения
+ 
                 // Act
                 await Assert.ThrowsAsync<NoRightsException>(
                     async () => await _advertisementServiceV1.Update(
@@ -132,8 +175,6 @@ namespace Sev1.Advertisements.Tests.Advertisement
             AdvertisementUpdateDto model,
             CancellationToken cancellationToken)
         {
-            // Arrange
-
             // Act
             await Assert.ThrowsAsync<AdvertisementUpdateDtoNotValidException>(
                 async () => await _advertisementServiceV1.Update(
@@ -191,6 +232,12 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // Чтобы пройти валидацию, правим tags
             model.TagBodies = new string[3] { "111", "222", "333" };
+
+            // "Возвращаем" польователя, который "восстанавливает" это объявление
+            _userProviderMock
+                .Setup(_ => _.GetUserId())
+                .Returns("24cb4b25-c819-45ab-8755-d95120fbb868") // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Чтобы вернуть пустую категорию
             Domain.Category category = null;

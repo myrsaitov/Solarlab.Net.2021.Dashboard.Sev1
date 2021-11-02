@@ -24,6 +24,24 @@ namespace Sev1.Advertisements.Tests.Advertisement
         {
             // Arrange
 
+            // "Проверка" роли администратора (false)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Admin"))))
+                .Returns(false) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // "Проверка" роли модератора (false)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Moderator"))))
+                .Returns(false) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // Возвращаем польователя, который "удаляет" это объявление
+            _userProviderMock
+                .Setup(_ => _.GetUserId())
+                .Returns("24cb4b25-c819-45ab-8755-d95120fbb868") // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
             // "Достаем" объявление из базы
             var advertisement = new Domain.Advertisement()
             {
@@ -72,6 +90,24 @@ namespace Sev1.Advertisements.Tests.Advertisement
         {
             // Arrange
 
+            // "Проверка" роли администратора (false)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Admin"))))
+                .Returns(false) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // "Проверка" роли модератора (true)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Moderator"))))
+                .Returns(true) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // Возвращаем польователя, который "удаляет" это объявление
+            _userProviderMock
+                .Setup(_ => _.GetUserId())
+                .Returns("dd1de902-f2e1-4248-8481-b3b0e3d76837") // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
             // "Достаем" объявление из базы
             var advertisement = new Domain.Advertisement()
             {
@@ -119,6 +155,24 @@ namespace Sev1.Advertisements.Tests.Advertisement
             CancellationToken cancellationToken)
         {
             // Arrange
+
+            // "Проверка" роли администратора (true)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Admin"))))
+                .Returns(true) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // "Проверка" роли модератора (false)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Moderator"))))
+                .Returns(false) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // Возвращаем польователя, который "удаляет" это объявление
+            _userProviderMock
+                .Setup(_ => _.GetUserId())
+                .Returns("dd1de902-f2e1-4248-8481-b3b0e3d76837") // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // "Достаем" объявление из базы
             var advertisement = new Domain.Advertisement()
@@ -169,11 +223,31 @@ namespace Sev1.Advertisements.Tests.Advertisement
         {
             // Arrange
 
+            // Arrange
+
+            // "Проверка" роли администратора (false)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Admin"))))
+                .Returns(false) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // "Проверка" роли модератора (false)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Moderator"))))
+                .Returns(false) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // Возвращаем польователя, который "удаляет" это объявление
+            _userProviderMock
+                .Setup(_ => _.GetUserId())
+                .Returns("dd1de902-f2e1-4248-8481-b3b0e3d76837") // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+            
+            // "Возвращаем" объявление по Id
             var advertisement = new Domain.Advertisement()
             {
                 OwnerId = "24cb4b25-c819-45ab-8755-d95120fbb868"
             };
-
             _advertisementRepositoryMock
                 .Setup(_ => _.FindByIdWithTagsInclude(
                     It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
@@ -183,6 +257,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                     int _advertisementId,
                     CancellationToken ct) => advertisement.Id = _advertisementId);
 
+            // "Сохраняем" объявление
             _advertisementRepositoryMock
                 .Setup(_ => _.Save(
                     It.IsAny<Domain.Advertisement>(), // проверяет, что параметр имеет указанный тип <>
@@ -234,13 +309,11 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
-        [InlineAutoData(null, null, null)]
+        [InlineAutoData(null, null)]
         public async Task Delete_Throws_Exception_When_Id_Is_Not_Valid(
             int id,
             CancellationToken cancellationToken)
         {
-            // Arrange
-
             // Act
             await Assert.ThrowsAsync<AdvertisementIdNotValidException>(
                 async () => await _advertisementServiceV1.Delete(

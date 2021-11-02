@@ -45,7 +45,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
 
             // Обычный пользователь может обновлять только свои собственные объявления
             // Модератор и админ не могут редактировать, только удалять
-            var isOwnerId = (advertisement.OwnerId != _userProvider.GetUserId());
+            var isOwnerId = (advertisement.OwnerId == _userProvider.GetUserId());
             if (!isOwnerId)
             {
                 throw new NoRightsException("Вы не создали это объявление!");

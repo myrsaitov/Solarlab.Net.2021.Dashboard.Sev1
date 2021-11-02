@@ -33,8 +33,15 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 throw new AdvertisementCreateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
+            // Возвращаем Id пользователя
+            var userId = _userProvider.GetUserId();
+            if (string.IsNullOrWhiteSpace(userId))
+            {
+                throw new NoRightsException("Нет создателя объявления!");
+            }
+
             // Дополняем модель - Id пользователя, который создал объявление
-            model.OwnerId = _userProvider.GetUserId();
+            model.OwnerId = userId;
 
             // Проверка категории на существование
             var category = await _categoryRepository.FindById(

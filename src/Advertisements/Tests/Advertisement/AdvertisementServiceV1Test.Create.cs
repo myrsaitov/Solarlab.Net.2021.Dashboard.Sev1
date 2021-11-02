@@ -31,6 +31,12 @@ namespace Sev1.Advertisements.Tests.Advertisement
             // Чтобы пройти валидацию, правим tags
             model.TagBodies = new string[3] { "111", "222", "333" };
 
+            // Возвращаем польователя, который "создает" это объявление
+            _userProviderMock
+                .Setup(_ => _.GetUserId())
+                .Returns("82d7adfc-5a05-475d-a56d-4d9540a6b7d1") // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
             // Объект категории, который "возвращается" из базы
             var category = new Domain.Category();
             _categoryRepositoryMock
@@ -92,12 +98,22 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
-        [InlineAutoData(null)] //accessToken = null, а остальное автозаполняется
+        [AutoData] //accessToken = null, а остальное автозаполняется
         public async Task Create_Throws_Exception_When_CurrentUserId_Is_Null(
             AdvertisementCreateDto model,
             CancellationToken cancellationToken)
         {
             {
+                // Arrange
+
+                // Чтобы пройти валидацию, правим tags
+                model.TagBodies = new string[3] { "111", "222", "333" };
+
+                // Возвращаем польователя, который "создает" это объявление
+                _userProviderMock
+                    .Setup(_ => _.GetUserId())
+                    .Returns(""); // возвращает в результате выполнения
+
                 // Act
                 await Assert.ThrowsAsync<NoRightsException>(
                     async () => await _advertisementServiceV1.Create(
@@ -122,6 +138,12 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // Чтобы пройти валидацию, правим tags
             model.TagBodies = new string[3] { "111", "222", "333" };
+
+            // Возвращаем польователя, который "создает" это объявление
+            _userProviderMock
+                .Setup(_ => _.GetUserId())
+                .Returns("82d7adfc-5a05-475d-a56d-4d9540a6b7d1") // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Чтобы вернуть пустую категорию
             Domain.Category category = null;
