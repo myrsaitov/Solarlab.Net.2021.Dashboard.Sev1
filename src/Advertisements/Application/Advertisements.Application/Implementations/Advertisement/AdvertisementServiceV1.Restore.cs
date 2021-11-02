@@ -14,23 +14,13 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
         /// <summary>
         /// Восстановить объявление
         /// </summary>
-        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
-        /// <param name="id"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="id">Id объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task Restore(
-            string accessToken,
             int id,
             CancellationToken cancellationToken)
         {
-            // Проверяем, авторизирован ли пользователь, получаем его Id и Role
-            var autorizedStatus = await _userApiClient.ValidateToken(
-                accessToken);
-            if (autorizedStatus is null)
-            {
-                throw new NoRightsException("Ошибка авторизации!");
-            }
-            
             // Fluent Validation
             var validator = new AdvertisementIdValidator();
             var result = await validator.ValidateAsync(id);
@@ -51,16 +41,12 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             }
 
             // Пользователь может восстановить объявление:
-            //  - если он администратор;
-            //  - если он модератор;
             //  - если он создал это объявление.
-            /*var isAdmin = (autorizedStatus.Role == "admin");
-            var isModerator = (autorizedStatus.Role == "moderator");
-            var isOwnerId = (advertisement.OwnerId == autorizedStatus.UserId);
-            if (!(isAdmin || isModerator || isOwnerId))
+            var isOwnerId = (advertisement.OwnerId != _userProvider.GetUserId());
+            if (!isOwnerId)
             {
-                throw new NoRightsException("Не хватает прав восстановить объявление!");
-            }*/
+                throw new NoRightsException("Вы не создали это объявление!");
+            }
 
             advertisement.IsDeleted = false;
             advertisement.UpdatedAt = DateTime.UtcNow;

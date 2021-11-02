@@ -7,7 +7,6 @@ using Sev1.Advertisements.Application.Interfaces.Category;
 using Sev1.Advertisements.Application.Validators.Advertisement;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
 using System.Linq;
-using Sev1.Advertisements.Domain.Exceptions;
 
 namespace Sev1.Advertisements.Application.Implementations.Category
 {
@@ -16,23 +15,13 @@ namespace Sev1.Advertisements.Application.Implementations.Category
         /// <summary>
         /// Создать категорию (только админ или модератор)
         /// </summary>
-        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="model">DTO</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task<int> Create(
-            string accessToken,
             CategoryCreateDto model, 
             CancellationToken cancellationToken)
         {
-            // Проверяем, авторизирован ли пользователь, получаем его Id и Role
-            var autorizedStatus = await _userApiClient.ValidateToken(
-                accessToken);
-            if (autorizedStatus is null)
-            {
-                throw new NoRightsException("Ошибка авторизации!");
-            }
-
             // Fluent Validation
             var validator = new CategoryCreateDtoValidator();
             var result = await validator.ValidateAsync(model);

@@ -23,7 +23,6 @@ namespace Sev1.Advertisements.Api.Controllers.Category
             CancellationToken cancellationToken)
         {
             var response = await _categoryService.Create(
-                HttpContext.Request.Headers["Authorization"],
                 model, 
                 cancellationToken);
 

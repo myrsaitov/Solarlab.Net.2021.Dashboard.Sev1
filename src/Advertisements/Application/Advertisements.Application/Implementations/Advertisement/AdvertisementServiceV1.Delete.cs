@@ -14,23 +14,13 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
         /// <summary>
         /// Удаляет объявление
         /// </summary>
-        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task Delete(
-            string accessToken,
             int id,
             CancellationToken cancellationToken)
         {
-            // Проверяем, авторизирован ли пользователь, получаем его Id и Role
-            var autorizedStatus = await _userApiClient.ValidateToken(
-                accessToken);
-            if (autorizedStatus is null)
-            {
-                throw new NoRightsException("Ошибка авторизации!");
-            }
-            
             // Fluent Validation
             var validator = new AdvertisementIdValidator();
             var result = await validator.ValidateAsync(id);
@@ -54,13 +44,13 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             //  - если он администратор;
             //  - если он модератор;
             //  - если он создал это объявление.
-            /*var isAdmin = (autorizedStatus.Role == "admin");
-            var isModerator = (autorizedStatus.Role == "moderator");
-            var isOwnerId = (advertisement.OwnerId == autorizedStatus.UserId);
+            var isAdmin = _userProvider.IsInRole("Admin");
+            var isModerator = _userProvider.IsInRole("Moderator");
+            var isOwnerId = (advertisement.OwnerId == _userProvider.GetUserId());
             if(!(isAdmin||isModerator||isOwnerId))
             {
                 throw new NoRightsException("Не хватает прав удалить объявление!");
-            }*/
+            }
 
             // Объявленние не удаляется, а лишь помечается удаленным
             advertisement.IsDeleted = true;

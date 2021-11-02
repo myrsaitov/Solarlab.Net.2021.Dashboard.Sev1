@@ -65,7 +65,6 @@ namespace Sev1.Advertisements.Tests.Category
 
             // Act
             var response = await _categoryServiceV1.Update(
-                accessToken,
                 model,
                 cancellationToken);
 
@@ -127,7 +126,6 @@ namespace Sev1.Advertisements.Tests.Category
 
             // Act
             var response = await _categoryServiceV1.Update(
-                accessToken,
                 model,
                 cancellationToken);
 
@@ -190,7 +188,6 @@ namespace Sev1.Advertisements.Tests.Category
             // Act
             await Assert.ThrowsAsync<NoRightsException>(
                 async () => await _categoryServiceV1.Update(
-                    accessToken,
                     model,
                     cancellationToken));
         }
@@ -228,7 +225,6 @@ namespace Sev1.Advertisements.Tests.Category
             // Act
             await Assert.ThrowsAsync<CategoryUpdateDtoNotValidException>(
                 async () => await _categoryServiceV1.Update(
-                    accessToken,
                     model,
                     cancellationToken));
         }

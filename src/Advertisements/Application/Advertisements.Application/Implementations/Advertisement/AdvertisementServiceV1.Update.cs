@@ -15,19 +15,17 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {
+        /// <summary>
+        /// Обновляет объявление
+        /// </summary>
+        /// <param name="model">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task<int> Update(
-            string accessToken,
             AdvertisementUpdateDto model,
             CancellationToken cancellationToken)
         {
-            // Проверяем, авторизирован ли пользователь, получаем его Id и Role
-            var autorizedStatus = await _userApiClient.ValidateToken(
-                accessToken);
-            if (autorizedStatus is null)
-            {
-                throw new NoRightsException("Ошибка авторизации!");
-            }
-            
+          
             // Fluent Validation
             var validator = new AdvertisementUpdateDtoValidator();
             var result = await validator.ValidateAsync(model);
@@ -46,10 +44,11 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             }
 
             // Обычный пользователь может обновлять только свои собственные объявления
-            // TODO Может ли модератор или админ редактировать чужие объявления?
-            if (advertisement.OwnerId != autorizedStatus.UserId)
+            // Модератор и админ не могут редактировать, только удалять
+            var isOwnerId = (advertisement.OwnerId != _userProvider.GetUserId());
+            if (!isOwnerId)
             {
-                throw new NoRightsException("Не хватает прав редактировать объявление!");
+                throw new NoRightsException("Вы не создали это объявление!");
             }
 
             // TODO Mapper

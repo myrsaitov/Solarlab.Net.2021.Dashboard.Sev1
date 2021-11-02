@@ -15,12 +15,10 @@ namespace Sev1.Advertisements.Application.Implementations.Category
         /// <summary>
         /// Удалить категорию (только админ или модератор)
         /// </summary>
-        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="id">Id категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task Delete(
-            string accessToken,
             int id,
             CancellationToken cancellationToken)
         {
@@ -28,14 +26,6 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             // что будет с объявлениями у удаленной категории?
             // может их тоже удалить?
 
-            // Проверяем, авторизирован ли пользователь, получаем его Id и Role
-            var autorizedStatus = await _userApiClient.ValidateToken(
-                accessToken);
-            if (autorizedStatus is null)
-            {
-                throw new NoRightsException("Ошибка авторизации!");
-            }
-            
             // Fluent Validation
             var validator = new CategoryIdValidator();
             var result = await validator.ValidateAsync(id);
@@ -56,12 +46,12 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             // Пользователь может удалить категорию:
             //  - если он администратор;
             //  - если он модератор;
-            /*var isAdmin = (autorizedStatus.Role == "admin");
-            var isModerator = (autorizedStatus.Role == "moderator");
+            var isAdmin = _userProvider.IsInRole("Admin");
+            var isModerator = _userProvider.IsInRole("Moderator");
             if (!(isAdmin || isModerator))
             {
                 throw new NoRightsException("Удалить категорию может только модератор или админ!");
-            }*/
+            }
 
             // Категория не удаляется, а лишь помечается удаленной
             category.IsDeleted = true;

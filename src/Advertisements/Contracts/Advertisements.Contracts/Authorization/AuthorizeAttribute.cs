@@ -95,7 +95,6 @@ namespace Sev1.Advertisements.Contracts.Authorization
                         new { message = "Unauthorized" })
                 { StatusCode = StatusCodes.Status401Unauthorized };
             }
-
         }
     }
 }

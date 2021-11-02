@@ -22,6 +22,7 @@ using System.IO;
 using System;
 using Sev1.Advertisements.Contracts.ApiClients.User;
 using Sev1.Advertisements.Contracts.Authorization;
+using Advertisements.Contracts.UserProvider;
 
 namespace Sev1.Advertisements.Api
 {
@@ -80,6 +81,9 @@ namespace Sev1.Advertisements.Api
                 // Инжектирование API-клиента User
                 //.AddScoped<IUserApiClient, UserApiClient>()
                 .AddTransient<IUserApiClient, UserApiClient>()
+
+                // Инжектирование UserProvider
+                .AddTransient<IUserProvider, UserProvider>()
 
                 // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
                 .AddHttpContextAccessor()
@@ -262,7 +266,10 @@ namespace Sev1.Advertisements.Api
             // This middleware is used to route requests.
             app.UseRouting();
 
-            //app.UseAuthentication();
+            //     Adds the Microsoft.AspNetCore.Authentication.AuthenticationMiddleware to the
+            //     specified Microsoft.AspNetCore.Builder.IApplicationBuilder, which enables authentication
+            //     capabilities.
+            app.UseAuthentication();
 
             // This middleware is used to authorizes a user to access
             // secure resources.

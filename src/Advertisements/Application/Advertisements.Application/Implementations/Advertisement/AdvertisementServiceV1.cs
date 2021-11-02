@@ -1,4 +1,5 @@
-﻿using MapsterMapper;
+﻿using Advertisements.Contracts.UserProvider;
+using MapsterMapper;
 using Sev1.Advertisements.Application.Interfaces.Advertisement;
 using Sev1.Advertisements.Application.Repositories.Advertisement;
 using Sev1.Advertisements.Application.Repositories.Category;
@@ -12,19 +13,19 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
         private readonly ICategoryRepository _categoryRepository;
         private readonly IAdvertisementRepository _advertisementRepository;
         private readonly ITagRepository _tagRepository;
-        private readonly IUserApiClient _userApiClient;
+        private readonly IUserProvider _userProvider;
         private readonly IMapper _mapper;
         public AdvertisementServiceV1(
             IAdvertisementRepository advertisementRepository,
             ICategoryRepository categoryRepository,
             ITagRepository tagRepository,
-            IUserApiClient userApiClient,
+            IUserProvider userProvider,
             IMapper mapper)
         {
             _advertisementRepository = advertisementRepository;
             _categoryRepository = categoryRepository;
             _tagRepository = tagRepository;
-            _userApiClient = userApiClient;
+            _userProvider = userProvider;
             _mapper = mapper;
         }
     }

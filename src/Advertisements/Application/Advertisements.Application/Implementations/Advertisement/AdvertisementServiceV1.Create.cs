@@ -18,23 +18,13 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
         /// <summary>
         /// Создать объявление
         /// </summary>
-        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task Create(
-            string accessToken,
             AdvertisementCreateDto model,
             CancellationToken cancellationToken)
         {
-            // Проверяем, авторизирован ли пользователь, получаем его Id и Role
-            var autorizedStatus = await _userApiClient.ValidateToken(
-                accessToken);
-            if (autorizedStatus is null)
-            {
-                throw new NoRightsException("Ошибка авторизации!");
-            }
-
             // Fluent Validation
             var validator = new AdvertisementCreateDtoValidator();
             var result = await validator.ValidateAsync(model);
@@ -43,8 +33,8 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 throw new AdvertisementCreateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
-            // Если авторизация успешная, то дополняем модель (после валидации)
-            model.OwnerId = autorizedStatus.UserId;
+            // Дополняем модель - Id пользователя, который создал объявление
+            model.OwnerId = _userProvider.GetUserId();
 
             // Проверка категории на существование
             var category = await _categoryRepository.FindById(

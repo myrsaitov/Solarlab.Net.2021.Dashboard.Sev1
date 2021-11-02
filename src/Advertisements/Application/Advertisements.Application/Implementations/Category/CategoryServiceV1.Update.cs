@@ -16,23 +16,13 @@ namespace Sev1.Advertisements.Application.Implementations.Category
         /// <summary>
         /// Редактировать категорию (только админ или модератор)
         /// </summary>
-        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="model">DTO</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task<int> Update(
-            string accessToken,
             CategoryUpdateDto model,
             CancellationToken cancellationToken)
         {
-            // Проверяем, авторизирован ли пользователь, получаем его Id и Role
-            var autorizedStatus = await _userApiClient.ValidateToken(
-                accessToken);
-            if (autorizedStatus is null)
-            {
-                throw new NoRightsException("Ошибка авторизации!");
-            }
-            
             // Fluent Validation
             var validator = new CategoryUpdateDtoValidator();
             var result = await validator.ValidateAsync(model);
@@ -53,12 +43,12 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             // Пользователь может обновить категорию:
             //  - если он администратор;
             //  - если он модератор;
-            /*var isAdmin = (autorizedStatus.Role == "admin");
-            var isModerator = (autorizedStatus.Role == "moderator");
+            var isAdmin = _userProvider.IsInRole("Admin");
+            var isModerator = _userProvider.IsInRole("Moderator"); ;
             if (!(isAdmin || isModerator))
             {
                 throw new NoRightsException("Обновить категорию может только модератор или админ!");
-            }*/
+            }
 
             category = _mapper.Map<Domain.Category>(model);
 

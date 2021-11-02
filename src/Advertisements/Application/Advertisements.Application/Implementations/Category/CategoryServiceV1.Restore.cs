@@ -15,23 +15,13 @@ namespace Sev1.Advertisements.Application.Implementations.Category
         /// <summary>
         /// Восстановить удаленную категорию (только админ или модератор)
         /// </summary>
-        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="id">Id категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task Restore(
-            string accessToken,
             int id,
             CancellationToken cancellationToken)
         {
-            // Проверяем, авторизирован ли пользователь, получаем его Id и Role
-            var autorizedStatus = await _userApiClient.ValidateToken(
-                accessToken);
-            if (autorizedStatus is null)
-            {
-                throw new NoRightsException("Ошибка авторизации!");
-            }
-            
             // Fluent Validation
             var validator = new CategoryIdValidator();
             var result = await validator.ValidateAsync(id);
@@ -53,12 +43,12 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             // Пользователь может восстановить категорию:
             //  - если он администратор;
             //  - если он модератор;
-            /*var isAdmin = (autorizedStatus.Role == "admin");
-            var isModerator = (autorizedStatus.Role == "moderator");
+            var isAdmin = _userProvider.IsInRole("Admin");
+            var isModerator = _userProvider.IsInRole("Moderator");
             if (!(isAdmin || isModerator))
             {
                 throw new NoRightsException("Восстановить категорию может только модератор или админ!");
-            }*/
+            }
 
             // Снять пометку об удалении
             category.IsDeleted = false;

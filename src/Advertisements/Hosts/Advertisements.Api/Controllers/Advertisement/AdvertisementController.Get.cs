@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Advertisements.Contracts.Authorization;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
@@ -13,6 +14,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         /// <param name="request">Запрос на пагинацию и поиск</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetPaged(
             [FromQuery] GetPagedAdvertisementRequest request, 
@@ -31,6 +33,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(
             [FromRoute] int id, 

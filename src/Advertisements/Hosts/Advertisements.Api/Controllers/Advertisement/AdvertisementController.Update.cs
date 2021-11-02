@@ -23,7 +23,6 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
             CancellationToken cancellationToken)
         {
             await _advertisementService.Update(
-                HttpContext.Request.Headers["Authorization"],
                 model, 
                 cancellationToken);
             
