@@ -90,7 +90,11 @@ namespace Sev1.Advertisements.Api
 
                 // Подключение к БД через информацию в "ConnectionString"
                 .AddDataAccessModule(configuration =>
-                    configuration.InSqlServer(Configuration.GetConnectionString("SqlServerDb"))
+#if DEBUG
+                    configuration.InSqlServer(Configuration.GetConnectionString("RemoteConnection"))
+#else
+                    configuration.InSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+#endif
                 )
 
             // Подключение Swagger

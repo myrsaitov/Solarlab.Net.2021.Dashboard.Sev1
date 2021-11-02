@@ -30,10 +30,6 @@ namespace Sev1.Accounts.Application.Implementations.Identity
             {
                 await _userManager.AddToRoleAsync(identityUser, request.Role);
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(identityUser);
-                var encodedToken = HttpUtility.UrlEncode(token);
-                var message = $"<a href=\"{_configuration["ApiUri"]}api/v1/users/confirm?userId={identityUser.Id}&token={encodedToken}\">Нажми меня</a>";
-
-                //await _mailService.Send(request.Email, "Подтверди почту!", message, cancellationToken);
 
                 return new CreateUser.Response
                 {
