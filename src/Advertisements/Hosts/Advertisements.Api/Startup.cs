@@ -21,7 +21,7 @@ using System.Reflection;
 using System.IO;
 using System;
 using Sev1.Advertisements.Contracts.ApiClients.User;
-using Microsoft.AspNetCore.Identity;
+using Sev1.Advertisements.Contracts.Authorization;
 
 namespace Sev1.Advertisements.Api
 {
@@ -78,7 +78,8 @@ namespace Sev1.Advertisements.Api
                 .AddScoped<ITagService, TagServiceV1>()
 
                 // Инжектирование API-клиента User
-                .AddScoped<IUserApiClient, UserApiClient>()
+                //.AddScoped<IUserApiClient, UserApiClient>()
+                .AddTransient<IUserApiClient, UserApiClient>()
 
                 // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
                 .AddHttpContextAccessor()
@@ -262,10 +263,12 @@ namespace Sev1.Advertisements.Api
             app.UseRouting();
 
             //app.UseAuthentication();
-            
+
             // This middleware is used to authorizes a user to access
             // secure resources.
-            //app.UseAuthorization();
+            app.UseAuthorization();
+
+            app.UseMiddleware<JwtMiddleware>();
 
             // Конечные точки - это единицы приложения исполняемого кода обработки запросов.
             // Конечные точки определяются в приложении и настраиваются при запуске приложения. 

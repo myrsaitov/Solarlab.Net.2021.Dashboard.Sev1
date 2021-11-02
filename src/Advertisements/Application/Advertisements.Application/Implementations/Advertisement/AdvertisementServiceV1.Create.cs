@@ -29,8 +29,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
         {
             // Проверяем, авторизирован ли пользователь, получаем его Id и Role
             var autorizedStatus = await _userApiClient.ValidateToken(
-                accessToken,
-                cancellationToken);
+                accessToken);
             if (autorizedStatus is null)
             {
                 throw new NoRightsException("Ошибка авторизации!");

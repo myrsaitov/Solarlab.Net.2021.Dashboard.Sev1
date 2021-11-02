@@ -25,8 +25,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
         {
             // Проверяем, авторизирован ли пользователь, получаем его Id и Role
             var autorizedStatus = await _userApiClient.ValidateToken(
-                accessToken,
-                cancellationToken);
+                accessToken);
             if (autorizedStatus is null)
             {
                 throw new NoRightsException("Ошибка авторизации!");
@@ -55,13 +54,13 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             //  - если он администратор;
             //  - если он модератор;
             //  - если он создал это объявление.
-            var isAdmin = (autorizedStatus.Role == "admin");
+            /*var isAdmin = (autorizedStatus.Role == "admin");
             var isModerator = (autorizedStatus.Role == "moderator");
             var isOwnerId = (advertisement.OwnerId == autorizedStatus.UserId);
             if (!(isAdmin || isModerator || isOwnerId))
             {
                 throw new NoRightsException("Не хватает прав восстановить объявление!");
-            }
+            }*/
 
             advertisement.IsDeleted = false;
             advertisement.UpdatedAt = DateTime.UtcNow;

@@ -27,8 +27,7 @@ namespace Sev1.Advertisements.Application.Implementations.Category
         {
             // Проверяем, авторизирован ли пользователь, получаем его Id и Role
             var autorizedStatus = await _userApiClient.ValidateToken(
-                accessToken,
-                cancellationToken);
+                accessToken);
             if (autorizedStatus is null)
             {
                 throw new NoRightsException("Ошибка авторизации!");
@@ -54,12 +53,12 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             // Пользователь может обновить категорию:
             //  - если он администратор;
             //  - если он модератор;
-            var isAdmin = (autorizedStatus.Role == "admin");
+            /*var isAdmin = (autorizedStatus.Role == "admin");
             var isModerator = (autorizedStatus.Role == "moderator");
             if (!(isAdmin || isModerator))
             {
                 throw new NoRightsException("Обновить категорию может только модератор или админ!");
-            }
+            }*/
 
             category = _mapper.Map<Domain.Category>(model);
 

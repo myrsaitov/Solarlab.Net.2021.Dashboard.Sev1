@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
+using Sev1.Advertisements.Contracts.Authorization;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
@@ -15,7 +15,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("User","Admin")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(

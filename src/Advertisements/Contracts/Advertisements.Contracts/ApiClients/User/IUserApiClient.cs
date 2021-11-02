@@ -10,10 +10,8 @@ namespace Sev1.Advertisements.Contracts.ApiClients.User
         /// Проверяет, авторизирован ли пользователь, возвращает его id и role
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
-        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<ValidateTokenResponse> ValidateToken(
-            string accessToken,
-            CancellationToken cancellationToken);
+            string accessToken);
     }
 }
