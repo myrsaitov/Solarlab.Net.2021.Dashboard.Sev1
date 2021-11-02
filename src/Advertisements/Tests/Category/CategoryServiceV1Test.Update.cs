@@ -25,6 +25,18 @@ namespace Sev1.Advertisements.Tests.Category
         {
             // Arrange
 
+            // "Проверка" роли администратора (true)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Admin"))))
+                .Returns(true) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // "Проверка" роли модератора (false)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Moderator"))))
+                .Returns(false) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
             // Объект категории, который "возвращается" из базы
             var category = new Domain.Category();
             _categoryRepositoryMock
@@ -53,6 +65,7 @@ namespace Sev1.Advertisements.Tests.Category
                 cancellationToken);
 
             // Assert
+            _userProviderMock.Verify(); // Вызывался ли данный мок?
             _categoryRepositoryMock.Verify(); // Вызывался ли данный мок?
             Assert.NotEqual(default, response);
         }
@@ -71,6 +84,18 @@ namespace Sev1.Advertisements.Tests.Category
         {
             // Arrange
 
+            // "Проверка" роли администратора (false)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Admin"))))
+                .Returns(false) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // "Проверка" роли модератора (true)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Moderator"))))
+                .Returns(true) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
             // Объект категории, который "возвращается" из базы
             var category = new Domain.Category();
             _categoryRepositoryMock
@@ -99,6 +124,7 @@ namespace Sev1.Advertisements.Tests.Category
                 cancellationToken);
 
             // Assert
+            _userProviderMock.Verify(); // Вызывался ли данный мок?
             _categoryRepositoryMock.Verify(); // Вызывался ли данный мок?
             Assert.NotEqual(default, response);
         }
@@ -116,6 +142,18 @@ namespace Sev1.Advertisements.Tests.Category
             CancellationToken cancellationToken)
         {
             // Arrange
+
+            // "Проверка" роли администратора (false)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Admin"))))
+                .Returns(false) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // "Проверка" роли модератора (false)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Moderator"))))
+                .Returns(false) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Объект категории, который "возвращается" из базы
             var category = new Domain.Category();

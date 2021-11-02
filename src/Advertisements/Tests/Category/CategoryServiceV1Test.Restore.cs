@@ -6,7 +6,6 @@ using AutoFixture.Xunit2;
 using Sev1.Advertisements.Domain.Exceptions;
 using Sev1.Advertisements.Application.Exceptions.Category;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
-using Advertisements.Contracts.Contracts.User;
 
 namespace Sev1.Advertisements.Tests.Category
 {
@@ -25,6 +24,18 @@ namespace Sev1.Advertisements.Tests.Category
             CancellationToken cancellationToken)
         {
             // Arrange
+
+            // "Проверка" роли администратора (false)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Admin"))))
+                .Returns(false) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // "Проверка" роли модератора (true)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Moderator"))))
+                .Returns(true) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // "Достаем" категорию из базы
             var category = new Domain.Category()
@@ -74,6 +85,18 @@ namespace Sev1.Advertisements.Tests.Category
         {
             // Arrange
 
+            // "Проверка" роли администратора (true)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Admin"))))
+                .Returns(true) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // "Проверка" роли модератора (false)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Moderator"))))
+                .Returns(false) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
             // "Достаем" категорию из базы
             var category = new Domain.Category()
             {
@@ -122,6 +145,18 @@ namespace Sev1.Advertisements.Tests.Category
             CancellationToken cancellationToken)
         {
             // Arrange
+
+            // "Проверка" роли администратора (false)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Admin"))))
+                .Returns(false) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
+
+            // "Проверка" роли модератора (false)
+            _userProviderMock
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Moderator"))))
+                .Returns(false) // возвращает в результате выполнения
+                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             var category = new Domain.Category()
             {
