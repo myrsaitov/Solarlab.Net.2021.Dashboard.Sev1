@@ -76,42 +76,11 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             }
             advertisement.Tags.Clear();
 
-            if (model.TagBodies is not null)
-            {
-                foreach (string body in model.TagBodies)
-                {
-                    if (!string.IsNullOrWhiteSpace(body))
-                    {
-                        var tag = await _tagRepository.FindWhere(
-                        a => a.Body == body,
-                        cancellationToken);
-
-                        if (tag == null)
-                        {
-                            var tagRequest = new TagCreateDto()
-                            {
-                                Body = body
-                            };
-
-                            tag = _mapper.Map<Domain.Tag>(tagRequest);
-                            tag.CreatedAt = DateTime.UtcNow;
-                            tag.Count = 1;
-
-                            await _tagRepository.Save(
-                                tag,
-                                cancellationToken);
-                        }
-                        else
-                        {
-                            // TODO Переделать с поиском в базе, учесть удаленные объявления
-                            tag.Count += 1;
-                            await _tagRepository.Save(tag, cancellationToken);
-                        }
-
-                        advertisement.Tags.Add(tag);
-                    }
-                }
-            }
+            // Добавляем таги
+            await AddTags(
+                advertisement,
+                model.TagBodies,
+                cancellationToken);
 
             await _advertisementRepository.Save(
                 advertisement, 

@@ -13,7 +13,7 @@ namespace Sev1.Accounts.Application.Interfaces.Identity
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<string> GetCurrentUserId(
+        string GetCurrentUserId(
             CancellationToken cancellationToken);
 
         /// <summary>

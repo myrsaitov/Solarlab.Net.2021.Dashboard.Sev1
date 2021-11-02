@@ -11,7 +11,7 @@ namespace Sev1.Accounts.Application.Implementations.Identity
         public async Task<IEnumerable<string>> GetCurrentUserRoles(
             CancellationToken cancellationToken = default)
         {
-            var currentUserId = await GetCurrentUserId(cancellationToken);
+            var currentUserId = GetCurrentUserId(cancellationToken);
             if (currentUserId == null)
             {
                 throw new IdentityUserNotFoundException("Пользователь не найден");

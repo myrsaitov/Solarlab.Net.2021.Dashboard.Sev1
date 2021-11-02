@@ -66,5 +66,10 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
         Task<GetPagedAdvertisementResponse> GetPaged(
             GetPagedAdvertisementRequest request, 
             CancellationToken cancellationToken);
+
+        Task AddTags(
+            Domain.Advertisement advertisement,
+            string[] TagBodies,
+            CancellationToken cancellationToken);
     }
 }

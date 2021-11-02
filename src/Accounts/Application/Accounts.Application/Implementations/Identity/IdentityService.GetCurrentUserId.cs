@@ -6,10 +6,10 @@ namespace Sev1.Accounts.Application.Implementations.Identity
 {
     public partial class IdentityService : IIdentityService
     {
-        public Task<string> GetCurrentUserId(CancellationToken cancellationToken = default)
+        public string GetCurrentUserId(CancellationToken cancellationToken = default)
         {
             var claimsPrincipal = _httpContextAccessor.HttpContext?.User;
-            return Task.FromResult(_userManager.GetUserId(claimsPrincipal));
+            return _userManager.GetUserId(claimsPrincipal);
         }
     }
 }

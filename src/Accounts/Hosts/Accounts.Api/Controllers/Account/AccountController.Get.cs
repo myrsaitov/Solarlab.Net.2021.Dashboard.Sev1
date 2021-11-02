@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Sev1.Accounts.Contracts;
 
 namespace Sev1.Accounts.Api.Controllers.Account
 {
@@ -17,7 +18,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         public async Task<IActionResult> GetCurrentUserId(
             CancellationToken cancellationToken)
         {
-            var currentUserId = await _identityService.GetCurrentUserId(cancellationToken);
+            var currentUserId = await Task.FromResult(_identityService.GetCurrentUserId(cancellationToken));
             
             return Ok(currentUserId);
         }
@@ -32,10 +33,16 @@ namespace Sev1.Accounts.Api.Controllers.Account
         public async Task<IActionResult> GetCurrentUser(
             CancellationToken cancellationToken)
         {
-            var currentUserId = await _identityService.GetCurrentUserId(cancellationToken);
+            var currentUserId = _identityService.GetCurrentUserId(cancellationToken);
             var domainUser = await _userService.Get(currentUserId, cancellationToken);
 
-            return Ok(domainUser);
+            return Ok(new UserDto()
+            {
+                UserName = domainUser.UserName,
+                FirstName = domainUser.FirstName,
+                LastName = domainUser.LastName,
+                MiddleName = domainUser.MiddleName
+            });
         }
 
         /// <summary>
