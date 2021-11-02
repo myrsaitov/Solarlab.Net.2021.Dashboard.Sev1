@@ -14,8 +14,8 @@ namespace Sev1.Advertisements.Api.Controllers.Tag
         /// <param name="request">Запрос на пагинацию</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        [HttpGet]
         [AllowAnonymous]
+        [HttpGet]
         public async Task<IActionResult> GetPaged(
             [FromQuery] GetPagedRequest request, 
             CancellationToken cancellationToken)

@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Sev1.Advertisements.Contracts.Authorization;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
@@ -12,6 +13,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
+        [Authorize("Admin", "Moderator", "User")]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Restore(
             [FromRoute] int id, 

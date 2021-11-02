@@ -22,6 +22,8 @@ https://jasonwatmore.com/post/2019/10/11/aspnet-core-3-jwt-authentication-tutori
             var allRoles = _roleManager.Roles.ToList();
 
 
+[Authorize("Admin", "Moderator")]
+[AllowAnonymous]
 
 
 Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNjRkYmIxOTktMGE5NS00ZjFhLWFmY2YtMTBjYzgyN2ZkM2M4IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsIm5iZiI6MTYzNTgwMzM4NCwiZXhwIjoxNjQwOTg3Mzg0fQ.GN21M04PktaL8L_BbEvze7v46KiMLc7V5qSNU2XNCys

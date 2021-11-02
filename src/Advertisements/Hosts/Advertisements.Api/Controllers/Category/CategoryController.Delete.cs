@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Sev1.Advertisements.Contracts.Authorization;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {
@@ -12,6 +13,7 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         /// <param name="id"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
+        [Authorize("Admin", "Moderator")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(
             [FromRoute] int id, 
