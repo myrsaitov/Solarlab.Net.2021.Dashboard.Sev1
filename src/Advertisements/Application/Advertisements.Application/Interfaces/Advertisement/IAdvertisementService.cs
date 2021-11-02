@@ -1,9 +1,6 @@
-﻿using System;
-using System.Linq.Expressions;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Sev1.Advertisements.Application.Contracts;
 using Sev1.Advertisements.Application.Contracts.GetPaged;
 
 namespace Sev1.Advertisements.Application.Interfaces.Advertisement
@@ -68,6 +65,11 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
         /// <returns></returns>
         Task<GetPagedAdvertisementResponse> GetPaged(
             GetPagedAdvertisementRequest request, 
+            CancellationToken cancellationToken);
+
+        Task AddTags(
+            Domain.Advertisement advertisement,
+            string[] TagBodies,
             CancellationToken cancellationToken);
     }
 }

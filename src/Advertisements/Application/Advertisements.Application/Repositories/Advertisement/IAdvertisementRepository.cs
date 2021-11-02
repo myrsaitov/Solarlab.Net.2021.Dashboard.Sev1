@@ -14,23 +14,12 @@ namespace Sev1.Advertisements.Application.Repositories.Advertisement
     {
         /// <summary>
         /// Возвращает объявление
-        /// с прикрепленным автором этого объявления
-        /// </summary>
-        /// <param name="id">Id объявления</param>
-        /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <returns></returns>
-        Task<Domain.Advertisement> FindByIdWithUserInclude(
-            int id, 
-            CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Возвращает объявление
         /// с прикрепленным автором этого объявления и связанными Tags
         /// </summary>
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<Domain.Advertisement> FindByIdWithUserAndTagsInclude(
+        Task<Domain.Advertisement> FindByIdWithTagsInclude(
             int id,
             CancellationToken cancellationToken);
 
@@ -42,17 +31,9 @@ namespace Sev1.Advertisements.Application.Repositories.Advertisement
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<Domain.Advertisement> FindByIdWithUserAndCategoryAndTags(
+        Task<Domain.Advertisement> FindByIdWithCategoriesAndTags(
             int id, 
             CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Возвращает количество объявлений,
-        /// которые не "удалены"
-        /// </summary>
-        /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <returns></returns>
-        Task<int> CountWithOutDeleted(CancellationToken cancellationToken);
 
         /// <summary>
         /// Возвращает количество объявлений,
@@ -66,18 +47,6 @@ namespace Sev1.Advertisements.Application.Repositories.Advertisement
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Возвращает объявления с пагинацией
-        /// </summary>
-        /// <param name="offset">Сколько объявлений пропущено</param>
-        /// <param name="limit">Количество объявлений на странице</param>
-        /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <returns></returns>
-        Task<IEnumerable<Domain.Advertisement>> GetPagedWithTagsAndOwnerAndCategoryInclude(
-            int offset,
-            int limit,
-            CancellationToken cancellationToken);
-
-        /// <summary>
         /// Возвращает объявления с пагинацией и фильтром
         /// </summary>
         /// <param name="predicate">Параметры фильтра</param>
@@ -85,7 +54,7 @@ namespace Sev1.Advertisements.Application.Repositories.Advertisement
         /// <param name="limit">Количество объявлений на странице</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<IEnumerable<Domain.Advertisement>> GetPagedWithTagsAndOwnerAndCategoryInclude(
+        Task<IEnumerable<Domain.Advertisement>> GetPagedWithTagsAndCategoryInclude(
             Expression<Func<Domain.Advertisement, bool>> predicate,
             int offset,
             int limit,

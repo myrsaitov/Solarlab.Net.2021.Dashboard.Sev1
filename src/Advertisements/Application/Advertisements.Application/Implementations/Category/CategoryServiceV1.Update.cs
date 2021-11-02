@@ -7,11 +7,18 @@ using Sev1.Advertisements.Application.Exceptions.Advertisement;
 using Sev1.Advertisements.Application.Exceptions.Category;
 using Sev1.Advertisements.Application.Interfaces.Category;
 using Sev1.Advertisements.Application.Validators.Advertisement;
+using Sev1.Advertisements.Domain.Exceptions;
 
 namespace Sev1.Advertisements.Application.Implementations.Category
 {
     public sealed partial class CategoryServiceV1 : ICategoryService
     {
+        /// <summary>
+        /// Редактировать категорию (только админ или модератор)
+        /// </summary>
+        /// <param name="model">DTO</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task<int> Update(
             CategoryUpdateDto model,
             CancellationToken cancellationToken)
@@ -33,6 +40,15 @@ namespace Sev1.Advertisements.Application.Implementations.Category
                 throw new CategoryNotFoundException(model.Id);
             }
 
+            // Пользователь может обновить категорию:
+            //  - если он администратор;
+            //  - если он модератор;
+            var isAdmin = _userProvider.IsInRole("Admin");
+            var isModerator = _userProvider.IsInRole("Moderator"); ;
+            if (!(isAdmin || isModerator))
+            {
+                throw new NoRightsException("Обновить категорию может только модератор или админ!");
+            }
 
             category = _mapper.Map<Domain.Category>(model);
 

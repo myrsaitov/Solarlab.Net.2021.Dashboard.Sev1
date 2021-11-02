@@ -7,7 +7,16 @@ namespace Sev1.Accounts.Application.Interfaces.User
 {
     public interface IUserService
     {
-        Task<Register.Response> Register(Register.Request registerRequest, CancellationToken cancellationToken);
-        Task Update(Update.Request request, CancellationToken cancellationToken);
+        Task<Register.Response> Register(
+            Register.Request registerRequest, 
+            CancellationToken cancellationToken);
+
+        Task Update(
+            Update.Request request, 
+            CancellationToken cancellationToken);
+
+        Task<Domain.User> Get(
+            string userId,
+            CancellationToken cancellationToken);
     }
 }

@@ -30,9 +30,9 @@ namespace Sev1.Accounts.DataAccess
 
         private void SeedIdentity(ModelBuilder modelBuilder)
         {
-            var ADMIN_ROLE_ID = "d3300ca5-846f-4e6b-ac5f-1d3933115e67";
-            var ADMIN_ID = "98b651ae-c9aa-4731-9996-57352d525f7e";
-            var USER_ROLE_ID = "185230d2-58d8-4e29-aefd-a257fb82a150";
+            var ADMIN_ROLE_ID = "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3";
+            var MODERATOR_ROLE_ID = "c373fe1b-9e38-498b-9729-6c719222b00d";
+            var USER_ROLE_ID = "589a1f42-d43c-4315-8e02-432f64e02bc0";
 
             modelBuilder.Entity<IdentityRole>(x =>
             {
@@ -41,19 +41,32 @@ namespace Sev1.Accounts.DataAccess
                     new IdentityRole
                     {
                         Id = ADMIN_ROLE_ID,
-                        Name = RoleConstants.AdminRole,
+                        Name = RoleConstants.Admin.ToString(),
                         NormalizedName = "ADMIN"
                     },
                     new IdentityRole
                     {
+                        Id = MODERATOR_ROLE_ID,
+                        Name = RoleConstants.Moderator.ToString(),
+                        NormalizedName = "MODERATOR"
+                    },
+                    new IdentityRole
+                    {
                         Id = USER_ROLE_ID,
-                        Name = RoleConstants.UserRole,
+                        Name = RoleConstants.User.ToString(),
                         NormalizedName = "USER"
                     }
                 });
             });
 
+
             var passwordHasher = new PasswordHasher<IdentityUser>();
+
+            var ADMIN_ID = "757d5290-d036-4757-85ae-827b59e92cd3";
+            var MODERATOR_ID = "a0d74199-2ad5-4d2f-a184-eb52f5bf9094";
+            var USER_ID = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8";
+
+            // Admin
             var adminUser = new IdentityUser
             {
                 Id = ADMIN_ID,
@@ -74,6 +87,94 @@ namespace Sev1.Accounts.DataAccess
                     RoleId = ADMIN_ROLE_ID,
                     UserId = ADMIN_ID
                 });
+            });
+
+            var adminDomainUser = new User
+            {
+                Id = ADMIN_ID,
+                UserName = "admin",
+                FirstName = "admin1",
+                LastName = "admin2",
+                MiddleName = "admin3",
+            };
+
+            modelBuilder.Entity<User>(x =>
+            {
+                x.HasData(adminDomainUser);
+            });
+
+            // Moderator
+            var moderatorUser = new IdentityUser
+            {
+                Id = MODERATOR_ID,
+                UserName = "moderator",
+                NormalizedUserName = "MODERATOR"
+            };
+            moderatorUser.PasswordHash = passwordHasher.HashPassword(moderatorUser, "moderator");
+
+            modelBuilder.Entity<IdentityUser>(x =>
+            {
+                x.HasData(moderatorUser);
+            });
+
+            modelBuilder.Entity<IdentityUserRole<string>>(x =>
+            {
+                x.HasData(new IdentityUserRole<string>
+                {
+                    RoleId = MODERATOR_ROLE_ID,
+                    UserId = MODERATOR_ID
+                });
+            });
+
+            var moderatorDomainUser = new User
+            {
+                Id = MODERATOR_ID,
+                UserName = "moderator",
+                FirstName = "moderator1",
+                LastName = "moderator2",
+                MiddleName = "moderator3",
+            };
+
+            modelBuilder.Entity<User>(x =>
+            {
+                x.HasData(moderatorDomainUser);
+            });
+
+            // User
+            var userUser = new IdentityUser
+            {
+                Id = USER_ID,
+                UserName = "user",
+                NormalizedUserName = "USER"
+            };
+            userUser.PasswordHash = passwordHasher.HashPassword(moderatorUser, "user");
+
+            modelBuilder.Entity<IdentityUser>(x =>
+            {
+                x.HasData(userUser);
+            });
+
+            modelBuilder.Entity<IdentityUserRole<string>>(x =>
+            {
+                x.HasData(new IdentityUserRole<string>
+                {
+                    RoleId = USER_ROLE_ID,
+                    UserId = USER_ID
+                });
+            });
+
+            var userDomainUser = new User
+            {
+                Id = USER_ID,
+                UserName = "user",
+                FirstName = "user1",
+                LastName = "user2",
+                MiddleName = "user3",
+            };
+
+            modelBuilder.Entity<User>(x =>
+            {
+                x.HasData(userDomainUser);
             });
         }
     }

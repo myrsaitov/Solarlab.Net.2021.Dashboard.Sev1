@@ -3,7 +3,6 @@ using Sev1.Accounts.Application.Exceptions.User;
 using Sev1.Accounts.Application.Interfaces.User;
 using Sev1.Accounts.Domain.Exceptions;
 using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,7 +20,12 @@ namespace Sev1.Accounts.Application.Implementations.User
                 throw new UserNotFoundException($"Пользователь с идентификатором {request.Id} не найден");
             }
 
-            var currentUserId = await _identityService.GetCurrentUserId(cancellationToken);
+            var currentUserId = _identityService.GetCurrentUserId(cancellationToken);
+            if(currentUserId == null)
+            {
+                throw new NoRightsException("Пользователь не найден!");
+            }
+            
             if (domainUser.Id != currentUserId)
             {
                 throw new NoRightsException("Нет прав");

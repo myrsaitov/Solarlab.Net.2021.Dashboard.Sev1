@@ -17,28 +17,17 @@ namespace Sev1.Advertisements.DataAccess.Repositories
         {
         }
 
-        public async Task<Advertisement> FindByIdWithUserInclude(
-            int id, 
-            CancellationToken cancellationToken)
+        public async Task<Advertisement> FindByIdWithTagsInclude(int id, CancellationToken cancellationToken)
         {
             return await DbСontext
                 .Set<Advertisement>()
-                //.Include(a => a.Owner)
-                .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
-        }
-        public async Task<Advertisement> FindByIdWithUserAndTagsInclude(int id, CancellationToken cancellationToken)
-        {
-            return await DbСontext
-                .Set<Advertisement>()
-                //.Include(a => a.Owner)
                 .Include(a => a.Tags)
                 .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
         }
-        public async Task<Advertisement> FindByIdWithUserAndCategoryAndTags(int id, CancellationToken cancellationToken)
+        public async Task<Advertisement> FindByIdWithCategoriesAndTags(int id, CancellationToken cancellationToken)
         {
             return await DbСontext
                 .Set<Advertisement>()
-                //.Include(a => a.Owner)
                 .Include(a => a.Category)
                 .Include(a => a.Category.ChildCategories)
                 .Include(a => a.Category.ParentCategory)
@@ -69,7 +58,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .Where(predicate)
                 .CountAsync(cancellationToken);
         }
-        public async Task<IEnumerable<Advertisement>> GetPagedWithTagsAndOwnerAndCategoryInclude(
+        public async Task<IEnumerable<Advertisement>> GetPagedWithTagsAndCategoryInclude(
             int offset,
             int limit,
             CancellationToken cancellationToken)
@@ -77,7 +66,6 @@ namespace Sev1.Advertisements.DataAccess.Repositories
             var data = DbСontext
                 .Set<Advertisement>()
                 .Include(a => a.Tags)
-                //.Include(a => a.Owner)
                 .Include(a => a.Category)
                 .AsNoTracking(); ;
 
@@ -88,7 +76,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .Take(limit)
                 .ToListAsync(cancellationToken);
         }
-        public async Task<IEnumerable<Advertisement>> GetPagedWithTagsAndOwnerAndCategoryInclude(
+        public async Task<IEnumerable<Advertisement>> GetPagedWithTagsAndCategoryInclude(
             Expression<Func<Advertisement, bool>> predicate,
             int offset,
             int limit,
@@ -97,7 +85,6 @@ namespace Sev1.Advertisements.DataAccess.Repositories
             var data = DbСontext
                 .Set<Advertisement>()
                 .Include(a => a.Tags)
-                //.Include(a => a.Owner)
                 .Include(a => a.Category)
                 .AsNoTracking();
 

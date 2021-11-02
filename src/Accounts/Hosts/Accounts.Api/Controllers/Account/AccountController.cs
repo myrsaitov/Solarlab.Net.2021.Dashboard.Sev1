@@ -7,7 +7,6 @@ namespace Sev1.Accounts.Api.Controllers.Account
 {
     [Route("api/v1/accounts")]
     [ApiController]
-    [AllowAnonymous]
     public partial class AccountController : ControllerBase
     {
         private readonly IUserService _userService;

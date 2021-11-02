@@ -1,0 +1,24 @@
+Typically I use pascal case for class definitions, and camel case for variable definitions.
+
+https://betterprogramming.pub/string-case-styles-camel-pascal-snake-and-kebab-case-981407998841
+
+Camel case combines words by capitalizing all words following the first word and removing the space, as follows:
+Raw: user login count
+Camel Case: userLoginCount
+This is a very popular way to combine words to form a single concept. It is often used as a convention in variable declaration in many languages.
+
+Pascal case combines words by capitalizing all words (even the first word) and removing the space, as follows:
+Raw: user login count
+Pascal Case: UserLoginCount
+This is also a very popular way to combine words to form a single concept. It is often used as a convention in declaring classes in many languages.
+
+Snake case combines words by replacing each space with an underscore (_) and, in the all caps version, all letters are capitalized, as follows:
+Raw: user login count
+Snake Case: user_login_count
+Snake Case (All Caps): USER_LOGIN_COUNT
+This style, when capitalized, is often used as a convention in declaring constants in many languages. When lower cased, it is used conventionally in declaring database field names.
+
+Kebab case combines words by replacing each space with a dash (-), as follows:
+Raw: user login count
+Kebab Case: user-login-count
+This style is often used in URLs. For example, www.blog.com/cool-article-1. It is a nice, clean, human-readable way to combine the words.

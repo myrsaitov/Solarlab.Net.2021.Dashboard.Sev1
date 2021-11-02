@@ -23,3 +23,12 @@ Zxs123!@#$%^&*()
   "password": "Zxs123!@#$%^&*()"
 }
 
+
+{
+  "username": "myrsaitovrus",
+  "email": "myrsaitovrus@gmail.com",
+  "firstName": "Константин",
+  "lastName": "Мирсаитов",
+  "middleName": "Михайлович",
+  "password": "Zx123!@"
+}

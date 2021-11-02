@@ -1,15 +1,22 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+using Sev1.Advertisements.Contracts.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.Advertisements.Application.Contracts.GetPaged;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {
+
     public partial class CategoryController
     {
+        /// <summary>
+        /// Возвращает категории с пагинацией
+        /// </summary>
+        /// <param name="request">Запрос на пагинацию</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet]
-        //[AllowAnonymous]
         public async Task<IActionResult> GetPaged(
             [FromQuery] GetPagedRequest request, 
             CancellationToken cancellationToken)
@@ -23,8 +30,14 @@ namespace Sev1.Advertisements.Api.Controllers.Category
             return Ok(result);
         }
 
+        /// <summary>
+        /// Возвращает категорию по Id
+        /// </summary>
+        /// <param name="id">Id категории</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet("{id}")]
-        //[AllowAnonymous]
         public async Task<IActionResult> GetById(
             [FromRoute] int id, 
             CancellationToken cancellationToken)

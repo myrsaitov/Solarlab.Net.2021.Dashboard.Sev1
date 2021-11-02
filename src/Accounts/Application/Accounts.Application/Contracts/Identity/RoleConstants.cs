@@ -1,8 +1,21 @@
 ﻿namespace Sev1.Accounts.Application.Contracts.Identity
 {
-    public static class RoleConstants
+    /// <summary>
+    /// Роли
+    /// </summary>
+    public enum RoleConstants
     {
-        public const string AdminRole = "Admin";
-        public const string UserRole = "User";
+        /// <summary>
+        /// Роль администратора
+        /// </summary>
+        Admin,
+        /// <summary>
+        /// Роль модератора
+        /// </summary>
+        Moderator,
+        /// <summary>
+        /// Роль пользователя
+        /// </summary>
+        User
     }
 }

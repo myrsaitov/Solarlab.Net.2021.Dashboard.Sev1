@@ -9,13 +9,20 @@ using Sev1.Advertisements.Application.Contracts.Tag;
 using Sev1.Advertisements.Application.Validators.Advertisement;
 using System.Linq;
 using Sev1.Advertisements.Application.Exceptions.Category;
+using Sev1.Advertisements.Domain.Exceptions;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {
+        /// <summary>
+        /// Создать объявление
+        /// </summary>
+        /// <param name="model">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task Create(
-            AdvertisementCreateDto model, 
+            AdvertisementCreateDto model,
             CancellationToken cancellationToken)
         {
             // Fluent Validation
@@ -26,58 +33,46 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 throw new AdvertisementCreateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
+            // Возвращаем Id пользователя
+            var userId = _userProvider.GetUserId();
+            if (string.IsNullOrWhiteSpace(userId))
+            {
+                throw new NoRightsException("Нет создателя объявления!");
+            }
+
+            // Дополняем модель - Id пользователя, который создал объявление
+            model.OwnerId = userId;
+
+            // Проверка категории на существование
             var category = await _categoryRepository.FindById(
                 model.CategoryId,
                 cancellationToken);
 
+            // Если категория не существует
             if (category is null)
             {
                 throw new CategoryNotFoundException(model.CategoryId);
             }
 
+            // Если категория удалена
+            if (category.IsDeleted)
+            {
+                throw new CategoryNotFoundException(model.CategoryId);
+            }
+
+            // Дополняем модель
             var advertisement = _mapper.Map<Domain.Advertisement>(model);
             advertisement.IsDeleted = false;
             advertisement.CreatedAt = DateTime.UtcNow;
             advertisement.Category = category;
 
-            if (model.TagBodies is not null)
-            {
-                advertisement.Tags = new List<Domain.Tag>();
-                foreach (string body in model.TagBodies)
-                {
-                    if (body.Length > 0)
-                    {
-                        var tag = await _tagRepository.FindWhere(
-                            a => a.Body == body,
-                            cancellationToken);
+            // Добавляем таги
+            await AddTags(
+                advertisement,
+                model.TagBodies,
+                cancellationToken);
 
-                        if (tag == null)
-                        {
-                            var tagRequest = new TagCreateDto()
-                            {
-                                Body = body
-                            };
-
-                            tag = _mapper.Map<Domain.Tag>(tagRequest);
-                            tag.CreatedAt = DateTime.UtcNow;
-                            tag.Count = 1;
-
-                            await _tagRepository.Save(
-                                tag, 
-                                cancellationToken);
-                        }
-                        else
-                        {
-                            // TODO Переделать с поиском в базе, учесть удаленные объявления
-                            tag.Count += 1;
-                            await _tagRepository.Save(tag, cancellationToken);
-                        }
-
-                        advertisement.Tags.Add(tag);
-                    }
-                }
-            }
-
+            // Сохраняем в базе
             await _advertisementRepository.Save(
                 advertisement, 
                 cancellationToken);

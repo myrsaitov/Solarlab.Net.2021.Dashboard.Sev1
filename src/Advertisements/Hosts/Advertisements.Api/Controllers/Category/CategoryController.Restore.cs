@@ -1,12 +1,19 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Category;
 using Microsoft.AspNetCore.Mvc;
+using Sev1.Advertisements.Contracts.Authorization;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {
     public partial class CategoryController
     {
+        /// <summary>
+        /// Восстанавливает удаленную категорию по Id
+        /// </summary>
+        /// <param name="id">Id категории</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [Authorize("Admin", "Moderator")]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Restore(
             [FromRoute] int id, 

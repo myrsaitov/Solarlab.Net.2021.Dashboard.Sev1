@@ -1,17 +1,21 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Advertisements.Contracts.Authorization;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
     public partial class AdvertisementController
     {
+        /// <summary>
+        /// Возвращает объявления с пагинацией (и поиском)
+        /// </summary>
+        /// <param name="request">Запрос на пагинацию и поиск</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet]
-        //[AllowAnonymous]
         public async Task<IActionResult> GetPaged(
             [FromQuery] GetPagedAdvertisementRequest request, 
             CancellationToken cancellationToken)
@@ -23,8 +27,14 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
             return Ok(result);
         }
 
+        /// <summary>
+        /// Возвращает объявление по Id
+        /// </summary>
+        /// <param name="id">Id объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet("{id}")]
-        //[AllowAnonymous]
         public async Task<IActionResult> GetById(
             [FromRoute] int id, 
             CancellationToken cancellationToken)

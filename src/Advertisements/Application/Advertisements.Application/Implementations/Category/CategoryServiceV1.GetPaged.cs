@@ -12,6 +12,12 @@ namespace Sev1.Advertisements.Application.Implementations.Category
 {
     public sealed partial class CategoryServiceV1 : ICategoryService
     {
+        /// <summary>
+        /// Пагинация категорий
+        /// </summary>
+        /// <param name="request">Запрос на пагинацию</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task<GetPagedResponse<CategoryDto>> GetPaged(
             GetPagedRequest request, 
             CancellationToken cancellationToken)
@@ -24,10 +30,13 @@ namespace Sev1.Advertisements.Application.Implementations.Category
                 throw new GetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
+            // Получить количество категорий
             var total = await _categoryRepository.Count(cancellationToken);
 
+            // Смещение
             var offset = request.Page * request.PageSize;
 
+            // Если ничего не нашлось
             if (total == 0)
             {
                 return new GetPagedResponse<CategoryDto>
@@ -39,12 +48,14 @@ namespace Sev1.Advertisements.Application.Implementations.Category
                 };
             }
 
+            // Если есть хоть одно
             var entities = await _categoryRepository.GetPaged(
                 offset, 
                 request.PageSize, 
                 cancellationToken
             );
 
+            // Поместить массив объектов в обёртку
             return new GetPagedResponse<CategoryDto>
             {
                 Items = entities.Select(entity => _mapper.Map<CategoryDto>(entity)),

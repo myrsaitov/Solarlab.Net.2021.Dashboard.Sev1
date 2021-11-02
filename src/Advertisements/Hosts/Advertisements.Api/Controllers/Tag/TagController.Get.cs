@@ -8,8 +8,14 @@ namespace Sev1.Advertisements.Api.Controllers.Tag
 {
     public partial class TagController
     {
-        [HttpGet]
+        /// <summary>
+        /// Возвращает таги с пагинацией
+        /// </summary>
+        /// <param name="request">Запрос на пагинацию</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         [AllowAnonymous]
+        [HttpGet]
         public async Task<IActionResult> GetPaged(
             [FromQuery] GetPagedRequest request, 
             CancellationToken cancellationToken)
