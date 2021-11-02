@@ -20,7 +20,6 @@ namespace Sev1.Advertisements.Api.Controllers.Category
             CancellationToken cancellationToken)
         {
             await _categoryService.Delete(
-                HttpContext.Request.Headers["Authorization"],
                 id,
                 cancellationToken);
 

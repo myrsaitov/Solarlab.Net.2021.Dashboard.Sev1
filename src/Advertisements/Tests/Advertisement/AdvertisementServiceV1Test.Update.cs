@@ -9,7 +9,6 @@ using System;
 using Sev1.Advertisements.Domain.Exceptions;
 using Sev1.Advertisements.Application.Exceptions.Category;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
-using Advertisements.Contracts.Contracts.User;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
@@ -18,31 +17,16 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка удачного обновления объявления
         /// </summary>
-        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Update_Returns_Response_Success(
-            string accessToken,
             AdvertisementUpdateDto model,
             CancellationToken cancellationToken)
         {
             // Arrange
-
-            // Чтобы пройти проверку на авторизацию
-            var autorizedStatus = new ValidateTokenResponse()
-            {
-                UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
-                Role = "user"
-            };
-            _userApiClientMock
-                .Setup(_ => _.ValidateToken(
-                It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
-                It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
-                .ReturnsAsync(autorizedStatus) // в результате выполнения возвращает объект
-                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Чтобы пройти валидацию, правим tags
             model.TagBodies = new string[3] { "111", "222", "333" };
@@ -105,12 +89,11 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // Act
             await _advertisementServiceV1.Update(
-                accessToken,
                 model,
                 cancellationToken);
 
             // Assert
-            _userApiClientMock.Verify(); // Вызывался ли данный мок?
+            _userProviderMock.Verify(); // Вызывался ли данный мок?
             _advertisementRepositoryMock.Verify(); // Вызывался ли данный мок?
             _categoryRepositoryMock.Verify(); // Вызывался ли данный мок?
             _tagRepositoryMock.Verify(); // Вызывался ли данный мок?
@@ -119,14 +102,12 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверяет реакцию на отсутствие аутентификации
         /// </summary>
-        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null)] //accessToken = null, а остальное автозаполняется
         public async Task Update_Throws_Exception_When_CurrentUserId_Is_Null(
-            string accessToken,
             AdvertisementUpdateDto model,
             CancellationToken cancellationToken)
         {
@@ -134,7 +115,6 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 // Act
                 await Assert.ThrowsAsync<NoRightsException>(
                     async () => await _advertisementServiceV1.Update(
-                        accessToken,
                         model,
                         cancellationToken));
             }
@@ -143,36 +123,20 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверяет реакцию на невалидный аргумент
         /// </summary>
-        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null, null)]
         public async Task Update_Throws_Exception_When_Request_Is_Null(
-            string accessToken,
             AdvertisementUpdateDto model,
             CancellationToken cancellationToken)
         {
             // Arrange
 
-            // Чтобы пройти проверку на авторизацию
-            var autorizedStatus = new ValidateTokenResponse()
-            {
-                UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
-                Role = "user"
-            };
-            _userApiClientMock
-                .Setup(_ => _.ValidateToken(
-                It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
-                It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
-                .ReturnsAsync(autorizedStatus) // в результате выполнения возвращает объект
-                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
-
             // Act
             await Assert.ThrowsAsync<AdvertisementUpdateDtoNotValidException>(
                 async () => await _advertisementServiceV1.Update(
-                    accessToken,
                     model,
                     cancellationToken));
         }
@@ -180,31 +144,16 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка, когда объявление не найдено в базе
         /// </summary>
-        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_Advertisement_Is_Null(
-            string accessToken,
             AdvertisementUpdateDto model,
             CancellationToken cancellationToken)
         {
             // Arrange
-
-            // Чтобы пройти проверку на авторизацию
-            var autorizedStatus = new ValidateTokenResponse()
-            {
-                UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
-                Role = "user"
-            };
-            _userApiClientMock
-                .Setup(_ => _.ValidateToken(
-                It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
-                It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
-                .ReturnsAsync(autorizedStatus) // в результате выполнения возвращает объект
-                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Чтобы пройти валидацию, правим tags
             model.TagBodies = new string[3] { "111", "222", "333" };
@@ -221,7 +170,6 @@ namespace Sev1.Advertisements.Tests.Advertisement
             // Act
             await Assert.ThrowsAsync<AdvertisementNotFoundException>(
                 async () => await _advertisementServiceV1.Update(
-                    accessToken,
                     model,
                     cancellationToken));
         }
@@ -230,31 +178,16 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверяет реакцию на отсутствие категории
         /// </summary>
-        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_Category_Is_Null(
-            string accessToken,
             AdvertisementUpdateDto model,
             CancellationToken cancellationToken)
         {
             // Arrange
-
-            // Чтобы пройти проверку на авторизацию
-            var autorizedStatus = new ValidateTokenResponse()
-            {
-                UserId = "24cb4b25-c819-45ab-8755-d95120fbb868",
-                Role = "user"
-            };
-            _userApiClientMock
-                .Setup(_ => _.ValidateToken(
-                It.IsAny<string>(), // проверяет, что параметр имеет указанный тип <>
-                It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
-                .ReturnsAsync(autorizedStatus) // в результате выполнения возвращает объект
-                .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Чтобы пройти валидацию, правим tags
             model.TagBodies = new string[3] { "111", "222", "333" };
@@ -286,7 +219,6 @@ namespace Sev1.Advertisements.Tests.Advertisement
             // Act
             await Assert.ThrowsAsync<CategoryNotFoundException>(
                 async () => await _advertisementServiceV1.Update(
-                    accessToken,
                     model,
                     cancellationToken));
         }

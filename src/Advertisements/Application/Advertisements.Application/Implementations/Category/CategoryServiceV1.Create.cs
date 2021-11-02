@@ -7,6 +7,7 @@ using Sev1.Advertisements.Application.Interfaces.Category;
 using Sev1.Advertisements.Application.Validators.Advertisement;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
 using System.Linq;
+using Sev1.Advertisements.Domain.Exceptions;
 
 namespace Sev1.Advertisements.Application.Implementations.Category
 {
@@ -33,12 +34,12 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             // Пользователь может создать категорию:
             //  - если он администратор;
             //  - если он модератор;
-            /*var isAdmin = (autorizedStatus.Role == "admin");
-            var isModerator = (autorizedStatus.Role == "moderator");
+            var isAdmin = _userProvider.IsInRole("Admin");
+            var isModerator = _userProvider.IsInRole("Moderator");
             if (!(isAdmin || isModerator))
             {
-                throw new NoRightsException("Только модератор или админ!");
-            }*/
+                throw new NoRightsException("Создать категорию может только модератор или админ!");
+            }
 
             // Создаем категорию
             var category = _mapper.Map<Domain.Category>(model);
