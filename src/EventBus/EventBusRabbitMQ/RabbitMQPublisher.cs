@@ -13,6 +13,7 @@ namespace EventBusRabbitMQ
         private readonly IRabbitMQConnection _connection;
         private readonly IModel _model;
         private readonly string _exchange;
+        private bool _disposed = false;
 
         public RabbitMQPublisher(IRabbitMQConnection connection)
         {
@@ -29,6 +30,22 @@ namespace EventBusRabbitMQ
             properties.Headers = messageAttributes;
 
             _model.BasicPublish(exchange: _exchange, routingKey: routingKey, basicProperties: properties, body: body);
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+                return;
+
+            if (disposing)
+                _model?.Close();
+
+            _disposed = true;
         }
     }
 }

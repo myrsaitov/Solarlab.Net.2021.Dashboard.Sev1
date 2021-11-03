@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace EventBusRabbitMQ.Interfaces
 {
-    public interface IRabbitMQPublisher
+    public interface IRabbitMQPublisher : IDisposable
     {
         void Publish(string message, string routingKey, IDictionary<string, object> messageAttributes);
     }
