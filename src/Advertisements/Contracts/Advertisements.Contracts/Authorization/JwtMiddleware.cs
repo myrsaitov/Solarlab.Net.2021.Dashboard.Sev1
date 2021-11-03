@@ -26,20 +26,27 @@ namespace Sev1.Advertisements.Contracts.Authorization
                 .Request
                 .Headers["Authorization"]
                 .FirstOrDefault();
+            
+            if (string.IsNullOrWhiteSpace(token))
+            {
+                // Если токена нет (работаем анонимно)
+                context.Items["Anonimous"] = "Anonimous";
+            }
+            else
+            {
+                // Валидация JWT-токена
+                var res = await _userApiClient.ValidateToken(token);
 
-            // Валидация JWT-токена
-            var res = await _userApiClient.ValidateToken(token);
-
-            // Если валидация JWT-токена удачная,
-            if (res != null)
-            {   
-                // то добавляем в каждую роль информацию о пользователе
-                foreach (var role in res.Roles)
+                // Если валидация JWT-токена удачная,
+                if (res != null)
                 {
-                    context.Items[role] = res.UserId;
+                    // то добавляем в каждую роль информацию о пользователе
+                    foreach (var role in res.Roles)
+                    {
+                        context.Items[role] = res.UserId;
+                    }
                 }
             }
-
             // Передаем управление следующему middleware
             await _next(context);
         }
