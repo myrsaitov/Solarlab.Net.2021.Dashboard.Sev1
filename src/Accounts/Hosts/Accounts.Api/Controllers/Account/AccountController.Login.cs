@@ -18,6 +18,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(
+            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
             UserLoginRequest request,
             CancellationToken cancellationToken)
         {

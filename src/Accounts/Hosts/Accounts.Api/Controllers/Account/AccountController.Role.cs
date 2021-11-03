@@ -25,17 +25,18 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <summary>
         /// Возвращает роль пользователя по Id
         /// </summary>
-        /// <param name="userId">Id пользователя</param>
+        /// <param name="request">Id пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
         [HttpPost("getuserroles")]
         public async Task<IActionResult> GetUserRoles(
-            string userId,
+            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
+            UserIdDto request,
             CancellationToken cancellationToken)
         {
             return Ok(await _identityService.GetUserRolesById(
-                userId,
+                request.UserId,
                 cancellationToken));
         }
 
@@ -48,6 +49,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         [Authorize(Roles = "Admin, Moderator")]
         [HttpPost("role-add")]
         public async Task<IActionResult> AddToRole(
+            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
             UserRoleRequest request,
             CancellationToken cancellationToken)
         {
@@ -68,6 +70,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         [Authorize(Roles = "Admin, Moderator")]
         [HttpPost("role-remove")]
         public async Task<IActionResult> RemoveFromRole(
+            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
             UserRoleRequest request,
             CancellationToken cancellationToken)
         {

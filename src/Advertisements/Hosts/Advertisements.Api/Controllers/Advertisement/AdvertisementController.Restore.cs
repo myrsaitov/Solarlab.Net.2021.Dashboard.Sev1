@@ -13,10 +13,11 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        [Authorize("Admin", "Moderator", "User")]
+        [Authorize]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Restore(
-            [FromRoute] int id, 
+            [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
+            int id, 
             CancellationToken cancellationToken)
         {
             await _advertisementService.Restore(

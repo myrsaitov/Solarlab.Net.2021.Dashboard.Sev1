@@ -21,7 +21,8 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(
-            [FromBody] AdvertisementCreateDto model, 
+            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
+            AdvertisementCreateDto model, 
             CancellationToken cancellationToken)
         {
             await _advertisementService.Create(

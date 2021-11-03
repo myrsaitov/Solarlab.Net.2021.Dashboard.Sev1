@@ -40,6 +40,7 @@ namespace Sev1.Accounts.Api
                 ) // Подключение к БД через информацию в "ConnectionString"
                 .AddIdentity(Configuration);
 
+            // Подключение Swagger
             services.AddSwaggerModule();
 
             // Инжектируем Mapster

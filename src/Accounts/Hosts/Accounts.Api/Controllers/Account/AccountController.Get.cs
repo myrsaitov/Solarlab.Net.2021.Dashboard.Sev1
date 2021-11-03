@@ -48,16 +48,19 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <summary>
         /// Возвращает пользователя по его Id
         /// </summary>
-        /// <param name="userId">Id пользователя</param>
+        /// <param name="request">Id пользователя</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("user")]
         public async Task<IActionResult> GetUserById(
-            string userId,
+            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
+            UserIdDto request,
             CancellationToken cancellationToken)
         {
-            var domainUser = await _userService.Get(userId, cancellationToken);
+            var domainUser = await _userService.Get(
+                request.UserId,
+                cancellationToken);
 
             return Ok(domainUser);
         }

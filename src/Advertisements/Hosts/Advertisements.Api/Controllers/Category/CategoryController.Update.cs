@@ -19,7 +19,8 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         [HttpPut("update")] // TODO
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Update(
-            [FromBody] CategoryUpdateDto model, 
+            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
+            CategoryUpdateDto model, 
             CancellationToken cancellationToken)
         {
             await _categoryService.Update(

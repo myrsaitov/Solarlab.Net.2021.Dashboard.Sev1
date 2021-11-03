@@ -18,7 +18,8 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetPaged(
-            [FromQuery] GetPagedRequest request, 
+            [FromQuery] // Get values from the query string, e.g.: ?PageSize=10&Page=0
+            GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
             var result = await _categoryService.GetPaged(new GetPagedRequest
@@ -39,7 +40,8 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(
-            [FromRoute] int id, 
+            [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
+            int id, 
             CancellationToken cancellationToken)
         {
 
