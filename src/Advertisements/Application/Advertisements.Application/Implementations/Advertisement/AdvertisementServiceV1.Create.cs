@@ -40,9 +40,6 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 throw new NoRightsException("Нет создателя объявления!");
             }
 
-            // Дополняем модель - Id пользователя, который создал объявление
-            model.OwnerId = userId;
-
             // Проверка категории на существование
             var category = await _categoryRepository.FindById(
                 model.CategoryId,
@@ -65,6 +62,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             advertisement.IsDeleted = false;
             advertisement.CreatedAt = DateTime.UtcNow;
             advertisement.Category = category;
+            advertisement.OwnerId = userId;
 
             // Добавляем таги
             await AddTags(

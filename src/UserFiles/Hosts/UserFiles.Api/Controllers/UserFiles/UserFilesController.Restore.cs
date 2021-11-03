@@ -5,12 +5,12 @@ using Sev1.UserFiles.Contracts.Authorization;
 
 namespace Sev1.UserFiles.Api.Controllers.Advertisement
 {
-    public partial class AdvertisementController
+    public partial class UserFilesController
     {
         /// <summary>
-        /// Восстанавливает удаленные объявления
+        /// Восстанавливает удаленный файл
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Id файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]

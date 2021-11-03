@@ -2,32 +2,32 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.UserFiles.Application.Contracts.Category;
+using Sev1.UserFiles.Application.Contracts.Advertisement;
 using Sev1.UserFiles.Contracts.Authorization;
 
-namespace Sev1.UserFiles.Api.Controllers.Category
+namespace Sev1.UserFiles.Api.Controllers.Advertisement
 {
-    public partial class CategoryController
+    public partial class UserFilesController
     {
         /// <summary>
-        /// Редактирование категории
+        /// Создает новое объявление
         /// </summary>
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        [Authorize("Administrator", "Moderator")]
-        [HttpPut("update")] // TODO
+        [Authorize("Administrator","Moderator","User")]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> Update(
+        public async Task<IActionResult> Create(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            CategoryUpdateDto model, 
+            AdvertisementCreateDto model, 
             CancellationToken cancellationToken)
         {
-            await _categoryService.Update(
-                model,
+            await _advertisementService.Create(
+                model, 
                 cancellationToken);
 
-            return NoContent();
+            return Created(string.Empty, null);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Interfaces.Category;
+using Sev1.UserFiles.Application.Interfaces.Advertisement;
 
-namespace Sev1.Advertisements.Api.Controllers.Category
+namespace Sev1.UserFiles.Api.Controllers.Advertisement
 {
     // Calls to this controller will only succeed
     // if the client provides Content-Type header of "application/json".
@@ -10,14 +10,19 @@ namespace Sev1.Advertisements.Api.Controllers.Category
 
     // Attribute routing for REST APIs
     // https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-5.0
-    [Route("api/v1/categories")]
+    [Route("api/v1/advertisements")]
 
     // The[ApiController] attribute can be applied to
     // a controller class to enable API-specific behaviors
-    [ApiController]
-    public partial class CategoryController : ControllerBase
+   [ApiController]
+    public partial class UserFilesController : ControllerBase
     {
-        private readonly ICategoryService _categoryService;
-        public CategoryController(ICategoryService categoryService) => _categoryService = categoryService;
+        private readonly IAdvertisementService _advertisementService;
+
+        public UserFilesController(
+            IAdvertisementService advertisementService)
+        { 
+            _advertisementService = advertisementService;
+        }
     }
 }

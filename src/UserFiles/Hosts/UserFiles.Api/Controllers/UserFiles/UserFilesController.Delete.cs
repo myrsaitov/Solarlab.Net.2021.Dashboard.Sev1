@@ -3,25 +3,25 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.UserFiles.Contracts.Authorization;
 
-namespace Sev1.UserFiles.Api.Controllers.Category
+namespace Sev1.UserFiles.Api.Controllers.Advertisement
 {
-    public partial class CategoryController
+    public partial class UserFilesController
     {
         /// <summary>
-        /// Удаляет категорию
+        /// Удалает файл (из БД не удаляет, но помечает, что он удален)
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="id">Id файла</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        [Authorize("Administrator", "Moderator")]
+        [Authorize("Administrator","Moderator","User")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
             int id, 
             CancellationToken cancellationToken)
         {
-            await _categoryService.Delete(
-                id,
+            await _advertisementService.Delete(
+                id, 
                 cancellationToken);
 
             //  Creates a Microsoft.AspNetCore.Mvc.NoContentResult object that produces an empty

@@ -11,7 +11,7 @@ namespace Sev1.Advertisements.Domain
         public string Title { get; set; }
 
         /// <summary>
-        /// Текс объявления
+        /// Текст объявления
         /// </summary>
         public string Body { get; set; }
 

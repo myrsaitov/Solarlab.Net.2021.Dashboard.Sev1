@@ -42,11 +42,13 @@ namespace Sev1.Advertisements.Contracts.Authorization
             var moderator = context.HttpContext.Items["Moderator"];
             var admin = context.HttpContext.Items["Administrator"];
 
-            if (_roles == null)
+            if (_roles is null)
             {
                 // Если роли не переданы в виде параметра, 
                 // т.е. достаточно просто авторизации
-                if ((user == null) && (moderator == null) && (admin == null))
+                if ((user == null) &&
+                    (moderator == null) &&
+                    (admin == null))
                 {
                     // Если все роли нулл, то авторизация не прошла
                     authorized = false;
@@ -92,8 +94,10 @@ namespace Sev1.Advertisements.Contracts.Authorization
             if(!authorized)
             {
                 context.Result = new JsonResult(
-                        new { message = "Unauthorized" })
-                { StatusCode = StatusCodes.Status401Unauthorized };
+                    new { message = "Unauthorized" })
+                { 
+                    StatusCode = StatusCodes.Status401Unauthorized
+                };
             }
         }
     }

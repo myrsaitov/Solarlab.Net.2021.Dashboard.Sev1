@@ -1,40 +1,37 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.UserFiles.Contracts.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.UserFiles.Application.Contracts.GetPaged;
+using Sev1.UserFiles.Contracts.Authorization;
 
-namespace Sev1.UserFiles.Api.Controllers.Category
+namespace Sev1.UserFiles.Api.Controllers.Advertisement
 {
-
-    public partial class CategoryController
+    public partial class UserFilesController
     {
         /// <summary>
-        /// Возвращает категории с пагинацией
+        /// Возвращает список файлов с пагинацией (и поиском)
         /// </summary>
-        /// <param name="request">Запрос на пагинацию</param>
+        /// <param name="request">Запрос на пагинацию и поиск</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetPaged(
             [FromQuery] // Get values from the query string, e.g.: ?PageSize=10&Page=0
-            GetPagedRequest request, 
+            GetPagedAdvertisementRequest request, 
             CancellationToken cancellationToken)
         {
-            var result = await _categoryService.GetPaged(new GetPagedRequest
-            {
-                PageSize = request.PageSize,
-                Page = request.Page
-            }, cancellationToken); ;
+            var result = await _advertisementService.GetPaged(
+                request, 
+                cancellationToken);
 
             return Ok(result);
         }
 
         /// <summary>
-        /// Возвращает категорию по Id
+        /// Возвращает файл по Id
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Id файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [AllowAnonymous]
@@ -44,8 +41,7 @@ namespace Sev1.UserFiles.Api.Controllers.Category
             int id, 
             CancellationToken cancellationToken)
         {
-
-            var found = await _categoryService.GetById(
+            var found = await _advertisementService.GetById(
                 id,
                 cancellationToken);
 
