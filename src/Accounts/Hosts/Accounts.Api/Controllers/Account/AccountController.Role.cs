@@ -25,18 +25,18 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <summary>
         /// Возвращает роль пользователя по Id
         /// </summary>
-        /// <param name="request">Id пользователя</param>
+        /// <param name="UserId">Id пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
         [HttpPost("getuserroles")]
         public async Task<IActionResult> GetUserRoles(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            UserIdDto request,
+            string UserId,
             CancellationToken cancellationToken)
         {
             return Ok(await _identityService.GetUserRolesById(
-                request.UserId,
+                UserId,
                 cancellationToken));
         }
 
