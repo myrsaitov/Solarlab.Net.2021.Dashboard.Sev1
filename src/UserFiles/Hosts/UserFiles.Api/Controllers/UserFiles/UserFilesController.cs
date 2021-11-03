@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sev1.UserFiles.Application.Interfaces.Advertisement;
+using Sev1.UserFiles.Application.Interfaces.UserFile;
 
-namespace Sev1.UserFiles.Api.Controllers.Advertisement
+namespace Sev1.UserFiles.Api.Controllers.UserFile
 {
     // Calls to this controller will only succeed
     // if the client provides Content-Type header of "application/json".
@@ -10,19 +10,19 @@ namespace Sev1.UserFiles.Api.Controllers.Advertisement
 
     // Attribute routing for REST APIs
     // https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-5.0
-    [Route("api/v1/advertisements")]
+    [Route("api/v1/userFiles")]
 
     // The[ApiController] attribute can be applied to
     // a controller class to enable API-specific behaviors
    [ApiController]
     public partial class UserFilesController : ControllerBase
     {
-        private readonly IAdvertisementService _advertisementService;
+        private readonly IUserFileService _userFileService;
 
         public UserFilesController(
-            IAdvertisementService advertisementService)
+            IUserFileService userFileService)
         { 
-            _advertisementService = advertisementService;
+            _userFileService = userFileService;
         }
     }
 }

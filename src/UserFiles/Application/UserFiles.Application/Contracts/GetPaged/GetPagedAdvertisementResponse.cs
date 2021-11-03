@@ -1,8 +1,8 @@
-﻿using Sev1.UserFiles.Application.Contracts.Advertisement;
+﻿using Sev1.UserFiles.Application.Contracts.UserFile;
 
 namespace Sev1.UserFiles.Application.Contracts.GetPaged
 {
-    public class GetPagedAdvertisementResponse : GetPagedResponse<AdvertisementPagedDto>
+    public class GetPagedUserFileResponse : GetPagedResponse<UserFilePagedDto>
     {
     }
 }

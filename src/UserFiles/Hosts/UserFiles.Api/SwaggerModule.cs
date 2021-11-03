@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
-namespace Sev1.Advertisement.Api
+namespace Sev1.UserFile.Api
 {
     public static class SwaggerModule
     {

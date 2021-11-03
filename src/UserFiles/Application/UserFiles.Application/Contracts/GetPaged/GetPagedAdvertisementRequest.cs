@@ -1,6 +1,6 @@
 ﻿namespace Sev1.UserFiles.Application.Contracts.GetPaged
 {
-    public class GetPagedAdvertisementRequest : GetPagedRequest
+    public class GetPagedUserFileRequest : GetPagedRequest
     {
         public string SearchStr { get; set; }
         public string Tag { get; set; }

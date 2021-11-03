@@ -8,16 +8,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Sev1.UserFiles.MapsterMapper.MapProfiles;
 using Microsoft.Extensions.Hosting;
 using Sev1.UserFiles.DataAccess;
-using Sev1.UserFiles.Application.Interfaces.Category;
-using Sev1.UserFiles.Application.Implementations.Category;
-using Sev1.UserFiles.Application.Interfaces.Advertisement;
-using Sev1.UserFiles.Application.Implementations.Advertisement;
-using Sev1.UserFiles.Application.Interfaces.Tag;
-using Sev1.UserFiles.Application.Implementations.Tag;
+using Sev1.UserFiles.Application.Interfaces.UserFile;
+using Sev1.UserFiles.Application.Implementations.UserFile;
 using Sev1.UserFiles.Contracts.ApiClients.User;
 using Sev1.UserFiles.Contracts.Authorization;
 using UserFiles.Contracts.UserProvider;
-using Sev1.Advertisement.Api;
+using Sev1.UserFile.Api;
 
 namespace Sev1.UserFiles.Api
 {
@@ -69,9 +65,7 @@ namespace Sev1.UserFiles.Api
                 .AddCors()
 
                 // Инжектирование наших сервисов
-                .AddScoped<ICategoryService, CategoryServiceV1>()
-                .AddScoped<IAdvertisementService, AdvertisementServiceV1>()
-                .AddScoped<ITagService, TagServiceV1>()
+                .AddScoped<IUserFileService, UserFileServiceV1>()
 
                 // Инжектирование API-клиента User
                 //.AddScoped<IUserApiClient, UserApiClient>()

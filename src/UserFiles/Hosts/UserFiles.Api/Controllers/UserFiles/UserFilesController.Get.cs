@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Sev1.UserFiles.Application.Contracts.GetPaged;
 using Sev1.UserFiles.Contracts.Authorization;
 
-namespace Sev1.UserFiles.Api.Controllers.Advertisement
+namespace Sev1.UserFiles.Api.Controllers.UserFile
 {
     public partial class UserFilesController
     {
@@ -18,10 +18,10 @@ namespace Sev1.UserFiles.Api.Controllers.Advertisement
         [HttpGet]
         public async Task<IActionResult> GetPaged(
             [FromQuery] // Get values from the query string, e.g.: ?PageSize=10&Page=0
-            GetPagedAdvertisementRequest request, 
+            GetPagedUserFileRequest request, 
             CancellationToken cancellationToken)
         {
-            var result = await _advertisementService.GetPaged(
+            var result = await _userFileService.GetPaged(
                 request, 
                 cancellationToken);
 
@@ -37,11 +37,11 @@ namespace Sev1.UserFiles.Api.Controllers.Advertisement
         [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(
-            [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
+            [FromRoute] // Get values from route data, e.g.: "/api/v1/userFiles/{id}"
             int id, 
             CancellationToken cancellationToken)
         {
-            var found = await _advertisementService.GetById(
+            var found = await _userFileService.GetById(
                 id,
                 cancellationToken);
 

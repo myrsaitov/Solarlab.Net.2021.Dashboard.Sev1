@@ -14,17 +14,11 @@ namespace Sev1.UserFiles.DataAccess
         {
         }
 
-        public DbSet<Advertisement> UserFiles { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Tag> Tags { get; set; }
-
+        public DbSet<UserFile> UserFiles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new AdvertisementConfiguration());
-            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-            modelBuilder.ApplyConfiguration(new TagConfiguration());
-
+            modelBuilder.ApplyConfiguration(new UserFileConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

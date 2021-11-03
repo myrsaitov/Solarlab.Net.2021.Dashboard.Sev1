@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.UserFiles.Application.Contracts.Advertisement;
+using Sev1.UserFiles.Application.Contracts.UserFile;
 using Sev1.UserFiles.Contracts.Authorization;
 
-namespace Sev1.UserFiles.Api.Controllers.Advertisement
+namespace Sev1.UserFiles.Api.Controllers.UserFile
 {
     public partial class UserFilesController
     {
@@ -20,10 +20,10 @@ namespace Sev1.UserFiles.Api.Controllers.Advertisement
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            AdvertisementCreateDto model, 
+            UserFileCreateDto model, 
             CancellationToken cancellationToken)
         {
-            await _advertisementService.Create(
+            await _userFileService.Create(
                 model, 
                 cancellationToken);
 

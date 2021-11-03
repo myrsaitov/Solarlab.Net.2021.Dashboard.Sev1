@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.UserFiles.Contracts.Authorization;
 
-namespace Sev1.UserFiles.Api.Controllers.Advertisement
+namespace Sev1.UserFiles.Api.Controllers.UserFile
 {
     public partial class UserFilesController
     {
@@ -16,11 +16,11 @@ namespace Sev1.UserFiles.Api.Controllers.Advertisement
         [Authorize]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Restore(
-            [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
+            [FromRoute] // Get values from route data, e.g.: "/api/v1/userFiles/{id}"
             int id, 
             CancellationToken cancellationToken)
         {
-            await _advertisementService.Restore(
+            await _userFileService.Restore(
                 id,
                 cancellationToken);
             

@@ -2,11 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Sev1.UserFiles.Application.Repositories.Base;
-using Sev1.UserFiles.Application.Repositories.Advertisement;
-using Sev1.UserFiles.Application.Repositories.Category;
-using Sev1.UserFiles.Application.Repositories.Tag;
 using Sev1.UserFiles.DataAccess.Repositories;
 using Sev1.UserFiles.DataAccess.Base;
+using Sev1.UserFiles.Application.Repositories.UserFile;
 
 // Nugets:
 // Microsoft.EntityFrameworkCore
@@ -59,9 +57,7 @@ namespace Sev1.UserFiles.DataAccess
             // per each http request but uses the same instance
             // in the other calls within that same web request.
             moduleConfiguration.Services.AddScoped(typeof(IRepository<,>), typeof(EfRepository<,>));
-            moduleConfiguration.Services.AddScoped<IAdvertisementRepository, AdvertisementRepository>();
-            moduleConfiguration.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-            moduleConfiguration.Services.AddScoped<ITagRepository, TagRepository>();
+            moduleConfiguration.Services.AddScoped<IUserFileRepository, UserFileRepository>();
 
         }
     }
