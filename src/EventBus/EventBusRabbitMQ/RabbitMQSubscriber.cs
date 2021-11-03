@@ -15,6 +15,7 @@ namespace EventBusRabbitMQ
         private readonly IModel _model;
         private readonly string _exchange;
         private readonly string _queue;
+        private bool _disposed = false;
 
         public RabbitMQSubscriber(IRabbitMQConnection connection, string queue, string routingKey)
         {
@@ -43,6 +44,22 @@ namespace EventBusRabbitMQ
             };
 
             _model.BasicConsume(queue: _queue, autoAck: false, consumer: consumer);
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+                return;
+
+            if (disposing)
+                _model?.Close();
+
+            _disposed = true;
         }
     }
 }
