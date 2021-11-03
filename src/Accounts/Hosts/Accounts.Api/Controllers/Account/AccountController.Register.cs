@@ -24,6 +24,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         [HttpPost("register")] 
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Register(
+            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
             UserRegisterRequest request,
             CancellationToken cancellationToken)
         {

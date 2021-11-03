@@ -19,7 +19,8 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         [HttpPut("update")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Update(
-            [FromBody] AdvertisementUpdateDto model, 
+            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
+            AdvertisementUpdateDto model, 
             CancellationToken cancellationToken)
         {
             await _advertisementService.Update(

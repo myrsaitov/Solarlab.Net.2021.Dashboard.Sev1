@@ -46,9 +46,9 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             // Пользователь может удалить категорию:
             //  - если он администратор;
             //  - если он модератор;
-            var isAdmin = _userProvider.IsInRole("Admin");
+            var isAdministrator = _userProvider.IsInRole("Administrator");
             var isModerator = _userProvider.IsInRole("Moderator");
-            if (!(isAdmin || isModerator))
+            if (!(isAdministrator || isModerator))
             {
                 throw new NoRightsException("Удалить категорию может только модератор или админ!");
             }

@@ -10,7 +10,7 @@ using Sev1.Accounts.DataAccess;
 namespace Accounts.DataAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20211025213617_UserWereAdded")]
+    [Migration("20211103110359_UserWereAdded")]
     partial class UserWereAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,21 +51,21 @@ namespace Accounts.DataAccess.Migrations
                         new
                         {
                             Id = "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3",
-                            ConcurrencyStamp = "0e1ee038-0b1e-4217-a67d-362f13b9806f",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
+                            ConcurrencyStamp = "d6133c98-9621-4957-8bb5-dafe5c43df4d",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "c373fe1b-9e38-498b-9729-6c719222b00d",
-                            ConcurrencyStamp = "f70497fb-4c9f-4498-a917-1e4030b14e61",
+                            ConcurrencyStamp = "400babc9-d3e5-4389-a2fe-ae2406490ce3",
                             Name = "Moderator",
                             NormalizedName = "MODERATOR"
                         },
                         new
                         {
                             Id = "589a1f42-d43c-4315-8e02-432f64e02bc0",
-                            ConcurrencyStamp = "c6b317ec-6f1c-4f6d-bba8-1ae01c136215",
+                            ConcurrencyStamp = "dab6eb5b-d804-4125-8ea8-2ab35d364032",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -261,43 +261,43 @@ namespace Accounts.DataAccess.Migrations
                         {
                             Id = "757d5290-d036-4757-85ae-827b59e92cd3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5741a49d-5955-47d7-add7-dc082e2f8dbb",
+                            ConcurrencyStamp = "749257d1-b04c-466f-9650-d0e612cc9ad7",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHUzKoirS1g61iR7vYv+9u4sCvCmrbTLH0IvY4+eQmC2AHfRzJSR2YUNSVu8FUS7ig==",
+                            NormalizedUserName = "ADMINISTRATOR",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKZVGflwe0gOMRJk7NNSycImn1ljXFvFB9Fu+uPFJExo72N1YDuw7PXgsjZXCz5Fyg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3a141d63-a488-4789-9997-f2a5708cb403",
+                            SecurityStamp = "250012ff-5f19-40b6-a074-354cb2d5e84b",
                             TwoFactorEnabled = false,
-                            UserName = "admin"
+                            UserName = "Administrator"
                         },
                         new
                         {
                             Id = "a0d74199-2ad5-4d2f-a184-eb52f5bf9094",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "857f84e0-31ce-410c-997e-60633c827134",
+                            ConcurrencyStamp = "9f80f912-cb75-4129-a675-1c0bffd03d10",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "MODERATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDk8EqCqc12fBaDHZ5g1/BuNibH+WwCnWtHTOXXeZ/iSwDm1u/4FSpa0qErDpNQhNw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAZxsjG9T2WsKLDpSJn7OHCmi4apxs9jn/I0T9oDPuJeoCHjEhtymFGPYCE4KA3asQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e5e695a6-7ca8-4fe4-9c8d-c9f8adc6e40f",
+                            SecurityStamp = "c8619db4-cd4e-4507-9a34-453d77ae2667",
                             TwoFactorEnabled = false,
-                            UserName = "moderator"
+                            UserName = "Moderator"
                         },
                         new
                         {
                             Id = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "645dae49-8073-4215-9dcb-af270300abae",
+                            ConcurrencyStamp = "3ce15137-ae25-4072-875f-3c16487bab0e",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAuN+aFF/LWfQ479/pT2iKeLcK6yWI401edpyqUjbRrfL82ZR4FbGq1okgJ0c65WBw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKxkDnvvc/CMfL7te60megeZUQp33R93KNlmuchZZ+HaMSPVfHot3yPskSnItGXIkA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f472dcfb-d598-475a-97c0-8988664fc240",
+                            SecurityStamp = "2f5e2cc9-491f-4bd1-aefa-39a9b5b8e805",
                             TwoFactorEnabled = false,
-                            UserName = "user"
+                            UserName = "User"
                         });
                 });
 
@@ -348,31 +348,31 @@ namespace Accounts.DataAccess.Migrations
                         {
                             Id = "757d5290-d036-4757-85ae-827b59e92cd3",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FirstName = "admin1",
+                            FirstName = "Administrator",
                             IsDeleted = false,
-                            LastName = "admin2",
-                            MiddleName = "admin3",
-                            UserName = "admin"
+                            LastName = "Administrator",
+                            MiddleName = "Administrator",
+                            UserName = "Administrator"
                         },
                         new
                         {
                             Id = "a0d74199-2ad5-4d2f-a184-eb52f5bf9094",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FirstName = "moderator1",
+                            FirstName = "Moderator",
                             IsDeleted = false,
-                            LastName = "moderator2",
-                            MiddleName = "moderator3",
-                            UserName = "moderator"
+                            LastName = "Moderator",
+                            MiddleName = "Moderator",
+                            UserName = "Moderator"
                         },
                         new
                         {
                             Id = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FirstName = "user1",
+                            FirstName = "User",
                             IsDeleted = false,
-                            LastName = "user2",
-                            MiddleName = "user3",
-                            UserName = "user"
+                            LastName = "User",
+                            MiddleName = "User",
+                            UserName = "User"
                         });
                 });
 

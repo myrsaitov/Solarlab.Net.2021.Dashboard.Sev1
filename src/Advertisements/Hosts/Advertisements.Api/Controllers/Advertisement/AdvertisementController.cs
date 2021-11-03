@@ -1,7 +1,5 @@
-﻿using Advertisements.Contracts.UserProvider;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Sev1.Advertisements.Application.Interfaces.Advertisement;
-using Sev1.Advertisements.Contracts.ApiClients.User;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {

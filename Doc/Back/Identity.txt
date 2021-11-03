@@ -22,7 +22,7 @@ https://jasonwatmore.com/post/2019/10/11/aspnet-core-3-jwt-authentication-tutori
             var allRoles = _roleManager.Roles.ToList();
 
 
-[Authorize("Admin", "Moderator")]
+[Authorize("Administrator", "Moderator")]
 [AllowAnonymous]
 
 "User"
@@ -31,5 +31,5 @@ Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9y
 "Moderator"
 Bearer 
 
-"Admin"
+"Administrator"
 Bearer 

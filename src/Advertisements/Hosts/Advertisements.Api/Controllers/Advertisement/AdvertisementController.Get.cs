@@ -17,7 +17,8 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetPaged(
-            [FromQuery] GetPagedAdvertisementRequest request, 
+            [FromQuery] // Get values from the query string, e.g.: ?PageSize=10&Page=0
+            GetPagedAdvertisementRequest request, 
             CancellationToken cancellationToken)
         {
             var result = await _advertisementService.GetPaged(
@@ -36,7 +37,8 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(
-            [FromRoute] int id, 
+            [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
+            int id, 
             CancellationToken cancellationToken)
         {
             var found = await _advertisementService.GetById(

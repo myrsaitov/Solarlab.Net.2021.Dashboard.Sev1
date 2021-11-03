@@ -12,12 +12,13 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <summary>
         /// Идентификация пользователя
         /// </summary>
-        /// <param name="request">Логин и пароль (user/user; moderator/moderator; admin/admin)</param>
+        /// <param name="request">Логин и пароль (User/User; Moderator/Moderator; Administrator/Administrator)</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(
+            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
             UserLoginRequest request,
             CancellationToken cancellationToken)
         {

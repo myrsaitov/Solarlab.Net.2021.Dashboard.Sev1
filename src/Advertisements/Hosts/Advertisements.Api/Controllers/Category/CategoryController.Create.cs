@@ -15,11 +15,12 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        [Authorize("Admin", "Moderator")]
+        [Authorize("Administrator", "Moderator")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(
-            [FromBody] CategoryCreateDto model, 
+            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
+            CategoryCreateDto model, 
             CancellationToken cancellationToken)
         {
             var response = await _categoryService.Create(

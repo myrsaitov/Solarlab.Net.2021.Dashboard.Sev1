@@ -13,10 +13,11 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         /// <param name="id"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [Authorize("Admin", "Moderator")]
+        [Authorize("Administrator", "Moderator")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(
-            [FromRoute] int id, 
+            [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
+            int id, 
             CancellationToken cancellationToken)
         {
             await _categoryService.Delete(

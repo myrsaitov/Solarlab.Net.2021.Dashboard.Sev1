@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Security.Claims;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,11 +15,12 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        [Authorize("Admin","Moderator","User")]
+        [Authorize("Administrator","Moderator","User")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(
-            [FromBody] AdvertisementCreateDto model, 
+            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
+            AdvertisementCreateDto model, 
             CancellationToken cancellationToken)
         {
             await _advertisementService.Create(

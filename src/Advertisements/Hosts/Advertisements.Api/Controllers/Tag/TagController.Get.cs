@@ -17,7 +17,8 @@ namespace Sev1.Advertisements.Api.Controllers.Tag
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetPaged(
-            [FromQuery] GetPagedRequest request, 
+            [FromQuery] // Get values from the query string, e.g.: ?PageSize=10&Page=0
+            GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
             var result = await _tagService.GetPaged(

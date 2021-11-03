@@ -175,9 +175,9 @@ namespace Accounts.DataAccess.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3", "0e1ee038-0b1e-4217-a67d-362f13b9806f", "Admin", "ADMIN" },
-                    { "c373fe1b-9e38-498b-9729-6c719222b00d", "f70497fb-4c9f-4498-a917-1e4030b14e61", "Moderator", "MODERATOR" },
-                    { "589a1f42-d43c-4315-8e02-432f64e02bc0", "c6b317ec-6f1c-4f6d-bba8-1ae01c136215", "User", "USER" }
+                    { "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3", "d6133c98-9621-4957-8bb5-dafe5c43df4d", "Administrator", "ADMINISTRATOR" },
+                    { "c373fe1b-9e38-498b-9729-6c719222b00d", "400babc9-d3e5-4389-a2fe-ae2406490ce3", "Moderator", "MODERATOR" },
+                    { "589a1f42-d43c-4315-8e02-432f64e02bc0", "dab6eb5b-d804-4125-8ea8-2ab35d364032", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -185,9 +185,9 @@ namespace Accounts.DataAccess.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "757d5290-d036-4757-85ae-827b59e92cd3", 0, "5741a49d-5955-47d7-add7-dc082e2f8dbb", null, false, false, null, null, "ADMIN", "AQAAAAEAACcQAAAAEHUzKoirS1g61iR7vYv+9u4sCvCmrbTLH0IvY4+eQmC2AHfRzJSR2YUNSVu8FUS7ig==", null, false, "3a141d63-a488-4789-9997-f2a5708cb403", false, "admin" },
-                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", 0, "857f84e0-31ce-410c-997e-60633c827134", null, false, false, null, null, "MODERATOR", "AQAAAAEAACcQAAAAEDk8EqCqc12fBaDHZ5g1/BuNibH+WwCnWtHTOXXeZ/iSwDm1u/4FSpa0qErDpNQhNw==", null, false, "e5e695a6-7ca8-4fe4-9c8d-c9f8adc6e40f", false, "moderator" },
-                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", 0, "645dae49-8073-4215-9dcb-af270300abae", null, false, false, null, null, "USER", "AQAAAAEAACcQAAAAEAuN+aFF/LWfQ479/pT2iKeLcK6yWI401edpyqUjbRrfL82ZR4FbGq1okgJ0c65WBw==", null, false, "f472dcfb-d598-475a-97c0-8988664fc240", false, "user" }
+                    { "757d5290-d036-4757-85ae-827b59e92cd3", 0, "749257d1-b04c-466f-9650-d0e612cc9ad7", null, false, false, null, null, "ADMINISTRATOR", "AQAAAAEAACcQAAAAEKZVGflwe0gOMRJk7NNSycImn1ljXFvFB9Fu+uPFJExo72N1YDuw7PXgsjZXCz5Fyg==", null, false, "250012ff-5f19-40b6-a074-354cb2d5e84b", false, "Administrator" },
+                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", 0, "9f80f912-cb75-4129-a675-1c0bffd03d10", null, false, false, null, null, "MODERATOR", "AQAAAAEAACcQAAAAEAZxsjG9T2WsKLDpSJn7OHCmi4apxs9jn/I0T9oDPuJeoCHjEhtymFGPYCE4KA3asQ==", null, false, "c8619db4-cd4e-4507-9a34-453d77ae2667", false, "Moderator" },
+                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", 0, "3ce15137-ae25-4072-875f-3c16487bab0e", null, false, false, null, null, "USER", "AQAAAAEAACcQAAAAEKxkDnvvc/CMfL7te60megeZUQp33R93KNlmuchZZ+HaMSPVfHot3yPskSnItGXIkA==", null, false, "2f5e2cc9-491f-4bd1-aefa-39a9b5b8e805", false, "User" }
                 });
 
             migrationBuilder.InsertData(
@@ -195,9 +195,9 @@ namespace Accounts.DataAccess.Migrations
                 columns: new[] { "Id", "CreatedAt", "FirstName", "IsDeleted", "LastName", "MiddleName", "UpdatedAt", "UserName" },
                 values: new object[,]
                 {
-                    { "757d5290-d036-4757-85ae-827b59e92cd3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin1", false, "admin2", "admin3", null, "admin" },
-                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "moderator1", false, "moderator2", "moderator3", null, "moderator" },
-                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "user1", false, "user2", "user3", null, "user" }
+                    { "757d5290-d036-4757-85ae-827b59e92cd3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Administrator", false, "Administrator", "Administrator", null, "Administrator" },
+                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Moderator", false, "Moderator", "Moderator", null, "Moderator" },
+                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "User", false, "User", "User", null, "User" }
                 });
 
             migrationBuilder.InsertData(

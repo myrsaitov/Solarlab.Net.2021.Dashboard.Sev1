@@ -30,7 +30,7 @@ namespace Sev1.Accounts.DataAccess
 
         private void SeedIdentity(ModelBuilder modelBuilder)
         {
-            var ADMIN_ROLE_ID = "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3";
+            var ADMINISTRATOR_ROLE_ID = "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3";
             var MODERATOR_ROLE_ID = "c373fe1b-9e38-498b-9729-6c719222b00d";
             var USER_ROLE_ID = "589a1f42-d43c-4315-8e02-432f64e02bc0";
 
@@ -40,9 +40,9 @@ namespace Sev1.Accounts.DataAccess
                 {
                     new IdentityRole
                     {
-                        Id = ADMIN_ROLE_ID,
-                        Name = RoleConstants.Admin.ToString(),
-                        NormalizedName = "ADMIN"
+                        Id = ADMINISTRATOR_ROLE_ID,
+                        Name = RoleConstants.Administrator.ToString(),
+                        NormalizedName = "ADMINISTRATOR"
                     },
                     new IdentityRole
                     {
@@ -62,18 +62,18 @@ namespace Sev1.Accounts.DataAccess
 
             var passwordHasher = new PasswordHasher<IdentityUser>();
 
-            var ADMIN_ID = "757d5290-d036-4757-85ae-827b59e92cd3";
+            var ADMINISTRATOR_ID = "757d5290-d036-4757-85ae-827b59e92cd3";
             var MODERATOR_ID = "a0d74199-2ad5-4d2f-a184-eb52f5bf9094";
             var USER_ID = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8";
 
-            // Admin
+            // Administrator
             var adminUser = new IdentityUser
             {
-                Id = ADMIN_ID,
-                UserName = "admin",
-                NormalizedUserName = "ADMIN"
+                Id = ADMINISTRATOR_ID,
+                UserName = "Administrator",
+                NormalizedUserName = "ADMINISTRATOR"
             };
-            adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, "admin");
+            adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, "Administrator");
 
             modelBuilder.Entity<IdentityUser>(x =>
             {
@@ -84,18 +84,18 @@ namespace Sev1.Accounts.DataAccess
             {
                 x.HasData(new IdentityUserRole<string>
                 {
-                    RoleId = ADMIN_ROLE_ID,
-                    UserId = ADMIN_ID
+                    RoleId = ADMINISTRATOR_ROLE_ID,
+                    UserId = ADMINISTRATOR_ID
                 });
             });
 
             var adminDomainUser = new User
             {
-                Id = ADMIN_ID,
-                UserName = "admin",
-                FirstName = "admin1",
-                LastName = "admin2",
-                MiddleName = "admin3",
+                Id = ADMINISTRATOR_ID,
+                UserName = "Administrator",
+                FirstName = "Administrator",
+                LastName = "Administrator",
+                MiddleName = "Administrator",
             };
 
             modelBuilder.Entity<User>(x =>
@@ -107,10 +107,10 @@ namespace Sev1.Accounts.DataAccess
             var moderatorUser = new IdentityUser
             {
                 Id = MODERATOR_ID,
-                UserName = "moderator",
+                UserName = "Moderator",
                 NormalizedUserName = "MODERATOR"
             };
-            moderatorUser.PasswordHash = passwordHasher.HashPassword(moderatorUser, "moderator");
+            moderatorUser.PasswordHash = passwordHasher.HashPassword(moderatorUser, "Moderator");
 
             modelBuilder.Entity<IdentityUser>(x =>
             {
@@ -129,10 +129,10 @@ namespace Sev1.Accounts.DataAccess
             var moderatorDomainUser = new User
             {
                 Id = MODERATOR_ID,
-                UserName = "moderator",
-                FirstName = "moderator1",
-                LastName = "moderator2",
-                MiddleName = "moderator3",
+                UserName = "Moderator",
+                FirstName = "Moderator",
+                LastName = "Moderator",
+                MiddleName = "Moderator",
             };
 
             modelBuilder.Entity<User>(x =>
@@ -144,10 +144,10 @@ namespace Sev1.Accounts.DataAccess
             var userUser = new IdentityUser
             {
                 Id = USER_ID,
-                UserName = "user",
+                UserName = "User",
                 NormalizedUserName = "USER"
             };
-            userUser.PasswordHash = passwordHasher.HashPassword(moderatorUser, "user");
+            userUser.PasswordHash = passwordHasher.HashPassword(moderatorUser, "User");
 
             modelBuilder.Entity<IdentityUser>(x =>
             {
@@ -166,10 +166,10 @@ namespace Sev1.Accounts.DataAccess
             var userDomainUser = new User
             {
                 Id = USER_ID,
-                UserName = "user",
-                FirstName = "user1",
-                LastName = "user2",
-                MiddleName = "user3",
+                UserName = "User",
+                FirstName = "User",
+                LastName = "User",
+                MiddleName = "User",
             };
 
             modelBuilder.Entity<User>(x =>
