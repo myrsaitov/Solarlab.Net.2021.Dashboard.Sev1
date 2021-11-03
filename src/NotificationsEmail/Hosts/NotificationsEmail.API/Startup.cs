@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using NotificationsEmail.Services;
 using NotificationsEmail.Services.Interfaces;
 using NotificationsEmail.Notification;
@@ -14,6 +13,9 @@ using System.IO;
 using NotificationsEmail.ScheduledSender;
 using Quartz.Spi;
 using Quartz;
+using EventBusRabbitMQ.Interfaces;
+using EventBusRabbitMQ;
+using RabbitMQ.Client;
 
 namespace NotificationsEmail.API
 {
@@ -52,7 +54,23 @@ namespace NotificationsEmail.API
             services.AddSingleton<IJobFactory, SingletonJobFactory>();
             services.AddSingleton<ScheduledNotificationService>();
 
+            // RabbitMQ Subscriber
+            services.AddSingleton<IRabbitMQConnection>(sp =>
+            {
+                var factory = new ConnectionFactory
+                {
+                    Uri = new System.Uri(Configuration["RabbitMQConnection"])
+                };
 
+                return new RabbitMQConnection(factory);
+            });
+            services.AddSingleton<IRabbitMQSubscriber>(x => new RabbitMQSubscriber(
+                x.GetService<IRabbitMQConnection>(), 
+                "Notification.Email.Queue", 
+                "NotificationEmail.*"));
+            services.AddHostedService<NotificationEmailEventBusSubscriber>();
+
+            // Swagger
             services.AddSwaggerGen(swagger =>
             {
                 swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });

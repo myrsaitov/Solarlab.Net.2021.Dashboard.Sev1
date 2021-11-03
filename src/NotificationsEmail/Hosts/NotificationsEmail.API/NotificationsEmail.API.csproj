@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\EventBus\EventBusRabbitMQ\EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\..\Application\NotificationsEmail.ScheduledSender\NotificationsEmail.ScheduledSender.csproj" />
     <ProjectReference Include="..\..\Application\NotificationsEmail.Services\NotificationsEmail.Services.csproj" />
     <ProjectReference Include="..\..\Infrastructure\NotificationsEmail.Mapper\NotificationsEmail.Mapper.csproj" />
