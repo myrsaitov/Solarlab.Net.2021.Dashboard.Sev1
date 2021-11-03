@@ -19,7 +19,7 @@ namespace Sev1.Advertisements.Tests.Category
         /// <returns></returns>
         [Theory]
         [AutoData]
-        public async Task Create_ByAdmin_Returns_Response_Success(
+        public async Task Create_ByAdministrator_Returns_Response_Success(
             CategoryCreateDto model,
             CancellationToken cancellationToken)
         {
@@ -27,7 +27,7 @@ namespace Sev1.Advertisements.Tests.Category
 
             // "Проверка" роли администратора (true)
             _userProviderMock
-                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Admin"))))
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Administrator"))))
                 .Returns(true) // возвращает в результате выполнения
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
             
@@ -74,7 +74,7 @@ namespace Sev1.Advertisements.Tests.Category
 
             // "Проверка" роли администратора (false)
             _userProviderMock
-                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Admin"))))
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Administrator"))))
                 .Returns(false) // возвращает в результате выполнения
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
@@ -121,7 +121,7 @@ namespace Sev1.Advertisements.Tests.Category
 
             // "Проверка" роли администратора (false)
             _userProviderMock
-                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Admin"))))
+                .Setup(_ => _.IsInRole(It.Is<string>(s => s.Contains("Administrator"))))
                 .Returns(false) // возвращает в результате выполнения
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 

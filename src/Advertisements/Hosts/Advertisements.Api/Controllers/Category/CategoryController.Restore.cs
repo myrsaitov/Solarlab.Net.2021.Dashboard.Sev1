@@ -13,7 +13,7 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         /// <param name="id">Id категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        [Authorize("Admin", "Moderator")]
+        [Authorize("Administrator", "Moderator")]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Restore(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"

@@ -13,7 +13,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        [Authorize("Admin","Moderator","User")]
+        [Authorize("Administrator","Moderator","User")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"

@@ -8,7 +8,7 @@
         /// <summary>
         /// Роль администратора
         /// </summary>
-        Admin,
+        Administrator,
         /// <summary>
         /// Роль модератора
         /// </summary>

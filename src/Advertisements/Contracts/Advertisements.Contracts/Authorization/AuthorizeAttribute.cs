@@ -40,7 +40,7 @@ namespace Sev1.Advertisements.Contracts.Authorization
 
             var user = context.HttpContext.Items["User"];
             var moderator = context.HttpContext.Items["Moderator"];
-            var admin = context.HttpContext.Items["Admin"];
+            var admin = context.HttpContext.Items["Administrator"];
 
             if (_roles == null)
             {
@@ -64,7 +64,7 @@ namespace Sev1.Advertisements.Contracts.Authorization
                 {
                     switch(role)
                     {
-                        case "Admin":
+                        case "Administrator":
                             if(admin is not null)
                             {
                                 authorized = true;

@@ -34,9 +34,9 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             // Пользователь может создать категорию:
             //  - если он администратор;
             //  - если он модератор;
-            var isAdmin = _userProvider.IsInRole("Admin");
+            var isAdministrator = _userProvider.IsInRole("Administrator");
             var isModerator = _userProvider.IsInRole("Moderator");
-            if (!(isAdmin || isModerator))
+            if (!(isAdministrator || isModerator))
             {
                 throw new NoRightsException("Создать категорию может только модератор или админ!");
             }

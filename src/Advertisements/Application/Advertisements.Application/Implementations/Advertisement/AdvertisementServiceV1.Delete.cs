@@ -44,10 +44,10 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             //  - если он администратор;
             //  - если он модератор;
             //  - если он создал это объявление.
-            var isAdmin = _userProvider.IsInRole("Admin");
+            var isAdministrator = _userProvider.IsInRole("Administrator");
             var isModerator = _userProvider.IsInRole("Moderator");
             var isOwnerId = (advertisement.OwnerId == _userProvider.GetUserId());
-            if(!(isAdmin||isModerator||isOwnerId))
+            if(!(isAdministrator||isModerator||isOwnerId))
             {
                 throw new NoRightsException("Не хватает прав удалить объявление!");
             }

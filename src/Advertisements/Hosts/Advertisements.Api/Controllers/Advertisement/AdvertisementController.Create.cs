@@ -15,7 +15,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        [Authorize("Admin","Moderator","User")]
+        [Authorize("Administrator","Moderator","User")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(

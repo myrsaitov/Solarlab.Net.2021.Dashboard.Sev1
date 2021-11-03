@@ -46,7 +46,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="request">Id пользователя и роль</param>
         /// <param name="cancellationToken">Маркер отмены</param>
         /// <returns></returns>
-        [Authorize(Roles = "Admin, Moderator")]
+        [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost("role-add")]
         public async Task<IActionResult> AddToRole(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
@@ -67,7 +67,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="request">Id пользователя и роль</param>
         /// <param name="cancellationToken">Маркер отмены</param>
         /// <returns></returns>
-        [Authorize(Roles = "Admin, Moderator")]
+        [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost("role-remove")]
         public async Task<IActionResult> RemoveFromRole(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"

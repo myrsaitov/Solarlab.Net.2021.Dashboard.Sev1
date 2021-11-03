@@ -15,7 +15,7 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        [Authorize("Admin", "Moderator")]
+        [Authorize("Administrator", "Moderator")]
         [HttpPut("update")] // TODO
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Update(
