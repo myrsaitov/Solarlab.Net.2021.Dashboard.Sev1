@@ -59,7 +59,11 @@ namespace NotificationsEmail.API
             {
                 var factory = new ConnectionFactory
                 {
-                    Uri = new System.Uri(Configuration["RabbitMQConnection"])
+#if DEBUG
+                    Uri = new System.Uri(Configuration["DebugLocalRabbitMQConnection"])
+#else
+                    Uri = new System.Uri(Configuration["DefaultRabbitMQConnection"])
+#endif
                 };
 
                 return new RabbitMQConnection(factory);
