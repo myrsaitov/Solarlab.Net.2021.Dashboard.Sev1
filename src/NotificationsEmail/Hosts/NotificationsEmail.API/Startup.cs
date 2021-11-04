@@ -13,9 +13,6 @@ using System.IO;
 using NotificationsEmail.ScheduledSender;
 using Quartz.Spi;
 using Quartz;
-using EventBusRabbitMQ.Interfaces;
-using EventBusRabbitMQ;
-using RabbitMQ.Client;
 
 namespace NotificationsEmail.API
 {
@@ -30,7 +27,6 @@ namespace NotificationsEmail.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
 #if DEBUG
             string connection = Configuration.GetConnectionString("RemoteConnection");
 #else
@@ -53,26 +49,6 @@ namespace NotificationsEmail.API
             services.AddHostedService<NotificationScheduler>();
             services.AddSingleton<IJobFactory, SingletonJobFactory>();
             services.AddSingleton<ScheduledNotificationService>();
-
-            // RabbitMQ Subscriber
-            services.AddSingleton<IRabbitMQConnection>(sp =>
-            {
-                var factory = new ConnectionFactory
-                {
-#if DEBUG
-                    Uri = new System.Uri(Configuration["DebugLocalRabbitMQConnection"])
-#else
-                    Uri = new System.Uri(Configuration["DefaultRabbitMQConnection"])
-#endif
-                };
-
-                return new RabbitMQConnection(factory);
-            });
-            services.AddSingleton<IRabbitMQSubscriber>(x => new RabbitMQSubscriber(
-                x.GetService<IRabbitMQConnection>(), 
-                "Notification.Email.Queue", 
-                "NotificationEmail.*"));
-            services.AddHostedService<NotificationEmailEventBusSubscriber>();
 
             // Swagger
             services.AddSwaggerGen(swagger =>

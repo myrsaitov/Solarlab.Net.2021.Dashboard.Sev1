@@ -12,12 +12,10 @@ namespace NotificationsEmail.API.Controllers
     [ApiController]
     public class NotificationsEmailController : ControllerBase
     {
-        private readonly ILogger<NotificationsEmailController> _logger;
         private readonly INotificationEmailService _notificationEmailService;
 
-        public NotificationsEmailController(ILogger<NotificationsEmailController> logger, INotificationEmailService notificationEmailService)
+        public NotificationsEmailController(INotificationEmailService notificationEmailService)
         {
-            _logger = logger;
             _notificationEmailService = notificationEmailService;
         }
 

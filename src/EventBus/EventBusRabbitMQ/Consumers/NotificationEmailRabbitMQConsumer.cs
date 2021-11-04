@@ -1,10 +1,12 @@
 ﻿using EventBusRabbitMQ.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json;
 using NotificationsEmail.Contracts;
-using NotificationsEmail.Services.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,44 +15,48 @@ namespace NotificationsEmail.Services
     /// <summary>
     /// Сервис прослушивания очереди
     /// </summary>
-    public class NotificationEmailEventBusSubscriber : IHostedService
+    public class NotificationEmailRabbitMQConsumer : IHostedService
     {
-        private readonly IServiceScopeFactory _scopeFactory;
         private readonly IRabbitMQSubscriber _subscriber;
-        public NotificationEmailEventBusSubscriber(IRabbitMQSubscriber subscriber, 
-            IServiceScopeFactory scopeFactory)
+        public NotificationEmailRabbitMQConsumer(IRabbitMQSubscriber subscriber)
         {
             _subscriber = subscriber;
-            _scopeFactory = scopeFactory;
         }
         /// <summary>
         /// Подписываемся на очередь, 
-        /// При получении сообщение - вызов ProcessMessage
+        /// При получении сообщение - вызов ProcessMessageAsync
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            _subscriber.Subscribe(ProcessMessage);
+            _subscriber.Subscribe(ProcessMessageAsync);
+
             return Task.CompletedTask;
         }
 
         /// <summary>
-        /// Обработка сообщения
+        /// Обработка сообщения - перенаправление на NotificationEmail.api
         /// </summary>
         /// <param name="message"></param>
         /// <param name="headers"></param>
         /// <returns></returns>
-        public bool ProcessMessage(string message, IDictionary<string, object> headers)
+        public async Task<bool> ProcessMessageAsync(string message, IDictionary<string, object> headers)
         {
-            using (var scope = _scopeFactory.CreateScope())
+            // TODO: обработать исключение
+            try
             {
-                var dto = JsonConvert.DeserializeObject<LetterDto>(message);
-                var _notificationEmailService = scope.ServiceProvider.GetRequiredService<INotificationEmailService>();
-                _notificationEmailService.SendNewEmailAsync(dto);
+                using (var client = new HttpClient())
+                {
+                    var values = JsonSerializer.Deserialize<Dictionary<string, string>>(message);
+                    var contenta = new FormUrlEncodedContent(values);
+                    var response = await client.PostAsync("http://localhost:5003/api/NotificationsEmail", contenta);
+                }
+                return true;
+            } catch (Exception e)
+            {
+                return false;
             }
-
-            return true;
         }
 
         /// <summary>

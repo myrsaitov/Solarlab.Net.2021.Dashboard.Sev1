@@ -10,12 +10,10 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\EventBus\EventBusRabbitMQ\EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\..\Contracts\NotificationsEmail.Contracts\NotificationsEmail.Contracts.csproj" />
     <ProjectReference Include="..\..\Domain\NotificationsEmail.Domain\NotificationsEmail.Domain.csproj" />
   </ItemGroup>
