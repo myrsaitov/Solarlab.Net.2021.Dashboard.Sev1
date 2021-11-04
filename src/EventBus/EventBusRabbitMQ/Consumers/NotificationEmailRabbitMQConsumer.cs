@@ -1,4 +1,5 @@
 ﻿using EventBusRabbitMQ.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using NotificationsEmail.Contracts;
 using System;
@@ -18,9 +19,11 @@ namespace NotificationsEmail.Services
     public class NotificationEmailRabbitMQConsumer : IHostedService
     {
         private readonly IRabbitMQSubscriber _subscriber;
-        public NotificationEmailRabbitMQConsumer(IRabbitMQSubscriber subscriber)
+        private readonly string _serviceUrl;
+        public NotificationEmailRabbitMQConsumer(IRabbitMQSubscriber subscriber, IConfiguration configuration)
         {
             _subscriber = subscriber;
+            _serviceUrl = configuration["NotificationEmailApiUrl"];
         }
         /// <summary>
         /// Подписываемся на очередь, 
@@ -50,7 +53,7 @@ namespace NotificationsEmail.Services
                 {
                     var values = JsonSerializer.Deserialize<Dictionary<string, string>>(message);
                     var contenta = new FormUrlEncodedContent(values);
-                    var response = await client.PostAsync("http://localhost:5003/api/NotificationsEmail", contenta);
+                    var response = await client.PostAsync(_serviceUrl, contenta);
                 }
                 return true;
             } catch (Exception e)
