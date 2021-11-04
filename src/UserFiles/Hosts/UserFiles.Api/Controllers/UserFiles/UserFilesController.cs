@@ -10,7 +10,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
 
     // Attribute routing for REST APIs
     // https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-5.0
-    [Route("api/v1/userFiles")]
+    [Route("api/v1/userfiles")]
 
     // The[ApiController] attribute can be applied to
     // a controller class to enable API-specific behaviors

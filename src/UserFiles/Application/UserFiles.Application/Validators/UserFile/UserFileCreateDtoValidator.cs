@@ -17,7 +17,7 @@ namespace Sev1.UserFiles.Application.Validators.UserFile
                 .NotEmpty().WithMessage("UserFileCreateDto is null!");
 
             // Название объявления
-            RuleFor(x => x.Title)
+            RuleFor(x => x.FileName)
                 .NotNull()
                 .NotEmpty().WithMessage("Title не заполнен!")
 
@@ -36,7 +36,7 @@ namespace Sev1.UserFiles.Application.Validators.UserFile
                 .MaximumLength(100);
 
             // Текст объявления
-            RuleFor(x => x.Body)
+            RuleFor(x => x.FileDescription)
                 .NotNull()
                 .NotEmpty().WithMessage("Body не заполнен!")
 
@@ -55,23 +55,10 @@ namespace Sev1.UserFiles.Application.Validators.UserFile
                 .MinimumLength(5)
                 .MaximumLength(1000);
 
-            // Цена
-            RuleFor(x => x.Price)
-                .NotNull()
-                //.NotEmpty().WithMessage("Price не заполнен!") // Не равен 0 - не подходит
-                .InclusiveBetween(0, decimal.MaxValue);
-
-            // Id категории
-            RuleFor(x => x.CategoryId)
-                .NotNull()
-                .NotEmpty().WithMessage("CategoryId не заполнен!")
-                .InclusiveBetween(1, int.MaxValue);
-
             // Пользователь Id
             RuleFor(x => x.OwnerId)
                 .NotNull()
                 .NotEmpty().WithMessage("OwnerId не заполнен!");
-
         }
     }
 }

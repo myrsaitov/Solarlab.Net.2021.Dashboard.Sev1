@@ -10,7 +10,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
     public partial class UserFilesController
     {
         /// <summary>
-        /// Создает новое объявление
+        /// Создает новый файл
         /// </summary>
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
