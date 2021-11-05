@@ -2,17 +2,20 @@
 
 namespace Sev1.UserFiles.Domain
 {
+    /// <summary>
+    /// Информация о файле, который загружает пользователь
+    /// </summary>
     public class UserFile : EntityMutable<int>
     {
         /// <summary>
-        /// Название файла
+        /// Внешняя ссылка на файл
         /// </summary>
-        public string FileName { get; set; }
+        public string FileUrl { get; set; }
 
         /// <summary>
-        /// Описание файла
+        /// Объявление, к которому относится этот файл
         /// </summary>
-        public string FileDescription { get; set; }
+        public int AdvertisementId { get; set; }
 
         /// <summary>
         /// Пользователь, который загрузил файл

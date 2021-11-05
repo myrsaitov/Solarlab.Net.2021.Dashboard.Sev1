@@ -13,14 +13,7 @@ namespace Sev1.Advertisements.Contracts.Authorization
 
         public AuthorizeAttribute(params string[] roles)
         {
-            if (roles == null)
-            {
-                _roles = null;
-            }
-            else
-            {
-                _roles = roles;
-            }
+            _roles = roles;
         }
 
         public void OnAuthorization(AuthorizationFilterContext context)
@@ -42,7 +35,14 @@ namespace Sev1.Advertisements.Contracts.Authorization
             var moderator = context.HttpContext.Items["Moderator"];
             var admin = context.HttpContext.Items["Administrator"];
 
+            // Исключение, если _roles == null
             if (_roles is null)
+            {
+                throw new ArgumentNullException(nameof(_roles));
+            }
+
+            // Авторизация по ролям
+            if (_roles.Count() == 0)
             {
                 // Если роли не переданы в виде параметра, 
                 // т.е. достаточно просто авторизации
@@ -62,12 +62,12 @@ namespace Sev1.Advertisements.Contracts.Authorization
             else
             {
                 // Проверяем каждую роль по отдельности
-                foreach(var role in _roles)
+                foreach (var role in _roles)
                 {
-                    switch(role)
+                    switch (role)
                     {
                         case "Administrator":
-                            if(admin is not null)
+                            if (admin is not null)
                             {
                                 authorized = true;
                             }
@@ -91,11 +91,11 @@ namespace Sev1.Advertisements.Contracts.Authorization
             }
 
             // Если авторицазии нет, то прерываем middleware
-            if(!authorized)
+            if (!authorized)
             {
                 context.Result = new JsonResult(
                     new { message = "Unauthorized" })
-                { 
+                {
                     StatusCode = StatusCodes.Status401Unauthorized
                 };
             }

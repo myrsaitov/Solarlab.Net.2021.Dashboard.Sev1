@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,19 +13,29 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         /// <summary>
         /// Создает новый файл
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="id">Id объявления, к которомы прикрепляются файлы</param>
+        /// <param name="files">Файлы с формы</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        [Authorize("Administrator","Moderator","User")]
-        [HttpPost]
+        [Authorize]
+        [HttpPost("{id:int}")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(
-            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            UserFileCreateDto model, 
+            [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}"
+            int id,
+            [FromForm]
+            List<IFormFile> files,
             CancellationToken cancellationToken)
         {
             await _userFileService.Create(
-                model, 
+                new UserFileCreateDto()
+                {
+                    BaseUrl = string.Format(
+                        "{0}://{1}",
+                        HttpContext.Request.Scheme, HttpContext.Request.Host), // Определяем URL хоста
+                    Files = files,
+                    AdvertisementId = id
+                }, 
                 cancellationToken);
 
             return Created(string.Empty, null);

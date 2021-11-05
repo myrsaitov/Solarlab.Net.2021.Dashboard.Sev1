@@ -13,14 +13,7 @@ namespace Sev1.UserFiles.Contracts.Authorization
 
         public AuthorizeAttribute(params string[] roles)
         {
-            if (roles == null)
-            {
-                _roles = null;
-            }
-            else
-            {
-                _roles = roles;
-            }
+            _roles = roles;
         }
 
         public void OnAuthorization(AuthorizationFilterContext context)
@@ -42,7 +35,14 @@ namespace Sev1.UserFiles.Contracts.Authorization
             var moderator = context.HttpContext.Items["Moderator"];
             var admin = context.HttpContext.Items["Administrator"];
 
-            if (_roles is null)
+            // Исключение, если _roles == null
+            if(_roles is null)
+            {
+                throw new ArgumentNullException(nameof(_roles));
+            }
+
+            // Авторизация по ролям
+            if (_roles.Count() == 0)
             {
                 // Если роли не переданы в виде параметра, 
                 // т.е. достаточно просто авторизации

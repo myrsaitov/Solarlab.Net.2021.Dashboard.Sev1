@@ -1,9 +1,18 @@
-﻿namespace Sev1.UserFiles.Application.Contracts.UserFile
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace Sev1.UserFiles.Application.Contracts.UserFile
 {
     public class UserFileCreateDto
     {
-        public string FileName { get; set; }
-        public string FileDescription { get; set; }
-        public string OwnerId { get; set; }
+        [Required]
+        public int AdvertisementId { get; set; }
+        
+        [Required]
+        public List<IFormFile> Files { get; set; }
+
+        [Required]
+        public string BaseUrl { get; set; }
     }
 }
