@@ -6,6 +6,10 @@ namespace EventBusRabbitMQ.Interfaces
 {
     public interface IRabbitMQSubscriber : IDisposable
     {
-        void Subscribe(Func<string, IDictionary<string, object>, Task<bool>> callback);
+        /// <summary>
+        /// Подписаться на очередь
+        /// </summary>
+        /// <param name="callback">Функция, вызываемая при получении сообщения</param>
+        public void Subscribe(Func<string, IDictionary<string, object>, Task<bool>> callback);
     }
 }

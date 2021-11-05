@@ -14,10 +14,14 @@ namespace EventBusRabbitMQ.Services
         {
             _connection = factory.CreateConnection();
         }
+
+        /// <inheritdoc/>
         public IConnection GetConnection()
         {
             return _connection;
         }
+
+        /// <inheritdoc/>
         public string GetExhangeName()
         {
             return EXCHANGE_NAME;

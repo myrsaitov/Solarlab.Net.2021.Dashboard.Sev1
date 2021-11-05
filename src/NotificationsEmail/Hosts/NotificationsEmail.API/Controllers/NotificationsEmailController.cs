@@ -2,11 +2,12 @@
 using Microsoft.Extensions.Logging;
 using NotificationsEmail.Contracts;
 using NotificationsEmail.Services.Interfaces;
+using System.Threading.Tasks;
 
 namespace NotificationsEmail.API.Controllers
 {
     /// <summary>
-    /// API Сервиса нотификации по почте
+    /// API Сервиса нотификации с помощью отправки Email
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
@@ -14,6 +15,10 @@ namespace NotificationsEmail.API.Controllers
     {
         private readonly INotificationEmailService _notificationEmailService;
 
+        /// <summary>
+        /// API контроллер сервиса нотификации
+        /// </summary>
+        /// <param name="notificationEmailService"></param>
         public NotificationsEmailController(INotificationEmailService notificationEmailService)
         {
             _notificationEmailService = notificationEmailService;
@@ -25,11 +30,11 @@ namespace NotificationsEmail.API.Controllers
         /// <param name="dto">Письмо</param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult SendEmail([FromForm] LetterDto dto)
+        public async Task<IActionResult> SendEmailAsync([FromForm] LetterDto dto)
         {
             if (ModelState.IsValid)
             {
-                _notificationEmailService.SendNewEmailAsync(dto);
+                await _notificationEmailService.SendNewEmailAsync(dto);
                 return Ok();
             }
             return BadRequest();

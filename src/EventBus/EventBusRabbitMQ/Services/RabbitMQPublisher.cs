@@ -22,6 +22,8 @@ namespace EventBusRabbitMQ.Services
             _exchange = _connection.GetExhangeName();
             _model.ExchangeDeclare(exchange: _exchange, type: ExchangeType.Topic, durable: true, autoDelete: false, arguments: null);
         }
+
+        /// <inheritdoc/>
         public void Publish(string message, string routingKey, IDictionary<string, object> messageAttributes)
         {
             var body = Encoding.UTF8.GetBytes(message);

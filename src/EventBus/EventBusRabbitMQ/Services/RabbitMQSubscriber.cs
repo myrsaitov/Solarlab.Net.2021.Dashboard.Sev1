@@ -27,6 +27,9 @@ namespace EventBusRabbitMQ.Services
 
             _model.QueueBind(queue: _queue, exchange: _exchange, routingKey: routingKey, arguments: null);
         }
+
+
+        /// <inheritdoc/>
         public void Subscribe(Func<string, IDictionary<string, object>, Task<bool>> callback)
         {
             var consumer = new EventingBasicConsumer(_model);
