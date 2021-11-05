@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Advertisements.Contracts.Contracts.User
+namespace Sev1.Advertisements.Contracts.Contracts.User
 {
     public class ValidateTokenResponse
     {

@@ -10,7 +10,7 @@ using Sev1.UserFiles.DataAccess;
 namespace UserFiles.DataAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20211103205634_Initial")]
+    [Migration("20211105155956_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,13 +28,13 @@ namespace UserFiles.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AdvertisementId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FileDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FileName")
+                    b.Property<string>("FileUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")

@@ -1,9 +1,9 @@
-﻿using UserFiles.Contracts.Contracts.User;
-using Sev1.UserFiles.Domain.Exceptions;
+﻿using Sev1.UserFiles.Domain.Exceptions;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Sev1.UserFiles.Contracts.Contracts.User;
 
 namespace Sev1.UserFiles.Contracts.ApiClients.User
 {

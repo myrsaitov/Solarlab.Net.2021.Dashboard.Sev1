@@ -1,5 +1,4 @@
-﻿using Advertisements.Contracts.Contracts.User;
-using System.Threading;
+﻿using Sev1.Advertisements.Contracts.Contracts.User;
 using System.Threading.Tasks;
 
 namespace Sev1.Advertisements.Contracts.ApiClients.User

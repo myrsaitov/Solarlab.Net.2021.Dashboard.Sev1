@@ -5,9 +5,9 @@ namespace Sev1.UserFiles.Domain.Exceptions
     /// <summary>
     /// Доменное исключение "Не найдено"
     /// </summary>
-    public abstract class NotFoundException : DomainException
+    public class NotFoundException : DomainException
     {
-        protected NotFoundException(string message) : base(message)
+        public NotFoundException(string message) : base(message)
         {
         }
     }

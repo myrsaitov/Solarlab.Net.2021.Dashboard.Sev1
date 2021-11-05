@@ -70,7 +70,18 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
             var userId = _userProvider.GetUserId();
             if (string.IsNullOrWhiteSpace(userId))
             {
-                throw new NoRightsException("Нет создателя объявления!");
+                throw new NoRightsException("Нет прав добавить файл!");
+            }
+
+            // TODO Сделать проверку, существует ли объявление
+            var advertisementExists = await _advertisementApiClient
+                .ValidateAdvertisement(
+                    model.AdvertisementId,
+                    userId);
+
+            if(advertisementExists)
+            {
+
             }
 
             var ImageExtensions = new List<string> { ".JPG", ".JPE", ".BMP", ".GIF", ".PNG" };
@@ -79,13 +90,16 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
             {
                 if (ImageExtensions.Contains(Path.GetExtension(file.FileName).ToUpperInvariant()))
                 {
-                    var domainFile = new Domain.UserFile()
+                    // TODO Применить маппер!
+                    var userFile = new Domain.UserFile()
                     {
                         FileUrl = Url.Combine(
                             model.BaseUrl,
                             "api/v1/images",
                             model.AdvertisementId.ToString(),
                             file.FileName),
+                        AdvertisementId = model.AdvertisementId,
+                        OwnerId = userId,
                         CreatedAt = DateTime.UtcNow,
                         IsDeleted = false
                     };
@@ -100,6 +114,11 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
 
                     await using var stream = new FileStream(filePath, FileMode.Create);
                     await file.CopyToAsync(stream);
+
+                    // Сохраняем в базе
+                    await _userFileRepository.Save(
+                        userFile,
+                        cancellationToken);
                 }
             }
         }

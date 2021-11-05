@@ -14,6 +14,7 @@ using Sev1.UserFiles.Contracts.ApiClients.User;
 using Sev1.UserFiles.Contracts.Authorization;
 using UserFiles.Contracts.UserProvider;
 using Sev1.UserFile.Api;
+using Sev1.UserFiles.Contracts.ApiClients.Advertisement;
 
 namespace Sev1.UserFiles.Api
 {
@@ -67,9 +68,10 @@ namespace Sev1.UserFiles.Api
                 // Инжектирование наших сервисов
                 .AddScoped<IUserFileService, UserFileServiceV1>()
 
-                // Инжектирование API-клиента User
+                // Инжектирование API-клиентов
                 //.AddScoped<IUserApiClient, UserApiClient>()
                 .AddTransient<IUserApiClient, UserApiClient>()
+                .AddTransient<IAdvertisementApiClient, AdvertisementApiClient>()
 
                 // Инжектирование UserProvider
                 .AddTransient<IUserProvider, UserProvider>()

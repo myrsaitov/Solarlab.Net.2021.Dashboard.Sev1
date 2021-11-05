@@ -1,4 +1,4 @@
-﻿using Advertisements.Contracts.Contracts.User;
+﻿using Sev1.Advertisements.Contracts.Contracts.User;
 using Sev1.Advertisements.Domain.Exceptions;
 using System.Net;
 using System.Text;

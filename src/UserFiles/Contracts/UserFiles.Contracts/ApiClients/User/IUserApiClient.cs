@@ -1,5 +1,4 @@
-﻿using UserFiles.Contracts.Contracts.User;
-using System.Threading;
+﻿using Sev1.UserFiles.Contracts.Contracts.User;
 using System.Threading.Tasks;
 
 namespace Sev1.UserFiles.Contracts.ApiClients.User

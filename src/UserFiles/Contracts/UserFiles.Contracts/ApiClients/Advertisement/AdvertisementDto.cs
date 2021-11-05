@@ -1,4 +1,4 @@
-﻿namespace Sev1.Advertisements.Application.Contracts.Advertisement
+﻿namespace Sev1.UserFiles.Contracts.ApiClients.Advertisement
 {
     public class AdvertisementDto
     {
