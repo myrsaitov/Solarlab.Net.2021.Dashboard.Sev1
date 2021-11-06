@@ -23,7 +23,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task UploadUserFilesToServerFileSyetem(
-            UserFileCreateDto model,
+            UserFileUploadDto model,
             CancellationToken cancellationToken)
         {
             // Fluent Validation

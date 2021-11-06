@@ -1,9 +1,9 @@
 ﻿using Sev1.Advertisements.Contracts.Contracts.User;
-using Sev1.Advertisements.Domain.Exceptions;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Sev1.Advertisements.Contracts.Exception;
 
 namespace Sev1.Advertisements.Contracts.ApiClients.User
 {

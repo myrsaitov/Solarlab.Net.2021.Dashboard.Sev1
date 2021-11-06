@@ -14,7 +14,7 @@ namespace Sev1.UserFiles.Application.Interfaces.UserFile
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task UploadUserFilesToServerFileSyetem(
-            UserFileCreateDto model, 
+            UserFileUploadDto model, 
             CancellationToken cancellationToken);
 
         /// <summary>

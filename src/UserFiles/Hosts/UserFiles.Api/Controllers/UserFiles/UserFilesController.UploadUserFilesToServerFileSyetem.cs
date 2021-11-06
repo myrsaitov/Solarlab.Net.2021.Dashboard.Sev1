@@ -29,7 +29,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
             CancellationToken cancellationToken)
         {
             await _userFileService.UploadUserFilesToServerFileSyetem(
-                new UserFileCreateDto()
+                new UserFileUploadDto()
                 {
                     BaseUrl = string.Format(
                         "{0}://{1}",

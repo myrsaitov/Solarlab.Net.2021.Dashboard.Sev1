@@ -1,15 +1,32 @@
-﻿namespace Sev1.UserFiles.Application.Contracts.UserFile
+﻿using UserFiles.Contracts.Enums;
+
+namespace Sev1.UserFiles.Application.Contracts.UserFile
 {
     public class UserFilePagedDto
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Body { get; set; }
-        public decimal Price { get; set; }
+        /// <summary>
+        /// Внешняя ссылка на файл
+        /// </summary>
+        public string FileUrl { get; set; }
+
+        /// <summary>
+        /// Объявление, к которому относится этот файл
+        /// </summary>
+        public int AdvertisementId { get; set; }
+
+        /// <summary>
+        /// Пользователь, который загрузил файл
+        /// </summary>
+        public string OwnerId { get; set; }
+
+        /// <summary>
+        /// Тип хранилища
+        /// </summary>
+        public UserFileStorageType Storage { get; set; }
+
+        /// <summary>
+        /// Когда загружен
+        /// </summary>
         public string CreatedAt { get; set; }
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
-        public bool IsDeleted { get; set; }
-        public string[] Tags { get; set; }
     }
 }
