@@ -10,7 +10,7 @@ using Sev1.UserFiles.Application.Validators.UserFile;
 using System.Collections.Generic;
 using Flurl;  // NuGet Flurl.Http
 using System.IO;
-using UserFiles.Contracts.Enums;
+using sev1.UserFiles.Contracts.Enums;
 
 namespace Sev1.UserFiles.Application.Implementations.UserFile
 {
