@@ -26,19 +26,24 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
             string imageName,
             CancellationToken cancellationToken)
         {
-            var filePath = $"Images/Advertisements/{id}/{imageName}";
+            // Место хранения файлов в файловой системе
+            var filePath = $"UserFilesData/Advertisements/{id}/{imageName}";
             if (!System.IO.File.Exists(filePath))
             {
                 return BadRequest("Not found");
             }
 
+            // Определяем тип контента
             var provider = new FileExtensionContentTypeProvider();
             if (!provider.TryGetContentType(filePath, out var contentType))
             {
-                //contentType = "image/jpeg";
+                contentType = "image/jpeg";
             }
 
+            // Считываем файл в память
             var bytes = await System.IO.File.ReadAllBytesAsync(filePath);
+            
+            // Возвращаем файл
             return File(bytes, contentType, Path.GetFileName(filePath));
         }
     }
