@@ -60,7 +60,7 @@ namespace Sev1.Advertisements.Tests.Tag
             Assert.NotNull(response);
             Assert.Equal(tagCount, response.Total);
             Assert.Equal(tagCount, response.Items.Count());
-            Assert.IsType<GetPagedResponse<TagPagedDto>>(response);
+            Assert.IsType<GetPagedTagResponse>(response);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Sev1.Advertisements.Tests.Tag
             Assert.Equal(
                 tagCount,
                 response.Items.Count());
-            Assert.IsType<GetPagedResponse<TagPagedDto>>(response);
+            Assert.IsType<GetPagedTagResponse>(response);
         }
 
         /// <summary>

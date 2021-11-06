@@ -8,7 +8,7 @@ namespace UserFiles.Contracts.ApiClients.HttpGet
     public interface IHttpGet
     {
         /// <summary>
-        /// Get-запрос
+        /// Выполняет GET-запрос по ссылке
         /// </summary>
         /// <param name="Uri">Ссылка</param>
         /// <returns></returns>

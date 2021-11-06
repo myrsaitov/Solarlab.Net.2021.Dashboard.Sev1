@@ -63,7 +63,7 @@ namespace Sev1.Advertisements.Application.Interfaces.Category
         /// <param name="request">Параметры пагинации</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<GetPagedResponse<CategoryDto>> GetPaged(
+        Task<GetPagedCategoryResponse> GetPaged(
             GetPagedRequest request, 
             CancellationToken cancellationToken);
     }

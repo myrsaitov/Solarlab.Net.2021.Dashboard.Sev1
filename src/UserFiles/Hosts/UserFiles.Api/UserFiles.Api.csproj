@@ -16,14 +16,19 @@
     <ItemGroup>
       <Compile Remove="App_Data\**" />
       <Compile Remove="Controllers\Parser\**" />
+      <Compile Remove="UserFilesData\**" />
       <Content Remove="App_Data\**" />
       <Content Remove="Controllers\Parser\**" />
+      <Content Remove="UserFilesData\**" />
       <EmbeddedResource Remove="App_Data\**" />
       <EmbeddedResource Remove="Controllers\Parser\**" />
+      <EmbeddedResource Remove="UserFilesData\**" />
       <None Remove="App_Data\**" />
       <None Remove="Controllers\Parser\**" />
+      <None Remove="UserFilesData\**" />
       <TypeScriptCompile Remove="App_Data\**" />
       <TypeScriptCompile Remove="Controllers\Parser\**" />
+      <TypeScriptCompile Remove="UserFilesData\**" />
     </ItemGroup>
 
     <ItemGroup>

@@ -15,6 +15,11 @@ namespace UserFiles.Contracts.ApiClients.HttpGet
         {
         }
 
+        /// <summary>
+        /// Выполняет GET-запрос по ссылке
+        /// </summary>
+        /// <param name="Uri">Ссылка</param>
+        /// <returns></returns>
         public async Task<string> HttpGetAsync(string Uri)
         {
             try
