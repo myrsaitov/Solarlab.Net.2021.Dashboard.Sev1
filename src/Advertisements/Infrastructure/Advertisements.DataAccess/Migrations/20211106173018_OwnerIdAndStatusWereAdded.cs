@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Advertisements.DataAccess.Migrations
 {
-    public partial class OwnerIdWasAdded : Migration
+    public partial class OwnerIdAndStatusWereAdded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,53 +13,64 @@ namespace Advertisements.DataAccess.Migrations
                 type: "nvarchar(max)",
                 nullable: true);
 
+            migrationBuilder.AddColumn<int>(
+                name: "Status",
+                table: "Advertisements",
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
+
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "CreatedAt",
-                value: new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(1538));
+                value: new DateTime(2021, 11, 6, 17, 30, 18, 134, DateTimeKind.Utc).AddTicks(8756));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "CreatedAt",
-                value: new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3025));
+                value: new DateTime(2021, 11, 6, 17, 30, 18, 134, DateTimeKind.Utc).AddTicks(9346));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "CreatedAt",
-                value: new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3035));
+                value: new DateTime(2021, 11, 6, 17, 30, 18, 134, DateTimeKind.Utc).AddTicks(9350));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "CreatedAt",
-                value: new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3038));
+                value: new DateTime(2021, 11, 6, 17, 30, 18, 134, DateTimeKind.Utc).AddTicks(9351));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "CreatedAt",
-                value: new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3040));
+                value: new DateTime(2021, 11, 6, 17, 30, 18, 134, DateTimeKind.Utc).AddTicks(9352));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 6,
                 column: "CreatedAt",
-                value: new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3041));
+                value: new DateTime(2021, 11, 6, 17, 30, 18, 134, DateTimeKind.Utc).AddTicks(9353));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
                 name: "OwnerId",
+                table: "Advertisements");
+
+            migrationBuilder.DropColumn(
+                name: "Status",
                 table: "Advertisements");
 
             migrationBuilder.UpdateData(

@@ -10,15 +10,15 @@ using Sev1.Advertisements.DataAccess;
 namespace Advertisements.DataAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20211027075747_OwnerIdWasAdded")]
-    partial class OwnerIdWasAdded
+    [Migration("20211106173018_OwnerIdAndStatusWereAdded")]
+    partial class OwnerIdAndStatusWereAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.9")
+                .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("AdvertisementTag", b =>
@@ -60,6 +60,9 @@ namespace Advertisements.DataAccess.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -107,42 +110,42 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(1538),
+                            CreatedAt = new DateTime(2021, 11, 6, 17, 30, 18, 134, DateTimeKind.Utc).AddTicks(8756),
                             IsDeleted = false,
                             Name = "Транспорт"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3025),
+                            CreatedAt = new DateTime(2021, 11, 6, 17, 30, 18, 134, DateTimeKind.Utc).AddTicks(9346),
                             IsDeleted = false,
                             Name = "Недвижимость"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3035),
+                            CreatedAt = new DateTime(2021, 11, 6, 17, 30, 18, 134, DateTimeKind.Utc).AddTicks(9350),
                             IsDeleted = false,
                             Name = "Мебель"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3038),
+                            CreatedAt = new DateTime(2021, 11, 6, 17, 30, 18, 134, DateTimeKind.Utc).AddTicks(9351),
                             IsDeleted = false,
                             Name = "Одежда"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3040),
+                            CreatedAt = new DateTime(2021, 11, 6, 17, 30, 18, 134, DateTimeKind.Utc).AddTicks(9352),
                             IsDeleted = false,
                             Name = "Бытовая техника"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3041),
+                            CreatedAt = new DateTime(2021, 11, 6, 17, 30, 18, 134, DateTimeKind.Utc).AddTicks(9353),
                             IsDeleted = false,
                             Name = "Книги"
                         });

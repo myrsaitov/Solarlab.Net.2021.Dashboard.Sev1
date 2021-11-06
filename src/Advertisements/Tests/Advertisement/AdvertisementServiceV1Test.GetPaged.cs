@@ -58,7 +58,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // "Подсчёт" количества объявлений с заданным критерием в базе
             _advertisementRepositoryMock
-                .Setup(_ => _.CountWithOutDeleted(
+                .Setup(_ => _.CountActive(
                     It.IsAny<Expression<Func<Domain.Advertisement, bool>>>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(advertisementCount) // в результате выполнения возвращает объект

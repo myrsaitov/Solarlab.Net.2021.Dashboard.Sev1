@@ -1,4 +1,6 @@
-﻿namespace Sev1.Advertisements.Application.Contracts.Advertisement
+﻿using sev1.Advertisements.Contracts.Enums;
+
+namespace Sev1.Advertisements.Application.Contracts.Advertisement
 {
     /// <summary>
     /// DTO при обновлении объявления
@@ -34,5 +36,10 @@
         /// Таги в виде массива строк
         /// </summary>
         public string[] TagBodies { get; set; }
+
+        /// <summary>
+        /// Статус объявления
+        /// </summary>
+        public AdvertisementStatus Status { get; set; }
     }
 }

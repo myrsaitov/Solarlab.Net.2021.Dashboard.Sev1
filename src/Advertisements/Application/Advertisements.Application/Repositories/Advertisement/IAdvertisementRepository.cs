@@ -42,7 +42,7 @@ namespace Sev1.Advertisements.Application.Repositories.Advertisement
         /// <param name="predicate">Параметры фильтра</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<int> CountWithOutDeleted(
+        Task<int> CountActive(
             Expression<Func<Domain.Advertisement, bool>> predicate,
             CancellationToken cancellationToken);
 

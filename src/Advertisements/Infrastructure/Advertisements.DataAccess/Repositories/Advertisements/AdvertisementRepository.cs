@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using System;
 using Sev1.Advertisements.Application.Repositories.Advertisement;
 using Sev1.Advertisements.DataAccess.Base;
+using sev1.Advertisements.Contracts.Enums;
 
 namespace Sev1.Advertisements.DataAccess.Repositories
 {
@@ -39,7 +40,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
         }
 
-        public async Task<int> CountWithOutDeleted(
+        public async Task<int> CountActive(
             Expression<Func<Advertisement, bool>> predicate,
             CancellationToken cancellationToken)
         {
@@ -48,7 +49,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .AsNoTracking(); ;
 
             return await data
-                .Where(c => c.IsDeleted == false)
+                .Where(c => c.Status == AdvertisementStatus.Active)
                 .Where(predicate)
                 .CountAsync(cancellationToken);
         }
@@ -66,7 +67,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .AsNoTracking();
 
             return await data
-                .Where(c => c.IsDeleted == false)
+                .Where(c => c.Status == AdvertisementStatus.Active)
                 .Where(predicate)
                 .OrderBy(e => e.Id)
                 .Skip(offset)

@@ -87,7 +87,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             }
 
             // Подсчет общего количества объявлений
-            var total = await _advertisementRepository.CountWithOutDeleted(
+            var total = await _advertisementRepository.CountActive(
                 predicate,
                 cancellationToken);
 

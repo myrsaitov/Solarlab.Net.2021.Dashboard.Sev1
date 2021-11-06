@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using sev1.Advertisements.Contracts.Enums;
 using Sev1.Advertisements.Domain.Base;
 
 namespace Sev1.Advertisements.Domain
@@ -35,5 +36,10 @@ namespace Sev1.Advertisements.Domain
         /// Создатель объявления
         /// </summary>
         public string OwnerId { get; set; }
+
+        /// <summary>
+        /// Статус объявления
+        /// </summary>
+        public AdvertisementStatus Status { get; set; }
     }
 }

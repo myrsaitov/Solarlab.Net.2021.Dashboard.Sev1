@@ -8,6 +8,7 @@ using Sev1.Advertisements.Application.Validators.Advertisement;
 using System.Linq;
 using Sev1.Advertisements.Application.Exceptions.Category;
 using Sev1.Advertisements.Contracts.Exception;
+using sev1.Advertisements.Contracts.Enums;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
@@ -61,6 +62,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             advertisement.CreatedAt = DateTime.UtcNow;
             advertisement.Category = category;
             advertisement.OwnerId = userId;
+            advertisement.Status = AdvertisementStatus.Active;
 
             // Добавляем таги
             await AddTags(
