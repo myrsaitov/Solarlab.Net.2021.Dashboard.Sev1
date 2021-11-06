@@ -28,7 +28,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                 throw new UserFileIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
-            var userFiles = await _userFileRepository.FindByIdWithCategoriesAndTags(
+            var userFiles = await _userFileRepository.FindById(
                 id,
                 cancellationToken);
 

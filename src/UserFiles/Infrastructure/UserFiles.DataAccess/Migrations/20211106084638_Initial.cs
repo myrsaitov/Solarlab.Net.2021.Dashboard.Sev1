@@ -16,6 +16,7 @@ namespace UserFiles.DataAccess.Migrations
                     FileUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AdvertisementId = table.Column<int>(type: "int", nullable: false),
                     OwnerId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Storage = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)

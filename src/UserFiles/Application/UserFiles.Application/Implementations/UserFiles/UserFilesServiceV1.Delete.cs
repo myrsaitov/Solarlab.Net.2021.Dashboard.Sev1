@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Sev1.UserFiles.Application.Exceptions.UserFile;
 using Sev1.UserFiles.Application.Interfaces.UserFile;
 using Sev1.UserFiles.Application.Validators.UserFile;
-using Sev1.UserFiles.Domain.Exceptions;
+using Sev1.UserFiles.Contracts.Exceptions;
 
 namespace Sev1.UserFiles.Application.Implementations.UserFile
 {
@@ -29,8 +29,8 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                 throw new UserFileIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
-            // Достаем объявление из базы
-            var userFiles = await _userFileRepository.FindByIdWithTagsInclude(
+            // Достаем карточку файла из базы
+            var userFiles = await _userFileRepository.FindById(
                 id,
                 cancellationToken);
 
@@ -40,7 +40,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                 throw new UserFileNotFoundException(id);
             }
 
-            // Пользователь может удалять объявление:
+            // Пользователь может удалять файл:
             //  - если он администратор;
             //  - если он модератор;
             //  - если он создал это объявление.

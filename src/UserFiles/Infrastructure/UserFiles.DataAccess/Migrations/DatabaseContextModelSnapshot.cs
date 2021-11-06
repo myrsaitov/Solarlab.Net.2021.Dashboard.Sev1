@@ -41,6 +41,9 @@ namespace UserFiles.DataAccess.Migrations
                     b.Property<string>("OwnerId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Storage")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 

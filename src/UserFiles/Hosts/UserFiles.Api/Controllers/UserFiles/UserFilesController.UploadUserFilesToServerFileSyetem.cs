@@ -5,13 +5,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.UserFiles.Application.Contracts.UserFile;
 using Sev1.UserFiles.Contracts.Authorization;
+using UserFiles.Contracts.Enums;
 
 namespace Sev1.UserFiles.Api.Controllers.UserFile
 {
     public partial class UserFilesController
     {
         /// <summary>
-        /// Создает новый файл
+        /// Загрузить файл в файловую систему сервера
         /// </summary>
         /// <param name="id">Id объявления, к которомы прикрепляются файлы</param>
         /// <param name="files">Файлы с формы</param>
@@ -20,14 +21,14 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         [Authorize]
         [HttpPost("{id:int}")]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> Create(
+        public async Task<IActionResult> UploadUserFilesToServerFileSyetem(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}"
             int id,
             [FromForm]
             List<IFormFile> files,
             CancellationToken cancellationToken)
         {
-            await _userFileService.Create(
+            await _userFileService.UploadUserFilesToServerFileSyetem(
                 new UserFileCreateDto()
                 {
                     BaseUrl = string.Format(

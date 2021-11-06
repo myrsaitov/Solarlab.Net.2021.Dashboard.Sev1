@@ -10,7 +10,7 @@ using Sev1.UserFiles.DataAccess;
 namespace UserFiles.DataAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20211105155956_Initial")]
+    [Migration("20211106084638_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,9 @@ namespace UserFiles.DataAccess.Migrations
 
                     b.Property<string>("OwnerId")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Storage")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");

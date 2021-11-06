@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Sev1.UserFiles.Application.Exceptions.UserFile;
 using Sev1.UserFiles.Application.Interfaces.UserFile;
 using Sev1.UserFiles.Application.Validators.UserFile;
-using Sev1.UserFiles.Domain.Exceptions;
+using Sev1.UserFiles.Contracts.Exceptions;
 
 namespace Sev1.UserFiles.Application.Implementations.UserFile
 {
@@ -26,12 +26,14 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
             var result = await validator.ValidateAsync(id);
             if (!result.IsValid)
             {
-                throw new UserFileIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
+                throw new UserFileIdNotValidException(
+                    result
+                    .Errors
+                    .Select(x => x.ErrorMessage)
+                    .ToString());
             }
 
-            // TODO Нужно сделать, чтобы при восстановлении
-            // объявления обновлялись счетчики тагов
-            var userFiles = await _userFileRepository.FindByIdWithTagsInclude(
+            var userFiles = await _userFileRepository.FindById(
                 id,
                 cancellationToken);
 

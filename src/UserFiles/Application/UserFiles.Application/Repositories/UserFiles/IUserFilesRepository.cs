@@ -13,29 +13,6 @@ namespace Sev1.UserFiles.Application.Repositories.UserFile
     public interface IUserFileRepository : IRepository<Domain.UserFile, int>
     {
         /// <summary>
-        /// Возвращает объявление
-        /// с прикрепленным автором этого объявления и связанными Tags
-        /// </summary>
-        /// <param name="id">Id объявления</param>
-        /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <returns></returns>
-        Task<Domain.UserFile> FindByIdWithTagsInclude(
-            int id,
-            CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Возвращает объявление
-        /// с прикрепленным автором этого объявления,
-        /// категорией и связанными Tags
-        /// </summary>
-        /// <param name="id">Id объявления</param>
-        /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <returns></returns>
-        Task<Domain.UserFile> FindByIdWithCategoriesAndTags(
-            int id, 
-            CancellationToken cancellationToken);
-
-        /// <summary>
         /// Возвращает количество объявлений,
         /// которые не "удалены" с фильтром
         /// </summary>

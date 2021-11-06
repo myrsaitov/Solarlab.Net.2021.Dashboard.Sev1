@@ -1,4 +1,5 @@
-﻿namespace Sev1.Accounts.Application.Contracts.Identity
+﻿namespace Sev1.Accounts.Application.Contracts.Enums
+
 {
     /// <summary>
     /// Роли

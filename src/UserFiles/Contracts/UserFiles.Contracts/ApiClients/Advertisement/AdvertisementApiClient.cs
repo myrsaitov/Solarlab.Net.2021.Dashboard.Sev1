@@ -1,9 +1,6 @@
-﻿using Sev1.UserFiles.Domain.Exceptions;
-using System.Net;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Newtonsoft.Json;
-using System;
-using System.IO;
+using Sev1.UserFiles.Contracts.Exceptions;
 using UserFiles.Contracts.ApiClients.HttpGet;
 
 namespace Sev1.UserFiles.Contracts.ApiClients.Advertisement

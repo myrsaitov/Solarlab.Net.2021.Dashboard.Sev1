@@ -5,59 +5,27 @@ using Sev1.UserFiles.Application.Exceptions.UserFile;
 using Sev1.UserFiles.Application.Contracts.UserFile;
 using Sev1.UserFiles.Application.Interfaces.UserFile;
 using System.Linq;
-using Sev1.UserFiles.Domain.Exceptions;
+using Sev1.UserFiles.Contracts.Exceptions;
 using Sev1.UserFiles.Application.Validators.UserFile;
 using System.Collections.Generic;
 using Flurl;  // NuGet Flurl.Http
 using System.IO;
+using UserFiles.Contracts.Enums;
 
 namespace Sev1.UserFiles.Application.Implementations.UserFile
 {
     public sealed partial class UserFileServiceV1 : IUserFileService
     {
         /// <summary>
-        /// Создать объявление
+        /// Загрузить файл в файловую систему сервера
         /// </summary>
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task Create(
+        public async Task UploadUserFilesToServerFileSyetem(
             UserFileCreateDto model,
             CancellationToken cancellationToken)
         {
-            /*
-            // Fluent Validation
-            var validator = new UserFileCreateDtoValidator();
-            var result = await validator.ValidateAsync(model);
-            if (!result.IsValid)
-            {
-                throw new UserFileCreateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
-            }
-
-            // Возвращаем Id пользователя
-            var userId = _userProvider.GetUserId();
-            if (string.IsNullOrWhiteSpace(userId))
-            {
-                throw new NoRightsException("Нет создателя объявления!");
-            }
-
-            // Дополняем модель - Id пользователя, который создал объявление
-            //model.OwnerId = userId;
-
-            // Дополняем модель
-            var userFiles = _mapper.Map<Domain.UserFile>(model);
-            userFiles.IsDeleted = false;
-            userFiles.CreatedAt = DateTime.UtcNow;
-
-            // Сохраняем в базе
-            await _userFileRepository.Save(
-                userFiles, 
-                cancellationToken);
-            */
-
-
-
-
             // Fluent Validation
             var validator = new UserFileCreateDtoValidator();
             var result = await validator.ValidateAsync(model);
@@ -73,22 +41,32 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                 throw new NoRightsException("Нет прав добавить файл!");
             }
 
-            // TODO Сделать проверку, существует ли объявление
-            var advertisementExists = await _advertisementApiClient
+            // Проверка, существует ли объявление,
+            // и принадлежит ли оно текущему пользователю
+            var validated = await _advertisementApiClient
                 .ValidateAdvertisement(
                     model.AdvertisementId,
                     userId);
-
-            if(advertisementExists)
+            if(!validated)
             {
-
+                throw new NoRightsException("Не достаточно прав!");
             }
 
-            var ImageExtensions = new List<string> { ".JPG", ".JPE", ".BMP", ".GIF", ".PNG" };
+            // Загружаем файлы
 
+            // Перечень разрешенных типов файлов
+            var AllowedExtensions = new List<string> 
+                { ".JPG",
+                  ".JPE",
+                  ".BMP",
+                  ".GIF",
+                  ".PNG",
+                  ".PDF" };
+
+            // В цикле каждый файл по отдельности
             foreach (var file in model.Files)
             {
-                if (ImageExtensions.Contains(Path.GetExtension(file.FileName).ToUpperInvariant()))
+                if (AllowedExtensions.Contains(Path.GetExtension(file.FileName).ToUpperInvariant()))
                 {
                     // TODO Применить маппер!
                     var userFile = new Domain.UserFile()
@@ -101,6 +79,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                         AdvertisementId = model.AdvertisementId,
                         OwnerId = userId,
                         CreatedAt = DateTime.UtcNow,
+                        Storage = UserFileStorageType.FileSystem,
                         IsDeleted = false
                     };
 

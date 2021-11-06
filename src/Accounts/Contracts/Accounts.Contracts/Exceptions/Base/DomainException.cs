@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sev1.UserFiles.Domain.Base
+namespace Sev1.Accounts.Contracts.Exceptions.Base
 {
     /// <summary>
     /// Базовое доменное исключение

@@ -17,29 +17,6 @@ namespace Sev1.UserFiles.DataAccess.Repositories
         {
         }
 
-        public async Task<UserFile> FindByIdWithTagsInclude(int id, CancellationToken cancellationToken)
-        {
-            return await DbСontext
-                .Set<UserFile>()
-                .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
-        }
-        public async Task<UserFile> FindByIdWithCategoriesAndTags(int id, CancellationToken cancellationToken)
-        {
-            return await DbСontext
-                .Set<UserFile>()
-                .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
-        }
-
-        public async Task<int> CountWithOutDeleted(CancellationToken cancellationToken)
-        {
-            var data = DbСontext
-                .Set<UserFile>()
-                .AsNoTracking(); ;
-
-            return await data
-                .Where(c => c.IsDeleted == false)
-                .CountAsync(cancellationToken);
-        }
         public async Task<int> CountWithOutDeleted(
             Expression<Func<UserFile, bool>> predicate,
             CancellationToken cancellationToken)
@@ -53,22 +30,7 @@ namespace Sev1.UserFiles.DataAccess.Repositories
                 .Where(predicate)
                 .CountAsync(cancellationToken);
         }
-        public async Task<IEnumerable<UserFile>> GetPagedWithTagsAndCategoryInclude(
-            int offset,
-            int limit,
-            CancellationToken cancellationToken)
-        {
-            var data = DbСontext
-                .Set<UserFile>()
-                .AsNoTracking(); ;
 
-            return await data
-                .Where(c => c.IsDeleted == false)
-                .OrderBy(e => e.Id)
-                .Skip(offset)
-                .Take(limit)
-                .ToListAsync(cancellationToken);
-        }
         public async Task<IEnumerable<UserFile>> GetPagedWithTagsAndCategoryInclude(
             Expression<Func<UserFile, bool>> predicate,
             int offset,

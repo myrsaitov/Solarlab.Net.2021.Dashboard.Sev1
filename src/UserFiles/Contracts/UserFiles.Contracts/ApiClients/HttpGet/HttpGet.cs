@@ -1,4 +1,4 @@
-﻿using Sev1.UserFiles.Domain.Exceptions;
+﻿using Sev1.UserFiles.Contracts.Exceptions;
 using System.IO;
 using System.Net;
 using System.Net.Http;

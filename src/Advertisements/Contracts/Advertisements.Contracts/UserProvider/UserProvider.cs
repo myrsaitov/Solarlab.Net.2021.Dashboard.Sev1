@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -11,10 +12,14 @@ namespace Advertisements.Contracts.UserProvider
     public class UserProvider : IUserProvider
     {
         private readonly IHttpContextAccessor _context;
+        private readonly IConfiguration _configuration;
 
-        public UserProvider(IHttpContextAccessor context)
+        public UserProvider(
+            IHttpContextAccessor context,
+            IConfiguration configuration)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+            _configuration = configuration;
         }
 
         public string GetUserId()
@@ -28,8 +33,8 @@ namespace Advertisements.Contracts.UserProvider
                 .Split(" ")
                 .Last();
 
-            // TODO Считывать из конфига
-            string secret = "mySecretKey123asdasdasddasdasd2343423423sdfasd";
+            // Считыватем ключ из конфига
+            string secret = _configuration["Token:Key"];
 
             var key = Encoding.UTF8.GetBytes(secret);
             var handler = new JwtSecurityTokenHandler();
@@ -78,7 +83,6 @@ namespace Advertisements.Contracts.UserProvider
             
             return roles;
         }
-
 
         public bool IsInRole(string role)
         {

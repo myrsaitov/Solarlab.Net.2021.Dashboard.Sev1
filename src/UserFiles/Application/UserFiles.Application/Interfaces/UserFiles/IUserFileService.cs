@@ -13,7 +13,7 @@ namespace Sev1.UserFiles.Application.Interfaces.UserFile
         /// <param name="model">Модель DTO объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task Create(
+        Task UploadUserFilesToServerFileSyetem(
             UserFileCreateDto model, 
             CancellationToken cancellationToken);
 

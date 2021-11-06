@@ -1,6 +1,6 @@
-﻿using Sev1.Accounts.Domain.Base;
+﻿using Sev1.Accounts.Contracts.Exceptions.Base;
 
-namespace Sev1.Accounts.Domain.Exceptions
+namespace Sev1.Accounts.Contracts.Exceptions
 {
     /// <summary>
     /// Доменное исключение при конфликте

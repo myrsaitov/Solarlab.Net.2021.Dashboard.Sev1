@@ -11,7 +11,7 @@ using Sev1.Accounts.Application.Contracts.Identity;
 using Sev1.Accounts.Application.Exceptions.Identity;
 using Sev1.Accounts.Application.Interfaces.Identity;
 using Sev1.Accounts.Contracts;
-using Sev1.Accounts.Domain.Exceptions;
+using Sev1.Accounts.Contracts.Exceptions;
 
 namespace Sev1.Accounts.Application.Implementations.Identity
 {

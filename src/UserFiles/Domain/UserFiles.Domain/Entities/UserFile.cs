@@ -1,4 +1,5 @@
 ﻿using Sev1.UserFiles.Domain.Base;
+using UserFiles.Contracts.Enums;
 
 namespace Sev1.UserFiles.Domain
 {
@@ -21,5 +22,10 @@ namespace Sev1.UserFiles.Domain
         /// Пользователь, который загрузил файл
         /// </summary>
         public string OwnerId { get; set; }
+
+        /// <summary>
+        /// Тип хранилища
+        /// </summary>
+        public UserFileStorageType Storage { get; set; }
     }
 }

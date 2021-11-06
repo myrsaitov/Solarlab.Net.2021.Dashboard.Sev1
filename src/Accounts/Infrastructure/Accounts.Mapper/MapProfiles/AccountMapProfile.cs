@@ -1,4 +1,5 @@
 ﻿using Mapster;
+using Sev1.Accounts.Application.Contracts.Enums;
 using Sev1.Accounts.Application.Contracts.Identity;
 using Sev1.Accounts.Application.Contracts.User;
 using System;
