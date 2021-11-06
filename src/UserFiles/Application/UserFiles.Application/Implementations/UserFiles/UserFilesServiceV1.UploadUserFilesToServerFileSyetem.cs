@@ -31,7 +31,11 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
             var result = await validator.ValidateAsync(model);
             if (!result.IsValid)
             {
-                throw new UserFileCreateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
+                throw new UserFileCreateDtoNotValidException(
+                    result
+                        .Errors
+                        .Select(x => x.ErrorMessage)
+                        .ToString());
             }
 
             // Возвращаем Id пользователя
@@ -73,7 +77,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                     {
                         FileUrl = Url.Combine(
                             model.BaseUrl,
-                            "api/v1/images",
+                            "api/v1/userfiles",
                             model.AdvertisementId.ToString(),
                             file.FileName),
                         AdvertisementId = model.AdvertisementId,
@@ -84,8 +88,8 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                     };
 
                     var filePath = Path.Combine(
-                        @"Images",
-                        @"Contents",
+                        @"UserFilesData",
+                        @"Advertisements",
                         model.AdvertisementId.ToString(),
                         file.FileName);
 

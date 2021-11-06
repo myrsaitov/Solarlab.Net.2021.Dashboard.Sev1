@@ -39,7 +39,7 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             // Если ничего не нашлось
             if (total == 0)
             {
-                return new GetPagedResponse<CategoryDto>
+                return new GetPagedCategoryResponse
                 {
                     Items = Array.Empty<CategoryDto>(),
                     Total = total,
@@ -56,7 +56,7 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             );
 
             // Поместить массив объектов в обёртку
-            return new GetPagedResponse<CategoryDto>
+            return new GetPagedCategoryResponse
             {
                 Items = entities.Select(entity => _mapper.Map<CategoryDto>(entity)),
                 Total = total,

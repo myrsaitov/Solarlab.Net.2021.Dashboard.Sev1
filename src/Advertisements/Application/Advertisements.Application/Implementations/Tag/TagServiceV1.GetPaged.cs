@@ -36,7 +36,7 @@ namespace Sev1.Advertisements.Application.Implementations.Tag
 
             if (total == 0)
             {
-                return new GetPagedResponse<TagPagedDto>
+                return new GetPagedTagResponse
                 {
                     Items = Array.Empty<TagPagedDto>(),
                     Total = total,
@@ -51,7 +51,7 @@ namespace Sev1.Advertisements.Application.Implementations.Tag
                 cancellationToken);
 
 
-            return new GetPagedResponse<TagPagedDto>
+            return new GetPagedTagResponse
             {
                 Items = entities.Select(entity => _mapper.Map<TagPagedDto>(entity)),
                 Total = total,
