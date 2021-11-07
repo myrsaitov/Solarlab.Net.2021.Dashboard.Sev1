@@ -7,8 +7,12 @@ namespace Sev1.Advertisements.DataAccess.EntitiesConfiguration
 {
     public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
+/*        private static Category categoryGroup2 = ;
+        private static Category categoryGroup3 = ;
+*/
         private Category[] categories = new Category[]
         {
+            // Группа 1 - "Транспорт"
             new Category
             {
                 Id = 1,
@@ -19,38 +23,133 @@ namespace Sev1.Advertisements.DataAccess.EntitiesConfiguration
             new Category
             {
                 Id = 2,
-                Name = "Недвижимость",
+                Name = "Автомобили",
                 CreatedAt = DateTime.UtcNow,
-                IsDeleted = false
-
+                IsDeleted = false,  
+                ParentCategoryId = 1
             },
             new Category
             {
                 Id = 3,
-                Name = "Мебель",
+                Name = "Мотоциклы и мототехника",
                 CreatedAt = DateTime.UtcNow,
-                IsDeleted = false
+                IsDeleted = false,
+                ParentCategoryId = 1
             },
             new Category
             {
                 Id = 4,
-                Name = "Одежда",
+                Name = "Грузовики и спецтехника",
                 CreatedAt = DateTime.UtcNow,
-                IsDeleted = false
+                IsDeleted = false,
+                ParentCategoryId = 1
             },
+
+            // Группа 2 - "Недвижимость"
             new Category
             {
                 Id = 5,
-                Name = "Бытовая техника",
+                Name = "Недвижимость",
                 CreatedAt = DateTime.UtcNow,
-                IsDeleted = false
+                IsDeleted = false,
+                ParentCategory = null
             },
             new Category
             {
                 Id = 6,
-                Name = "Книги",
+                Name = "Квартиры",
+                CreatedAt = DateTime.UtcNow,
+                IsDeleted = false,
+                ParentCategoryId = 5
+            },
+            new Category
+            {
+                Id = 7,
+                Name = "Комнаты",
+                CreatedAt = DateTime.UtcNow,
+                IsDeleted = false,
+                ParentCategoryId = 5
+            },
+            new Category
+            {
+                Id = 8,
+                Name = "Дома, дачи, коттеджи",
+                CreatedAt = DateTime.UtcNow,
+                IsDeleted = false,
+                ParentCategoryId = 5
+            },
+
+            // Группа 3 - "Электроника"
+            new Category
+            {
+                Id = 9,
+                Name = "Электроника",
                 CreatedAt = DateTime.UtcNow,
                 IsDeleted = false
+            },
+            new Category
+            {
+                Id = 10,
+                Name = "Аудио и видео",
+                CreatedAt = DateTime.UtcNow,
+                IsDeleted = false,
+                ParentCategoryId = 9
+            },
+            new Category
+            {
+                Id = 11,
+                Name = "Игры, приставки и программы",
+                CreatedAt = DateTime.UtcNow,
+                IsDeleted = false,
+                ParentCategoryId = 9
+            },
+            new Category
+            {
+                Id = 12,
+                Name = "Настольные компьютеры",
+                CreatedAt = DateTime.UtcNow,
+                IsDeleted = false,
+                ParentCategoryId = 9
+            },
+            new Category
+            {
+                Id = 13,
+                Name = "Ноутбуки",
+                CreatedAt = DateTime.UtcNow,
+                IsDeleted = false,
+                ParentCategoryId = 9
+            },
+            new Category
+            {
+                Id = 14,
+                Name = "Планшеты и электронные книги",
+                CreatedAt = DateTime.UtcNow,
+                IsDeleted = false,
+                ParentCategoryId = 9
+            },
+            new Category
+            {
+                Id = 15,
+                Name = "Телефоны",
+                CreatedAt = DateTime.UtcNow,
+                IsDeleted = false,
+                ParentCategoryId = 9
+            },
+            new Category
+            {
+                Id = 16,
+                Name = "Товары для компьютера",
+                CreatedAt = DateTime.UtcNow,
+                IsDeleted = false,
+                ParentCategoryId = 9
+            },
+            new Category
+            {
+                Id = 17,
+                Name = "Фототехника",
+                CreatedAt = DateTime.UtcNow,
+                IsDeleted = false,
+                ParentCategoryId = 9
             }
         };
 
