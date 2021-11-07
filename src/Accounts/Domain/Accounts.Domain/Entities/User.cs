@@ -8,20 +8,28 @@ namespace Sev1.Accounts.Domain
     public class User : EntityMutable<string>
     {
         /// <summary>
-        /// Имя
+        /// Имя пользователя
         /// </summary>
         public string FirstName { get; set; }
+
         /// <summary>
-        /// Фамилия
+        /// Фамилия пользователя
         /// </summary>
         public string LastName { get; set; }
+
         /// <summary>
-        /// Отчество
+        /// Отчество пользователя
         /// </summary>
         public string MiddleName { get; set; }
+
         /// <summary>
-        /// Никнейм
+        /// Никнейм пользователя
         /// </summary>
         public string UserName { get; set; }
+
+        /// <summary>
+        /// Телефон пользователя
+        /// </summary>
+        public string PhoneNumber { get; set; }
     }
 }

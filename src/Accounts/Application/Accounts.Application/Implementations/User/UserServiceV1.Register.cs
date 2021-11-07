@@ -12,6 +12,12 @@ namespace Sev1.Accounts.Application.Implementations.User
 {
     public sealed partial class UserServiceV1 : IUserService
     {
+        /// <summary>
+        /// Регистрация нового пользователя
+        /// </summary>
+        /// <param name="registerRequest">Данные пользователя</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task<Register.Response> Register(
             Register.Request registerRequest, 
             CancellationToken cancellationToken)
@@ -37,6 +43,7 @@ namespace Sev1.Accounts.Application.Implementations.User
                     FirstName = registerRequest.FirstName,
                     LastName = registerRequest.LastName,
                     MiddleName = registerRequest.MiddleName,
+                    PhoneNumber = registerRequest.PhoneNumber,
                     CreatedAt = DateTime.UtcNow
                 };
 

@@ -10,6 +10,12 @@ namespace Sev1.Accounts.Application.Implementations.User
 {
     public sealed partial class UserServiceV1 : IUserService
     {
+        /// <summary>
+        /// Обновление данных о пользователе
+        /// </summary>
+        /// <param name="request">Данные пользователя</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task Update(
             Update.Request request, 
             CancellationToken cancellationToken)
@@ -34,6 +40,7 @@ namespace Sev1.Accounts.Application.Implementations.User
             domainUser.FirstName = request.FirstName;
             domainUser.LastName = request.LastName;
             domainUser.MiddleName = request.MiddleName;
+            domainUser.PhoneNumber = request.PhoneNumber;
             domainUser.UpdatedAt = DateTime.UtcNow;
 
             await _userRepository.Save(domainUser, cancellationToken);

@@ -55,6 +55,7 @@ namespace Accounts.DataAccess.Migrations
                     LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     MiddleName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
@@ -175,9 +176,9 @@ namespace Accounts.DataAccess.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3", "e3f8c941-c4ac-4d4e-8370-623f2d81496a", "Administrator", "ADMINISTRATOR" },
-                    { "c373fe1b-9e38-498b-9729-6c719222b00d", "eb2b9f7a-8557-457f-85fb-1ff261e1d5c8", "Moderator", "MODERATOR" },
-                    { "589a1f42-d43c-4315-8e02-432f64e02bc0", "1fadfde3-2bfc-46fe-9aec-758967b805eb", "User", "USER" }
+                    { "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3", "0be66796-955b-4469-b38c-f3e2e496b7e5", "Administrator", "ADMINISTRATOR" },
+                    { "c373fe1b-9e38-498b-9729-6c719222b00d", "aae9c39a-4cf1-499a-88f4-b8fdd84efbcc", "Moderator", "MODERATOR" },
+                    { "589a1f42-d43c-4315-8e02-432f64e02bc0", "c5f1bfd2-a0b4-482d-add9-f6366665dc44", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -185,19 +186,19 @@ namespace Accounts.DataAccess.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "757d5290-d036-4757-85ae-827b59e92cd3", 0, "e32c1489-0bef-4fdc-8519-e7cc86405d73", "administrator@mail.ru", false, false, null, "ADMINISTRATOR@MAIL.RU", "ADMINISTRATOR", "AQAAAAEAACcQAAAAELwUdGKNo71GqlLNKJ87AX7EaxIfWebnkNBXQnCBSwUVSEkzJpX0GQmRuR8z7j4Uww==", null, false, "43ba14ba-2068-48e6-9dbb-2959d011c5aa", false, "Administrator" },
-                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", 0, "5dfcb73d-a1a5-422f-8198-d7bc33e6b6b5", "moderator@mail.ru", false, false, null, "MODERATOR@MAIL.RU", "MODERATOR", "AQAAAAEAACcQAAAAELwvH+l8XF8Bv0hklEeviiVBkKxgVxwkbu8k7a+eNLipax3P43dzZN4GANEh5N5E+w==", null, false, "76d5b117-e0a5-4343-b49e-1d1a06d05a05", false, "Moderator" },
-                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", 0, "e74d8d7a-473b-404e-a592-8e2242050d5d", "user@mail.ru", false, false, null, "USER@MAIL.RU", "USER", "AQAAAAEAACcQAAAAEKVtur/i7+TW+A5MfeZ9btzxhxtFPvwZ2LCNO0Eqj9GStStOeLqB4cxzRo8ajSTJkQ==", null, false, "75e576c5-4d52-48aa-8992-fa837350904b", false, "User" }
+                    { "757d5290-d036-4757-85ae-827b59e92cd3", 0, "b1a49ce3-724d-4619-a0cc-322179a2c86b", "administrator@mail.ru", false, false, null, "ADMINISTRATOR@MAIL.RU", "ADMINISTRATOR", "AQAAAAEAACcQAAAAEJvbRbgn6PZqKrY5+g/nElleTiPyLgfBoet5XjHQz++JfF4J9ZKF5fNaPMCePThBTw==", null, false, "c1a72d9a-9816-4bdb-ac1b-4d3adcf25bca", false, "Administrator" },
+                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", 0, "befed5ff-7071-4e2c-affd-63ed8a6c467a", "moderator@mail.ru", false, false, null, "MODERATOR@MAIL.RU", "MODERATOR", "AQAAAAEAACcQAAAAEB/iIFAeKr7u5B+BZ4I3zrAvQPY/GR1ohsqxWmq/rc2ulnXi6nHCBMqz1ExOSO017w==", null, false, "13b54fbb-5591-4b77-ae83-dfc36f941161", false, "Moderator" },
+                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", 0, "bebb935c-c076-4996-8294-b3f492b6e5fc", "user@mail.ru", false, false, null, "USER@MAIL.RU", "USER", "AQAAAAEAACcQAAAAEC6Mt19fK4nl215yGjK9G3kqdeWhM7C0wPyLbDkfd7i3xA3+TKj40mjz42EeN1ZhTQ==", null, false, "4ebe2ff5-df30-4b0c-9c53-a83c5eedc9ea", false, "User" }
                 });
 
             migrationBuilder.InsertData(
                 table: "DomainUsers",
-                columns: new[] { "Id", "CreatedAt", "FirstName", "IsDeleted", "LastName", "MiddleName", "UpdatedAt", "UserName" },
+                columns: new[] { "Id", "CreatedAt", "FirstName", "IsDeleted", "LastName", "MiddleName", "PhoneNumber", "UpdatedAt", "UserName" },
                 values: new object[,]
                 {
-                    { "757d5290-d036-4757-85ae-827b59e92cd3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Administrator", false, "Administrator", "Administrator", null, "Administrator" },
-                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Moderator", false, "Moderator", "Moderator", null, "Moderator" },
-                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "User", false, "User", "User", null, "User" }
+                    { "757d5290-d036-4757-85ae-827b59e92cd3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Administrator", false, "Administrator", "Administrator", null, null, "Administrator" },
+                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Moderator", false, "Moderator", "Moderator", null, null, "Moderator" },
+                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "User", false, "User", "User", null, null, "User" }
                 });
 
             migrationBuilder.InsertData(
