@@ -71,9 +71,11 @@ namespace Sev1.Accounts.DataAccess
             {
                 Id = ADMINISTRATOR_ID,
                 UserName = "Administrator",
-                NormalizedUserName = "ADMINISTRATOR"
+                NormalizedUserName = "ADMINISTRATOR",
+                Email = "administrator@mail.ru",
+                NormalizedEmail = "ADMINISTRATOR@MAIL.RU"
             };
-            adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, "Administrator");
+            adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, "administrator");
 
             modelBuilder.Entity<IdentityUser>(x =>
             {
@@ -108,9 +110,11 @@ namespace Sev1.Accounts.DataAccess
             {
                 Id = MODERATOR_ID,
                 UserName = "Moderator",
-                NormalizedUserName = "MODERATOR"
+                NormalizedUserName = "MODERATOR",
+                Email = "moderator@mail.ru",
+                NormalizedEmail = "MODERATOR@MAIL.RU"
             };
-            moderatorUser.PasswordHash = passwordHasher.HashPassword(moderatorUser, "Moderator");
+            moderatorUser.PasswordHash = passwordHasher.HashPassword(moderatorUser, "moderator");
 
             modelBuilder.Entity<IdentityUser>(x =>
             {
@@ -145,9 +149,11 @@ namespace Sev1.Accounts.DataAccess
             {
                 Id = USER_ID,
                 UserName = "User",
-                NormalizedUserName = "USER"
+                NormalizedUserName = "USER",
+                Email = "user@mail.ru",
+                NormalizedEmail = "USER@MAIL.RU"
             };
-            userUser.PasswordHash = passwordHasher.HashPassword(moderatorUser, "User");
+            userUser.PasswordHash = passwordHasher.HashPassword(moderatorUser, "user");
 
             modelBuilder.Entity<IdentityUser>(x =>
             {

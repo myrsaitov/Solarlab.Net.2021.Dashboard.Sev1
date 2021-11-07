@@ -50,7 +50,7 @@ namespace Sev1.Accounts.Application.Interfaces.Identity
         /// <summary>
         /// Логин (создание токена)
         /// </summary>
-        /// <param name="request">Логин и пароль</param>
+        /// <param name="request">E-mail и пароль</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<CreateToken.Response> CreateToken(

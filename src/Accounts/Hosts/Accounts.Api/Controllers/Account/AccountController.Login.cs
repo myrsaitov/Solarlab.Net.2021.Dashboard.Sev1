@@ -12,7 +12,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <summary>
         /// Идентификация пользователя
         /// </summary>
-        /// <param name="request">Логин и пароль (User/User; Moderator/Moderator; Administrator/Administrator)</param>
+        /// <param name="request">Логин и пароль (user@mail.ru/user; moderator@mail.ru/moderator; administrator@mail.ru/administrator)</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [AllowAnonymous]
@@ -25,7 +25,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
             var token = await _identityService.CreateToken(
                 new CreateToken.Request
                 {
-                    Username = request.UserName,
+                    Email = request.Email,
                     Password = request.Password
                 },
                 cancellationToken);
