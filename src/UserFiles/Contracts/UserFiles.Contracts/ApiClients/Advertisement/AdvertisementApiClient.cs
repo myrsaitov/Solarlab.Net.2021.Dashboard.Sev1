@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Sev1.UserFiles.Contracts.Exceptions;
 using UserFiles.Contracts.ApiClients.HttpGet;
@@ -7,18 +8,22 @@ namespace Sev1.UserFiles.Contracts.ApiClients.Advertisement
 {
     public sealed partial class AdvertisementApiClient : IAdvertisementApiClient
     {
-        public AdvertisementApiClient()
+        private readonly IConfiguration _configuration;
+        public AdvertisementApiClient(
+            IConfiguration configuration)
         {
+            _configuration = configuration;
         }
 
         public async Task<bool> ValidateAdvertisement(
             int advertisementId,
             string ownerId)
         {
-            // Создатся адрес GET-запроса объявления
-            string url = "https://localhost:44378/api/v1/advertisements/" + advertisementId.ToString();
+            // Считыватем URL запроса из конфига "appsettings.json"
+            string url = _configuration["Advertisements"] + advertisementId.ToString();
 
-            var httpGet = new HttpGet();
+            // Осуществление GET-запроса
+            var httpGet = new HttpGet(); // TODO здесь DI или new?
             var result = await httpGet.HttpGetAsync(url);
             
             // Конвертируем JSON в DTO

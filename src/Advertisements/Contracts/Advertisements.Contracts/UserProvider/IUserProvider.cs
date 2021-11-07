@@ -1,25 +1,26 @@
 ﻿namespace Advertisements.Contracts.UserProvider
 {
     /// <summary>
-    /// Возвращает Id текущего пользователя
+    /// Возвращает Id и роли авторизированного пользователя
     /// </summary>
     public interface IUserProvider
     {
         /// <summary>
-        /// Возвращает Id текущего пользователя
+        /// Возвращает Id авторизированного пользователя
         /// </summary>
         /// <returns></returns>
         string GetUserId();
 
         /// <summary>
-        /// Возвращает роли пользователя
+        /// Возвращает роли авторизированного пользователя
         /// </summary>
         /// <returns></returns>
         string[] GetUserRoles();
 
         /// <summary>
-        /// Проверяет роль
+        /// Проверяет, есть ли указанная роль у авторизированного пользователя
         /// </summary>
+        /// <param name="role">Роль, которая проверяется</param>
         /// <returns></returns>
         bool IsInRole(string role);
     }

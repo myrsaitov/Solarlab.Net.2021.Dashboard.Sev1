@@ -9,6 +9,9 @@ using System.Text;
 
 namespace Advertisements.Contracts.UserProvider
 {
+    /// <summary>
+    /// Возвращает Id и роли авторизированного пользователя
+    /// </summary>
     public class UserProvider : IUserProvider
     {
         private readonly IHttpContextAccessor _context;
@@ -22,6 +25,10 @@ namespace Advertisements.Contracts.UserProvider
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Возвращает Id авторизированного пользователя
+        /// </summary>
+        /// <returns></returns>
         public string GetUserId()
         {
             // Получаем токен, отрезав от хидера начало с "Bearer "
@@ -33,7 +40,7 @@ namespace Advertisements.Contracts.UserProvider
                 .Split(" ")
                 .Last();
 
-            // Считыватем ключ из конфига
+            // Считыватем ключ из конфига "appsettings.json"
             string secret = _configuration["Token:Key"];
 
             var key = Encoding.UTF8.GetBytes(secret);
@@ -50,6 +57,10 @@ namespace Advertisements.Contracts.UserProvider
             return claims.Claims.First(claim => claim.Type == ClaimTypes.NameIdentifier).Value;
         }
 
+        /// <summary>
+        /// Возвращает роли авторизированного пользователя
+        /// </summary>
+        /// <returns></returns>
         public string[] GetUserRoles()
         {
             // Получаем токен, отрезав от хидера начало с "Bearer "
@@ -61,8 +72,8 @@ namespace Advertisements.Contracts.UserProvider
                 .Split(" ")
                 .Last();
 
-            // TODO Считывать из конфига
-            string secret = "mySecretKey123asdasdasddasdasd2343423423sdfasd";
+            // Считыватем ключ из конфига "appsettings.json"
+            string secret = _configuration["Token:Key"];
 
             var key = Encoding.UTF8.GetBytes(secret);
             var handler = new JwtSecurityTokenHandler();
@@ -84,6 +95,11 @@ namespace Advertisements.Contracts.UserProvider
             return roles;
         }
 
+        /// <summary>
+        /// Проверяет, есть ли указанная роль у авторизированного пользователя
+        /// </summary>
+        /// <param name="role">Роль, которая проверяется</param>
+        /// <returns></returns>
         public bool IsInRole(string role)
         {
             return GetUserRoles().Contains(role);

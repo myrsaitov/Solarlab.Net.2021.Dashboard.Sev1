@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Sev1.UserFiles.Contracts.Contracts.User;
 using Sev1.UserFiles.Contracts.Exceptions;
@@ -9,8 +10,11 @@ namespace Sev1.UserFiles.Contracts.ApiClients.User
 {
     public sealed partial class UserApiClient : IUserApiClient
     {
-        public UserApiClient()
+        private readonly IConfiguration _configuration;
+        public UserApiClient(
+            IConfiguration configuration)
         {
+            _configuration = configuration;
         }
 
         public async Task<ValidateTokenResponse> ValidateToken(
@@ -22,7 +26,10 @@ namespace Sev1.UserFiles.Contracts.ApiClients.User
             }
 
             string param = "";
-            string url = "https://localhost:44377/api/v1/accounts/validate-token";
+
+            // Считыватем URL запроса из конфига "appsettings.json"
+            string url = _configuration["ValidateTokenUrl"];
+
             using (var client = new WebClient())
             {
                 client.Headers.Add("Authorization", accessToken);

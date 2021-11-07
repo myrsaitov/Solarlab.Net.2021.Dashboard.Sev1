@@ -7,18 +7,28 @@
     public enum AdvertisementStatus
     {
         /// <summary>
-        /// Активное
+        /// Активное (опубликовано)
         /// </summary>
         Active,
 
         /// <summary>
-        /// Остановлено
+        /// Снято с публикации
         /// </summary>
         Stopped,
 
         /// <summary>
+        /// Черновик
+        /// </summary>
+        Draft,
+
+        /// <summary>
         /// Удалено
         /// </summary>
-        Deleted
+        Deleted,
+
+        /// <summary>
+        /// Не соответсвует требованиям
+        /// </summary>
+        NotAllowed
     }
 }
