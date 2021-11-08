@@ -14,7 +14,7 @@ namespace Sev1.Advertisements.Application.Interfaces.Category
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<int> Create(
-            CategoryCreateDto model, 
+            CategoryCreateDto model,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Sev1.Advertisements.Application.Interfaces.Category
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<int> Update(
-            CategoryUpdateDto request, 
+            CategoryUpdateDto model,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Sev1.Advertisements.Application.Interfaces.Category
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Delete(
-            int id, 
+            int id,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Sev1.Advertisements.Application.Interfaces.Category
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Restore(
-            int id, 
+            int id,
             CancellationToken cancellationToken);
 
         /// <summary>

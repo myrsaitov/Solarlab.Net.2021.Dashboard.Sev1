@@ -59,7 +59,7 @@ namespace Sev1.Advertisements.Application.Validators.Advertisement
             // Цена
             RuleFor(x => x.Price)
                 .NotNull()
-                .NotEmpty().WithMessage("Price не заполнен!")
+                //.NotEmpty().WithMessage("Price не заполнен!") // Не равен 0 - не подходит
                 .InclusiveBetween(0, decimal.MaxValue);
 
             // Id категории

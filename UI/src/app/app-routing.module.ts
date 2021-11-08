@@ -13,15 +13,15 @@ const routes: Routes = [
     path: 'registration', component: RegistrationComponent
   },
   { 
-    path: 'сreate-аnnouncement', component: CreateAnnouncementComponent
+    path: '�reate-�nnouncement', component: CreateAnnouncementComponent
   },
   { 
-    path: 'edit-аnnouncement', component: CreateAnnouncementComponent
+    path: 'edit-�nnouncement', component: CreateAnnouncementComponent
   },
   {
     path: 'admin',
     component: AdminComponent,
-    canActivate: [AuthGuard]   //только при наличии токена админа пустит на страничку админ
+    canActivate: [AuthGuard]   //������ ��� ������� ������ ������ ������ �� ��������� �����
   }
 
 ];

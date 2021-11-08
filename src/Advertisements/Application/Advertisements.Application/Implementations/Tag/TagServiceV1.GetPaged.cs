@@ -12,6 +12,12 @@ namespace Sev1.Advertisements.Application.Implementations.Tag
 {
     public sealed partial class TagServiceV1 : ITagService
     {
+        /// <summary>
+        /// Возвращает пагинированные тэги
+        /// </summary>
+        /// <param name="request">Запрос на пагинацию</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task<GetPagedResponse<TagPagedDto>> GetPaged(
             GetPagedRequest request, 
             CancellationToken cancellationToken)

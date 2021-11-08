@@ -1,0 +1,9 @@
+﻿{
+  "EmailName": "SevShop",
+  "EmailAddress": "birthday.note@yandex.ru",
+  "smtpHost": "smtp.yandex.ru",
+  "smtpPort": "465",
+  "smtpUseSsl": "true",
+  "smtpLogin": "birthday.note@yandex.ru",
+  "smtpPasswrod": "fahgethzimdmcooe"
+}

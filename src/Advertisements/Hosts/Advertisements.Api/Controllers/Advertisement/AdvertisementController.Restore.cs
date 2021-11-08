@@ -1,15 +1,23 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Sev1.Advertisements.Contracts.Authorization;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
     public partial class AdvertisementController
     {
+        /// <summary>
+        /// Восстанавливает удаленные объявления
+        /// </summary>
+        /// <param name="id">Id объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [Authorize]
         [HttpPut("{id:int}")]
-        //[Authorize]
         public async Task<IActionResult> Restore(
-            [FromRoute] int id, 
+            [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
+            int id, 
             CancellationToken cancellationToken)
         {
             await _advertisementService.Restore(

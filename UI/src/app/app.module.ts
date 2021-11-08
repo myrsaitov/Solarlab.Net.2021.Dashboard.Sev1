@@ -69,7 +69,7 @@ import { AuthInterceptor } from './auth.interceptor';
     MatCardModule,
     MatChipsModule,
     MatFileUploadModule
-     ],
+  ],
 
 
   

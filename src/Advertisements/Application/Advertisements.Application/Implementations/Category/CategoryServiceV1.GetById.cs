@@ -12,6 +12,12 @@ namespace Sev1.Advertisements.Application.Implementations.Category
 {
     public sealed partial class CategoryServiceV1 : ICategoryService
     {
+        /// <summary>
+        /// Возвращает категорию из базы по Id
+        /// </summary>
+        /// <param name="id">Id категории</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task<CategoryDto> GetById(
             int id,
             CancellationToken cancellationToken)
@@ -24,15 +30,18 @@ namespace Sev1.Advertisements.Application.Implementations.Category
                 throw new CategoryIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
+            // Достаем категорию из базы по Id
             var category = await _categoryRepository.FindByIdWithParentAndChilds(
                 id, 
                 cancellationToken);
 
+            // Если ее нет в базе, то выход
             if (category == null)
             {
                 throw new CategoryNotFoundException(id);
             }
 
+            // Возвращаем dto категории
             return _mapper.Map<CategoryDto>(category);
         }
     }

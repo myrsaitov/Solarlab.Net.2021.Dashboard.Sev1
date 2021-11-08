@@ -11,6 +11,12 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {
+        /// <summary>
+        /// Получить объявление по Id
+        /// </summary>
+        /// <param name="id">Id объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task<AdvertisementDto> GetById(
             int id,
             CancellationToken cancellationToken)
@@ -23,7 +29,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 throw new AdvertisementIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
-            var advertisement = await _advertisementRepository.FindByIdWithUserAndCategoryAndTags(
+            var advertisement = await _advertisementRepository.FindByIdWithCategoriesAndTags(
                 id,
                 cancellationToken);
 

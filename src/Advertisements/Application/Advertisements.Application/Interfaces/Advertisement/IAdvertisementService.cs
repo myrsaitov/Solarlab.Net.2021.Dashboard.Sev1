@@ -1,9 +1,6 @@
-﻿using System;
-using System.Linq.Expressions;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Sev1.Advertisements.Application.Contracts;
 using Sev1.Advertisements.Application.Contracts.GetPaged;
 
 namespace Sev1.Advertisements.Application.Interfaces.Advertisement
@@ -70,16 +67,9 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
             GetPagedAdvertisementRequest request, 
             CancellationToken cancellationToken);
 
-        /// <summary>
-        /// Возвращает объявления с пагинацией и поиском
-        /// </summary>
-        /// <param name="predicate">Параметр поиск</param>
-        /// <param name="request">Параметры пагинации</param>
-        /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <returns></returns>
-        Task<GetPagedAdvertisementResponse> GetPaged(
-            Expression<Func<Domain.Advertisement, bool>> predicate,
-            GetPagedAdvertisementRequest request,
+        Task AddTags(
+            Domain.Advertisement advertisement,
+            string[] TagBodies,
             CancellationToken cancellationToken);
     }
 }

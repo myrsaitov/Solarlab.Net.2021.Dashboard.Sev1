@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Sev1.Advertisements.Application.Contracts.Category
+﻿namespace Sev1.Advertisements.Application.Contracts.Category
 {
     public class CategoryCreateDto
     {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Sev1.Advertisements.Application.Contracts.Advertisement
+﻿namespace Sev1.Advertisements.Application.Contracts.Advertisement
 {
     public class AdvertisementUpdateDto
     {
