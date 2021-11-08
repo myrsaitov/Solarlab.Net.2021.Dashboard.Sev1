@@ -19,7 +19,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         /// <returns></returns>
         [AllowAnonymous]
         [HttpGet("{id:int}/{imageName}")]
-        public async Task<IActionResult> GetByUrl(
+        public async Task<IActionResult> GetFromFileSystem(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}"
             int id,
             [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}/{imageName}"

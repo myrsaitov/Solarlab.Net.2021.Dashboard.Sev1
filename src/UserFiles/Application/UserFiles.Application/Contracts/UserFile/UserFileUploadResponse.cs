@@ -1,22 +1,23 @@
 ﻿namespace Sev1.UserFiles.Application.Contracts.UserFile
 {
     /// <summary>
-    /// Ответ при загрузке файлов
+    /// DTO ответа при загрузке файлов
     /// </summary>
     public class UserFileUploadResponse
     {
         /// <summary>
-        /// Количество успешно загруженных файлов
+        /// Общее количество файлов в форме
         /// </summary>
-        public int UploadedSuccessful { get; set; }
+        public int Total { get; set; }
+
         /// <summary>
         /// Количество успешно загруженных файлов
         /// </summary>
-        public int SuccessfulUploaded { get; set; }
+        public int Successful { get; set; }
 
         /// <summary>
         /// Количество незагруженных файлов
         /// </summary>
-        public int NotUploaded { get; set; }
+        public int Failed { get; set; }
     }
 }

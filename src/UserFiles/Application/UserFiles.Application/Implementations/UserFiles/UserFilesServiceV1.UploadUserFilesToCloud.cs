@@ -21,7 +21,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<UserFileUploadResponse> UploadUserFilesToDB(
+        public async Task<UserFileUploadResponse> UploadUserFilesToCloud(
             UserFileUploadDto model,
             CancellationToken cancellationToken)
         {
@@ -91,10 +91,8 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                         IsDeleted = false
                     };
 
-                    // Cчитываем переданный файл в массив байтов
-                    using var binaryReader = new BinaryReader(file.OpenReadStream());
-                    // И добавляем в карточку файла
-                    userFile.Content = binaryReader.ReadBytes((int)file.Length);
+                    // Сохраняем файл в облако
+                    userFile.FilePath = await _yandexDiskApiClient.Upload(file);
 
                     // Сохраняем в базе карточку файла
                     await _userFileRepository.Save(

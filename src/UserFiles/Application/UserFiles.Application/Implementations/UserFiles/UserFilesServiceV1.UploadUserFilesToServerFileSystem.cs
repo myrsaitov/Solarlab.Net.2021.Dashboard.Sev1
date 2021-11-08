@@ -64,8 +64,11 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                 .Select(x => x.Value)
                 .ToList();
 
-            var okCount = 0;
-            var errorCount = 0;
+            // Хранит количество удачных загрузок
+            var successful = 0;
+
+            // Хранит количество неудачных загрузок
+            var failed = 0;
 
             // В цикле каждый файл по отдельности
             foreach (var file in model.Files)
@@ -109,20 +112,21 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                         userFile,
                         cancellationToken);
 
-                    // Количество загруженных файлов
-                    okCount++;
+                    // Количество удачно загруженных файлов
+                    successful++;
                 }
                 else
                 {
                     // Количество незагруженных файлов
-                    errorCount++;
+                    failed++;
                 }
             }
 
             return new UserFileUploadResponse()
             {
-                OkCount = okCount,
-                ErrorCount = errorCount
+                Total = model.Files.Count,
+                Successful = successful,
+                Failed = failed
             };
         }
     }

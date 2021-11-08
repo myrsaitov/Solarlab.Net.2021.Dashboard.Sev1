@@ -15,6 +15,8 @@ using Sev1.UserFiles.Contracts.Authorization;
 using UserFiles.Contracts.UserProvider;
 using Sev1.UserFile.Api;
 using Sev1.UserFiles.Contracts.ApiClients.Advertisement;
+using Sev1.UserFiles.Contracts.ApiClients.YandexDisk;
+using System;
 
 namespace Sev1.UserFiles.Api
 {
@@ -70,11 +72,21 @@ namespace Sev1.UserFiles.Api
 
                 // Инжектирование API-клиентов
                 //.AddScoped<IUserApiClient, UserApiClient>()
+                
                 .AddTransient<IUserApiClient, UserApiClient>()
-                .AddTransient<IAdvertisementApiClient, AdvertisementApiClient>()
+                .AddTransient<IAdvertisementApiClient, AdvertisementApiClient>();
+
+                //services.AddHttpClient<IUserApiClient, UserApiClient>();
+
+                // Добавляем апиклиент Яндекс-Облако
+                services.AddHttpClient<IYandexDiskApiClient, YandexDiskApiClient>(options =>
+                {
+                    options.BaseAddress = new Uri("https://cloud-api.yandex.net/v1/disk/");
+                    options.Timeout = TimeSpan.FromSeconds(20);
+                });
 
                 // Инжектирование UserProvider
-                .AddTransient<IUserProvider, UserProvider>()
+                services.AddTransient<IUserProvider, UserProvider>()
 
                 // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
                 .AddHttpContextAccessor()

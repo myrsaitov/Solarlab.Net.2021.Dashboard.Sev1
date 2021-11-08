@@ -8,9 +8,9 @@ namespace Sev1.UserFiles.DataAccess.EntitiesConfiguration
     {
         public void Configure(EntityTypeBuilder<UserFile> builder)
         {
-            builder.HasKey(con => con.Id);
-            builder.Property(con => con.CreatedAt).IsRequired();
-            builder.Property(con => con.UpdatedAt).IsRequired(false);
+            builder.HasKey(f => f.Id);
+            builder.Property(f => f.CreatedAt).IsRequired();
+            builder.Property(f => f.UpdatedAt).IsRequired(false);
         }
     }
 }

@@ -18,6 +18,26 @@ namespace Sev1.UserFiles.Application.Interfaces.UserFile
             CancellationToken cancellationToken);
 
         /// <summary>
+        /// Загружает файл в файловую БД 
+        /// </summary>
+        /// <param name="model">Модель DTO файла</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<UserFileUploadResponse> UploadUserFilesToDB(
+            UserFileUploadDto model,
+            CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Загружает файл в облачное хранилище 
+        /// </summary>
+        /// <param name="model">Модель DTO файла</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<UserFileUploadResponse> UploadUserFilesToCloud(
+            UserFileUploadDto model,
+            CancellationToken cancellationToken);
+
+        /// <summary>
         /// Помечает файл удаленным
         /// </summary>
         /// <param name="id">Id файла</param>
