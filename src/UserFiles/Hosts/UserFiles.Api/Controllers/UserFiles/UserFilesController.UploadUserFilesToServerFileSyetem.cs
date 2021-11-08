@@ -27,7 +27,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
             List<IFormFile> files,
             CancellationToken cancellationToken)
         {
-            await _userFileService.UploadUserFilesToServerFileSyetem(
+            var res = await _userFileService.UploadUserFilesToServerFileSystem(
                 new UserFileUploadDto()
                 {
                     BaseUrl = string.Format(
@@ -38,7 +38,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
                 }, 
                 cancellationToken);
 
-            return Created(string.Empty, null);
+            return Ok(res);
         }
     }
 }

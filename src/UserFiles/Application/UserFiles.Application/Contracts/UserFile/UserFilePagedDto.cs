@@ -7,7 +7,7 @@ namespace Sev1.UserFiles.Application.Contracts.UserFile
         /// <summary>
         /// Внешняя ссылка на файл
         /// </summary>
-        public string FileUrl { get; set; }
+        public string FilePath { get; set; }
 
         /// <summary>
         /// Объявление, к которому относится этот файл

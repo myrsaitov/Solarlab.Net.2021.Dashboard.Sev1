@@ -9,11 +9,6 @@ namespace Sev1.UserFiles.Domain
     public class UserFile : EntityMutable<int>
     {
         /// <summary>
-        /// Внешняя ссылка на файл
-        /// </summary>
-        public string FileUrl { get; set; }
-
-        /// <summary>
         /// Объявление, к которому относится этот файл
         /// </summary>
         public int AdvertisementId { get; set; }
@@ -27,5 +22,40 @@ namespace Sev1.UserFiles.Domain
         /// Тип хранилища
         /// </summary>
         public UserFileStorageType Storage { get; set; }
+
+        /// <summary>
+        /// The raw Content-Type header of the uploaded file.
+        /// </summary>
+        public string ContentType { get; set; }
+
+        /// <summary>
+        /// The raw Content-Disposition header of the uploaded file.
+        /// </summary>
+        public string ContentDisposition { get; set; }
+
+        /// <summary>
+        /// The file length in bytes.
+        /// </summary>
+        public long Length { get; set; }
+
+        /// <summary>
+        /// The form field name from the Content-Disposition header.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// The file name from the Content-Disposition header.
+        /// </summary>
+        public string FileName { get; set; }
+
+        /// <summary>
+        /// Массив данных файла
+        /// </summary>
+        public byte[] Content { get; set; }
+
+        /// <summary>
+        /// Путь к файлу
+        /// </summary>
+        public string FilePath { get; set; }
     }
 }

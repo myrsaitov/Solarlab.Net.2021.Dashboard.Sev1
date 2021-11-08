@@ -10,7 +10,7 @@ using Sev1.UserFiles.DataAccess;
 namespace UserFiles.DataAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20211106084638_Initial")]
+    [Migration("20211108135849_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,14 +31,32 @@ namespace UserFiles.DataAccess.Migrations
                     b.Property<int>("AdvertisementId")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("Content")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("ContentDisposition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContentType")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FileUrl")
+                    b.Property<string>("FileName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FilePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<long>("Length")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OwnerId")
                         .HasColumnType("nvarchar(max)");

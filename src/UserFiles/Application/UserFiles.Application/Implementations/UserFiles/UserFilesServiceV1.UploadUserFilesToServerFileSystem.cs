@@ -7,7 +7,6 @@ using Sev1.UserFiles.Application.Interfaces.UserFile;
 using System.Linq;
 using Sev1.UserFiles.Contracts.Exceptions;
 using Sev1.UserFiles.Application.Validators.UserFile;
-using System.Collections.Generic;
 using Flurl;  // NuGet Flurl.Http
 using System.IO;
 using sev1.UserFiles.Contracts.Enums;
@@ -22,7 +21,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
         /// <param name="model">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task UploadUserFilesToServerFileSyetem(
+        public async Task<UserFileUploadResponse> UploadUserFilesToServerFileSystem(
             UserFileUploadDto model,
             CancellationToken cancellationToken)
         {
@@ -31,7 +30,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
             var result = await validator.ValidateAsync(model);
             if (!result.IsValid)
             {
-                throw new UserFileCreateDtoNotValidException(
+                throw new UserFileUploadDtoNotValidException(
                     result
                         .Errors
                         .Select(x => x.ErrorMessage)
@@ -56,26 +55,33 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                 throw new NoRightsException("Не достаточно прав!");
             }
 
-            // Загружаем файлы
+            // Загружаем файлы в файловую систему сервера
 
-            // Перечень разрешенных типов файлов
-            var AllowedExtensions = new List<string> 
-                { ".JPG",
-                  ".JPE",
-                  ".BMP",
-                  ".GIF",
-                  ".PNG",
-                  ".PDF" };
+            // Считыватем перечень разрешенных типов файлов из конфига "appsettings.json"
+            var AllowedFileExtensions = _configuration
+                .GetSection("AllowedFileExtensions")
+                .GetChildren()
+                .Select(x => x.Value)
+                .ToList();
+
+            var okCount = 0;
+            var errorCount = 0;
 
             // В цикле каждый файл по отдельности
             foreach (var file in model.Files)
             {
-                if (AllowedExtensions.Contains(Path.GetExtension(file.FileName).ToUpperInvariant()))
+                // Проверка на разрешенные для загрузки типы файлов
+                if (AllowedFileExtensions.Contains(Path.GetExtension(file.FileName).ToUpperInvariant()))
                 {
-                    // TODO Применить маппер!
+                    // Создаем карточку файла
                     var userFile = new Domain.UserFile()
                     {
-                        FileUrl = Url.Combine(
+                        Name = file.Name,
+                        FileName = file.FileName,
+                        ContentType = file.ContentType,
+                        ContentDisposition = file.ContentDisposition,
+                        Length = file.Length,
+                        FilePath = Url.Combine(
                             model.BaseUrl,
                             "api/v1/userfiles",
                             model.AdvertisementId.ToString(),
@@ -98,12 +104,26 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                     await using var stream = new FileStream(filePath, FileMode.Create);
                     await file.CopyToAsync(stream);
 
-                    // Сохраняем в базе
+                    // Сохраняем в базе карточку файла
                     await _userFileRepository.Save(
                         userFile,
                         cancellationToken);
+
+                    // Количество загруженных файлов
+                    okCount++;
+                }
+                else
+                {
+                    // Количество незагруженных файлов
+                    errorCount++;
                 }
             }
+
+            return new UserFileUploadResponse()
+            {
+                OkCount = okCount,
+                ErrorCount = errorCount
+            };
         }
     }
 }

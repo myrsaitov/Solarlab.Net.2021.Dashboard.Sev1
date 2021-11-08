@@ -8,19 +8,19 @@ namespace Sev1.UserFiles.Application.Interfaces.UserFile
     public interface IUserFileService
     {
         /// <summary>
-        /// Создает новое объявление
+        /// Загружает файл в файловую систему сервера
         /// </summary>
-        /// <param name="model">Модель DTO объявления</param>
+        /// <param name="model">Модель DTO файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task UploadUserFilesToServerFileSyetem(
+        Task<UserFileUploadResponse> UploadUserFilesToServerFileSystem(
             UserFileUploadDto model, 
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Удаляет объявление по Id
+        /// Помечает файл удаленным
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Id файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Delete(
@@ -28,9 +28,9 @@ namespace Sev1.UserFiles.Application.Interfaces.UserFile
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Восстанавливает объявление по Id
+        /// Убирает пометку об удалении файла
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Id файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Restore(
@@ -38,7 +38,7 @@ namespace Sev1.UserFiles.Application.Interfaces.UserFile
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Возвращает объявление по Id
+        /// Возвращает файл по Id
         /// </summary>
         /// <param name="id">Id объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
@@ -48,7 +48,7 @@ namespace Sev1.UserFiles.Application.Interfaces.UserFile
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Возвращает объявления с пагинацией
+        /// Возвращает список файлов с пагинацией
         /// </summary>
         /// <param name="request">Параметры пагинации</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
@@ -56,6 +56,5 @@ namespace Sev1.UserFiles.Application.Interfaces.UserFile
         Task<GetPagedUserFileResponse> GetPaged(
             GetPagedUserFileRequest request, 
             CancellationToken cancellationToken);
-
     }
 }
