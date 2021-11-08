@@ -13,7 +13,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
  import {catchError} from 'rxjs/operators';
  import {Router} from '@angular/router';
 
- @Component({
+@Component({
   selector: 'app-create-announcement-form',
   templateUrl: './create-announcement-form.component.html',
   styleUrls: ['./create-announcement-form.component.scss'],
@@ -68,7 +68,7 @@ export class CreateAnnouncementFormComponent implements OnInit {
  
   get tagBodiesControl() {
     return this.formGroup.get('tagBodies');
-  }
+   }
 
 
   
@@ -88,11 +88,11 @@ add(event: MatChipInputEvent): void {
     // Добавить тег
     if (value) {
       this.tagBodies.push({name: value});
-    }
+  }
 
     // Удалить тег
     event.chipInput!.clear();
-  }
+   }
 
   remove(tagBody: Tag): void {
     const index = this.tagBodies.indexOf(tagBody);
@@ -100,8 +100,8 @@ add(event: MatChipInputEvent): void {
     if (index >= 0) {
       this.tagBodies.splice(index, 1);
     }
-  }
-  
+   }
+ 
 
      submit() {
      if(this.formGroup.invalid) {

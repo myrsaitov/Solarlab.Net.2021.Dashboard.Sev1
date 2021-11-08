@@ -1,6 +1,6 @@
-<!-- <input accept="image/*" type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
+<input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
 
-            
+                
                 <table class="table">
                   <thead>
                   <tr>
@@ -35,16 +35,4 @@
               <button type="button" class="btn btn-success btn-s"
               (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
           <span class="glyphicon glyphicon-upload"></span> Загрузить все файлы
-      </button> -->
- <div>
-      <label for="multipleFile"></label>
-      <input multiple accept="image/*"  id="multipleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>
-      <br>
-      
-      <mat-file-upload-queue #fileUploadQueue
-          [fileAlias]="'file'"
-          [httpUrl]="'https://localhost:44379/api/v1/userfiles'">
-          
-          <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
-      </mat-file-upload-queue>
-    </div> 
+      </button>
