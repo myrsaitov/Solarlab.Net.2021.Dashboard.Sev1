@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Comments.Domain.Entities
 {
-    class CommentReview
+    public class CommentReview : Comment
     {
+        /// <summary>
+        /// Оценка, которую поставил пользователь продавцу
+        /// </summary>
+        public double Rating { get; set; }
     }
 }
