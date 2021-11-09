@@ -34,45 +34,45 @@ namespace Sev1.UserFiles.Contracts.ApiClients.YandexDisk
         /// <returns></returns>
         public async Task<string> Upload(IFormFile data)
         {
-            var uploadUrl = await GetUploadUrl(data.FileName);
-            var result = await _httpClient.PutAsync(new Uri(uploadUrl.Href), new StreamContent(data.OpenReadStream()));
+            var uploadUri = await GetUploadUri(data.FileName);
+            var result = await _httpClient.PutAsync(new Uri(uploadUri.Href), new StreamContent(data.OpenReadStream()));
             result.EnsureSuccessStatusCode();
 
-            var downloadUrl = await GetDownloadUrl(data.FileName);
-            return downloadUrl.Href;
+            var downloadUri = await GetDownloadUri(data.FileName);
+            return downloadUri.Href;
         }
 
         /// <summary>
-        /// Возвращает URL для загрузки в облако
+        /// Возвращает URI для загрузки в облако
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        private async Task<GetUploadUrlResponse> GetUploadUrl(string fileName)
+        private async Task<GetUploadUriResponse> GetUploadUri(string fileName)
         {
             var BasePath = _configuration["YandexDisk:BasePath"];
             var OAuthValue = _configuration["YandexDisk:OAuthValue"];
-            var url = $"resources/upload?path={BasePath}{fileName}";
+            var uri = $"resources/upload?path={BasePath}{fileName}";
             _httpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("OAuth", OAuthValue);
-            var result = await _httpClient.GetAsync(HttpUtility.HtmlEncode(url));
+            var result = await _httpClient.GetAsync(HttpUtility.HtmlEncode(uri));
             result.EnsureSuccessStatusCode();
 
-            return JsonConvert.DeserializeObject<GetUploadUrlResponse>(await result.Content.ReadAsStringAsync());
+            return JsonConvert.DeserializeObject<GetUploadUriResponse>(await result.Content.ReadAsStringAsync());
         }
 
         /// <summary>
-        /// Возвращает URL для скачивания из облака
+        /// Возвращает URI для скачивания из облака
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        private async Task<GetUploadUrlResponse> GetDownloadUrl(string fileName)
+        private async Task<GetUploadUriResponse> GetDownloadUri(string fileName)
         {
             var BasePath = _configuration["YandexDisk:BasePath"];
-            var url = $"resources/download?path={BasePath}{fileName}";
-            var result = await _httpClient.GetAsync(HttpUtility.HtmlEncode(url));
+            var uri = $"resources/download?path={BasePath}{fileName}";
+            var result = await _httpClient.GetAsync(HttpUtility.HtmlEncode(uri));
             result.EnsureSuccessStatusCode();
 
-            return JsonConvert.DeserializeObject<GetUploadUrlResponse>(await result.Content.ReadAsStringAsync());
+            return JsonConvert.DeserializeObject<GetUploadUriResponse>(await result.Content.ReadAsStringAsync());
         }
     }
 }

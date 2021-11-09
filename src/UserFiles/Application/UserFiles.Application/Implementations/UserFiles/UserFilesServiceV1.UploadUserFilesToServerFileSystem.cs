@@ -83,12 +83,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                         ContentType = file.ContentType,
                         ContentDisposition = file.ContentDisposition,
                         Length = file.Length,
-                        /*FilePath = Url.Combine(
-                            model.BaseUrl,
-                            "api/v1/userfiles",
-                            model.AdvertisementId.ToString(),
-                            file.FileName),*/
-                        FilePath = $"{model.BaseUrl}/api/v1/userfiles/{model.AdvertisementId.ToString()}/{file.FileName}",
+                        FilePath = $"{model.BaseUri}/api/v1/userfiles/{model.AdvertisementId.ToString()}/{file.FileName}",
 
                     AdvertisementId = model.AdvertisementId,
                         OwnerId = userId,

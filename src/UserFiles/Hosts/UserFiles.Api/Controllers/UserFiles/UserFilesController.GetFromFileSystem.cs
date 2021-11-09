@@ -11,7 +11,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
     public partial class UserFilesController
     {
         /// <summary>
-        /// Возвращает файл по URL
+        /// Возвращает файл по URI
         /// </summary>
         /// <param name="id">Id файла</param>
         /// <param name="imageName">Имя файла</param>

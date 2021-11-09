@@ -70,15 +70,18 @@ namespace Sev1.UserFiles.Api
                 // Инжектирование наших сервисов
                 .AddScoped<IUserFileService, UserFileServiceV1>()
 
+                // Добавляем фабрику API-клиентов
+                .AddHttpClient()
+
                 // Инжектирование API-клиентов
                 .AddTransient<IUserApiClient, UserApiClient>()
-                .AddTransient<IAdvertisementApiClient, AdvertisementApiClient>();
+                .AddTransient<IAdvertisementApiClient, AdvertisementApiClient>()
 
                 // Добавляем API-клиент Яндекс-Диска
-            services
+
                 .AddHttpClient<IYandexDiskApiClient, YandexDiskApiClient>(options =>
                 {
-                    options.BaseAddress = new Uri("https://cloud-api.yandex.net/v1/disk/");
+                    options.BaseAddress = new Uri(Configuration["YandexDisk:URI"]);
                     options.Timeout = TimeSpan.FromSeconds(20);
                 });
 
@@ -237,9 +240,9 @@ namespace Sev1.UserFiles.Api
             // Конечные точки - это единицы приложения исполняемого кода обработки запросов.
             // Конечные точки определяются в приложении и настраиваются при запуске приложения. 
             // Процесс сопоставления конечных точек может извлекать значения из 
-            // URL-адреса запроса и предоставлять эти значения для обработки запроса. 
+            // URI-адреса запроса и предоставлять эти значения для обработки запроса. 
             // Используя информацию о конечных точках из приложения, маршрутизация 
-            // также может генерировать URL-адреса, которые сопоставляются с конечными точками.
+            // также может генерировать URI-адреса, которые сопоставляются с конечными точками.
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }

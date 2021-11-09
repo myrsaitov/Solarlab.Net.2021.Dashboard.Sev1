@@ -1,6 +1,6 @@
 ﻿namespace Sev1.UserFiles.Contracts.Contracts.YandexDisk
 {
-    public class GetUploadUrlResponse
+    public class GetUploadUriResponse
     {
         public string Href { get; set; }
         public string Method { get; set; }

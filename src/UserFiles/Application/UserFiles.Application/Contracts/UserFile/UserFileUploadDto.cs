@@ -22,6 +22,6 @@ namespace Sev1.UserFiles.Application.Contracts.UserFile
         /// Адрес текущего сервера
         /// </summary>
         [Required]
-        public string BaseUrl { get; set; }
+        public string BaseUri { get; set; }
     }
 }

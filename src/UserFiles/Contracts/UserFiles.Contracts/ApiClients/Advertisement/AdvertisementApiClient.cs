@@ -19,12 +19,12 @@ namespace Sev1.UserFiles.Contracts.ApiClients.Advertisement
             int advertisementId,
             string ownerId)
         {
-            // Считыватем URL запроса из конфига "appsettings.json"
-            string url = _configuration["Advertisements"] + advertisementId.ToString();
+            // Считыватем URI запроса из конфига "appsettings.json"
+            string uri = _configuration["Advertisements"] + advertisementId.ToString();
 
             // Осуществление GET-запроса
             var httpGet = new HttpGet(); // TODO здесь DI или new?
-            var result = await httpGet.HttpGetAsync(url);
+            var result = await httpGet.HttpGetAsync(uri);
             
             // Конвертируем JSON в DTO
             var advertisementDto = JsonConvert

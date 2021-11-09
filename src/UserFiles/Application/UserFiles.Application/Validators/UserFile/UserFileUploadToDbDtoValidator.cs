@@ -28,8 +28,8 @@ namespace Sev1.UserFiles.Application.Validators.UserFile
                 .NotEmpty().WithMessage("AdvertisementId не заполнен!")
                 .InclusiveBetween(1, int.MaxValue);
 
-            // Не должно быть URL
-            RuleFor(x => x.BaseUrl)
+            // Не должно быть URI
+            RuleFor(x => x.BaseUri)
                 .Null();
         }
     }

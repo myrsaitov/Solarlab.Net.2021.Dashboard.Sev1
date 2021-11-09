@@ -28,10 +28,10 @@ namespace Sev1.UserFiles.Application.Validators.UserFile
                 .NotEmpty().WithMessage("AdvertisementId не заполнен!")
                 .InclusiveBetween(1, int.MaxValue);
 
-            // Проверить URL
-            RuleFor(x => x.BaseUrl)
+            // Проверить URI
+            RuleFor(x => x.BaseUri)
                 .NotNull()
-                .NotEmpty().WithMessage("BaseUrl не заполнен!")
+                .NotEmpty().WithMessage("BaseUri не заполнен!")
                 // Протестировать тут: https://regex101.com/
                 // Тест: "Продаются утята, котята, 3 коровы(?) и трактор!"
                 // "^": указывает на начало строки;

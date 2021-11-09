@@ -30,9 +30,9 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
             var res = await _userFileService.UploadUserFilesToServerFileSystem(
                 new UserFileUploadDto()
                 {
-                    BaseUrl = string.Format(
+                    BaseUri = string.Format(
                         "{0}://{1}",
-                        HttpContext.Request.Scheme, HttpContext.Request.Host), // Определяем URL хоста
+                        HttpContext.Request.Scheme, HttpContext.Request.Host), // Определяем URI хоста
                     Files = files,
                     AdvertisementId = id
                 }, 
