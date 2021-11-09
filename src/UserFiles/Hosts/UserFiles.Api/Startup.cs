@@ -71,22 +71,20 @@ namespace Sev1.UserFiles.Api
                 .AddScoped<IUserFileService, UserFileServiceV1>()
 
                 // Инжектирование API-клиентов
-                //.AddScoped<IUserApiClient, UserApiClient>()
-                
                 .AddTransient<IUserApiClient, UserApiClient>()
                 .AddTransient<IAdvertisementApiClient, AdvertisementApiClient>();
 
-                //services.AddHttpClient<IUserApiClient, UserApiClient>();
-
-                // Добавляем апиклиент Яндекс-Облако
-                services.AddHttpClient<IYandexDiskApiClient, YandexDiskApiClient>(options =>
+                // Добавляем API-клиент Яндекс-Диска
+            services
+                .AddHttpClient<IYandexDiskApiClient, YandexDiskApiClient>(options =>
                 {
                     options.BaseAddress = new Uri("https://cloud-api.yandex.net/v1/disk/");
                     options.Timeout = TimeSpan.FromSeconds(20);
                 });
 
                 // Инжектирование UserProvider
-                services.AddTransient<IUserProvider, UserProvider>()
+            services
+                .AddTransient<IUserProvider, UserProvider>()
 
                 // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
                 .AddHttpContextAccessor()
