@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -8,15 +9,26 @@ using System.Text;
 
 namespace Advertisements.Contracts.UserProvider
 {
+    /// <summary>
+    /// Возвращает Id и роли авторизированного пользователя
+    /// </summary>
     public class UserProvider : IUserProvider
     {
         private readonly IHttpContextAccessor _context;
+        private readonly IConfiguration _configuration;
 
-        public UserProvider(IHttpContextAccessor context)
+        public UserProvider(
+            IHttpContextAccessor context,
+            IConfiguration configuration)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+            _configuration = configuration;
         }
 
+        /// <summary>
+        /// Возвращает Id авторизированного пользователя
+        /// </summary>
+        /// <returns></returns>
         public string GetUserId()
         {
             // Получаем токен, отрезав от хидера начало с "Bearer "
@@ -28,8 +40,8 @@ namespace Advertisements.Contracts.UserProvider
                 .Split(" ")
                 .Last();
 
-            // TODO Считывать из конфига
-            string secret = "mySecretKey123asdasdasddasdasd2343423423sdfasd";
+            // Считыватем ключ из конфига "appsettings.json"
+            string secret = _configuration["Token:Key"];
 
             var key = Encoding.UTF8.GetBytes(secret);
             var handler = new JwtSecurityTokenHandler();
@@ -45,6 +57,10 @@ namespace Advertisements.Contracts.UserProvider
             return claims.Claims.First(claim => claim.Type == ClaimTypes.NameIdentifier).Value;
         }
 
+        /// <summary>
+        /// Возвращает роли авторизированного пользователя
+        /// </summary>
+        /// <returns></returns>
         public string[] GetUserRoles()
         {
             // Получаем токен, отрезав от хидера начало с "Bearer "
@@ -56,8 +72,8 @@ namespace Advertisements.Contracts.UserProvider
                 .Split(" ")
                 .Last();
 
-            // TODO Считывать из конфига
-            string secret = "mySecretKey123asdasdasddasdasd2343423423sdfasd";
+            // Считыватем ключ из конфига "appsettings.json"
+            string secret = _configuration["Token:Key"];
 
             var key = Encoding.UTF8.GetBytes(secret);
             var handler = new JwtSecurityTokenHandler();
@@ -79,7 +95,11 @@ namespace Advertisements.Contracts.UserProvider
             return roles;
         }
 
-
+        /// <summary>
+        /// Проверяет, есть ли указанная роль у авторизированного пользователя
+        /// </summary>
+        /// <param name="role">Роль, которая проверяется</param>
+        /// <returns></returns>
         public bool IsInRole(string role)
         {
             return GetUserRoles().Contains(role);

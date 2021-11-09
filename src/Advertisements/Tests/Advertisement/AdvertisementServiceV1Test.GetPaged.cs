@@ -58,7 +58,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // "Подсчёт" количества объявлений с заданным критерием в базе
             _advertisementRepositoryMock
-                .Setup(_ => _.CountWithOutDeleted(
+                .Setup(_ => _.CountActive(
                     It.IsAny<Expression<Func<Domain.Advertisement, bool>>>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(advertisementCount) // в результате выполнения возвращает объект
@@ -110,7 +110,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 SearchStr = null,
                 CategoryId = null,
                 Tag = null,
-                UserId = null
+                OwnerId = null
             };
 
             await GetPaged_Returns_Response_Success(
@@ -145,7 +145,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 SearchStr = "search_str",
                 CategoryId = null,
                 Tag = null,
-                UserId = null
+                OwnerId = null
             };
 
             await GetPaged_Returns_Response_Success(
@@ -180,7 +180,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 SearchStr = null,
                 CategoryId = 3,
                 Tag = null,
-                UserId = null
+                OwnerId = null
             };
 
             await GetPaged_Returns_Response_Success(
@@ -215,7 +215,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 SearchStr = null,
                 CategoryId = null,
                 Tag = "tag",
-                UserId = null
+                OwnerId = null
             };
 
             await GetPaged_Returns_Response_Success(
@@ -250,7 +250,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 SearchStr = null,
                 CategoryId = null,
                 Tag = null,
-                UserId = "24cb4b25-c819-45ab-8755-d95120fbb868"
+                OwnerId = "24cb4b25-c819-45ab-8755-d95120fbb868"
             };
 
             await GetPaged_Returns_Response_Success(

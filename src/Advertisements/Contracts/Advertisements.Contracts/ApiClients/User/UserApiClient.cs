@@ -1,45 +1,74 @@
-﻿using Advertisements.Contracts.Contracts.User;
-using Sev1.Advertisements.Domain.Exceptions;
+﻿using Sev1.Advertisements.Contracts.Contracts.User;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Sev1.Advertisements.Contracts.Exception;
+using Microsoft.Extensions.Configuration;
+using System.Net.Http;
 
 namespace Sev1.Advertisements.Contracts.ApiClients.User
 {
+    /// <summary>
+    /// API-client проверяет, авторизирован ли пользователь, возвращает его id и role
+    /// </summary>
     public sealed partial class UserApiClient : IUserApiClient
     {
-        public UserApiClient()
+        private readonly IConfiguration _configuration;
+        private readonly IHttpClientFactory _clientFactory;
+
+        public UserApiClient(
+            IConfiguration configuration,
+            IHttpClientFactory clientFactory)
         {
+            _configuration = configuration;
+            _clientFactory = clientFactory;
         }
 
+        /// <summary>
+        /// API-client проверяет, авторизирован ли пользователь, возвращает его id и role
+        /// </summary>
+        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
+        /// <returns></returns>
         public async Task<ValidateTokenResponse> ValidateToken(
             string accessToken)
         {
-            if(accessToken is null)
+            // Проверка наличия токена
+            if (accessToken is null)
             {
                 throw new NoRightsException("Ошибка авторизации!");
             }
 
-            string param = "";
-            string url = "https://localhost:44377/api/v1/accounts/validate-token";
-            using (var client = new WebClient())
+            // Считыватем URI запроса из конфига "appsettings.json"
+            string uri = _configuration["ValidateTokenUri"];
+
+            // Данные к пост-запросу
+            string jsonString = "";
+            var payload = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+            // Создание клиента
+            var client = _clientFactory.CreateClient();
+
+            // Добавляем хидер авторизации
+            client.DefaultRequestHeaders.Add("Authorization", accessToken);
+
+            // Выполнение POST-запроса
+            HttpResponseMessage response = await client.PostAsync(uri, payload);
+
+            // Ожидание ответа на запрос
+            string responseJson = await response.Content.ReadAsStringAsync();
+
+            // Преобразуем json в DTO
+            ValidateTokenResponse res = JsonConvert.DeserializeObject<ValidateTokenResponse>(responseJson);
+
+            // Если null, то ошибка авторизация
+            if (res is null)
             {
-                client.Headers.Add("Authorization", accessToken);
-
-                try
-                {
-                    var data = await client.UploadDataTaskAsync(url, "POST", Encoding.UTF8.GetBytes(param));
-                    var jsonString = Encoding.ASCII.GetString(data);
-
-                    ValidateTokenResponse res = JsonConvert.DeserializeObject<ValidateTokenResponse>(jsonString);
-                    return res;
-                }
-                catch (WebException ex)
-                {
-                    throw new NoRightsException("Ошибка авторизации: " + ex);
-                }
+                throw new NoRightsException("Ошибка авторизации!");
             }
+
+            // Возвращаем DTO
+            return res;
         }
     }
 }

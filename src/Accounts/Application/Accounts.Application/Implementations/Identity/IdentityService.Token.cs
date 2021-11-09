@@ -11,7 +11,7 @@ using Sev1.Accounts.Application.Contracts.Identity;
 using Sev1.Accounts.Application.Exceptions.Identity;
 using Sev1.Accounts.Application.Interfaces.Identity;
 using Sev1.Accounts.Contracts;
-using Sev1.Accounts.Domain.Exceptions;
+using Sev1.Accounts.Contracts.Exceptions;
 
 namespace Sev1.Accounts.Application.Implementations.Identity
 {
@@ -22,8 +22,8 @@ namespace Sev1.Accounts.Application.Implementations.Identity
             CancellationToken cancellationToken = default)
         {
             // Проверка, существует ли пользователь с таким именем
-            var identityUser = await _userManager.FindByNameAsync(
-                request.Username);
+            var identityUser = await _userManager.FindByEmailAsync(
+                request.Email);
             if (identityUser == null)
             {
                 throw new IdentityUserNotFoundException("Пользователь не найден");
@@ -42,8 +42,8 @@ namespace Sev1.Accounts.Application.Implementations.Identity
             var claims = new List<Claim>
             {
                 new Claim(
-                    ClaimTypes.Name,
-                    request.Username),
+                    ClaimTypes.Email,
+                    request.Email),
 
                 new Claim(
                     ClaimTypes.NameIdentifier,

@@ -7,7 +7,7 @@ using Sev1.Advertisements.Application.Exceptions.Advertisement;
 using Sev1.Advertisements.Application.Exceptions.Category;
 using Sev1.Advertisements.Application.Interfaces.Category;
 using Sev1.Advertisements.Application.Validators.Advertisement;
-using Sev1.Advertisements.Domain.Exceptions;
+using Sev1.Advertisements.Contracts.Exception;
 
 namespace Sev1.Advertisements.Application.Implementations.Category
 {

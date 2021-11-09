@@ -16,7 +16,7 @@ namespace Advertisements.DataAccess.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.9")
+                .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("AdvertisementTag", b =>
@@ -58,6 +58,9 @@ namespace Advertisements.DataAccess.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -105,44 +108,135 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(1538),
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(2888),
                             IsDeleted = false,
                             Name = "Транспорт"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3025),
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3398),
+                            IsDeleted = false,
+                            Name = "Автомобили",
+                            ParentCategoryId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3641),
+                            IsDeleted = false,
+                            Name = "Мотоциклы и мототехника",
+                            ParentCategoryId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3644),
+                            IsDeleted = false,
+                            Name = "Грузовики и спецтехника",
+                            ParentCategoryId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3645),
                             IsDeleted = false,
                             Name = "Недвижимость"
                         },
                         new
                         {
-                            Id = 3,
-                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3035),
-                            IsDeleted = false,
-                            Name = "Мебель"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3038),
-                            IsDeleted = false,
-                            Name = "Одежда"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3040),
-                            IsDeleted = false,
-                            Name = "Бытовая техника"
-                        },
-                        new
-                        {
                             Id = 6,
-                            CreatedAt = new DateTime(2021, 10, 27, 7, 57, 46, 540, DateTimeKind.Utc).AddTicks(3041),
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3877),
                             IsDeleted = false,
-                            Name = "Книги"
+                            Name = "Квартиры",
+                            ParentCategoryId = 5
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3879),
+                            IsDeleted = false,
+                            Name = "Комнаты",
+                            ParentCategoryId = 5
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3880),
+                            IsDeleted = false,
+                            Name = "Дома, дачи, коттеджи",
+                            ParentCategoryId = 5
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3881),
+                            IsDeleted = false,
+                            Name = "Электроника"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3882),
+                            IsDeleted = false,
+                            Name = "Аудио и видео",
+                            ParentCategoryId = 9
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3883),
+                            IsDeleted = false,
+                            Name = "Игры, приставки и программы",
+                            ParentCategoryId = 9
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3884),
+                            IsDeleted = false,
+                            Name = "Настольные компьютеры",
+                            ParentCategoryId = 9
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3885),
+                            IsDeleted = false,
+                            Name = "Ноутбуки",
+                            ParentCategoryId = 9
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3886),
+                            IsDeleted = false,
+                            Name = "Планшеты и электронные книги",
+                            ParentCategoryId = 9
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3887),
+                            IsDeleted = false,
+                            Name = "Телефоны",
+                            ParentCategoryId = 9
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3888),
+                            IsDeleted = false,
+                            Name = "Товары для компьютера",
+                            ParentCategoryId = 9
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CreatedAt = new DateTime(2021, 11, 7, 20, 25, 6, 262, DateTimeKind.Utc).AddTicks(3889),
+                            IsDeleted = false,
+                            Name = "Фототехника",
+                            ParentCategoryId = 9
                         });
                 });
 

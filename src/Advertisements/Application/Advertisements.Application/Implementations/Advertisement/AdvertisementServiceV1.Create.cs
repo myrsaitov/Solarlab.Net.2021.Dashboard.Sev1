@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Sev1.Advertisements.Application.Interfaces.Advertisement;
-using Sev1.Advertisements.Application.Contracts.Tag;
 using Sev1.Advertisements.Application.Validators.Advertisement;
 using System.Linq;
 using Sev1.Advertisements.Application.Exceptions.Category;
-using Sev1.Advertisements.Domain.Exceptions;
+using Sev1.Advertisements.Contracts.Exception;
+using sev1.Advertisements.Contracts.Enums;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
@@ -40,9 +39,6 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 throw new NoRightsException("Нет создателя объявления!");
             }
 
-            // Дополняем модель - Id пользователя, который создал объявление
-            model.OwnerId = userId;
-
             // Проверка категории на существование
             var category = await _categoryRepository.FindById(
                 model.CategoryId,
@@ -65,6 +61,8 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             advertisement.IsDeleted = false;
             advertisement.CreatedAt = DateTime.UtcNow;
             advertisement.Category = category;
+            advertisement.OwnerId = userId;
+            advertisement.Status = AdvertisementStatus.Active;
 
             // Добавляем таги
             await AddTags(

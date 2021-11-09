@@ -73,8 +73,10 @@ namespace Sev1.Advertisements.Api
                 .AddScoped<IAdvertisementService, AdvertisementServiceV1>()
                 .AddScoped<ITagService, TagServiceV1>()
 
+                // Добавляем фабрику API-клиентов
+                .AddHttpClient()
+
                 // Инжектирование API-клиента User
-                //.AddScoped<IUserApiClient, UserApiClient>()
                 .AddTransient<IUserApiClient, UserApiClient>()
 
                 // Инжектирование UserProvider
@@ -233,9 +235,9 @@ namespace Sev1.Advertisements.Api
             // Конечные точки - это единицы приложения исполняемого кода обработки запросов.
             // Конечные точки определяются в приложении и настраиваются при запуске приложения. 
             // Процесс сопоставления конечных точек может извлекать значения из 
-            // URL-адреса запроса и предоставлять эти значения для обработки запроса. 
+            // URI-адреса запроса и предоставлять эти значения для обработки запроса. 
             // Используя информацию о конечных точках из приложения, маршрутизация 
-            // также может генерировать URL-адреса, которые сопоставляются с конечными точками.
+            // также может генерировать URI-адреса, которые сопоставляются с конечными точками.
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }

@@ -39,7 +39,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
 
             // Если нет параметров поиска, выводим без какой-либо фильтрации
             if ((string.IsNullOrWhiteSpace(request.SearchStr))
-                && (string.IsNullOrWhiteSpace(request.UserId))
+                && (string.IsNullOrWhiteSpace(request.OwnerId))
                 && (request.CategoryId is null)
                 && (string.IsNullOrWhiteSpace(request.Tag)))
             {
@@ -47,7 +47,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             }
             // Если пришли параметры поиска
             else if ((!string.IsNullOrWhiteSpace(request.SearchStr))
-                && (string.IsNullOrWhiteSpace(request.UserId))
+                && (string.IsNullOrWhiteSpace(request.OwnerId))
                 && (request.CategoryId is null)
                 && (string.IsNullOrWhiteSpace(request.Tag)))
             {
@@ -59,16 +59,16 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                     || o.Tags.Select(a => a.Body).ToArray().Contains(request.SearchStr.ToLower()); // По tag
             }
             else if ((string.IsNullOrWhiteSpace(request.SearchStr))
-                && (!string.IsNullOrWhiteSpace(request.UserId))
+                && (!string.IsNullOrWhiteSpace(request.OwnerId))
                 && (request.CategoryId is null)
                 && (string.IsNullOrWhiteSpace(request.Tag)))
             {
                 // Поиск по UserId
                 predicate =
-                    a => a.OwnerId == request.UserId;
+                    a => a.OwnerId == request.OwnerId;
             }
             else if ((string.IsNullOrWhiteSpace(request.SearchStr))
-                && (string.IsNullOrWhiteSpace(request.UserId))
+                && (string.IsNullOrWhiteSpace(request.OwnerId))
                 && (!(request.CategoryId is null))
                 && (string.IsNullOrWhiteSpace(request.Tag)))
             {
@@ -77,7 +77,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                     a => a.CategoryId == request.CategoryId;
             }
             else if ((string.IsNullOrWhiteSpace(request.SearchStr))
-                && (string.IsNullOrWhiteSpace(request.UserId))
+                && (string.IsNullOrWhiteSpace(request.OwnerId))
                 && ((request.CategoryId is null))
                 && (!string.IsNullOrWhiteSpace(request.Tag)))
             {
@@ -87,7 +87,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             }
 
             // Подсчет общего количества объявлений
-            var total = await _advertisementRepository.CountWithOutDeleted(
+            var total = await _advertisementRepository.CountActive(
                 predicate,
                 cancellationToken);
 

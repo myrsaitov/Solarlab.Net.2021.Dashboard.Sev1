@@ -36,10 +36,11 @@ namespace Sev1.Accounts.Api.Controllers.Account
                     Password = request.Password,
                     FirstName = request.FirstName,
                     LastName = request.LastName,
-                    MiddleName = request.MiddleName
+                    MiddleName = request.MiddleName,
+                    PhoneNumber = request.PhoneNumber
                 },
                 cancellationToken);
-
+            //TODO update controller!
             return Created($"api/v1/account/{registrationResult.UserId}", new { });
         }
     }

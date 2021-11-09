@@ -1,0 +1,6 @@
+#sp_dropserver 'DESKTOP-D53IJO4';
+#GO
+#sp_addserver 'DESKTOP-D53IJO4\SQLEXPRESS', local;
+#GO
+
+https://www.mssqltips.com/sqlservertip/1620/how-to-setup-and-use-a-sql-server-alias/

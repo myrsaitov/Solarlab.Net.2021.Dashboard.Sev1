@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>Sev1.UserFiles.Api</RootNamespace>
+        <UserSecretsId>b06248f5-8976-47a6-bf46-a8c4203df343</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>..\..\..\..</DockerfileContext>
+    </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\net5.0\UserFiles.Api.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+  
+    <ItemGroup>
+      <Compile Remove="App_Data\**" />
+      <Compile Remove="Controllers\Parser\**" />
+      <Compile Remove="UserFilesData\**" />
+      <Content Remove="App_Data\**" />
+      <Content Remove="Controllers\Parser\**" />
+      <Content Remove="UserFilesData\**" />
+      <EmbeddedResource Remove="App_Data\**" />
+      <EmbeddedResource Remove="Controllers\Parser\**" />
+      <EmbeddedResource Remove="UserFilesData\**" />
+      <None Remove="App_Data\**" />
+      <None Remove="Controllers\Parser\**" />
+      <None Remove="UserFilesData\**" />
+      <TypeScriptCompile Remove="App_Data\**" />
+      <TypeScriptCompile Remove="Controllers\Parser\**" />
+      <TypeScriptCompile Remove="UserFilesData\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="ExpressionDebugger" Version="2.2.0" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.37" />
+        <PackageReference Include="Mapster" Version="7.2.0" />
+        <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
+        <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.11" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.11" />
+        <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="3.1.20" />
+        <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.11" />
+        <PackageReference Include="Microsoft.CodeAnalysis" Version="3.11.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.11">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.11" />
+        <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.4.4">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+        <PackageReference Include="System.Net.Http" Version="4.3.4" />
+        <PackageReference Include="System.Text.Json" Version="5.0.2" />
+        <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
+        <PackageReference Include="TurnerSoftware.SitemapTools" Version="0.6.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+     
+      <ProjectReference Include="..\..\Application\UserFiles.Application\UserFiles.Application.csproj" />
+     
+      <ProjectReference Include="..\..\Infrastructure\UserFiles.DataAccess\UserFiles.DataAccess.csproj" />
+     
+      <ProjectReference Include="..\..\Infrastructure\UserFiles.Mapper\UserFiles.MapsterMapper.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Controllers\Image\ImageController - Copy.Upload.cs">
+        <DependentUpon>ImageController.Upload.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>

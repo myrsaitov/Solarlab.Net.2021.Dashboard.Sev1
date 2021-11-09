@@ -16,27 +16,12 @@ namespace Sev1.Accounts.Application.Implementations.Identity
             IHttpContextAccessor httpContextAccessor, 
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager,
-            IConfiguration configuration
-            /*, IMailService mailService*/)
+            IConfiguration configuration)
         {
             _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
-            //_mailService = mailService;
         }
-
-       /*public async Task<bool> ConfirmEmail(string userId, string token, CancellationToken cancellationToken = default)
-        {
-            var identityUser = await _userManager.FindByIdAsync(userId);
-            if (identityUser == null)
-            {
-                throw new IdentityUserNotFoundException("Пользователь не найден");
-            }
-
-            var result = await _userManager.ConfirmEmailAsync(identityUser, token);
-
-            return result.Succeeded;
-        }*/
     }
 }
