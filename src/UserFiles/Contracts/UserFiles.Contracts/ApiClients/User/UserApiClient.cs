@@ -54,7 +54,7 @@ namespace Sev1.UserFiles.Contracts.ApiClients.User
             // Выполнение POST-запроса
             HttpResponseMessage response = await client.PostAsync(uri, payload);
 
-            // Ожидание ответа на запрос
+            // Преобразование в json
             string responseJson = await response.Content.ReadAsStringAsync();
 
             // Преобразуем json в DTO
