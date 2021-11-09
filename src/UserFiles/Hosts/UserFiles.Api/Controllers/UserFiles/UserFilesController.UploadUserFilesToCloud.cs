@@ -18,16 +18,16 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("{id:int}/to-data-base")]
+        [HttpPost("{id:int}/to-cloud")]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> UploadUserFilesToDB(
+        public async Task<IActionResult> UploadUserFilesToCloud(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}"
             int id,
             [FromForm]
             List<IFormFile> files,
             CancellationToken cancellationToken)
         {
-            var res = await _userFileService.UploadUserFilesToDb(
+            var res = await _userFileService.UploadUserFilesToCloud(
                 new UserFileUploadDto()
                 {
                     Files = files,

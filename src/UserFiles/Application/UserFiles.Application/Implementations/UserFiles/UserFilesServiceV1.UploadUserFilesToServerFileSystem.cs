@@ -7,7 +7,6 @@ using Sev1.UserFiles.Application.Interfaces.UserFile;
 using System.Linq;
 using Sev1.UserFiles.Contracts.Exceptions;
 using Sev1.UserFiles.Application.Validators.UserFile;
-using Flurl;  // NuGet Flurl.Http
 using System.IO;
 using sev1.UserFiles.Contracts.Enums;
 
@@ -26,7 +25,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
             CancellationToken cancellationToken)
         {
             // Fluent Validation
-            var validator = new UserFileCreateDtoValidator();
+            var validator = new UserFileUploadToFileSystemDtoValidator();
             var result = await validator.ValidateAsync(model);
             if (!result.IsValid)
             {
@@ -84,12 +83,14 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                         ContentType = file.ContentType,
                         ContentDisposition = file.ContentDisposition,
                         Length = file.Length,
-                        FilePath = Url.Combine(
+                        /*FilePath = Url.Combine(
                             model.BaseUrl,
                             "api/v1/userfiles",
                             model.AdvertisementId.ToString(),
-                            file.FileName),
-                        AdvertisementId = model.AdvertisementId,
+                            file.FileName),*/
+                        FilePath = $"{model.BaseUrl}/api/v1/userfiles/{model.AdvertisementId.ToString()}/{file.FileName}",
+
+                    AdvertisementId = model.AdvertisementId,
                         OwnerId = userId,
                         CreatedAt = DateTime.UtcNow,
                         Storage = UserFileStorageType.FileSystem,

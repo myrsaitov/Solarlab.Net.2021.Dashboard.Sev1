@@ -18,7 +18,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("{id:int}")]
+        [HttpPost("{id:int}/to-file-system")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> UploadUserFilesToServerFileSyetem(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}"

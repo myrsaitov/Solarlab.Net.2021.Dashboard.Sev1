@@ -7,7 +7,6 @@ using Sev1.UserFiles.Application.Interfaces.UserFile;
 using System.Linq;
 using Sev1.UserFiles.Contracts.Exceptions;
 using Sev1.UserFiles.Application.Validators.UserFile;
-using Flurl;  // NuGet Flurl.Http
 using System.IO;
 using sev1.UserFiles.Contracts.Enums;
 
@@ -26,7 +25,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
             CancellationToken cancellationToken)
         {
             // Fluent Validation
-            var validator = new UserFileCreateDtoValidator();
+            var validator = new UserFileUploadToCloudDtoValidator();
             var result = await validator.ValidateAsync(model);
             if (!result.IsValid)
             {

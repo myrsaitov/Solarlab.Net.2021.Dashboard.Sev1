@@ -23,7 +23,7 @@ namespace Sev1.UserFiles.Application.Interfaces.UserFile
         /// <param name="model">Модель DTO файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<UserFileUploadResponse> UploadUserFilesToDB(
+        Task<UserFileUploadResponse> UploadUserFilesToDb(
             UserFileUploadDto model,
             CancellationToken cancellationToken);
 

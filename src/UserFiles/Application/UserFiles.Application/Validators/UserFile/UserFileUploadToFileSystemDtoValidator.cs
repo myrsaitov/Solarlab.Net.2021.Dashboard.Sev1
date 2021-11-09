@@ -7,9 +7,9 @@ namespace Sev1.UserFiles.Application.Validators.UserFile
     /// <summary>
     /// Валидатор DTO при создании объявления
     /// </summary>
-    public class UserFileCreateDtoValidator : NullReferenceAbstractValidator<UserFileUploadDto>
+    public class UserFileUploadToFileSystemDtoValidator : NullReferenceAbstractValidator<UserFileUploadDto>
     {
-        public UserFileCreateDtoValidator()
+        public UserFileUploadToFileSystemDtoValidator()
         {
             // Общая проверка
             RuleFor(x => x)
