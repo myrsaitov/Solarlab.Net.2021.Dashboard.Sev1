@@ -24,5 +24,10 @@
         /// Поиск по Id создавшего объявление
         /// </summary>
         public string OwnerId { get; set; }
+
+        /// <summary>
+        /// Поиск по Id региона
+        /// </summary>
+        public string RegionId { get; set; }
     }
 }

@@ -20,7 +20,19 @@ namespace Sev1.Accounts.Api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // This method gets called by the runtime.
+        // Use this method to add services to the container.
+        // Это опциональный метод в классе Startup,
+        // который используется для настройки сервисов
+        // для приложения.Когда в приложение поступает
+        // какой-либо запрос, сначала вызывается метод
+        // ConfigureService.
+        // Метод ConfigureServices включает параметр
+        // IServiceCollection для регистрации сервисов.
+        // Этот метод должен быть объявлен с модификатором
+        // доступа public, чтобы среда могла читать контент
+        // из метаданных.
+        // https://habr.com/ru/company/otus/blog/542494/
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers().AddNewtonsoftJson(options =>

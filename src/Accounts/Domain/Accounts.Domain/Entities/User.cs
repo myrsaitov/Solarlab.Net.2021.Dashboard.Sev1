@@ -1,4 +1,5 @@
 ﻿using Sev1.Accounts.Domain.Base;
+using System.Collections.Generic;
 
 namespace Sev1.Accounts.Domain
 {
@@ -31,5 +32,30 @@ namespace Sev1.Accounts.Domain
         /// Телефон пользователя
         /// </summary>
         public string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// Телефон пользователя
+        /// </summary>
+        public string Address { get; set; }
+
+        /// <summary>
+        /// Путь к фото пользователя
+        /// </summary>
+        public string UserPicPath { get; set; }
+
+        /// <summary>
+        /// "Избранное"
+        /// </summary>
+        public IEnumerable<int> FavoriteAdvertisementIds { get; set; }
+
+        /// <summary>
+        /// "Друзья"
+        /// </summary>
+        public IEnumerable<User> FriendUsers { get; set; }
+
+        /// <summary>
+        /// "В игноре"
+        /// </summary>
+        public IEnumerable<User> IgnoredUsers { get; set; }
     }
 }
