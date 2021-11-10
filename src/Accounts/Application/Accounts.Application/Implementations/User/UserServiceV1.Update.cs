@@ -17,16 +17,20 @@ namespace Sev1.Accounts.Application.Implementations.User
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task Update(
-            Update.Request request, 
+            UserUpdateRequest request, 
             CancellationToken cancellationToken)
         {
-            var domainUser = await _userRepository.FindById(request.Id, cancellationToken);
+            var domainUser = await _userRepository
+                .FindById(
+                request.Id,
+                cancellationToken);
             if (domainUser == null)
             {
                 throw new UserNotFoundException($"Пользователь с идентификатором {request.Id} не найден");
             }
 
-            var currentUserId = _identityService.GetCurrentUserId(cancellationToken);
+            var currentUserId = _identityService
+                .GetCurrentUserId(cancellationToken);
             if(currentUserId == null)
             {
                 throw new NoRightsException("Пользователь не найден!");
@@ -37,6 +41,7 @@ namespace Sev1.Accounts.Application.Implementations.User
                 throw new NoRightsException("Нет прав");
             }
 
+            // TODO mapper _mapper.Map<Register.Response>(response);
             domainUser.FirstName = request.FirstName;
             domainUser.LastName = request.LastName;
             domainUser.MiddleName = request.MiddleName;

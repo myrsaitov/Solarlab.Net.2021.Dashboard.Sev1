@@ -16,9 +16,9 @@ namespace Sev1.Accounts.Application.Repository.Base
         where TEntity : Entity<TId>
     {
         /// <summary>
-        /// Возвращает сущность по Id
+        /// Возвращает сущность по идентификатору
         /// </summary>
-        /// <param name="id">Id сущности</param>
+        /// <param name="id">Идентификатор сущности</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<TEntity> FindById(

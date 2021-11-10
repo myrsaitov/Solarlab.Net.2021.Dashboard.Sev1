@@ -14,7 +14,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
         /// <summary>
         /// Восстановить объявление
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task Restore(

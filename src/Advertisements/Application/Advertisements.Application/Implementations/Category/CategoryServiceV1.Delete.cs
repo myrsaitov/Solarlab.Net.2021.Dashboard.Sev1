@@ -13,9 +13,10 @@ namespace Sev1.Advertisements.Application.Implementations.Category
     public sealed partial class CategoryServiceV1 : ICategoryService
     {
         /// <summary>
-        /// Удалить категорию (только админ или модератор)
+        /// Удалить категорию по идентификатору
+        /// (только администратор или модератор)
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task Delete(

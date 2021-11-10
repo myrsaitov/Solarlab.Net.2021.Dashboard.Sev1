@@ -13,7 +13,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         /// <summary>
         /// Возвращает файл по URI
         /// </summary>
-        /// <param name="id">Id файла</param>
+        /// <param name="id">Идентификатор файла</param>
         /// <param name="imageName">Имя файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>

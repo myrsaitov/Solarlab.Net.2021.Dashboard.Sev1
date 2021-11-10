@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Sev1.Accounts.Contracts
+namespace Sev1.Accounts.Contracts.Contracts.User
 {
     /// <summary>
     /// DTO ответа на запрос валидации токена

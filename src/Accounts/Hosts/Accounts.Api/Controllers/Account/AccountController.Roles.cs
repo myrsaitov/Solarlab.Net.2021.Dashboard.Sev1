@@ -2,14 +2,14 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Accounts.Contracts;
+using Sev1.Accounts.Contracts.Contracts.User;
 
 namespace Sev1.Accounts.Api.Controllers.Account
 {
     public partial class AccountController
     {
         /// <summary>
-        /// Возвращает роль текущего авторизированного пользователя
+        /// Возвращает роли авторизированного пользователя
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
@@ -23,9 +23,9 @@ namespace Sev1.Accounts.Api.Controllers.Account
         }
 
         /// <summary>
-        /// Возвращает роль пользователя по Id
+        /// Возвращает роли пользователя по идентификатору
         /// </summary>
-        /// <param name="UserId">Id пользователя</param>
+        /// <param name="UserId">Идентификатор пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
@@ -43,14 +43,14 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <summary>
         /// Добавляет указанного пользователя в указанную роль
         /// </summary>
-        /// <param name="request">Id пользователя и роль</param>
+        /// <param name="request">Идентификатор пользователя и роль</param>
         /// <param name="cancellationToken">Маркер отмены</param>
         /// <returns></returns>
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost("role-add")]
         public async Task<IActionResult> AddToRole(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            UserRoleRequest request,
+            UserRoleChangeRequest request,
             CancellationToken cancellationToken)
         {
             await _identityService.AddToRole(
@@ -64,14 +64,14 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <summary>
         /// Убирает указанного пользователя из указанной роли
         /// </summary>
-        /// <param name="request">Id пользователя и роль</param>
+        /// <param name="request">Идентификатор пользователя и роль</param>
         /// <param name="cancellationToken">Маркер отмены</param>
         /// <returns></returns>
         [Authorize(Roles = "Administrator, Moderator")]
         [HttpPost("role-remove")]
         public async Task<IActionResult> RemoveFromRole(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            UserRoleRequest request,
+            UserRoleChangeRequest request,
             CancellationToken cancellationToken)
         {
             await _identityService.RemoveFromRole(

@@ -40,7 +40,7 @@ namespace Sev1.UserFiles.Application.Interfaces.UserFile
         /// <summary>
         /// Помечает файл удаленным
         /// </summary>
-        /// <param name="id">Id файла</param>
+        /// <param name="id">Идентификатор файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Delete(
@@ -50,7 +50,7 @@ namespace Sev1.UserFiles.Application.Interfaces.UserFile
         /// <summary>
         /// Убирает пометку об удалении файла
         /// </summary>
-        /// <param name="id">Id файла</param>
+        /// <param name="id">Идентификатор файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Restore(
@@ -60,7 +60,7 @@ namespace Sev1.UserFiles.Application.Interfaces.UserFile
         /// <summary>
         /// Возвращает файл по Id
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<UserFileDto> GetById(

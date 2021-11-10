@@ -13,14 +13,14 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка получения объявления по Id
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <param name="userId">Id пользователя</param>
+        /// <param name="userId">Идентификатор пользователя</param>
         /// <param name="advertisementTitle">Заголовок объявления</param>
         /// <param name="advertisementBody">Тело объявления</param>
         /// <param name="tagBodies">Таги</param>
-        /// <param name="userId">Id пользователя, который создал объявление</param>
-        /// <param name="categoryId">Id категории</param>
+        /// <param name="userId">Идентификатор пользователя, который создал объявление</param>
+        /// <param name="categoryId">Идентификатор категории</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
@@ -85,7 +85,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка исключения, если в базе нет объявления с таким Id
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
@@ -116,7 +116,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка исключения, если аргумент не проходит валидацию
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]

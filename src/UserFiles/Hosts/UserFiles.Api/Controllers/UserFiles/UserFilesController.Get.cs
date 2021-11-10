@@ -31,7 +31,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         /// <summary>
         /// Возвращает файл по Id
         /// </summary>
-        /// <param name="id">Id файла</param>
+        /// <param name="id">Идентификатор файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [AllowAnonymous]

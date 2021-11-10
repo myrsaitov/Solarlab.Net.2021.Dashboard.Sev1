@@ -13,7 +13,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка удачного удаления объявления пользователем-owner
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
@@ -79,7 +79,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка удачного удаления объявления модератором
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
@@ -145,7 +145,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка удачного удаления объявления админом
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
@@ -212,7 +212,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// Проверка исключения, если пользователь 
         /// не имеет права удалить объявление
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
@@ -276,7 +276,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка исключения, если в базе нет объявления с таким Id
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
@@ -305,7 +305,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка исключения, если не прошли валидацию Id
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]

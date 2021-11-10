@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.Accounts.Application.Contracts.User;
-using Sev1.Accounts.Contracts;
+using Sev1.Accounts.Contracts.Contracts.User;
 
 namespace Sev1.Accounts.Api.Controllers.Account
 {
@@ -28,9 +28,10 @@ namespace Sev1.Accounts.Api.Controllers.Account
             UserRegisterRequest request,
             CancellationToken cancellationToken)
         {
-            var registrationResult = await _userService.Register(
-                new Register.Request
+            var userId = await _userService.Register(
+                new UserRegisterDto
                 {
+                    //TODO mapper
                     UserName = request.UserName,
                     Email = request.Email,
                     Password = request.Password,
@@ -41,7 +42,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
                 },
                 cancellationToken);
             //TODO update controller!
-            return Created($"api/v1/account/{registrationResult.UserId}", new { });
+            return Created($"api/v1/account/{userId}", new { });
         }
     }
 }

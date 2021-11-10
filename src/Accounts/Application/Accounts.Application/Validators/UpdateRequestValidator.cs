@@ -3,7 +3,10 @@ using Sev1.Accounts.Application.Contracts.User;
 
 namespace Sev1.Accounts.Application.Validators
 {
-    public class UpdateRequestValidator : AbstractValidator<Update.Request>
+    /// <summary>
+    /// Валидация HTTP-запроса на обновление данных пользователя
+    /// </summary>
+    public class UpdateRequestValidator : AbstractValidator<UserUpdateRequest>
     {
         public UpdateRequestValidator()
         {

@@ -12,9 +12,9 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {
         /// <summary>
-        /// Получить объявление по Id
+        /// Получить объявление по идентификатору
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task<AdvertisementDto> GetById(

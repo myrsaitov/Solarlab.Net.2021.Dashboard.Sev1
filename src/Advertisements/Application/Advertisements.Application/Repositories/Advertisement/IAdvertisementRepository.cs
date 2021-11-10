@@ -13,10 +13,10 @@ namespace Sev1.Advertisements.Application.Repositories.Advertisement
     public interface IAdvertisementRepository : IRepository<Domain.Advertisement, int>
     {
         /// <summary>
-        /// Возвращает объявление
+        /// Возвращает объявление по идентификатору
         /// с прикрепленным автором этого объявления и связанными Tags
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<Domain.Advertisement> FindByIdWithTagsInclude(
@@ -24,11 +24,11 @@ namespace Sev1.Advertisements.Application.Repositories.Advertisement
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Возвращает объявление
+        /// Возвращает объявление по идентификатору
         /// с прикрепленным автором этого объявления,
         /// категорией и связанными Tags
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<Domain.Advertisement> FindByIdWithCategoriesAndTags(

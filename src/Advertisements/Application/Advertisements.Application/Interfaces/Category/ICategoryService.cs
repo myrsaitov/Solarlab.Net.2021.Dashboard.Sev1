@@ -28,9 +28,9 @@ namespace Sev1.Advertisements.Application.Interfaces.Category
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Удаляет категорию по Id
+        /// Удаляет категорию по идентификатору
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Delete(
@@ -38,9 +38,9 @@ namespace Sev1.Advertisements.Application.Interfaces.Category
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Восстанавливает категорию по Id
+        /// Восстанавливает категорию по идентификатор
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Restore(
@@ -48,9 +48,9 @@ namespace Sev1.Advertisements.Application.Interfaces.Category
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Возвращает категорию по Id
+        /// Возвращает категорию по идентификатор
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<CategoryDto> GetById(

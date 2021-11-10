@@ -14,7 +14,7 @@ namespace Sev1.Advertisements.Tests.Category
         /// <summary>
         /// Проверка удачного удаления категории модератором
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
@@ -74,7 +74,7 @@ namespace Sev1.Advertisements.Tests.Category
         /// <summary>
         /// Проверка удачного удаления категории админом
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
@@ -135,7 +135,7 @@ namespace Sev1.Advertisements.Tests.Category
         /// Проверка исключения, если обычный пользователь 
         /// хочет удалить категорию
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
@@ -190,7 +190,7 @@ namespace Sev1.Advertisements.Tests.Category
         /// <summary>
         /// Проверка исключения, если в базе нет категории с таким Id
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
@@ -217,7 +217,7 @@ namespace Sev1.Advertisements.Tests.Category
         /// <summary>
         /// Проверка исключения, если не прошли валидацию Id
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]

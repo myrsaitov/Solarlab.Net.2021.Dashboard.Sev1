@@ -10,7 +10,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         /// <summary>
         /// Удалает файл (из БД не удаляет, но помечает, что он удален)
         /// </summary>
-        /// <param name="id">Id файла</param>
+        /// <param name="id">Идентификатор файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize("Administrator","Moderator","User")]

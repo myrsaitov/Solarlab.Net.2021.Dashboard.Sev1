@@ -15,7 +15,7 @@ namespace Sev1.Accounts.Application.Implementations.Identity
         /// <summary>
         /// Добавляет пользователя к указанной роли
         /// </summary>
-        /// <param name="userId">Id пользователя</param>
+        /// <param name="userId">Идентификатор пользователя</param>
         /// <param name="role">Роль</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>

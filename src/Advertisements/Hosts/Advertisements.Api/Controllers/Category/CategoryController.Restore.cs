@@ -10,7 +10,7 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         /// <summary>
         /// Восстанавливает удаленную категорию по Id
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize("Administrator", "Moderator")]

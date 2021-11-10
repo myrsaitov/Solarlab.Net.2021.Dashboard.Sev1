@@ -10,19 +10,19 @@ namespace Sev1.Accounts.Application.Implementations.Identity
     public partial class IdentityService : IIdentityService
     {
         /// <summary>
-        /// Создание нового пользователя
+        /// Зарегистрировать пользователя в Identity
         /// </summary>
-        /// <param name="request">Запрос с данными пользователя</param>
+        /// <param name="dto">DTO с данными пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<CreateUser.Response> CreateUser(
-            CreateUser.Request request, 
+        public async Task<IdentityUserCreateResponseDto> CreateUser(
+            IdentityUserCreateRequestDto dto, 
             CancellationToken cancellationToken = default)
         {
             // Проверка, существует ли такой пользователь в базе
             var existedUser = await _userManager
                 .FindByEmailAsync(
-                request.Email);
+                dto.Email);
             if (existedUser != null)
             {
                 throw new ConflictException("Пользователь с таким Email уже существует");
@@ -31,19 +31,25 @@ namespace Sev1.Accounts.Application.Implementations.Identity
             // Создаем пользователя
             var identityUser = new IdentityUser
             {
-                UserName = request.UserName,
-                Email = request.Email
+                UserName = dto.UserName,
+                Email = dto.Email
             };
 
             // Помещаем его в базу
-            var identityResult = await _userManager.CreateAsync(identityUser, request.Password);
+            var identityResult = await _userManager
+                .CreateAsync(
+                    identityUser,
+                    dto.Password);
 
             // Если удачно, то возвращаем положительный ответ
             if (identityResult.Succeeded)
             {
-                await _userManager.AddToRoleAsync(identityUser, request.Role);
+                await _userManager
+                    .AddToRoleAsync(
+                        identityUser,
+                        dto.Role);
 
-                return new CreateUser.Response
+                return new IdentityUserCreateResponseDto
                 {
                     UserId = identityUser.Id,
                     IsSuccess = true
@@ -53,10 +59,13 @@ namespace Sev1.Accounts.Application.Implementations.Identity
             }
 
             // Иначе - отрицательный
-            return new CreateUser.Response
+            return new IdentityUserCreateResponseDto
             {
                 IsSuccess = false,
-                Errors = identityResult.Errors.Select(x => x.Description).ToArray()
+                Errors = identityResult
+                    .Errors
+                    .Select(x => x.Description)
+                    .ToArray()
             };
         }
     }

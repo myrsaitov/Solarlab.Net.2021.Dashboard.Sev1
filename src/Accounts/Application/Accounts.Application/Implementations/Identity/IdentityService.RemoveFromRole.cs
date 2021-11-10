@@ -10,7 +10,7 @@ namespace Sev1.Accounts.Application.Implementations.Identity
         /// <summary>
         /// Убирает пользователя из указанной роли
         /// </summary>
-        /// <param name="userId">Id пользователя</param>
+        /// <param name="userId">Идентификатор пользователя</param>
         /// <param name="role">Роль</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>

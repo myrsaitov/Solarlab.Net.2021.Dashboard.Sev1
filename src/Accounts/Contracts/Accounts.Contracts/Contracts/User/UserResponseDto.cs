@@ -1,30 +1,27 @@
-﻿using Sev1.Accounts.Domain.Base;
-using System.Collections.Generic;
-
-namespace Sev1.Accounts.Domain
+﻿namespace Sev1.Accounts.Contracts.Contracts.User
 {
     /// <summary>
-    /// Доменный пользователь
+    /// DTO ответа при запросе пользователя
     /// </summary>
-    public class User : EntityMutable<string>
+    public class UserResponseDto
     {
         /// <summary>
-        /// Никнейм пользователя
+        /// Никнейм
         /// </summary>
         public string UserName { get; set; }
 
         /// <summary>
-        /// Имя пользователя
+        /// Имя
         /// </summary>
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Фамилия пользователя
+        /// Фамилия
         /// </summary>
         public string LastName { get; set; }
 
         /// <summary>
-        /// Отчество пользователя
+        /// Отчество
         /// </summary>
         public string MiddleName { get; set; }
 
@@ -42,20 +39,5 @@ namespace Sev1.Accounts.Domain
         /// Путь к фото пользователя
         /// </summary>
         public string UserPicPath { get; set; }
-
-        /// <summary>
-        /// "Избранное"
-        /// </summary>
-        public IEnumerable<int> FavoriteAdvertisementIds { get; set; }
-
-        /// <summary>
-        /// "Друзья"
-        /// </summary>
-        public IEnumerable<User> FriendUsers { get; set; }
-
-        /// <summary>
-        /// "В игноре"
-        /// </summary>
-        public IEnumerable<User> IgnoredUsers { get; set; }
     }
 }

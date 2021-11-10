@@ -13,7 +13,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         /// <summary>
         /// Загрузить файл в файловую систему сервера
         /// </summary>
-        /// <param name="id">Id объявления, к которомы прикрепляются файлы</param>
+        /// <param name="id">Идентификатор объявления, к которомы прикрепляются файлы</param>
         /// <param name="files">Файлы с формы</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>

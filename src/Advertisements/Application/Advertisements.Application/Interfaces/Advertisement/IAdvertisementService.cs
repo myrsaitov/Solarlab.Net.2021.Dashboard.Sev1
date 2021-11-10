@@ -28,9 +28,9 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Удаляет объявление по Id
+        /// Удаляет объявление по идентификатору
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Delete(
@@ -38,9 +38,9 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Восстанавливает объявление по Id
+        /// Восстанавливает объявление по идентификатору
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Restore(
@@ -48,9 +48,9 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Возвращает объявление по Id
+        /// Возвращает объявление по идентификатору
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<AdvertisementDto> GetById(

@@ -13,46 +13,54 @@ namespace Sev1.Accounts.Application.Implementations.User
     public sealed partial class UserServiceV1 : IUserService
     {
         /// <summary>
-        /// Регистрация нового пользователя
+        /// Сервис регистрации нового пользователя
         /// </summary>
-        /// <param name="registerRequest">Данные пользователя</param>
+        /// <param name="userRegisterDto">Данные пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<Register.Response> Register(
-            Register.Request registerRequest, 
+        public async Task<string> Register(
+            UserRegisterDto userRegisterDto, 
             CancellationToken cancellationToken)
         {
             RegisterRequestValidator validator = new();
-            var result = await validator.ValidateAsync(registerRequest);
+            var result = await validator
+                .ValidateAsync(userRegisterDto);
 
             if (!result.IsValid)
             {
-                throw new UserRegisteredException(string.Join(';', result.Errors.Select(x => x.ErrorMessage)));
+                throw new UserRegisteredException(
+                    string.Join(';', result.Errors.Select(x => x.ErrorMessage)));
             }
 
-            CreateUser.Response response = await _identityService.CreateUser(
-                _mapper.Map<CreateUser.Request>(registerRequest),
+            // Регистрация в сервисе Identity
+            var response = await _identityService.CreateUser(
+                _mapper.Map<IdentityUserCreateRequestDto>(userRegisterDto),
                 cancellationToken);
 
             if (response.IsSuccess)
             {
-                var domainUser = new Domain.User
+                //TODO mapper _mapper.Map<Domain.User>(registerRequest);
+                var newUser = new Domain.User
                 {
                     Id = response.UserId,
-                    UserName = registerRequest.UserName,
-                    FirstName = registerRequest.FirstName,
-                    LastName = registerRequest.LastName,
-                    MiddleName = registerRequest.MiddleName,
-                    PhoneNumber = registerRequest.PhoneNumber,
+                    UserName = userRegisterDto.UserName,
+                    FirstName = userRegisterDto.FirstName,
+                    LastName = userRegisterDto.LastName,
+                    MiddleName = userRegisterDto.MiddleName,
+                    PhoneNumber = userRegisterDto.PhoneNumber,
                     CreatedAt = DateTime.UtcNow
                 };
 
-                await _userRepository.Save(domainUser, cancellationToken);
+                // Сохраняем нового зарегистрированного пользователя в базе
+                await _userRepository.Save(newUser, cancellationToken);
 
-                return _mapper.Map<Register.Response>(response);
+                // Возвращаем Id нового зарегистрированного пользователя
+                return response.UserId;
             }
 
-            throw new UserRegisteredException(string.Join(';', response.Errors));
+            // Исключение при неудачной регистрации
+            throw new UserRegisteredException(
+                string.Join(';', response.Errors));
         }
     }
 }

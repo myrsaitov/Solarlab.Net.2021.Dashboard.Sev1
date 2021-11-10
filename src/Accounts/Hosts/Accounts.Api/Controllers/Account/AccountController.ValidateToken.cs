@@ -8,7 +8,8 @@ namespace Sev1.Accounts.Api.Controllers.Account
     public partial class AccountController
     {
         /// <summary>
-        /// Возвращает Id и роль текущего 
+        /// Проверка токена.
+        /// Возвращает идентификатор и роли 
         /// авторизированного пользователя
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
@@ -18,8 +19,9 @@ namespace Sev1.Accounts.Api.Controllers.Account
         public async Task<IActionResult> ValidateToken(
             CancellationToken cancellationToken)
         {
-            return Ok(await _identityService.ValidateToken(
-                cancellationToken));
+            return Ok(
+                await _identityService
+                    .ValidateToken(cancellationToken));
         }
     }
 }

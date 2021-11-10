@@ -13,7 +13,7 @@ namespace Sev1.Advertisements.Application.Repositories.Category
         /// Возвращает категорию вместе с прикрепленными
         /// родительской и подкатегориями
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public Task<Domain.Category> FindByIdWithParentAndChilds(int id, CancellationToken cancellationToken);

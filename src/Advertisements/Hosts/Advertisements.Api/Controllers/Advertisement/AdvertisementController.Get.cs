@@ -31,7 +31,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         /// <summary>
         /// Возвращает объявление по Id
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [AllowAnonymous]

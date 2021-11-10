@@ -3,7 +3,7 @@ using Sev1.Accounts.Application.Contracts.User;
 
 namespace Sev1.Accounts.Application.Validators
 {
-    public class RegisterRequestValidator : AbstractValidator<Register.Request>
+    public class RegisterRequestValidator : AbstractValidator<UserRegisterDto>
     {
         public RegisterRequestValidator()
         {

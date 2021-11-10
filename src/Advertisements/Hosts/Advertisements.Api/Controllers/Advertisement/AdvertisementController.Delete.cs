@@ -10,7 +10,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         /// <summary>
         /// Удаляет объявление (из БД не удаляет, но помечает, что оно удалено)
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize("Administrator","Moderator","User")]

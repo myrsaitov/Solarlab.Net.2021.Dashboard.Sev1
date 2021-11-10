@@ -13,9 +13,9 @@ namespace Sev1.Advertisements.Application.Implementations.Category
     public sealed partial class CategoryServiceV1 : ICategoryService
     {
         /// <summary>
-        /// Возвращает категорию из базы по Id
+        /// Возвращает категорию из базы по идентификатору
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task<CategoryDto> GetById(

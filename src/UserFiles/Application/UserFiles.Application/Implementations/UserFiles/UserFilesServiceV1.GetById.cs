@@ -13,7 +13,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
         /// <summary>
         /// Получить объявление по Id
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task<UserFileDto> GetById(
