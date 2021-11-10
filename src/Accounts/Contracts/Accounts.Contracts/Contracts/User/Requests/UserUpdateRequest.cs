@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Sev1.Accounts.Application.Contracts.User
+namespace Sev1.Accounts.Application.Contracts.User.Requests
 {
     /// <summary>
     /// Запрос на обновление данных пользователя
@@ -12,6 +12,7 @@ namespace Sev1.Accounts.Application.Contracts.User
         /// <summary>
         /// Id пользователя
         /// </summary>
+        [Required]
         public string Id { get; set; }
 
         /// <summary>

@@ -1,6 +1,5 @@
 ﻿using Sev1.Accounts.Application.Contracts.Identity;
-using Sev1.Accounts.Contracts;
-using Sev1.Accounts.Contracts.Contracts.User;
+using Sev1.Accounts.Contracts.Contracts.User.Responses;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;

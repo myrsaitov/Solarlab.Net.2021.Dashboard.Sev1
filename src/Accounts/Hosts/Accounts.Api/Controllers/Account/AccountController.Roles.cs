@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.Accounts.Contracts.Contracts.User;
+using Sev1.Accounts.Contracts.Contracts.User.Requests;
 
 namespace Sev1.Accounts.Api.Controllers.Account
 {

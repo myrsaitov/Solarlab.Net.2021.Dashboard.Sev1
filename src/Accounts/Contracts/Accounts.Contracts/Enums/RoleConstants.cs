@@ -1,5 +1,4 @@
-﻿namespace Sev1.Accounts.Application.Contracts.Enums
-
+﻿namespace Sev1.Accounts.Contracts.Enums
 {
     /// <summary>
     /// Роли
@@ -10,10 +9,12 @@
         /// Роль администратора
         /// </summary>
         Administrator,
+
         /// <summary>
         /// Роль модератора
         /// </summary>
         Moderator,
+
         /// <summary>
         /// Роль пользователя
         /// </summary>

@@ -1,4 +1,4 @@
-﻿using Sev1.Accounts.Application.Contracts.User;
+﻿using Sev1.Accounts.Application.Contracts.User.Requests;
 using Sev1.Accounts.Application.Exceptions.User;
 using Sev1.Accounts.Application.Interfaces.User;
 using Sev1.Accounts.Contracts.Exceptions;

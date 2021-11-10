@@ -10,7 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using Sev1.Accounts.Application.Contracts.Identity;
 using Sev1.Accounts.Application.Exceptions.Identity;
 using Sev1.Accounts.Application.Interfaces.Identity;
-using Sev1.Accounts.Contracts.Contracts.User;
+using Sev1.Accounts.Contracts.Contracts.User.Responses;
 using Sev1.Accounts.Contracts.Exceptions;
 
 namespace Sev1.Accounts.Application.Implementations.Identity

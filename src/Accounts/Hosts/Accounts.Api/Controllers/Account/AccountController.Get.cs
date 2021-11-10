@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Accounts.Contracts.Contracts.User;
+using Sev1.Accounts.Contracts.Contracts.User.Responses;
 
 namespace Sev1.Accounts.Api.Controllers.Account
 {
@@ -36,7 +36,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
             var currentUserId = _identityService.GetCurrentUserId(cancellationToken);
             var domainUser = await _userService.Get(currentUserId, cancellationToken);
 
-            return Ok(new UserResponseDto()
+            return Ok(new UserResponse()
             {
                 UserName = domainUser.UserName,
                 FirstName = domainUser.FirstName,

@@ -1,9 +1,9 @@
-﻿namespace Sev1.Accounts.Contracts.Contracts.User
+﻿namespace Sev1.Accounts.Contracts.Contracts.User.Responses
 {
     /// <summary>
-    /// DTO ответа при запросе пользователя
+    /// Ответ при запросе данных пользователя
     /// </summary>
-    public class UserResponseDto
+    public class UserResponse
     {
         /// <summary>
         /// Никнейм

@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Sev1.Accounts.Contracts.Contracts.User
+namespace Sev1.Accounts.Contracts.Contracts.User.Requests
 {
     /// <summary>
-    /// DTO-запрос при идентификации
+    /// Запрос-идентификация пользователя
     /// </summary>
     public class UserLoginRequest
     {

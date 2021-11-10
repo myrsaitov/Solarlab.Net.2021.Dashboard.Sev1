@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Sev1.Accounts.Application.Contracts.User;
+using Sev1.Accounts.Application.Contracts.User.Requests;
 
 namespace Sev1.Accounts.Application.Validators
 {

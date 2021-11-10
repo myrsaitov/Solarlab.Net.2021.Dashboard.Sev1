@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.Accounts.Application.Contracts.User;
 using Sev1.Accounts.Contracts.Contracts.User;
+using Sev1.Accounts.Contracts.Contracts.User.Requests;
 
 namespace Sev1.Accounts.Api.Controllers.Account
 {
