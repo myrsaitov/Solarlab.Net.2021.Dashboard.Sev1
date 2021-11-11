@@ -4,11 +4,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Sev1.Accounts.Contracts.Exceptions;
-using Sev1.Accounts.Contracts.Exceptions.Base;
+using Sev1.Accounts.Contracts.Exceptions.Domain;
+using Sev1.Accounts.Contracts.Exceptions.Domain.Base;
 
 namespace Sev1.Accounts.Api.Controllers
 {
+    /// <summary>
+    /// Класс обработчика исключений
+    /// </summary>
     public class ApplicationExceptionHandler
     {
         private readonly RequestDelegate _next;
@@ -23,6 +26,11 @@ namespace Sev1.Accounts.Api.Controllers
             _options = options.Value;
         }
 
+        /// <summary>
+        /// Вызывается при исключении
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public async Task Invoke(HttpContext context)
         {
             try
@@ -53,6 +61,11 @@ namespace Sev1.Accounts.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Возвращает код ошибки, в зависимости от вида исключения
+        /// </summary>
+        /// <param name="domainException">Доменное исключение</param>
+        /// <returns></returns>
         private static HttpStatusCode ObtainStatusCode(DomainException domainException)
         {
             return domainException switch
@@ -65,6 +78,9 @@ namespace Sev1.Accounts.Api.Controllers
         }
     }
 
+    /// <summary>
+    /// Код ошибки по умолчанию
+    /// </summary>
     public class ApplicationExceptionOptions
     {
         public int DefaultErrorStatusCode { get; set; } = StatusCodes.Status500InternalServerError;

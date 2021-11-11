@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using Sev1.Accounts.Application.Contracts.User;
+using Sev1.Accounts.Contracts.Contracts.User.Requests;
 
 namespace Sev1.Accounts.Application.Validators
 {
-    public class RegisterRequestValidator : AbstractValidator<UserRegisterDto>
+    public class RegisterRequestValidator : AbstractValidator<UserRegisterRequest>
     {
         public RegisterRequestValidator()
         {

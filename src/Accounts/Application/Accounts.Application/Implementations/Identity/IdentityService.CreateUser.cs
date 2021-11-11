@@ -2,9 +2,11 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using Sev1.Accounts.Application.Contracts.Identity;
 using Sev1.Accounts.Application.Interfaces.Identity;
+using Sev1.Accounts.Contracts.Contracts.Identity.Requests;
+using Sev1.Accounts.Contracts.Contracts.Identity.Responses;
 using Sev1.Accounts.Contracts.Exceptions;
+using Sev1.Accounts.Contracts.Exceptions.Domain;
 
 namespace Sev1.Accounts.Application.Implementations.Identity
 {
@@ -16,14 +18,14 @@ namespace Sev1.Accounts.Application.Implementations.Identity
         /// <param name="dto">DTO с данными пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<IdentityUserCreateResponseDto> CreateUser(
-            IdentityUserCreateRequestDto dto, 
+        public async Task<IdentityUserCreateResponse> CreateUser(
+            IdentityUserCreateRequest request, 
             CancellationToken cancellationToken = default)
         {
             // Проверка, существует ли такой пользователь в базе
             var existedUser = await _userManager
                 .FindByEmailAsync(
-                dto.Email);
+                request.Email);
             if (existedUser != null)
             {
                 throw new ConflictException("Пользователь с таким Email уже существует");
@@ -32,15 +34,15 @@ namespace Sev1.Accounts.Application.Implementations.Identity
             // Создаем пользователя
             var identityUser = new IdentityUser
             {
-                UserName = dto.UserName,
-                Email = dto.Email
+                UserName = request.UserName,
+                Email = request.Email
             };
 
             // Помещаем его в базу
             var identityResult = await _userManager
                 .CreateAsync(
                     identityUser,
-                    dto.Password);
+                    request.Password);
 
             // Если удачно, то возвращаем положительный ответ
             if (identityResult.Succeeded)
@@ -48,9 +50,9 @@ namespace Sev1.Accounts.Application.Implementations.Identity
                 await _userManager
                     .AddToRoleAsync(
                         identityUser,
-                        dto.Role);
+                        request.Role);
 
-                return new IdentityUserCreateResponseDto
+                return new IdentityUserCreateResponse
                 {
                     UserId = identityUser.Id,
                     IsSuccess = true
@@ -60,7 +62,7 @@ namespace Sev1.Accounts.Application.Implementations.Identity
             }
 
             // Иначе - отрицательный
-            return new IdentityUserCreateResponseDto
+            return new IdentityUserCreateResponse
             {
                 IsSuccess = false,
                 Errors = identityResult

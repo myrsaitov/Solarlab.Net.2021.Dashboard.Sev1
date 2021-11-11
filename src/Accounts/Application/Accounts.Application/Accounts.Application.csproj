@@ -33,8 +33,4 @@
     <ProjectReference Include="..\..\Domain\Accounts.Domain\Accounts.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Exceptions\Mail\" />
-  </ItemGroup>
-
 </Project>

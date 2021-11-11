@@ -1,9 +1,9 @@
-﻿namespace Sev1.Accounts.Application.Contracts.Identity
+﻿namespace Sev1.Accounts.Contracts.Contracts.Identity.Responses
 {
     /// <summary>
     /// DTO ответа сервиса Identity при создании нового пользователя 
     /// </summary>
-    public sealed class IdentityUserCreateResponseDto
+    public sealed class IdentityUserCreateResponse
     {
         /// <summary>
         /// Результат операции

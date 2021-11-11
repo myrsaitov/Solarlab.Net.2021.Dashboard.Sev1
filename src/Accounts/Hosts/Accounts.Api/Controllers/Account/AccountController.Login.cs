@@ -2,8 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Accounts.Application.Contracts.Identity;
-using Sev1.Accounts.Contracts.Contracts.User;
 using Sev1.Accounts.Contracts.Contracts.User.Requests;
 
 namespace Sev1.Accounts.Api.Controllers.Account
@@ -24,11 +22,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
             CancellationToken cancellationToken)
         {
             var token = await _identityService.CreateToken(
-                new CreateToken.Request
-                {
-                    Email = request.Email,
-                    Password = request.Password
-                },
+                request,
                 cancellationToken);
 
             return Ok(token);

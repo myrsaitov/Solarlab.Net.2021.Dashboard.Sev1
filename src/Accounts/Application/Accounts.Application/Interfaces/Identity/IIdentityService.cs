@@ -1,4 +1,6 @@
-﻿using Sev1.Accounts.Application.Contracts.Identity;
+﻿using Sev1.Accounts.Contracts.Contracts.Identity.Requests;
+using Sev1.Accounts.Contracts.Contracts.Identity.Responses;
+using Sev1.Accounts.Contracts.Contracts.User.Requests;
 using Sev1.Accounts.Contracts.Contracts.User.Responses;
 using System.Collections.Generic;
 using System.Threading;
@@ -18,7 +20,7 @@ namespace Sev1.Accounts.Application.Interfaces.Identity
 
         /// <summary>
         /// Проверка, аутентифицирован ли пользователь,
-        /// если да, то возвращает его роль и Id
+        /// если да, то возвращает его роль и идентификатор
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
@@ -26,10 +28,10 @@ namespace Sev1.Accounts.Application.Interfaces.Identity
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Проверка роли (по параметру РОЛЬ)
+        /// Проверяет, имеет ли пользователь указанную роль
         /// </summary>
         /// <param name="userId">Идентификатор пользователя</param>
-        /// <param name="role">Предполагаемая роль</param>
+        /// <param name="role">Проверяемая роль</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<bool> IsInRole(
@@ -43,24 +45,22 @@ namespace Sev1.Accounts.Application.Interfaces.Identity
         /// <param name="dto">DTO с данными пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<IdentityUserCreateResponseDto> CreateUser(
-            IdentityUserCreateRequestDto dto, 
+        Task<IdentityUserCreateResponse> CreateUser(
+            IdentityUserCreateRequest request, 
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Логин (создание токена)
+        /// Идентификация пользователя
         /// </summary>
         /// <param name="request">E-mail и пароль</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<CreateToken.Response> CreateToken(
-            CreateToken.Request request, 
+        Task<UserLoginResponse> CreateToken(
+            UserLoginRequest request, 
             CancellationToken cancellationToken);
 
-
-
         /// <summary>
-        /// Возвращает роль пользователя по Id
+        /// Возвращает роли пользователя по Id
         /// </summary>
         /// <param name="userId">Идентификатор пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
@@ -70,7 +70,7 @@ namespace Sev1.Accounts.Application.Interfaces.Identity
             CancellationToken cancellationToken);
 
         /// <summary>
-        /// Возвращает роль аутентифицированного пользователя
+        /// Возвращает роли авторизированного пользователя
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
@@ -98,10 +98,5 @@ namespace Sev1.Accounts.Application.Interfaces.Identity
             string userId,
             string role,
             CancellationToken cancellationToken = default);
-
-        /*Task<bool> ConfirmEmail(
-            string userId, 
-            string token, 
-            CancellationToken cancellationToken = default);*/
     }
 }

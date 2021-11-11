@@ -1,10 +1,7 @@
-﻿using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Accounts.Application.Contracts.Identity;
-using Sev1.Accounts.Application.Exceptions.Identity;
 using Sev1.Accounts.Application.Interfaces.Identity;
-using Sev1.Accounts.Contracts.Exceptions;
+using Sev1.Accounts.Contracts.Exceptions.Identity;
 
 namespace Sev1.Accounts.Application.Implementations.Identity
 {

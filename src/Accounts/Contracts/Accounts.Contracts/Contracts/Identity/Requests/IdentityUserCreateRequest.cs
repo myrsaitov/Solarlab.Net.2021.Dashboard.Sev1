@@ -1,9 +1,9 @@
-﻿namespace Sev1.Accounts.Application.Contracts.Identity
+﻿namespace Sev1.Accounts.Contracts.Contracts.Identity.Requests
 {
     /// <summary>
     /// DTO запроса сервису Identity на создание нового пользователя 
     /// </summary>
-    public sealed class IdentityUserCreateRequestDto
+    public sealed class IdentityUserCreateRequest
     {
         /// <summary>
         /// E-mail

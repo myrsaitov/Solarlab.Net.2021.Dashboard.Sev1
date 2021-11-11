@@ -7,18 +7,24 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
-using Sev1.Accounts.Application.Contracts.Identity;
-using Sev1.Accounts.Application.Exceptions.Identity;
 using Sev1.Accounts.Application.Interfaces.Identity;
+using Sev1.Accounts.Contracts.Contracts.User.Requests;
 using Sev1.Accounts.Contracts.Contracts.User.Responses;
-using Sev1.Accounts.Contracts.Exceptions;
+using Sev1.Accounts.Contracts.Exceptions.Domain;
+using Sev1.Accounts.Contracts.Exceptions.Identity;
 
 namespace Sev1.Accounts.Application.Implementations.Identity
 {
     public partial class IdentityService : IIdentityService
     {
-        public async Task<CreateToken.Response> CreateToken(
-            CreateToken.Request request, 
+        /// <summary>
+        /// Идентификация пользователя
+        /// </summary>
+        /// <param name="request">E-mail и пароль</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        public async Task<UserLoginResponse> CreateToken(
+            UserLoginRequest request, 
             CancellationToken cancellationToken = default)
         {
             // Проверка, существует ли пользователь с таким именем
@@ -38,7 +44,7 @@ namespace Sev1.Accounts.Application.Implementations.Identity
                 throw new NoRightsException("Неправильный логин или пароль");
             }
 
-            // Создаем клайм
+            // Создает клайм
             var claims = new List<Claim>
             {
                 new Claim(
@@ -50,7 +56,7 @@ namespace Sev1.Accounts.Application.Implementations.Identity
                     identityUser.Id)
             };
 
-            // Узнаем роли пользователя и добавляем в клаймы
+            // Узнает роли пользователя и добавляет в клаймы
             var userRoles = await _userManager.GetRolesAsync(identityUser);
             claims.AddRange(
                 userRoles.Select(
@@ -58,7 +64,7 @@ namespace Sev1.Accounts.Application.Implementations.Identity
                         ClaimTypes.Role,
                         role)));
 
-            // Создаем объект с параметрами для генерации токена
+            // Создает объект с параметрами для генерации токена
             var token = new JwtSecurityToken
             (
                 claims: claims,
@@ -68,24 +74,44 @@ namespace Sev1.Accounts.Application.Implementations.Identity
                     new SymmetricSecurityKey(
                         Encoding.UTF8.GetBytes(
                             _configuration["Token:Key"])), // Ключ из appsettings.json
-                    SecurityAlgorithms.HmacSha256          // Выбираем алгоритм шифрования
+                    SecurityAlgorithms.HmacSha256          // Выбирает алгоритм шифрования
                 )
             );
 
-            // Генерируем токен
-            return new CreateToken.Response
+            // Генерирует токен
+            return new UserLoginResponse
             {
                 Token = new JwtSecurityTokenHandler().WriteToken(token)
             };
         }
 
+        /// <summary>
+        /// Проверка, аутентифицирован ли пользователь,
+        /// если да, то возвращает его роль и идентификатор
+        /// </summary>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         public async Task<ValidateTokenResponse> ValidateToken(
                  CancellationToken cancellationToken = default)
         {
+            // Возвращает клаймы из HTTP
             var claimsPrincipal = _httpContextAccessor.HttpContext?.User;
-            var currentUserId = _userManager.GetUserId(claimsPrincipal);
-            var roles = await GetCurrentUserRoles(cancellationToken);
 
+            // Возвращает идентификатор авторизированного пользователя
+            var currentUserId = _userManager.GetUserId(claimsPrincipal);
+            if(string.IsNullOrWhiteSpace(currentUserId))
+            {
+                throw new IdentityUserNotFoundException("Пользователь не найден");
+            }
+
+            // Возвращает роли пользователя
+            var roles = await GetCurrentUserRoles(cancellationToken);
+            if (roles is null)
+            {
+                throw new RoleNotFoundException("Роли не найдены");
+            }
+
+            // Возвращает ответ
             return new ValidateTokenResponse
             {
                 UserId = currentUserId,

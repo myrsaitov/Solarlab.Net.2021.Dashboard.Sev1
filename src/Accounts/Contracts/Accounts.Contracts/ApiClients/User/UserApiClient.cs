@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Sev1.Accounts.Contracts.Contracts.User.Responses;
-using Sev1.Accounts.Contracts.Exceptions;
+using Sev1.Accounts.Contracts.Exceptions.Domain;
 
 namespace Sev1.Accounts.Contracts.ApiClients.User
 {
