@@ -1,13 +1,12 @@
-﻿using Sev1.Advertisements.Contracts.Contracts.User;
-using System.Net;
+﻿using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Sev1.Advertisements.Contracts.Exception;
 using Microsoft.Extensions.Configuration;
-using System.Net.Http;
+using Newtonsoft.Json;
+using Sev1.Accounts.Contracts.Contracts.User.Responses;
+using Sev1.Accounts.Contracts.Exceptions;
 
-namespace Sev1.Advertisements.Contracts.ApiClients.User
+namespace Sev1.Accounts.Contracts.ApiClients.User
 {
     /// <summary>
     /// API-client проверяет, авторизирован ли пользователь, возвращает его id и role
@@ -34,7 +33,7 @@ namespace Sev1.Advertisements.Contracts.ApiClients.User
             string accessToken)
         {
             // Проверка наличия токена
-            if (accessToken is null)
+            if(accessToken is null)
             {
                 throw new NoRightsException("Ошибка авторизации!");
             }
@@ -55,14 +54,14 @@ namespace Sev1.Advertisements.Contracts.ApiClients.User
             // Выполнение POST-запроса
             HttpResponseMessage response = await client.PostAsync(uri, payload);
 
-            // Ожидание ответа на запрос
+            // Преобразование в json
             string responseJson = await response.Content.ReadAsStringAsync();
 
             // Преобразуем json в DTO
             ValidateTokenResponse res = JsonConvert.DeserializeObject<ValidateTokenResponse>(responseJson);
 
             // Если null, то ошибка авторизация
-            if (res is null)
+            if(res is null)
             {
                 throw new NoRightsException("Ошибка авторизации!");
             }

@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using Sev1.UserFiles.Contracts.Contracts.Advertisement;
-using Sev1.UserFiles.Contracts.Exceptions;
+using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
+using Sev1.Advertisements.Contracts.Exception;
 
-namespace Sev1.UserFiles.Contracts.ApiClients.Advertisement
+namespace Sev1.Avdertisements.Contracts.ApiClients.Advertisement
 {
     public sealed partial class AdvertisementApiClient : IAdvertisementApiClient
     {
@@ -38,7 +38,7 @@ namespace Sev1.UserFiles.Contracts.ApiClients.Advertisement
 
             // Конвертируем JSON в DTO
             var advertisementDto = JsonConvert
-                .DeserializeObject<AdvertisementDto>(responseJson);
+                .DeserializeObject<AdvertisementGetResponse>(responseJson);
 
             // Логика проверки объявления на соответствие
             if (advertisementDto.OwnerId == ownerId)

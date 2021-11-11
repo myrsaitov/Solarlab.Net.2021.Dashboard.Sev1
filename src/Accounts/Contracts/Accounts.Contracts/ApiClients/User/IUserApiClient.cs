@@ -1,7 +1,7 @@
-﻿using Sev1.Advertisements.Contracts.Contracts.User;
+﻿using Sev1.Accounts.Contracts.Contracts.User.Responses;
 using System.Threading.Tasks;
 
-namespace Sev1.Advertisements.Contracts.ApiClients.User
+namespace Sev1.Accounts.Contracts.ApiClients.User
 {
     public interface IUserApiClient
     {

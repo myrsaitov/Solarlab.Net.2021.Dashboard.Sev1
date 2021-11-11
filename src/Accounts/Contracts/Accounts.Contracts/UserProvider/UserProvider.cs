@@ -7,10 +7,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
-namespace UserFiles.Contracts.UserProvider
+namespace sev1.Accounts.Contracts.UserProvider
 {
     /// <summary>
-    /// Возвращает Id и роли авторизированного пользователя
+    /// Возвращает идентификатор и роли авторизированного пользователя
     /// </summary>
     public class UserProvider : IUserProvider
     {
@@ -26,7 +26,7 @@ namespace UserFiles.Contracts.UserProvider
         }
 
         /// <summary>
-        /// Возвращает Id авторизированного пользователя
+        /// Возвращает идентификатор авторизированного пользователя
         /// </summary>
         /// <returns></returns>
         public string GetUserId()

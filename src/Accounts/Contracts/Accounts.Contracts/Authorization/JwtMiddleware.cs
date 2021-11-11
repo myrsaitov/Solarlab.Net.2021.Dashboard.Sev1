@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Sev1.UserFiles.Contracts.ApiClients.User;
+using Sev1.Accounts.Contracts.ApiClients.User;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sev1.UserFiles.Contracts.Authorization
+namespace Sev1.Accounts.Contracts.Authorization
 {
     public class JwtMiddleware
     {

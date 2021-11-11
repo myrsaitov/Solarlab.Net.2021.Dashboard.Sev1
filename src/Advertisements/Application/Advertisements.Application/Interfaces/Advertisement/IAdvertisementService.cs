@@ -56,7 +56,7 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
         /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<AdvertisementDto> GetById(
+        Task<AdvertisementGetResponse> GetById(
             int id, 
             CancellationToken cancellationToken);
 

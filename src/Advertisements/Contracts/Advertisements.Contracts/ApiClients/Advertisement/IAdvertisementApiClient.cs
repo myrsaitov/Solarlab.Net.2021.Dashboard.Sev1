@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Sev1.UserFiles.Contracts.ApiClients.Advertisement
+namespace Sev1.Avdertisements.Contracts.ApiClients.Advertisement
 {
     public interface IAdvertisementApiClient
     {

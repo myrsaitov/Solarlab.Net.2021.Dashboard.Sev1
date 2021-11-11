@@ -14,10 +14,10 @@ using Sev1.Advertisements.Application.Interfaces.Advertisement;
 using Sev1.Advertisements.Application.Implementations.Advertisement;
 using Sev1.Advertisements.Application.Interfaces.Tag;
 using Sev1.Advertisements.Application.Implementations.Tag;
-using Sev1.Advertisements.Contracts.ApiClients.User;
-using Sev1.Advertisements.Contracts.Authorization;
-using Advertisements.Contracts.UserProvider;
 using Sev1.Advertisement.Api;
+using Sev1.Accounts.Contracts.ApiClients.User;
+using sev1.Accounts.Contracts.UserProvider;
+using Sev1.Accounts.Contracts.Authorization;
 
 namespace Sev1.Advertisements.Api
 {

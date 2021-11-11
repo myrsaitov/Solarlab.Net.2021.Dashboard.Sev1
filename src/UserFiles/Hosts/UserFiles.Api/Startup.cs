@@ -10,13 +10,13 @@ using Microsoft.Extensions.Hosting;
 using Sev1.UserFiles.DataAccess;
 using Sev1.UserFiles.Application.Interfaces.UserFile;
 using Sev1.UserFiles.Application.Implementations.UserFile;
-using Sev1.UserFiles.Contracts.ApiClients.User;
-using Sev1.UserFiles.Contracts.Authorization;
-using UserFiles.Contracts.UserProvider;
 using Sev1.UserFile.Api;
-using Sev1.UserFiles.Contracts.ApiClients.Advertisement;
 using Sev1.UserFiles.Contracts.ApiClients.YandexDisk;
 using System;
+using Sev1.Accounts.Contracts.ApiClients.User;
+using Sev1.Avdertisements.Contracts.ApiClients.Advertisement;
+using sev1.Accounts.Contracts.UserProvider;
+using Sev1.Accounts.Contracts.Authorization;
 
 namespace Sev1.UserFiles.Api
 {

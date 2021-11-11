@@ -1,6 +1,9 @@
-﻿namespace Sev1.Advertisements.Application.Contracts.Advertisement
+﻿namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses
 {
-    public class AdvertisementDto
+    /// <summary>
+    /// DTO получения объявления из базы
+    /// </summary>
+    public class AdvertisementGetResponse
     {
         /// <summary>
         /// Id объявления

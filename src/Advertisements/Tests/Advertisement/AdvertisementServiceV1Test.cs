@@ -7,7 +7,7 @@ using Sev1.Advertisements.Application.Implementations.Advertisement;
 using Sev1.Advertisements.Application.Repositories.Advertisement;
 using Sev1.Advertisements.Application.Repositories.Category;
 using Sev1.Advertisements.Application.Repositories.Tag;
-using Advertisements.Contracts.UserProvider;
+using sev1.Accounts.Contracts.UserProvider;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {

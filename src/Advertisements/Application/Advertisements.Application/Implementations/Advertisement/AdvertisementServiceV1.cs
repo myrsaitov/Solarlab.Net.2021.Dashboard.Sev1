@@ -1,10 +1,9 @@
-﻿using Advertisements.Contracts.UserProvider;
-using MapsterMapper;
+﻿using MapsterMapper;
+using sev1.Accounts.Contracts.UserProvider;
 using Sev1.Advertisements.Application.Interfaces.Advertisement;
 using Sev1.Advertisements.Application.Repositories.Advertisement;
 using Sev1.Advertisements.Application.Repositories.Category;
 using Sev1.Advertisements.Application.Repositories.Tag;
-using Sev1.Advertisements.Contracts.ApiClients.User;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {

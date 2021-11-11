@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Sev1.Accounts.Contracts.Authorization;
 using Sev1.UserFiles.Application.Contracts.GetPaged;
-using Sev1.UserFiles.Contracts.Authorization;
 
 namespace Sev1.UserFiles.Api.Controllers.UserFile
 {

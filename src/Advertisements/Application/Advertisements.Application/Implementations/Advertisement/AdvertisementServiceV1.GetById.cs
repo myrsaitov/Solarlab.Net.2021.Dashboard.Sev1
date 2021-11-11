@@ -1,11 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
 using Sev1.Advertisements.Application.Interfaces.Advertisement;
 using Sev1.Advertisements.Application.Validators.Advertisement;
+using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
@@ -17,7 +16,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
         /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<AdvertisementDto> GetById(
+        public async Task<AdvertisementGetResponse> GetById(
             int id,
             CancellationToken cancellationToken)
         {
@@ -29,18 +28,19 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 throw new AdvertisementIdNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
+            // Достаем объявление из базы по идентификатору
             var advertisement = await _advertisementRepository.FindByIdWithCategoriesAndTags(
                 id,
                 cancellationToken);
 
+            // Если объявление с таким идентификатором не существует, то исключение
             if (advertisement == null)
             {
                 throw new AdvertisementNotFoundException(id);
             }
 
-            var response = _mapper.Map<AdvertisementDto>(advertisement);
-
-            return response;
+            // Маппим сущность на DTO и возвращаем
+            return _mapper.Map<AdvertisementGetResponse>(advertisement);
         }
     }
 }

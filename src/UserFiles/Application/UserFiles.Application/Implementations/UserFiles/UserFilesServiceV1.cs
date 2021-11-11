@@ -1,10 +1,10 @@
-﻿using UserFiles.Contracts.UserProvider;
-using MapsterMapper;
+﻿using MapsterMapper;
 using Sev1.UserFiles.Application.Interfaces.UserFile;
 using Sev1.UserFiles.Application.Repositories.UserFile;
-using Sev1.UserFiles.Contracts.ApiClients.Advertisement;
 using Microsoft.Extensions.Configuration;
 using Sev1.UserFiles.Contracts.ApiClients.YandexDisk;
+using sev1.Accounts.Contracts.UserProvider;
+using Sev1.Avdertisements.Contracts.ApiClients.Advertisement;
 
 namespace Sev1.UserFiles.Application.Implementations.UserFile
 {

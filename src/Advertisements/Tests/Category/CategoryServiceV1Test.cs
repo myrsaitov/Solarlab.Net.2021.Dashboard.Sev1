@@ -5,7 +5,7 @@ using Mapster;
 using System.Linq.Expressions;
 using Sev1.Advertisements.MapsterMapper.MapProfiles;
 using Sev1.Advertisements.Application.Repositories.Category;
-using Advertisements.Contracts.UserProvider;
+using sev1.Accounts.Contracts.UserProvider;
 
 namespace Sev1.Advertisements.Tests.Category
 {
