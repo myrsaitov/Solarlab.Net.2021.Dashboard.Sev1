@@ -1,9 +1,9 @@
-﻿namespace Sev1.Advertisements.Application.Contracts.Advertisement
+﻿namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests
 {
     /// <summary>
-    /// DTO при создании объявления
+    /// Запрос создания нового объявления
     /// </summary>
-    public class AdvertisementCreateDto
+    public class AdvertisementCreateRequest
     {
         /// <summary>
         /// Заголовок объявления

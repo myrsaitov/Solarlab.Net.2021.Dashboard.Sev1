@@ -4,11 +4,12 @@ using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
 using System.Linq;
 using System;
 using System.Linq.Expressions;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
@@ -83,7 +84,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             Assert.NotNull(res);
             Assert.Equal(advertisementCount, res.Total);
             Assert.Equal(advertisementCount, res.Items.Count());
-            Assert.IsType<GetPagedAdvertisementResponse>(res);
+            Assert.IsType<GetPagedAdvertisementDto>(res);
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Sev1.Accounts.Application.Contracts.Identity;
 using Sev1.Accounts.Application.Interfaces.Identity;
 using Sev1.Accounts.Contracts.Exceptions;

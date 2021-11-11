@@ -1,11 +1,11 @@
 ﻿using Sev1.Advertisements.Application.Contracts.Advertisement;
 
-namespace Sev1.Advertisements.Application.Contracts.GetPaged
+namespace Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses
 {
     /// <summary>
     /// Класс ответа на запрос пагинации по объявлениям
     /// </summary>
-    public class GetPagedAdvertisementResponse : GetPagedResponse<AdvertisementPagedDto>
+    public class GetPagedAdvertisementDto : GetPagedResponse<AdvertisementPagedDto>
     {
     }
 }

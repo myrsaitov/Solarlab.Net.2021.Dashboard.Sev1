@@ -1,16 +1,16 @@
 ﻿using FluentValidation;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Sev1.Advertisements.Application.Validators.Base;
 using Sev1.Advertisements.Application.Validators.Tag;
+using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
 
 namespace Sev1.Advertisements.Application.Validators.Advertisement
 {
     /// <summary>
     /// Валидатор DTO при создании объявления
     /// </summary>
-    public class AdvertisementCreateDtoValidator : NullReferenceAbstractValidator<AdvertisementCreateDto>
+    public class AdvertisementCreateRequestValidator : NullReferenceAbstractValidator<AdvertisementCreateRequest>
     {
-        public AdvertisementCreateDtoValidator()
+        public AdvertisementCreateRequestValidator()
         {
             // Общая проверка
             RuleFor(x => x)

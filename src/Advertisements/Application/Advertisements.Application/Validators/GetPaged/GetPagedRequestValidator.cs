@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
 using Sev1.Advertisements.Application.Validators.Base;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 
 namespace Sev1.Advertisements.Application.Validators.GetPaged
 {

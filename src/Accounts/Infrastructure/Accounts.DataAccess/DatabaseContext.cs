@@ -3,7 +3,6 @@ using Sev1.Accounts.DataAccess.EntitiesConfiguration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using IdentityUser = Sev1.Accounts.Application.Implementations.Identity.IdentityUser;
 using Sev1.Accounts.Contracts.Enums;
 
 namespace Sev1.Accounts.DataAccess

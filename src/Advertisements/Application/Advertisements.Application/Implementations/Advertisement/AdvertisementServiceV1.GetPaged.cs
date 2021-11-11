@@ -4,10 +4,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Sev1.Advertisements.Application.Interfaces.Advertisement;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
 using System.Linq.Expressions;
 using Sev1.Advertisements.Application.Validators.GetPaged;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
@@ -19,7 +20,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
         /// <param name="request">Запрос на пагинацию</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<GetPagedAdvertisementResponse> GetPaged(
+        public async Task<GetPagedAdvertisementDto> GetPaged(
             GetPagedAdvertisementRequest request,
             CancellationToken cancellationToken)
         {
@@ -94,7 +95,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             // Если объявления не найдены, то возвращаем "пустой" ответ 
             if (total == 0)
             {
-                return new GetPagedAdvertisementResponse
+                return new GetPagedAdvertisementDto
                 {
                     Items = Array.Empty<AdvertisementPagedDto>(),
                     Total = 0,
@@ -111,7 +112,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 cancellationToken);
 
             // Создание обёртки (wrapper)
-            return new GetPagedAdvertisementResponse
+            return new GetPagedAdvertisementDto
             {
                 Items = entities.Select(entity => _mapper.Map<AdvertisementPagedDto>(entity)),
                 Total = total,

@@ -1,4 +1,4 @@
-﻿namespace Sev1.Advertisements.Application.Contracts.GetPaged
+﻿namespace Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests
 {
     /// <summary>
     /// Запрос на пагинацию

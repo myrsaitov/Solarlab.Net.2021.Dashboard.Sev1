@@ -3,10 +3,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Category;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
 using Sev1.Advertisements.Application.Interfaces.Category;
 using Sev1.Advertisements.Application.Validators.GetPaged;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 
 namespace Sev1.Advertisements.Application.Implementations.Category
 {
@@ -18,7 +18,7 @@ namespace Sev1.Advertisements.Application.Implementations.Category
         /// <param name="request">Запрос на пагинацию</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<GetPagedCategoryResponse> GetPaged(
+        public async Task<GetPagedCategoryDto> GetPaged(
             GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
@@ -39,7 +39,7 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             // Если ничего не нашлось
             if (total == 0)
             {
-                return new GetPagedCategoryResponse
+                return new GetPagedCategoryDto
                 {
                     Items = Array.Empty<CategoryDto>(),
                     Total = total,
@@ -56,7 +56,7 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             );
 
             // Поместить массив объектов в обёртку
-            return new GetPagedCategoryResponse
+            return new GetPagedCategoryDto
             {
                 Items = entities.Select(entity => _mapper.Map<CategoryDto>(entity)),
                 Total = total,

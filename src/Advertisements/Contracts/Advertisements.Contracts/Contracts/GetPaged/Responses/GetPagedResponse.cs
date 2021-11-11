@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Sev1.Advertisements.Application.Contracts.GetPaged
+namespace Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses
 {
     /// <summary>
     /// Абстрактный класс респонса на пагинацию

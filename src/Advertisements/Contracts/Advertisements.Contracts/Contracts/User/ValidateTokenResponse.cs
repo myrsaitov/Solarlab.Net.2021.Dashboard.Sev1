@@ -3,7 +3,7 @@
 namespace Sev1.Advertisements.Contracts.Contracts.User
 {
     /// <summary>
-    /// DTO ответа на запрос валидации токена
+    /// Ответ на запрос валидации токена
     /// </summary>
     public class ValidateTokenResponse
     {

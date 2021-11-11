@@ -46,7 +46,7 @@ namespace Sev1.Accounts.Domain
         /// <summary>
         /// "Избранное"
         /// </summary>
-        public IEnumerable<int> FavoriteAdvertisementIds { get; set; }
+        public IEnumerable<FavoriteAdvertisement> FavoriteAdvertisements { get; set; }
 
         /// <summary>
         /// "Друзья"

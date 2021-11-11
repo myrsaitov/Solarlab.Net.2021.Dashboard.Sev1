@@ -1,7 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
+using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses;
 
 namespace Sev1.Advertisements.Application.Interfaces.Advertisement
 {
@@ -10,11 +13,11 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
         /// <summary>
         /// Создает новое объявление
         /// </summary>
-        /// <param name="model">Модель DTO объявления</param>
+        /// <param name="request">Модель DTO объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task Create(
-            AdvertisementCreateDto model, 
+        Task<AdvertisementCreatedResponse> Create(
+            AdvertisementCreateRequest request, 
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -63,10 +66,17 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
         /// <param name="request">Параметры пагинации</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<GetPagedAdvertisementResponse> GetPaged(
+        Task<GetPagedAdvertisementDto> GetPaged(
             GetPagedAdvertisementRequest request, 
             CancellationToken cancellationToken);
 
+        /// <summary>
+        /// Добавить таги к объявлению
+        /// </summary>
+        /// <param name="advertisement">Объект объявления</param>
+        /// <param name="TagBodies">Массив тагов</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
         Task AddTags(
             Domain.Advertisement advertisement,
             string[] TagBodies,

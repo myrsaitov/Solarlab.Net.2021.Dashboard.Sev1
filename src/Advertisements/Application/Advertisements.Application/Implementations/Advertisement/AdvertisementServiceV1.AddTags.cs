@@ -10,10 +10,10 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {
         /// <summary>
-        /// Возвращает пагинированные тэги
+        /// Добавить таги к объявлению
         /// </summary>
         /// <param name="advertisement">Объект объявления</param>
-        /// <param name="TagBodies">Тэги</param>
+        /// <param name="TagBodies">Массив тагов</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task AddTags(

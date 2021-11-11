@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Contracts.Tag;
 using System;
 using System.Linq;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
 using Sev1.Advertisements.Application.Interfaces.Tag;
 using Sev1.Advertisements.Application.Validators.GetPaged;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 
 namespace Sev1.Advertisements.Application.Implementations.Tag
 {
@@ -18,7 +18,7 @@ namespace Sev1.Advertisements.Application.Implementations.Tag
         /// <param name="request">Запрос на пагинацию</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<GetPagedTagResponse> GetPaged(
+        public async Task<GetPagedTagDto> GetPaged(
             GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
@@ -36,7 +36,7 @@ namespace Sev1.Advertisements.Application.Implementations.Tag
 
             if (total == 0)
             {
-                return new GetPagedTagResponse
+                return new GetPagedTagDto
                 {
                     Items = Array.Empty<TagPagedDto>(),
                     Total = total,
@@ -51,7 +51,7 @@ namespace Sev1.Advertisements.Application.Implementations.Tag
                 cancellationToken);
 
 
-            return new GetPagedTagResponse
+            return new GetPagedTagDto
             {
                 Items = entities.Select(entity => _mapper.Map<TagPagedDto>(entity)),
                 Total = total,
