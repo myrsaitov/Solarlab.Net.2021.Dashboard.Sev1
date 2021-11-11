@@ -1,11 +1,11 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Tag;
 using System;
 using System.Linq;
 using Sev1.Advertisements.Application.Interfaces.Tag;
 using Sev1.Advertisements.Application.Validators.GetPaged;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Sev1.Advertisements.Contracts.Contracts.Tag.Responses;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 
 namespace Sev1.Advertisements.Application.Implementations.Tag
@@ -18,7 +18,7 @@ namespace Sev1.Advertisements.Application.Implementations.Tag
         /// <param name="request">Запрос на пагинацию</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<GetPagedTagDto> GetPaged(
+        public async Task<TagGetPagedResponse> GetPaged(
             GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
@@ -36,9 +36,9 @@ namespace Sev1.Advertisements.Application.Implementations.Tag
 
             if (total == 0)
             {
-                return new GetPagedTagDto
+                return new TagGetPagedResponse
                 {
-                    Items = Array.Empty<TagPagedDto>(),
+                    Items = Array.Empty<TagGetPagedDto>(),
                     Total = total,
                     Offset = offset,
                     Limit = request.PageSize
@@ -51,9 +51,9 @@ namespace Sev1.Advertisements.Application.Implementations.Tag
                 cancellationToken);
 
 
-            return new GetPagedTagDto
+            return new TagGetPagedResponse
             {
-                Items = entities.Select(entity => _mapper.Map<TagPagedDto>(entity)),
+                Items = entities.Select(entity => _mapper.Map<TagGetPagedDto>(entity)),
                 Total = total,
                 Offset = offset,
                 Limit = request.PageSize

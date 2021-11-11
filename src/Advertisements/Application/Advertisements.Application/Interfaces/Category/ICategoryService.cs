@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Category;
+using Sev1.Advertisements.Contracts.Contracts.Category;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 
 namespace Sev1.Advertisements.Application.Interfaces.Category

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
-using Sev1.Advertisements.Application.Contracts.Tag;
+using Sev1.Advertisements.Contracts.Contracts.Tag.Responses;
 
 namespace Sev1.Advertisements.Tests.Tag
 {
@@ -60,7 +60,7 @@ namespace Sev1.Advertisements.Tests.Tag
             Assert.NotNull(response);
             Assert.Equal(tagCount, response.Total);
             Assert.Equal(tagCount, response.Items.Count());
-            Assert.IsType<GetPagedTagDto>(response);
+            Assert.IsType<TagGetPagedResponse>(response);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Sev1.Advertisements.Tests.Tag
             Assert.Equal(
                 tagCount,
                 response.Items.Count());
-            Assert.IsType<GetPagedTagDto>(response);
+            Assert.IsType<TagGetPagedResponse>(response);
         }
 
         /// <summary>

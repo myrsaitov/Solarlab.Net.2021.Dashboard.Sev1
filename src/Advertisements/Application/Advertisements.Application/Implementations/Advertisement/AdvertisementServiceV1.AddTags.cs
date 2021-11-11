@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Tag;
 using System;
 using Sev1.Advertisements.Application.Interfaces.Advertisement;
 using System.Collections.Generic;
+using Sev1.Advertisements.Contracts.Contracts.Tag.Requests;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
@@ -35,7 +35,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
 
                         if (tag == null)
                         {
-                            var tagRequest = new TagCreateDto()
+                            var tagRequest = new TagCreateRequest()
                             {
                                 Body = body
                             };

@@ -1,9 +1,9 @@
-﻿namespace Sev1.Advertisements.Application.Contracts.Tag
+﻿namespace Sev1.Advertisements.Contracts.Contracts.Tag.Requests
 {
     /// <summary>
     /// DTO при создании тага
     /// </summary>
-    public class TagCreateDto
+    public class TagCreateRequest
     {
         /// <summary>
         /// Текс тага

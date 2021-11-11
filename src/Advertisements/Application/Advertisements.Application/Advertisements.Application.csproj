@@ -32,8 +32,4 @@
     <ProjectReference Include="..\..\Domain\Advertisements.Domain\Advertisements.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Contracts\Advertisement\" />
-  </ItemGroup>
-
 </Project>

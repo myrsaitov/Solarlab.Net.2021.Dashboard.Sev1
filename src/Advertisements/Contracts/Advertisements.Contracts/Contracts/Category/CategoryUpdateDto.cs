@@ -1,4 +1,4 @@
-﻿namespace Sev1.Advertisements.Application.Contracts.Category
+﻿namespace Sev1.Advertisements.Contracts.Contracts.Category
 {
     /// <summary>
     /// DTO обдновления категории

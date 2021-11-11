@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.Accounts.Contracts.Authorization;
-using Sev1.Advertisements.Application.Contracts.Category;
+using Sev1.Advertisements.Contracts.Contracts.Category;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {

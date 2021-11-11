@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
-using Sev1.Advertisements.Application.Contracts.Category;
 using Sev1.Advertisements.Application.Validators.Base;
+using Sev1.Advertisements.Contracts.Contracts.Category;
 
 namespace Sev1.Advertisements.Application.Validators.Advertisement
 {

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Category;
 using System.Collections.Generic;
 using Sev1.Advertisements.Application.Interfaces.Category;
 using Sev1.Advertisements.Application.Validators.Advertisement;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
 using System.Linq;
 using Sev1.Advertisements.Contracts.Exception;
+using Sev1.Advertisements.Contracts.Contracts.Category;
 
 namespace Sev1.Advertisements.Application.Implementations.Category
 {

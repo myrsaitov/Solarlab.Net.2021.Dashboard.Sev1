@@ -1,5 +1,5 @@
 ﻿using Mapster;
-using Sev1.Advertisements.Application.Contracts.Category;
+using Sev1.Advertisements.Contracts.Contracts.Category;
 
 namespace Sev1.Advertisements.MapsterMapper.MapProfiles
 {

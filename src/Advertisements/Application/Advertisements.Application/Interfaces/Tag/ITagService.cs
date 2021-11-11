@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Tag;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
+using Sev1.Advertisements.Contracts.Contracts.Tag.Responses;
 
 namespace Sev1.Advertisements.Application.Interfaces.Tag
 {
@@ -13,7 +13,7 @@ namespace Sev1.Advertisements.Application.Interfaces.Tag
         /// <param name="request">Параметры пагинации</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<GetPagedTagDto> GetPaged(
+        Task<TagGetPagedResponse> GetPaged(
             GetPagedRequest request,
             CancellationToken cancellationToken);
     }
