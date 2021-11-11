@@ -8,18 +8,15 @@ using System.Threading.Tasks;
 namespace Comments.Domain.Entities
 {
     /// <summary>
+    /// Комментарии к объявлению
     /// Сопоставление Id объявления и Id чата
     /// </summary>
-    public class AdvertisementIdChatId
+    public class AdvertisementIdChatId : ChatBase
     {
         /// <summary>
         /// Id Объявления
         /// </summary>
         [Key]
         public Guid AdvertisementId { get; set; }
-        /// <summary>
-        /// Id Чата
-        /// </summary>
-        public Guid ChatId { get; set; }
     }
 }

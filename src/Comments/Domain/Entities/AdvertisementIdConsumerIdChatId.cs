@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 namespace Comments.Domain.Entities
 {
     /// <summary>
+    /// Чат между продавцом и покупателем
     /// Сопоставление Id объявления и Id Потребителя(пользователя) к Id Чата
     /// </summary>
-    public class AdvertisementIdConsumerIdChatId
+    public class AdvertisementIdConsumerIdChatId : ChatBase
     {
         /// <summary>
         /// Id Объявления
@@ -25,8 +26,8 @@ namespace Comments.Domain.Entities
         public Guid ConsumerId { get; set; }
 
         /// <summary>
-        /// Id Чата
+        /// Id Продавца(пользователя)
         /// </summary>
-        public Guid ChatId { get; set; }
+        public Guid SellerId { get; set; }
     }
 }

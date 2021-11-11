@@ -1,11 +1,15 @@
-﻿using Comments.Contracts.Base;
-using Comments.Contracts.Enums;
+﻿using Comments.Contracts.Enums;
 using System;
 
 namespace Comments.Contracts
 {
-    public class CommentDtoResponce : BaseDto
+    public class CommentDtoResponce
     {
+        /// <summary>
+        /// Id Комментария
+        /// </summary>
+        public Guid Id { get; set; }
+
         /// <summary>
         /// Текст сообщения
         /// </summary>
@@ -29,6 +33,6 @@ namespace Comments.Contracts
         /// <summary>
         /// Id автора
         /// </summary>
-        public string AuthorName { get; set; }
+        public Guid AuthorId { get; set; }
     }
 }

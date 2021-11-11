@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Comments.Contracts.Base
+namespace Comments.Contracts.AdvertisementChat
 {
-    public class BaseDto
+    public class AdvertisementChatDtoRequestDeleteComment
     {
         /// <summary>
-        /// Id
+        /// Id Сообщения
         /// </summary>
         [Required]
-        public Guid Id { get; set; }
+        public Guid CommentId { get; set; }
     }
 }
