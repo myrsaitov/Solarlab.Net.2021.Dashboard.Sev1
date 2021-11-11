@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Sev1.Advertisements.Contracts.Exception.Base;
-using Sev1.Advertisements.Contracts.Exception;
+using Sev1.Advertisements.Contracts.Exceptions.Domain;
+using Sev1.Advertisements.Contracts.Exceptions.Domain.Base;
 
 namespace Sev1.Advertisements.Api.Controllers
 {

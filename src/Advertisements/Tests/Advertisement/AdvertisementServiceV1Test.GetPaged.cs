@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using System.Linq.Expressions;
-using Sev1.Advertisements.Application.Exceptions.Advertisement;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses;
+using Sev1.Advertisements.Contracts.Exceptions.GetPaged;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {

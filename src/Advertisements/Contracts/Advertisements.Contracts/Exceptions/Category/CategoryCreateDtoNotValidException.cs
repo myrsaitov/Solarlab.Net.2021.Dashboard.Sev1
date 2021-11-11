@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sev1.Advertisements.Application.Exceptions.Advertisement
+namespace Sev1.Advertisements.Contracts.Exceptions.Category
 {
     public class CategoryCreateDtoNotValidException : ApplicationException
     {
