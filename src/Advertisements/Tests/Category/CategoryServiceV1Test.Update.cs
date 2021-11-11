@@ -6,6 +6,7 @@ using AutoFixture.Xunit2;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
 using Sev1.Advertisements.Contracts.Exception;
 using Sev1.Advertisements.Contracts.Contracts.Category;
+using Sev1.Advertisements.Contracts.Contracts.Category.Requests;
 
 namespace Sev1.Advertisements.Tests.Category
 {
@@ -20,7 +21,7 @@ namespace Sev1.Advertisements.Tests.Category
         [Theory]
         [AutoData]
         public async Task Update_ByAdministrator_Returns_Response_Success(
-            CategoryUpdateDto model,
+            CategoryUpdateRequest model,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -79,7 +80,7 @@ namespace Sev1.Advertisements.Tests.Category
         [Theory]
         [AutoData]
         public async Task Update_ByModerator_Returns_Response_Success(
-            CategoryUpdateDto model,
+            CategoryUpdateRequest model,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -138,7 +139,7 @@ namespace Sev1.Advertisements.Tests.Category
         [Theory]
         [AutoData]
         public async Task Update_ByUser_Throws_Exception_When_No_Rights(
-            CategoryUpdateDto model,
+            CategoryUpdateRequest model,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -193,7 +194,7 @@ namespace Sev1.Advertisements.Tests.Category
         [Theory]
         [InlineAutoData(null, null)]
         public async Task Update_Throws_Exception_When_Request_Is_Null(
-            CategoryUpdateDto model,
+            CategoryUpdateRequest model,
             CancellationToken cancellationToken)
         {
             // Act

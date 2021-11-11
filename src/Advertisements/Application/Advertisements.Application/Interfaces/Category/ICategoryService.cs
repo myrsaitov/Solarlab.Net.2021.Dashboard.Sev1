@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Contracts.Contracts.Category;
+using Sev1.Advertisements.Contracts.Contracts.Category.Requests;
+using Sev1.Advertisements.Contracts.Contracts.Category.Responses;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 
 namespace Sev1.Advertisements.Application.Interfaces.Category
@@ -14,7 +15,7 @@ namespace Sev1.Advertisements.Application.Interfaces.Category
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<int> Create(
-            CategoryCreateDto model,
+            CategoryCreateRequest model,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -24,7 +25,7 @@ namespace Sev1.Advertisements.Application.Interfaces.Category
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<int> Update(
-            CategoryUpdateDto model,
+            CategoryUpdateRequest model,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace Sev1.Advertisements.Application.Interfaces.Category
         /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<CategoryDto> GetById(
+        Task<CategoryGetResponse> GetById(
             int id, 
             CancellationToken cancellationToken);
 
@@ -63,7 +64,7 @@ namespace Sev1.Advertisements.Application.Interfaces.Category
         /// <param name="request">Параметры пагинации</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<GetPagedCategoryDto> GetPaged(
+        Task<CategoryGetPagedResponse> GetPaged(
             GetPagedRequest request, 
             CancellationToken cancellationToken);
     }

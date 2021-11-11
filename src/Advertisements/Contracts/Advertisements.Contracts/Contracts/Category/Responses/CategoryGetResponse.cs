@@ -1,9 +1,9 @@
-﻿namespace Sev1.Advertisements.Contracts.Contracts.Category
+﻿namespace Sev1.Advertisements.Contracts.Contracts.Category.Responses
 {
     /// <summary>
-    /// DTO при получении категории
+    /// DTO ответа при запросе категории по идентификатору
     /// </summary>
-    public class CategoryDto
+    public class CategoryGetResponse
     {
         /// <summary>
         /// Id категории

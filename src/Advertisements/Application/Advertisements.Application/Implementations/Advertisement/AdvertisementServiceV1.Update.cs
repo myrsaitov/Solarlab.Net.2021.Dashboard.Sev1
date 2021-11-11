@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
 using Sev1.Advertisements.Application.Interfaces.Advertisement;
 using Sev1.Advertisements.Application.Validators.Advertisement;
 using System.Linq;
 using Sev1.Advertisements.Application.Exceptions.Category;
 using Sev1.Advertisements.Contracts.Exception;
+using Sev1.Advertisements.Application.Contracts.Advertisement.Requests;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {

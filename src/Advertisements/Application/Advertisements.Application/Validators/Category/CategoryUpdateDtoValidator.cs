@@ -1,13 +1,13 @@
 ﻿using FluentValidation;
 using Sev1.Advertisements.Application.Validators.Base;
-using Sev1.Advertisements.Contracts.Contracts.Category;
+using Sev1.Advertisements.Contracts.Contracts.Category.Requests;
 
 namespace Sev1.Advertisements.Application.Validators.Advertisement
 {
     /// <summary>
     /// Валидатор DTO при обновлении категории
     /// </summary>
-    public class CategoryUpdateDtoValidator : NullReferenceAbstractValidator<CategoryUpdateDto>
+    public class CategoryUpdateDtoValidator : NullReferenceAbstractValidator<CategoryUpdateRequest>
     {
         public CategoryUpdateDtoValidator()
         {

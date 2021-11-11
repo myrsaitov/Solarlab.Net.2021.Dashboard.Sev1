@@ -6,7 +6,7 @@ using Sev1.Advertisements.Application.Interfaces.Category;
 using Sev1.Advertisements.Application.Validators.GetPaged;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
-using Sev1.Advertisements.Contracts.Contracts.Category;
+using Sev1.Advertisements.Contracts.Contracts.Category.Responses;
 
 namespace Sev1.Advertisements.Application.Implementations.Category
 {
@@ -18,7 +18,7 @@ namespace Sev1.Advertisements.Application.Implementations.Category
         /// <param name="request">Запрос на пагинацию</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<GetPagedCategoryDto> GetPaged(
+        public async Task<CategoryGetPagedResponse> GetPaged(
             GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
@@ -39,9 +39,9 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             // Если ничего не нашлось
             if (total == 0)
             {
-                return new GetPagedCategoryDto
+                return new CategoryGetPagedResponse
                 {
-                    Items = Array.Empty<CategoryDto>(),
+                    Items = Array.Empty<CategoryGetResponse>(),
                     Total = total,
                     Offset = offset,
                     Limit = request.PageSize
@@ -56,9 +56,9 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             );
 
             // Поместить массив объектов в обёртку
-            return new GetPagedCategoryDto
+            return new CategoryGetPagedResponse
             {
-                Items = entities.Select(entity => _mapper.Map<CategoryDto>(entity)),
+                Items = entities.Select(entity => _mapper.Map<CategoryGetResponse>(entity)),
                 Total = total,
                 Offset = offset,
                 Limit = request.PageSize

@@ -1,6 +1,6 @@
 ﻿using sev1.Advertisements.Contracts.Enums;
 
-namespace Sev1.Advertisements.Application.Contracts.Advertisement
+namespace Sev1.Advertisements.Application.Contracts.Advertisement.Requests
 {
     /// <summary>
     /// DTO запроса на обновление объявления

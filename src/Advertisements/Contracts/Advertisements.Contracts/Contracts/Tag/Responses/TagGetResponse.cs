@@ -1,9 +1,9 @@
 ﻿namespace Sev1.Advertisements.Contracts.Contracts.Tag.Responses
 {
     /// <summary>
-    /// DTO одного тага при запросе пагинации
+    /// DTO тага при запросе по идентификатору
     /// </summary>
-    public class TagGetPagedDto
+    public class TagGetResponse
     {
         /// <summary>
         /// Id тага

@@ -1,9 +1,9 @@
-﻿namespace Sev1.Advertisements.Contracts.Contracts.Category
+﻿namespace Sev1.Advertisements.Contracts.Contracts.Category.Requests
 {
     /// <summary>
-    /// DTO обдновления категории
+    /// DTO запроса обновления категории
     /// </summary>
-    public class CategoryUpdateDto
+    public class CategoryUpdateRequest
     {
         /// <summary>
         /// Id категории

@@ -7,7 +7,7 @@ using Sev1.Advertisements.Application.Validators.Advertisement;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
 using System.Linq;
 using Sev1.Advertisements.Contracts.Exception;
-using Sev1.Advertisements.Contracts.Contracts.Category;
+using Sev1.Advertisements.Contracts.Contracts.Category.Requests;
 
 namespace Sev1.Advertisements.Application.Implementations.Category
 {
@@ -20,7 +20,7 @@ namespace Sev1.Advertisements.Application.Implementations.Category
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task<int> Create(
-            CategoryCreateDto model, 
+            CategoryCreateRequest model, 
             CancellationToken cancellationToken)
         {
             // Fluent Validation

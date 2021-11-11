@@ -5,7 +5,7 @@ namespace Sev1.Advertisements.Contracts.Contracts.Tag.Responses
     /// <summary>
     /// DTO ответа на запрос пагинации по тагам
     /// </summary>
-    public class TagGetPagedResponse : GetPagedResponse<TagGetPagedDto>
+    public class TagGetPagedResponse : GetPagedResponse<TagGetResponse>
     {
     }
 }

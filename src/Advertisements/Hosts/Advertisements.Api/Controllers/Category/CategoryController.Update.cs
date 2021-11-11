@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.Accounts.Contracts.Authorization;
-using Sev1.Advertisements.Contracts.Contracts.Category;
+using Sev1.Advertisements.Contracts.Contracts.Category.Requests;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {
@@ -20,7 +20,7 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Update(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            CategoryUpdateDto model, 
+            CategoryUpdateRequest model, 
             CancellationToken cancellationToken)
         {
             await _categoryService.Update(

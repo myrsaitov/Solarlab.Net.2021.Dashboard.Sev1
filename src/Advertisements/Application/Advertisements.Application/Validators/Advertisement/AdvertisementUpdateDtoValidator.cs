@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
+using Sev1.Advertisements.Application.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.Application.Validators.Base;
 using Sev1.Advertisements.Application.Validators.Tag;
 

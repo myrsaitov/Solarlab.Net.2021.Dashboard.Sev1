@@ -7,6 +7,7 @@ using Sev1.Advertisements.Application.Exceptions.Category;
 using Sev1.Advertisements.Application.Interfaces.Category;
 using Sev1.Advertisements.Application.Validators.Advertisement;
 using Sev1.Advertisements.Contracts.Contracts.Category;
+using Sev1.Advertisements.Contracts.Contracts.Category.Responses;
 
 namespace Sev1.Advertisements.Application.Implementations.Category
 {
@@ -18,7 +19,7 @@ namespace Sev1.Advertisements.Application.Implementations.Category
         /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<CategoryDto> GetById(
+        public async Task<CategoryGetResponse> GetById(
             int id,
             CancellationToken cancellationToken)
         {
@@ -42,7 +43,7 @@ namespace Sev1.Advertisements.Application.Implementations.Category
             }
 
             // Возвращаем dto категории
-            return _mapper.Map<CategoryDto>(category);
+            return _mapper.Map<CategoryGetResponse>(category);
         }
     }
 }

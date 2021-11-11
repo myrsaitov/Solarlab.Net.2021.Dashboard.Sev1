@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
+using Sev1.Advertisements.Application.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;

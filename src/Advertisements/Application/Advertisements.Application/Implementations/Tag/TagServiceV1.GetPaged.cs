@@ -38,7 +38,7 @@ namespace Sev1.Advertisements.Application.Implementations.Tag
             {
                 return new TagGetPagedResponse
                 {
-                    Items = Array.Empty<TagGetPagedDto>(),
+                    Items = Array.Empty<TagGetResponse>(),
                     Total = total,
                     Offset = offset,
                     Limit = request.PageSize
@@ -53,7 +53,7 @@ namespace Sev1.Advertisements.Application.Implementations.Tag
 
             return new TagGetPagedResponse
             {
-                Items = entities.Select(entity => _mapper.Map<TagGetPagedDto>(entity)),
+                Items = entities.Select(entity => _mapper.Map<TagGetResponse>(entity)),
                 Total = total,
                 Offset = offset,
                 Limit = request.PageSize

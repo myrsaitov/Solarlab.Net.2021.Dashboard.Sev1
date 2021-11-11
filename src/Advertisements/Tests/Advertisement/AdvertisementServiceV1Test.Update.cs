@@ -1,5 +1,4 @@
-﻿using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Moq;
+﻿using Moq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -9,6 +8,7 @@ using System;
 using Sev1.Advertisements.Application.Exceptions.Category;
 using Sev1.Advertisements.Application.Exceptions.Advertisement;
 using Sev1.Advertisements.Contracts.Exception;
+using Sev1.Advertisements.Application.Contracts.Advertisement.Requests;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
