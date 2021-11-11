@@ -1,7 +1,7 @@
 ﻿namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses
 {
     /// <summary>
-    /// DTO получения объявления из базы
+    /// DTO ответа на запрос объявления по идентификатору
     /// </summary>
     public class AdvertisementGetResponse
     {

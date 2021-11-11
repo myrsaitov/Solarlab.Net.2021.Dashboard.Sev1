@@ -15,7 +15,7 @@ namespace Sev1.Advertisements.MapsterMapper.MapProfiles
                 .Map(dest => dest.CreatedAt, src => src.CreatedAt.ToLocalTime().ToString("dd/MM/yy H:mm:ss (zzz)"))
                 .Map(dest => dest.Tags, src => src.Tags.Select(a => a.Body).ToArray());
 
-            config.NewConfig<Domain.Advertisement, AdvertisementPagedDto>()
+            config.NewConfig<Domain.Advertisement, AdvertisementGetPagedDto>()
                 .Map(dest => dest.CreatedAt, src => src.CreatedAt.ToLocalTime().ToString("dd/MM/yy H:mm:ss (zzz)"))
                 .Map(dest => dest.CategoryName, src => src.Category.Name)
                 .Map(dest => dest.Tags, src => src.Tags.Select(a => a.Body).ToArray());

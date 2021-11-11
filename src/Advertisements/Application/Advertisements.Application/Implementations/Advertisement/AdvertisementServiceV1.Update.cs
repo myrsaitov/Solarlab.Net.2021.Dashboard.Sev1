@@ -21,7 +21,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task<int> Update(
-            AdvertisementUpdateDto model,
+            AdvertisementUpdateRequest model,
             CancellationToken cancellationToken)
         {
           

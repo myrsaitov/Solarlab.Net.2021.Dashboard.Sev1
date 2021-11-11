@@ -1,7 +1,7 @@
 ﻿namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests
 {
     /// <summary>
-    /// Запрос создания нового объявления
+    /// DTO запроса на создание нового объявления
     /// </summary>
     public class AdvertisementCreateRequest
     {

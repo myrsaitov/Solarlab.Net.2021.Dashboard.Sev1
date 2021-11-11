@@ -23,7 +23,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task Update_Returns_Response_Success(
-            AdvertisementUpdateDto model,
+            AdvertisementUpdateRequest model,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -114,7 +114,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData] //accessToken = null, а остальное автозаполняется
         public async Task Update_Throws_Exception_When_CurrentUserId_Is_Null(
-            AdvertisementUpdateDto model,
+            AdvertisementUpdateRequest model,
             CancellationToken cancellationToken)
         {
             {
@@ -172,7 +172,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [InlineAutoData(null, null)]
         public async Task Update_Throws_Exception_When_Request_Is_Null(
-            AdvertisementUpdateDto model,
+            AdvertisementUpdateRequest model,
             CancellationToken cancellationToken)
         {
             // Act
@@ -191,7 +191,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_Advertisement_Is_Null(
-            AdvertisementUpdateDto model,
+            AdvertisementUpdateRequest model,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -225,7 +225,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_Category_Is_Null(
-            AdvertisementUpdateDto model,
+            AdvertisementUpdateRequest model,
             CancellationToken cancellationToken)
         {
             // Arrange

@@ -1,11 +1,9 @@
-﻿using sev1.Advertisements.Contracts.Enums;
-
-namespace Sev1.Advertisements.Application.Contracts.Advertisement
+﻿namespace Sev1.Advertisements.Application.Contracts.Advertisement
 {
     /// <summary>
-    /// DTO при обновлении объявления
+    /// DTO одного объявления при запросе пагинации
     /// </summary>
-    public class AdvertisementUpdateDto
+    public class AdvertisementGetPagedDto
     {
         /// <summary>
         /// Id объявления
@@ -28,18 +26,28 @@ namespace Sev1.Advertisements.Application.Contracts.Advertisement
         public decimal Price { get; set; }
 
         /// <summary>
+        /// Когда создано
+        /// </summary>
+        public string CreatedAt { get; set; }
+
+        /// <summary>
         /// Id категории
         /// </summary>
         public int CategoryId { get; set; }
 
         /// <summary>
-        /// Таги в виде массива строк
+        /// Имя категории
         /// </summary>
-        public string[] TagBodies { get; set; }
+        public string CategoryName { get; set; }
 
         /// <summary>
         /// Статус объявления
         /// </summary>
-        public AdvertisementStatus Status { get; set; }
+        public bool IsDeleted { get; set; }
+
+        /// <summary>
+        /// Таги в виде массива строк
+        /// </summary>
+        public string[] Tags { get; set; }
     }
 }

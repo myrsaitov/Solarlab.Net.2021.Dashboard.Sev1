@@ -20,7 +20,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
         /// <param name="request">Запрос на пагинацию</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<GetPagedAdvertisementDto> GetPaged(
+        public async Task<AdvertisementGetPagedResponse> GetPaged(
             GetPagedAdvertisementRequest request,
             CancellationToken cancellationToken)
         {
@@ -95,9 +95,9 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
             // Если объявления не найдены, то возвращаем "пустой" ответ 
             if (total == 0)
             {
-                return new GetPagedAdvertisementDto
+                return new AdvertisementGetPagedResponse
                 {
-                    Items = Array.Empty<AdvertisementPagedDto>(),
+                    Items = Array.Empty<AdvertisementGetPagedDto>(),
                     Total = 0,
                     Offset = offset,
                     Limit = request.PageSize
@@ -112,9 +112,9 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 cancellationToken);
 
             // Создание обёртки (wrapper)
-            return new GetPagedAdvertisementDto
+            return new AdvertisementGetPagedResponse
             {
-                Items = entities.Select(entity => _mapper.Map<AdvertisementPagedDto>(entity)),
+                Items = entities.Select(entity => _mapper.Map<AdvertisementGetPagedDto>(entity)),
                 Total = total,
                 Offset = offset,
                 Limit = request.PageSize

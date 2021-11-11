@@ -27,7 +27,7 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<int> Update(
-            AdvertisementUpdateDto model, 
+            AdvertisementUpdateRequest model, 
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Sev1.Advertisements.Application.Interfaces.Advertisement
         /// <param name="request">Параметры пагинации</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<GetPagedAdvertisementDto> GetPaged(
+        Task<AdvertisementGetPagedResponse> GetPaged(
             GetPagedAdvertisementRequest request, 
             CancellationToken cancellationToken);
 

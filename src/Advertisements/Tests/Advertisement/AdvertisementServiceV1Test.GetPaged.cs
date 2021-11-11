@@ -84,7 +84,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             Assert.NotNull(res);
             Assert.Equal(advertisementCount, res.Total);
             Assert.Equal(advertisementCount, res.Items.Count());
-            Assert.IsType<GetPagedAdvertisementDto>(res);
+            Assert.IsType<AdvertisementGetPagedResponse>(res);
         }
 
         /// <summary>
