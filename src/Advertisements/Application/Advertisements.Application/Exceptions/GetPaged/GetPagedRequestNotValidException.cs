@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Sev1.Advertisements.Application.Exceptions.Domain;
 
 namespace Sev1.Advertisements.Application.Exceptions.GetPaged
 {
-    public class GetPagedRequestNotValidException : ApplicationException
+    /// <summary>
+    /// Исключение при нессответсвующем запросе на пагинацию
+    /// </summary>
+    public class GetPagedRequestNotValidException : BadRequestException
     {
         public GetPagedRequestNotValidException(string message) : base(message)
         {

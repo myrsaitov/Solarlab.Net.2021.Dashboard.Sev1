@@ -2,6 +2,9 @@
 
 namespace Sev1.Advertisements.Application.Exceptions.Advertisement
 {
+    /// <summary>
+    /// Исключение, когда объявление с таким идентификатором не найдено
+    /// </summary>
     public sealed class AdvertisementNotFoundException : NotFoundException
     {
         private const string MessageTemplate = "Объявление с таким ID[{0}] не было найдено.";

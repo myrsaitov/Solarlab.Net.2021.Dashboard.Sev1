@@ -105,6 +105,7 @@ namespace Sev1.Accounts.Api.Controllers
                 NotFoundException => HttpStatusCode.NotFound,
                 ConflictException => HttpStatusCode.Conflict,
                 NoRightsException => HttpStatusCode.Forbidden,
+                BadRequestException => HttpStatusCode.BadRequest,
                 _ => throw new ArgumentOutOfRangeException(nameof(domainException), domainException, null)
             };
         }

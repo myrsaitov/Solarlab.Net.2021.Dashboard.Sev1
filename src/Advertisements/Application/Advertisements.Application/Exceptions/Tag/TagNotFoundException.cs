@@ -2,6 +2,9 @@
 
 namespace Sev1.Advertisements.Application.Exceptions.Tag
 {
+    /// <summary>
+    /// Исключение, если не найден таг с таким идентификатором
+    /// </summary>
     public sealed class TagNotFoundException : NotFoundException
     {
         private const string MessageTemplate = "Tag с таким ID[{0}] не был найдена.";

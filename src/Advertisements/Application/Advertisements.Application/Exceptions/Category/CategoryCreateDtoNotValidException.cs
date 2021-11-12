@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Sev1.Advertisements.Application.Exceptions.Domain;
 
 namespace Sev1.Advertisements.Application.Exceptions.Category
 {
-    public class CategoryCreateDtoNotValidException : ApplicationException
+    /// <summary>
+    /// Исключение при несоответствующем запросе при создании категории
+    /// </summary>
+    public class CategoryCreateDtoNotValidException : BadRequestException
     {
         public CategoryCreateDtoNotValidException(string message) : base(message)
         {
