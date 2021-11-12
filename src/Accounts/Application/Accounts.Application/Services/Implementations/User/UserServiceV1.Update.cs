@@ -1,12 +1,12 @@
 ﻿using Sev1.Accounts.Application.Contracts.User.Requests;
-using Sev1.Accounts.Application.Interfaces.User;
+using Sev1.Accounts.Application.Services.Interfaces.User;
 using Sev1.Accounts.Application.Exceptions.Domain;
 using Sev1.Accounts.Application.Exceptions.User;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sev1.Accounts.Application.Implementations.User
+namespace Sev1.Accounts.Application.Services.Implementations.User
 {
     public sealed partial class UserServiceV1 : IUserService
     {

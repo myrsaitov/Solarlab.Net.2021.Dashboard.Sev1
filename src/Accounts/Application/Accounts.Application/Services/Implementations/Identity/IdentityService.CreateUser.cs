@@ -2,12 +2,12 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using Sev1.Accounts.Application.Interfaces.Identity;
+using Sev1.Accounts.Application.Services.Interfaces.Identity;
 using Sev1.Accounts.Contracts.Contracts.Identity.Requests;
 using Sev1.Accounts.Contracts.Contracts.Identity.Responses;
 using Sev1.Accounts.Application.Exceptions.Domain;
 
-namespace Sev1.Accounts.Application.Implementations.Identity
+namespace Sev1.Accounts.Application.Services.Implementations.Identity
 {
     public partial class IdentityService : IIdentityService
     {

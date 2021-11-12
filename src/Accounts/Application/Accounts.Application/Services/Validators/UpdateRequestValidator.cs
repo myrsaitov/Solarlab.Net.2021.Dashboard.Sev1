@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using Sev1.Accounts.Application.Contracts.User.Requests;
 
-namespace Sev1.Accounts.Application.Validators
+namespace Sev1.Accounts.Application.Services.Validators
 {
     /// <summary>
     /// Валидация HTTP-запроса на обновление данных пользователя

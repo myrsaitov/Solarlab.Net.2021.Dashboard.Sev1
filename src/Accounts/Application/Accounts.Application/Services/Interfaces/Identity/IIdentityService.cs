@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sev1.Accounts.Application.Interfaces.Identity
+namespace Sev1.Accounts.Application.Services.Interfaces.Identity
 {
     public interface IIdentityService
     {

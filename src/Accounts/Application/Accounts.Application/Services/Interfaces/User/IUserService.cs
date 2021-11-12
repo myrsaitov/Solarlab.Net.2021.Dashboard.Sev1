@@ -4,7 +4,7 @@ using Sev1.Accounts.Contracts.Contracts.User.Requests;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sev1.Accounts.Application.Interfaces.User
+namespace Sev1.Accounts.Application.Services.Interfaces.User
 {
     public interface IUserService
     {
