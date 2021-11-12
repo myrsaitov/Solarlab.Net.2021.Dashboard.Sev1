@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Interfaces.Advertisement;
+using Sev1.Advertisements.Application.Services.Interfaces.Advertisement;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {

@@ -17,19 +17,19 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка удачного обновления объявления
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Update_Returns_Response_Success(
-            AdvertisementUpdateRequest model,
+            AdvertisementUpdateRequest request,
             CancellationToken cancellationToken)
         {
             // Arrange
 
             // Чтобы пройти валидацию, правим tags
-            model.TagBodies = new string[3] { "111", "222", "333" };
+            request.TagBodies = new string[3] { "111", "222", "333" };
 
             // "Возвращаем" польователя, который "восстанавливает" это объявление
             _userProviderMock
@@ -74,7 +74,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .ReturnsAsync(() => new Domain.Tag()
                 {
                     Id = tagId,
-                    Body = model.TagBodies[tagId++ - 1]
+                    Body = request.TagBodies[tagId++ - 1]
                 }) // в результате выполнения возвращает объект
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
@@ -95,7 +95,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // Act
             await _advertisementServiceV1.Update(
-                model,
+                request,
                 cancellationToken);
 
             // Assert
@@ -108,20 +108,20 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверяет реакцию на отсутствие аутентификации
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData] //accessToken = null, а остальное автозаполняется
         public async Task Update_Throws_Exception_When_CurrentUserId_Is_Null(
-            AdvertisementUpdateRequest model,
+            AdvertisementUpdateRequest request,
             CancellationToken cancellationToken)
         {
             {
                 // Arrange
 
                 // Чтобы пройти валидацию, правим tags
-                model.TagBodies = new string[3] { "111", "222", "333" };
+                request.TagBodies = new string[3] { "111", "222", "333" };
 
                 // Объект категории, который "возвращается" из базы
                 var category = new Domain.Category();
@@ -158,7 +158,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 // Act
                 await Assert.ThrowsAsync<NoRightsException>(
                     async () => await _advertisementServiceV1.Update(
-                        model,
+                        request,
                         cancellationToken));
             }
         }
@@ -166,38 +166,38 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверяет реакцию на невалидный аргумент
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null, null)]
         public async Task Update_Throws_Exception_When_Request_Is_Null(
-            AdvertisementUpdateRequest model,
+            AdvertisementUpdateRequest request,
             CancellationToken cancellationToken)
         {
             // Act
             await Assert.ThrowsAsync<AdvertisementUpdateDtoNotValidException>(
                 async () => await _advertisementServiceV1.Update(
-                    model,
+                    request,
                     cancellationToken));
         }
 
         /// <summary>
         /// Проверка, когда объявление не найдено в базе
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_Advertisement_Is_Null(
-            AdvertisementUpdateRequest model,
+            AdvertisementUpdateRequest request,
             CancellationToken cancellationToken)
         {
             // Arrange
 
             // Чтобы пройти валидацию, правим tags
-            model.TagBodies = new string[3] { "111", "222", "333" };
+            request.TagBodies = new string[3] { "111", "222", "333" };
 
             // Чтобы вернуть пустое объявление
             Domain.Advertisement advertisement = null;
@@ -211,7 +211,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             // Act
             await Assert.ThrowsAsync<AdvertisementNotFoundException>(
                 async () => await _advertisementServiceV1.Update(
-                    model,
+                    request,
                     cancellationToken));
         }
 
@@ -219,19 +219,19 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверяет реакцию на отсутствие категории
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Update_Throws_Exception_When_Category_Is_Null(
-            AdvertisementUpdateRequest model,
+            AdvertisementUpdateRequest request,
             CancellationToken cancellationToken)
         {
             // Arrange
 
             // Чтобы пройти валидацию, правим tags
-            model.TagBodies = new string[3] { "111", "222", "333" };
+            request.TagBodies = new string[3] { "111", "222", "333" };
 
             // "Возвращаем" польователя, который "восстанавливает" это объявление
             _userProviderMock
@@ -266,7 +266,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             // Act
             await Assert.ThrowsAsync<CategoryNotFoundException>(
                 async () => await _advertisementServiceV1.Update(
-                    model,
+                    request,
                     cancellationToken));
         }
     }

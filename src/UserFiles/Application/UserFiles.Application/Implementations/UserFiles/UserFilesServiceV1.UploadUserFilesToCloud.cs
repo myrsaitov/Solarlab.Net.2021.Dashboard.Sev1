@@ -18,16 +18,16 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
         /// <summary>
         /// Загрузить файл в базу данных
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task<UserFileUploadResponse> UploadUserFilesToCloud(
-            UserFileUploadDto model,
+            UserFileUploadDto request,
             CancellationToken cancellationToken)
         {
             // Fluent Validation
             var validator = new UserFileUploadToCloudDtoValidator();
-            var result = await validator.ValidateAsync(model);
+            var result = await validator.ValidateAsync(request);
             if (!result.IsValid)
             {
                 throw new UserFileUploadDtoNotValidException(
@@ -48,7 +48,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
             // и принадлежит ли оно текущему пользователю
             var validated = await _advertisementApiClient
                 .ValidateAdvertisement(
-                    model.AdvertisementId,
+                    request.AdvertisementId,
                     userId);
             if (!validated)
             {
@@ -71,7 +71,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
             var failed = 0;
 
             // В цикле каждый файл по отдельности
-            foreach (var file in model.Files)
+            foreach (var file in request.Files)
             {
                 // Проверка на разрешенные для загрузки типы файлов
                 if (AllowedFileExtensions.Contains(Path.GetExtension(file.FileName).ToUpperInvariant()))
@@ -84,7 +84,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                         ContentType = file.ContentType,
                         ContentDisposition = file.ContentDisposition,
                         Length = file.Length,
-                        AdvertisementId = model.AdvertisementId,
+                        AdvertisementId = request.AdvertisementId,
                         OwnerId = userId,
                         CreatedAt = DateTime.UtcNow,
                         Storage = UserFileStorageType.DataBase,
@@ -111,7 +111,7 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
 
             return new UserFileUploadResponse()
             {
-                Total = model.Files.Count,
+                Total = request.Files.Count,
                 Successful = successful,
                 Failed = failed
             };

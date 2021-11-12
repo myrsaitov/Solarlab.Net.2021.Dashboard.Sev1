@@ -6,7 +6,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System;
-using Sev1.Advertisements.Application.Repositories.Advertisement;
+using Sev1.Advertisements.Application.Services.Repositories.Advertisement;
 using Sev1.Advertisements.DataAccess.Base;
 using sev1.Advertisements.Contracts.Enums;
 

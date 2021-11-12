@@ -1,10 +1,10 @@
-﻿using Sev1.Advertisements.Application.Implementations.Category;
+﻿using Sev1.Advertisements.Application.Services.Implementations.Categoryt;
 using Moq;
 using MapsterMapper;
 using Mapster;
 using System.Linq.Expressions;
 using Sev1.Advertisements.MapsterMapper.MapProfiles;
-using Sev1.Advertisements.Application.Repositories.Category;
+using Sev1.Advertisements.Application.Services.Repositories.Category;
 using sev1.Accounts.Contracts.UserProvider;
 
 namespace Sev1.Advertisements.Tests.Category

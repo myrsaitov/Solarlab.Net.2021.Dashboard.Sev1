@@ -42,7 +42,7 @@ namespace Sev1.Accounts.Application.Interfaces.Identity
         /// <summary>
         /// Зарегистрировать пользователя в Identity
         /// </summary>
-        /// <param name="dto">DTO с данными пользователя</param>
+        /// <param name="request">DTO с данными пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<IdentityUserCreateResponse> CreateUser(

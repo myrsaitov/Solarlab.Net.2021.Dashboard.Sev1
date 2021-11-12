@@ -12,7 +12,7 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         /// <summary>
         /// Создает новую категорию
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize("Administrator", "Moderator")]
@@ -20,11 +20,11 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            CategoryCreateRequest model, 
+            CategoryCreateRequest request, 
             CancellationToken cancellationToken)
         {
             var response = await _categoryService.Create(
-                model, 
+                request, 
                 cancellationToken);
 
             return Created($"api/v1/categories/{response}", new { });

@@ -10,31 +10,31 @@ namespace Sev1.UserFiles.Application.Interfaces.UserFile
         /// <summary>
         /// Загружает файл в файловую систему сервера
         /// </summary>
-        /// <param name="model">Модель DTO файла</param>
+        /// <param name="request">Модель DTO файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<UserFileUploadResponse> UploadUserFilesToServerFileSystem(
-            UserFileUploadDto model, 
+            UserFileUploadDto request, 
             CancellationToken cancellationToken);
 
         /// <summary>
         /// Загружает файл в файловую БД 
         /// </summary>
-        /// <param name="model">Модель DTO файла</param>
+        /// <param name="request">Модель DTO файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<UserFileUploadResponse> UploadUserFilesToDb(
-            UserFileUploadDto model,
+            UserFileUploadDto request,
             CancellationToken cancellationToken);
 
         /// <summary>
         /// Загружает файл в облачное хранилище 
         /// </summary>
-        /// <param name="model">Модель DTO файла</param>
+        /// <param name="request">Модель DTO файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<UserFileUploadResponse> UploadUserFilesToCloud(
-            UserFileUploadDto model,
+            UserFileUploadDto request,
             CancellationToken cancellationToken);
 
         /// <summary>

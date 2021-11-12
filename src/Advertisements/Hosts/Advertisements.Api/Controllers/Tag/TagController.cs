@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Interfaces.Tag;
+using Sev1.Advertisements.Application.Services.Interfaces.Tag;
 
 namespace Sev1.Advertisements.Api.Controllers.Tag
 {

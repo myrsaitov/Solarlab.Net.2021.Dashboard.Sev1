@@ -14,13 +14,13 @@ namespace Sev1.Advertisements.Tests.Category
         /// <summary>
         /// Проверка создания категории админом
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Update_ByAdministrator_Returns_Response_Success(
-            CategoryUpdateRequest model,
+            CategoryUpdateRequest request,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -50,7 +50,7 @@ namespace Sev1.Advertisements.Tests.Category
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // "Сохраняет" в базу категорию
-            model.Name = "Category"; // Чтобы пройти валидацию
+            request.Name = "Category"; // Чтобы пройти валидацию
             _categoryRepositoryMock
                 .Setup(_ => _.Save(
                     It.IsAny<Domain.Category>(), // проверяет, что параметр имеет указанный тип <>
@@ -61,7 +61,7 @@ namespace Sev1.Advertisements.Tests.Category
 
             // Act
             var response = await _categoryServiceV1.Update(
-                model,
+                request,
                 cancellationToken);
 
             // Assert
@@ -73,13 +73,13 @@ namespace Sev1.Advertisements.Tests.Category
         /// <summary>
         /// Проверка создания категории модератором
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Update_ByModerator_Returns_Response_Success(
-            CategoryUpdateRequest model,
+            CategoryUpdateRequest request,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -109,7 +109,7 @@ namespace Sev1.Advertisements.Tests.Category
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // "Сохраняет" в базу категорию
-            model.Name = "Category"; // Чтобы пройти валидацию
+            request.Name = "Category"; // Чтобы пройти валидацию
             _categoryRepositoryMock
                 .Setup(_ => _.Save(
                     It.IsAny<Domain.Category>(), // проверяет, что параметр имеет указанный тип <>
@@ -120,7 +120,7 @@ namespace Sev1.Advertisements.Tests.Category
 
             // Act
             var response = await _categoryServiceV1.Update(
-                model,
+                request,
                 cancellationToken);
 
             // Assert
@@ -132,13 +132,13 @@ namespace Sev1.Advertisements.Tests.Category
         /// <summary>
         /// Проверка исключения при создании категории юзером
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Update_ByUser_Throws_Exception_When_No_Rights(
-            CategoryUpdateRequest model,
+            CategoryUpdateRequest request,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -168,7 +168,7 @@ namespace Sev1.Advertisements.Tests.Category
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // "Сохраняет" в базу категорию
-            model.Name = "Category"; // Чтобы пройти валидацию
+            request.Name = "Category"; // Чтобы пройти валидацию
             _categoryRepositoryMock
                 .Setup(_ => _.Save(
                     It.IsAny<Domain.Category>(), // проверяет, что параметр имеет указанный тип <>
@@ -180,26 +180,26 @@ namespace Sev1.Advertisements.Tests.Category
             // Act
             await Assert.ThrowsAsync<NoRightsException>(
                 async () => await _categoryServiceV1.Update(
-                    model,
+                    request,
                     cancellationToken));
         }
 
         /// <summary>
         /// Проверка исключения при отсутствии аргумента
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null, null)]
         public async Task Update_Throws_Exception_When_Request_Is_Null(
-            CategoryUpdateRequest model,
+            CategoryUpdateRequest request,
             CancellationToken cancellationToken)
         {
             // Act
-            await Assert.ThrowsAsync<CategoryUpdateDtoNotValidException>(
+            await Assert.ThrowsAsync<CategoryUpdateRequestNotValidException>(
                 async () => await _categoryServiceV1.Update(
-                    model,
+                    request,
                     cancellationToken));
         }
     }

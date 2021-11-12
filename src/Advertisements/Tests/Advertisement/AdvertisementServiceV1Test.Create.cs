@@ -163,7 +163,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверяет реакцию на невалидный аргумент
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
