@@ -131,7 +131,11 @@ namespace Sev1.Advertisements.Api
             // in the other calls within that same web request.
             services.AddScoped<IMapper, ServiceMapper>();
 
-            services.AddApplicationException(config => { config.DefaultErrorStatusCode = 500; });
+            // Middleware обработки исключительных ситуаций
+            services.AddApplicationException(config =>
+            {
+                config.DefaultErrorStatusCode = 500; // Статус код по умолчанию
+            });
         }
 
         // This method gets called by the runtime.

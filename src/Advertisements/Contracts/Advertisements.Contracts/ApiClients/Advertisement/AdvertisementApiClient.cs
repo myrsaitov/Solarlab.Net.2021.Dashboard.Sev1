@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
-using Sev1.Advertisements.Contracts.Exceptions.Domain;
+using System;
 
 namespace Sev1.Avdertisements.Contracts.ApiClients.Advertisement
 {
@@ -58,7 +58,7 @@ namespace Sev1.Avdertisements.Contracts.ApiClients.Advertisement
             else
             {
                 // Иначе - не достаточно прав!
-                throw new NoRightsException("Не достаточно прав!");
+                throw new Exception("Не достаточно прав!");
             }
         }
     }

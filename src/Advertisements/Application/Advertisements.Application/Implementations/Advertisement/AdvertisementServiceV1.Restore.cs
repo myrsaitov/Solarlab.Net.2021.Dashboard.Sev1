@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Contracts.Exceptions.Domain;
+using Sev1.Advertisements.Application.Exceptions.Domain;
 using Sev1.Advertisements.Application.Interfaces.Advertisement;
 using Sev1.Advertisements.Application.Validators.Advertisement;
-using Sev1.Advertisements.Contracts.Exceptions.Advertisement;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {

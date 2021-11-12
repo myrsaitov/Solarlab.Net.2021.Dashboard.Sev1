@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sev1.Advertisements.Contracts.Exceptions.GetPaged
+namespace Sev1.Advertisements.Application.Exceptions.GetPaged
 {
     public class GetPagedRequestNotValidException : ApplicationException
     {

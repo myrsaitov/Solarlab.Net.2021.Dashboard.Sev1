@@ -7,9 +7,9 @@ using System.Linq;
 using sev1.Advertisements.Contracts.Enums;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
-using Sev1.Advertisements.Contracts.Exceptions.Advertisement;
-using Sev1.Advertisements.Contracts.Exceptions.Domain;
-using Sev1.Advertisements.Contracts.Exceptions.Category;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Sev1.Advertisements.Application.Exceptions.Domain;
+using Sev1.Advertisements.Application.Exceptions.Category;
 
 namespace Sev1.Advertisements.Application.Implementations.Advertisement
 {
@@ -57,7 +57,7 @@ namespace Sev1.Advertisements.Application.Implementations.Advertisement
                 throw new CategoryNotFoundException(request.CategoryId);
             }
 
-            // Дополняем модель // TODO mapper?
+            // Дополняем модель
             var advertisement = _mapper.Map<Domain.Advertisement>(request);
             advertisement.IsDeleted = false;
             advertisement.CreatedAt = DateTime.UtcNow;

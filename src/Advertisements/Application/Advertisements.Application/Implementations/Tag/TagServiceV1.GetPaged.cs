@@ -6,7 +6,7 @@ using Sev1.Advertisements.Application.Interfaces.Tag;
 using Sev1.Advertisements.Application.Validators.GetPaged;
 using Sev1.Advertisements.Contracts.Contracts.Tag.Responses;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
-using Sev1.Advertisements.Contracts.Exceptions.GetPaged;
+using Sev1.Advertisements.Application.Exceptions.GetPaged;
 
 namespace Sev1.Advertisements.Application.Implementations.Tag
 {

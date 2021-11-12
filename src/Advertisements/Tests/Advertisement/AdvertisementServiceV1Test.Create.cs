@@ -6,9 +6,9 @@ using AutoFixture.Xunit2;
 using System.Linq.Expressions;
 using System;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
-using Sev1.Advertisements.Contracts.Exceptions.Domain;
-using Sev1.Advertisements.Contracts.Exceptions.Category;
-using Sev1.Advertisements.Contracts.Exceptions.Advertisement;
+using Sev1.Advertisements.Application.Exceptions.Domain;
+using Sev1.Advertisements.Application.Exceptions.Category;
+using Sev1.Advertisements.Application.Exceptions.Advertisement;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {

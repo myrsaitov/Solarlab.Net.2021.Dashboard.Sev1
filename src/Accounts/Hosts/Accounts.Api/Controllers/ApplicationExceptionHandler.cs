@@ -18,8 +18,10 @@ namespace Sev1.Accounts.Api.Controllers
         private readonly ILogger<ApplicationExceptionHandler> _logger;
         private readonly ApplicationExceptionOptions _options;
 
-        public ApplicationExceptionHandler(RequestDelegate next,
-            IOptions<ApplicationExceptionOptions> options, ILogger<ApplicationExceptionHandler> logger)
+        public ApplicationExceptionHandler(
+            RequestDelegate next,
+            IOptions<ApplicationExceptionOptions> options,
+            ILogger<ApplicationExceptionHandler> logger)
         {
             _next = next;
             _logger = logger;
@@ -29,35 +31,62 @@ namespace Sev1.Accounts.Api.Controllers
         /// <summary>
         /// Вызывается при исключении
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">Контекст HTTP-запроса</param>
         /// <returns></returns>
         public async Task Invoke(HttpContext context)
         {
+            // Передает управление в цепочке middleware следующему блоку
             try
             {
                 await _next(context);
             }
+
+            // Если случилось доменное исключение
             catch (DomainException domainException)
             {
-                _logger.LogError(domainException, "Прозошло доменное исключение.");
+                // Запись в журнал в категорию исключений
+                _logger.LogError(
+                    domainException,
+                    "Прозошло доменное исключение.");
 
+                // Назначает код исключения в зависимости от типа исключения
                 context.Response.StatusCode = (int)ObtainStatusCode(domainException);
-                await context.Response.WriteAsJsonAsync(new
-                {
-                    TraceId = context.TraceIdentifier,
-                    Error = domainException.Message,
-                }, context.RequestAborted);
+
+                // Замыкает middleware
+                // и отправляет ответ с кодом исключения и собщением
+                await context
+                    .Response
+                    .WriteAsJsonAsync(
+                        new
+                        {
+                            TraceId = context.TraceIdentifier,
+                            Error = domainException.Message,
+                        },
+                        context.RequestAborted);
             }
+
+            // Если случилось любое другое исключение
             catch (Exception e)
             {
-                _logger.LogError(e, "Произошло общее исключение.");
+                // Запись в журнал в категорию исключений
+                _logger.LogError(
+                    e,
+                    "Произошло общее исключение.");
 
+                // Назначает код исключения по умолчанию
                 context.Response.StatusCode = _options.DefaultErrorStatusCode;
-                await context.Response.WriteAsJsonAsync(new
-                {
-                    TraceId = context.TraceIdentifier,
-                    Error = "Произошла ошибка"
-                }, context.RequestAborted);
+
+                // Замыкает middleware
+                // и отправляет ответ с кодом исключения и собщением
+                await context
+                    .Response
+                    .WriteAsJsonAsync(
+                        new
+                        {
+                            TraceId = context.TraceIdentifier,
+                            Error = "Произошла ошибка"
+                        },
+                        context.RequestAborted);
             }
         }
 
@@ -66,8 +95,11 @@ namespace Sev1.Accounts.Api.Controllers
         /// </summary>
         /// <param name="domainException">Доменное исключение</param>
         /// <returns></returns>
-        private static HttpStatusCode ObtainStatusCode(DomainException domainException)
+        private static HttpStatusCode ObtainStatusCode(
+            DomainException domainException)
         {
+            // В зависимости от типа исключения
+            // возвращаем код ошибки
             return domainException switch
             {
                 NotFoundException => HttpStatusCode.NotFound,
@@ -79,7 +111,8 @@ namespace Sev1.Accounts.Api.Controllers
     }
 
     /// <summary>
-    /// Код ошибки по умолчанию
+    /// Класс для конфигурирования
+    /// В данном случае конфигурируется код ошибки по умолчанию
     /// </summary>
     public class ApplicationExceptionOptions
     {

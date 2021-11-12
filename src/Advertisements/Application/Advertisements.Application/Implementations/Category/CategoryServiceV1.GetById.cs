@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Sev1.Advertisements.Application.Interfaces.Category;
 using Sev1.Advertisements.Application.Validators.Advertisement;
 using Sev1.Advertisements.Contracts.Contracts.Category.Responses;
-using Sev1.Advertisements.Contracts.Exceptions.Category;
+using Sev1.Advertisements.Application.Exceptions.Category;
 
 namespace Sev1.Advertisements.Application.Implementations.Category
 {

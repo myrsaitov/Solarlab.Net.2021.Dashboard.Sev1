@@ -1,6 +1,6 @@
-﻿using Sev1.Advertisements.Contracts.Exceptions.Domain;
+﻿using Sev1.Advertisements.Application.Exceptions.Domain;
 
-namespace Sev1.Advertisements.Contracts.Exceptions.Category
+namespace Sev1.Advertisements.Application.Exceptions.Category
 {
     public sealed class CategoryNotFoundException : NotFoundException
     {
