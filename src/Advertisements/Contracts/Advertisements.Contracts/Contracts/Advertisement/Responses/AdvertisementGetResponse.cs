@@ -3,7 +3,7 @@
     /// <summary>
     /// DTO ответа на запрос объявления по идентификатору
     /// </summary>
-    public class AdvertisementGetResponse
+    public sealed class AdvertisementGetResponse
     {
         /// <summary>
         /// Id объявления

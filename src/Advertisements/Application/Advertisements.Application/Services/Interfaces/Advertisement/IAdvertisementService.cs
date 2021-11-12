@@ -67,7 +67,7 @@ namespace Sev1.Advertisements.Application.Services.Interfaces.Advertisement
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<AdvertisementGetPagedResponse> GetPaged(
-            GetPagedAdvertisementRequest request, 
+            AdvertisementGetPagedRequest request, 
             CancellationToken cancellationToken);
 
         /// <summary>

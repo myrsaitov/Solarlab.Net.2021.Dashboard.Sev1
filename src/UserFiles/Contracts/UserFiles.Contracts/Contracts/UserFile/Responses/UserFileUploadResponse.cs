@@ -1,9 +1,9 @@
-﻿namespace Sev1.UserFiles.Contracts.Contracts.UserFile
+﻿namespace Sev1.UserFiles.Contracts.Contracts.UserFile.Responses
 {
     /// <summary>
     /// DTO ответа при загрузке файлов
     /// </summary>
-    public class UserFileUploadResponse
+    public sealed class UserFileUploadResponse
     {
         /// <summary>
         /// Общее количество файлов в форме

@@ -3,7 +3,7 @@
     /// <summary>
     /// DTO запроса на создание нового объявления
     /// </summary>
-    public class AdvertisementCreateRequest
+    public sealed class AdvertisementCreateRequest
     {
         /// <summary>
         /// Заголовок объявления

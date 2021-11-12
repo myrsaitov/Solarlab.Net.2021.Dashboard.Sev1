@@ -21,11 +21,11 @@ namespace Sev1.Advertisements.Application.Services.Implementations.Advertisement
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task<AdvertisementGetPagedResponse> GetPaged(
-            GetPagedAdvertisementRequest request,
+            AdvertisementGetPagedRequest request,
             CancellationToken cancellationToken)
         {
             // Fluent Validation
-            var validator = new GetPagedRequestValidator();
+            var validator = new AdvertisementGetPagedRequestValidator();
             var result = await validator.ValidateAsync(request);
             if (!result.IsValid)
             {

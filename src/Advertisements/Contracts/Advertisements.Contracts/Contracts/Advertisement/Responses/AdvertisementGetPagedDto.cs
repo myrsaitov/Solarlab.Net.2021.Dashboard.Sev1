@@ -3,7 +3,7 @@
     /// <summary>
     /// DTO одного объявления при запросе пагинации
     /// </summary>
-    public class AdvertisementGetPagedDto
+    public sealed class AdvertisementGetPagedDto
     {
         /// <summary>
         /// Id объявления

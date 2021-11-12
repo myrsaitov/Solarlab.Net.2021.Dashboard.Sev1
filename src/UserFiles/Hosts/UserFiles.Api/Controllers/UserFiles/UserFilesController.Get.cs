@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.Accounts.Contracts.Authorization;
-using Sev1.UserFiles.Contracts.Contracts.GetPaged;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
 namespace Sev1.UserFiles.Api.Controllers.UserFile
 {
@@ -18,7 +18,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         [HttpGet]
         public async Task<IActionResult> GetPaged(
             [FromQuery] // Get values from the query string, e.g.: ?PageSize=10&Page=0
-            GetPagedUserFileRequest request, 
+            UserFileGetPagedRequest request, 
             CancellationToken cancellationToken)
         {
             var result = await _userFileService.GetPaged(

@@ -12,7 +12,7 @@ namespace sev1.Accounts.Contracts.UserProvider
     /// <summary>
     /// Возвращает идентификатор и роли авторизированного пользователя
     /// </summary>
-    public class UserProvider : IUserProvider
+    public sealed class UserProvider : IUserProvider
     {
         private readonly IHttpContextAccessor _context;
         private readonly IConfiguration _configuration;

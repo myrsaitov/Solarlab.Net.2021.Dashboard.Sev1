@@ -1,9 +1,9 @@
-﻿namespace Sev1.UserFiles.Contracts.Contracts.YandexDisk
+﻿namespace Sev1.UserFiles.Contracts.Contracts.YandexDisk.Responses
 {
     /// <summary>
     /// DTO ответа на запрос URI на загрузку в облако
     /// </summary>
-    public class GetUploadUriResponse
+    public sealed class GetUploadUriResponse
     {
         /// <summary>
         /// Гиперссылка

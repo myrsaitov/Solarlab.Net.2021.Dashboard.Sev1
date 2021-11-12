@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.UserFiles.Contracts.Contracts.UserFile;
 using Sev1.UserFiles.Application.Exceptions.UserFile;
 using Sev1.UserFiles.Application.Services.Interfaces.UserFile;
 using Sev1.UserFiles.Application.Services.Validators.UserFile;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Responses;
 
 namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
 {
@@ -16,7 +16,7 @@ namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
         /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<UserFileDto> GetById(
+        public async Task<UserFileGetResponse> GetById(
             int id,
             CancellationToken cancellationToken)
         {
@@ -37,7 +37,7 @@ namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
                 throw new UserFileNotFoundException(id);
             }
 
-            var response = _mapper.Map<UserFileDto>(userFiles);
+            var response = _mapper.Map<UserFileGetResponse>(userFiles);
 
             return response;
         }

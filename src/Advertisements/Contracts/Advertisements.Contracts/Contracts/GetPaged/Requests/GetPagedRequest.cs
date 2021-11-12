@@ -3,7 +3,7 @@
     /// <summary>
     /// Запрос на пагинацию
     /// </summary>
-    public class GetPagedRequest
+    public sealed class GetPagedRequest
     {
         /// <summary>
         /// Количество объектов на странице

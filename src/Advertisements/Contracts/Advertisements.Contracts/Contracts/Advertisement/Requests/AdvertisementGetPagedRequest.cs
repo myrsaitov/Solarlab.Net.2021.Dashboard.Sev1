@@ -3,8 +3,18 @@
     /// <summary>
     /// Запрос на пагинацию объявлений
     /// </summary>
-    public class GetPagedAdvertisementRequest : GetPagedRequest
+    public sealed class AdvertisementGetPagedRequest
     {
+        /// <summary>
+        /// Количество объектов на странице
+        /// </summary>
+        public int PageSize { get; set; } = 20;
+
+        /// <summary>
+        /// Номер страницы
+        /// </summary>
+        public int Page { get; set; } = 0;
+
         /// <summary>
         /// Поиск по строке поиска
         /// </summary>

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Sev1.Accounts.Contracts.Authorization
 {
-    public class JwtMiddleware
+    public sealed class JwtMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly IUserApiClient _userApiClient;

@@ -10,6 +10,8 @@ using Sev1.UserFiles.Application.Services.Validators.UserFile;
 using System.IO;
 using sev1.UserFiles.Contracts.Enums;
 using Sev1.UserFiles.Application.Exceptions.Domain;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Responses;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
 namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
 {
@@ -22,7 +24,7 @@ namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task<UserFileUploadResponse> UploadUserFilesToServerFileSystem(
-            UserFileUploadDto request,
+            UserFileUploadRequest request,
             CancellationToken cancellationToken)
         {
             // Fluent Validation

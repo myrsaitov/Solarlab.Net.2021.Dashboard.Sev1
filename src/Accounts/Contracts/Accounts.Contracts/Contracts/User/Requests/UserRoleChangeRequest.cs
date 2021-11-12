@@ -5,7 +5,7 @@ namespace Sev1.Accounts.Contracts.Contracts.User.Requests
     /// <summary>
     /// Запрос на изменение роли
     /// </summary>
-    public class UserRoleChangeRequest
+    public sealed class UserRoleChangeRequest
     {
         /// <summary>
         /// Id пользователя

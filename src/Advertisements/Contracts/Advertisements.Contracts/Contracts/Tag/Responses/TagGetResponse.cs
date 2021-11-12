@@ -3,7 +3,7 @@
     /// <summary>
     /// DTO тага при запросе по идентификатору
     /// </summary>
-    public class TagGetResponse
+    public sealed class TagGetResponse
     {
         /// <summary>
         /// Id тага

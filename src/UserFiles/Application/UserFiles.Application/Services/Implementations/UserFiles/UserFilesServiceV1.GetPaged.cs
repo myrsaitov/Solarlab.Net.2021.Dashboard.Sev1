@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.UserFiles.Contracts.Contracts.UserFile;
 using Sev1.UserFiles.Application.Services.Interfaces.UserFile;
-using Sev1.UserFiles.Contracts.Contracts.GetPaged;
 using System.Linq.Expressions;
 using Sev1.UserFiles.Application.Services.Validators.GetPaged;
 using Sev1.UserFiles.Application.Exceptions.UserFile;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Responses;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
 namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
 {
@@ -19,12 +19,12 @@ namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
         /// <param name="request">Запрос на пагинацию</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<GetPagedUserFileResponse> GetPaged(
-            GetPagedUserFileRequest request,
+        public async Task<UserFileGetPagedResponse> GetPaged(
+            UserFileGetPagedRequest request,
             CancellationToken cancellationToken)
         {
             // Fluent Validation
-            var validator = new GetPagedRequestValidator();
+            var validator = new UserFileGetPagedRequestValidator();
             var result = await validator.ValidateAsync(request);
             if (!result.IsValid)
             {
@@ -55,9 +55,9 @@ namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
             // Если объявления не найдены, то возвращаем "пустой" ответ 
             if (total == 0)
             {
-                return new GetPagedUserFileResponse
+                return new UserFileGetPagedResponse
                 {
-                    Items = Array.Empty<UserFilePagedDto>(),
+                    Items = Array.Empty<UserFileGetResponse>(),
                     Total = 0,
                     Offset = offset,
                     Limit = request.PageSize
@@ -72,9 +72,9 @@ namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
                 cancellationToken);
 
             // Создание обёртки (wrapper)
-            return new GetPagedUserFileResponse
+            return new UserFileGetPagedResponse
             {
-                Items = entities.Select(entity => _mapper.Map<UserFilePagedDto>(entity)),
+                Items = entities.Select(entity => _mapper.Map<UserFileGetResponse>(entity)),
                 Total = total,
                 Offset = offset,
                 Limit = request.PageSize

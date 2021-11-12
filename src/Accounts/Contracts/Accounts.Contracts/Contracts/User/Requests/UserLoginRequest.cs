@@ -5,7 +5,7 @@ namespace Sev1.Accounts.Contracts.Contracts.User.Requests
     /// <summary>
     /// Запрос-идентификация пользователя
     /// </summary>
-    public class UserLoginRequest
+    public sealed class UserLoginRequest
     {
         /// <summary>
         /// Электронная почта

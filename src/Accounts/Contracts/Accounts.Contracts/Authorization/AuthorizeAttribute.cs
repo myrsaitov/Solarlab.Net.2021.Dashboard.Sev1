@@ -7,7 +7,7 @@ using System.Linq;
 namespace Sev1.Accounts.Contracts.Authorization
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-    public class AuthorizeAttribute : Attribute, IAuthorizationFilter
+    public sealed class AuthorizeAttribute : Attribute, IAuthorizationFilter
     {
         private readonly string[] _roles;
 

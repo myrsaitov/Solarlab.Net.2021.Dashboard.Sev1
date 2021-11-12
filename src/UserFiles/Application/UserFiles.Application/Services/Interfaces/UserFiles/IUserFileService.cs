@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.UserFiles.Contracts.Contracts.UserFile;
-using Sev1.UserFiles.Contracts.Contracts.GetPaged;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Responses;
 
 namespace Sev1.UserFiles.Application.Services.Interfaces.UserFile
 {
@@ -14,7 +14,7 @@ namespace Sev1.UserFiles.Application.Services.Interfaces.UserFile
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<UserFileUploadResponse> UploadUserFilesToServerFileSystem(
-            UserFileUploadDto request, 
+            UserFileUploadRequest request, 
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Sev1.UserFiles.Application.Services.Interfaces.UserFile
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<UserFileUploadResponse> UploadUserFilesToDb(
-            UserFileUploadDto request,
+            UserFileUploadRequest request,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Sev1.UserFiles.Application.Services.Interfaces.UserFile
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<UserFileUploadResponse> UploadUserFilesToCloud(
-            UserFileUploadDto request,
+            UserFileUploadRequest request,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Sev1.UserFiles.Application.Services.Interfaces.UserFile
         /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<UserFileDto> GetById(
+        Task<UserFileGetResponse> GetById(
             int id, 
             CancellationToken cancellationToken);
 
@@ -73,8 +73,8 @@ namespace Sev1.UserFiles.Application.Services.Interfaces.UserFile
         /// <param name="request">Параметры пагинации</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<GetPagedUserFileResponse> GetPaged(
-            GetPagedUserFileRequest request, 
+        Task<UserFileGetPagedResponse> GetPaged(
+            UserFileGetPagedRequest request, 
             CancellationToken cancellationToken);
     }
 }

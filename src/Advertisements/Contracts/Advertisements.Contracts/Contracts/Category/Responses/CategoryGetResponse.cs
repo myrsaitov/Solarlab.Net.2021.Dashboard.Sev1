@@ -3,7 +3,7 @@
     /// <summary>
     /// DTO ответа при запросе категории по идентификатору
     /// </summary>
-    public class CategoryGetResponse
+    public sealed class CategoryGetResponse
     {
         /// <summary>
         /// Id категории

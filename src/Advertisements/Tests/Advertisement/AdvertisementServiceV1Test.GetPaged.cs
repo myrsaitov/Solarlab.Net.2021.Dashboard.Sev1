@@ -16,7 +16,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
     public partial class AdvertisementServiceV1Test
     {
         private async Task GetPaged_Returns_Response_Success(
-            GetPagedAdvertisementRequest request,
+            AdvertisementGetPagedRequest request,
             CancellationToken cancellationToken,
             string advertisementTitle, // Сгенерированный заголовок объявления
             string advertisementBody,  // Сгенерированный текст объявления
@@ -104,7 +104,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             string[] tagBodies)        // Сгенерированные таги
         {
             // Параметры поиска:
-            var request = new GetPagedAdvertisementRequest()
+            var request = new AdvertisementGetPagedRequest()
             {
                 Page = 0,
                 PageSize = 10,
@@ -139,7 +139,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             string[] tagBodies)        // Сгенерированные таги
         {
             // Параметры поиска:
-            var request = new GetPagedAdvertisementRequest()
+            var request = new AdvertisementGetPagedRequest()
             {
                 Page = 0,
                 PageSize = 10,
@@ -174,7 +174,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             string[] tagBodies)        // Сгенерированные таги
         {
             // Параметр поиска:
-            var request = new GetPagedAdvertisementRequest()
+            var request = new AdvertisementGetPagedRequest()
             {
                 Page = 0,
                 PageSize = 10,
@@ -209,7 +209,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             string[] tagBodies)        // Сгенерированные таги
         {
             // Параметры поиска:
-            var request = new GetPagedAdvertisementRequest()
+            var request = new AdvertisementGetPagedRequest()
             {
                 Page = 0,
                 PageSize = 10,
@@ -244,7 +244,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             string[] tagBodies)        // Сгенерированные таги
         {
             // Параметры поиска:
-            var request = new GetPagedAdvertisementRequest()
+            var request = new AdvertisementGetPagedRequest()
             {
                 Page = 0,
                 PageSize = 10,
@@ -271,7 +271,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [Theory]
         [InlineAutoData(null, null)]
         public async Task GetPaged_Throws_Exception_When_Request_Is_Null(
-            GetPagedAdvertisementRequest request,
+            AdvertisementGetPagedRequest request,
             CancellationToken cancellationToken)
         {
             // Act

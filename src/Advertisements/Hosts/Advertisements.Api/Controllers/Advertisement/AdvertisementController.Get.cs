@@ -18,7 +18,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         [HttpGet]
         public async Task<IActionResult> GetPaged(
             [FromQuery] // Get values from the query string, e.g.: ?PageSize=10&Page=0
-            GetPagedAdvertisementRequest request, 
+            AdvertisementGetPagedRequest request, 
             CancellationToken cancellationToken)
         {
             var result = await _advertisementService.GetPaged(

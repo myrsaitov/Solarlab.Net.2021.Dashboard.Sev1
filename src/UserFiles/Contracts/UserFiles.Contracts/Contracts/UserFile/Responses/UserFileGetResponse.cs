@@ -1,8 +1,8 @@
 ﻿using sev1.UserFiles.Contracts.Enums;
 
-namespace Sev1.UserFiles.Contracts.Contracts.UserFile
+namespace Sev1.UserFiles.Contracts.Contracts.UserFile.Responses
 {
-    public class UserFilePagedDto
+    public sealed class UserFileGetResponse
     {
         /// <summary>
         /// Внешняя ссылка на файл

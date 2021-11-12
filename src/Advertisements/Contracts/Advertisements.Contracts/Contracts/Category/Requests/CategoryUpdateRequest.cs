@@ -3,7 +3,7 @@
     /// <summary>
     /// DTO запроса обновления категории
     /// </summary>
-    public class CategoryUpdateRequest
+    public sealed class CategoryUpdateRequest
     {
         /// <summary>
         /// Id категории

@@ -5,7 +5,7 @@ namespace Sev1.Advertisements.Application.Contracts.Advertisement.Requests
     /// <summary>
     /// DTO запроса на обновление объявления
     /// </summary>
-    public class AdvertisementUpdateRequest
+    public sealed class AdvertisementUpdateRequest
     {
         /// <summary>
         /// Id объявления

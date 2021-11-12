@@ -1,15 +1,15 @@
 ﻿using FluentValidation;
-using Sev1.UserFiles.Contracts.Contracts.GetPaged;
-using Sev1.UserFiles.Application.Services.Validators.Base;
+using Sev1.Advertisements.Application.Services.Validators.Base;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 
-namespace Sev1.UserFiles.Application.Services.Validators.GetPaged
+namespace Sev1.Advertisements.Application.Services.Validators.GetPaged
 {
     /// <summary>
     /// Валидатор GetPaged
     /// </summary>
-    public class GetPagedRequestValidator : NullReferenceAbstractValidator<GetPagedRequest>
+    public class AdvertisementGetPagedRequestValidator : NullReferenceAbstractValidator<AdvertisementGetPagedRequest>
     {
-        public GetPagedRequestValidator()
+        public AdvertisementGetPagedRequestValidator()
         {
             // Общая проверка
             RuleFor(x => x)
@@ -27,6 +27,8 @@ namespace Sev1.UserFiles.Application.Services.Validators.GetPaged
                 .NotNull()
                 .NotEmpty().WithMessage("PageSize is null!")
                 .InclusiveBetween(1, int.MaxValue);
+
+            //TODO добавить остальные поля
         }
     }
 }

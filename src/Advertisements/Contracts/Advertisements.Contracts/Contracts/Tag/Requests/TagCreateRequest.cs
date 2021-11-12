@@ -3,7 +3,7 @@
     /// <summary>
     /// DTO при создании тага
     /// </summary>
-    public class TagCreateRequest
+    public sealed class TagCreateRequest
     {
         /// <summary>
         /// Текс тага

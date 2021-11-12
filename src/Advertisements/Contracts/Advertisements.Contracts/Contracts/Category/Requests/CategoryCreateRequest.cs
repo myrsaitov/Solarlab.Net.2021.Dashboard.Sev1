@@ -3,7 +3,7 @@
     /// <summary>
     /// DTO запроса создания категории
     /// </summary>
-    public class CategoryCreateRequest
+    public sealed class CategoryCreateRequest
     {
         /// <summary>
         /// Имя категории

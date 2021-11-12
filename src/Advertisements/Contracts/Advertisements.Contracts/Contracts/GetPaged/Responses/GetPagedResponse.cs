@@ -6,7 +6,7 @@ namespace Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses
     /// Абстрактный класс респонса на пагинацию
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class GetPagedResponse<T>
+    public sealed class GetPagedResponse<T>
     {
         /// <summary>
         /// Всего элементов
