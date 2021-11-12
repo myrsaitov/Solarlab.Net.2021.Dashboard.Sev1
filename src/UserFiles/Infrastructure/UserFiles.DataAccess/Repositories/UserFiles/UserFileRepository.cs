@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System;
 using Sev1.UserFiles.DataAccess.Base;
-using Sev1.UserFiles.Application.Repositories.UserFile;
+using Sev1.UserFiles.Application.Services.Repositories.UserFile;
 
 namespace Sev1.UserFiles.DataAccess.Repositories
 {

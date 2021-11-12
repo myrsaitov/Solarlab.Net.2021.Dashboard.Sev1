@@ -3,12 +3,12 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Sev1.UserFiles.Application.Exceptions.UserFile;
-using Sev1.UserFiles.Application.Interfaces.UserFile;
-using Sev1.UserFiles.Application.Validators.UserFile;
+using Sev1.UserFiles.Application.Services.Interfaces.UserFile;
+using Sev1.UserFiles.Application.Services.Validators.UserFile;
 using Sev1.UserFiles.Application.Exceptions;
 using Sev1.UserFiles.Application.Exceptions.Domain;
 
-namespace Sev1.UserFiles.Application.Implementations.UserFile
+namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
 {
     public sealed partial class UserFileServiceV1 : IUserFileService
     {

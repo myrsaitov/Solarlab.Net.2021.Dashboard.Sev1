@@ -3,30 +3,30 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.UserFiles.Application.Exceptions.UserFile;
 using Sev1.UserFiles.Contracts.Contracts.UserFile;
-using Sev1.UserFiles.Application.Interfaces.UserFile;
+using Sev1.UserFiles.Application.Services.Interfaces.UserFile;
 using System.Linq;
 using Sev1.UserFiles.Application.Exceptions;
-using Sev1.UserFiles.Application.Validators.UserFile;
+using Sev1.UserFiles.Application.Services.Validators.UserFile;
 using System.IO;
 using sev1.UserFiles.Contracts.Enums;
 using Sev1.UserFiles.Application.Exceptions.Domain;
 
-namespace Sev1.UserFiles.Application.Implementations.UserFile
+namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
 {
     public sealed partial class UserFileServiceV1 : IUserFileService
     {
         /// <summary>
-        /// Загрузить файл в базу данных
+        /// Загрузить файл в файловую систему сервера
         /// </summary>
         /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<UserFileUploadResponse> UploadUserFilesToCloud(
+        public async Task<UserFileUploadResponse> UploadUserFilesToServerFileSystem(
             UserFileUploadDto request,
             CancellationToken cancellationToken)
         {
             // Fluent Validation
-            var validator = new UserFileUploadToCloudDtoValidator();
+            var validator = new UserFileUploadToFileSystemDtoValidator();
             var result = await validator.ValidateAsync(request);
             if (!result.IsValid)
             {
@@ -50,12 +50,12 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                 .ValidateAdvertisement(
                     request.AdvertisementId,
                     userId);
-            if (!validated)
+            if(!validated)
             {
                 throw new NoRightsException("Не достаточно прав!");
             }
 
-            // Загружаем файлы в базу данных
+            // Загружаем файлы в файловую систему сервера
 
             // Считыватем перечень разрешенных типов файлов из конфига "appsettings.json"
             var AllowedFileExtensions = _configuration
@@ -84,15 +84,25 @@ namespace Sev1.UserFiles.Application.Implementations.UserFile
                         ContentType = file.ContentType,
                         ContentDisposition = file.ContentDisposition,
                         Length = file.Length,
-                        AdvertisementId = request.AdvertisementId,
+                        FilePath = $"{request.BaseUri}/api/v1/userfiles/{request.AdvertisementId.ToString()}/{file.FileName}",
+
+                    AdvertisementId = request.AdvertisementId,
                         OwnerId = userId,
                         CreatedAt = DateTime.UtcNow,
-                        Storage = UserFileStorageType.DataBase,
+                        Storage = UserFileStorageType.FileSystem,
                         IsDeleted = false
                     };
 
-                    // Сохраняем файл в облако
-                    userFile.FilePath = await _yandexDiskApiClient.Upload(file);
+                    var filePath = Path.Combine(
+                        @"UserFilesData",
+                        @"Advertisements",
+                        request.AdvertisementId.ToString(),
+                        file.FileName);
+
+                    new FileInfo(filePath).Directory?.Create();
+
+                    await using var stream = new FileStream(filePath, FileMode.Create);
+                    await file.CopyToAsync(stream);
 
                     // Сохраняем в базе карточку файла
                     await _userFileRepository.Save(

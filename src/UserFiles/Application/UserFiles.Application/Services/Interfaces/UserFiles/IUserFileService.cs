@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Sev1.UserFiles.Contracts.Contracts.UserFile;
 using Sev1.UserFiles.Contracts.Contracts.GetPaged;
 
-namespace Sev1.UserFiles.Application.Interfaces.UserFile
+namespace Sev1.UserFiles.Application.Services.Interfaces.UserFile
 {
     public interface IUserFileService
     {

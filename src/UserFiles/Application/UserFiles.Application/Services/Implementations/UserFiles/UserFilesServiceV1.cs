@@ -1,12 +1,12 @@
 ﻿using MapsterMapper;
-using Sev1.UserFiles.Application.Interfaces.UserFile;
-using Sev1.UserFiles.Application.Repositories.UserFile;
+using Sev1.UserFiles.Application.Services.Interfaces.UserFile;
+using Sev1.UserFiles.Application.Services.Repositories.UserFile;
 using Microsoft.Extensions.Configuration;
 using Sev1.UserFiles.Contracts.ApiClients.YandexDisk;
 using sev1.Accounts.Contracts.UserProvider;
 using Sev1.Avdertisements.Contracts.ApiClients.Advertisement;
 
-namespace Sev1.UserFiles.Application.Implementations.UserFile
+namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
 {
     public sealed partial class UserFileServiceV1 : IUserFileService
     {
