@@ -1,6 +1,6 @@
 ﻿using sev1.UserFiles.Contracts.Enums;
 
-namespace Sev1.UserFiles.Application.Contracts.UserFile
+namespace Sev1.UserFiles.Contracts.Contracts.UserFile
 {
     public class UserFileDto
     {

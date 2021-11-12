@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Sev1.Accounts.Contracts.Exceptions.Domain;
-using Sev1.Accounts.Contracts.Exceptions.Domain.Base;
+using Sev1.Accounts.Application.Exceptions.Domain;
+using Sev1.Accounts.Application.Exceptions.Domain.Base;
 
 namespace Sev1.Accounts.Api.Controllers
 {

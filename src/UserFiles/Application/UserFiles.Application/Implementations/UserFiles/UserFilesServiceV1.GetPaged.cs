@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.UserFiles.Application.Contracts.UserFile;
+using Sev1.UserFiles.Contracts.Contracts.UserFile;
 using Sev1.UserFiles.Application.Interfaces.UserFile;
-using Sev1.UserFiles.Application.Contracts.GetPaged;
+using Sev1.UserFiles.Contracts.Contracts.GetPaged;
 using System.Linq.Expressions;
 using Sev1.UserFiles.Application.Validators.GetPaged;
 using Sev1.UserFiles.Application.Exceptions.UserFile;

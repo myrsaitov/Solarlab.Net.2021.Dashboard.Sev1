@@ -1,6 +1,6 @@
-﻿using Sev1.Accounts.Contracts.Exceptions.Domain;
+﻿using Sev1.Accounts.Application.Exceptions.Domain;
 
-namespace Sev1.Accounts.Contracts.Exceptions.Identity
+namespace Sev1.Accounts.Application.Exceptions.Identity
 {
     /// <summary>
     /// Исключение, если не найдена роль

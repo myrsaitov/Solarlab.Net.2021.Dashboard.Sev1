@@ -10,8 +10,8 @@ using Microsoft.IdentityModel.Tokens;
 using Sev1.Accounts.Application.Interfaces.Identity;
 using Sev1.Accounts.Contracts.Contracts.User.Requests;
 using Sev1.Accounts.Contracts.Contracts.User.Responses;
-using Sev1.Accounts.Contracts.Exceptions.Domain;
-using Sev1.Accounts.Contracts.Exceptions.Identity;
+using Sev1.Accounts.Application.Exceptions.Domain;
+using Sev1.Accounts.Application.Exceptions.Identity;
 
 namespace Sev1.Accounts.Application.Implementations.Identity
 {

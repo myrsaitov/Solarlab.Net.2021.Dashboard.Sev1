@@ -1,6 +1,6 @@
-﻿using Sev1.UserFiles.Contracts.Exceptions.Base;
+﻿using Sev1.UserFiles.Application.Exceptions.Domain.Base;
 
-namespace Sev1.UserFiles.Contracts.Exceptions
+namespace Sev1.UserFiles.Application.Exceptions.Domain
 {
     /// <summary>
     /// Доменное исключение "Не найдено"

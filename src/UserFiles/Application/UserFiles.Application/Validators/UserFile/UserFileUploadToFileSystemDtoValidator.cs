@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Sev1.UserFiles.Application.Contracts.UserFile;
+using Sev1.UserFiles.Contracts.Contracts.UserFile;
 using Sev1.UserFiles.Application.Validators.Base;
 
 namespace Sev1.UserFiles.Application.Validators.UserFile

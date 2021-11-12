@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Sev1.UserFiles.Application.Contracts.UserFile
+namespace Sev1.UserFiles.Contracts.Contracts.UserFile
 {
     public class UserFileUploadDto
     {

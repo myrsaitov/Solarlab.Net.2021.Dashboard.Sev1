@@ -1,6 +1,6 @@
-﻿using Sev1.Accounts.Contracts.Exceptions.Domain;
+﻿using Sev1.Accounts.Application.Exceptions.Domain;
 
-namespace Sev1.Accounts.Contracts.Exceptions.User
+namespace Sev1.Accounts.Application.Exceptions.User
 {
     /// <summary>
     /// Исключение, если не найден доменный пользователь

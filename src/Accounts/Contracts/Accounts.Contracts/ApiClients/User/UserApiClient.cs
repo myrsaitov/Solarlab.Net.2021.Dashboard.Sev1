@@ -1,10 +1,10 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Sev1.Accounts.Contracts.Contracts.User.Responses;
-using Sev1.Accounts.Contracts.Exceptions.Domain;
 
 namespace Sev1.Accounts.Contracts.ApiClients.User
 {
@@ -35,7 +35,7 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
             // Проверка наличия токена
             if(accessToken is null)
             {
-                throw new NoRightsException("Ошибка авторизации!");
+                throw new Exception("Ошибка авторизации!");
             }
 
             // Считыватем URI запроса из конфига "appsettings.json"
@@ -63,7 +63,7 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
             // Если null, то ошибка авторизация
             if(res is null)
             {
-                throw new NoRightsException("Ошибка авторизации!");
+                throw new Exception("Ошибка авторизации!");
             }
 
             // Возвращаем DTO

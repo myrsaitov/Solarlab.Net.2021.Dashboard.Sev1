@@ -1,4 +1,4 @@
-﻿namespace Sev1.UserFiles.Application.Contracts.GetPaged
+﻿namespace Sev1.UserFiles.Contracts.Contracts.GetPaged
 {
     public class GetPagedRequest
     {

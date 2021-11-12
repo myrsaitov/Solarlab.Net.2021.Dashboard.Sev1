@@ -1,6 +1,6 @@
-﻿using Sev1.Accounts.Contracts.Exceptions.Domain.Base;
+﻿using Sev1.UserFiles.Application.Exceptions.Domain.Base;
 
-namespace Sev1.Accounts.Contracts.Exceptions.Domain
+namespace Sev1.UserFiles.Application.Exceptions.Domain
 {
     /// <summary>
     /// Доменное исключение при отсутствии прав

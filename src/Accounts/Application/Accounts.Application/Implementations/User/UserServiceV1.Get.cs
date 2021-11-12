@@ -1,5 +1,5 @@
 ﻿using Sev1.Accounts.Application.Interfaces.User;
-using Sev1.Accounts.Contracts.Exceptions.User;
+using Sev1.Accounts.Application.Exceptions.User;
 using System.Threading;
 using System.Threading.Tasks;
 

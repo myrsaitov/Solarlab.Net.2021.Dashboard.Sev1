@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
 using Sev1.Accounts.Contracts.Authorization;
-using Sev1.UserFiles.Application.Contracts.GetPaged;
+using Sev1.UserFiles.Contracts.Contracts.GetPaged;
 
 namespace Sev1.UserFiles.Api.Controllers.UserFile
 {

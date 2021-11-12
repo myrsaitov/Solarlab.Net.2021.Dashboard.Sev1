@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Sev1.UserFiles.Application.Contracts.GetPaged;
+using Sev1.UserFiles.Contracts.Contracts.GetPaged;
 using Sev1.UserFiles.Application.Validators.Base;
 
 namespace Sev1.UserFiles.Application.Validators.GetPaged

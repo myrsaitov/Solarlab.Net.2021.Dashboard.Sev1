@@ -1,4 +1,4 @@
-﻿using Sev1.UserFiles.Contracts.Exceptions;
+﻿using Sev1.UserFiles.Application.Exceptions.Domain;
 
 namespace Sev1.UserFiles.Application.Exceptions.UserFile
 {
