@@ -27,6 +27,8 @@ namespace Sev1.Accounts.Application.Services.Implementations.Identity
             UserLoginRequest request, 
             CancellationToken cancellationToken = default)
         {
+            // TODO Validator
+
             // Проверка, существует ли пользователь с таким именем
             var identityUser = await _userManager.FindByEmailAsync(
                 request.Email);

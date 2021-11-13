@@ -16,11 +16,9 @@ namespace Sev1.UserFiles.Application.Services.Repositories.UserFile
         /// Возвращает количество объявлений,
         /// которые не "удалены" с фильтром
         /// </summary>
-        /// <param name="predicate">Параметры фильтра</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<int> CountWithOutDeleted(
-            Expression<Func<Domain.UserFile, bool>> predicate,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -32,7 +30,6 @@ namespace Sev1.UserFiles.Application.Services.Repositories.UserFile
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<IEnumerable<Domain.UserFile>> GetPagedWithTagsAndCategoryInclude(
-            Expression<Func<Domain.UserFile, bool>> predicate,
             int offset,
             int limit,
             CancellationToken cancellationToken);

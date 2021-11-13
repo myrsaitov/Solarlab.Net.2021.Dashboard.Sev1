@@ -13,6 +13,7 @@ namespace Sev1.UserFiles.Contracts.Contracts.UserFile.Requests
         /// Id объявления, к которому прикрепляются файлы
         /// </summary>
         [Required]
+        [Range(1, 100_000_000_000, ErrorMessage = "Значение AdvertisementId должно быть от 1 до 100_000_000_000")]
         public int AdvertisementId { get; set; }
         
         /// <summary>
@@ -25,6 +26,7 @@ namespace Sev1.UserFiles.Contracts.Contracts.UserFile.Requests
         /// Адрес текущего сервера
         /// </summary>
         [Required]
+        [MaxLength(2000, ErrorMessage = "Максимальная длина URI не должна превышать 2000")]
         public string BaseUri { get; set; }
     }
 }

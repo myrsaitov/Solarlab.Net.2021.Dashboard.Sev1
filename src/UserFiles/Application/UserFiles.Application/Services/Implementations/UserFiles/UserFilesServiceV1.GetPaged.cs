@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Sev1.UserFiles.Application.Services.Interfaces.UserFile;
-using System.Linq.Expressions;
 using Sev1.UserFiles.Application.Services.Validators.GetPaged;
 using Sev1.UserFiles.Application.Exceptions.UserFile;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Responses;
@@ -34,23 +33,9 @@ namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
             // Вычислить смещение (skip)
             var offset = request.Page * request.PageSize;
             
-            // Параметр поиска в базе
-            Expression<Func<Domain.UserFile, bool>> predicate = a => true;
-
-            // Если нет параметров поиска, выводим без какой-либо фильтрации
-            if ((string.IsNullOrWhiteSpace(request.SearchStr))
-                && (string.IsNullOrWhiteSpace(request.UserId))
-                && (request.CategoryId is null)
-                && (string.IsNullOrWhiteSpace(request.Tag)))
-            {
-                predicate = a => true; // Фильтрация отсутствует
-            }
-
-
             // Подсчет общего количества объявлений
-            var total = await _userFileRepository.CountWithOutDeleted(
-                predicate,
-                cancellationToken);
+            var total = await _userFileRepository
+                .CountWithOutDeleted(cancellationToken);
 
             // Если объявления не найдены, то возвращаем "пустой" ответ 
             if (total == 0)
@@ -65,11 +50,11 @@ namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
             }
 
             // Если объявления найдены
-            var entities = await _userFileRepository.GetPagedWithTagsAndCategoryInclude(
-                predicate,
-                offset,
-                request.PageSize,
-                cancellationToken);
+            var entities = await _userFileRepository
+                .GetPagedWithTagsAndCategoryInclude(
+                    offset,
+                    request.PageSize,
+                    cancellationToken);
 
             // Создание обёртки (wrapper)
             return new UserFileGetPagedResponse

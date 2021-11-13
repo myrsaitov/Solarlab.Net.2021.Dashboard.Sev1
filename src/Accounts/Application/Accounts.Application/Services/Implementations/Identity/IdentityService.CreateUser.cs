@@ -21,6 +21,8 @@ namespace Sev1.Accounts.Application.Services.Implementations.Identity
             IdentityUserCreateRequest request, 
             CancellationToken cancellationToken = default)
         {
+            //TODO validator
+
             // Проверка, существует ли такой пользователь в базе
             var existedUser = await _userManager
                 .FindByEmailAsync(
@@ -57,7 +59,7 @@ namespace Sev1.Accounts.Application.Services.Implementations.Identity
                     IsSuccess = true
                 };
 
-                // TODO нотификация по Email - подключить
+                // TODO нотификация по E-mail - подключить
             }
 
             // Иначе - отрицательный

@@ -22,9 +22,13 @@ namespace Sev1.Advertisements.Domain
         public decimal Price { get; set; }
 
         /// <summary>
-        /// Id категории и ссылка на категорию
+        /// Id категории
         /// </summary>
         public int CategoryId { get; set; }
+
+        /// <summary>
+        /// Cсылка на категорию
+        /// </summary>
         public virtual Category Category { get; set; }
 
         /// <summary>
