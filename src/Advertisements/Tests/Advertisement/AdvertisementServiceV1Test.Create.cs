@@ -41,16 +41,16 @@ namespace Sev1.Advertisements.Tests.Advertisement
             var category = new Domain.Category();
             _categoryRepositoryMock
                 .Setup(_ => _.FindById(
-                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(category) // в результате выполнения возвращает объект
                 .Callback(( // Используем передаваемые в мок аргументы для имитации логики
-                    int _categoryId, 
+                    int? _categoryId, 
                     CancellationToken ct) => category.Id = _categoryId)
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Id тага, который "возвращается" из базы
-            int tagId = 1;
+            int? tagId = 1;
             // "Поиск" тага в базе
             _tagRepositoryMock
                 .Setup(_ => _.FindWhere(
@@ -148,7 +148,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             Domain.Category category = null;
             _categoryRepositoryMock
                 .Setup(_ => _.FindById(
-                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(category) // в результате выполнения возвращает объект
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository

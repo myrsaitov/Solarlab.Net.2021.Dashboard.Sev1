@@ -8,7 +8,7 @@
         /// <summary>
         /// Id тага
         /// </summary>
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         /// <summary>
         /// Текст тага
@@ -18,6 +18,6 @@
         /// <summary>
         /// Количество объявлений в базе по данному тагу
         /// </summary>
-        public int Count { get; set; }
+        public int? Count { get; set; }
     }
 }

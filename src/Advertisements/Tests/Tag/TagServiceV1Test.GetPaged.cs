@@ -26,9 +26,9 @@ namespace Sev1.Advertisements.Tests.Tag
             CancellationToken cancellationToken)
         {
             // Arrange
-            int tagCount = 3;
+            int? tagCount = 3;
             var responce = new List<Domain.Tag>();
-            for (int tagId = 1; tagId <= tagCount; tagId++)
+            for (int? tagId = 1; tagId <= tagCount; tagId++)
             {
                 var tag = new Domain.Tag()
                 {

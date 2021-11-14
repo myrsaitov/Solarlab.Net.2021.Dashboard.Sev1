@@ -20,7 +20,7 @@ namespace Sev1.Advertisements.Application.Services.Implementations.Advertisement
         /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<int> Update(
+        public async Task<int?> Update(
             AdvertisementUpdateRequest request,
             CancellationToken cancellationToken)
         {

@@ -14,7 +14,7 @@ namespace Sev1.Avdertisements.Contracts.ApiClients.Advertisement
         /// <param name="ownerId">Идентификатор владельца объявления</param>
         /// <returns></returns>
         Task<bool> ValidateAdvertisement(
-            int advertisementId,
+            int? advertisementId,
             string ownerId);
     }
 }

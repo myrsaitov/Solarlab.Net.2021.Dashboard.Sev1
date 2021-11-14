@@ -30,7 +30,7 @@ namespace Sev1.Avdertisements.Contracts.ApiClients.Advertisement
         /// <param name="ownerId">Идентификатор владельца объявления</param>
         /// <returns></returns>
         public async Task<bool> ValidateAdvertisement(
-            int advertisementId,
+            int? advertisementId,
             string ownerId)
         {
             // Считыватем URI запроса из конфига "appsettings.json"

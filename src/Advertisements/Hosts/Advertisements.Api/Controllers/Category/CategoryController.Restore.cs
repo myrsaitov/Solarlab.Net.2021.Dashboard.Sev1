@@ -17,7 +17,7 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Restore(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
-            int id, 
+            int? id, 
             CancellationToken cancellationToken)
         {
             await _categoryService.Restore(

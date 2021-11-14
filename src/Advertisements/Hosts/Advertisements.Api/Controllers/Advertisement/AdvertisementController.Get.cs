@@ -38,7 +38,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
-            int id, 
+            int? id, 
             CancellationToken cancellationToken)
         {
             var found = await _advertisementService.GetById(

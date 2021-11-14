@@ -3,7 +3,7 @@ using Sev1.Advertisements.Domain.Base;
 
 namespace Sev1.Advertisements.Domain
 {
-    public class Region : EntityMutable<string>
+    public class Region : EntityMutable<int?>
     {
         /// <summary>
         /// Текст ярлыка
@@ -11,13 +11,18 @@ namespace Sev1.Advertisements.Domain
         public string Name { get; set; }
 
         /// <summary>
-        /// Количество объявлений, связанных с этим регионом
-        /// </summary>
-        public int Count { get; set; }
-
-        /// <summary>
         /// Объявления, связанные с этим ярлыком
         /// </summary>
         public virtual ICollection<Advertisement> Advertisements { get; set; }
+
+        /// <summary>
+        /// Идентификатор родительского региона - округ
+        /// </summary>
+        public int? ParentRegionId { get; set; }
+
+        /// <summary>
+        /// Ссылка на родительский регион - округ
+        /// </summary>
+        public virtual Region ParentRegion { get; set; }
     }
 }

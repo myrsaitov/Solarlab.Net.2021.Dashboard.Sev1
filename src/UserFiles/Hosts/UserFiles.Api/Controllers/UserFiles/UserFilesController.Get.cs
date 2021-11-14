@@ -38,7 +38,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}"
-            int id, 
+            int? id, 
             CancellationToken cancellationToken)
         {
             var found = await _userFileService.GetById(

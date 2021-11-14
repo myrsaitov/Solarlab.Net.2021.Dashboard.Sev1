@@ -27,7 +27,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             var UserId = "24cb4b25-c819-45ab-8755-d95120fbb868";
             var categoryId = 1;
             var response = new List<Domain.Advertisement>();
-            for (int advertisementId = 1; advertisementId <= advertisementCount; advertisementId++)
+            for (int? advertisementId = 1; advertisementId <= advertisementCount; advertisementId++)
             {
                 // Создаем новое объявление
                 var advertisement = new Domain.Advertisement()
@@ -44,7 +44,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 };
 
                 // Заполняем таги
-                int tagId = 1;
+                int? tagId = 1;
                 foreach (string body in tagBodies)
                 {
                     var tag = new Domain.Tag()

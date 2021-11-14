@@ -8,7 +8,7 @@
         /// <summary>
         /// Id объявления
         /// </summary>
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         /// <summary>
         /// Заголовок объявления

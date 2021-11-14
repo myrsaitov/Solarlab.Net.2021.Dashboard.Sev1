@@ -12,7 +12,7 @@ namespace Sev1.UserFiles.Contracts.Contracts.UserFile.Responses
         /// <summary>
         /// Объявление, к которому относится этот файл
         /// </summary>
-        public int AdvertisementId { get; set; }
+        public int? AdvertisementId { get; set; }
 
         /// <summary>
         /// Пользователь, который загрузил файл

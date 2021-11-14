@@ -64,21 +64,21 @@ namespace Accounts.DataAccess.Migrations
                         new
                         {
                             Id = "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3",
-                            ConcurrencyStamp = "3429483c-0499-4af1-98c8-26e93953b3f1",
+                            ConcurrencyStamp = "21c84a32-bbb7-4615-98fc-7680cfe3f6ea",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "c373fe1b-9e38-498b-9729-6c719222b00d",
-                            ConcurrencyStamp = "3de4363f-c09d-4fb8-b23e-a5ec047f5252",
+                            ConcurrencyStamp = "e0223608-aa24-430a-8343-4c51b1b0405e",
                             Name = "Moderator",
                             NormalizedName = "MODERATOR"
                         },
                         new
                         {
                             Id = "589a1f42-d43c-4315-8e02-432f64e02bc0",
-                            ConcurrencyStamp = "eeeff97b-e387-4897-90d5-78953c38e0c6",
+                            ConcurrencyStamp = "2e9b7baf-1ef5-4fa4-b3eb-285b9924a216",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -177,15 +177,15 @@ namespace Accounts.DataAccess.Migrations
                         {
                             Id = "757d5290-d036-4757-85ae-827b59e92cd3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9a555a17-0613-4698-9415-f5ac2a220923",
+                            ConcurrencyStamp = "1bc11964-87a0-4dc3-9d49-52111ac79978",
                             Email = "administrator@mail.ru",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINISTRATOR@MAIL.RU",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEC9WbblIBMMsyUkha8zCNq4p5KSQrZ5oC72xPqyasUrcGlOI7Cf+zieYZPv92k9/3g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKzMgmM/+P7bw9rZnW+uAKTZvodUKPXmtcXl7EnDO1/v1QLne3NhmCuAWp7ma7K/Sg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3db7ceee-1afb-4446-b299-b75a55ffe298",
+                            SecurityStamp = "34e01d42-27ac-47bd-b59d-92d62c497a6d",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -193,15 +193,15 @@ namespace Accounts.DataAccess.Migrations
                         {
                             Id = "a0d74199-2ad5-4d2f-a184-eb52f5bf9094",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7ab21480-396d-4a66-bf63-d9d88aa8f85e",
+                            ConcurrencyStamp = "aa5dc809-85d0-4936-b679-95da0cb42ff2",
                             Email = "moderator@mail.ru",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MODERATOR@MAIL.RU",
                             NormalizedUserName = "MODERATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIKd173kCf1j6RX93W4qzAAk15JYYaaJiy5UcI05OCn7+t5PUt7dmp3Tr0kvUAOWDA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJeAoAlhj1GfPlYih6RMZdCiH/Hfw09RvBYPQk1pW7J56C+DgEo/HwxlxljitUG8BQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "69cf2412-9a05-4fce-b638-0fda16ba5d99",
+                            SecurityStamp = "b55b7d7d-1b62-4651-a79a-c0857c6d563d",
                             TwoFactorEnabled = false,
                             UserName = "Moderator"
                         },
@@ -209,15 +209,15 @@ namespace Accounts.DataAccess.Migrations
                         {
                             Id = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5b356ad2-1e8b-47e2-9c16-671f17f67862",
+                            ConcurrencyStamp = "218ca0f5-7b1a-4e0f-a248-e5551793ee1c",
                             Email = "user@mail.ru",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@MAIL.RU",
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAEAACcQAAAAENWFYOJUvByDeKL3MD3ck2O1F6TCE+BP+LoiiTvKFn2tSIF94vfk9rqx2NBGfyp77w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEE9ax0yCtZfNudVUGSpYY2EN4eQvLm+/LegifFcNhBqhhlq51DjDx6qi4ZlCTnCfHA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b8089dcb-8213-4524-b93f-0a64483af681",
+                            SecurityStamp = "bf7d6920-1713-49f2-b1c1-e8caf721bc00",
                             TwoFactorEnabled = false,
                             UserName = "User"
                         });
@@ -376,6 +376,9 @@ namespace Accounts.DataAccess.Migrations
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RegionId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");

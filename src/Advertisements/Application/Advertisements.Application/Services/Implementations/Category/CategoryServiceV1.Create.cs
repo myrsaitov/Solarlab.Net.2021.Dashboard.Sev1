@@ -19,7 +19,7 @@ namespace Sev1.Advertisements.Application.Services.Implementations.Categoryt
         /// <param name="request">DTO</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<int> Create(
+        public async Task<int?> Create(
             CategoryCreateRequest request, 
             CancellationToken cancellationToken)
         {

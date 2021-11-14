@@ -19,7 +19,7 @@ namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task Restore(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             // Fluent Validation

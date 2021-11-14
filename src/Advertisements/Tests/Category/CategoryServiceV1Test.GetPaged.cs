@@ -26,11 +26,11 @@ namespace Sev1.Advertisements.Tests.Category
             CancellationToken cancellationToken)
         {
             // Arrange
-            int categoryCount = 3;
+            int? categoryCount = 3;
 
             var responce = new List<Domain.Category>();
 
-            for (int categoryId = 1; categoryId <= categoryCount; categoryId++)
+            for (int? categoryId = 1; categoryId <= categoryCount; categoryId++)
             {
                 var category = new Domain.Category()
                 {
@@ -79,7 +79,7 @@ namespace Sev1.Advertisements.Tests.Category
             CancellationToken cancellationToken)
         {
             // Arrange
-            int categoryCount = 0;
+            int? categoryCount = 0;
 
             var responce = new List<Domain.Category>();
 

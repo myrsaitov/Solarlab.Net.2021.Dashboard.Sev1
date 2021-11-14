@@ -10,7 +10,7 @@ namespace Sev1.Advertisements.Application.Services.Repositories.Advertisement
     /// <summary>
     /// Репозиторий объявлений
     /// </summary>
-    public interface IAdvertisementRepository : IRepository<Domain.Advertisement, int>
+    public interface IAdvertisementRepository : IRepository<Domain.Advertisement, int?>
     {
         /// <summary>
         /// Возвращает объявление по идентификатору
@@ -20,7 +20,7 @@ namespace Sev1.Advertisements.Application.Services.Repositories.Advertisement
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<Domain.Advertisement> FindByIdWithTagsInclude(
-            int id,
+            int? id,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Sev1.Advertisements.Application.Services.Repositories.Advertisement
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<Domain.Advertisement> FindByIdWithCategoriesAndTags(
-            int id, 
+            int? id, 
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Sev1.Advertisements.Application.Services.Repositories.Advertisement
         /// <param name="predicate">Параметры фильтра</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<int> CountActive(
+        Task<int?> CountActive(
             Expression<Func<Domain.Advertisement, bool>> predicate,
             CancellationToken cancellationToken);
 

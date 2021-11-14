@@ -51,7 +51,7 @@ namespace Sev1.Advertisements.DataAccess.Base
                 .FirstOrDefaultAsync(cancellationToken);
         }
 
-        public async Task<int> Count(CancellationToken cancellationToken)
+        public async Task<int?> Count(CancellationToken cancellationToken)
         {
             var data = DbСontext
                 .Set<TEntity>()
@@ -60,7 +60,7 @@ namespace Sev1.Advertisements.DataAccess.Base
             return await data.CountAsync(cancellationToken);
         }
 
-        public async Task<int> Count(
+        public async Task<int?> Count(
             Expression<Func<TEntity, bool>> predicate, 
             CancellationToken cancellationToken)
         {

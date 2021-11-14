@@ -10,7 +10,7 @@ namespace Sev1.UserFiles.Application.Services.Repositories.UserFile
     /// <summary>
     /// Репозиторий объявлений
     /// </summary>
-    public interface IUserFileRepository : IRepository<Domain.UserFile, int>
+    public interface IUserFileRepository : IRepository<Domain.UserFile, int?>
     {
         /// <summary>
         /// Возвращает количество объявлений,
@@ -18,7 +18,7 @@ namespace Sev1.UserFiles.Application.Services.Repositories.UserFile
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<int> CountWithOutDeleted(
+        Task<int?> CountWithOutDeleted(
             CancellationToken cancellationToken);
 
         /// <summary>

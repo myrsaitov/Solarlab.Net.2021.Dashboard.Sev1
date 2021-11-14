@@ -21,12 +21,12 @@ namespace UserFiles.DataAccess.Migrations
 
             modelBuilder.Entity("Sev1.UserFiles.Domain.UserFile", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AdvertisementId")
+                    b.Property<int?>("AdvertisementId")
                         .HasColumnType("int");
 
                     b.Property<byte[]>("Content")

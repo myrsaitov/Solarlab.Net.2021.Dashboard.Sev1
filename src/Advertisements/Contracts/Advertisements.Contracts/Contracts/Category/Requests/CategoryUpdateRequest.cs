@@ -12,7 +12,7 @@ namespace Sev1.Advertisements.Contracts.Contracts.Category.Requests
         /// </summary>
         [Required]
         [Range(1, 100_000_000_000, ErrorMessage = "Значение CategoryId должно быть от 1 до 100_000_000_000")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         /// <summary>
         /// Имя категории

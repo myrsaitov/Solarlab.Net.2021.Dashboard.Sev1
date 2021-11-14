@@ -23,7 +23,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> UploadUserFilesToCloud(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}"
-            int id,
+            int? id,
             [FromForm]
             List<IFormFile> files,
             CancellationToken cancellationToken)

@@ -11,7 +11,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <summary>
         /// Идентификация пользователя
         /// </summary>
-        /// <param name="request">Логин и пароль (user@mail.ru/user; moderator@mail.ru/moderator; administrator@mail.ru/administrator)</param>
+        /// <param name="request">Логин и пароль USER: {"email":"user@mail.ru","password":"Zuse123!@#$%^()"}; MODERATOR: {"email":"moderator@mail.ru","password":"Zmod123!@#$%^()"}; ADMINISTRATOR: {"email":"administrator@mail.ru","password":"Zadm123!@#$%^()"}</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [AllowAnonymous]
@@ -29,3 +29,6 @@ namespace Sev1.Accounts.Api.Controllers.Account
         }
     }
 }
+
+
+// {"email":"user@mail.ru","password":"Zuse123!@#$%^()"} {"email":"moderator@mail.ru","password":"Zmod123!@#$%^()"} {"email":"administrator@mail.ru","password":"Zadm123!@#$%^()"}

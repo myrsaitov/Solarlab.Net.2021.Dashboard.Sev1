@@ -8,16 +8,16 @@
         /// <summary>
         /// Общее количество файлов в форме
         /// </summary>
-        public int Total { get; set; }
+        public int? Total { get; set; }
 
         /// <summary>
         /// Количество успешно загруженных файлов
         /// </summary>
-        public int Successful { get; set; }
+        public int? Successful { get; set; }
 
         /// <summary>
         /// Количество незагруженных файлов
         /// </summary>
-        public int Failed { get; set; }
+        public int? Failed { get; set; }
     }
 }

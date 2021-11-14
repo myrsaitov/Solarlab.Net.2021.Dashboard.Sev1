@@ -33,7 +33,7 @@ namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests
         /// </summary>
         [Required]
         [Range(1, 100_000_000_000, ErrorMessage = "Значение Id категории должно быть от 1 до 100_000_000_000")]
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
         /// <summary>
         /// Таги в виде массива строк

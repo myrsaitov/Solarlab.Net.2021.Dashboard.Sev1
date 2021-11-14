@@ -18,7 +18,7 @@ namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task Delete(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             // Fluent Validation

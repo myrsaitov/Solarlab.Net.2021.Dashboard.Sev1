@@ -4,7 +4,7 @@ using Sev1.Advertisements.Domain.Base;
 
 namespace Sev1.Advertisements.Domain
 {
-    public class Tag : Entity<int>
+    public class Tag : Entity<int?>
     {
         /// <summary>
         /// Текст ярлыка
@@ -14,7 +14,7 @@ namespace Sev1.Advertisements.Domain
         /// <summary>
         /// Количество объявлений, связанных с этим ярлыком
         /// </summary>
-        public int Count { get; set; }
+        public int? Count { get; set; }
 
         /// <summary>
         /// Объявления, связанные с этим ярлыком

@@ -19,7 +19,7 @@ namespace Sev1.Advertisements.Application.Services.Implementations.Categoryt
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task Delete(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             // TODO

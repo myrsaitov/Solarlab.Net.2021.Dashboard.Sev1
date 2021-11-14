@@ -17,7 +17,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}"
-            int id, 
+            int? id, 
             CancellationToken cancellationToken)
         {
             await _userFileService.Delete(

@@ -34,9 +34,14 @@ namespace Sev1.Accounts.Domain
         public string PhoneNumber { get; set; }
 
         /// <summary>
-        /// Телефон пользователя
+        /// Адрес пользователя
         /// </summary>
         public string Address { get; set; }
+
+        /// <summary>
+        /// Идентификатор региона
+        /// </summary>
+        public int? RegionId { get; set; }
 
         /// <summary>
         /// Путь к фото пользователя

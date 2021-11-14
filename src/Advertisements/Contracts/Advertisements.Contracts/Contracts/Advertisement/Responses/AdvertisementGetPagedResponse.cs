@@ -11,17 +11,17 @@ namespace Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses
         /// <summary>
         /// Всего элементов
         /// </summary>
-        public int Total { get; set; }
+        public int? Total { get; set; }
 
         /// <summary>
         /// Количество элементов на странице
         /// </summary>
-        public int Limit { get; set; }
+        public int? Limit { get; set; }
 
         /// <summary>
         /// Смещение (число элементов)
         /// </summary>
-        public int Offset { get; set; }
+        public int? Offset { get; set; }
 
         /// <summary>
         /// Список элементов

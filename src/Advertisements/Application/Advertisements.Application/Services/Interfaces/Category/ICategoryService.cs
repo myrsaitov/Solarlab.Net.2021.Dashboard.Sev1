@@ -14,7 +14,7 @@ namespace Sev1.Advertisements.Application.Services.Interfaces.Category
         /// <param name="request">Модель DTO категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<int> Create(
+        Task<int?> Create(
             CategoryCreateRequest request,
             CancellationToken cancellationToken);
 
@@ -24,7 +24,7 @@ namespace Sev1.Advertisements.Application.Services.Interfaces.Category
         /// <param name="request">Модель DTO категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<int> Update(
+        Task<int?> Update(
             CategoryUpdateRequest request,
             CancellationToken cancellationToken);
 
@@ -35,7 +35,7 @@ namespace Sev1.Advertisements.Application.Services.Interfaces.Category
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Delete(
-            int id,
+            int? id,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Sev1.Advertisements.Application.Services.Interfaces.Category
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Restore(
-            int id,
+            int? id,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Sev1.Advertisements.Application.Services.Interfaces.Category
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<CategoryGetResponse> GetById(
-            int id, 
+            int? id, 
             CancellationToken cancellationToken);
 
         /// <summary>

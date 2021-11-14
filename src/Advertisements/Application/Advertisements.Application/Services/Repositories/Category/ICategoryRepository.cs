@@ -7,7 +7,7 @@ namespace Sev1.Advertisements.Application.Services.Repositories.Category
     /// <summary>
     /// Репозиторий категорий
     /// </summary>
-    public interface ICategoryRepository : IRepository<Domain.Category, int>
+    public interface ICategoryRepository : IRepository<Domain.Category, int?>
     {
         /// <summary>
         /// Возвращает категорию вместе с прикрепленными
@@ -16,6 +16,6 @@ namespace Sev1.Advertisements.Application.Services.Repositories.Category
         /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public Task<Domain.Category> FindByIdWithParentAndChilds(int id, CancellationToken cancellationToken);
+        public Task<Domain.Category> FindByIdWithParentAndChilds(int? id, CancellationToken cancellationToken);
     }
 }

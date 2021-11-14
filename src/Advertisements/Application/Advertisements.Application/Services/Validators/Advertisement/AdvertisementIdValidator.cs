@@ -6,7 +6,7 @@ namespace Sev1.Advertisements.Application.Services.Validators.Advertisement
     /// <summary>
     /// Валидатор Id объявления
     /// </summary>
-    public class AdvertisementIdValidator : AbstractValidator<int>
+    public class AdvertisementIdValidator : AbstractValidator<int?>
     {
         public AdvertisementIdValidator()
         {

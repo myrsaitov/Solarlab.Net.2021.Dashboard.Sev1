@@ -4,7 +4,7 @@ using Sev1.Advertisements.Domain.Base;
 
 namespace Sev1.Advertisements.Domain
 {
-    public class Advertisement : EntityMutable<int>
+    public class Advertisement : EntityMutable<int?>
     {
         /// <summary>
         /// Заголовок объявления
@@ -24,7 +24,7 @@ namespace Sev1.Advertisements.Domain
         /// <summary>
         /// Id категории
         /// </summary>
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
         /// <summary>
         /// Cсылка на категорию

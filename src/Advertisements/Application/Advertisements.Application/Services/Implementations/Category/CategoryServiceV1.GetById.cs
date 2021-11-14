@@ -17,7 +17,7 @@ namespace Sev1.Advertisements.Application.Services.Implementations.Categoryt
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task<CategoryGetResponse> GetById(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             // Fluent Validation

@@ -44,7 +44,7 @@ namespace Sev1.UserFiles.Application.Services.Interfaces.UserFile
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Delete(
-            int id,
+            int? id,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Sev1.UserFiles.Application.Services.Interfaces.UserFile
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Restore(
-            int id,
+            int? id,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Sev1.UserFiles.Application.Services.Interfaces.UserFile
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<UserFileGetResponse> GetById(
-            int id, 
+            int? id, 
             CancellationToken cancellationToken);
 
         /// <summary>

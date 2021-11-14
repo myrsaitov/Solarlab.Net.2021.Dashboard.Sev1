@@ -5,7 +5,7 @@ namespace Sev1.UserFiles.Application.Services.Validators.UserFile
     /// <summary>
     /// Валидатор Id объявления
     /// </summary>
-    public class UserFilesIdValidator : AbstractValidator<int>
+    public class UserFilesIdValidator : AbstractValidator<int?>
     {
         public UserFilesIdValidator()
         {

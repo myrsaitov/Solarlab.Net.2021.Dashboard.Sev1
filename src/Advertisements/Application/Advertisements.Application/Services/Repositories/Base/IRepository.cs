@@ -50,7 +50,7 @@ namespace Sev1.Advertisements.Application.Services.Repositories.Base
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<int> Count(CancellationToken cancellationToken);
+        Task<int?> Count(CancellationToken cancellationToken);
 
         /// <summary>
         /// Возвращает количество сущностей с фильтром
@@ -58,7 +58,7 @@ namespace Sev1.Advertisements.Application.Services.Repositories.Base
         /// <param name="predicate">Условие фильтра</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<int> Count(
+        Task<int?> Count(
             Expression<Func<TEntity, bool>> predicate, 
             CancellationToken cancellationToken);
 

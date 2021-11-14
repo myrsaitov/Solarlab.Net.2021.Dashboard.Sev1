@@ -8,7 +8,7 @@
         /// <summary>
         /// Id объявления
         /// </summary>
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         /// <summary>
         /// Заголовок объявления
@@ -38,7 +38,7 @@
         /// <summary>
         /// Id категории
         /// </summary>
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
         /// <summary>
         /// Имя категории

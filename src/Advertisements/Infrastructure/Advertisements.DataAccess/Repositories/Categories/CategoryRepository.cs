@@ -7,13 +7,13 @@ using Sev1.Advertisements.DataAccess.Base;
 
 namespace Sev1.Advertisements.DataAccess.Repositories
 {
-    public sealed class CategoryRepository : EfRepository<Category, int>, ICategoryRepository
+    public sealed class CategoryRepository : EfRepository<Category, int?>, ICategoryRepository
     {
         public CategoryRepository(DatabaseContext dbСontext) : base(dbСontext)
         {
         }
         public async Task<Category> FindByIdWithParentAndChilds(
-            int id, 
+            int? id, 
             CancellationToken cancellationToken)
         {
             return await DbСontext

@@ -9,13 +9,13 @@ using Sev1.UserFiles.Application.Services.Repositories.UserFile;
 
 namespace Sev1.UserFiles.DataAccess.Repositories
 {
-    public sealed class UserFileRepository : EfRepository<UserFile, int>, IUserFileRepository
+    public sealed class UserFileRepository : EfRepository<UserFile, int?>, IUserFileRepository
     {
         public UserFileRepository(DatabaseContext dbСontext) : base(dbСontext)
         {
         }
 
-        public async Task<int> CountWithOutDeleted(
+        public async Task<int?> CountWithOutDeleted(
             CancellationToken cancellationToken)
         {
             var data = DbСontext

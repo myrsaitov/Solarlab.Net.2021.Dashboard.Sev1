@@ -42,7 +42,7 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
-            int id, 
+            int? id, 
             CancellationToken cancellationToken)
         {
 

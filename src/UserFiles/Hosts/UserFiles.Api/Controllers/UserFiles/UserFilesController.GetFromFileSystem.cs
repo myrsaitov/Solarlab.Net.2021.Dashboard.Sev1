@@ -20,7 +20,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         [HttpGet("{id:int}/{imageName}")]
         public async Task<IActionResult> GetFromFileSystem(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}"
-            int id,
+            int? id,
             [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}/{imageName}"
             string imageName,
             CancellationToken cancellationToken)

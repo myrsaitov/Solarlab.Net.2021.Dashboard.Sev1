@@ -14,7 +14,7 @@ namespace Sev1.UserFiles.Contracts.Contracts.UserFile.Requests
         /// </summary>
         [Required]
         [Range(1, 100_000_000_000, ErrorMessage = "Значение AdvertisementId должно быть от 1 до 100_000_000_000")]
-        public int AdvertisementId { get; set; }
+        public int? AdvertisementId { get; set; }
         
         /// <summary>
         /// Список файлов
