@@ -46,16 +46,16 @@ namespace Sev1.Accounts.Domain
         /// <summary>
         /// "Избранное"
         /// </summary>
-        public IEnumerable<FavoriteAdvertisement> FavoriteAdvertisements { get; set; }
+        public ICollection<FavoriteAdvertisement> FavoriteAdvertisements { get; set; }
 
         /// <summary>
         /// "Друзья"
         /// </summary>
-        public IEnumerable<User> FriendUsers { get; set; }
+        public ICollection<User> FriendUsers { get; set; }
 
         /// <summary>
         /// "В игноре"
         /// </summary>
-        public IEnumerable<User> IgnoredUsers { get; set; }
+        public ICollection<User> IgnoredUsers { get; set; }
     }
 }

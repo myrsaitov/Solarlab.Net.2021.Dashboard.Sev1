@@ -5,7 +5,7 @@ namespace Sev1.Advertisements.Domain.Base
     /// <summary>
     /// Базовая сущность
     /// </summary>
-    /// <typeparam name="TId">Класс идентификатора Id</typeparam>
+    /// <typeparam name="TId">Класс идентификатора</typeparam>
     public abstract class Entity<TId>
     {
         /// <summary>

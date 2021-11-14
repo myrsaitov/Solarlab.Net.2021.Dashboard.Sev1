@@ -16,6 +16,6 @@ namespace Sev1.Accounts.Domain
         /// <summary>
         /// Пользователи, которые добавили его в избранное
         /// </summary>
-        public IEnumerable<User> Users { get; set; }
+        public ICollection<User> Users { get; set; }
     }
 }

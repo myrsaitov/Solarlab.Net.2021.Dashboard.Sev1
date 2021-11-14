@@ -26,6 +26,11 @@
         public decimal Price { get; set; }
 
         /// <summary>
+        /// Пользователь, который создал объявление
+        /// </summary>
+        public string OwnerId { get; set; }
+
+        /// <summary>
         /// Когда создано
         /// </summary>
         public string CreatedAt { get; set; }

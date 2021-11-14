@@ -3,9 +3,9 @@
 namespace Sev1.Advertisements.Domain.Base
 {
     /// <summary>
-    /// Изменяемая сущность
+    /// Изменяемая сущность (хранит информацию об изменениях)
     /// </summary>
-    /// <typeparam name="TId"></typeparam>
+    /// <typeparam name="TId">Класс идентификатора</typeparam>
     public class EntityMutable<TId> : Entity<TId>
     {
         /// <summary>

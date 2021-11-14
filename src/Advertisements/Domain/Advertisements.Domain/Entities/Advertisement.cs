@@ -45,5 +45,10 @@ namespace Sev1.Advertisements.Domain
         /// Статус объявления
         /// </summary>
         public AdvertisementStatus Status { get; set; }
+
+        /// <summary>
+        /// Адрес
+        /// </summary>
+        public string Address { get; set; }
     }
 }

@@ -1,18 +1,17 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using Sev1.Advertisements.Domain.Base;
 
 namespace Sev1.Advertisements.Domain
 {
-    public class Tag : Entity<int>
+    public class Region : EntityMutable<string>
     {
         /// <summary>
         /// Текст ярлыка
         /// </summary>
-        public string Body { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Количество объявлений, связанных с этим ярлыком
+        /// Количество объявлений, связанных с этим регионом
         /// </summary>
         public int Count { get; set; }
 
