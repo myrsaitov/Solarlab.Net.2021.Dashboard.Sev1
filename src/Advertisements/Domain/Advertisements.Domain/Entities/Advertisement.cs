@@ -53,5 +53,15 @@ namespace Sev1.Advertisements.Domain
         /// Адрес
         /// </summary>
         public string Address { get; set; }
+
+        /// <summary>
+        /// Идентификатор региона
+        /// </summary>
+        public int? RegionId { get; set; }
+
+        /// <summary>
+        /// Регион
+        /// </summary>
+        public Region Region { get; set; }
     }
 }

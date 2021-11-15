@@ -17,13 +17,25 @@ using Sev1.Accounts.Domain.Base.Repositories;
 
 namespace Sev1.Accounts.DataAccess
 {
+    /// <summary>
+    /// Конфигурирование Middleware слоя DataAccess
+    /// </summary>
     public static class DataAccessModule
     {
+        /// <summary>
+        /// Настройки
+        /// </summary>
         public sealed class ModuleConfiguration
         {
             public IServiceCollection Services { get; init; }
         }
 
+        /// <summary>
+        /// Вызывается из "ConfigureServices"
+        /// </summary>
+        /// <param name="services">Список сервисов</param>
+        /// <param name="action">Настройки</param>
+        /// <returns></returns>
         public static IServiceCollection AddDataAccessModule(
             this IServiceCollection services,
             Action<ModuleConfiguration> action
@@ -37,7 +49,11 @@ namespace Sev1.Accounts.DataAccess
             return services;
         }
 
-
+        /// <summary>
+        /// Вызывается из "ConfigureServices"
+        /// </summary>
+        /// <param name="moduleConfiguration">Настройки</param>
+        /// <param name="connectionString">Строка подключения БД</param>
         public static void InSqlServer(this ModuleConfiguration moduleConfiguration, string connectionString)
         {
             moduleConfiguration.Services.AddDbContextPool<DatabaseContext>(options =>

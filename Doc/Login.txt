@@ -27,13 +27,15 @@ Zxs123!@#$%^&*()
 
 
 
-{
-  "username": "myrsaitovrus",
+
+
+  "userName": "myrsaitovrus",
   "email": "myrsaitovrus@gmail.com",
+  "phoneNumber": "+79787713935",
+  "password": "Zxs123!@#$%^&*()",
   "firstName": "Константин",
   "lastName": "Мирсаитов",
   "middleName": "Михайлович",
-  "password": "Zx123!@"
-}
-
-
+  "address": "г. Севастополь, ул. Новороссийская",
+  "regionId": 98,
+  "userPicPath": "string"

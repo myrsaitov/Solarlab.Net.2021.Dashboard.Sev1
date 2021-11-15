@@ -11,12 +11,12 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
     /// <summary>
     /// API-client проверяет, авторизирован ли пользователь, возвращает его id и role
     /// </summary>
-    public sealed partial class UserApiClient : IUserApiClient
+    public sealed partial class UserValidateApiClient : IUserValidateApiClient
     {
         private readonly IConfiguration _configuration;
         private readonly IHttpClientFactory _clientFactory;
 
-        public UserApiClient(
+        public UserValidateApiClient(
             IConfiguration configuration,
             IHttpClientFactory clientFactory)
         {
@@ -29,7 +29,7 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <returns></returns>
-        public async Task<ValidateTokenResponse> ValidateToken(
+        public async Task<ValidateTokenResponse> UserValidate(
             string accessToken)
         {
             // Проверка наличия токена
@@ -39,7 +39,11 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
             }
 
             // Считыватем URI запроса из конфига "appsettings.json"
-            string uri = _configuration["ValidateTokenUri"];
+            string uri = _configuration["UserValidateApiClientUri"];
+            if (string.IsNullOrWhiteSpace(uri))
+            {
+                throw new Exception("API-клиент: адрес не задан");
+            }
 
             // Данные к пост-запросу
             string jsonString = "";

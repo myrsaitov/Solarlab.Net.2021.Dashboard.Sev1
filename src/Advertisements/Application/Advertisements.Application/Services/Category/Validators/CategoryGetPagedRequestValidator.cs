@@ -2,14 +2,14 @@
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 using Sev1.Advertisements.Domain.Base.Validators;
 
-namespace Sev1.Advertisements.AppServices.Services.GetPaged.Validators
+namespace Sev1.Advertisements.AppServices.Services.Category.Validators
 {
     /// <summary>
     /// Валидатор GetPaged
     /// </summary>
-    public class GetPagedRequestValidator : NullReferenceAbstractValidator<GetPagedRequest>
+    public class CategoryGetPagedRequestValidator : NullReferenceAbstractValidator<GetPagedRequest>
     {
-        public GetPagedRequestValidator()
+        public CategoryGetPagedRequestValidator()
         {
             // Общая проверка
             RuleFor(x => x)

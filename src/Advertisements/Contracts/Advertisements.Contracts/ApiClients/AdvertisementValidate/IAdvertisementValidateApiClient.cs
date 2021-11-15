@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace Sev1.Avdertisements.Contracts.ApiClients.Advertisement
+namespace Sev1.Avdertisements.Contracts.ApiClients.AdvertisementValidate
 {
-    public interface IAdvertisementApiClient
+    public interface IAdvertisementValidateApiClient
     {
         /// <summary>
         /// Проверяет, существует ли объявление 
@@ -13,7 +13,7 @@ namespace Sev1.Avdertisements.Contracts.ApiClients.Advertisement
         /// <param name="advertisementId">Идентификатор объявления, которое проверяем</param>
         /// <param name="ownerId">Идентификатор владельца объявления</param>
         /// <returns></returns>
-        Task<bool> ValidateAdvertisement(
+        Task<bool> AdvertisementValidate(
             int? advertisementId,
             string ownerId);
     }

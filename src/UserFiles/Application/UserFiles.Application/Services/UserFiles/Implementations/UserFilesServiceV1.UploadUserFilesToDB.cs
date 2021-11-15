@@ -48,8 +48,8 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
 
             // Проверка, существует ли объявление,
             // и принадлежит ли оно текущему пользователю
-            var validated = await _advertisementApiClient
-                .ValidateAdvertisement(
+            var validated = await _advertisementValidateApiClient
+                .AdvertisementValidate(
                     request.AdvertisementId,
                     userId);
             if (!validated)

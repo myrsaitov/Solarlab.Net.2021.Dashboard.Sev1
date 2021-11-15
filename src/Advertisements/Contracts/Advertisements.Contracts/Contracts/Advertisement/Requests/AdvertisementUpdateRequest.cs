@@ -54,5 +54,16 @@ namespace Sev1.Advertisements.AppServices.Contracts.Advertisement.Requests
         /// </summary>
         [Required]
         public AdvertisementStatus Status { get; set; }
+
+        /// <summary>
+        /// Адрес
+        /// </summary>
+        public string Address { get; set; }
+
+        /// <summary>
+        /// Идентификатор региона
+        /// </summary>
+        [Required]
+        public int? RegionId { get; set; }
     }
 }

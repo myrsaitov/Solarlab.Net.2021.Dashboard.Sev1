@@ -27,11 +27,9 @@ namespace Sev1.Accounts.Api.Controllers.Account
             UserRegisterRequest request,
             CancellationToken cancellationToken)
         {
-            var userId = await _userService.Register(
+            return Ok(await _userService.Register(
                 request,
-                cancellationToken);
-
-            return Ok(userId);
+                cancellationToken));
         }
     }
 }

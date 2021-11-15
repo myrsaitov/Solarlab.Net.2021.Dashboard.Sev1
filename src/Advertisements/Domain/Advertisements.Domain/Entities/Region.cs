@@ -6,7 +6,7 @@ namespace Sev1.Advertisements.Domain
     /// <summary>
     /// Доменная модель региона
     /// </summary>
-    public class Region : EntityMutable<int?>
+    public class Region : Entity<int?>
     {
         /// <summary>
         /// Текст ярлыка

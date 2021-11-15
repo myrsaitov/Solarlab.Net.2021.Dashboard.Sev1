@@ -44,8 +44,6 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
             var category = await _categoryRepository.FindById(
                 request.CategoryId,
                 cancellationToken);
-
-            // Если категория не существует
             if (category is null)
             {
                 throw new CategoryNotFoundException(request.CategoryId);
@@ -57,9 +55,20 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
                 throw new CategoryNotFoundException(request.CategoryId);
             }
 
-            // Дополняем модель
+            // Проверка, существует ли регион с таким идентификатором
+            var region = await _regionRepository.FindById(
+                request.RegionId,
+                cancellationToken);
+            if (region == null)
+            {
+                throw new RegionNotFoundException(request.RegionId);
+            }
+
+            // Создаёт доменную сущность нового объявления
             var advertisement = _mapper.Map<Domain.Advertisement>(request);
-            advertisement.IsDeleted = false;
+
+            // Дополняет сущность
+            advertisement.IsDeleted = false; // не используется, т.к. есть Status // TODO убрать
             advertisement.CreatedAt = DateTime.UtcNow;
             advertisement.Category = category;
             advertisement.OwnerId = userId;

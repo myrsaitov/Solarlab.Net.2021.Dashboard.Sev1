@@ -4,15 +4,16 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
 using System;
+using Sev1.Advertisements.Contracts.Contracts.Region.Responses;
 
-namespace Sev1.Avdertisements.Contracts.ApiClients.Advertisement
+namespace Sev1.Avdertisements.Contracts.ApiClients.RegionValidate
 {
-    public sealed partial class AdvertisementApiClient : IAdvertisementApiClient
+    public sealed partial class RegionValidateApiClient : IRegionValidateApiClient
     {
         private readonly IConfiguration _configuration;
         private readonly IHttpClientFactory _clientFactory;
 
-        public AdvertisementApiClient(
+        public RegionValidateApiClient(
             IConfiguration configuration,
             IHttpClientFactory clientFactory)
         {
@@ -26,15 +27,17 @@ namespace Sev1.Avdertisements.Contracts.ApiClients.Advertisement
         /// а также, является ли текущий пользователь
         /// владельцем этого объявления
         /// </summary>
-        /// <param name="advertisementId">Идентификатор объявления, которое проверяем</param>
-        /// <param name="ownerId">Идентификатор владельца объявления</param>
+        /// <param name="regionId">Идентификатор объявления, которое проверяем</param>
         /// <returns></returns>
-        public async Task<bool> ValidateAdvertisement(
-            int? advertisementId,
-            string ownerId)
+        public async Task<bool> RegionValidate(
+            int? regionId)
         {
             // Считыватем URI запроса из конфига "appsettings.json"
-            string uri = _configuration["Advertisements"] + advertisementId.ToString();
+            string uri = _configuration["RegionValidateApiClientUri"] + regionId.ToString();
+            if(string.IsNullOrWhiteSpace(uri))
+            {
+                throw new Exception("API-клиент: адрес не задан");
+            }
 
             // Создание клиента
             var client = _clientFactory.CreateClient();
@@ -46,19 +49,19 @@ namespace Sev1.Avdertisements.Contracts.ApiClients.Advertisement
             string responseJson = await response.Content.ReadAsStringAsync();
 
             // Конвертируем JSON в DTO
-            var advertisementDto = JsonConvert
-                .DeserializeObject<AdvertisementGetResponse>(responseJson);
+            var regionDto = JsonConvert
+                .DeserializeObject<RegionGetResponse>(responseJson);
 
-            // Логика проверки объявления на соответствие
-            if (advertisementDto.OwnerId == ownerId)
+            // Логика проверки региона на соответствие
+            if (regionDto.Id == regionId)
             {
-                // Если Id пользователей совпадает, то проверка пройдена
+                // Если Id региона совпадает, то проверка пройдена
                 return true;
             }
             else
             {
-                // Иначе - не достаточно прав!
-                throw new Exception("Не достаточно прав!");
+                // Иначе - регион не существует
+                throw new Exception("Регион не существует!");
             }
         }
     }

@@ -8,11 +8,11 @@ namespace Sev1.Accounts.Contracts.Authorization
     public sealed class JwtMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly IUserApiClient _userApiClient;
+        private readonly IUserValidateApiClient _userApiClient;
 
         public JwtMiddleware(
             RequestDelegate next,
-            IUserApiClient userApiClient)
+            IUserValidateApiClient userApiClient)
         {
             _next = next;
             _userApiClient = userApiClient;
@@ -35,7 +35,7 @@ namespace Sev1.Accounts.Contracts.Authorization
             else
             {
                 // Валидация JWT-токена
-                var res = await _userApiClient.ValidateToken(token);
+                var res = await _userApiClient.UserValidate(token);
 
                 // Если валидация JWT-токена удачная,
                 if (res != null)

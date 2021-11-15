@@ -1,5 +1,4 @@
-﻿using Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Sev1.Advertisements.Contracts.Contracts.Tag.Responses
 {

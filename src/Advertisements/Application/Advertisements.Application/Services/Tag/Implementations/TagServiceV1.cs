@@ -9,9 +9,11 @@ namespace Sev1.Advertisements.AppServices.Services.Tag.Implementations
         private readonly ITagRepository _tagRepository;
         private readonly IMapper _mapper;
 
-        public TagServiceV1(ITagRepository repository, IMapper mapper)
+        public TagServiceV1(
+            ITagRepository tagRepository,
+            IMapper mapper)
         {
-            _tagRepository = repository;
+            _tagRepository = tagRepository;
             _mapper = mapper;
         }
     }

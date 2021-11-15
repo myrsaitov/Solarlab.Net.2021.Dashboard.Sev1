@@ -14,7 +14,7 @@ namespace Sev1.Accounts.AppServices.Services.User.Interfaces
         /// <param name="registerRequest">DTO запроса</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<string> Register(
+        Task<UserIdResponse> Register(
             UserRegisterRequest registerRequest, 
             CancellationToken cancellationToken);
 

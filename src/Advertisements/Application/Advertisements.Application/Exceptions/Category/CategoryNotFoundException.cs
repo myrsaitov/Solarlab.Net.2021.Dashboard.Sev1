@@ -3,7 +3,7 @@
 namespace Sev1.Advertisements.AppServices.Exceptions.Category
 {
     /// <summary>
-    /// Исключение, если категория с таким идентификатором не найдена
+    /// Исключение, если категория с таким идентификатором не была найдена
     /// </summary>
     public sealed class CategoryNotFoundException : NotFoundException
     {

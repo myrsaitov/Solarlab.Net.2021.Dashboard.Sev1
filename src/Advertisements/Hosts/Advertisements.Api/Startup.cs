@@ -18,6 +18,8 @@ using Sev1.Advertisement.Api;
 using Sev1.Accounts.Contracts.ApiClients.User;
 using sev1.Accounts.Contracts.UserProvider;
 using Sev1.Accounts.Contracts.Authorization;
+using Sev1.Advertisements.AppServices.Services.Region.Interfaces;
+using Sev1.Advertisements.AppServices.Services.Region.Implementations;
 
 namespace Sev1.Advertisements.Api
 {
@@ -72,12 +74,13 @@ namespace Sev1.Advertisements.Api
                 .AddScoped<ICategoryService, CategoryServiceV1>()
                 .AddScoped<IAdvertisementService, AdvertisementServiceV1>()
                 .AddScoped<ITagService, TagServiceV1>()
+                .AddScoped<IRegionService, RegionServiceV1>()
 
                 // Добавляем фабрику API-клиентов
                 .AddHttpClient()
 
                 // Инжектирование API-клиента User
-                .AddTransient<IUserApiClient, UserApiClient>()
+                .AddTransient<IUserValidateApiClient, UserValidateApiClient>()
 
                 // Инжектирование UserProvider
                 .AddTransient<IUserProvider, UserProvider>()

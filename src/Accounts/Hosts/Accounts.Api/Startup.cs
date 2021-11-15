@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Sev1.Accounts.MapsterMapper.MapProfiles;
 using Microsoft.Extensions.Hosting;
 using Sev1.Accounts.DataAccess;
+using Sev1.Avdertisements.Contracts.ApiClients.RegionValidate;
 
 namespace Sev1.Accounts.Api
 {
@@ -40,9 +41,23 @@ namespace Sev1.Accounts.Api
             );
 
             services
-                .AddCors() // Добавить сервис Cross-Origin Requests
-                .AddApplicationModule(Configuration) // Инжектирование наших сервисов
-                .AddHttpContextAccessor() // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
+
+                // Добавить сервис Cross-Origin Requests
+                .AddCors()
+
+                // Инжектирование наших сервисов
+                .AddApplicationModule(Configuration)
+
+                // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
+                .AddHttpContextAccessor()
+
+                // Добавляем фабрику API-клиентов
+                .AddHttpClient()
+
+                // Инжектирование API-клиентов
+                .AddTransient<IRegionValidateApiClient, RegionValidateApiClient>()
+
+
                 .AddDataAccessModule(configuration =>
 #if DEBUG
                     configuration.InSqlServer(Configuration.GetConnectionString("RemoteConnection"))

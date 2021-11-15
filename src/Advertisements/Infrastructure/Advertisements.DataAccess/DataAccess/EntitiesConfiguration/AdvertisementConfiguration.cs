@@ -8,13 +8,15 @@ namespace Sev1.Advertisements.DataAccess.EntitiesConfiguration
     {
         public void Configure(EntityTypeBuilder<Advertisement> builder)
         {
-            builder.HasKey(con => con.Id);
-            builder.Property(con => con.CreatedAt).IsRequired();
-            builder.Property(con => con.UpdatedAt).IsRequired(false);
-            builder.Property(con => con.Price).HasColumnType("money");
-            builder.HasMany(con => con.Tags)
+            builder.HasKey(adv => adv.Id);
+            builder.Property(adv => adv.CreatedAt).IsRequired();
+            builder.Property(adv => adv.UpdatedAt).IsRequired(false);
+            builder.Property(adv => adv.Price).HasColumnType("money");
+            builder.HasMany(adv => adv.Tags)
                 .WithMany(t => t.Advertisements)
                 .UsingEntity(j => j.ToTable("TagAdvertisement"));
+            builder.HasOne(adv => adv.Region)
+                .WithMany(r => r.Advertisements);
         }
     }
 }

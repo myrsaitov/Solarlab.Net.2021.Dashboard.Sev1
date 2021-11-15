@@ -39,5 +39,16 @@ namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests
         /// Таги в виде массива строк
         /// </summary>
         public string[] TagBodies { get; set; }
+
+        /// <summary>
+        /// Адрес
+        /// </summary>
+        public string Address { get; set; }
+
+        /// <summary>
+        /// Идентификатор региона
+        /// </summary>
+        [Required]
+        public int? RegionId { get; set; }
     }
 }

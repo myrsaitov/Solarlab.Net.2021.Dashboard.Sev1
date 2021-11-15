@@ -9,6 +9,7 @@ using Sev1.Advertisements.AppServices.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.AppServices.Exceptions.Advertisement;
 using Sev1.Advertisements.AppServices.Exceptions.Domain;
 using Sev1.Advertisements.AppServices.Exceptions.Category;
+using sev1.Advertisements.Contracts.Enums;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
 {
@@ -50,12 +51,27 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
                 throw new NoRightsException("Вы не создали это объявление!");
             }
 
-            // TODO Mapper
+            // Проверка, существует ли регион с таким идентификатором
+            var region = await _regionRepository.FindById(
+                request.RegionId,
+                cancellationToken);
+            if (region == null)
+            {
+                throw new RegionNotFoundException(request.RegionId);
+            }
+
+            // Здесь использовать Mapper нельзя,
+            // т.к. маппер создает новую сущность,
+            // и в базу ее не положить заместо старой.
+            // Нужно редактировать старую.
             advertisement.Title = request.Title;
             advertisement.Body = request.Body;
             advertisement.Price = request.Price;
             advertisement.CategoryId = request.CategoryId;
+            advertisement.Address = request.Address;
+            advertisement.RegionId = request.RegionId;
 
+            advertisement.Status = AdvertisementStatus.Active; // TODO request.Status
             advertisement.IsDeleted = false;
             advertisement.UpdatedAt = DateTime.UtcNow;
 

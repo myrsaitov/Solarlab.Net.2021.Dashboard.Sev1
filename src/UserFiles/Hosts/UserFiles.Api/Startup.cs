@@ -14,9 +14,9 @@ using Sev1.UserFile.Api;
 using Sev1.UserFiles.Contracts.ApiClients.YandexDisk;
 using System;
 using Sev1.Accounts.Contracts.ApiClients.User;
-using Sev1.Avdertisements.Contracts.ApiClients.Advertisement;
 using sev1.Accounts.Contracts.UserProvider;
 using Sev1.Accounts.Contracts.Authorization;
+using Sev1.Avdertisements.Contracts.ApiClients.AdvertisementValidate;
 
 namespace Sev1.UserFiles.Api
 {
@@ -70,12 +70,15 @@ namespace Sev1.UserFiles.Api
                 // Инжектирование наших сервисов
                 .AddScoped<IUserFileService, UserFileServiceV1>()
 
+                // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
+                .AddHttpContextAccessor()
+
                 // Добавляем фабрику API-клиентов
                 .AddHttpClient()
 
                 // Инжектирование API-клиентов
-                .AddTransient<IUserApiClient, UserApiClient>()
-                .AddTransient<IAdvertisementApiClient, AdvertisementApiClient>()
+                .AddTransient<IUserValidateApiClient, UserValidateApiClient>()
+                .AddTransient<IAdvertisementValidateApiClient, AdvertisementValidateApiClient>()
 
                 // Добавляем API-клиент Яндекс-Диска
 
@@ -88,9 +91,6 @@ namespace Sev1.UserFiles.Api
                 // Инжектирование UserProvider
             services
                 .AddTransient<IUserProvider, UserProvider>()
-
-                // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
-                .AddHttpContextAccessor()
 
                 // Подключение к БД через информацию в "ConnectionString"
                 .AddDataAccessModule(configuration =>

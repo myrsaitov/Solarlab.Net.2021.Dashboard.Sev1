@@ -49,5 +49,15 @@
         /// Таги в виде массива строк
         /// </summary>
         public string[] Tags { get; set; }
+
+        /// <summary>
+        /// Адрес
+        /// </summary>
+        public string Address { get; set; }
+
+        /// <summary>
+        /// Идентификатор региона
+        /// </summary>
+        public int? RegionId { get; set; }
     }
 }

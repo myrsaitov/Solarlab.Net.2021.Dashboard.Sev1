@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 using System;
 using System.Linq;
 using Sev1.Advertisements.AppServices.Services.Tag.Interfaces;
-using Sev1.Advertisements.AppServices.Services.GetPaged.Validators;
 using Sev1.Advertisements.Contracts.Contracts.Tag.Responses;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 using Sev1.Advertisements.AppServices.Exceptions.GetPaged;
+using Sev1.Advertisements.AppServices.Services.Tag.Validators;
 
 namespace Sev1.Advertisements.AppServices.Services.Tag.Implementations
 {
@@ -23,7 +23,7 @@ namespace Sev1.Advertisements.AppServices.Services.Tag.Implementations
             CancellationToken cancellationToken)
         {
             // Fluent Validation
-            var validator = new GetPagedRequestValidator();
+            var validator = new TagGetPagedRequestValidator();
             var result = await validator.ValidateAsync(request);
             if (!result.IsValid)
             {

@@ -3,6 +3,7 @@ using sev1.Accounts.Contracts.UserProvider;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Repositories;
 using Sev1.Advertisements.AppServices.Services.Category.Repositories;
+using Sev1.Advertisements.AppServices.Services.Region.Repositories;
 using Sev1.Advertisements.AppServices.Services.Tag.Repositories;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
@@ -12,18 +13,21 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
         private readonly ICategoryRepository _categoryRepository;
         private readonly IAdvertisementRepository _advertisementRepository;
         private readonly ITagRepository _tagRepository;
+        private readonly IRegionRepository _regionRepository;
         private readonly IUserProvider _userProvider;
         private readonly IMapper _mapper;
         public AdvertisementServiceV1(
             IAdvertisementRepository advertisementRepository,
             ICategoryRepository categoryRepository,
             ITagRepository tagRepository,
+            IRegionRepository regionRepository,
             IUserProvider userProvider,
             IMapper mapper)
         {
             _advertisementRepository = advertisementRepository;
             _categoryRepository = categoryRepository;
             _tagRepository = tagRepository;
+            _regionRepository = regionRepository;
             _userProvider = userProvider;
             _mapper = mapper;
         }

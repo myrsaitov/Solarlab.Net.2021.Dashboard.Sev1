@@ -7,6 +7,7 @@ using Sev1.Advertisements.AppServices.Services.Tag.Repositories;
 using Sev1.Advertisements.DataAccess.Repositories;
 using Sev1.Advertisements.DataAccess.Base;
 using Sev1.Advertisements.Domain.Base.Repositories;
+using Sev1.Advertisements.AppServices.Services.Region.Repositories;
 
 // Nugets:
 // Microsoft.EntityFrameworkCore
@@ -19,13 +20,25 @@ using Sev1.Advertisements.Domain.Base.Repositories;
 
 namespace Sev1.Advertisements.DataAccess
 {
+    /// <summary>
+    /// Конфигурирование Middleware слоя DataAccess
+    /// </summary>
     public static class DataAccessModule
     {
+        /// <summary>
+        /// Настройки
+        /// </summary>
         public sealed class ModuleConfiguration
         {
             public IServiceCollection Services { get; init; }
         }
 
+        /// <summary>
+        /// Вызывается из "ConfigureServices"
+        /// </summary>
+        /// <param name="services">Список сервисов</param>
+        /// <param name="action">Настройки</param>
+        /// <returns></returns>
         public static IServiceCollection AddDataAccessModule(
             this IServiceCollection services,
             Action<ModuleConfiguration> action
@@ -39,7 +52,11 @@ namespace Sev1.Advertisements.DataAccess
             return services;
         }
 
-
+        /// <summary>
+        /// Вызывается из "ConfigureServices"
+        /// </summary>
+        /// <param name="moduleConfiguration">Настройки</param>
+        /// <param name="connectionString">Строка подключения БД</param>
         public static void InSqlServer(this ModuleConfiguration moduleConfiguration, string connectionString)
         {
             moduleConfiguration.Services.AddDbContextPool<DatabaseContext>(options =>
@@ -62,6 +79,7 @@ namespace Sev1.Advertisements.DataAccess
             moduleConfiguration.Services.AddScoped<IAdvertisementRepository, AdvertisementRepository>();
             moduleConfiguration.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             moduleConfiguration.Services.AddScoped<ITagRepository, TagRepository>();
+            moduleConfiguration.Services.AddScoped<IRegionRepository, RegionRepository>();
 
         }
     }

@@ -32,6 +32,15 @@ namespace Sev1.Accounts.AppServices.Services.User.Implementations
                 throw new UserNotFoundException($"Пользователь с идентификатором {request.Id} не найден");
             }
 
+            // Проверка, существует ли регион с таким идентификатором
+            var validated = await _regionValidateApiClient
+                .RegionValidate(
+                    request.RegionId);
+            if (!validated)
+            {
+                throw new NotFoundException("Не найдено!");
+            }
+
             // Возвращает идентификатор авторизированного пользователя
             var currentUserId = _identityService
                 .GetCurrentUserId(cancellationToken);

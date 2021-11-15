@@ -53,6 +53,8 @@
 
     <ItemGroup>
      
+      <ProjectReference Include="..\..\..\Advertisements\Contracts\Advertisements.Contracts\Advertisements.Contracts.csproj" />
+     
       <ProjectReference Include="..\..\Application\Accounts.Application\Accounts.AppServices.csproj" />
      
       <ProjectReference Include="..\..\Infrastructure\Accounts.DataAccess\Accounts.DataAccess.csproj" />

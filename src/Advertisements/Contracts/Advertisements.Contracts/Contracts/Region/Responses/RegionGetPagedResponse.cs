@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses
+namespace Sev1.Advertisements.Contracts.Contracts.Region.Responses
 {
     /// <summary>
-    /// Абстрактный класс респонса на пагинацию
+    /// DTO ответа на запрос пагинации по тагам
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public sealed class GetPagedResponse<T>
+    public sealed class RegionGetPagedResponse
     {
         /// <summary>
         /// Всего элементов
@@ -26,6 +25,6 @@ namespace Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses
         /// <summary>
         /// Список элементов
         /// </summary>
-        public IEnumerable<T> Items { get; set; }
+        public IEnumerable<RegionGetResponse> Items { get; set; }
     }
 }

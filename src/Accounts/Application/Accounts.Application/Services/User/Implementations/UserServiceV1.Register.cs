@@ -7,6 +7,8 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Sev1.Accounts.AppServices.Exceptions.Domain;
+using Sev1.Accounts.Contracts.Contracts.User.Responses;
 
 namespace Sev1.Accounts.AppServices.Services.User.Implementations
 {
@@ -18,7 +20,7 @@ namespace Sev1.Accounts.AppServices.Services.User.Implementations
         /// <param name="request">Данные пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<string> Register(
+        public async Task<UserIdResponse> Register(
             UserRegisterRequest request, 
             CancellationToken cancellationToken)
         {
@@ -34,6 +36,15 @@ namespace Sev1.Accounts.AppServices.Services.User.Implementations
                     string.Join(';', result.Errors.Select(x => x.ErrorMessage)));
             }
 
+            // Проверка, существует ли регион с таким идентификатором
+            var validated = await _regionValidateApiClient
+                .RegionValidate(
+                    request.RegionId);
+            if (!validated)
+            {
+                throw new NotFoundException("Не найдено!");
+            }
+
             // Регистрация в сервисе Identity
             var response = await _identityService.CreateUser(
                 _mapper.Map<IdentityUserCreateRequest>(request),
@@ -42,23 +53,19 @@ namespace Sev1.Accounts.AppServices.Services.User.Implementations
             // Если регистрация прошла успешно
             if (response.IsSuccess)
             {
-                //TODO mapper _mapper.Map<Domain.User>(registerRequest);
-                var newUser = new Domain.User
-                {
-                    Id = response.UserId,
-                    UserName = request.UserName,
-                    FirstName = request.FirstName,
-                    LastName = request.LastName,
-                    MiddleName = request.MiddleName,
-                    PhoneNumber = request.PhoneNumber,
-                    CreatedAt = DateTime.UtcNow
-                };
+                // Создает сущность нового доменного пользователя
+                var newUser = _mapper.Map<Domain.User>(request);
+                newUser.Id = response.UserId;
+                newUser.CreatedAt = DateTime.UtcNow;
 
-                // Сохраняем нового зарегистрированного пользователя в базе
+                // Сохраняем нового доменного пользователя в базе
                 await _userRepository.Save(newUser, cancellationToken);
 
-                // Возвращаем Id нового зарегистрированного пользователя
-                return response.UserId;
+                // Возвращаем идентификатор нового доменного пользователя
+                return new UserIdResponse() 
+                {
+                    UserId = response.UserId 
+                };
             }
 
             // Исключение при неудачной регистрации
