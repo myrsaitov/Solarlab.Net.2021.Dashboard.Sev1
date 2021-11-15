@@ -18,8 +18,9 @@ namespace Sev1.Accounts.Api.Controllers.Account
         public async Task<IActionResult> GetCurrentUserId(
             CancellationToken cancellationToken)
         {
-            var currentUserId = await Task.FromResult(_identityService.GetCurrentUserId(cancellationToken));
-            
+            //var currentUserId = await Task.FromResult(_identityService.GetCurrentUserId(cancellationToken));
+            var currentUserId = _identityService.GetCurrentUserId(cancellationToken);
+
             return Ok(currentUserId);
         }
 

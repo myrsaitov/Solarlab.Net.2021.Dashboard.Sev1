@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sev1.Accounts.Application.Exceptions.Domain.Base
+namespace Sev1.Accounts.AppServices.Exceptions.Domain.Base
 {
     /// <summary>
     /// Базовый абстрактный класс доменного исключения

@@ -4,7 +4,7 @@ using Sev1.Advertisements.Contracts.Contracts.Category.Requests;
 using Sev1.Advertisements.Contracts.Contracts.Category.Responses;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 
-namespace Sev1.Advertisements.Application.Services.Interfaces.Category
+namespace Sev1.Advertisements.AppServices.Services.Interfaces.Category
 {
     public interface ICategoryService
     {

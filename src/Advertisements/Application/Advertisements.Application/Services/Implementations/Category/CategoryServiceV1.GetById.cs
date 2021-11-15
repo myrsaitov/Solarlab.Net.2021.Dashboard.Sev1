@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Services.Interfaces.Category;
+using Sev1.Advertisements.AppServices.Services.Interfaces.Category;
 using Sev1.Advertisements.Contracts.Contracts.Category.Responses;
-using Sev1.Advertisements.Application.Exceptions.Category;
-using Sev1.Advertisements.Application.Services.Validators.Category;
+using Sev1.Advertisements.AppServices.Exceptions.Category;
+using Sev1.Advertisements.AppServices.Services.Validators.Category;
 
-namespace Sev1.Advertisements.Application.Services.Implementations.Categoryt
+namespace Sev1.Advertisements.AppServices.Services.Implementations.Categoryt
 {
     public sealed partial class CategoryServiceV1 : ICategoryService
     {

@@ -1,6 +1,6 @@
-﻿using Sev1.Advertisements.Application.Services.Repositories.Base;
+﻿using Sev1.Advertisements.AppServices.Services.Repositories.Base;
 
-namespace Sev1.Advertisements.Application.Services.Repositories.Tag
+namespace Sev1.Advertisements.AppServices.Services.Repositories.Tag
 {
     /// <summary>
     /// Репозиторий Tag

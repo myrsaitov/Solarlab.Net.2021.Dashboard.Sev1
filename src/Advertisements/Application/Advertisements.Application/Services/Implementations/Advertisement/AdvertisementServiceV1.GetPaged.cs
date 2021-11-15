@@ -2,15 +2,15 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Sev1.Advertisements.Application.Services.Interfaces.Advertisement;
+using Sev1.Advertisements.AppServices.Contracts.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Interfaces.Advertisement;
 using System.Linq.Expressions;
-using Sev1.Advertisements.Application.Services.Validators.GetPaged;
+using Sev1.Advertisements.AppServices.Services.Validators.GetPaged;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses;
-using Sev1.Advertisements.Application.Exceptions.GetPaged;
+using Sev1.Advertisements.AppServices.Exceptions.GetPaged;
 
-namespace Sev1.Advertisements.Application.Services.Implementations.Advertisement
+namespace Sev1.Advertisements.AppServices.Services.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {

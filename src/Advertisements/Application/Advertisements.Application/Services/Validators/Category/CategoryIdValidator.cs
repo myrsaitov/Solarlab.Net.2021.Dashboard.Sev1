@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Sev1.Advertisements.Application.Services.Validators.Base;
+using Sev1.Advertisements.AppServices.Services.Validators.Base;
 
-namespace Sev1.Advertisements.Application.Services.Validators.Category
+namespace Sev1.Advertisements.AppServices.Services.Validators.Category
 {
     /// <summary>
     /// Валидатор Id категории

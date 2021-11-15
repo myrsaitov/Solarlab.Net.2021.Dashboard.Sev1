@@ -2,13 +2,13 @@
 using System.Threading.Tasks;
 using System;
 using System.Linq;
-using Sev1.Advertisements.Application.Services.Interfaces.Tag;
-using Sev1.Advertisements.Application.Services.Validators.GetPaged;
+using Sev1.Advertisements.AppServices.Services.Interfaces.Tag;
+using Sev1.Advertisements.AppServices.Services.Validators.GetPaged;
 using Sev1.Advertisements.Contracts.Contracts.Tag.Responses;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
-using Sev1.Advertisements.Application.Exceptions.GetPaged;
+using Sev1.Advertisements.AppServices.Exceptions.GetPaged;
 
-namespace Sev1.Advertisements.Application.Services.Implementations.Tag
+namespace Sev1.Advertisements.AppServices.Services.Implementations.Tag
 {
     public sealed partial class TagServiceV1 : ITagService
     {

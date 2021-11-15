@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Sev1.Accounts.Application.Contracts.User.Requests
+namespace Sev1.Accounts.AppServices.Contracts.User.Requests
 {
     /// <summary>
     /// Запрос на обновление данных пользователя

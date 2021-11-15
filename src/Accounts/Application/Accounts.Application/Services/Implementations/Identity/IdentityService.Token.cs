@@ -7,13 +7,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
-using Sev1.Accounts.Application.Services.Interfaces.Identity;
+using Sev1.Accounts.AppServices.Services.Interfaces.Identity;
 using Sev1.Accounts.Contracts.Contracts.User.Requests;
 using Sev1.Accounts.Contracts.Contracts.User.Responses;
-using Sev1.Accounts.Application.Exceptions.Domain;
-using Sev1.Accounts.Application.Exceptions.Identity;
+using Sev1.Accounts.AppServices.Exceptions.Domain;
+using Sev1.Accounts.AppServices.Exceptions.Identity;
 
-namespace Sev1.Accounts.Application.Services.Implementations.Identity
+namespace Sev1.Accounts.AppServices.Services.Implementations.Identity
 {
     public partial class IdentityService : IIdentityService
     {

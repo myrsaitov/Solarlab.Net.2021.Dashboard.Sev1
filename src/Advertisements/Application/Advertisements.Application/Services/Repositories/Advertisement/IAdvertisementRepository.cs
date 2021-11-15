@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Services.Repositories.Base;
+using Sev1.Advertisements.AppServices.Services.Repositories.Base;
 
-namespace Sev1.Advertisements.Application.Services.Repositories.Advertisement
+namespace Sev1.Advertisements.AppServices.Services.Repositories.Advertisement
 {
     /// <summary>
     /// Репозиторий объявлений

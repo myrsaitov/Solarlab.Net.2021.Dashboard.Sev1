@@ -1,10 +1,10 @@
-﻿using Sev1.Accounts.Application.Contracts.User;
-using Sev1.Accounts.Application.Contracts.User.Requests;
+﻿using Sev1.Accounts.AppServices.Contracts.User;
+using Sev1.Accounts.AppServices.Contracts.User.Requests;
 using Sev1.Accounts.Contracts.Contracts.User.Requests;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sev1.Accounts.Application.Services.Interfaces.User
+namespace Sev1.Accounts.AppServices.Services.Interfaces.User
 {
     public interface IUserService
     {

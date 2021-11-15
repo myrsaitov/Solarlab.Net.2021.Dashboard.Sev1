@@ -1,6 +1,6 @@
-﻿using Sev1.Advertisements.Application.Exceptions.Domain;
+﻿using Sev1.Advertisements.AppServices.Exceptions.Domain;
 
-namespace Sev1.Advertisements.Application.Exceptions.GetPaged
+namespace Sev1.Advertisements.AppServices.Exceptions.GetPaged
 {
     /// <summary>
     /// Исключение при нессответсвующем запросе на пагинацию

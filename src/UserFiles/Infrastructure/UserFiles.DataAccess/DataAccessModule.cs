@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Sev1.UserFiles.Application.Services.Repositories.Base;
+using Sev1.UserFiles.AppServices.Services.Repositories.Base;
 using Sev1.UserFiles.DataAccess.Repositories;
 using Sev1.UserFiles.DataAccess.Base;
-using Sev1.UserFiles.Application.Services.Repositories.UserFile;
+using Sev1.UserFiles.AppServices.Services.Repositories.UserFile;
 
 // Nugets:
 // Microsoft.EntityFrameworkCore

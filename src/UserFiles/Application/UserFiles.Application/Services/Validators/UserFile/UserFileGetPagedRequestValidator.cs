@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using Sev1.UserFiles.Application.Services.Validators.Base;
+using Sev1.UserFiles.AppServices.Services.Validators.Base;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
-namespace Sev1.UserFiles.Application.Services.Validators.GetPaged
+namespace Sev1.UserFiles.AppServices.Services.Validators.GetPaged
 {
     /// <summary>
     /// Валидатор GetPaged

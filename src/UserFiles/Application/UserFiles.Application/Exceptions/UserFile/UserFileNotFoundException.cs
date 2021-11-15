@@ -1,6 +1,6 @@
-﻿using Sev1.UserFiles.Application.Exceptions.Domain;
+﻿using Sev1.UserFiles.AppServices.Exceptions.Domain;
 
-namespace Sev1.UserFiles.Application.Exceptions.UserFile
+namespace Sev1.UserFiles.AppServices.Exceptions.UserFile
 {
     public sealed class UserFileNotFoundException : NotFoundException
     {

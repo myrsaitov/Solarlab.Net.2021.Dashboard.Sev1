@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
-using Sev1.Accounts.Application.Services.Interfaces.Identity;
+using Sev1.Accounts.AppServices.Services.Interfaces.Identity;
 
-namespace Sev1.Accounts.Application.Services.Implementations.Identity
+namespace Sev1.Accounts.AppServices.Services.Implementations.Identity
 {
     public partial class IdentityService : IIdentityService
     {

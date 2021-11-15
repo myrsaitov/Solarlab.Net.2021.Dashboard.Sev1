@@ -1,6 +1,6 @@
-﻿using Sev1.UserFiles.Application.Exceptions.Domain.Base;
+﻿using Sev1.UserFiles.AppServices.Exceptions.Domain.Base;
 
-namespace Sev1.UserFiles.Application.Exceptions.Domain
+namespace Sev1.UserFiles.AppServices.Exceptions.Domain
 {
     /// <summary>
     /// Несоответствующий запрос

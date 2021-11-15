@@ -1,11 +1,11 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using System;
-using Sev1.Advertisements.Application.Services.Interfaces.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Interfaces.Advertisement;
 using System.Collections.Generic;
 using Sev1.Advertisements.Contracts.Contracts.Tag.Requests;
 
-namespace Sev1.Advertisements.Application.Services.Implementations.Advertisement
+namespace Sev1.Advertisements.AppServices.Services.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {

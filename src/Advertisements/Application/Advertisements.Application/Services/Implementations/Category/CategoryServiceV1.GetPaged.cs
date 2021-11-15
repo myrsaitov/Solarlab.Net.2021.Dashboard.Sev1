@@ -2,13 +2,13 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Services.Interfaces.Category;
-using Sev1.Advertisements.Application.Services.Validators.GetPaged;
+using Sev1.Advertisements.AppServices.Services.Interfaces.Category;
+using Sev1.Advertisements.AppServices.Services.Validators.GetPaged;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 using Sev1.Advertisements.Contracts.Contracts.Category.Responses;
-using Sev1.Advertisements.Application.Exceptions.GetPaged;
+using Sev1.Advertisements.AppServices.Exceptions.GetPaged;
 
-namespace Sev1.Advertisements.Application.Services.Implementations.Categoryt
+namespace Sev1.Advertisements.AppServices.Services.Implementations.Categoryt
 {
     public sealed partial class CategoryServiceV1 : ICategoryService
     {

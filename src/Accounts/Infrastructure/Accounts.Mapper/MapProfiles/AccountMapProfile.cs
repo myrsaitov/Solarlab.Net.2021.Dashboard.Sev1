@@ -1,5 +1,5 @@
 ﻿using Mapster;
-using Sev1.Accounts.Application.Contracts.User.Requests;
+using Sev1.Accounts.AppServices.Contracts.User.Requests;
 using Sev1.Accounts.Contracts.Contracts.Identity.Requests;
 using Sev1.Accounts.Contracts.Contracts.User.Requests;
 using Sev1.Accounts.Contracts.Enums;

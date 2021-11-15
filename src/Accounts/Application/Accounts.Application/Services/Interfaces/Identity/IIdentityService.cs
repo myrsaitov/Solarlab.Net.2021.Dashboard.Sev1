@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sev1.Accounts.Application.Services.Interfaces.Identity
+namespace Sev1.Accounts.AppServices.Services.Interfaces.Identity
 {
     public interface IIdentityService
     {
@@ -15,7 +15,7 @@ namespace Sev1.Accounts.Application.Services.Interfaces.Identity
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        string GetCurrentUserId(
+        CurrentUserIdResponse GetCurrentUserId(
             CancellationToken cancellationToken);
 
         /// <summary>

@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{5462F77A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{75822D88-44D2-49FB-9AC8-4BDD4E3586A6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advertisements.Application", "src\Advertisements\Application\Advertisements.Application\Advertisements.Application.csproj", "{085FBBFC-825E-418E-9E8A-03051BA9B83A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advertisements.AppServices", "src\Advertisements\Application\Advertisements.Application\Advertisements.AppServices.csproj", "{085FBBFC-825E-418E-9E8A-03051BA9B83A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advertisements.Contracts", "src\Advertisements\Contracts\Advertisements.Contracts\Advertisements.Contracts.csproj", "{02C71683-EC06-440A-9EA0-25D2B09C76E7}"
 EndProject
@@ -107,7 +107,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CD4543F9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Userpics.Tests", "src\Userpics\Tests\Userpics.Tests.csproj", "{AB7C0FD4-8CC1-4DFD-BA80-8E4646469138}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts.Application", "src\Accounts\Application\Accounts.Application\Accounts.Application.csproj", "{67C47C13-D6A7-4996-9869-AD84915EC9E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts.AppServices", "src\Accounts\Application\Accounts.Application\Accounts.AppServices.csproj", "{67C47C13-D6A7-4996-9869-AD84915EC9E4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts.Contracts", "src\Accounts\Contracts\Accounts.Contracts\Accounts.Contracts.csproj", "{C43ACF09-0821-4DFA-8B55-8FC766069DD6}"
 EndProject
@@ -197,7 +197,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6DE49D92-938F-4E6F-8EC3-21FC828C1767}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserFiles.Application", "src\UserFiles\Application\UserFiles.Application\UserFiles.Application.csproj", "{EEBDAF12-A5F6-4ED0-81D5-F14699AA796E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserFiles.AppServices", "src\UserFiles\Application\UserFiles.Application\UserFiles.AppServices.csproj", "{EEBDAF12-A5F6-4ED0-81D5-F14699AA796E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserFiles.Contracts", "src\UserFiles\Contracts\UserFiles.Contracts\UserFiles.Contracts.csproj", "{CDBBF8D7-6996-4AA7-BB5E-76D50543CBD7}"
 EndProject

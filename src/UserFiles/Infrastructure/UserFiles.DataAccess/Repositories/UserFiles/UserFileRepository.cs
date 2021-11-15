@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Collections.Generic;
 using Sev1.UserFiles.DataAccess.Base;
-using Sev1.UserFiles.Application.Services.Repositories.UserFile;
+using Sev1.UserFiles.AppServices.Services.Repositories.UserFile;
 
 namespace Sev1.UserFiles.DataAccess.Repositories
 {

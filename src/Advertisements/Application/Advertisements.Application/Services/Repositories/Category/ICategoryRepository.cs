@@ -1,8 +1,8 @@
-﻿using Sev1.Advertisements.Application.Services.Repositories.Base;
+﻿using Sev1.Advertisements.AppServices.Services.Repositories.Base;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sev1.Advertisements.Application.Services.Repositories.Category
+namespace Sev1.Advertisements.AppServices.Services.Repositories.Category
 {
     /// <summary>
     /// Репозиторий категорий

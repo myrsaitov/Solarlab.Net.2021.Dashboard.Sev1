@@ -2,13 +2,13 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.UserFiles.Application.Exceptions.UserFile;
-using Sev1.UserFiles.Application.Services.Interfaces.UserFile;
-using Sev1.UserFiles.Application.Services.Validators.UserFile;
-using Sev1.UserFiles.Application.Exceptions;
-using Sev1.UserFiles.Application.Exceptions.Domain;
+using Sev1.UserFiles.AppServices.Exceptions.UserFile;
+using Sev1.UserFiles.AppServices.Services.Interfaces.UserFile;
+using Sev1.UserFiles.AppServices.Services.Validators.UserFile;
+using Sev1.UserFiles.AppServices.Exceptions;
+using Sev1.UserFiles.AppServices.Exceptions.Domain;
 
-namespace Sev1.UserFiles.Application.Services.Implementations.UserFile
+namespace Sev1.UserFiles.AppServices.Services.Implementations.UserFile
 {
     public sealed partial class UserFileServiceV1 : IUserFileService
     {

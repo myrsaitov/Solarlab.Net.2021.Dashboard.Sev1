@@ -1,11 +1,11 @@
 ﻿using MapsterMapper;
 using sev1.Accounts.Contracts.UserProvider;
-using Sev1.Advertisements.Application.Services.Interfaces.Advertisement;
-using Sev1.Advertisements.Application.Services.Repositories.Advertisement;
-using Sev1.Advertisements.Application.Services.Repositories.Category;
-using Sev1.Advertisements.Application.Services.Repositories.Tag;
+using Sev1.Advertisements.AppServices.Services.Interfaces.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Repositories.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Repositories.Category;
+using Sev1.Advertisements.AppServices.Services.Repositories.Tag;
 
-namespace Sev1.Advertisements.Application.Services.Implementations.Advertisement
+namespace Sev1.Advertisements.AppServices.Services.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {

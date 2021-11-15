@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Services.Interfaces.Advertisement;
-using Sev1.Advertisements.Application.Services.Validators.Advertisement;
-using Sev1.Advertisements.Application.Exceptions.Advertisement;
-using Sev1.Advertisements.Application.Exceptions.Domain;
+using Sev1.Advertisements.AppServices.Services.Interfaces.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Validators.Advertisement;
+using Sev1.Advertisements.AppServices.Exceptions.Advertisement;
+using Sev1.Advertisements.AppServices.Exceptions.Domain;
 
-namespace Sev1.Advertisements.Application.Services.Implementations.Advertisement
+namespace Sev1.Advertisements.AppServices.Services.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {

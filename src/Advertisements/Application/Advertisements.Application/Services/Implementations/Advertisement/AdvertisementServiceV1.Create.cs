@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Services.Interfaces.Advertisement;
-using Sev1.Advertisements.Application.Services.Validators.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Interfaces.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Validators.Advertisement;
 using System.Linq;
 using sev1.Advertisements.Contracts.Enums;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
-using Sev1.Advertisements.Application.Exceptions.Advertisement;
-using Sev1.Advertisements.Application.Exceptions.Domain;
-using Sev1.Advertisements.Application.Exceptions.Category;
+using Sev1.Advertisements.AppServices.Exceptions.Advertisement;
+using Sev1.Advertisements.AppServices.Exceptions.Domain;
+using Sev1.Advertisements.AppServices.Exceptions.Category;
 
-namespace Sev1.Advertisements.Application.Services.Implementations.Advertisement
+namespace Sev1.Advertisements.AppServices.Services.Implementations.Advertisement
 {
     public sealed partial class AdvertisementServiceV1 : IAdvertisementService
     {

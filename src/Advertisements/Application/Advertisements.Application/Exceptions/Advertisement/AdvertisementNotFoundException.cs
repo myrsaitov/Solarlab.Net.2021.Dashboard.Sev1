@@ -1,6 +1,6 @@
-﻿using Sev1.Advertisements.Application.Exceptions.Domain;
+﻿using Sev1.Advertisements.AppServices.Exceptions.Domain;
 
-namespace Sev1.Advertisements.Application.Exceptions.Advertisement
+namespace Sev1.Advertisements.AppServices.Exceptions.Advertisement
 {
     /// <summary>
     /// Исключение, когда объявление с таким идентификатором не найдено

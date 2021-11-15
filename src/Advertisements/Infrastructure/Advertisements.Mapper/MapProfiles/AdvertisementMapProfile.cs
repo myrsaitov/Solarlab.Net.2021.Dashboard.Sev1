@@ -1,5 +1,5 @@
 ﻿using Mapster;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
+using Sev1.Advertisements.AppServices.Contracts.Advertisement;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
 using System.Linq;
 

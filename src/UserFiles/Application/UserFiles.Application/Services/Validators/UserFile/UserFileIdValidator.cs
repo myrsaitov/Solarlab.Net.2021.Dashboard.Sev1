@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Sev1.UserFiles.Application.Services.Validators.UserFile
+namespace Sev1.UserFiles.AppServices.Services.Validators.UserFile
 {
     /// <summary>
     /// Валидатор Id объявления

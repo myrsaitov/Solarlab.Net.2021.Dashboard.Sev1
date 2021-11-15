@@ -1,9 +1,9 @@
 ﻿using MapsterMapper;
 using sev1.Accounts.Contracts.UserProvider;
-using Sev1.Advertisements.Application.Services.Interfaces.Category;
-using Sev1.Advertisements.Application.Services.Repositories.Category;
+using Sev1.Advertisements.AppServices.Services.Interfaces.Category;
+using Sev1.Advertisements.AppServices.Services.Repositories.Category;
 
-namespace Sev1.Advertisements.Application.Services.Implementations.Categoryt
+namespace Sev1.Advertisements.AppServices.Services.Implementations.Categoryt
 {
     public sealed partial class CategoryServiceV1 : ICategoryService
     {

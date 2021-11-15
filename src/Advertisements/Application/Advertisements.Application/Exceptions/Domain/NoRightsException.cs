@@ -1,6 +1,6 @@
-﻿using Sev1.Advertisements.Application.Exceptions.Domain.Base;
+﻿using Sev1.Advertisements.AppServices.Exceptions.Domain.Base;
 
-namespace Sev1.Advertisements.Application.Exceptions.Domain
+namespace Sev1.Advertisements.AppServices.Exceptions.Domain
 {
     /// <summary>
     /// Доменное исключение при отсутствии прав

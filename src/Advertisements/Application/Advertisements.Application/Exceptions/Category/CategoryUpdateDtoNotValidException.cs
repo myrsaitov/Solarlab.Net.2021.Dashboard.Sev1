@@ -1,6 +1,6 @@
-﻿using Sev1.Advertisements.Application.Exceptions.Domain;
+﻿using Sev1.Advertisements.AppServices.Exceptions.Domain;
 
-namespace Sev1.Advertisements.Application.Exceptions.Category
+namespace Sev1.Advertisements.AppServices.Exceptions.Category
 {
     /// <summary>
     /// Исключение при несоответствующем запросе на обновление категории

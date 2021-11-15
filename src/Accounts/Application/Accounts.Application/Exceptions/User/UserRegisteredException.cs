@@ -1,6 +1,6 @@
-﻿using Sev1.Accounts.Application.Exceptions.Domain;
+﻿using Sev1.Accounts.AppServices.Exceptions.Domain;
 
-namespace Sev1.Accounts.Application.Exceptions.User
+namespace Sev1.Accounts.AppServices.Exceptions.User
 {
     /// <summary>
     /// Исключение при ошибках регистрации нового пользователя

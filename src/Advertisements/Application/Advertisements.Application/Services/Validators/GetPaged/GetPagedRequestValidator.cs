@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using Sev1.Advertisements.Application.Services.Validators.Base;
+using Sev1.Advertisements.AppServices.Services.Validators.Base;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 
-namespace Sev1.Advertisements.Application.Services.Validators.GetPaged
+namespace Sev1.Advertisements.AppServices.Services.Validators.GetPaged
 {
     /// <summary>
     /// Валидатор GetPaged

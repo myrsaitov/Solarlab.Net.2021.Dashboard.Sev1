@@ -1,4 +1,4 @@
-﻿namespace Sev1.Advertisements.Application.Contracts.Advertisement
+﻿namespace Sev1.Advertisements.AppServices.Contracts.Advertisement
 {
     /// <summary>
     /// DTO одного объявления при запросе пагинации

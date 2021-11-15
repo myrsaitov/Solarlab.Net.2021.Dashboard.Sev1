@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.UserFiles.Domain.Base;
 using Microsoft.EntityFrameworkCore;
-using Sev1.UserFiles.Application.Services.Repositories.Base;
+using Sev1.UserFiles.AppServices.Services.Repositories.Base;
 
 namespace Sev1.UserFiles.DataAccess.Base
 {

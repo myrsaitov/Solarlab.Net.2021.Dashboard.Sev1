@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sev1.UserFiles.Application.Exceptions.UserFile
+namespace Sev1.UserFiles.AppServices.Exceptions.UserFile
 {
     public class GetPagedRequestNotValidException : ApplicationException
     {

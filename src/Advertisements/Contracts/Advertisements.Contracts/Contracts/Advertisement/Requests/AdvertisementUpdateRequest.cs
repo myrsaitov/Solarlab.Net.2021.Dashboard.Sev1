@@ -1,7 +1,7 @@
 ﻿using sev1.Advertisements.Contracts.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace Sev1.Advertisements.Application.Contracts.Advertisement.Requests
+namespace Sev1.Advertisements.AppServices.Contracts.Advertisement.Requests
 {
     /// <summary>
     /// DTO запроса на обновление объявления
