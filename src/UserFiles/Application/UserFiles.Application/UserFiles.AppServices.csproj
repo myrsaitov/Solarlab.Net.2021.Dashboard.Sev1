@@ -6,10 +6,13 @@
 
   <ItemGroup>
     <Compile Remove="Application\**" />
+    <Compile Remove="Services\UserFiles\Validators\GetPaged\**" />
     <Compile Remove="Tests\**" />
     <EmbeddedResource Remove="Application\**" />
+    <EmbeddedResource Remove="Services\UserFiles\Validators\GetPaged\**" />
     <EmbeddedResource Remove="Tests\**" />
     <None Remove="Application\**" />
+    <None Remove="Services\UserFiles\Validators\GetPaged\**" />
     <None Remove="Tests\**" />
   </ItemGroup>
 
@@ -31,10 +34,6 @@
     <ProjectReference Include="..\..\..\Advertisements\Contracts\Advertisements.Contracts\Advertisements.Contracts.csproj" />
     <ProjectReference Include="..\..\Contracts\UserFiles.Contracts\UserFiles.Contracts.csproj" />
     <ProjectReference Include="..\..\Domain\UserFiles.Domain\UserFiles.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\Validators\GetPaged\" />
   </ItemGroup>
 
 </Project>

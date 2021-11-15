@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Responses;
 
-namespace Sev1.UserFiles.AppServices.Services.Interfaces.UserFile
+namespace Sev1.UserFiles.AppServices.Services.UserFile.Interfaces
 {
     public interface IUserFileService
     {

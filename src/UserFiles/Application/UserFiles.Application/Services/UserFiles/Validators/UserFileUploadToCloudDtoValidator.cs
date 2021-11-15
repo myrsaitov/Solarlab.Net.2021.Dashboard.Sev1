@@ -3,14 +3,14 @@ using Sev1.UserFiles.Contracts.Contracts.UserFile;
 using Sev1.UserFiles.AppServices.Services.Validators.Base;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
-namespace Sev1.UserFiles.AppServices.Services.Validators.UserFile
+namespace Sev1.UserFiles.AppServices.Services.UserFile.Validators
 {
     /// <summary>
     /// Валидатор DTO при создании объявления
     /// </summary>
-    public class UserFileUploadToDbDtoValidator : NullReferenceAbstractValidator<UserFileUploadRequest>
+    public class UserFileUploadToCloudDtoValidator : NullReferenceAbstractValidator<UserFileUploadRequest>
     {
-        public UserFileUploadToDbDtoValidator()
+        public UserFileUploadToCloudDtoValidator()
         {
             // Общая проверка
             RuleFor(x => x)

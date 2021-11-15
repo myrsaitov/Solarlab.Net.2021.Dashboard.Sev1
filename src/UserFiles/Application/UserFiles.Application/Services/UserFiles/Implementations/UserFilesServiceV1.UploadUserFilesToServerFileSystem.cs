@@ -2,16 +2,16 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Sev1.UserFiles.AppServices.Exceptions.UserFile;
-using Sev1.UserFiles.AppServices.Services.Interfaces.UserFile;
+using Sev1.UserFiles.AppServices.Services.UserFile.Interfaces;
 using System.Linq;
-using Sev1.UserFiles.AppServices.Services.Validators.UserFile;
+using Sev1.UserFiles.AppServices.Services.UserFile.Validators;
 using System.IO;
 using sev1.UserFiles.Contracts.Enums;
 using Sev1.UserFiles.AppServices.Exceptions.Domain;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Responses;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
-namespace Sev1.UserFiles.AppServices.Services.Implementations.UserFile
+namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
 {
     public sealed partial class UserFileServiceV1 : IUserFileService
     {

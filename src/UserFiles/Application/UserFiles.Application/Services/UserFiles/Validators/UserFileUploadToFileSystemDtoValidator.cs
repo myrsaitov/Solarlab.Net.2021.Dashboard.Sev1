@@ -1,9 +1,8 @@
 ﻿using FluentValidation;
-using Sev1.UserFiles.Contracts.Contracts.UserFile;
 using Sev1.UserFiles.AppServices.Services.Validators.Base;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
-namespace Sev1.UserFiles.AppServices.Services.Validators.UserFile
+namespace Sev1.UserFiles.AppServices.Services.UserFile.Validators
 {
     /// <summary>
     /// Валидатор DTO при создании объявления

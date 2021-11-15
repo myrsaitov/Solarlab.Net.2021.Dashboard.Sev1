@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.UserFiles.Domain.Base.Repositories;
 
-namespace Sev1.UserFiles.AppServices.Services.Repositories.UserFile
+namespace Sev1.UserFiles.AppServices.Services.UserFile.Repositories
 {
     /// <summary>
     /// Репозиторий объявлений

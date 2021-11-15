@@ -3,17 +3,17 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.UserFiles.AppServices.Exceptions.UserFile;
 using Sev1.UserFiles.Contracts.Contracts.UserFile;
-using Sev1.UserFiles.AppServices.Services.Interfaces.UserFile;
+using Sev1.UserFiles.AppServices.Services.UserFile.Interfaces;
 using System.Linq;
 using Sev1.UserFiles.AppServices.Exceptions;
-using Sev1.UserFiles.AppServices.Services.Validators.UserFile;
+using Sev1.UserFiles.AppServices.Services.UserFile.Validators;
 using System.IO;
 using sev1.UserFiles.Contracts.Enums;
 using Sev1.UserFiles.AppServices.Exceptions.Domain;
-using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Responses;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
-namespace Sev1.UserFiles.AppServices.Services.Implementations.UserFile
+namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
 {
     public sealed partial class UserFileServiceV1 : IUserFileService
     {
@@ -23,12 +23,12 @@ namespace Sev1.UserFiles.AppServices.Services.Implementations.UserFile
         /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<UserFileUploadResponse> UploadUserFilesToDb(
+        public async Task<UserFileUploadResponse> UploadUserFilesToCloud(
             UserFileUploadRequest request,
             CancellationToken cancellationToken)
         {
             // Fluent Validation
-            var validator = new UserFileUploadToDbDtoValidator();
+            var validator = new UserFileUploadToCloudDtoValidator();
             var result = await validator.ValidateAsync(request);
             if (!result.IsValid)
             {
@@ -93,10 +93,8 @@ namespace Sev1.UserFiles.AppServices.Services.Implementations.UserFile
                         IsDeleted = false
                     };
 
-                    // Cчитываем переданный файл в массив байтов
-                    using var binaryReader = new BinaryReader(file.OpenReadStream());
-                    // И добавляем в карточку файла
-                    userFile.Content = binaryReader.ReadBytes((int)file.Length);
+                    // Сохраняем файл в облако
+                    userFile.FilePath = await _yandexDiskApiClient.Upload(file);
 
                     // Сохраняем в базе карточку файла
                     await _userFileRepository.Save(

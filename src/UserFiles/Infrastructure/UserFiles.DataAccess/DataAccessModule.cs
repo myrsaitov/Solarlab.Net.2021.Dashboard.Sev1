@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Sev1.UserFiles.DataAccess.Repositories;
 using Sev1.UserFiles.DataAccess.Base;
-using Sev1.UserFiles.AppServices.Services.Repositories.UserFile;
+using Sev1.UserFiles.AppServices.Services.UserFile.Repositories;
 using Sev1.UserFiles.Domain.Base.Repositories;
 
 // Nugets:
