@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Sev1.Accounts.AppServices.Services.User.Interfaces;
 using Sev1.Accounts.AppServices.Services.User.Implementations;
 
-namespace Sev1.Accounts.Api
+namespace Sev1.Accounts.AppServices
 {
     public static class ApplicationModule
     {
@@ -19,7 +19,8 @@ namespace Sev1.Accounts.Api
             // For example, in a web application it creates 1 instance
             // per each http request but uses the same instance
             // in the other calls within that same web request.
-            services.AddScoped<IUserService, UserServiceV1>();
+            services
+                .AddScoped<IUserService, UserServiceV1>();
 
             return services;
         }

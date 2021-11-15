@@ -9,6 +9,7 @@ using Sev1.Accounts.MapsterMapper.MapProfiles;
 using Microsoft.Extensions.Hosting;
 using Sev1.Accounts.DataAccess;
 using Sev1.Avdertisements.Contracts.ApiClients.RegionValidate;
+using Sev1.Accounts.AppServices;
 
 namespace Sev1.Accounts.Api
 {
@@ -45,7 +46,7 @@ namespace Sev1.Accounts.Api
                 // Добавить сервис Cross-Origin Requests
                 .AddCors()
 
-                // Инжектирование наших сервисов
+                // Инжектирование сервисов приложения
                 .AddApplicationModule(Configuration)
 
                 // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
@@ -57,14 +58,16 @@ namespace Sev1.Accounts.Api
                 // Инжектирование API-клиентов
                 .AddTransient<IRegionValidateApiClient, RegionValidateApiClient>()
 
-
+                // Подключение к БД через информацию в "ConnectionString"
                 .AddDataAccessModule(configuration =>
 #if DEBUG
                     configuration.InSqlServer(Configuration.GetConnectionString("RemoteConnection"))
 #else
                     configuration.InSqlServer(Configuration.GetConnectionString("DefaultConnection"))
 #endif
-                ) // Подключение к БД через информацию в "ConnectionString"
+                )
+                
+                // Подключение Identity
                 .AddIdentity(Configuration);
 
             // Подключение Swagger

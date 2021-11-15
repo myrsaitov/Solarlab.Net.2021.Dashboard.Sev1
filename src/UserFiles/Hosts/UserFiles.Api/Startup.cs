@@ -8,8 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Sev1.UserFiles.MapsterMapper.MapProfiles;
 using Microsoft.Extensions.Hosting;
 using Sev1.UserFiles.DataAccess;
-using Sev1.UserFiles.AppServices.Services.UserFile.Interfaces;
-using Sev1.UserFiles.AppServices.Services.UserFile.Implementations;
 using Sev1.UserFile.Api;
 using Sev1.UserFiles.Contracts.ApiClients.YandexDisk;
 using System;
@@ -17,6 +15,7 @@ using Sev1.Accounts.Contracts.ApiClients.User;
 using sev1.Accounts.Contracts.UserProvider;
 using Sev1.Accounts.Contracts.Authorization;
 using Sev1.Avdertisements.Contracts.ApiClients.AdvertisementValidate;
+using Sev1.UserFiles.AppServices;
 
 namespace Sev1.UserFiles.Api
 {
@@ -67,8 +66,8 @@ namespace Sev1.UserFiles.Api
                 // Добавить сервис Cross-Origin Requests
                 .AddCors()
 
-                // Инжектирование наших сервисов
-                .AddScoped<IUserFileService, UserFileServiceV1>()
+                // Инжектирование сервисов приложения
+                .AddApplicationModule(Configuration)
 
                 // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
                 .AddHttpContextAccessor()

@@ -9,7 +9,7 @@ namespace Sev1.Advertisements.Api.Controllers.Region
     public partial class RegionController
     {
         /// <summary>
-        /// Возвращает таги с пагинацией
+        /// Возвращает регионы с пагинацией
         /// </summary>
         /// <param name="request">Запрос на пагинацию</param>
         /// <param name="cancellationToken">Маркёр отмены</param>

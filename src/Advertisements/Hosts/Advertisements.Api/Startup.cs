@@ -8,18 +8,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Sev1.Advertisements.MapsterMapper.MapProfiles;
 using Microsoft.Extensions.Hosting;
 using Sev1.Advertisements.DataAccess;
-using Sev1.Advertisements.AppServices.Services.Category.Interfaces;
-using Sev1.Advertisements.AppServices.Services.Category.Implementations;
-using Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces;
-using Sev1.Advertisements.AppServices.Services.Advertisement.Implementations;
-using Sev1.Advertisements.AppServices.Services.Tag.Interfaces;
-using Sev1.Advertisements.AppServices.Services.Tag.Implementations;
 using Sev1.Advertisement.Api;
 using Sev1.Accounts.Contracts.ApiClients.User;
 using sev1.Accounts.Contracts.UserProvider;
 using Sev1.Accounts.Contracts.Authorization;
-using Sev1.Advertisements.AppServices.Services.Region.Interfaces;
-using Sev1.Advertisements.AppServices.Services.Region.Implementations;
+using Sev1.Advertisements.AppServices;
 
 namespace Sev1.Advertisements.Api
 {
@@ -70,11 +63,8 @@ namespace Sev1.Advertisements.Api
                 // Добавить сервис Cross-Origin Requests
                 .AddCors()
 
-                // Инжектирование наших сервисов
-                .AddScoped<ICategoryService, CategoryServiceV1>()
-                .AddScoped<IAdvertisementService, AdvertisementServiceV1>()
-                .AddScoped<ITagService, TagServiceV1>()
-                .AddScoped<IRegionService, RegionServiceV1>()
+                // Инжектирование сервисов приложения
+                .AddApplicationModule(Configuration)
 
                 // Добавляем фабрику API-клиентов
                 .AddHttpClient()
