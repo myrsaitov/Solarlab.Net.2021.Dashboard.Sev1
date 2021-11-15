@@ -44,11 +44,12 @@ namespace Comments.API
                 options.UseSqlServer(connection, b => b.MigrationsAssembly("Comments.Migrations")));
 
 
-            services.AddScoped<ICommentsService, CommentsService>();
+            //services.AddScoped<ICommentsService, CommentsService>();
             services.AddScoped<CommentsExceptionFilter>();
 
 
             services.AddScoped<ICommentsRepository, CommentRepository>();
+            services.AddScoped<IBaseRepository<>, BaseRepository<>>();
             services.AddAutoMapper(typeof(CommentMapperProfile));
         }
 

@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Comments.Contracts;
+using Comments.Contracts.AdvertisementChat;
+using Comments.Contracts.SellerConsumerChat;
 using Comments.Domain.Entities;
 
 namespace Comments.Mapper
@@ -8,9 +10,13 @@ namespace Comments.Mapper
     {
         public CommentMapperProfile()
         {
-            CreateMap<CommentDtoRequestCreate, Comment>();
+            CreateMap<AdvertisementChatDtoRequestGetPaged, AdvertisementIdChatId>();
+            CreateMap<AdvertisementChatDtoRequestDeleteChat, AdvertisementIdChatId>();
+            CreateMap<AdvertisementChatDtoRequestCreateComment, AdvertisementIdChatId>();
 
-            CreateMap<CommentDtoRequestUpdate, Comment>();
+            CreateMap<SellerConsumerChatDtoRequestGetPaged, AdvertisementIdConsumerIdChatId>();
+            CreateMap<SellerConsumerChatDtoRequestDeleteChat, AdvertisementIdConsumerIdChatId>();
+            CreateMap<SellerConsumerChatDtoRequestCreateComment, AdvertisementIdConsumerIdChatId>();
 
             /// TODO: username => CommentDtoResponce
             CreateMap<Comment, CommentDtoResponce>();

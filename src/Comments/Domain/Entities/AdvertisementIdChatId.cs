@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comments.Domain.Entities.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace Comments.Domain.Entities
 {
     /// <summary>
     /// Комментарии к объявлению
-    /// Сопоставление Id объявления и Id чата
+    /// Сопоставление Id объявления к Чату
     /// </summary>
-    public class AdvertisementIdChatId : ChatBase
+    public class AdvertisementIdChatId : ChatIdBase
     {
         /// <summary>
         /// Id Объявления

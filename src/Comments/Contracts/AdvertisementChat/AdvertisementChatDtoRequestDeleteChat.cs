@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Comments.Contracts.Base;
+using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Comments.Contracts.AdvertisementChat
 {
-    public class AdvertisementChatDtoRequestDeleteChat
+    public class AdvertisementChatDtoRequestDeleteChat : DtoRequestDeleteChatBase
     {
         /// <summary>
-        /// Id объявления, к которому прикреплён коментарий
+        /// Id объявления
         /// </summary>
         [Required]
         public Guid AdvertisementId { get; set; }

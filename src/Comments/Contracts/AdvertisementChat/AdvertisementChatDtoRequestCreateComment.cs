@@ -1,14 +1,10 @@
 ﻿using Comments.Contracts.Base;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Comments.Contracts.AdvertisementChat
 {
-    public class AdvertisementChatDtoRequestCreateComment : BaseMessage
+    public class AdvertisementChatDtoRequestCreateComment : DtoRequestCreateCommentBase
     {
         /// <summary>
         /// Id объявления, к которому прикреплён коментарий

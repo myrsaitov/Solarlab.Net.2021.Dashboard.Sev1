@@ -1,4 +1,5 @@
 ﻿using Comments.Domain.Exceptions;
+using Comments.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Comments.Repository.Persistance
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
         private readonly CommentDBContext _context;
-        protected DbSet<TEntity> _dbSet { get; }
+        private DbSet<TEntity> _dbSet { get; }
 
         public BaseRepository(CommentDBContext context)
         {
@@ -51,6 +52,10 @@ namespace Comments.Repository.Persistance
 
         public async Task<List<TEntity>> GetPagedAsync(Expression<Func<TEntity, bool>> predicate, int PageSize, int PageNumber, CancellationToken token)
         {
+            var numberOfItems = await _dbSet.CountAsync(predicate);
+            var numberOfPages = (int)Math.Ceiling(numberOfItems / (double)PageSize);
+            PageNumber = PageNumber > numberOfPages ? numberOfPages : PageNumber;
+
             var items = await _dbSet.Where(predicate).Skip(PageSize * PageNumber).Take(PageSize).ToListAsync(token);
             return items;
         }

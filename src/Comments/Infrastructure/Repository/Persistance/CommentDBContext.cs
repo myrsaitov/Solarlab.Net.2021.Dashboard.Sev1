@@ -12,9 +12,10 @@ namespace Comments.Repository.Persistance
         public DbSet<AdvertisementIdChatId> AdvertisementIdChatId_Table { get; set; }
         public DbSet<AdvertisementIdConsumerIdChatId> AdvertisementIdConsumerIdChatId_Table { get; set; }
         public DbSet<Comment> Comment_Table { get; set; }
-        public DbSet<CommentReview> CommentReview_Table { get; set; }
-        public DbSet<UserIdChatId> UserIdChatId_Table { get; set; }
-        public DbSet<UserRating> UserRating_Table { get; set; }
+        public DbSet<Chat> Chat_Table { get; set; }
+        //public DbSet<CommentReview> CommentReview_Table { get; set; }
+        //public DbSet<UserIdChatId> UserIdChatId_Table { get; set; }
+        //public DbSet<UserRating> UserRating_Table { get; set; }
         public CommentDBContext(DbContextOptions<CommentDBContext> options) : base(options)
         {
         }
@@ -24,9 +25,10 @@ namespace Comments.Repository.Persistance
             modelBuilder.ApplyConfiguration(new AdvertisementIdChatIdConfiguration());
             modelBuilder.ApplyConfiguration(new AdvertisementIdConsumerIdChatIdConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
-            modelBuilder.ApplyConfiguration(new CommentReviewConfiguration());
-            modelBuilder.ApplyConfiguration(new UserIdChatIdConfiguration());
-            modelBuilder.ApplyConfiguration(new UserRatingConfiguration());
+            modelBuilder.ApplyConfiguration(new ChatConfiguration());
+            //modelBuilder.ApplyConfiguration(new CommentReviewConfiguration());
+            //modelBuilder.ApplyConfiguration(new UserIdChatIdConfiguration());
+            //modelBuilder.ApplyConfiguration(new UserRatingConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

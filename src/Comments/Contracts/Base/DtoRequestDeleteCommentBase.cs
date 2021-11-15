@@ -1,17 +1,16 @@
-﻿using Comments.Contracts.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Comments.Contracts.SellerConsumerChat
+namespace Comments.Contracts.Base
 {
-    public class SellerConsumerChatDtoRequestUpdateComment : DtoRequestUpdateCommentBase
+    public class DtoRequestDeleteCommentBase
     {
         /// <summary>
-        /// Id Комментария
+        /// Id Сообщения
         /// </summary>
         [Required]
         public Guid CommentId { get; set; }

@@ -8,26 +8,26 @@ using System.Threading.Tasks;
 
 namespace Comments.Contracts.Base
 {
-    public class CommentDtoResponceChatBase
+    public class DtoRequestGetPagedBase
     {
+        /// <summary>
+        /// Id объявления
+        /// </summary>
+        [Required]
+        public Guid AdvertisementId { get; set; }
+
         /// <summary>
         /// Номер страницы
         /// </summary>
+        [Required]
+        [GreaterThan(-1)]
         public int PageNumber { get; set; }
 
         /// <summary>
         /// Количество комментариев на странице
         /// </summary>
+        [Required]
+        [GreaterThan(0)]
         public int PageSize { get; set; }
-
-        /// <summary>
-        /// Количество страниц
-        /// </summary>
-        public int TotalPages { get; set; }
-
-        /// <summary>
-        /// Сообщения на странице
-        /// </summary>
-        public List<CommentDtoResponce> Messages { get; set; }
-}
+    }
 }

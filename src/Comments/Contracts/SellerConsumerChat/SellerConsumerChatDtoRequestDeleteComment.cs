@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comments.Contracts.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,12 +8,7 @@ using System.Threading.Tasks;
 
 namespace Comments.Contracts.SellerConsumerChat
 {
-    public class SellerConsumerChatDtoRequestDeleteComment
+    public class SellerConsumerChatDtoRequestDeleteComment : DtoRequestDeleteCommentBase
     {
-        /// <summary>
-        /// Id Сообщения
-        /// </summary>
-        [Required]
-        public Guid CommentId { get; set; }
     }
 }

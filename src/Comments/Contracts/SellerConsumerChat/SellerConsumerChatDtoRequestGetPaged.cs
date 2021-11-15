@@ -1,4 +1,5 @@
-﻿using Comments.Contracts.ValidationAttributes;
+﻿using Comments.Contracts.Base;
+using Comments.Contracts.ValidationAttributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,26 +9,12 @@ using System.Threading.Tasks;
 
 namespace Comments.Contracts.SellerConsumerChat
 {
-    public class SellerConsumerChatDtoRequestGetPaged
+    public class SellerConsumerChatDtoRequestGetPaged : DtoRequestGetPagedBase
     {
         /// <summary>
-        /// Id объявления, к которому прикреплён коментарий
+        /// Id Покупателя
         /// </summary>
         [Required]
-        public Guid AdvertisementId { get; set; }
-
-        /// <summary>
-        /// Номер страницы
-        /// </summary>
-        [Required]
-        [GreaterThan(-1)]
-        public int PageNumber { get; set; }
-
-        /// <summary>
-        /// Количество комментариев на странице
-        /// </summary>
-        [Required]
-        [GreaterThan(0)]
-        public int PageSize { get; set; }
+        public Guid ConsumerId { get; set; }
     }
 }

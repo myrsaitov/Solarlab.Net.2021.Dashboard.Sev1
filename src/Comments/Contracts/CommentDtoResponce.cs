@@ -21,9 +21,14 @@ namespace Comments.Contracts
         public DateTime CreationTime { get; set; }
 
         /// <summary>
-        /// Статус сообщения : Обычное, Изменённое, Новое
+        /// Статус сообщения : Обычное, Новое
         /// </summary>
         public CommentStatus CommentStatus { get; set; }
+
+        /// <summary>
+        /// Сообщение отредактировано?
+        /// </summary>
+        public bool IsChanged { get; set; }
 
         /// <summary>
         /// Id объявления, к которому прикреплён коментарий

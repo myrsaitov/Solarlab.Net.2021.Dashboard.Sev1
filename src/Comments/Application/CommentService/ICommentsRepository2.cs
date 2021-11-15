@@ -9,7 +9,7 @@ namespace Comments.Services
     /// <summary>
     /// Интерфейс репозитория комментариев
     /// </summary>
-    public interface ICommentsRepository
+    public interface ICommentsRepository2
     {
         /// <summary>
         /// Получить комментарий по его Id
