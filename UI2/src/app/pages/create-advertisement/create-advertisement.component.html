@@ -37,6 +37,14 @@
           </select>
         </div>
         <div class="form-group">
+          <label for="regionId">Регион</label>
+          <select class="form-control custom-select" id="regionId" formControlName="regionId" autofocus [class.is-invalid]="regionId.invalid"
+                  *ngIf="regions">
+            <option [value]="null">Выберите регион</option>
+            <option *ngFor="let region of regions" [value]="region.id">{{region.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="input_tags">Введите тэги</label>
           <input type="text" class="form-control" id="input_tags" formControlName="input_tags" placeholder="Введите тэги">
         </div>

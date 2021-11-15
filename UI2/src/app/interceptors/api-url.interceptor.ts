@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const url = `${environment.baseApiUrl}${req.url}`;
+    const url = `${req.url}`;
     const clonedReq = req.clone({url});
     console.log("req.clone({url})");
     console.log(url);

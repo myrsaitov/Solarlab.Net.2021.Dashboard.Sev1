@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SL2021-spa": {
+    "sev1-spa": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
                             "debug",
                             "lodash"
                           ], 
-            "outputPath": "dist/SL2021-spa",
+            "outputPath": "dist/sev1-spa",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -73,18 +73,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SL2021-spa:build"
+            "browserTarget": "sev1-spa:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "SL2021-spa:build:production"
+              "browserTarget": "sev1-spa:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SL2021-spa:build"
+            "browserTarget": "sev1-spa:build"
           }
         },
         "test": {
@@ -121,15 +121,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "SL2021-spa:serve"
+            "devServerTarget": "sev1-spa:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "SL2021-spa:serve:production"
+              "devServerTarget": "sev1-spa:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "SL2021-spa"
+  "defaultProject": "sev1-spa"
 }

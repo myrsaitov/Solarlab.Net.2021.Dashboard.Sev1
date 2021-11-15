@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   notloginedstatus = false;
 
   private formObj = {
-    userName: [null, [Validators.required, Validators.pattern("[a-zA-Z0-9_]*")]],
+    eMail: [null, [Validators.required, Validators.email]],
     password: [null, [Validators.required, Validators.min(8)]],
     rememberMe: [false]
   };
@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
 
   }
 
-  get userName() {
-    return this.loginForm.get('userName');
+  get eMail() {
+    return this.loginForm.get('eMail');
   }
 
   get password() {
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     }
     const payload: ILogin = this.loginForm.getRawValue();
 
-    localStorage.setItem('currentUser', payload.userName);
+    localStorage.setItem('currentUser', payload.eMail);
    
     await this.baseService.post(ApiUrls.login, payload)
       .then(res => {

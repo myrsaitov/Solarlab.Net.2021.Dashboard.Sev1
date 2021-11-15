@@ -11,6 +11,8 @@ import {ICategory} from '../../models/category/category-model';
 import { TagService } from '../../services/tag.service';
 import { TagModel } from 'src/app/models/tag/tag-model';
 import { isNullOrUndefined } from 'util';
+import { RegionService } from 'src/app/services/region.service';
+import { RegionModel } from 'src/app/models/region/region-model';
 
 @Component({
   selector: 'app-create-advertisement',
@@ -21,26 +23,40 @@ export class CreateAdvertisementComponent implements OnInit {
   form: FormGroup;
   categories$: Observable<ICategory[]>;
   tags: TagModel[];
+  regions: RegionModel[];
 
   constructor(private fb: FormBuilder,
               private advertisementService: AdvertisementService,
               private categoryService: CategoryService,
               private router: Router,
               private toastService: ToastService,
-              private tagService: TagService) {
+              private tagService: TagService,
+              private regionService: RegionService) {
   }
 
   ngOnInit() {
 
+    // Подписка на таги
     this.tagService.getTags().subscribe(getPagedTags => 
       {
         if (isNullOrUndefined(getPagedTags)) {
           this.router.navigate(['/']);
           return;
         }
-  
         this.tags = getPagedTags.items;
       });
+
+    // Подписка на регионы
+    this.regionService.getRegions().subscribe(getPagedRegions => 
+      {
+        if (isNullOrUndefined(getPagedRegions)) {
+          this.router.navigate(['/']);
+          return;
+        }
+        this.regions = getPagedRegions.items;
+      });
+
+
 
     this.form = this.fb.group({
       title: ['', Validators.required],

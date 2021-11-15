@@ -79,7 +79,7 @@ import { ConnectionpageComponent } from './components/connectionpage/connectionp
     },
     {
       provide: 'BASE_API_URL',
-      useValue: environment.baseApiUrl
+      useValue: environment.baseAccountsApiUrl
     },
   ],
   bootstrap: [AppComponent]

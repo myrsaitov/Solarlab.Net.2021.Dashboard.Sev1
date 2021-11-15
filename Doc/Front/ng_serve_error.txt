@@ -1,0 +1,19 @@
+ng : Не удается загрузить файл C:\Users\user\AppData\Roaming\npm\ng.ps1. Файл C:\Users\user\AppData\Roaming\npm\ng.ps1 не имеет цифровой подписи. 
+Невозможно выполнить сценарий в указанной системе. Для получения дополнительных сведений о выполнении сценариев и настройке политики выполнения см
+. about_Execution_Policies по адресу https:/go.microsoft.com/fwlink/?LinkID=135170.
+строка:1 знак:1
++ ng serve
++ ~~
+    + CategoryInfo          : Ошибка безопасности: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+
+
+
+
+
+
+
+
+
+Открыть PowerShell от администратора
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted

@@ -5,12 +5,13 @@ import {ICategory} from '../models/category/category-model';
 import {ICategoryFilter} from '../models/category/category-filter.model';
 import {GetPagedCategoryResponseModel} from '../models/category/get-paged-category-response-model';
 import {EMPTY, Observable} from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-  private ROOT_URL = `api/v1/categories`;
+  private ROOT_URL = `${environment.baseAdvertisementsApiUrl}api/v1/categories`;
 
   constructor(private http: HttpClient) {
   }

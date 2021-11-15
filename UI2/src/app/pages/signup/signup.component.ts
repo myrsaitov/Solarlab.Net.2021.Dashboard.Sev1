@@ -96,7 +96,7 @@ export class SignupComponent implements OnInit {
       }
     
       const payload: ILogin = this.form.getRawValue();
-      localStorage.setItem('currentUser', payload.userName);
+      localStorage.setItem('currentUser', payload.eMail);
       await this.baseService.post(ApiUrls.login, payload)
         .then(res => {
           if (res) 

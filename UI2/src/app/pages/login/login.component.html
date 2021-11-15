@@ -10,14 +10,14 @@
        <p><span class="colortext">Ошибка аутентификации!</span></p>
      </div>
   <ng-container [formGroup]="loginForm">
-       <label for="inputUserName"
-       class="sr-only">Email</label>
-<input formControlName="userName" 
-       [class.is-invalid]="userName.invalid && userName.touched"
+       <label for="inputEMail"
+       class="sr-only">eMail</label>
+<input formControlName="eMail" 
+       [class.is-invalid]="eMail.invalid && eMail.touched"
        type="text"
-       id="inputUserName"
+       id="inputEMail"
        class="form-control"
-       placeholder="Логин"
+       placeholder="e-mail"
        required
        autofocus>
     <label for="inputPassword"

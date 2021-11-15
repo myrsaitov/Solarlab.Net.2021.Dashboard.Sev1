@@ -7,12 +7,13 @@ import {IAdvertisement} from '../models/advertisement/i-advertisement';
 import {GetPagedContentResponseModel} from '../models/advertisement/get-paged-content-response-model';
 import {ICreateAdvertisement} from '../models/advertisement/advertisement-create-model';
 import {IEditAdvertisement} from '../models/advertisement/advertisement-edit-model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdvertisementService {
-  private ROOT_URL = `api/v1/contents`;
+  private ROOT_URL = `${environment.baseAdvertisementsApiUrl}api/v1/advertisements`;
   private decpage: number;
 
   constructor(private http: HttpClient) {
