@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark mb-4 d-flex">
+  <a class="navbar-brand"
+  role="button" (click)="getContent()">Доска объявлений</a>
+  <div *ngIf="categories$ | async as categories">
+  <a *ngFor="let category of categories">
+    <a class="badge badge-secondary" role="button" (click)="getContentByCategory(category.id)">{{category.name}}</a>&nbsp;&nbsp;</a>
+  </div>
+
+  <ul class="nav nav-pills ml-auto">
+    <ng-container *ngIf="!(isAuth$ | async); else noAuthenticated">
+      <li class="nav-item">
+        <a class="nav-link"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}"
+           routerLink="/login">Вход</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}"
+           routerLink="/signup">Регистрация</a>
+      </li>
+      
+    </ng-container>
+
+    <ng-container [formGroup]="form">
+      <div class="form-group">
+        <input type="text" class="form-control" (keydown.enter)="getContentBySearchStr($event)" id="searchStr" formControlName="searchStr" placeholder="Поиск" autofocus>&nbsp;&nbsp;
+      </div>
+    </ng-container>
+    <ng-template #noAuthenticated>
+      <li class="nav-item">
+        <button class="btn btn-outline-primary"
+                (click)="logout()">Выход
+        </button>
+        
+        <h4>Вы вошли под именем: 
+          <span class="badge badge-secondary" *ngIf="userName" role="button" (click)="getContentByUserName()">{{userName()}}</span>&nbsp;&nbsp;
+          </h4>
+      </li>
+      <a *ngIf="userName" role="button" (click)="getContentByUserName(userName)"><img src="/api/v1/userpics/{{userName()}}" width="100" height="100">&nbsp;&nbsp;</a>
+    </ng-template>
+  </ul>
+</nav>
