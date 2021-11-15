@@ -3,8 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Accounts.Application.Contracts.User;
-using Sev1.Accounts.Contracts;
+using Sev1.Accounts.Contracts.Contracts.User.Requests;
 
 namespace Sev1.Accounts.Api.Controllers.Account
 {
@@ -28,20 +27,9 @@ namespace Sev1.Accounts.Api.Controllers.Account
             UserRegisterRequest request,
             CancellationToken cancellationToken)
         {
-            var registrationResult = await _userService.Register(
-                new Register.Request
-                {
-                    UserName = request.UserName,
-                    Email = request.Email,
-                    Password = request.Password,
-                    FirstName = request.FirstName,
-                    LastName = request.LastName,
-                    MiddleName = request.MiddleName,
-                    PhoneNumber = request.PhoneNumber
-                },
-                cancellationToken);
-            //TODO update controller!
-            return Created($"api/v1/account/{registrationResult.UserId}", new { });
+            return Ok(await _userService.Register(
+                request,
+                cancellationToken));
         }
     }
 }

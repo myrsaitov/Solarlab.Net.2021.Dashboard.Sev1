@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Sev1.Accounts.MapsterMapper.MapProfiles;
 using Microsoft.Extensions.Hosting;
 using Sev1.Accounts.DataAccess;
+using Sev1.Avdertisements.Contracts.ApiClients.RegionValidate;
+using Sev1.Accounts.AppServices;
 
 namespace Sev1.Accounts.Api
 {
@@ -20,7 +22,19 @@ namespace Sev1.Accounts.Api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // This method gets called by the runtime.
+        // Use this method to add services to the container.
+        // Это опциональный метод в классе Startup,
+        // который используется для настройки сервисов
+        // для приложения.Когда в приложение поступает
+        // какой-либо запрос, сначала вызывается метод
+        // ConfigureService.
+        // Метод ConfigureServices включает параметр
+        // IServiceCollection для регистрации сервисов.
+        // Этот метод должен быть объявлен с модификатором
+        // доступа public, чтобы среда могла читать контент
+        // из метаданных.
+        // https://habr.com/ru/company/otus/blog/542494/
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers().AddNewtonsoftJson(options =>
@@ -28,16 +42,32 @@ namespace Sev1.Accounts.Api
             );
 
             services
-                .AddCors() // Добавить сервис Cross-Origin Requests
-                .AddApplicationModule(Configuration) // Инжектирование наших сервисов
-                .AddHttpContextAccessor() // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
+
+                // Добавить сервис Cross-Origin Requests
+                .AddCors()
+
+                // Инжектирование сервисов приложения
+                .AddApplicationModule(Configuration)
+
+                // Инкапсулирует всю специфичную для HTTP информацию об отдельном HTTP-запросе.
+                .AddHttpContextAccessor()
+
+                // Добавляем фабрику API-клиентов
+                .AddHttpClient()
+
+                // Инжектирование API-клиентов
+                .AddTransient<IRegionValidateApiClient, RegionValidateApiClient>()
+
+                // Подключение к БД через информацию в "ConnectionString"
                 .AddDataAccessModule(configuration =>
 #if DEBUG
                     configuration.InSqlServer(Configuration.GetConnectionString("RemoteConnection"))
 #else
                     configuration.InSqlServer(Configuration.GetConnectionString("DefaultConnection"))
 #endif
-                ) // Подключение к БД через информацию в "ConnectionString"
+                )
+                
+                // Подключение Identity
                 .AddIdentity(Configuration);
 
             // Подключение Swagger
@@ -66,8 +96,12 @@ namespace Sev1.Accounts.Api
             // per each http request but uses the same instance
             // in the other calls within that same web request.
             services.AddScoped<IMapper, ServiceMapper>();
-            
-            services.AddApplicationException(config => { config.DefaultErrorStatusCode = 500; });
+
+            // Middleware обработки исключительных ситуаций
+            services.AddApplicationException(config =>
+            {
+                config.DefaultErrorStatusCode = 500; // Статус код по умолчанию
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

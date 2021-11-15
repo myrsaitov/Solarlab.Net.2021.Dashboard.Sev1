@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
-using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
@@ -13,25 +13,25 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка получения объявления по Id
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
-        /// <param name="userId">Id пользователя</param>
+        /// <param name="userId">Идентификатор пользователя</param>
         /// <param name="advertisementTitle">Заголовок объявления</param>
         /// <param name="advertisementBody">Тело объявления</param>
         /// <param name="tagBodies">Таги</param>
-        /// <param name="userId">Id пользователя, который создал объявление</param>
-        /// <param name="categoryId">Id категории</param>
+        /// <param name="userId">Идентификатор пользователя, который создал объявление</param>
+        /// <param name="categoryId">Идентификатор категории</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task GetById_Returns_Response_Success(
-            int id, 
+            int? id, 
             CancellationToken cancellationToken, 
             string advertisementTitle,
             string advertisementBody,
             string[] tagBodies,
             string userId,
-            int categoryId)
+            int? categoryId)
         {
             // Arrange
 
@@ -49,7 +49,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             };
 
             // Заполняем таги
-            int tagId = 1;
+            int? tagId = 1;
             foreach (string body in tagBodies)
             {
                 var tag = new Domain.Tag()
@@ -63,11 +63,11 @@ namespace Sev1.Advertisements.Tests.Advertisement
             // "Достаем" из базы
             _advertisementRepositoryMock
                 .Setup(_ => _.FindByIdWithCategoriesAndTags(
-                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(advertisement) // в результате выполнения возвращает объект
                 .Callback(( // Используем передаваемые в мок аргументы для имитации логики
-                    int _advertisementId, 
+                    int? _advertisementId, 
                     CancellationToken ct) => advertisement.Id = _advertisementId)
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
@@ -85,13 +85,13 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка исключения, если в базе нет объявления с таким Id
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task GetById_Throws_Exception_When_Advertisement_Is_Null(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -102,7 +102,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             // "Достаем" из базы
             _advertisementRepositoryMock
                 .Setup(_ => _.FindByIdWithCategoriesAndTags(
-                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(advertisement); // в результате выполнения возвращает объект
  
@@ -116,13 +116,13 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка исключения, если аргумент не проходит валидацию
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null,null)]
         public async Task GetById_Throws_Exception_When_Request_Is_Null(
-            int id, 
+            int? id, 
             CancellationToken cancellationToken)
         {
             // Act

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sev1.Accounts.Application.Interfaces.Identity;
-using Sev1.Accounts.Application.Interfaces.User;
+using Sev1.Accounts.AppServices.Services.Identity.Interfaces;
+using Sev1.Accounts.AppServices.Services.User.Interfaces;
 
 namespace Sev1.Accounts.Api.Controllers.Account
 {

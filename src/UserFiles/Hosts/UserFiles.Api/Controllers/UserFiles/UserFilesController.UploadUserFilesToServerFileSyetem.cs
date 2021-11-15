@@ -3,8 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.UserFiles.Application.Contracts.UserFile;
-using Sev1.UserFiles.Contracts.Authorization;
+using Sev1.Accounts.Contracts.Authorization;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
 namespace Sev1.UserFiles.Api.Controllers.UserFile
 {
@@ -13,7 +13,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         /// <summary>
         /// Загрузить файл в файловую систему сервера
         /// </summary>
-        /// <param name="id">Id объявления, к которомы прикрепляются файлы</param>
+        /// <param name="id">Идентификатор объявления, к которомы прикрепляются файлы</param>
         /// <param name="files">Файлы с формы</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
@@ -22,13 +22,13 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> UploadUserFilesToServerFileSyetem(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}"
-            int id,
+            int? id,
             [FromForm]
             List<IFormFile> files,
             CancellationToken cancellationToken)
         {
             var res = await _userFileService.UploadUserFilesToServerFileSystem(
-                new UserFileUploadDto()
+                new UserFileUploadRequest()
                 {
                     BaseUri = string.Format(
                         "{0}://{1}",

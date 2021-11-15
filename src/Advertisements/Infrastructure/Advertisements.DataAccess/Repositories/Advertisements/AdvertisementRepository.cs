@@ -6,20 +6,20 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System;
-using Sev1.Advertisements.Application.Repositories.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Repositories;
 using Sev1.Advertisements.DataAccess.Base;
 using sev1.Advertisements.Contracts.Enums;
 
 namespace Sev1.Advertisements.DataAccess.Repositories
 {
-    public sealed class AdvertisementRepository : EfRepository<Advertisement, int>, IAdvertisementRepository
+    public sealed class AdvertisementRepository : EfRepository<Advertisement, int?>, IAdvertisementRepository
     {
         public AdvertisementRepository(DatabaseContext dbСontext) : base(dbСontext)
         {
         }
 
         public async Task<Advertisement> FindByIdWithTagsInclude(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             return await DbСontext
@@ -28,7 +28,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
         }
         public async Task<Advertisement> FindByIdWithCategoriesAndTags(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             return await DbСontext
@@ -40,7 +40,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
         }
 
-        public async Task<int> CountActive(
+        public async Task<int?> CountActive(
             Expression<Func<Advertisement, bool>> predicate,
             CancellationToken cancellationToken)
         {

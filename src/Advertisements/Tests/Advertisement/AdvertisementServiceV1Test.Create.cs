@@ -1,14 +1,14 @@
-﻿using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Moq;
+﻿using Moq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System.Linq.Expressions;
 using System;
-using Sev1.Advertisements.Application.Exceptions.Category;
-using Sev1.Advertisements.Application.Exceptions.Advertisement;
-using Sev1.Advertisements.Contracts.Exception;
+using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
+using Sev1.Advertisements.Domain.Base.Exceptions;
+using Sev1.Advertisements.AppServices.Services.Category.Exceptions;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
@@ -17,19 +17,19 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка удачного создания объявления
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">Запрос</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Create_Returns_Response_Success(
-            AdvertisementCreateDto model,
+            AdvertisementCreateRequest request,
             CancellationToken cancellationToken)
         {
             // Arrange
 
             // Чтобы пройти валидацию, правим tags
-            model.TagBodies = new string[3] { "111", "222", "333" };
+            request.TagBodies = new string[3] { "111", "222", "333" };
 
             // Возвращаем польователя, который "создает" это объявление
             _userProviderMock
@@ -41,16 +41,16 @@ namespace Sev1.Advertisements.Tests.Advertisement
             var category = new Domain.Category();
             _categoryRepositoryMock
                 .Setup(_ => _.FindById(
-                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(category) // в результате выполнения возвращает объект
                 .Callback(( // Используем передаваемые в мок аргументы для имитации логики
-                    int _categoryId, 
+                    int? _categoryId, 
                     CancellationToken ct) => category.Id = _categoryId)
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
             // Id тага, который "возвращается" из базы
-            int tagId = 1;
+            int? tagId = 1;
             // "Поиск" тага в базе
             _tagRepositoryMock
                 .Setup(_ => _.FindWhere(
@@ -59,7 +59,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .ReturnsAsync(() => new Domain.Tag()
                 {
                     Id = tagId,
-                    Body = model.TagBodies[1]
+                    Body = request.TagBodies[1]
                 }) // в результате выполнения возвращает объект
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
@@ -80,7 +80,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // Act
             await _advertisementServiceV1.Create(
-                model,
+                request,
                 cancellationToken);
 
             // Assert
@@ -93,21 +93,20 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверяет реакцию на отсутствие аутентификации
         /// </summary>
-        /// <param name="accessToken">JWT Token, который пришел с запросом</param>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">Запрос</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData] //accessToken = null, а остальное автозаполняется
         public async Task Create_Throws_Exception_When_CurrentUserId_Is_Null(
-            AdvertisementCreateDto model,
+            AdvertisementCreateRequest request,
             CancellationToken cancellationToken)
         {
             {
                 // Arrange
 
                 // Чтобы пройти валидацию, правим tags
-                model.TagBodies = new string[3] { "111", "222", "333" };
+                request.TagBodies = new string[3] { "111", "222", "333" };
 
                 // Возвращаем польователя, который "создает" это объявление
                 _userProviderMock
@@ -117,7 +116,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 // Act
                 await Assert.ThrowsAsync<NoRightsException>(
                     async () => await _advertisementServiceV1.Create(
-                        model,
+                        request,
                         cancellationToken));
             }
         }
@@ -125,19 +124,19 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверяет реакцию на отсутствие категории
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">Запрос</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Create_Throws_Exception_When_Category_Is_Null(
-            AdvertisementCreateDto model,
+            AdvertisementCreateRequest request,
             CancellationToken cancellationToken)
         {
             // Arrange
 
             // Чтобы пройти валидацию, правим tags
-            model.TagBodies = new string[3] { "111", "222", "333" };
+            request.TagBodies = new string[3] { "111", "222", "333" };
 
             // Возвращаем польователя, который "создает" это объявление
             _userProviderMock
@@ -149,7 +148,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             Domain.Category category = null;
             _categoryRepositoryMock
                 .Setup(_ => _.FindById(
-                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(category) // в результате выполнения возвращает объект
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
@@ -157,26 +156,26 @@ namespace Sev1.Advertisements.Tests.Advertisement
             // Act
             await Assert.ThrowsAsync<CategoryNotFoundException>(
                 async () => await _advertisementServiceV1.Create(
-                    model,
+                    request,
                     cancellationToken));
         }
 
         /// <summary>
         /// Проверяет реакцию на невалидный аргумент
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null, null)]
         public async Task Create_Throws_Exception_When_Request_Is_Null(
-            AdvertisementCreateDto model, 
+            AdvertisementCreateRequest request, 
             CancellationToken cancellationToken)
         {
             // Act
             await Assert.ThrowsAsync<AdvertisementCreateDtoNotValidException>(
                 async () => await _advertisementServiceV1.Create(
-                    model, 
+                    request, 
                     cancellationToken));
         }
     }

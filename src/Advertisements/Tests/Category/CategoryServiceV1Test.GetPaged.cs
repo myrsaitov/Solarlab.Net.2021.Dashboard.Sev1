@@ -4,11 +4,10 @@ using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
-using Sev1.Advertisements.Application.Contracts.Category;
 using System.Linq;
-using System;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
-using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
+using Sev1.Advertisements.Contracts.Contracts.Category.Responses;
+using Sev1.Advertisements.AppServices.Services.Category.Exceptions;
 
 namespace Sev1.Advertisements.Tests.Category
 {
@@ -27,11 +26,11 @@ namespace Sev1.Advertisements.Tests.Category
             CancellationToken cancellationToken)
         {
             // Arrange
-            int categoryCount = 3;
+            int? categoryCount = 3;
 
             var responce = new List<Domain.Category>();
 
-            for (int categoryId = 1; categoryId <= categoryCount; categoryId++)
+            for (int? categoryId = 1; categoryId <= categoryCount; categoryId++)
             {
                 var category = new Domain.Category()
                 {
@@ -64,7 +63,7 @@ namespace Sev1.Advertisements.Tests.Category
             Assert.NotNull(response);
             Assert.Equal(categoryCount, response.Total);
             Assert.Equal(categoryCount, response.Items.Count());
-            Assert.IsType<GetPagedCategoryResponse>(response);
+            Assert.IsType<CategoryGetPagedResponse>(response);
         }
 
         /// <summary>
@@ -80,7 +79,7 @@ namespace Sev1.Advertisements.Tests.Category
             CancellationToken cancellationToken)
         {
             // Arrange
-            int categoryCount = 0;
+            int? categoryCount = 0;
 
             var responce = new List<Domain.Category>();
 
@@ -99,7 +98,7 @@ namespace Sev1.Advertisements.Tests.Category
             Assert.NotNull(response);
             Assert.Equal(categoryCount, response.Total);
             Assert.Equal(categoryCount, response.Items.Count());
-            Assert.IsType<GetPagedCategoryResponse>(response);
+            Assert.IsType<CategoryGetPagedResponse>(response);
         }
 
         /// <summary>
@@ -115,7 +114,7 @@ namespace Sev1.Advertisements.Tests.Category
             CancellationToken cancellationToken)
         {
             // Act
-            await Assert.ThrowsAsync<GetPagedRequestNotValidException>(
+            await Assert.ThrowsAsync<CategoryGetPagedRequestNotValidException>(
                 async () => await _categoryServiceV1.GetPaged(
                     request, 
                     cancellationToken));

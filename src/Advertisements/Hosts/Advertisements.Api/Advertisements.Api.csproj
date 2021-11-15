@@ -56,7 +56,7 @@
 
     <ItemGroup>
      
-      <ProjectReference Include="..\..\Application\Advertisements.Application\Advertisements.Application.csproj" />
+      <ProjectReference Include="..\..\Application\Advertisements.Application\Advertisements.AppServices.csproj" />
      
       <ProjectReference Include="..\..\Infrastructure\Advertisements.DataAccess\Advertisements.DataAccess.csproj" />
      

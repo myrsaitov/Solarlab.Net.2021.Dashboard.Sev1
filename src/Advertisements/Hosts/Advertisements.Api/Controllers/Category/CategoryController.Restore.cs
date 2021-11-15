@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Contracts.Authorization;
+using Sev1.Accounts.Contracts.Authorization;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {
@@ -10,14 +10,14 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         /// <summary>
         /// Восстанавливает удаленную категорию по Id
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize("Administrator", "Moderator")]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Restore(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
-            int id, 
+            int? id, 
             CancellationToken cancellationToken)
         {
             await _categoryService.Restore(

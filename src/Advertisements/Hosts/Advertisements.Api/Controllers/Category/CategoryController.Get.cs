@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Contracts.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Accounts.Contracts.Authorization;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {
@@ -22,11 +22,12 @@ namespace Sev1.Advertisements.Api.Controllers.Category
             GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
-            var result = await _categoryService.GetPaged(new GetPagedRequest
-            {
-                PageSize = request.PageSize,
-                Page = request.Page
-            }, cancellationToken); ;
+            var result = await _categoryService
+                .GetPaged(new GetPagedRequest
+                    {
+                        PageSize = request.PageSize,
+                        Page = request.Page
+                    }, cancellationToken); ;
 
             return Ok(result);
         }
@@ -34,14 +35,14 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         /// <summary>
         /// Возвращает категорию по Id
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
-            int id, 
+            int? id, 
             CancellationToken cancellationToken)
         {
 

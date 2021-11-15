@@ -4,18 +4,19 @@ using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
 using System.Linq;
 using System;
 using System.Linq.Expressions;
-using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
     public partial class AdvertisementServiceV1Test
     {
         private async Task GetPaged_Returns_Response_Success(
-            GetPagedAdvertisementRequest request,
+            AdvertisementGetPagedRequest request,
             CancellationToken cancellationToken,
             string advertisementTitle, // Сгенерированный заголовок объявления
             string advertisementBody,  // Сгенерированный текст объявления
@@ -26,7 +27,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             var UserId = "24cb4b25-c819-45ab-8755-d95120fbb868";
             var categoryId = 1;
             var response = new List<Domain.Advertisement>();
-            for (int advertisementId = 1; advertisementId <= advertisementCount; advertisementId++)
+            for (int? advertisementId = 1; advertisementId <= advertisementCount; advertisementId++)
             {
                 // Создаем новое объявление
                 var advertisement = new Domain.Advertisement()
@@ -43,7 +44,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 };
 
                 // Заполняем таги
-                int tagId = 1;
+                int? tagId = 1;
                 foreach (string body in tagBodies)
                 {
                     var tag = new Domain.Tag()
@@ -83,7 +84,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             Assert.NotNull(res);
             Assert.Equal(advertisementCount, res.Total);
             Assert.Equal(advertisementCount, res.Items.Count());
-            Assert.IsType<GetPagedAdvertisementResponse>(res);
+            Assert.IsType<AdvertisementGetPagedResponse>(res);
         }
 
         /// <summary>
@@ -103,7 +104,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             string[] tagBodies)        // Сгенерированные таги
         {
             // Параметры поиска:
-            var request = new GetPagedAdvertisementRequest()
+            var request = new AdvertisementGetPagedRequest()
             {
                 Page = 0,
                 PageSize = 10,
@@ -138,7 +139,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             string[] tagBodies)        // Сгенерированные таги
         {
             // Параметры поиска:
-            var request = new GetPagedAdvertisementRequest()
+            var request = new AdvertisementGetPagedRequest()
             {
                 Page = 0,
                 PageSize = 10,
@@ -173,7 +174,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             string[] tagBodies)        // Сгенерированные таги
         {
             // Параметр поиска:
-            var request = new GetPagedAdvertisementRequest()
+            var request = new AdvertisementGetPagedRequest()
             {
                 Page = 0,
                 PageSize = 10,
@@ -208,7 +209,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             string[] tagBodies)        // Сгенерированные таги
         {
             // Параметры поиска:
-            var request = new GetPagedAdvertisementRequest()
+            var request = new AdvertisementGetPagedRequest()
             {
                 Page = 0,
                 PageSize = 10,
@@ -243,7 +244,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             string[] tagBodies)        // Сгенерированные таги
         {
             // Параметры поиска:
-            var request = new GetPagedAdvertisementRequest()
+            var request = new AdvertisementGetPagedRequest()
             {
                 Page = 0,
                 PageSize = 10,
@@ -264,17 +265,17 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка исключения, если аргумент не проходит валидацию
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null, null)]
         public async Task GetPaged_Throws_Exception_When_Request_Is_Null(
-            GetPagedAdvertisementRequest request,
+            AdvertisementGetPagedRequest request,
             CancellationToken cancellationToken)
         {
             // Act
-            await Assert.ThrowsAsync<GetPagedRequestNotValidException>(
+            await Assert.ThrowsAsync<AdvertisementGetPagedRequestNotValidException>(
                 async () => await _advertisementServiceV1.GetPaged(
                 request,
                 cancellationToken)); ;

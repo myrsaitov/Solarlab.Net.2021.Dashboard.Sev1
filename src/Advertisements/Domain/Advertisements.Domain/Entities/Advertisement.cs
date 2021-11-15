@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using sev1.Advertisements.Contracts.Enums;
-using Sev1.Advertisements.Domain.Base;
+using Sev1.Advertisements.Domain.Base.Entities;
 
 namespace Sev1.Advertisements.Domain
 {
-    public class Advertisement : EntityMutable<int>
+    /// <summary>
+    /// Доменная модель объявления
+    /// </summary>
+    public class Advertisement : EntityMutable<int?>
     {
         /// <summary>
         /// Заголовок объявления
@@ -22,9 +25,13 @@ namespace Sev1.Advertisements.Domain
         public decimal Price { get; set; }
 
         /// <summary>
-        /// Id категории и ссылка на категорию
+        /// Id категории
         /// </summary>
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
+
+        /// <summary>
+        /// Cсылка на категорию
+        /// </summary>
         public virtual Category Category { get; set; }
 
         /// <summary>
@@ -41,5 +48,20 @@ namespace Sev1.Advertisements.Domain
         /// Статус объявления
         /// </summary>
         public AdvertisementStatus Status { get; set; }
+
+        /// <summary>
+        /// Адрес
+        /// </summary>
+        public string Address { get; set; }
+
+        /// <summary>
+        /// Идентификатор региона
+        /// </summary>
+        public int? RegionId { get; set; }
+
+        /// <summary>
+        /// Регион
+        /// </summary>
+        public Region Region { get; set; }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Sev1.UserFiles.Application.Repositories.Base;
 using Sev1.UserFiles.DataAccess.Repositories;
 using Sev1.UserFiles.DataAccess.Base;
-using Sev1.UserFiles.Application.Repositories.UserFile;
+using Sev1.UserFiles.AppServices.Services.UserFile.Repositories;
+using Sev1.UserFiles.Domain.Base.Repositories;
 
 // Nugets:
 // Microsoft.EntityFrameworkCore
@@ -17,13 +17,25 @@ using Sev1.UserFiles.Application.Repositories.UserFile;
 
 namespace Sev1.UserFiles.DataAccess
 {
+    /// <summary>
+    /// Конфигурирование Middleware слоя DataAccess
+    /// </summary>
     public static class DataAccessModule
     {
+        /// <summary>
+        /// Настройки
+        /// </summary>
         public sealed class ModuleConfiguration
         {
             public IServiceCollection Services { get; init; }
         }
 
+        /// <summary>
+        /// Вызывается из "ConfigureServices"
+        /// </summary>
+        /// <param name="services">Список сервисов</param>
+        /// <param name="action">Настройки</param>
+        /// <returns></returns>
         public static IServiceCollection AddDataAccessModule(
             this IServiceCollection services,
             Action<ModuleConfiguration> action
@@ -37,7 +49,11 @@ namespace Sev1.UserFiles.DataAccess
             return services;
         }
 
-
+        /// <summary>
+        /// Вызывается из "ConfigureServices"
+        /// </summary>
+        /// <param name="moduleConfiguration">Настройки</param>
+        /// <param name="connectionString">Строка подключения БД</param>
         public static void InSqlServer(this ModuleConfiguration moduleConfiguration, string connectionString)
         {
             moduleConfiguration.Services.AddDbContextPool<DatabaseContext>(options =>
@@ -58,7 +74,6 @@ namespace Sev1.UserFiles.DataAccess
             // in the other calls within that same web request.
             moduleConfiguration.Services.AddScoped(typeof(IRepository<,>), typeof(EfRepository<,>));
             moduleConfiguration.Services.AddScoped<IUserFileRepository, UserFileRepository>();
-
         }
     }
 }

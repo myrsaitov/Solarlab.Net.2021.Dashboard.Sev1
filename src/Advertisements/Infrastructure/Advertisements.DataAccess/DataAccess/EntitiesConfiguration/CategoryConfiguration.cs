@@ -7,9 +7,7 @@ namespace Sev1.Advertisements.DataAccess.EntitiesConfiguration
 {
     public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
-/*        private static Category categoryGroup2 = ;
-        private static Category categoryGroup3 = ;
-*/
+        // Начальное сидирование категорий в базу
         private Category[] categories = new Category[]
         {
             // Группа 1 - "Транспорт"

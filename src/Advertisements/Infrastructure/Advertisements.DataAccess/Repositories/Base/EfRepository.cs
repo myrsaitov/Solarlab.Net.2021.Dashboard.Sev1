@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Domain.Base;
 using Microsoft.EntityFrameworkCore;
-using Sev1.Advertisements.Application.Repositories.Base;
+using Sev1.Advertisements.Domain.Base.Entities;
+using Sev1.Advertisements.Domain.Base.Repositories;
 
 namespace Sev1.Advertisements.DataAccess.Base
 {
@@ -51,7 +51,7 @@ namespace Sev1.Advertisements.DataAccess.Base
                 .FirstOrDefaultAsync(cancellationToken);
         }
 
-        public async Task<int> Count(CancellationToken cancellationToken)
+        public async Task<int?> Count(CancellationToken cancellationToken)
         {
             var data = DbСontext
                 .Set<TEntity>()
@@ -60,7 +60,7 @@ namespace Sev1.Advertisements.DataAccess.Base
             return await data.CountAsync(cancellationToken);
         }
 
-        public async Task<int> Count(
+        public async Task<int?> Count(
             Expression<Func<TEntity, bool>> predicate, 
             CancellationToken cancellationToken)
         {

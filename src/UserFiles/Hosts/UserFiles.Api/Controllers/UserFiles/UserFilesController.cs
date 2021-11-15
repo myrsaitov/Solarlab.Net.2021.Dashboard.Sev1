@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sev1.UserFiles.Application.Interfaces.UserFile;
+using Sev1.UserFiles.AppServices.Services.UserFile.Interfaces;
 
 namespace Sev1.UserFiles.Api.Controllers.UserFile
 {

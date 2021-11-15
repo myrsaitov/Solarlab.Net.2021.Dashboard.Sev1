@@ -1,5 +1,6 @@
 ﻿using Mapster;
-using Sev1.UserFiles.Application.Contracts.UserFile;
+using Sev1.UserFiles.Contracts.Contracts.UserFile;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Responses;
 
 namespace Sev1.UserFiles.MapsterMapper.MapProfiles
 {
@@ -9,11 +10,9 @@ namespace Sev1.UserFiles.MapsterMapper.MapProfiles
         {
             var config = TypeAdapterConfig.GlobalSettings;
 
-            config.NewConfig<Domain.UserFile, UserFileDto>()
+            config.NewConfig<Domain.UserFile, UserFileGetResponse>()
                 .Map(dest => dest.CreatedAt, src => src.CreatedAt.ToLocalTime().ToString("dd/MM/yy H:mm:ss (zzz)"));
 
-            config.NewConfig<Domain.UserFile, UserFilePagedDto>()
-                .Map(dest => dest.CreatedAt, src => src.CreatedAt.ToLocalTime().ToString("dd/MM/yy H:mm:ss (zzz)"));
             return config;
         }
     }

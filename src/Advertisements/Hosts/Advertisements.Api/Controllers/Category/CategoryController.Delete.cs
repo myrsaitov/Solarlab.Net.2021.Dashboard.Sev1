@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Contracts.Authorization;
+using Sev1.Accounts.Contracts.Authorization;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {
@@ -17,7 +17,7 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
-            int id, 
+            int? id, 
             CancellationToken cancellationToken)
         {
             await _categoryService.Delete(

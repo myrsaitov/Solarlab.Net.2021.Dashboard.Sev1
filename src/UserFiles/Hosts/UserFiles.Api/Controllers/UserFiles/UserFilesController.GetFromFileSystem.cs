@@ -3,8 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
-using Sev1.UserFiles.Application.Contracts.GetPaged;
-using Sev1.UserFiles.Contracts.Authorization;
+using Sev1.Accounts.Contracts.Authorization;
 
 namespace Sev1.UserFiles.Api.Controllers.UserFile
 {
@@ -13,7 +12,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         /// <summary>
         /// Возвращает файл по URI
         /// </summary>
-        /// <param name="id">Id файла</param>
+        /// <param name="id">Идентификатор файла</param>
         /// <param name="imageName">Имя файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
@@ -21,7 +20,7 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         [HttpGet("{id:int}/{imageName}")]
         public async Task<IActionResult> GetFromFileSystem(
             [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}"
-            int id,
+            int? id,
             [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}/{imageName}"
             string imageName,
             CancellationToken cancellationToken)

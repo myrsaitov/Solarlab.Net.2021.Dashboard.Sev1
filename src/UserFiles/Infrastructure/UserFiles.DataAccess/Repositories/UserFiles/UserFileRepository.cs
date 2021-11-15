@@ -4,21 +4,18 @@ using Sev1.UserFiles.Domain;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using System;
 using Sev1.UserFiles.DataAccess.Base;
-using Sev1.UserFiles.Application.Repositories.UserFile;
+using Sev1.UserFiles.AppServices.Services.UserFile.Repositories;
 
 namespace Sev1.UserFiles.DataAccess.Repositories
 {
-    public sealed class UserFileRepository : EfRepository<UserFile, int>, IUserFileRepository
+    public sealed class UserFileRepository : EfRepository<UserFile, int?>, IUserFileRepository
     {
         public UserFileRepository(DatabaseContext dbСontext) : base(dbСontext)
         {
         }
 
-        public async Task<int> CountWithOutDeleted(
-            Expression<Func<UserFile, bool>> predicate,
+        public async Task<int?> CountWithOutDeleted(
             CancellationToken cancellationToken)
         {
             var data = DbСontext
@@ -27,12 +24,10 @@ namespace Sev1.UserFiles.DataAccess.Repositories
 
             return await data
                 .Where(c => c.IsDeleted == false)
-                .Where(predicate)
                 .CountAsync(cancellationToken);
         }
 
         public async Task<IEnumerable<UserFile>> GetPagedWithTagsAndCategoryInclude(
-            Expression<Func<UserFile, bool>> predicate,
             int offset,
             int limit,
             CancellationToken cancellationToken)
@@ -43,7 +38,6 @@ namespace Sev1.UserFiles.DataAccess.Repositories
 
             return await data
                 .Where(c => c.IsDeleted == false)
-                .Where(predicate)
                 .OrderBy(e => e.Id)
                 .Skip(offset)
                 .Take(limit)

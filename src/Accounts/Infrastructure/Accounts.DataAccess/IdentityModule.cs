@@ -4,15 +4,19 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using Sev1.Accounts.Application.Implementations.Identity;
-using Sev1.Accounts.Application.Interfaces.Identity;
-using IdentityUser = Sev1.Accounts.Application.Implementations.Identity.IdentityUser;
+using Sev1.Accounts.AppServices.Services.Identity.Implementations;
+using Sev1.Accounts.AppServices.Services.Identity.Interfaces;
 
 namespace Sev1.Accounts.DataAccess
 {
+    /// <summary>
+    /// Конфигурирование Middleware Identity
+    /// </summary>
     public static class IdentityModule
     {
-        public static IServiceCollection AddIdentity(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddIdentity(
+            this IServiceCollection services,
+            IConfiguration configuration)
         {
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<DatabaseContext>()
@@ -35,18 +39,20 @@ namespace Sev1.Accounts.DataAccess
                     cfg.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     cfg.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
-                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, jwtBearerOptions =>
-                {
-                    jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters()
+                .AddJwtBearer(
+                    JwtBearerDefaults.AuthenticationScheme,
+                    jwtBearerOptions =>
                     {
-                        ValidateActor = false,
-                        ValidateAudience = false,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
-                        ValidateIssuer = false,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Token:Key"]))
-                    };
-                });
+                        jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters()
+                        {
+                            ValidateActor = false,
+                            ValidateAudience = false,
+                            ValidateLifetime = true,
+                            ValidateIssuerSigningKey = true,
+                            ValidateIssuer = false,
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Token:Key"]))
+                        };
+                    });
 
             services.AddScoped<IIdentityService, IdentityService>();
 

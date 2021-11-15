@@ -3,17 +3,17 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
-using Sev1.UserFiles.Contracts.Contracts.YandexDisk;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Configuration;
+using Sev1.UserFiles.Contracts.Contracts.YandexDisk.Responses;
 
 namespace Sev1.UserFiles.Contracts.ApiClients.YandexDisk
 {
     /// <summary>
     /// API-клиент Яндекс-Диска
     /// </summary>
-    public class YandexDiskApiClient : IYandexDiskApiClient
+    public sealed class YandexDiskApiClient : IYandexDiskApiClient
     {
         private readonly IConfiguration _configuration;
         private readonly HttpClient _httpClient;
