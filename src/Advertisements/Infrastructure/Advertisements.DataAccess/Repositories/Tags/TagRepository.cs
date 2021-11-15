@@ -1,4 +1,4 @@
-﻿using Sev1.Advertisements.AppServices.Services.Repositories.Tag;
+﻿using Sev1.Advertisements.AppServices.Services.Tag.Repositories;
 using Sev1.Advertisements.Domain;
 using Sev1.Advertisements.DataAccess.Base;
 

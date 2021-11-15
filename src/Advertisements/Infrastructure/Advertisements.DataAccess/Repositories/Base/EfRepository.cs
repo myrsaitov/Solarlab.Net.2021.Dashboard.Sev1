@@ -4,10 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Domain.Base;
 using Microsoft.EntityFrameworkCore;
-using Sev1.Advertisements.AppServices.Services.Repositories.Base;
 using Sev1.Advertisements.Domain.Base.Entities;
+using Sev1.Advertisements.Domain.Base.Repositories;
 
 namespace Sev1.Advertisements.DataAccess.Base
 {

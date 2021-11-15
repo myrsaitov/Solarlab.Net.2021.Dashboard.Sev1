@@ -1,6 +1,6 @@
-﻿using Sev1.Advertisements.AppServices.Services.Repositories.Tag;
-using Sev1.Advertisements.Domain;
+﻿using Sev1.Advertisements.Domain;
 using Sev1.Advertisements.DataAccess.Base;
+using Sev1.Advertisements.AppServices.Services.Region.Repositories;
 
 namespace Sev1.Advertisements.DataAccess.Repositories
 {

@@ -3,10 +3,10 @@ using MapsterMapper;
 using Mapster;
 using System.Linq.Expressions;
 using Sev1.Advertisements.MapsterMapper.MapProfiles;
-using Sev1.Advertisements.AppServices.Services.Implementations.Advertisement;
-using Sev1.Advertisements.AppServices.Services.Repositories.Advertisement;
-using Sev1.Advertisements.AppServices.Services.Repositories.Category;
-using Sev1.Advertisements.AppServices.Services.Repositories.Tag;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Implementations;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Repositories;
+using Sev1.Advertisements.AppServices.Services.Category.Repositories;
+using Sev1.Advertisements.AppServices.Services.Tag.Repositories;
 using sev1.Accounts.Contracts.UserProvider;
 
 namespace Sev1.Advertisements.Tests.Advertisement
