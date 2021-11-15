@@ -1,13 +1,11 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Validators;
-using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
-using Sev1.Advertisements.AppServices.Exceptions.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 using Sev1.Advertisements.AppServices.Services.Region.Interfaces;
-using Sev1.Advertisements.AppServices.Exceptions.Category;
 using Sev1.Advertisements.Contracts.Contracts.Region.Responses;
+using Sev1.Advertisements.AppServices.Services.Region.Exceptions;
 
 namespace Sev1.Advertisements.AppServices.Services.Region.Implementations
 {

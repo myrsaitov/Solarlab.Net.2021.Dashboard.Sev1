@@ -2,7 +2,7 @@
 using Sev1.Accounts.AppServices.Services.User.Validators;
 using Sev1.Accounts.Contracts.Contracts.Identity.Requests;
 using Sev1.Accounts.Contracts.Contracts.User.Requests;
-using Sev1.Accounts.AppServices.Exceptions.User;
+using Sev1.Accounts.AppServices.Services.User.Exceptions;
 using System;
 using System.Linq;
 using System.Threading;

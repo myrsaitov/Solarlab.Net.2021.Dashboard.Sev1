@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using Sev1.Advertisements.Domain.Base.Exceptions;
-using Sev1.Advertisements.AppServices.Exceptions.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {

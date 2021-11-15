@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Sev1.Advertisements.AppServices.Services.Category.Interfaces;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 using Sev1.Advertisements.Contracts.Contracts.Category.Responses;
-using Sev1.Advertisements.AppServices.Exceptions.GetPaged;
 using Sev1.Advertisements.AppServices.Services.Tag.Validators;
 using Sev1.Advertisements.AppServices.Services.Category.Validators;
+using Sev1.Advertisements.AppServices.Services.Category.Exceptions;
 
 namespace Sev1.Advertisements.AppServices.Services.Category.Implementations
 {
@@ -28,7 +28,7 @@ namespace Sev1.Advertisements.AppServices.Services.Category.Implementations
             var result = await validator.ValidateAsync(request);
             if (!result.IsValid)
             {
-                throw new GetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
+                throw new CategoryGetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
             // Получить количество категорий

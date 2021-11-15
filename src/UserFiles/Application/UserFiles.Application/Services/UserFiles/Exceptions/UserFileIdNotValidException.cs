@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sev1.UserFiles.AppServices.Exceptions.UserFile
+namespace Sev1.UserFiles.AppServices.Services.Advertisement.UserFile
 {
     public class UserFileIdNotValidException : ApplicationException
     {

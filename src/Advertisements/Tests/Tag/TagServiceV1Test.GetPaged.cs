@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 using Sev1.Advertisements.Contracts.Contracts.Tag.Responses;
-using Sev1.Advertisements.AppServices.Exceptions.GetPaged;
+using Sev1.Advertisements.AppServices.Services.Tag.Exceptions;
 
 namespace Sev1.Advertisements.Tests.Tag
 {
@@ -113,7 +113,7 @@ namespace Sev1.Advertisements.Tests.Tag
             CancellationToken cancellationToken)
         {
             // Act
-            await Assert.ThrowsAsync<GetPagedRequestNotValidException>(
+            await Assert.ThrowsAsync<TagGetPagedRequestNotValidException>(
                 async () => await _tagServiceV1.GetPaged(
                     request, 
                     cancellationToken));

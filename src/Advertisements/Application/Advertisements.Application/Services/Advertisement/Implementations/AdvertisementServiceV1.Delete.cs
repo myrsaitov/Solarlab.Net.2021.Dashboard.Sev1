@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Validators;
-using Sev1.Advertisements.AppServices.Exceptions.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 using Sev1.Advertisements.Domain.Base.Exceptions;
 using sev1.Advertisements.Contracts.Enums;
 

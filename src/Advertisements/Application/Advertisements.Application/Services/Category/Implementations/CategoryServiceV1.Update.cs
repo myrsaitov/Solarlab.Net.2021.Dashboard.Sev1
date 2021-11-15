@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.AppServices.Services.Category.Interfaces;
 using Sev1.Advertisements.Contracts.Contracts.Category.Requests;
-using Sev1.Advertisements.AppServices.Exceptions.Category;
+using Sev1.Advertisements.AppServices.Services.Category.Exceptions;
 using Sev1.Advertisements.Domain.Base.Exceptions;
 using Sev1.Advertisements.AppServices.Services.Category.Validators;
 

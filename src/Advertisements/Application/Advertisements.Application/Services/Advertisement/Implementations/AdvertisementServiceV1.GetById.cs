@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Validators;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
-using Sev1.Advertisements.AppServices.Exceptions.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
 {

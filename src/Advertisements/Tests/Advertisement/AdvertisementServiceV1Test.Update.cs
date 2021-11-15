@@ -7,8 +7,8 @@ using System.Linq.Expressions;
 using System;
 using Sev1.Advertisements.AppServices.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.Domain.Base.Exceptions;
-using Sev1.Advertisements.AppServices.Exceptions.Advertisement;
-using Sev1.Advertisements.AppServices.Exceptions.Category;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
+using Sev1.Advertisements.AppServices.Services.Category.Exceptions;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
@@ -176,7 +176,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             CancellationToken cancellationToken)
         {
             // Act
-            await Assert.ThrowsAsync<AdvertisementUpdateDtoNotValidException>(
+            await Assert.ThrowsAsync<AdvertisementUpdateRequestNotValidException>(
                 async () => await _advertisementServiceV1.Update(
                     request,
                     cancellationToken));

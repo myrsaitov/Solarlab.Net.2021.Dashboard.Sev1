@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 using System;
 using System.Linq;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
-using Sev1.Advertisements.AppServices.Exceptions.GetPaged;
 using Sev1.Advertisements.AppServices.Services.Region.Validators;
 using Sev1.Advertisements.Contracts.Contracts.Region.Responses;
 using Sev1.Advertisements.AppServices.Services.Region.Interfaces;
+using Sev1.Advertisements.AppServices.Services.Region.Exceptions;
 
 namespace Sev1.Advertisements.AppServices.Services.Region.Implementations
 {
@@ -27,7 +27,7 @@ namespace Sev1.Advertisements.AppServices.Services.Region.Implementations
             var result = await validator.ValidateAsync(request);
             if (!result.IsValid)
             {
-                throw new GetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
+                throw new RegionGetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
             var total = await _regionRepository.Count(cancellationToken);

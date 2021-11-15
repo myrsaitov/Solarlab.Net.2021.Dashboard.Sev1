@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Accounts.AppServices.Services.Identity.Interfaces;
-using Sev1.Accounts.AppServices.Exceptions.Identity;
+using Sev1.Accounts.AppServices.Services.Identity.Exceptions;
 
 namespace Sev1.Accounts.AppServices.Services.Identity.Implementations
 {

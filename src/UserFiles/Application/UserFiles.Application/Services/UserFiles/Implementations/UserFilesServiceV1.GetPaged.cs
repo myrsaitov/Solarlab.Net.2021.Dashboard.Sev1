@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.UserFiles.AppServices.Services.UserFile.Interfaces;
 using Sev1.UserFiles.AppServices.Services.Validators.GetPaged;
-using Sev1.UserFiles.AppServices.Exceptions.UserFile;
+using Sev1.UserFiles.AppServices.Services.Advertisement.UserFile;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Responses;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
@@ -27,7 +27,7 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
             var result = await validator.ValidateAsync(request);
             if (!result.IsValid)
             {
-                throw new GetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
+                throw new UserFileGetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
             // Вычислить смещение (skip)

@@ -9,7 +9,7 @@ using System;
 using System.Linq.Expressions;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses;
-using Sev1.Advertisements.AppServices.Exceptions.GetPaged;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
@@ -275,7 +275,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             CancellationToken cancellationToken)
         {
             // Act
-            await Assert.ThrowsAsync<GetPagedRequestNotValidException>(
+            await Assert.ThrowsAsync<AdvertisementGetPagedRequestNotValidException>(
                 async () => await _advertisementServiceV1.GetPaged(
                 request,
                 cancellationToken)); ;

@@ -1,7 +1,7 @@
 ﻿using Sev1.Accounts.AppServices.Contracts.User.Requests;
 using Sev1.Accounts.AppServices.Services.User.Interfaces;
 using Sev1.Accounts.Domain.Base.Exceptions;
-using Sev1.Accounts.AppServices.Exceptions.User;
+using Sev1.Accounts.AppServices.Services.User.Exceptions;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

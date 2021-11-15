@@ -1,13 +1,13 @@
 ﻿using Sev1.Advertisements.Domain.Base.Exceptions;
 
-namespace Sev1.Advertisements.AppServices.Exceptions.GetPaged
+namespace Sev1.Advertisements.AppServices.Services.Region.Exceptions
 {
     /// <summary>
     /// Исключение при нессответсвующем запросе на пагинацию
     /// </summary>
-    public class GetPagedRequestNotValidException : BadRequestException
+    public class RegionGetPagedRequestNotValidException : BadRequestException
     {
-        public GetPagedRequestNotValidException(string message) : base(message)
+        public RegionGetPagedRequestNotValidException(string message) : base(message)
         {
         }
     }

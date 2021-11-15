@@ -6,10 +6,11 @@ using Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Validators;
 using System.Linq;
 using Sev1.Advertisements.AppServices.Contracts.Advertisement.Requests;
-using Sev1.Advertisements.AppServices.Exceptions.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 using Sev1.Advertisements.Domain.Base.Exceptions;
-using Sev1.Advertisements.AppServices.Exceptions.Category;
 using sev1.Advertisements.Contracts.Enums;
+using Sev1.Advertisements.AppServices.Services.Region.Exceptions;
+using Sev1.Advertisements.AppServices.Services.Category.Exceptions;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
 {
@@ -31,7 +32,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
             var result = await validator.ValidateAsync(request);
             if (!result.IsValid)
             {
-                throw new AdvertisementUpdateDtoNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
+                throw new AdvertisementUpdateRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
             var advertisement = await _advertisementRepository.FindByIdWithCategoriesAndTags(

@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using Sev1.Advertisements.AppServices.Services.GetPaged.Validators;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses;
-using Sev1.Advertisements.AppServices.Exceptions.GetPaged;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
 {
@@ -29,7 +29,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
             var result = await validator.ValidateAsync(request);
             if (!result.IsValid)
             {
-                throw new GetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
+                throw new AdvertisementGetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
             // Вычислить смещение (skip)

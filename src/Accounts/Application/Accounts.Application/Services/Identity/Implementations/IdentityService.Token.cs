@@ -11,7 +11,7 @@ using Sev1.Accounts.AppServices.Services.Identity.Interfaces;
 using Sev1.Accounts.Contracts.Contracts.User.Requests;
 using Sev1.Accounts.Contracts.Contracts.User.Responses;
 using Sev1.Accounts.Domain.Base.Exceptions;
-using Sev1.Accounts.AppServices.Exceptions.Identity;
+using Sev1.Accounts.AppServices.Services.Identity.Exceptions;
 
 namespace Sev1.Accounts.AppServices.Services.Identity.Implementations
 {

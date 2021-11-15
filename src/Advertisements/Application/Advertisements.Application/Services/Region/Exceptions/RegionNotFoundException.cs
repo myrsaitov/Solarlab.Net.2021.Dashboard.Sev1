@@ -1,6 +1,6 @@
 ﻿using Sev1.Advertisements.Domain.Base.Exceptions;
 
-namespace Sev1.Advertisements.AppServices.Exceptions.Category
+namespace Sev1.Advertisements.AppServices.Services.Region.Exceptions
 {
     /// <summary>
     /// Исключение, если регион с таким идентификатором не был найден

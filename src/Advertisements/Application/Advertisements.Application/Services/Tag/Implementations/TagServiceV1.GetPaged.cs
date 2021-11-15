@@ -5,8 +5,8 @@ using System.Linq;
 using Sev1.Advertisements.AppServices.Services.Tag.Interfaces;
 using Sev1.Advertisements.Contracts.Contracts.Tag.Responses;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
-using Sev1.Advertisements.AppServices.Exceptions.GetPaged;
 using Sev1.Advertisements.AppServices.Services.Tag.Validators;
+using Sev1.Advertisements.AppServices.Services.Tag.Exceptions;
 
 namespace Sev1.Advertisements.AppServices.Services.Tag.Implementations
 {
@@ -27,7 +27,7 @@ namespace Sev1.Advertisements.AppServices.Services.Tag.Implementations
             var result = await validator.ValidateAsync(request);
             if (!result.IsValid)
             {
-                throw new GetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
+                throw new TagGetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
             var total = await _tagRepository.Count(cancellationToken);

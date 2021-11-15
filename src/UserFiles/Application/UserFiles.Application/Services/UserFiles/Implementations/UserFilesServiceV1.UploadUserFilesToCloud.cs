@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.UserFiles.AppServices.Exceptions.UserFile;
-using Sev1.UserFiles.Contracts.Contracts.UserFile;
+using Sev1.UserFiles.AppServices.Services.Advertisement.UserFile;
 using Sev1.UserFiles.AppServices.Services.UserFile.Interfaces;
 using System.Linq;
-using Sev1.UserFiles.AppServices.Exceptions;
 using Sev1.UserFiles.AppServices.Services.UserFile.Validators;
 using System.IO;
 using sev1.UserFiles.Contracts.Enums;

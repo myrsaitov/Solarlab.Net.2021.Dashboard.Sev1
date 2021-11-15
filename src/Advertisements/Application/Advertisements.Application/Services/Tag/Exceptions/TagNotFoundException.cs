@@ -1,6 +1,6 @@
 ﻿using Sev1.Advertisements.Domain.Base.Exceptions;
 
-namespace Sev1.Advertisements.AppServices.Exceptions.Tag
+namespace Sev1.Advertisements.AppServices.Services.Tag.Exceptions
 {
     /// <summary>
     /// Исключение, если не найден таг с таким идентификатором

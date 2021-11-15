@@ -7,8 +7,8 @@ using System.Linq.Expressions;
 using System;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.Domain.Base.Exceptions;
-using Sev1.Advertisements.AppServices.Exceptions.Category;
-using Sev1.Advertisements.AppServices.Exceptions.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Category.Exceptions;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
