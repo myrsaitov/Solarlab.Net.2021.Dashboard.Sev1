@@ -1,4 +1,4 @@
-﻿using Sev1.Accounts.Domain.Entities.Base;
+﻿using Sev1.Accounts.Domain.Base.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;

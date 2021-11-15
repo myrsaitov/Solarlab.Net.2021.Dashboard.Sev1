@@ -1,10 +1,10 @@
-﻿using Sev1.UserFiles.Domain.Base;
-using sev1.UserFiles.Contracts.Enums;
+﻿using sev1.UserFiles.Contracts.Enums;
+using Sev1.UserFiles.Domain.Base.Entities;
 
 namespace Sev1.UserFiles.Domain
 {
     /// <summary>
-    /// Информация о файле, который загружает пользователь
+    /// Доменная модель файла пользователя
     /// </summary>
     public class UserFile : EntityMutable<int?>
     {

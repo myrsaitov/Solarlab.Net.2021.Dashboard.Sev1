@@ -1,10 +1,10 @@
-﻿using Sev1.Accounts.Domain.Entities.Base;
+﻿using Sev1.Accounts.Domain.Base.Entities;
 using System.Collections.Generic;
 
 namespace Sev1.Accounts.Domain
 {
     /// <summary>
-    /// Идентификатор избранного объявления
+    /// Доменная модель избранного объявления
     /// </summary>
     public class FavoriteAdvertisement : EntityMutable<string>
     {

@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
-using Sev1.Advertisements.Domain.Base;
+using Sev1.Advertisements.Domain.Base.Entities;
 
 namespace Sev1.Advertisements.Domain
 {
+    /// <summary>
+    /// Доменная модель региона
+    /// </summary>
     public class Region : EntityMutable<int?>
     {
         /// <summary>

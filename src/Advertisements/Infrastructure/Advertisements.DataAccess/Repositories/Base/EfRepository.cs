@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Sev1.Advertisements.Domain.Base;
 using Microsoft.EntityFrameworkCore;
 using Sev1.Advertisements.AppServices.Services.Repositories.Base;
+using Sev1.Advertisements.Domain.Base.Entities;
 
 namespace Sev1.Advertisements.DataAccess.Base
 {

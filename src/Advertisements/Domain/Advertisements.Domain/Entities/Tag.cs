@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Sev1.Advertisements.Domain.Base;
+using Sev1.Advertisements.Domain.Base.Entities;
 
 namespace Sev1.Advertisements.Domain
 {
+    /// <summary>
+    /// Доменная модель тага
+    /// </summary>
     public class Tag : Entity<int?>
     {
         /// <summary>

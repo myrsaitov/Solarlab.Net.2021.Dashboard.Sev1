@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using sev1.Advertisements.Contracts.Enums;
-using Sev1.Advertisements.Domain.Base;
+using Sev1.Advertisements.Domain.Base.Entities;
 
 namespace Sev1.Advertisements.Domain
 {
+    /// <summary>
+    /// Доменная модель объявления
+    /// </summary>
     public class Advertisement : EntityMutable<int?>
     {
         /// <summary>

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.UserFiles.Domain.Base;
 using Microsoft.EntityFrameworkCore;
 using Sev1.UserFiles.AppServices.Services.Repositories.Base;
+using Sev1.UserFiles.Domain.Base.Entities;
 
 namespace Sev1.UserFiles.DataAccess.Base
 {
