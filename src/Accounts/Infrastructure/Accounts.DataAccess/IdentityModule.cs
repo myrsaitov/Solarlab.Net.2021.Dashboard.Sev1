@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using Sev1.Accounts.AppServices.Services.Implementations.Identity;
-using Sev1.Accounts.AppServices.Services.Interfaces.Identity;
+using Sev1.Accounts.AppServices.Services.Identity.Implementations;
+using Sev1.Accounts.AppServices.Services.Identity.Interfaces;
 
 namespace Sev1.Accounts.DataAccess
 {

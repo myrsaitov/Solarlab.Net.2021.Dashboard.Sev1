@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using Sev1.Accounts.AppServices.Services.Interfaces.User;
-using Sev1.Accounts.AppServices.Services.Implementations.User;
+using Sev1.Accounts.AppServices.Services.User.Interfaces;
+using Sev1.Accounts.AppServices.Services.User.Implementations;
 
 namespace Sev1.Accounts.Api
 {

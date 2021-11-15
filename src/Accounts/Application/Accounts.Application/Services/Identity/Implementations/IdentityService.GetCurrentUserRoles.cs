@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Accounts.AppServices.Services.Interfaces.Identity;
+using Sev1.Accounts.AppServices.Services.Identity.Interfaces;
 using Sev1.Accounts.AppServices.Exceptions.Identity;
 
-namespace Sev1.Accounts.AppServices.Services.Implementations.Identity
+namespace Sev1.Accounts.AppServices.Services.Identity.Implementations
 {
     public partial class IdentityService : IIdentityService
     {

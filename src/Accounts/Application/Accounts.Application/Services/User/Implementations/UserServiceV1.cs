@@ -1,9 +1,9 @@
 ﻿using MapsterMapper;
-using Sev1.Accounts.AppServices.Services.Interfaces.Identity;
-using Sev1.Accounts.AppServices.Services.Interfaces.User;
-using Sev1.Accounts.AppServices.Services.Repository.User;
+using Sev1.Accounts.AppServices.Services.Identity.Interfaces;
+using Sev1.Accounts.AppServices.Services.User.Interfaces;
+using Sev1.Accounts.AppServices.Services.User.Repositories;
 
-namespace Sev1.Accounts.AppServices.Services.Implementations.User
+namespace Sev1.Accounts.AppServices.Services.User.Implementations
 {
     public sealed partial class UserServiceV1 : IUserService
     {

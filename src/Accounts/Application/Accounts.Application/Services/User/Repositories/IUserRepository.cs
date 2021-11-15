@@ -1,8 +1,8 @@
-﻿using Sev1.Accounts.AppServices.Services.Repository.Base;
+﻿using Sev1.Accounts.AppServices.Services.Base.Repositories;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sev1.Accounts.AppServices.Services.Repository.User
+namespace Sev1.Accounts.AppServices.Services.User.Repositories
 {
     public interface IUserRepository : IRepository<Domain.User, string>
     {

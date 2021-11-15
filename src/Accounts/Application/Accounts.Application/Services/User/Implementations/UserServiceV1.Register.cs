@@ -1,5 +1,5 @@
-﻿using Sev1.Accounts.AppServices.Services.Interfaces.User;
-using Sev1.Accounts.AppServices.Services.Validators;
+﻿using Sev1.Accounts.AppServices.Services.User.Interfaces;
+using Sev1.Accounts.AppServices.Services.User.Validators;
 using Sev1.Accounts.Contracts.Contracts.Identity.Requests;
 using Sev1.Accounts.Contracts.Contracts.User.Requests;
 using Sev1.Accounts.AppServices.Exceptions.User;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sev1.Accounts.AppServices.Services.Implementations.User
+namespace Sev1.Accounts.AppServices.Services.User.Implementations
 {
     public sealed partial class UserServiceV1 : IUserService
     {
