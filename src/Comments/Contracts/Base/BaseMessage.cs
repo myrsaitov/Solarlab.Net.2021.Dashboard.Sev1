@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Comments.Contracts.Base
 {
-    public class BaseMessage
+    public interface IBaseMessage
     {
         /// <summary>
         /// Текст сообщения

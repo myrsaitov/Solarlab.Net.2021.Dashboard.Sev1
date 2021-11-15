@@ -48,7 +48,7 @@ namespace Comments.Tests
                 .ReturnsAsync(comments)
                 .Verifiable();
 
-            var commentDto = new CommentDtoRequestGetByChatId {Id = id, PageSize = pageSize, PageNumber = pageNumber};
+            var commentDto = new CommentDtoRequestGetChatPaged {Id = id, PageSize = pageSize, PageNumber = pageNumber};
 
             //Act
             var result = await _commentService.GetCommentsByChatIdAsync(commentDto, token);

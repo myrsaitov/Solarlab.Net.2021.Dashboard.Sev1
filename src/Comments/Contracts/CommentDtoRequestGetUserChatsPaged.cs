@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Comments.Contracts.Base
+namespace Comments.Contracts
 {
-    public class DtoRequestUpdateCommentBase : BaseMessage
+    class CommentDtoRequestGetUserChatsPaged
     {
     }
 }

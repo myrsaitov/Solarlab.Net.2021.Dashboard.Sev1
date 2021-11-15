@@ -1,4 +1,4 @@
-﻿using Comments.Contracts.ValidationAttributes;
+﻿using Comments.Contracts.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Comments.Contracts.Base
 {
-    public class DtoRequestGetPagedBase
+    public class DtoBase
     {
         /// <summary>
         /// Id объявления
@@ -17,17 +17,14 @@ namespace Comments.Contracts.Base
         public Guid AdvertisementId { get; set; }
 
         /// <summary>
-        /// Номер страницы
+        /// Id Покупателя
         /// </summary>
-        [Required]
-        [GreaterThan(-1)]
-        public int PageNumber { get; set; }
+        public Guid ConsumerId { get; set; }
 
         /// <summary>
-        /// Количество комментариев на странице
+        /// Тип чата
         /// </summary>
         [Required]
-        [GreaterThan(0)]
-        public int PageSize { get; set; }
+        public ChatType Type { get; set; }
     }
 }

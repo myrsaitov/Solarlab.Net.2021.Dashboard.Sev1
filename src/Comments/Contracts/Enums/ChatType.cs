@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Comments.Contracts.Base
+namespace Comments.Contracts.Enums
 {
-    public class DtoRequestCreateCommentBase : BaseMessage
+    class ChatType
     {
     }
 }

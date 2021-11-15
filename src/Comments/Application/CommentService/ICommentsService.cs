@@ -17,7 +17,7 @@ namespace Comments.Services
         /// </summary>
         /// <param name="id">Id чата</param>
         /// <returns></returns>
-        public Task<List<CommentDtoResponce>> GetCommentsByChatIdAsync(CommentDtoRequestGetByChatId dto, CancellationToken token);
+        public Task<List<CommentDtoResponce>> GetCommentsByChatIdAsync(CommentDtoRequestGetChatPaged dto, CancellationToken token);
 
         /// <summary>
         /// Удалить все коментарии, прикреплённые к чату

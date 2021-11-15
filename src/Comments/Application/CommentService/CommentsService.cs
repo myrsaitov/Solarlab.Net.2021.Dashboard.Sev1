@@ -74,7 +74,7 @@ namespace Comments.Services
         }
 
         /// <inheritdoc/>
-        public async Task<CommentDtoResponceChat> GetUserChatsAsync(SellerConsumerChatDtoRequestGetUserChats dto, CancellationToken token)
+        public async Task<CommentDtoResponceChat> GetUserChatsAsync(SellerConsumerChatDtoRequestGetUserChatsPaged dto, CancellationToken token)
         {
             throw new NotImplementedException();
         }

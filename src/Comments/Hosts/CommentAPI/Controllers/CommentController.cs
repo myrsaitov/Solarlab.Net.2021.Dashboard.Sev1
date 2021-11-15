@@ -33,7 +33,7 @@ namespace Comments.API.Controllers
         /// </summary>
         /// <response code="200">Ok</response>
         [HttpGet("GetCommentsByChatId")]
-        public async Task<IActionResult> GetCommentsByChatId([FromQuery] CommentDtoRequestGetByChatId dto, CancellationToken token = default)
+        public async Task<IActionResult> GetCommentsByChatId([FromQuery] CommentDtoRequestGetChatPaged dto, CancellationToken token = default)
         {
             if (ModelState.IsValid)
             {

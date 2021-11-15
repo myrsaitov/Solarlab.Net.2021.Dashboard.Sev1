@@ -27,7 +27,7 @@ namespace Comments.Services
         }
 
         /// <inheritdoc/>
-        public async Task<List<CommentDtoResponce>> GetCommentsByChatIdAsync(CommentDtoRequestGetByChatId dto, CancellationToken token)
+        public async Task<List<CommentDtoResponce>> GetCommentsByChatIdAsync(CommentDtoRequestGetChatPaged dto, CancellationToken token)
         {
             var comments = await _repository.GetCommentsByChatIdAsync(dto.Id, dto.PageSize, dto.PageNumber, token);
             return _mapper.Map<List<CommentDtoResponce>>(comments);

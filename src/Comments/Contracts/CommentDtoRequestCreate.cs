@@ -1,16 +1,15 @@
-﻿using Comments.Contracts.Base;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Comments.Contracts.AdvertisementChat
+namespace Comments.Contracts
 {
-    public class AdvertisementChatDtoRequestCreateComment : DtoRequestCreateCommentBase
+    public class CommentDtoRequestCreate : CommentDtoRequestBase
     {
         /// <summary>
         /// Id объявления, к которому прикреплён коментарий
         /// </summary>
         [Required]
-        public Guid AdvertisementId { get; set; }
+        public Guid ChatId { get; set; }
 
         /// <summary>
         /// Id автора
