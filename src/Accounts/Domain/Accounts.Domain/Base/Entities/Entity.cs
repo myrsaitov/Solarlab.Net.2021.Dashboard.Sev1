@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sev1.Accounts.Domain.Base
+namespace Sev1.Accounts.Domain.Entities.Base
 {
     /// <summary>
     /// Базовая сущность

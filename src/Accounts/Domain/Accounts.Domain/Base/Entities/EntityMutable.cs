@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sev1.Accounts.Domain.Base
+namespace Sev1.Accounts.Domain.Entities.Base
 {
     /// <summary>
     /// Изменяемая сущность (хранит информацию об изменениях)

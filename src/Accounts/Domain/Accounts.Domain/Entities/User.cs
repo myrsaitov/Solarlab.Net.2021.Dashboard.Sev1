@@ -1,4 +1,4 @@
-﻿using Sev1.Accounts.Domain.Base;
+﻿using Sev1.Accounts.Domain.Entities.Base;
 using System.Collections.Generic;
 
 namespace Sev1.Accounts.Domain

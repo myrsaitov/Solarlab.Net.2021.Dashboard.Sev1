@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Sev1.Accounts.DataAccess.Base;
 using Sev1.Accounts.AppServices.Services.User.Repositories;
-using Sev1.Accounts.AppServices.Services.Base.Repositories;
+using Sev1.Accounts.Domain.Base.Repositories;
 
 // Nugets:
 // Microsoft.EntityFrameworkCore

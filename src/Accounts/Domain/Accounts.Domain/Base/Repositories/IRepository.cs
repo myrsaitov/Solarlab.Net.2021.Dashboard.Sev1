@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Sev1.Accounts.Domain.Entities.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Accounts.Domain.Base;
 
 namespace Sev1.Accounts.Domain.Base.Repositories
 {

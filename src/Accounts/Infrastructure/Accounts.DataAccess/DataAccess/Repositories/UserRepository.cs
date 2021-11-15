@@ -2,7 +2,6 @@
 using Sev1.Accounts.AppServices.Services.User.Repositories;
 using Sev1.Accounts.DataAccess.Base;
 using Sev1.Accounts.Domain;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 

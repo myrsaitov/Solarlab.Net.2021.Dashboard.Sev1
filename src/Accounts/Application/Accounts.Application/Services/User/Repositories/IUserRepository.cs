@@ -1,4 +1,4 @@
-﻿using Sev1.Accounts.AppServices.Services.Base.Repositories;
+﻿using Sev1.Accounts.Domain.Base.Repositories;
 using System.Threading;
 using System.Threading.Tasks;
 
