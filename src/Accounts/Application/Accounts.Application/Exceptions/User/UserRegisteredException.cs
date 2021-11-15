@@ -1,4 +1,4 @@
-﻿using Sev1.Accounts.AppServices.Exceptions.Domain;
+﻿using Sev1.Accounts.Domain.Base.Exceptions;
 
 namespace Sev1.Accounts.AppServices.Exceptions.User
 {

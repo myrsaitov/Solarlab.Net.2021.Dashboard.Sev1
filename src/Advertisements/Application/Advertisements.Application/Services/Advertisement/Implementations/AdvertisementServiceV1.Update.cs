@@ -7,7 +7,7 @@ using Sev1.Advertisements.AppServices.Services.Advertisement.Validators;
 using System.Linq;
 using Sev1.Advertisements.AppServices.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.AppServices.Exceptions.Advertisement;
-using Sev1.Advertisements.AppServices.Exceptions.Domain;
+using Sev1.Advertisements.Domain.Base.Exceptions;
 using Sev1.Advertisements.AppServices.Exceptions.Category;
 using sev1.Advertisements.Contracts.Enums;
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sev1.Advertisements.AppServices.Exceptions.Domain.Base
+namespace Sev1.Advertisements.Domain.Base.Exceptions.Base
 {
     /// <summary>
     /// Базовый абстрактный класс доменного исключения

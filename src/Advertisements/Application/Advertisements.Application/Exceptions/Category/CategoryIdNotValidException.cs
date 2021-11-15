@@ -1,4 +1,4 @@
-﻿using Sev1.Advertisements.AppServices.Exceptions.Domain;
+﻿using Sev1.Advertisements.Domain.Base.Exceptions;
 
 namespace Sev1.Advertisements.AppServices.Exceptions.Category
 {

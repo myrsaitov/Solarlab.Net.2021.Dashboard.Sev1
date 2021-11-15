@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Sev1.UserFiles.AppServices.Exceptions.UserFile;
 using Sev1.UserFiles.AppServices.Services.UserFile.Interfaces;
 using Sev1.UserFiles.AppServices.Services.UserFile.Validators;
-using Sev1.UserFiles.AppServices.Exceptions.Domain;
+using Sev1.UserFiles.Domain.Base.Exceptions;
 
 namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
 {

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Sev1.Accounts.AppServices.Services.Identity.Interfaces;
 using Sev1.Accounts.Contracts.Contracts.Identity.Requests;
 using Sev1.Accounts.Contracts.Contracts.Identity.Responses;
-using Sev1.Accounts.AppServices.Exceptions.Domain;
+using Sev1.Accounts.Domain.Base.Exceptions;
 
 namespace Sev1.Accounts.AppServices.Services.Identity.Implementations
 {

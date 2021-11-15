@@ -8,7 +8,7 @@ using sev1.Advertisements.Contracts.Enums;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.AppServices.Exceptions.Advertisement;
-using Sev1.Advertisements.AppServices.Exceptions.Domain;
+using Sev1.Advertisements.Domain.Base.Exceptions;
 using Sev1.Advertisements.AppServices.Exceptions.Category;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations

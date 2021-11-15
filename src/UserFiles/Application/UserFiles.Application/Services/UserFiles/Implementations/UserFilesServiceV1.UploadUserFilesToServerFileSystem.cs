@@ -7,7 +7,7 @@ using System.Linq;
 using Sev1.UserFiles.AppServices.Services.UserFile.Validators;
 using System.IO;
 using sev1.UserFiles.Contracts.Enums;
-using Sev1.UserFiles.AppServices.Exceptions.Domain;
+using Sev1.UserFiles.Domain.Base.Exceptions;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Responses;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 

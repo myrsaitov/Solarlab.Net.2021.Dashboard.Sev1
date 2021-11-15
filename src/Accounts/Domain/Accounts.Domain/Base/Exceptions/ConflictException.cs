@@ -1,6 +1,6 @@
-﻿using Sev1.UserFiles.AppServices.Exceptions.Domain.Base;
+﻿using Sev1.Accounts.Domain.Base.Exceptions.Base;
 
-namespace Sev1.UserFiles.AppServices.Exceptions.Domain
+namespace Sev1.Accounts.Domain.Base.Exceptions
 {
     /// <summary>
     /// Доменное исключение при конфликте

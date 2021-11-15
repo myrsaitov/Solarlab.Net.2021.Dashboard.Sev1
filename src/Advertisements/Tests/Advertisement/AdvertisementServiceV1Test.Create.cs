@@ -6,7 +6,7 @@ using AutoFixture.Xunit2;
 using System.Linq.Expressions;
 using System;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
-using Sev1.Advertisements.AppServices.Exceptions.Domain;
+using Sev1.Advertisements.Domain.Base.Exceptions;
 using Sev1.Advertisements.AppServices.Exceptions.Category;
 using Sev1.Advertisements.AppServices.Exceptions.Advertisement;
 

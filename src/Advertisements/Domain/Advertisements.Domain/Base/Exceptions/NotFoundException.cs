@@ -1,6 +1,6 @@
-﻿using Sev1.Advertisements.AppServices.Exceptions.Domain.Base;
+﻿using Sev1.Advertisements.Domain.Base.Exceptions.Base;
 
-namespace Sev1.Advertisements.AppServices.Exceptions.Domain
+namespace Sev1.Advertisements.Domain.Base.Exceptions
 {
     /// <summary>
     /// Доменное исключение "Не найдено"

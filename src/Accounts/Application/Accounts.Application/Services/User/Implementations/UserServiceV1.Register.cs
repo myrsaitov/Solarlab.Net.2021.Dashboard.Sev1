@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Accounts.AppServices.Exceptions.Domain;
+using Sev1.Accounts.Domain.Base.Exceptions;
 using Sev1.Accounts.Contracts.Contracts.User.Responses;
 
 namespace Sev1.Accounts.AppServices.Services.User.Implementations
