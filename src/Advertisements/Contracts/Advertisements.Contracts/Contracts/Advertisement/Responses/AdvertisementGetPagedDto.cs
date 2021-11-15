@@ -46,11 +46,6 @@
         public string CategoryName { get; set; }
 
         /// <summary>
-        /// Статус объявления
-        /// </summary>
-        public bool IsDeleted { get; set; }
-
-        /// <summary>
         /// Таги в виде массива строк
         /// </summary>
         public string[] Tags { get; set; }

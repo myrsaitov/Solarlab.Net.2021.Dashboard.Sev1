@@ -1,6 +1,6 @@
-﻿using Sev1.Accounts.AppServices.Contracts.User;
-using Sev1.Accounts.AppServices.Contracts.User.Requests;
+﻿using Sev1.Accounts.AppServices.Contracts.User.Requests;
 using Sev1.Accounts.Contracts.Contracts.User.Requests;
+using Sev1.Accounts.Contracts.Contracts.User.Responses;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -36,6 +36,14 @@ namespace Sev1.Accounts.AppServices.Services.Interfaces.User
         /// <returns></returns>
         Task<Domain.User> Get(
             string userId,
+            CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Возвращает DTO авторизированного пользователя
+        /// </summary>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<UserResponse> GetCurrentUser(
             CancellationToken cancellationToken);
     }
 }

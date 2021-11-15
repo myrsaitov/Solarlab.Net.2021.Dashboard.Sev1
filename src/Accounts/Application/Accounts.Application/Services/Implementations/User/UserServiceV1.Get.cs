@@ -2,6 +2,7 @@
 using Sev1.Accounts.AppServices.Exceptions.User;
 using System.Threading;
 using System.Threading.Tasks;
+using Sev1.Accounts.Contracts.Contracts.User.Responses;
 
 namespace Sev1.Accounts.AppServices.Services.Implementations.User
 {
@@ -31,6 +32,26 @@ namespace Sev1.Accounts.AppServices.Services.Implementations.User
 
             // Возвращат пользователя
             return domainUser;
+        }
+
+        /// <summary>
+        /// Возвращает DTO авторизированного пользователя
+        /// </summary>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        public async Task<UserResponse> GetCurrentUser(
+            CancellationToken cancellationToken)
+        {
+            // Определяет идентификатор авторизированного пользователя
+            var currentUserId = _identityService.GetCurrentUserId(cancellationToken);
+            
+            // Возвращает доменную сущность авторизированного пользователя из БД
+            var domainUser = await Get(
+                    currentUserId,
+                    cancellationToken);
+
+            // Маппит и возвращает ответ
+            return _mapper.Map<UserResponse>(domainUser);
         }
     }
 }

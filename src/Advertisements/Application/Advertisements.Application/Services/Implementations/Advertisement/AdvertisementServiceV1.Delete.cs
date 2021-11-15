@@ -6,6 +6,7 @@ using Sev1.Advertisements.AppServices.Services.Interfaces.Advertisement;
 using Sev1.Advertisements.AppServices.Services.Validators.Advertisement;
 using Sev1.Advertisements.AppServices.Exceptions.Advertisement;
 using Sev1.Advertisements.AppServices.Exceptions.Domain;
+using sev1.Advertisements.Contracts.Enums;
 
 namespace Sev1.Advertisements.AppServices.Services.Implementations.Advertisement
 {
@@ -53,7 +54,7 @@ namespace Sev1.Advertisements.AppServices.Services.Implementations.Advertisement
             }
 
             // Объявленние не удаляется, а лишь помечается удаленным
-            advertisement.IsDeleted = true;
+            advertisement.Status = AdvertisementStatus.Deleted;
 
             // Обновляется дата редактирования
             advertisement.UpdatedAt = DateTime.UtcNow;
@@ -74,7 +75,7 @@ namespace Sev1.Advertisements.AppServices.Services.Implementations.Advertisement
                 }
             }
 
-            // Сохраняем изменения в базу
+            // Сохраняет изменения в базу
             await _advertisementRepository.Save(
                 advertisement, 
                 cancellationToken);

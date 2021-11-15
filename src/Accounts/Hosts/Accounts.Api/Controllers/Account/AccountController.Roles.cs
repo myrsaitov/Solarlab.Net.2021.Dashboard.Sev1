@@ -15,7 +15,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("getcurrentuserroles")]
+        [HttpPost("get-current-user-roles")]
         public async Task<IActionResult> GetCurrentUserRoles(
             CancellationToken cancellationToken)
         {
@@ -30,7 +30,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("getuserroles")]
+        [HttpPost("get-user-roles")]
         public async Task<IActionResult> GetUserRoles(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
             string UserId,

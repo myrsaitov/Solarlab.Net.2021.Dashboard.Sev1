@@ -9,19 +9,21 @@ namespace Sev1.Accounts.Api.Controllers.Account
     public partial class AccountController
     {
         /// <summary>
-        /// Возвращает Id текущего авторизированного пользователя
+        /// Возвращает идентификатор текущего авторизированного пользователя
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("currentuserid")]
-        public async Task<IActionResult> GetCurrentUserId(
+        [HttpPost("current-user-id")]
+        public IActionResult GetCurrentUserId(
             CancellationToken cancellationToken)
         {
-            //var currentUserId = await Task.FromResult(_identityService.GetCurrentUserId(cancellationToken));
-            var currentUserId = _identityService.GetCurrentUserId(cancellationToken);
-
-            return Ok(currentUserId);
+            // Т.к. GetCurrentUserId синхронный, то и контроллер делаем синхронным.
+            // Каждый такой случай нужно рассматривать индивидуально.
+            return Ok(new CurrentUserIdResponse()
+            {
+                UserId = _identityService.GetCurrentUserId(cancellationToken)
+            });
         }
 
         /// <summary>
@@ -30,20 +32,11 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("currentuser")]
+        [HttpPost("current-user")]
         public async Task<IActionResult> GetCurrentUser(
             CancellationToken cancellationToken)
         {
-            var currentUserId = _identityService.GetCurrentUserId(cancellationToken);
-            var domainUser = await _userService.Get(currentUserId, cancellationToken);
-
-            return Ok(new UserResponse()
-            {
-                UserName = domainUser.UserName,
-                FirstName = domainUser.FirstName,
-                LastName = domainUser.LastName,
-                MiddleName = domainUser.MiddleName
-            });
+            return Ok(await _userService.GetCurrentUser(cancellationToken));
         }
 
         /// <summary>

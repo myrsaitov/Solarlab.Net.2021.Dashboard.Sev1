@@ -2,6 +2,7 @@
 using Sev1.Accounts.AppServices.Contracts.User.Requests;
 using Sev1.Accounts.Contracts.Contracts.Identity.Requests;
 using Sev1.Accounts.Contracts.Contracts.User.Requests;
+using Sev1.Accounts.Contracts.Contracts.User.Responses;
 using Sev1.Accounts.Contracts.Enums;
 using System;
 
@@ -24,6 +25,8 @@ namespace Sev1.Accounts.MapsterMapper.MapProfiles
             config.NewConfig<UserRegisterRequest, IdentityUserCreateRequest>()
                 .Map(dest => dest.UserName, src => src.UserName)
                 .Map(dest => dest.Role, src => RoleConstants.User.ToString());
+
+            config.NewConfig<Domain.User, UserResponse>();
 
             return config;
         }

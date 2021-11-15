@@ -29,6 +29,3 @@ namespace Sev1.Accounts.Api.Controllers.Account
         }
     }
 }
-
-
-// {"email":"user@mail.ru","password":"Zuse123!@#$%^()"} {"email":"moderator@mail.ru","password":"Zmod123!@#$%^()"} {"email":"administrator@mail.ru","password":"Zadm123!@#$%^()"}

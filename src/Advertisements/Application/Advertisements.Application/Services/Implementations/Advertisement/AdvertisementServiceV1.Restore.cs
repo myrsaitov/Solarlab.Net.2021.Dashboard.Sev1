@@ -6,6 +6,7 @@ using Sev1.Advertisements.AppServices.Exceptions.Domain;
 using Sev1.Advertisements.AppServices.Services.Interfaces.Advertisement;
 using Sev1.Advertisements.AppServices.Services.Validators.Advertisement;
 using Sev1.Advertisements.AppServices.Exceptions.Advertisement;
+using sev1.Advertisements.Contracts.Enums;
 
 namespace Sev1.Advertisements.AppServices.Services.Implementations.Advertisement
 {
@@ -49,7 +50,10 @@ namespace Sev1.Advertisements.AppServices.Services.Implementations.Advertisement
                 throw new NoRightsException("Вы не создали это объявление!");
             }
 
-            advertisement.IsDeleted = false;
+            // Восстановливает объявление
+            advertisement.Status = AdvertisementStatus.Active;
+
+            // Сохраняет изменения в базу
             advertisement.UpdatedAt = DateTime.UtcNow;
             await _advertisementRepository.Save(
                 advertisement, 
