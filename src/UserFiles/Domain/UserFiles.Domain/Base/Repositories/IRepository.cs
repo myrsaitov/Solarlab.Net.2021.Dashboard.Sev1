@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sev1.UserFiles.Domain.Base.Entities;
 
-namespace Sev1.UserFiles.AppServices.Services.Repositories.Base
+namespace Sev1.UserFiles.Domain.Base.Repositories
 {
     /// <summary>
     /// Базовый репозиторий

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Sev1.UserFiles.AppServices.Services.Repositories.Base;
+using Sev1.UserFiles.Domain.Base.Repositories;
 
 namespace Sev1.UserFiles.AppServices.Services.Repositories.UserFile
 {
