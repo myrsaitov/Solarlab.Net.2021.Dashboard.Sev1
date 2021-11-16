@@ -17,84 +17,112 @@ import {BaseService} from 'src/app/services/base.service';
 export class SignupComponent implements OnInit {
   form: FormGroup;
   notregisterstatus = false;
-  hide : boolean = true; // Показать/спрятать пароль
+  passwordHide : boolean = true; // Показать/спрятать пароль
+  pattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,20}$/g;
 
   constructor(
     private fb: FormBuilder, 
     private accountService: AccountService,
     private readonly auth: AuthService,
     private readonly baseService: BaseService,
-    private readonly router: Router) {
-  }
+    private readonly router: Router) {}
 
+  // Обработка события инициализации
   ngOnInit() {
-    const pattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\-\)\(]).{6,20}$/g;
+    
 
     this.form = this.fb.group({
-      userName: ['', [Validators.required,Validators.minLength(5), Validators.maxLength(50), Validators.pattern("[a-zA-Z0-9_]*")]],
-      email: ['', [Validators.required, Validators.email]],
-      firstName: ['', [Validators.minLength(1), Validators.maxLength(50), Validators.pattern("[A-Z][a-z]*")]],
-      lastName: ['', [Validators.minLength(1), Validators.maxLength(50), Validators.pattern("[A-Z][a-z]*")]],
-      middleName: ['', [Validators.minLength(1), Validators.maxLength(50), Validators.pattern("[A-Z][a-z]*")]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(pattern)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
+      eMail: ['user@mail.ru', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
+      userName: ['myrsaitov', [Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern("[a-zA-Z_][a-zA-Z0-9_]*")]],
+      phoneNumber: ['+79787713935', [Validators.minLength(4), Validators.maxLength(15), Validators.pattern("^[0-9+]*$")]],
+      firstName: ['Константин', [Validators.minLength(1), Validators.maxLength(30), Validators.pattern("[A-ZА-ЯЁ][a-zа-яё]*")]],
+      lastName: ['Мирсаитов', [Validators.minLength(1), Validators.maxLength(30), Validators.pattern("[A-ZА-ЯЁ][a-zа-яё]*")]],
+      middleName: ['Михайлович', [Validators.minLength(1), Validators.maxLength(30), Validators.pattern("[A-ZА-ЯЁ][a-zа-яё]*")]],
+      address: ['г. Севастополь, ул. Новороссийская', [Validators.minLength(10), Validators.maxLength(100)]],
+      regionId: ['1', [Validators.required, Validators.pattern("^[0-9]$")]],
+      userPicPath: ['http://dfgs123.com/image.jpg', [Validators.maxLength(2000)]],
+      password: ['Zuse123!@#', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(this.pattern)]],
+      confirmPassword: ['Zuse123!@#', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
     }, {validators: confirmPasswordValidator});
   }
 
-  get userName() {
-    return this.form.get('userName');
+  // Возвращает значение c формы соответсвующего поля
+  get eMail() { return this.form.get('eMail'); }
+  get userName() { return this.form.get('userName'); }
+  get phoneNumber() { return this.form.get('phoneNumber'); }
+  get firstName() { return this.form.get('firstName'); }
+  get lastName() { return this.form.get('lastName'); }
+  get middleName() { return this.form.get('middleName'); }
+  get address() { return this.form.get('address'); }
+  get regionId() { return this.form.get('regionId'); } // number
+  get userPicPath() { return this.form.get('userPicPath'); }
+  get password() { return this.form.get('password'); }
+  get confirmPassword() { return this.form.get('confirmPassword'); }
+
+  // Обработка события нажатия на CheckBox: Показать-спрятать пароль
+  onCheckboxChange(event: any) {
+    this.passwordHide = !this.passwordHide;
+
+    if(!this.passwordHide)
+    {
+      // Если пароль видимый, то не проверяем confirmPassword
+      this.form = this.fb.group({
+        eMail: ['user@mail.ru', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
+        userName: ['myrsaitov', [Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern("[a-zA-Z_][a-zA-Z0-9_]*")]],
+        phoneNumber: ['+79787713935', [Validators.minLength(4), Validators.maxLength(15), Validators.pattern("^[0-9+]*$")]],
+        firstName: ['Константин', [Validators.minLength(1), Validators.maxLength(30), Validators.pattern("[A-ZА-ЯЁ][a-zа-яё]*")]],
+        lastName: ['Мирсаитов', [Validators.minLength(1), Validators.maxLength(30), Validators.pattern("[A-ZА-ЯЁ][a-zа-яё]*")]],
+        middleName: ['Михайлович', [Validators.minLength(1), Validators.maxLength(30), Validators.pattern("[A-ZА-ЯЁ][a-zа-яё]*")]],
+        address: ['г. Севастополь, ул. Новороссийская', [Validators.minLength(10), Validators.maxLength(100)]],
+        regionId: ['1', [Validators.required, Validators.pattern("^[0-9]$")]],
+        userPicPath: ['http://dfgs123.com/image.jpg', [Validators.maxLength(2000)]],
+        password: ['Zuse123!@#', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(this.pattern)]],
+        confirmPassword: ['Zuse123!@#', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
+      }, {validators: []});
+    }
+    else
+    {
+      // Если пароль скрыт, то не проверяем confirmPassword
+      this.form = this.fb.group({
+        eMail: ['user@mail.ru', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
+        userName: ['myrsaitov', [Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern("[a-zA-Z_][a-zA-Z0-9_]*")]],
+        phoneNumber: ['+79787713935', [Validators.minLength(4), Validators.maxLength(15), Validators.pattern("^[0-9+]*$")]],
+        firstName: ['Константин', [Validators.minLength(1), Validators.maxLength(30), Validators.pattern("[A-ZА-ЯЁ][a-zа-яё]*")]],
+        lastName: ['Мирсаитов', [Validators.minLength(1), Validators.maxLength(30), Validators.pattern("[A-ZА-ЯЁ][a-zа-яё]*")]],
+        middleName: ['Михайлович', [Validators.minLength(1), Validators.maxLength(30), Validators.pattern("[A-ZА-ЯЁ][a-zа-яё]*")]],
+        address: ['г. Севастополь, ул. Новороссийская', [Validators.minLength(10), Validators.maxLength(100)]],
+        regionId: ['1', [Validators.required, Validators.pattern("^[0-9]$")]],
+        userPicPath: ['http://dfgs123.com/image.jpg', [Validators.maxLength(2000)]],
+        password: ['Zuse123!@#', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(this.pattern)]],
+        confirmPassword: ['Zuse123!@#', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
+      }, {validators: confirmPasswordValidator});
+    }
   }
 
-  get email() {
-    return this.form.get('email');
-  }
-
-  get firstName() {
-    return this.form.get('firstName');
-  }
-
-  get lastName() {
-    return this.form.get('lastName');
-  }
-  
-  get middleName() {
-    return this.form.get('middleName');
-  }
-
-  get password() {
-    return this.form.get('password');
-  }
-
-  get confirmPassword() {
-    return this.form.get('confirmPassword');
-  }
-
-  // Показать-спрятать пароль
-  toggleHidePassword() {
-    this.hide = !this.hide;
-  }
-
+  // Нажатие на кнопку "Зарегистрироваться"
   public async register() {
 
     console.log("Called register()");
+
+    // Если форма не валидна
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
 
+    // Вызываем запрос на регистрацию пользователя
+    var res = await this.accountService
+      .register(this.form.value)
+      .toPromise();
 
-
-
- var RES = await this.accountService
-  .register(this.form.value)
-  .toPromise();
-
-   
-
-    //LOGIN
-  if(RES)
-  {
+    // Если регистрация удачная, то сразу логинимся
+    if(res)
+    {
+      // Отметить все поля формы как "затронутые",
+      // чтобы валидатор активизировался
       this.form.markAllAsTouched();
+
+      // Если поля в форме не прошли валидацию, то выход
       if (this.form.invalid) 
       {  
         return;
@@ -104,20 +132,15 @@ export class SignupComponent implements OnInit {
       localStorage.setItem('currentUser', payload.eMail);
       await this.baseService.post(ApiUrls.login, payload)
         .then(res => {
-          if (res) 
-          {
+          if (res) {
             this.auth.saveSession(res);
             this.router.navigate(['/']);
           }
         });
+    }
+    else
+    {
+      this.notregisterstatus = true;
+    }
   }
-  else
-  {
-    this.notregisterstatus = true;
-  }
-
-}
-
-
-  
 }

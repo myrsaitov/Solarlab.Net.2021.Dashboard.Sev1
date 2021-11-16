@@ -1,7 +1,13 @@
+// DTO для регистрации
 export interface IRegister {
-  email: string;
+  eMail: string;
+  userName: string;
+  phoneNumber: string;
   firstName: string;
   lastName: string;
+  middleName: string;
+  address: string;
+  regionId: number;
+  userPicPath: string;
   password: string;
-  confirmPassword: string;
 }

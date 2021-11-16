@@ -7,7 +7,13 @@ namespace Sev1.Accounts.Contracts.Contracts.User.Requests
     /// </summary>
     public sealed class UserRegisterRequest
     {
-        // Обязательные поля
+        /// <summary>
+        /// E-mail пользователя
+        /// </summary>
+        [Required]
+        [MaxLength(254, ErrorMessage = "Максимальная длина E-mail не должна превышать 254 символов")]
+        [MinLength(5, ErrorMessage = "Минимальная длина E-mail не должна быть меньше 5 символов")]
+        public string EMail { get; set; }
 
         /// <summary>
         /// Никнейм пользователя
@@ -18,30 +24,12 @@ namespace Sev1.Accounts.Contracts.Contracts.User.Requests
         public string UserName { get; set; }
 
         /// <summary>
-        /// E-mail пользователя
-        /// </summary>
-        [Required]
-        [MaxLength(254, ErrorMessage = "Максимальная длина E-mail не должна превышать 254 символов")]
-        [MinLength(5, ErrorMessage = "Минимальная длина E-mail не должна быть меньше 5 символов")]
-        public string Email { get; set; }
-
-        /// <summary>
         /// Телефонный номер пользователя
         /// </summary>
         [Required]
         [MaxLength(15, ErrorMessage = "Максимальная длина номера телефона 15 символов")]
         [MinLength(4, ErrorMessage = "Минимальная длина номера телефона не должна быть меньше 4 символов")]
         public string PhoneNumber { get; set; }
-
-        /// <summary>
-        /// Пароль
-        /// </summary>
-        [Required]
-        [MaxLength(50, ErrorMessage = "Максимальная длина Password не должна превышать 50 символов")]
-        [MinLength(8, ErrorMessage = "Минимальная длина Password не должна быть меньше 8 символов")]
-        public string Password { get; set; }
-
-        // Необязательные поля
 
         /// <summary>
         /// Имя
@@ -74,6 +62,7 @@ namespace Sev1.Accounts.Contracts.Contracts.User.Requests
         /// <summary>
         /// Идентификатор региона
         /// </summary>
+        [Required]
         [Range(1, 100_000_000_000, ErrorMessage = "Значение RegionId должно быть от 1 до 100_000_000_000")]
         public int? RegionId { get; set; }
 
@@ -82,5 +71,13 @@ namespace Sev1.Accounts.Contracts.Contracts.User.Requests
         /// </summary>
         [MaxLength(2000, ErrorMessage = "Максимальная длина URI не должна превышать 2000  символов")]
         public string UserPicPath { get; set; }
+
+        /// <summary>
+        /// Пароль
+        /// </summary>
+        [Required]
+        [MaxLength(50, ErrorMessage = "Максимальная длина Password не должна превышать 50 символов")]
+        [MinLength(8, ErrorMessage = "Минимальная длина Password не должна быть меньше 8 символов")]
+        public string Password { get; set; }
     }
 }

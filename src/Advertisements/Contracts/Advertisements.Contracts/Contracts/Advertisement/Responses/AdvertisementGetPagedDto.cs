@@ -59,5 +59,10 @@
         /// Имя региона
         /// </summary>
         public string RegionName { get; set; }
+
+        /// <summary>
+        /// Имя региона
+        /// </summary>
+        public int? RegionId { get; set; }
     }
 }
