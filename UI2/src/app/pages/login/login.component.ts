@@ -55,8 +55,6 @@ export class LoginComponent implements OnInit {
     }
     const payload: ILogin = this.loginForm.getRawValue();
 
-    localStorage.setItem('currentUser', payload.eMail);
-   
     await this.baseService.post(ApiUrls.login, payload)
       .then(res => {
         if (res) {
@@ -69,10 +67,4 @@ export class LoginComponent implements OnInit {
           else{this.notloginedstatus = true;}
       });
 }
-
-
-
-
-      
-  
 }

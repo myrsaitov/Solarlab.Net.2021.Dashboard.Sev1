@@ -77,15 +77,6 @@
   </div>
 
   <!-- Регион -->
-  <!--<div class="form-group">
-    <label for="inputRegionId">Регион</label>
-    <input type="text" id="inputRegionId" class="form-control" placeholder="Регион" autofocus
-          [class.is-invalid]="regionId.invalid && regionId.touched" formControlName="regionId">
-    <div class="invalid-feedback" *ngIf="regionId.hasError('required')">
-      Пожалуйста, заполните Регион
-    </div>
-  </div> -->
-
   <div class="form-group">
     <label for="regionId">Регион</label>
     <select class="form-control custom-select" id="regionId" formControlName="regionId" autofocus [class.is-invalid]="regionId.invalid"

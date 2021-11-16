@@ -11,6 +11,8 @@ import {EditAdvertisement, IEditAdvertisement} from '../../models/advertisement/
 import { TagService } from '../../services/tag.service';
 import { TagModel } from 'src/app/models/tag/tag-model';
 import { isNullOrUndefined } from 'util';
+import { IRegion } from 'src/app/models/region/region-model';
+import { RegionService } from 'src/app/services/region.service';
 
 @Component({
   selector: 'app-edit-advertisement',
@@ -20,6 +22,7 @@ import { isNullOrUndefined } from 'util';
 export class EditAdvertisementComponent implements OnInit, OnDestroy {
   form: FormGroup;
   categories$: Observable<ICategory[]>;
+  regions$: Observable<IRegion[]>;
   advertisementId$ = this.route.params.pipe(pluck('id'));
   destroy$ = new Subject();
   tagstr: string;
@@ -31,11 +34,13 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute,
               private router: Router,
               private toastService: ToastService,
-              private tagService: TagService) {
+              private tagService: TagService,
+              private regionService: RegionService) {
   }
 
   ngOnInit() {
 
+    // Подписка на таги
     this.tagService.getTags().subscribe(getPagedTags => 
       {
         if (isNullOrUndefined(getPagedTags)) {
@@ -46,15 +51,26 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
         this.tags = getPagedTags.items;
       });
 
+
+    // Подписка на регионы
+    this.regions$ = this.regionService.getRegionList({
+      pageSize: 1000,
+      page: 0,
+    });
+
+    // Подписка на категории
     this.categories$ = this.categoryService.getCategoryList({
       pageSize: 1000,
       page: 0,
     });
+
     this.form = this.fb.group({
       title: ['', Validators.required],
       body: ['', Validators.required],
       price: ['', Validators.pattern("[0-9,]*")],
       categoryId: ['', Validators.required],
+      regionId: ['1', [Validators.required]],
+      address: ['', Validators.required],
       input_tags: ['',Validators.required]
     });
     this.advertisementId$.pipe(switchMap(advertisementId => {
@@ -65,6 +81,8 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       this.body.patchValue(advertisement.body);
       this.price.patchValue(advertisement.price);
       this.categoryId.patchValue(advertisement.categoryId);
+      this.regionId.patchValue(advertisement.regionId);
+      this.address.patchValue(advertisement.address);
       this.tagstr = "";
       advertisement.tags.forEach(function (value) 
       {
@@ -100,6 +118,14 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
   
   get categoryId() {
     return this.form.get('categoryId');
+  }
+
+  get regionId() {
+    return this.form.get('regionId');
+  }
+
+  get address() {
+    return this.form.get('address');
   }
 
   get input_tags() {
@@ -138,7 +164,9 @@ if(tagStr != null)
         body: this.body.value,
         price: this.price.value,
         tags: arrayOfStrings,
-        categoryId: +this.categoryId.value
+        categoryId: +this.categoryId.value,
+        regionId: this.regionId.value,
+        address: this.address.value,
       };
 
       return this.advertisementService.edit(new EditAdvertisement(model));

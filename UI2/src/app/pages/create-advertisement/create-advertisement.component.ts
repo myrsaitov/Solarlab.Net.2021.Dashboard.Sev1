@@ -23,7 +23,7 @@ export class CreateAdvertisementComponent implements OnInit {
   form: FormGroup;
   categories$: Observable<ICategory[]>;
   tags: TagModel[];
-  regions: IRegion[];
+  regions$: Observable<IRegion[]>;
 
   constructor(private fb: FormBuilder,
               private advertisementService: AdvertisementService,
@@ -47,8 +47,10 @@ export class CreateAdvertisementComponent implements OnInit {
       });
 
     // Подписка на регионы
-
-
+    this.regions$ = this.regionService.getRegionList({
+      pageSize: 1000,
+      page: 0,
+    });
 
 
     this.form = this.fb.group({
@@ -56,6 +58,8 @@ export class CreateAdvertisementComponent implements OnInit {
       body: ['', Validators.required],
       price: ['', Validators.pattern("[0-9,]*")],
       categoryId: [null, Validators.required],
+      regionId: [localStorage.getItem('regionId'), [Validators.required]],
+      address: ['', Validators.required],
       input_tags: [null]
     });
     this.categories$ = this.categoryService.getCategoryList({
@@ -64,25 +68,14 @@ export class CreateAdvertisementComponent implements OnInit {
     });
   }
 
-  get title() {
-    return this.form.get('title');
-  }
-
-  get body() {
-    return this.form.get('body');
-  }
-
-  get price() {
-    return this.form.get('price');
-  }
-
-  get categoryId() {
-    return this.form.get('categoryId');
-  }
-
-  get input_tags() {
-    return this.form.get('input_tags');
-  }
+  // Возвращает значение c формы соответсвующего поля
+  get title() { return this.form.get('title'); }
+  get body() { return this.form.get('body'); }
+  get price() { return this.form.get('price'); }
+  get categoryId() { return this.form.get('categoryId'); }
+  get regionId() { return this.form.get('regionId'); }
+  get address() { return this.form.get('address'); }
+  get input_tags() { return this.form.get('input_tags'); }
 
   getContentByTag(tag: string){
     this.router.navigate(['/'], { queryParams: { tag: tag } });
@@ -107,6 +100,8 @@ export class CreateAdvertisementComponent implements OnInit {
       body: this.body.value,
       price: this.price.value,
       categoryId: +this.categoryId.value,
+      regionId: this.regionId.value,
+      address: this.address.value,
       tags: arrayOfStrings
     };
 

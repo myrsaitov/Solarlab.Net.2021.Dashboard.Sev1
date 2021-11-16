@@ -55,7 +55,7 @@ namespace Sev1.Accounts.AppServices.Services.Identity.Interfaces
         /// <param name="request">E-mail и пароль</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<UserLoginResponse> CreateToken(
+        Task<IdentityUserCreateTokenResponse> CreateToken(
             UserLoginRequest request, 
             CancellationToken cancellationToken);
 

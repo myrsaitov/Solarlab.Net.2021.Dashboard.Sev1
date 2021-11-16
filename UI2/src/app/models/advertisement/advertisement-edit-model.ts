@@ -6,6 +6,8 @@ export interface IEditAdvertisement {
   body: string;
   price: number;
   categoryId: number;
+  regionId: number;
+  address: string;
   tags: string[];
 }
 
@@ -14,6 +16,8 @@ export class EditAdvertisement implements IEditAdvertisement {
   body: string;
   price: number;
   categoryId: number;
+  regionId: number;
+  address: string;
   tags: string[];
   title: string;
 
@@ -23,6 +27,8 @@ export class EditAdvertisement implements IEditAdvertisement {
       body: '',
       price: 0,
       categoryId: null,
+      regionId: null,
+      address: '',
       tags: [],
       title: '',
       ...data
@@ -31,6 +37,8 @@ export class EditAdvertisement implements IEditAdvertisement {
     this.id = defaults.id;
     this.body = defaults.body;
     this.categoryId = defaults.categoryId;
+    this.regionId = defaults.regionId;
+    this.address = defaults.address;
     this.tags = defaults.tags;
     this.title = defaults.title;
     this.price = defaults.price;

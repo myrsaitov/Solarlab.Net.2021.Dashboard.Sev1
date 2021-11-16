@@ -80,13 +80,15 @@ export class HeaderComponent {
     return this.authService.getUserName();
   }
 
-  logout() {
-    this.baseService.post(ApiUrls.logout)
+  logout() { //TODO зачем вызывать LogOut на бэке?
+    /*this.baseService.post(ApiUrls.logout)
       .then(() => {
         this.router.navigate(['/', 'login']);
       })
       .finally(() => {
         this.authService.deleteSession();
-      });
+      });*/
+      this.router.navigate(['/', 'login']);
+      this.authService.deleteSession();
   }
 }

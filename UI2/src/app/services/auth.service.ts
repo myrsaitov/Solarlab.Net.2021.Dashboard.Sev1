@@ -8,7 +8,13 @@ import {BehaviorSubject} from 'rxjs';
 })
 
 export class AuthService {
-  private readonly tokenName = '  login_session';
+  private readonly sessionToken = '  login_session';
+  private readonly sessionUserName = 'userName';
+  private readonly sessionUserId = 'userId';
+  private readonly sessionRoles = 'roles';
+  private readonly sessionRegionId = 'regionId';
+  private readonly sessionUserPicPath = 'userPicPath';
+
   private isAuthSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   get isAuth() {
@@ -25,28 +31,69 @@ export class AuthService {
   }
 
   // Сохраняет данные о сессии в хранилище
-  saveSession(token: string): void {
-    localStorage.setItem(this.tokenName, JSON.parse(token).token);
+  saveSession(response: string): void {
+    // Токен
+    localStorage.setItem(this.sessionToken, JSON.parse(response).token);
+    // UserName
+    localStorage.setItem(this.sessionUserName, JSON.parse(response).userName);
+    // UserId
+    localStorage.setItem(this.sessionUserId, JSON.parse(response).userId);
+    // RegionId
+    localStorage.setItem(this.sessionRegionId, JSON.parse(response).regionId);
+    // UserPicPath
+    localStorage.setItem(this.sessionUserPicPath, JSON.parse(response).userPicPath);
+    // Roles
+    localStorage.setItem(this.sessionRoles, JSON.parse(response).roles);
+
+    // Загружает эту сессию после сохранения
     this.isAuthSubject$.next(!!this.getSession());
   }
 
-  // Возвращает данные о сессии их хранилища
+  // Возвращает данные о сессии из хранилища
   getSession(): string {
-    return localStorage.getItem(this.tokenName);
+    return localStorage.getItem(this.sessionToken);
   }
 
   // Удаляет данные о сессии их хранилища
   deleteSession(): void {
-    localStorage.removeItem(this.tokenName);
+    // Токен
+    localStorage.removeItem(this.sessionToken);
+    // UserName
+    localStorage.removeItem(this.sessionUserName);
+    // UserId
+    localStorage.removeItem(this.sessionUserId);
+    // RegionId
+    localStorage.removeItem(this.sessionRegionId);
+    // UserPicPath
+    localStorage.removeItem(this.sessionUserPicPath);
+    // Roles
+    localStorage.removeItem(this.sessionRoles);
+
     this.isAuthSubject$.next(!!this.getSession());
   }
 
+  // Возвращает UserName
   getUserName() {
-
-    return localStorage.getItem('currentUser');
-
+    return localStorage.getItem(this.sessionUserName);
+  }
+  // Возвращает UserId
+  getUserId() {
+    return localStorage.getItem(this.sessionUserId);
+  }
+  // Возвращает RegionId
+  getRegionId() {
+    return localStorage.getItem(this.sessionRegionId);
+  }
+  // Возвращает UserPicPath
+  getUserPicPath() {
+    return localStorage.getItem(this.sessionUserPicPath);
+  }
+  // Возвращает Roles
+  getRoles() {
+    return localStorage.getItem(this.sessionRoles);
   }
 
+  // Проверяет, произошла ли аутентификация
   isAuthenticated(): Promise<boolean> {
     return new Promise((resolve) => {
       resolve(!!this.getSession());

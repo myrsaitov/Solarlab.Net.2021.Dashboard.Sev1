@@ -21,5 +21,20 @@ namespace Sev1.Accounts.Contracts.Contracts.User.Responses
         /// Список ролей
         /// </summary>
         public IEnumerable<string> Roles { get; set; }
+
+        /// <summary>
+        /// Никнейм
+        /// </summary>
+        public string UserName { get; set; }
+
+        /// <summary>
+        /// Идентификатор региона
+        /// </summary>
+        public int? RegionId { get; set; }
+
+        /// <summary>
+        /// Путь к фото пользователя
+        /// </summary>
+        public string UserPicPath { get; set; }
     }
 }

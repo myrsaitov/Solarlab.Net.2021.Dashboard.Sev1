@@ -19,6 +19,16 @@ namespace Sev1.Accounts.AppServices.Services.User.Interfaces
             CancellationToken cancellationToken);
 
         /// <summary>
+        /// Выполняет авторизацию
+        /// </summary>
+        /// <param name="request">Данные пользователя</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<UserLoginResponse> Login(
+            UserLoginRequest request,
+            CancellationToken cancellationToken);
+
+        /// <summary>
         /// Обновляет данные пользователя
         /// </summary>
         /// <param name="request">DTO запроса</param>

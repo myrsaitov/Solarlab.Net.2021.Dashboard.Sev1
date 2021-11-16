@@ -21,11 +21,9 @@ namespace Sev1.Accounts.Api.Controllers.Account
             UserLoginRequest request,
             CancellationToken cancellationToken)
         {
-            var token = await _identityService.CreateToken(
+            return Ok(await _userService.Login(
                 request,
-                cancellationToken);
-
-            return Ok(token);
+                cancellationToken));
         }
     }
 }

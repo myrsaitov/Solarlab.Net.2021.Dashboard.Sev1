@@ -11,13 +11,22 @@ export class AuthHeadersInterceptor implements HttpInterceptor {
     private readonly authService: AuthService
   ) { }
 
+  // Интерцептор добавляет хидеры авторизации, если авторизированы, а если нет, то делает next
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    const httpRequest = req.clone({
-      setHeaders: {
-        'Authorization': `bearer ${this.authService.getSession()}`
-      }
-    });
-    console.log(httpRequest.body);
-    return next.handle(httpRequest);
+    
+    // Проверяет, авторизирован ли пользователь
+    if(this.authService.isAuth) {
+      const httpRequest = req.clone({
+        setHeaders: {
+          'Authorization': `Bearer ${this.authService.getSession()}`
+        }
+      });
+      console.log(httpRequest.body);
+      return next.handle(httpRequest);
+    }
+    else {
+      // Если не авторизирован
+      return next.handle(req);
+    }
   }
 }

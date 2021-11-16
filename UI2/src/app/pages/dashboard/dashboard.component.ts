@@ -40,6 +40,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    
     this.tagService.getTags().subscribe(getPagedTags => 
       {
         if (isNullOrUndefined(getPagedTags)) {
@@ -85,7 +86,7 @@ export class DashboardComponent implements OnInit {
 
 
       this.response$ = this.advertisementsFilterChange$.pipe( // pipe - применить указанное действие ко всем элементам конвейера
-      switchMap(advertisementsFilter => this.advertisementService.getAdvertisementsList(advertisementsFilter)
+        switchMap(advertisementsFilter => this.advertisementService.getAdvertisementsList(advertisementsFilter)
       ));
 
   }

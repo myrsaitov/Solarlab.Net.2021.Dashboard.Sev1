@@ -35,6 +35,7 @@ export class SignupComponent implements OnInit {
   // Обработка события инициализации
   ngOnInit() {
     
+    // Подписка на регионы
     this.regions$ = this.regionService.getRegionList({
       pageSize: 1000,
       page: 0,
@@ -48,7 +49,7 @@ export class SignupComponent implements OnInit {
       lastName: ['Мирсаитов', [Validators.minLength(1), Validators.maxLength(30), Validators.pattern("[A-ZА-ЯЁ][a-zа-яё]*")]],
       middleName: ['Михайлович', [Validators.minLength(1), Validators.maxLength(30), Validators.pattern("[A-ZА-ЯЁ][a-zа-яё]*")]],
       address: ['г. Севастополь, ул. Новороссийская', [Validators.minLength(10), Validators.maxLength(100)]],
-      regionId: ['1', [Validators.required, Validators.pattern("^[0-9]$")]],
+      regionId: ['3', [Validators.required]],
       userPicPath: ['http://dfgs123.com/image.jpg', [Validators.maxLength(2000)]],
       password: ['Zuse123!@#', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(this.pattern)]],
       confirmPassword: ['Zuse123!@#', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
@@ -63,7 +64,7 @@ export class SignupComponent implements OnInit {
   get lastName() { return this.form.get('lastName'); }
   get middleName() { return this.form.get('middleName'); }
   get address() { return this.form.get('address'); }
-  get regionId() { return this.form.get('regionId'); } // number
+  get regionId() { return this.form.get('regionId'); }
   get userPicPath() { return this.form.get('userPicPath'); }
   get password() { return this.form.get('password'); }
   get confirmPassword() { return this.form.get('confirmPassword'); }
@@ -83,7 +84,7 @@ export class SignupComponent implements OnInit {
         lastName: ['Мирсаитов', [Validators.minLength(1), Validators.maxLength(30), Validators.pattern("[A-ZА-ЯЁ][a-zа-яё]*")]],
         middleName: ['Михайлович', [Validators.minLength(1), Validators.maxLength(30), Validators.pattern("[A-ZА-ЯЁ][a-zа-яё]*")]],
         address: ['г. Севастополь, ул. Новороссийская', [Validators.minLength(10), Validators.maxLength(100)]],
-        regionId: ['1', [Validators.required, Validators.pattern("^[0-9]$")]],
+        regionId: ['3', [Validators.required]],
         userPicPath: ['http://dfgs123.com/image.jpg', [Validators.maxLength(2000)]],
         password: ['Zuse123!@#', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(this.pattern)]],
         confirmPassword: ['Zuse123!@#', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
@@ -100,7 +101,7 @@ export class SignupComponent implements OnInit {
         lastName: ['Мирсаитов', [Validators.minLength(1), Validators.maxLength(30), Validators.pattern("[A-ZА-ЯЁ][a-zа-яё]*")]],
         middleName: ['Михайлович', [Validators.minLength(1), Validators.maxLength(30), Validators.pattern("[A-ZА-ЯЁ][a-zа-яё]*")]],
         address: ['г. Севастополь, ул. Новороссийская', [Validators.minLength(10), Validators.maxLength(100)]],
-        regionId: ['1', [Validators.required, Validators.pattern("^[0-9]$")]],
+        regionId: ['3', [Validators.required]],
         userPicPath: ['http://dfgs123.com/image.jpg', [Validators.maxLength(2000)]],
         password: ['Zuse123!@#', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(this.pattern)]],
         confirmPassword: ['Zuse123!@#', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
@@ -138,7 +139,7 @@ export class SignupComponent implements OnInit {
       }
     
       const payload: ILogin = this.form.getRawValue();
-      localStorage.setItem('currentUser', payload.eMail);
+
       await this.baseService.post(ApiUrls.login, payload)
         .then(res => {
           if (res) {
