@@ -8,7 +8,7 @@ namespace Sev1.Accounts.Contracts.Contracts.User.Responses
     public class ValidateTokenResponse
     {
         /// <summary>
-        /// Id пользователя
+        /// Идентификатор пользователя
         /// </summary>
         public string UserId { get; set; }
 

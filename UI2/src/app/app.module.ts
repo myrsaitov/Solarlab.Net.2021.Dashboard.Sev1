@@ -26,16 +26,9 @@ import { ToastsContainerComponent } from './components/toast-container/toast-con
 import { EditAdvertisementComponent } from './pages/edit-advertisement/edit-advertisement.component';
 import { ConnectionpageComponent } from './components/connectionpage/connectionpage.component';
 
-// export const createInterceptorProvider = (interceptor: any): Provider => {
-//   return {
-//     provide: HTTP_INTERCEPTORS,
-//     useClass: interceptor,
-//     multi: true
-//   };
-// };
-
+// NgModules configure the injector and the compiler and help organize related things together.
 @NgModule({
-  declarations: [
+  declarations: [ // The set of components, directives, and pipes (declarables) that belong to this module.
     AppComponent,
     TagCloudComponent,
     DashboardComponent,
@@ -51,7 +44,7 @@ import { ConnectionpageComponent } from './components/connectionpage/connectionp
     EditAdvertisementComponent,
     ConnectionpageComponent
   ],
-  imports: [
+  imports: [ // The set of NgModules whose exported declarables are available to templates in this module.
     BrowserModule,
     AppRoutingModule,
     NgbModule,
@@ -59,7 +52,7 @@ import { ConnectionpageComponent } from './components/connectionpage/connectionp
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [
+  providers: [ // The set of injectable objects that are available in the injector of this module.
     AuthService,
     AuthGuard,
     {

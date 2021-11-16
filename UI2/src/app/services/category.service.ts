@@ -7,9 +7,12 @@ import {GetPagedCategoryResponseModel} from '../models/category/get-paged-catego
 import {EMPTY, Observable} from 'rxjs';
 import { environment } from 'src/environments/environment';
 
+// The @Injectable() decorator specifies that Angular can use this class in the DI system.
+// providedIn: 'root', means that the Service is visible throughout the application.
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // declares that this service should be created by the root application injector.
 })
+
 export class CategoryService {
   private ROOT_URL = `${environment.baseAdvertisementsApiUrl}api/v1/categories`;
 
@@ -17,6 +20,7 @@ export class CategoryService {
   }
 
 
+  // Возвращает список категорий
   getCategoryList(filter: ICategoryFilter): Observable<ICategory[]>{
 
     let source = Observable.create(observer => {
@@ -31,31 +35,29 @@ export class CategoryService {
       .set('pageSize', `${pageSize}`);
  
       this.http.get<GetPagedCategoryResponseModel>(`${this.ROOT_URL}`, {params})
-        .pipe(catchError((err) => {
-          console.error(err);
-          return EMPTY;
-        }))
+        .pipe( // pipe - применить указанное действие ко всем элементам конвейера
+          catchError((err) => {
+            console.error(err);
+            return EMPTY;
+          }))
         .subscribe(category => {
           if (category !== null) {
             observer.next(category.items)
-        }
+          }
         });
     })
-  return source;
+
+    return source;
   }
 
+  // Возвращает категорию по идентификатору
   getCategoryById(id: number) {
-
     return this.http.get<ICategory>(`${this.ROOT_URL}/${id}`)
-      .pipe(catchError((err) => {
-        console.error(err);
-        return EMPTY;
-      }));
+      .pipe( // pipe - применить указанное действие ко всем элементам конвейера
+        catchError((err) => {
+          console.error(err);
+          return EMPTY;
+        }));
       
   }
-
-
-
-
-
 }

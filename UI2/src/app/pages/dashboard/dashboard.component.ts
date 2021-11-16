@@ -50,7 +50,10 @@ export class DashboardComponent implements OnInit {
         this.tags = getPagedTags.items;
       });
 
+    // Загружает сессию
     this.authService.loadSession();
+
+    // Проверяет, произошла ли авторизация
     this.isAuth = this.authService.isAuth;
 
     this.route.queryParams.subscribe(params => {
@@ -81,7 +84,7 @@ export class DashboardComponent implements OnInit {
 
 
 
-      this.response$ = this.advertisementsFilterChange$.pipe(
+      this.response$ = this.advertisementsFilterChange$.pipe( // pipe - применить указанное действие ко всем элементам конвейера
       switchMap(advertisementsFilter => this.advertisementService.getAdvertisementsList(advertisementsFilter)
       ));
 

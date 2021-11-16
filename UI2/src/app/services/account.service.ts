@@ -5,8 +5,10 @@ import {catchError} from 'rxjs/operators';
 import {EMPTY} from 'rxjs';
 import { environment } from 'src/environments/environment';
 
+// The @Injectable() decorator specifies that Angular can use this class in the DI system.
+// providedIn: 'root', means that the Service is visible throughout the application.
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // declares that this service should be created by the root application injector.
 })
 
 export class AccountService {

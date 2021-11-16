@@ -3,7 +3,12 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
-@Injectable({ providedIn: 'root' })
+// The @Injectable() decorator specifies that Angular can use this class in the DI system.
+// providedIn: 'root', means that the Service is visible throughout the application.
+@Injectable({
+  providedIn: 'root' // declares that this service should be created by the root application injector.
+})
+
 export class AuthGuard implements CanActivate {
 
   constructor(

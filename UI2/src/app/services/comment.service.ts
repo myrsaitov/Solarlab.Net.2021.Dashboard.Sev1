@@ -7,9 +7,12 @@ import {GetPagedCommentResponseModel} from '../models/comment/get-paged-comment-
 import {ICreateComment} from '../models/comment/comment-create-model';
 import {IComment} from '../models/comment/i-comment';
 
+// The @Injectable() decorator specifies that Angular can use this class in the DI system.
+// providedIn: 'root', means that the Service is visible throughout the application.
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // declares that this service should be created by the root application injector.
 })
+
 export class CommentService {
   private ROOT_URL = `api/v1/comments`;
   private decpage: number;

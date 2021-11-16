@@ -96,8 +96,9 @@ export class AdvertisementComponent implements OnInit {
       });
     });
 
-    this.response$ = this.commentsFilterChange$.pipe(
-      switchMap(commentsFilter => this.commentService.getCommentsList(commentsFilter)
+    this.response$ = this.commentsFilterChange$
+      .pipe( // pipe - применить указанное действие ко всем элементам конвейера
+        switchMap(commentsFilter => this.commentService.getCommentsList(commentsFilter)
       ));
   }
 

@@ -9,9 +9,12 @@ import { ICreateAdvertisement } from '../models/advertisement/advertisement-crea
 import { IEditAdvertisement } from '../models/advertisement/advertisement-edit-model';
 import { environment } from 'src/environments/environment';
 
+// The @Injectable() decorator specifies that Angular can use this class in the DI system.
+// providedIn: 'root', means that the Service is visible throughout the application.
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // declares that this service should be created by the root application injector.
 })
+
 export class AdvertisementService {
   private ROOT_URL = `${environment.baseAdvertisementsApiUrl}api/v1/advertisements`;
   private decpage: number;

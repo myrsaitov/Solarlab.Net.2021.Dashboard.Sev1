@@ -80,10 +80,12 @@ namespace Sev1.Accounts.AppServices.Services.Identity.Implementations
                 )
             );
 
-            // Генерирует токен
+            // Генерирует ответ
             return new UserLoginResponse
             {
-                Token = new JwtSecurityTokenHandler().WriteToken(token)
+                Token = new JwtSecurityTokenHandler().WriteToken(token),
+                UserId = identityUser.Id,
+                Roles = userRoles
             };
         }
 

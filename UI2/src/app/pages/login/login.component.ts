@@ -60,7 +60,10 @@ export class LoginComponent implements OnInit {
     await this.baseService.post(ApiUrls.login, payload)
       .then(res => {
         if (res) {
+          // Сохраняет сессию
           this.auth.saveSession(res);
+
+          // Открывает главную страницу
           this.router.navigate(['/']);
         }
           else{this.notloginedstatus = true;}

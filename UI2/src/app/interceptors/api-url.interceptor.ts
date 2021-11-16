@@ -2,6 +2,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/c
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
+// The @Injectable() decorator specifies that Angular can use this class in the DI system.
 @Injectable()
 
 export class ApiInterceptor implements HttpInterceptor {
