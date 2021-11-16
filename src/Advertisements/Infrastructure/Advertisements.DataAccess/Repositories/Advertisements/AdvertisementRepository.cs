@@ -64,6 +64,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .Set<Advertisement>()
                 .Include(a => a.Tags)
                 .Include(a => a.Category)
+                .Include(a => a.Region)
                 .AsNoTracking();
 
             return await data

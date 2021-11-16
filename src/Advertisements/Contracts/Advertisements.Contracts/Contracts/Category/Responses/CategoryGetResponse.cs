@@ -19,10 +19,5 @@
         /// Id родительской категории
         /// </summary>
         public int? ParentCategoryId { get; set; }
-
-        /// <summary>
-        /// Статус удаления
-        /// </summary>
-        public bool IsDeleted { get; set; }
     }
 }

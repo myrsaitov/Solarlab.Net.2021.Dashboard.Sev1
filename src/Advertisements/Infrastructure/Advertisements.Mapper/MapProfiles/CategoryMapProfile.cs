@@ -22,8 +22,7 @@ namespace Sev1.Advertisements.MapsterMapper.MapProfiles
 
             config.NewConfig<Domain.Category, CategoryGetResponse>()
                 .Map(dest => dest.Name, src => src.Name)
-                .Map(dest => dest.ParentCategoryId, src => src.ParentCategoryId)
-                .Map(dest => dest.IsDeleted, src => src.IsDeleted);
+                .Map(dest => dest.ParentCategoryId, src => src.ParentCategoryId);
 
             return config;
         }

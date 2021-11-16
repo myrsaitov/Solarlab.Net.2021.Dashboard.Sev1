@@ -56,8 +56,8 @@
         public string Address { get; set; }
 
         /// <summary>
-        /// Идентификатор региона
+        /// Имя региона
         /// </summary>
-        public int? RegionId { get; set; }
+        public string RegionName { get; set; }
     }
 }
