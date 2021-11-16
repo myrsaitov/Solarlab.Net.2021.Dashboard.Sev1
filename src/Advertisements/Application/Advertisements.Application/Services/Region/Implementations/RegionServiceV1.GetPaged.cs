@@ -46,7 +46,7 @@ namespace Sev1.Advertisements.AppServices.Services.Region.Implementations
             }
 
             var entities = await _regionRepository.GetPaged(
-                offset,
+                1,
                 request.PageSize,
                 cancellationToken);
 

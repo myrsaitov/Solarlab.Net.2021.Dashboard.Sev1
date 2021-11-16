@@ -17,6 +17,7 @@ import {BaseService} from 'src/app/services/base.service';
 export class SignupComponent implements OnInit {
   form: FormGroup;
   notregisterstatus = false;
+  hide : boolean = true; // Показать/спрятать пароль
 
   constructor(
     private fb: FormBuilder, 
@@ -27,7 +28,7 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
-    const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[+!@#$%^&*]).{6,20}/g;
+    const pattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\-\)\(]).{6,20}$/g;
 
     this.form = this.fb.group({
       userName: ['', [Validators.required,Validators.minLength(5), Validators.maxLength(50), Validators.pattern("[a-zA-Z0-9_]*")]],
@@ -68,6 +69,10 @@ export class SignupComponent implements OnInit {
     return this.form.get('confirmPassword');
   }
 
+  // Показать-спрятать пароль
+  toggleHidePassword() {
+    this.hide = !this.hide;
+  }
 
   public async register() {
 

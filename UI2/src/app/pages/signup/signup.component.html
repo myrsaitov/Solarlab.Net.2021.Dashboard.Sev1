@@ -55,7 +55,7 @@
   </div>
   <div class="form-group">
     <label for="inputPassword">Пароль</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Пароль"
+    <input [type]="hide ? 'password' : 'text'" id="inputPassword" class="form-control" placeholder="Пароль"
            [class.is-invalid]="password.invalid && password.touched" formControlName="password"
            aria-describedby="passwordHelpBlock">
     <small id="passwordHelpBlock" class="form-text text-muted">
@@ -73,10 +73,13 @@
     <div class="invalid-feedback" *ngIf="password.hasError('pattern')">
       Пожалуйста, укажите валидный Пароль
     </div>
+
+    <!-- Элемент для переключения видимости пароля -->
+    <input type="checkbox" (click)="toggleHidePassword()">Показать пароль
   </div>
   <div class="form-group">
     <label for="inputPasswordRepeat">Повторите пароль</label>
-    <input type="password" id="inputPasswordRepeat" class="form-control mb-3" placeholder="Повторите пароль"
+    <input [type]="hide ? 'password' : 'text'" id="inputPasswordRepeat" class="form-control mb-3" placeholder="Повторите пароль"
            [class.is-invalid]="(confirmPassword.invalid || form.hasError('confirmPassword')) && confirmPassword.touched"
            formControlName="confirmPassword">
     <div class="invalid-feedback" *ngIf="confirmPassword.hasError('required')">

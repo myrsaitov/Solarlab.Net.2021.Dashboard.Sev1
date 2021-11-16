@@ -113,6 +113,7 @@ namespace Sev1.Advertisements.Api
             services.AddSingleton(CategoryMapProfile.GetConfiguredMappingConfig());
             services.AddSingleton(AdvertisementMapProfile.GetConfiguredMappingConfig());
             services.AddSingleton(TagMapProfile.GetConfiguredMappingConfig());
+            services.AddSingleton(RegionMapProfile.GetConfiguredMappingConfig());
 
             // AddScoped():
             //

@@ -20,6 +20,7 @@ namespace Sev1.Accounts.AppServices.Services.User.Validators
             RuleFor(x => x.Password)
                 .NotEmpty().WithMessage("Password не заполнен!")
 
+                // Протестировать тут: https://regex101.com/
                 // Опережающая (lookahead) проверка (https://learn.javascript.ru/regexp-lookahead-lookbehind)
                 // "^": указывает на начало строки;
                 // "$": указывает на конец строки;
