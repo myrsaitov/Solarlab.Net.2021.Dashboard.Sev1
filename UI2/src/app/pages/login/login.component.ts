@@ -14,10 +14,11 @@ import {AuthService} from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   notloginedstatus = false;
+  passwordHide : boolean = true; // Показать/спрятать пароль
 
   private formObj = {
-    eMail: [null, [Validators.required, Validators.email]],
-    password: [null, [Validators.required, Validators.min(8)]],
+    eMail: ['user@mail.ru', [Validators.required, Validators.email]],
+    password: ['Zuse123!@#$%^()', [Validators.required, Validators.min(6),Validators.min(20)]],
     rememberMe: [false]
   };
 
@@ -42,6 +43,11 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
+  onCheckboxChange(event: any) {
+    this.passwordHide = !this.passwordHide;
+  }
+
+  
   public async login() {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.invalid) {

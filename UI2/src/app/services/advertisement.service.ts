@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
-import {EMPTY, Observable} from 'rxjs';
-import {GetPagedAdvertisementModel} from '../models/advertisement/get-paged-advertisement-model';
-import {IAdvertisement} from '../models/advertisement/i-advertisement';
-import {GetPagedContentResponseModel} from '../models/advertisement/get-paged-content-response-model';
-import {ICreateAdvertisement} from '../models/advertisement/advertisement-create-model';
-import {IEditAdvertisement} from '../models/advertisement/advertisement-edit-model';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { EMPTY, Observable } from 'rxjs';
+import { GetPagedAdvertisementModel } from '../models/advertisement/get-paged-advertisement-model';
+import { IAdvertisement } from '../models/advertisement/i-advertisement';
+import { GetPagedContentResponseModel } from '../models/advertisement/get-paged-content-response-model';
+import { ICreateAdvertisement } from '../models/advertisement/advertisement-create-model';
+import { IEditAdvertisement } from '../models/advertisement/advertisement-edit-model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

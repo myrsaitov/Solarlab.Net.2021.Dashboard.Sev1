@@ -8,6 +8,7 @@
 
   <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
   
+  <!-- Сообщение об ошибке регистрации -->
   <div class="form-group">
     <div *ngIf="notregisterstatus">
       <p><span class="colortext">Ошибка регистрации! Введите другой e-mail!</span></p>
@@ -76,13 +77,22 @@
   </div>
 
   <!-- Регион -->
-  <div class="form-group">
+  <!--<div class="form-group">
     <label for="inputRegionId">Регион</label>
     <input type="text" id="inputRegionId" class="form-control" placeholder="Регион" autofocus
           [class.is-invalid]="regionId.invalid && regionId.touched" formControlName="regionId">
     <div class="invalid-feedback" *ngIf="regionId.hasError('required')">
       Пожалуйста, заполните Регион
     </div>
+  </div> -->
+
+  <div class="form-group">
+    <label for="regionId">Регион</label>
+    <select class="form-control custom-select" id="regionId" formControlName="regionId" autofocus [class.is-invalid]="regionId.invalid"
+        *ngIf="regions$ | async as regions">
+      <option [value]="null">Выберите регион</option>
+      <option *ngFor="let region of regions" [value]="region.id">{{region.name}}</option>
+    </select>
   </div>
 
   <!-- UserPicPath -->

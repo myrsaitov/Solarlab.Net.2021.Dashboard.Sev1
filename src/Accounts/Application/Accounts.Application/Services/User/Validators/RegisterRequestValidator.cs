@@ -54,10 +54,10 @@ namespace Sev1.Accounts.AppServices.Services.User.Validators
                 .MinimumLength(10)
                 .MaximumLength(100);
 
-            RuleFor(x => x.RegionId)
+            /*RuleFor(x => x.RegionId)
                 .NotNull()
                 .NotEmpty().WithMessage("RegionId is null!")
-                .InclusiveBetween(1, int.MaxValue);
+                .InclusiveBetween(1, int.MaxValue);*/
 
             RuleFor(x => x.UserPicPath)
                 .MaximumLength(2000);

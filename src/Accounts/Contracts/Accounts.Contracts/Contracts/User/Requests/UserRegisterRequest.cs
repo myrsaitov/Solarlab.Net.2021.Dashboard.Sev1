@@ -62,7 +62,7 @@ namespace Sev1.Accounts.Contracts.Contracts.User.Requests
         /// <summary>
         /// Идентификатор региона
         /// </summary>
-        [Required]
+        //[Required]
         [Range(1, 100_000_000_000, ErrorMessage = "Значение RegionId должно быть от 1 до 100_000_000_000")]
         public int? RegionId { get; set; }
 

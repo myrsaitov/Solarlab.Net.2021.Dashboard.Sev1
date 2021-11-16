@@ -59,5 +59,53 @@ namespace Sev1.Advertisements.AppServices.Services.Region.Implementations
                 Limit = request.PageSize
             };
         }
+
+        /// <summary>
+        /// Возвращает пагинированные тэги
+        /// </summary>
+        /// <param name="request">Запрос на пагинацию</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        public async Task<RegionGetPagedResponseV2> GetPagedV2(
+            GetPagedRequest request,
+            CancellationToken cancellationToken)
+        {
+            // Fluent Validation
+            var validator = new RegionGetPagedRequestValidator();
+            var result = await validator.ValidateAsync(request);
+            if (!result.IsValid)
+            {
+                throw new RegionGetPagedRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
+            }
+
+            var total = await _regionRepository.Count(cancellationToken);
+
+            var offset = request.Page * request.PageSize;
+
+            if (total == 0)
+            {
+                return new RegionGetPagedResponseV2
+                {
+                    Items = Array.Empty<RegionGetResponseV2>(),
+                    Total = total,
+                    Offset = offset,
+                    Limit = request.PageSize
+                };
+            }
+
+            var entities = await _regionRepository.GetPaged(
+                request.Page,
+                request.PageSize,
+                cancellationToken);
+
+
+            return new RegionGetPagedResponseV2
+            {
+                Items = entities.Select(entity => _mapper.Map<RegionGetResponseV2>(entity)),
+                Total = total,
+                Offset = offset,
+                Limit = request.PageSize
+            };
+        }
     }
 }

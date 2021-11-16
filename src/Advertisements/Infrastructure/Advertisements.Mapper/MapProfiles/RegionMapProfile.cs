@@ -17,6 +17,8 @@ namespace Sev1.Advertisements.MapsterMapper.MapProfiles
                     if (src.ParentRegionId != 1) dest.ParentRegionId = src.ParentRegionId;
                 });
 
+            config.NewConfig<Domain.Region, RegionGetResponseV2>();
+
             return config;
         }
     }

@@ -1,12 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {AccountService} from '../../services/account.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {confirmPasswordValidator} from '../../directives/confirm-password-validator.directive';
-import {Router} from '@angular/router';
-import {AuthService} from 'src/app/services/auth.service';
-import {ApiUrls} from 'src/app/shared/apiURLs';
-import {ILogin} from 'src/app/models/account/login.model';
-import {BaseService} from 'src/app/services/base.service';
+import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../../services/account.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { confirmPasswordValidator } from '../../directives/confirm-password-validator.directive';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { ApiUrls } from 'src/app/shared/apiURLs';
+import { ILogin } from 'src/app/models/account/login.model';
+import { BaseService } from 'src/app/services/base.service';
+import { Observable } from 'rxjs';
+import { IRegion } from 'src/app/models/region/region-model';
+import { RegionService } from 'src/app/services/region.service';
 
 @Component({
   selector: 'app-signup',
@@ -16,6 +19,7 @@ import {BaseService} from 'src/app/services/base.service';
 
 export class SignupComponent implements OnInit {
   form: FormGroup;
+  regions$: Observable<IRegion[]>;
   notregisterstatus = false;
   passwordHide : boolean = true; // Показать/спрятать пароль
   pattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,20}$/g;
@@ -25,11 +29,16 @@ export class SignupComponent implements OnInit {
     private accountService: AccountService,
     private readonly auth: AuthService,
     private readonly baseService: BaseService,
-    private readonly router: Router) {}
+    private readonly router: Router,
+    private regionService: RegionService) {}
 
   // Обработка события инициализации
   ngOnInit() {
     
+    this.regions$ = this.regionService.getRegionList({
+      pageSize: 1000,
+      page: 0,
+    });
 
     this.form = this.fb.group({
       eMail: ['user@mail.ru', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],

@@ -12,7 +12,7 @@ import { TagService } from '../../services/tag.service';
 import { TagModel } from 'src/app/models/tag/tag-model';
 import { isNullOrUndefined } from 'util';
 import { RegionService } from 'src/app/services/region.service';
-import { RegionModel } from 'src/app/models/region/region-model';
+import { IRegion } from 'src/app/models/region/region-model';
 
 @Component({
   selector: 'app-create-advertisement',
@@ -23,7 +23,7 @@ export class CreateAdvertisementComponent implements OnInit {
   form: FormGroup;
   categories$: Observable<ICategory[]>;
   tags: TagModel[];
-  regions: RegionModel[];
+  regions: IRegion[];
 
   constructor(private fb: FormBuilder,
               private advertisementService: AdvertisementService,
@@ -47,14 +47,7 @@ export class CreateAdvertisementComponent implements OnInit {
       });
 
     // Подписка на регионы
-    this.regionService.getRegions().subscribe(getPagedRegions => 
-      {
-        if (isNullOrUndefined(getPagedRegions)) {
-          this.router.navigate(['/']);
-          return;
-        }
-        this.regions = getPagedRegions.items;
-      });
+
 
 
 
