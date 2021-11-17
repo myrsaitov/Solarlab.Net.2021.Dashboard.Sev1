@@ -35,7 +35,7 @@ namespace Comments.API
             });
 
 #if DEBUG
-            string connection = Configuration.GetConnectionString("RemoteConnection");
+            string connection = Configuration.GetConnectionString("LocalConnection");
 #else
             string connection = Configuration.GetConnectionString("DefaultConnection");
 #endif
@@ -44,12 +44,11 @@ namespace Comments.API
                 options.UseSqlServer(connection, b => b.MigrationsAssembly("Comments.Migrations")));
 
 
-            //services.AddScoped<ICommentsService, CommentsService>();
+            services.AddScoped<ICommentsService, CommentsService>();
             services.AddScoped<CommentsExceptionFilter>();
 
 
-            services.AddScoped<ICommentsRepository, CommentRepository>();
-            services.AddScoped<IBaseRepository<>, BaseRepository<>>();
+            services.AddScoped<ICommentsRepository, CommentsRepository>();
             services.AddAutoMapper(typeof(CommentMapperProfile));
         }
 
