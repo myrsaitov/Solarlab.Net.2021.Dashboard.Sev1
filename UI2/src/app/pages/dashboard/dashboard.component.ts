@@ -2,14 +2,16 @@ import { AuthService } from '../../services/auth.service';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AdvertisementService } from '../../services/advertisement.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { GetPagedContentResponseModel } from '../../models/advertisement/get-paged-content-response-model';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { TagService } from '../../services/tag.service';
 import { ITag } from 'src/app/models/tag/tag-model';
-import { isNullOrUndefined } from 'util';
+import { UserService } from 'src/app/services/user.service';
+import { IUser } from 'src/app/models/user/user-model';
 
+// The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -20,7 +22,9 @@ import { isNullOrUndefined } from 'util';
 export class DashboardComponent implements OnInit {
   response$: Observable<GetPagedContentResponseModel>;
   isAuth = this.authService.isAuth;
+  users$: Observable<IUser[]>;
   tags$: Observable<ITag[]>;
+  tmpUserName: string;
 
   private advertisementsFilterSubject$ = new BehaviorSubject({
     searchStr: null,
@@ -36,11 +40,18 @@ export class DashboardComponent implements OnInit {
               private advertisementService: AdvertisementService,
               private route: ActivatedRoute,
               private readonly router: Router,
-              private tagService: TagService) {
+              private tagService: TagService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
     
+    // Подписка на пользователей
+    this.users$ = this.userService.getUserList({
+      pageSize: 1000,
+      page: 0,
+    });
+
     // Подписка на таги
     this.tags$ = this.tagService.getTagList({
       pageSize: 1000,
@@ -87,6 +98,21 @@ export class DashboardComponent implements OnInit {
 
   }
   
+  // Возвращает имя пользователя по идентификатору
+  getUserNameById(userId: string){
+    this.users$
+    .pipe(
+      map(data => data
+        .find(x => x.userId === userId)))
+    .subscribe(res => {
+      this.tmpUserName = res.userName
+    }),this;
+    
+    console.log("*******************************************");
+    console.log(this.tmpUserName);
+    return this.tmpUserName;
+  }
+
   getContentByTag(tag: string){
     this.router.navigate(['/'], { queryParams: { tag: tag } });
   }

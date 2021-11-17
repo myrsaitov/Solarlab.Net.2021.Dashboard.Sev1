@@ -6,7 +6,7 @@ export interface IEditAdvertisement {
   categoryId: number;
   regionId: number;
   address: string;
-  tags: string[];
+  tagBodies: string[];
 }
 
 export class EditAdvertisement implements IEditAdvertisement {
@@ -16,7 +16,7 @@ export class EditAdvertisement implements IEditAdvertisement {
   categoryId: number;
   regionId: number;
   address: string;
-  tags: string[];
+  tagBodies: string[];
   title: string;
 
   constructor(data?: Partial<IEditAdvertisement>) {
@@ -27,7 +27,7 @@ export class EditAdvertisement implements IEditAdvertisement {
       categoryId: null,
       regionId: null,
       address: '',
-      tags: [],
+      tagBodies: [],
       title: '',
       ...data
     };
@@ -37,7 +37,7 @@ export class EditAdvertisement implements IEditAdvertisement {
     this.categoryId = defaults.categoryId;
     this.regionId = defaults.regionId;
     this.address = defaults.address;
-    this.tags = defaults.tags;
+    this.tagBodies = defaults.tagBodies;
     this.title = defaults.title;
     this.price = defaults.price;
   }

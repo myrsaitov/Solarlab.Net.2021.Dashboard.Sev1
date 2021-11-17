@@ -14,6 +14,7 @@ import { isNullOrUndefined } from 'util';
 import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
 
+// The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
   selector: 'app-edit-advertisement',
   templateUrl: './edit-advertisement.component.html',
@@ -64,8 +65,8 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       price: ['', Validators.pattern("[0-9,]*")],
       categoryId: ['', Validators.required],
       regionId: ['1', [Validators.required]],
-      address: ['', Validators.required],
-      input_tags: ['',Validators.required]
+      address: [''],
+      input_tags: ['']
     });
     this.advertisementId$.pipe(switchMap(advertisementId => {
       return this.advertisementService.getAdvertisementById(advertisementId);
@@ -78,11 +79,8 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       this.regionId.patchValue(advertisement.regionId);
       this.address.patchValue(advertisement.address);
       this.tagstr = "";
-      advertisement.tags.forEach(function (value) 
-      {
-        
+      advertisement.tags.forEach(function (value){
         this.tagstr +=' ' + value;
-
       },this);
 
       this.input_tags.patchValue(this.tagstr);
@@ -157,7 +155,7 @@ if(tagStr != null)
         title: this.title.value,
         body: this.body.value,
         price: this.price.value,
-        tags: arrayOfStrings,
+        tagBodies: arrayOfStrings,
         categoryId: +this.categoryId.value,
         regionId: this.regionId.value,
         address: this.address.value,

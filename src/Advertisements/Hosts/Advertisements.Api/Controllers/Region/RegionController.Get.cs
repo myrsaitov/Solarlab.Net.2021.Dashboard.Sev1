@@ -22,11 +22,7 @@ namespace Sev1.Advertisements.Api.Controllers.Region
             CancellationToken cancellationToken)
         {
             var result = await _regionService.GetPaged(
-                new GetPagedRequest
-                {
-                    PageSize = request.PageSize,
-                    Page = request.Page
-                },
+                request,
                 cancellationToken);
 
             return Ok(result);

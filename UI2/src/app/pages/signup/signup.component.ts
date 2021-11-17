@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
 
+// The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',

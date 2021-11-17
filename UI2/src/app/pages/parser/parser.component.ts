@@ -9,6 +9,7 @@ import {CategoryService} from '../../services/category.service';
 import {Observable} from 'rxjs';
 import {ICategory} from '../../models/category/category-model';
 
+// The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
   selector: 'app-parser',
   templateUrl: './parser.component.html',
@@ -78,7 +79,7 @@ export class ParserComponent implements OnInit {
       body: this.body.value,
       price: this.price.value,
       categoryId: +this.categoryId.value,
-      tags: arrayOfStrings
+      tagBodies: arrayOfStrings
     };
 
     this.advertisementService.create(new CreateAdvertisement(model)).pipe(take(1)).subscribe(() => {

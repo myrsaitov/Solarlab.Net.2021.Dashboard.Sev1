@@ -1,7 +1,7 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { pluck, take } from 'rxjs/operators';
+import { map, pluck, take } from 'rxjs/operators';
 import { AdvertisementService } from '../../services/advertisement.service';
 import { CommentService } from '../../services/comment.service';
 import { IAdvertisement } from '../../models/advertisement/i-advertisement';
@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
 import { ToastService } from '../../services/toast.service';
 import { CategoryService } from '../../services/category.service';
 import { GetPagedCommentResponseModel } from '../../models/comment/get-paged-comment-response-model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { CreateComment, ICreateComment } from '../../models/comment/comment-create-model';
@@ -17,21 +17,26 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TagService } from '../../services/tag.service';
 import { ITag } from 'src/app/models/tag/tag-model';
 import { isNullOrUndefined } from 'util';
+import { UserService } from 'src/app/services/user.service';
+import { IUser } from 'src/app/models/user/user-model';
 
+// The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
-  selector: 'app-advertisement',
-  templateUrl: './advertisement.component.html',
-  styleUrls: ['./advertisement.component.scss'],
+  selector: 'app-advertisement', // A CSS selector that tells Angular to create and insert an instance of this component wherever it finds the corresponding tag in template HTML
+  templateUrl: './advertisement.component.html', // The module-relative address of this component's HTML template.
+  styleUrls: ['./advertisement.component.scss'], // 
   changeDetection: ChangeDetectionStrategy.Default
 })
 
 export class AdvertisementComponent implements OnInit {
   form: FormGroup;
   advertisement: IAdvertisement;
+  advertisementOwnerName: string;
   isAuth = this.authService.isAuth;
   isEditable: boolean;
   response$: Observable<GetPagedCommentResponseModel>;
   tags$: Observable<ITag[]>;
+  users$: Observable<IUser[]>;
 
   private commentsFilterSubject$ = new BehaviorSubject({
     contentId: 1,
@@ -49,10 +54,17 @@ export class AdvertisementComponent implements OnInit {
               private categoryService: CategoryService,
               private commentService: CommentService,
               private modalService: NgbModal,
-              private tagService: TagService) {
+              private tagService: TagService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
+
+    // Подписка на пользователей
+    this.users$ = this.userService.getUserList({
+      pageSize: 1000,
+      page: 0,
+    });
 
     // Подписка на таги
     this.tags$ = this.tagService.getTagList({
@@ -72,15 +84,25 @@ export class AdvertisementComponent implements OnInit {
           this.router.navigate(['/']);
           return;
         }
-
         this.advertisement = advertisement;
 
-        if(this.advertisement.ownerId == localStorage.getItem('userId'))
-        {this.isEditable = true;}
-          else
-          {this.isEditable = false;}
+        // Возвращает UserName пользоватeля по идентификатору
+        this.users$
+          .pipe(
+            map(data => data
+              .find(x => x.userId === advertisement.ownerId)))
+          .subscribe(res => this.advertisementOwnerName = res.userName)
 
-          this.categoryService.getCategoryById(this.advertisement.categoryId).subscribe(category => {
+        // Если объявление принадлежит авторизированному пользователю, то разрешаем редактирование
+        if(this.advertisement.ownerId == localStorage.getItem('userId')) {
+          this.isEditable = true;
+        }
+        else {
+          this.isEditable = false;
+        }
+
+        // Возвращаем имя категории по идентификатору
+        this.categoryService.getCategoryById(this.advertisement.categoryId).subscribe(category => {
           if (isNullOrUndefined(category)) {
             this.router.navigate(['/']);
             return;
@@ -89,7 +111,7 @@ export class AdvertisementComponent implements OnInit {
           this.advertisement.category = category;
 
           });
-      });
+        });
     });
 
     // Комментарии

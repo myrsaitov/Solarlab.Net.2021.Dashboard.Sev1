@@ -15,6 +15,7 @@ import { IRegion } from 'src/app/models/region/region-model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ITag } from 'src/app/models/tag/tag-model';
 
+// The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
   selector: 'app-create-advertisement',
   templateUrl: './create-advertisement.component.html',
@@ -110,7 +111,7 @@ export class CreateAdvertisementComponent implements OnInit {
       categoryId: +this.categoryId.value,
       regionId: this.regionId.value,
       address: this.address.value,
-      tags: arrayOfStrings
+      tagBodies: arrayOfStrings
     };
 
     // Отправлет DTO объявления на бэк

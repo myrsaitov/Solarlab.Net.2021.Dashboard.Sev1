@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { ToastService } from '../../services/toast.service';
 import { Router } from '@angular/router';
 
+// The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
   selector: 'app-comment-card',
   templateUrl: './comment-card.component.html',

@@ -3,7 +3,7 @@
     /// <summary>
     /// Ответ при запросе данных пользователя
     /// </summary>
-    public class UserResponse
+    public class UserGetResponse
     {
         /// <summary>
         /// Никнейм
@@ -39,5 +39,10 @@
         /// Идентификатор региона
         /// </summary>
         public int? RegionId { get; set; }
+
+        /// <summary>
+        /// Идентификатор пользователя
+        /// </summary>
+        public string UserId { get; set; }
     }
 }

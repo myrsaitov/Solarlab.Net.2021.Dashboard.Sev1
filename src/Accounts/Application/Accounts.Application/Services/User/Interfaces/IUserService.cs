@@ -53,7 +53,17 @@ namespace Sev1.Accounts.AppServices.Services.User.Interfaces
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<UserResponse> GetCurrentUser(
+        Task<UserGetResponse> GetCurrentUser(
+            CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Возвращает пагинированных пользователей
+        /// </summary>
+        /// <param name="request">Запрос на пагинацию</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<UserGetPagedResponse> GetPaged(
+            UserGetPagedRequest request,
             CancellationToken cancellationToken);
     }
 }

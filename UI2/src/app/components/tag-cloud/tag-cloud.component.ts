@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
 
-
+// The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
   selector: 'tag-cloud.component',
   templateUrl: './tag-cloud.component.html'

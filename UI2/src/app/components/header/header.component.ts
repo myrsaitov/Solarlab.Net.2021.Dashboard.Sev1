@@ -1,16 +1,15 @@
 import {AuthService} from '../../services/auth.service';
 import {Component} from '@angular/core';
 import {BaseService} from 'src/app/services/base.service';
-import {ApiUrls} from 'src/app/shared/apiURLs';
 import {Router} from '@angular/router';
 import {ITag} from 'src/app/models/tag/tag-model';
 import {TagService} from '../../services/tag.service';
-import {isNullOrUndefined} from 'util';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {ICategory} from '../../models/category/category-model';
 import {CategoryService} from '../../services/category.service';
 
+// The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

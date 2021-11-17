@@ -1,7 +1,7 @@
 import {Component, TemplateRef} from '@angular/core';
 import {ToastService} from '../../services/toast.service';
 
-
+// The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
   selector: 'app-toasts',
   template: `

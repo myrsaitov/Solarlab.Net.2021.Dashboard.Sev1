@@ -32,7 +32,7 @@
     </div>
     <div class="card-header d-flex">
     <h4>  Добавлено пользователем:
-      <a class="badge badge-secondary" *ngIf="advertisement?.ownerId" role="button" (click)="getContentByUserName(advertisement.ownerId)">{{advertisement.ownerId}}&nbsp;&nbsp;</a>
+      <a class="badge badge-secondary" *ngIf="advertisement?.ownerId" role="button" (click)="getContentByUserName(advertisement.ownerId)">{{advertisementOwnerName}}&nbsp;&nbsp;</a>
       <div><div class="badge badge-secondary" *ngIf="advertisement?.createdAt">
       {{advertisement.createdAt}}</div></div>
         

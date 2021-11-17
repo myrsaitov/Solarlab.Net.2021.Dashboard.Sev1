@@ -13,7 +13,7 @@ namespace Sev1.Advertisements.AppServices.Services.Region.Implementations
     public sealed partial class RegionServiceV1 : IRegionService
     {
         /// <summary>
-        /// Возвращает пагинированные тэги
+        /// Возвращает пагинированные регионы
         /// </summary>
         /// <param name="request">Запрос на пагинацию</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
@@ -61,7 +61,7 @@ namespace Sev1.Advertisements.AppServices.Services.Region.Implementations
         }
 
         /// <summary>
-        /// Возвращает пагинированные тэги
+        /// Возвращает пагинированные регионы
         /// </summary>
         /// <param name="request">Запрос на пагинацию</param>
         /// <param name="cancellationToken">Маркёр отмены</param>

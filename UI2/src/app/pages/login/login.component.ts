@@ -6,6 +6,7 @@ import {ApiUrls} from 'src/app/shared/apiURLs';
 import {Router} from '@angular/router';
 import {AuthService} from 'src/app/services/auth.service';
 
+// The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

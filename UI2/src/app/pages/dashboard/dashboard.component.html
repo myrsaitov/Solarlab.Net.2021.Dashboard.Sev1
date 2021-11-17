@@ -45,8 +45,8 @@
     <ng-container *ngFor="let item of response.items">
       <app-advertisement-card
         class="col-sm-4 mb-4"
-        *ngIf="!item.isDeleted"
-        [advertisement]="item">
+        [advertisement]="item"
+        [userName]="getUserNameById(item.ownerId)">
       </app-advertisement-card>
     </ng-container>
   </div>

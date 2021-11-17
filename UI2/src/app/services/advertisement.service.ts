@@ -19,7 +19,8 @@ export class AdvertisementService {
   private ROOT_URL = `${environment.baseAdvertisementsApiUrl}api/v1/advertisements`;
   private decpage: number;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient) {
   }
 
   // Возвращает список объявлений с поиском
@@ -132,7 +133,7 @@ export class AdvertisementService {
 
   // Редактирует объявление
   edit(model: IEditAdvertisement) {
-    return this.http.put(`${this.ROOT_URL}/update/${model.id}`, model)
+    return this.http.put(`${this.ROOT_URL}/update`, model)
       .pipe(catchError((err) => {
         console.error(err);
         return EMPTY;

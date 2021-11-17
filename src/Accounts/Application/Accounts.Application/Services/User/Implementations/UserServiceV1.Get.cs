@@ -39,7 +39,7 @@ namespace Sev1.Accounts.AppServices.Services.User.Implementations
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<UserResponse> GetCurrentUser(
+        public async Task<UserGetResponse> GetCurrentUser(
             CancellationToken cancellationToken)
         {
             // Определяет идентификатор авторизированного пользователя
@@ -51,7 +51,7 @@ namespace Sev1.Accounts.AppServices.Services.User.Implementations
                     cancellationToken);
 
             // Маппит и возвращает ответ
-            return _mapper.Map<UserResponse>(domainUser);
+            return _mapper.Map<UserGetResponse>(domainUser);
         }
     }
 }

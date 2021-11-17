@@ -5,7 +5,7 @@ export interface ICreateAdvertisement {
   categoryId: number;
   regionId: number;
   address: string;
-  tags: string[];
+  tagBodies: string[];
 }
 
 export class CreateAdvertisement implements ICreateAdvertisement {
@@ -15,7 +15,7 @@ export class CreateAdvertisement implements ICreateAdvertisement {
   categoryId: number;
   regionId: number;
   address: string;
-  tags: string[];
+  tagBodies: string[];
 
   constructor(data?: Partial<ICreateAdvertisement>) {
     const defaults: ICreateAdvertisement = {
@@ -25,7 +25,7 @@ export class CreateAdvertisement implements ICreateAdvertisement {
       categoryId: null,
       regionId: 1,
       address: '',
-      tags: [],
+      tagBodies: [],
       ...data
     };
     this.title = defaults.title;
@@ -34,6 +34,6 @@ export class CreateAdvertisement implements ICreateAdvertisement {
     this.categoryId = defaults.categoryId;
     this.regionId = defaults.regionId;
     this.address = defaults.address;
-    this.tags = defaults.tags;
+    this.tagBodies = defaults.tagBodies;
   }
 }
