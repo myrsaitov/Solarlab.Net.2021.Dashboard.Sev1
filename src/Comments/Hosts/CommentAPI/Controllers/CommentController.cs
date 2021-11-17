@@ -29,45 +29,44 @@ namespace Comments.API.Controllers
         }
 
         /// <summary>
+        /// Получить чаты пользователя
+        /// </summary>
+        /// <response code="200">Ok</response>
+        [HttpGet("GetUserChatsPaged")]
+        public async Task<IActionResult> GetUserChatsPaged([FromQuery] CommentDtoRequestGetUserChatsPaged dto, CancellationToken token = default)
+        {
+            if (ModelState.IsValid)
+            {
+                return Ok(await _commentService.GetUserChatsPagedAsync(dto, token));
+            }
+            return BadRequest();
+        }
+
+        /// <summary>
         /// Получить все коментарии, прикреплённые к чату
         /// </summary>
         /// <response code="200">Ok</response>
-        [HttpGet("GetCommentsByChatId")]
-        public async Task<IActionResult> GetCommentsByChatId([FromQuery] CommentDtoRequestGetChatPaged dto, CancellationToken token = default)
+        [HttpGet("GetChatPaged")]
+        public async Task<IActionResult> GetChatPaged([FromQuery] CommentDtoRequestGetChatPaged dto, CancellationToken token = default)
         {
             if (ModelState.IsValid)
             {
-                return Ok(await _commentService.GetCommentsByChatIdAsync(dto, token));
+                return Ok(await _commentService.GetChatPagedAsync(dto, token));
             }
             return BadRequest();
         }
 
         /// <summary>
-        /// Посчитать количество страниц комментариев в чате
+        /// Удалить чат
         /// </summary>
-        /// <response code="200">Ok</response>
-        [HttpGet("CountPagesByChatId")]
-        public async Task<IActionResult> CountPagesByChatId([FromQuery] CommentDtoRequestCountPagesByChatId dto, CancellationToken token = default)
-        {
-            if (ModelState.IsValid)
-            {
-                return Ok(await _commentService.CountPagesAsync(dto.Id, dto.PageSize, token));
-            }
-            return BadRequest();
-        }
-
-        /// <summary>
-        /// Удалить все коментарии, прикреплённые к чату
-        /// </summary>
-        /// <param name="id">Chat Id</param>
         /// <returns></returns>
         /// <response code="200">Ok</response>
-        [HttpDelete("DeleteCommentsByChatId")]
-        public async Task<IActionResult> DeleteCommentsByChatId([FromQuery] Guid id, CancellationToken token = default)
+        [HttpDelete("DeleteChat")]
+        public async Task<IActionResult> DeleteChat([FromQuery] CommentDtoRequestDeleteChat dto, CancellationToken token = default)
         {
             if (ModelState.IsValid)
             {
-                await _commentService.DeleteCommentsByChatIdAsync(id, token);
+                await _commentService.DeleteChatAsync(dto, token);
                 return Ok();
             }
             return BadRequest();
