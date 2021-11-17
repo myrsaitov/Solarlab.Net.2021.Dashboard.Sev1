@@ -31,10 +31,5 @@ namespace Sev1.Accounts.Contracts.Contracts.User.Responses
         /// Идентификатор региона
         /// </summary>
         public int? RegionId { get; set; }
-
-        /// <summary>
-        /// Путь к фото пользователя
-        /// </summary>
-        public string UserPicPath { get; set; }
     }
 }

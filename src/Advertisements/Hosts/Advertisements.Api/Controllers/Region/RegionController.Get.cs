@@ -26,7 +26,8 @@ namespace Sev1.Advertisements.Api.Controllers.Region
                 {
                     PageSize = request.PageSize,
                     Page = request.Page
-                }, cancellationToken);
+                },
+                cancellationToken);
 
             return Ok(result);
         }
@@ -51,7 +52,6 @@ namespace Sev1.Advertisements.Api.Controllers.Region
             return Ok(found);
         }
 
-
         /// <summary>
         /// Возвращает регионы с пагинацией (V2)
         /// </summary>
@@ -70,7 +70,8 @@ namespace Sev1.Advertisements.Api.Controllers.Region
                 {
                     PageSize = request.PageSize,
                     Page = request.Page
-                }, cancellationToken);
+                },
+                cancellationToken);
 
             return Ok(result);
         }

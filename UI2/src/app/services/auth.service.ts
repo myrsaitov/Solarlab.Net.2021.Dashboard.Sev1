@@ -13,7 +13,6 @@ export class AuthService {
   private readonly sessionUserId = 'userId';
   private readonly sessionRoles = 'roles';
   private readonly sessionRegionId = 'regionId';
-  private readonly sessionUserPicPath = 'userPicPath';
 
   private isAuthSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
@@ -40,8 +39,6 @@ export class AuthService {
     localStorage.setItem(this.sessionUserId, JSON.parse(response).userId);
     // RegionId
     localStorage.setItem(this.sessionRegionId, JSON.parse(response).regionId);
-    // UserPicPath
-    localStorage.setItem(this.sessionUserPicPath, JSON.parse(response).userPicPath);
     // Roles
     localStorage.setItem(this.sessionRoles, JSON.parse(response).roles);
 
@@ -64,8 +61,6 @@ export class AuthService {
     localStorage.removeItem(this.sessionUserId);
     // RegionId
     localStorage.removeItem(this.sessionRegionId);
-    // UserPicPath
-    localStorage.removeItem(this.sessionUserPicPath);
     // Roles
     localStorage.removeItem(this.sessionRoles);
 
@@ -83,10 +78,6 @@ export class AuthService {
   // Возвращает RegionId
   getRegionId() {
     return localStorage.getItem(this.sessionRegionId);
-  }
-  // Возвращает UserPicPath
-  getUserPicPath() {
-    return localStorage.getItem(this.sessionUserPicPath);
   }
   // Возвращает Roles
   getRoles() {

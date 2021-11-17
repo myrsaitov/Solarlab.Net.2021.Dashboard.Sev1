@@ -97,6 +97,9 @@ namespace Sev1.Accounts.DataAccess
                 FirstName = "Administrator",
                 LastName = "Administrator",
                 MiddleName = "Administrator",
+                PhoneNumber = "+79787713935",
+                Address = "99011 г. Севастополь, ул. Чехова, 1",
+                RegionId = 1
             };
 
             modelBuilder.Entity<User>(x =>
@@ -136,6 +139,9 @@ namespace Sev1.Accounts.DataAccess
                 FirstName = "Moderator",
                 LastName = "Moderator",
                 MiddleName = "Moderator",
+                PhoneNumber = "+79787713935",
+                Address = "99011 г. Севастополь, ул. Гоголя, 1",
+                RegionId = 1
             };
 
             modelBuilder.Entity<User>(x =>
@@ -175,6 +181,9 @@ namespace Sev1.Accounts.DataAccess
                 FirstName = "User",
                 LastName = "User",
                 MiddleName = "User",
+                PhoneNumber = "+79787713935",
+                Address = "99011 г. Севастополь, ул. Достоевского, 1",
+                RegionId = 1
             };
 
             modelBuilder.Entity<User>(x =>

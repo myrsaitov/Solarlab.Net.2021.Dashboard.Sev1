@@ -52,8 +52,7 @@ namespace Sev1.Accounts.AppServices.Services.User.Implementations
                 UserId = res.UserId,
                 Roles = res.Roles,
                 UserName = domainUser.UserName,
-                RegionId = domainUser.RegionId,
-                UserPicPath = domainUser.UserPicPath
+                RegionId = domainUser.RegionId
             };
         }
     }

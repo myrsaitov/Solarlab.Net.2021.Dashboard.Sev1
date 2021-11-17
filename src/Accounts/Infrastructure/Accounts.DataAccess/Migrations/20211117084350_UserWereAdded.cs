@@ -58,7 +58,6 @@ namespace Accounts.DataAccess.Migrations
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RegionId = table.Column<int>(type: "int", nullable: true),
-                    UserPicPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
@@ -242,9 +241,9 @@ namespace Accounts.DataAccess.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3", "21c84a32-bbb7-4615-98fc-7680cfe3f6ea", "Administrator", "ADMINISTRATOR" },
-                    { "c373fe1b-9e38-498b-9729-6c719222b00d", "e0223608-aa24-430a-8343-4c51b1b0405e", "Moderator", "MODERATOR" },
-                    { "589a1f42-d43c-4315-8e02-432f64e02bc0", "2e9b7baf-1ef5-4fa4-b3eb-285b9924a216", "User", "USER" }
+                    { "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3", "05443452-4179-4470-b228-3c58711b924a", "Administrator", "ADMINISTRATOR" },
+                    { "c373fe1b-9e38-498b-9729-6c719222b00d", "bd833ca9-df41-4c26-8c2e-2b37d17c08d2", "Moderator", "MODERATOR" },
+                    { "589a1f42-d43c-4315-8e02-432f64e02bc0", "9f9c6892-1c71-4d03-a1e5-dde84839f7e2", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -252,19 +251,19 @@ namespace Accounts.DataAccess.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "757d5290-d036-4757-85ae-827b59e92cd3", 0, "1bc11964-87a0-4dc3-9d49-52111ac79978", "administrator@mail.ru", false, false, null, "ADMINISTRATOR@MAIL.RU", "ADMINISTRATOR", "AQAAAAEAACcQAAAAEKzMgmM/+P7bw9rZnW+uAKTZvodUKPXmtcXl7EnDO1/v1QLne3NhmCuAWp7ma7K/Sg==", null, false, "34e01d42-27ac-47bd-b59d-92d62c497a6d", false, "Administrator" },
-                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", 0, "aa5dc809-85d0-4936-b679-95da0cb42ff2", "moderator@mail.ru", false, false, null, "MODERATOR@MAIL.RU", "MODERATOR", "AQAAAAEAACcQAAAAEJeAoAlhj1GfPlYih6RMZdCiH/Hfw09RvBYPQk1pW7J56C+DgEo/HwxlxljitUG8BQ==", null, false, "b55b7d7d-1b62-4651-a79a-c0857c6d563d", false, "Moderator" },
-                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", 0, "218ca0f5-7b1a-4e0f-a248-e5551793ee1c", "user@mail.ru", false, false, null, "USER@MAIL.RU", "USER", "AQAAAAEAACcQAAAAEE9ax0yCtZfNudVUGSpYY2EN4eQvLm+/LegifFcNhBqhhlq51DjDx6qi4ZlCTnCfHA==", null, false, "bf7d6920-1713-49f2-b1c1-e8caf721bc00", false, "User" }
+                    { "757d5290-d036-4757-85ae-827b59e92cd3", 0, "ba806f87-3783-4337-9e95-31503c9f66bb", "administrator@mail.ru", false, false, null, "ADMINISTRATOR@MAIL.RU", "ADMINISTRATOR", "AQAAAAEAACcQAAAAELWpr93gKIBYeUiec/g0AgEs+TDQqspOJDfTPIQzoNh688kJNRn/zZqjlI7ctT6aqg==", null, false, "2136d1ab-2579-43ae-88ae-9bb091d6584d", false, "Administrator" },
+                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", 0, "2e96667e-036e-4380-9aff-26e594f9633d", "moderator@mail.ru", false, false, null, "MODERATOR@MAIL.RU", "MODERATOR", "AQAAAAEAACcQAAAAEFgQWT1fgw5rjWHf/Xc85pTIwLqR1yXL133tI9FPdesk4PWeVlg4EXT5p8/zHoXHRQ==", null, false, "46ce0d4b-cc45-49f0-8e94-5dfbac27f15f", false, "Moderator" },
+                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", 0, "23850d4b-d70c-45c6-8c2d-609192e5d329", "user@mail.ru", false, false, null, "USER@MAIL.RU", "USER", "AQAAAAEAACcQAAAAED7o/pGv/KS7EVmCI2wxtP1CwJ/XSStblpvqXVJIXRdsk/OEBpSnxM6pCvWCpXWI4w==", null, false, "e3d1de0a-5988-4bca-8ea8-cb66999a87cb", false, "User" }
                 });
 
             migrationBuilder.InsertData(
                 table: "DomainUsers",
-                columns: new[] { "Id", "Address", "CreatedAt", "FirstName", "IsDeleted", "LastName", "MiddleName", "PhoneNumber", "RegionId", "UpdatedAt", "UserName", "UserPicPath" },
+                columns: new[] { "Id", "Address", "CreatedAt", "FirstName", "IsDeleted", "LastName", "MiddleName", "PhoneNumber", "RegionId", "UpdatedAt", "UserName" },
                 values: new object[,]
                 {
-                    { "757d5290-d036-4757-85ae-827b59e92cd3", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Administrator", false, "Administrator", "Administrator", null, null, null, "Administrator", null },
-                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Moderator", false, "Moderator", "Moderator", null, null, null, "Moderator", null },
-                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "User", false, "User", "User", null, null, null, "User", null }
+                    { "757d5290-d036-4757-85ae-827b59e92cd3", "99011 г. Севастополь, ул. Чехова, 1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Administrator", false, "Administrator", "Administrator", "+79787713935", 1, null, "Administrator" },
+                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", "99011 г. Севастополь, ул. Гоголя, 1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Moderator", false, "Moderator", "Moderator", "+79787713935", 1, null, "Moderator" },
+                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", "99011 г. Севастополь, ул. Достоевского, 1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "User", false, "User", "User", "+79787713935", 1, null, "User" }
                 });
 
             migrationBuilder.InsertData(

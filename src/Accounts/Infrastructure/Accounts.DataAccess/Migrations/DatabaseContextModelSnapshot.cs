@@ -64,21 +64,21 @@ namespace Accounts.DataAccess.Migrations
                         new
                         {
                             Id = "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3",
-                            ConcurrencyStamp = "21c84a32-bbb7-4615-98fc-7680cfe3f6ea",
+                            ConcurrencyStamp = "05443452-4179-4470-b228-3c58711b924a",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "c373fe1b-9e38-498b-9729-6c719222b00d",
-                            ConcurrencyStamp = "e0223608-aa24-430a-8343-4c51b1b0405e",
+                            ConcurrencyStamp = "bd833ca9-df41-4c26-8c2e-2b37d17c08d2",
                             Name = "Moderator",
                             NormalizedName = "MODERATOR"
                         },
                         new
                         {
                             Id = "589a1f42-d43c-4315-8e02-432f64e02bc0",
-                            ConcurrencyStamp = "2e9b7baf-1ef5-4fa4-b3eb-285b9924a216",
+                            ConcurrencyStamp = "9f9c6892-1c71-4d03-a1e5-dde84839f7e2",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -177,15 +177,15 @@ namespace Accounts.DataAccess.Migrations
                         {
                             Id = "757d5290-d036-4757-85ae-827b59e92cd3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1bc11964-87a0-4dc3-9d49-52111ac79978",
+                            ConcurrencyStamp = "ba806f87-3783-4337-9e95-31503c9f66bb",
                             Email = "administrator@mail.ru",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINISTRATOR@MAIL.RU",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKzMgmM/+P7bw9rZnW+uAKTZvodUKPXmtcXl7EnDO1/v1QLne3NhmCuAWp7ma7K/Sg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELWpr93gKIBYeUiec/g0AgEs+TDQqspOJDfTPIQzoNh688kJNRn/zZqjlI7ctT6aqg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "34e01d42-27ac-47bd-b59d-92d62c497a6d",
+                            SecurityStamp = "2136d1ab-2579-43ae-88ae-9bb091d6584d",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -193,15 +193,15 @@ namespace Accounts.DataAccess.Migrations
                         {
                             Id = "a0d74199-2ad5-4d2f-a184-eb52f5bf9094",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "aa5dc809-85d0-4936-b679-95da0cb42ff2",
+                            ConcurrencyStamp = "2e96667e-036e-4380-9aff-26e594f9633d",
                             Email = "moderator@mail.ru",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MODERATOR@MAIL.RU",
                             NormalizedUserName = "MODERATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJeAoAlhj1GfPlYih6RMZdCiH/Hfw09RvBYPQk1pW7J56C+DgEo/HwxlxljitUG8BQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFgQWT1fgw5rjWHf/Xc85pTIwLqR1yXL133tI9FPdesk4PWeVlg4EXT5p8/zHoXHRQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b55b7d7d-1b62-4651-a79a-c0857c6d563d",
+                            SecurityStamp = "46ce0d4b-cc45-49f0-8e94-5dfbac27f15f",
                             TwoFactorEnabled = false,
                             UserName = "Moderator"
                         },
@@ -209,15 +209,15 @@ namespace Accounts.DataAccess.Migrations
                         {
                             Id = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "218ca0f5-7b1a-4e0f-a248-e5551793ee1c",
+                            ConcurrencyStamp = "23850d4b-d70c-45c6-8c2d-609192e5d329",
                             Email = "user@mail.ru",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@MAIL.RU",
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEE9ax0yCtZfNudVUGSpYY2EN4eQvLm+/LegifFcNhBqhhlq51DjDx6qi4ZlCTnCfHA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAED7o/pGv/KS7EVmCI2wxtP1CwJ/XSStblpvqXVJIXRdsk/OEBpSnxM6pCvWCpXWI4w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bf7d6920-1713-49f2-b1c1-e8caf721bc00",
+                            SecurityStamp = "e3d1de0a-5988-4bca-8ea8-cb66999a87cb",
                             TwoFactorEnabled = false,
                             UserName = "User"
                         });
@@ -389,9 +389,6 @@ namespace Accounts.DataAccess.Migrations
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("UserPicPath")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("DomainUsers");
@@ -400,31 +397,40 @@ namespace Accounts.DataAccess.Migrations
                         new
                         {
                             Id = "757d5290-d036-4757-85ae-827b59e92cd3",
+                            Address = "99011 г. Севастополь, ул. Чехова, 1",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Administrator",
                             IsDeleted = false,
                             LastName = "Administrator",
                             MiddleName = "Administrator",
+                            PhoneNumber = "+79787713935",
+                            RegionId = 1,
                             UserName = "Administrator"
                         },
                         new
                         {
                             Id = "a0d74199-2ad5-4d2f-a184-eb52f5bf9094",
+                            Address = "99011 г. Севастополь, ул. Гоголя, 1",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Moderator",
                             IsDeleted = false,
                             LastName = "Moderator",
                             MiddleName = "Moderator",
+                            PhoneNumber = "+79787713935",
+                            RegionId = 1,
                             UserName = "Moderator"
                         },
                         new
                         {
                             Id = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
+                            Address = "99011 г. Севастополь, ул. Достоевского, 1",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "User",
                             IsDeleted = false,
                             LastName = "User",
                             MiddleName = "User",
+                            PhoneNumber = "+79787713935",
+                            RegionId = 1,
                             UserName = "User"
                         });
                 });
