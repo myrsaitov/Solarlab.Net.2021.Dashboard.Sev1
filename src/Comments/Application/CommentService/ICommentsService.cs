@@ -14,7 +14,7 @@ namespace Comments.Services
         /// <param name="dto"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        Task<List<SellerConsumerChatDtoResponceChatShort>> GetUserChatsPagedAsync(CommentDtoRequestGetUserChatsPaged dto, CancellationToken token);
+        Task<SellerConsumerChatDtoResponceChats> GetUserChatsPagedAsync(CommentDtoRequestGetUserChatsPaged dto, CancellationToken token);
 
         /// <summary>
         /// Загрузить чат с определённой страницей комментариев(сообщений)

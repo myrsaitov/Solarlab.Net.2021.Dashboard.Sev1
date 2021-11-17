@@ -21,7 +21,7 @@ namespace Comments.Contracts
         /// Номер страницы
         /// </summary>
         [Required]
-        [GreaterThan(-1)]
+        [GreaterThan(0)]
         public int PageNumber { get; set; }
 
         /// <summary>

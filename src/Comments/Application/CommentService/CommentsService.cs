@@ -30,13 +30,13 @@ namespace Comments.Services
         }
 
         /// <inheritdoc/>
-        public async Task<List<SellerConsumerChatDtoResponceChatShort>> GetUserChatsPagedAsync(CommentDtoRequestGetUserChatsPaged dto, CancellationToken token)
+        public async Task<SellerConsumerChatDtoResponceChats> GetUserChatsPagedAsync(CommentDtoRequestGetUserChatsPaged dto, CancellationToken token)
         {
-            Expression<Func<Chat, bool>> predicate = c => (c.SellerId == dto.UserId || c.ConsumerId == dto.UserId) && c.Type == ChatType.SellerConsumerChat;
-
+            Expression<Func<Chat, bool>> predicate = c => ((c.SellerId == dto.UserId || c.ConsumerId == dto.UserId) && c.Type == ChatType.SellerConsumerChat);
+            var a = dto;
             var pagesQuantity = await _repository.CountPagesChatsAsync(predicate, dto.PageSize, token);
 
-            var chats = await _repository.GetUserChatsPages(dto.UserId, dto.PageSize, dto.PageNumber, pagesQuantity, token);
+            var chats = await _repository.GetUserChatsPages(predicate, dto.PageSize, dto.PageNumber, token);
 
             await _repository.LoadLastMessageInChat(chats, token);
 
@@ -44,7 +44,13 @@ namespace Comments.Services
 
             var dtoChatsShort = _mapper.Map<List<SellerConsumerChatDtoResponceChatShort>>(chats);
 
-            return dtoChatsShort;
+            var sellerConsumerChatsDto = new SellerConsumerChatDtoResponceChats()
+            {
+                TotalPages = pagesQuantity,
+                DtoChatsShort = dtoChatsShort
+            };
+
+            return sellerConsumerChatsDto;
         }
 
         /// <inheritdoc/>
@@ -64,9 +70,10 @@ namespace Comments.Services
             {
                 throw new NotFoundException(dto.ToString());
             }
-            var pagesQuantity = await _repository.CountPagesChatsAsync(predicate, dto.PageSize, token);
 
-            var chat = await _repository.GetChatPagedAsync(predicate, dto.PageSize, dto.PageNumber, pagesQuantity, token);
+            var chat = await _repository.GetChatPagedAsync(predicate, dto.PageSize, dto.PageNumber, token);
+
+            var pagesQuantity = await _repository.CountPagesMessagesAsync(chat.ChatId, dto.PageSize, token);
 
             var dtoResponceChat = _mapper.Map<CommentDtoResponceChat>(chat);
             dtoResponceChat.TotalPages = pagesQuantity;

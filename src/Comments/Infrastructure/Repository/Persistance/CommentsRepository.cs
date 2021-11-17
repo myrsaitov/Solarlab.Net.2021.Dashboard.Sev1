@@ -25,13 +25,11 @@ namespace Comments.Repository.Persistance
         }
 
         /// <inheritdoc/>
-        public async Task<List<Chat>> GetUserChatsPages(Guid userId, int pageSize, int pageNumber, int pagesQuantity, CancellationToken token)
+        public async Task<List<Chat>> GetUserChatsPages(Expression<Func<Chat, bool>> predicate, int pageSize, int pageNumber, CancellationToken token)
         {
-            pageNumber = pageNumber > pagesQuantity ? pagesQuantity : pageNumber;
-
             var chats = await _context.Chat_Table
-                .Where(c => c.ConsumerId == userId || c.SellerId == userId)
-                .Skip(pageSize * pageNumber)
+                .Where(predicate)
+                .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync(token);
 
@@ -50,17 +48,15 @@ namespace Comments.Repository.Persistance
         }
 
         /// <inheritdoc/>
-        public async Task<Chat> GetChatPagedAsync(Expression<Func<Chat, bool>> predicate, int pageSize, int pageNumber, int pagesQuantity, CancellationToken token)
+        public async Task<Chat> GetChatPagedAsync(Expression<Func<Chat, bool>> predicate, int pageSize, int pageNumber, CancellationToken token)
         {
-            pageNumber = pageNumber > pagesQuantity ? pagesQuantity : pageNumber;
-
             var chat = await _context.Chat_Table
                 .Where(predicate)
                 .FirstOrDefaultAsync(predicate, token);
 
             chat.Messages = await _context.Comment_Table
                 .Where(msg => msg.ChatId == chat.ChatId)
-                .Skip(pageSize * pageNumber)
+                .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
 

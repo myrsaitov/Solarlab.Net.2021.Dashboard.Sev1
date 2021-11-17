@@ -60,7 +60,7 @@ namespace Comments.Services
         /// <param name="pagesQuantity"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        Task<Chat> GetChatPagedAsync(Expression<Func<Chat, bool>> predicate, int pageSize, int pageNumber, int pagesQuantity, CancellationToken token);
+        Task<Chat> GetChatPagedAsync(Expression<Func<Chat, bool>> predicate, int pageSize, int pageNumber, CancellationToken token);
 
         /// <summary>
         /// Получить требуемую страницу со списоком чатов пользователя 
@@ -71,7 +71,7 @@ namespace Comments.Services
         /// <param name="pagesQuantity"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        Task<List<Chat>> GetUserChatsPages(Guid userId, int pageSize, int pageNumber, int pagesQuantity, CancellationToken token);
+        Task<List<Chat>> GetUserChatsPages(Expression<Func<Chat, bool>> predicate, int pageSize, int pageNumber, CancellationToken token);
 
         /// <summary>
         /// Загрузить последние сообщения в чаты
