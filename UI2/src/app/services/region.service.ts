@@ -48,14 +48,4 @@ export class RegionService {
     })
   return source;
   }
-
-  // Возвращает категорию по идентификатору
-  getRegionById(id: number) {
-    return this.http.get<IRegion>(`${this.ROOT_URL}/${id}`)
-      .pipe( // pipe - применить указанное действие ко всем элементам конвейера
-        catchError((err) => {
-          console.error(err);
-          return EMPTY;
-        }));
-  }
 }

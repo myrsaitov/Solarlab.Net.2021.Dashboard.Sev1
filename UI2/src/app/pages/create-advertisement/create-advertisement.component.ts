@@ -9,10 +9,11 @@ import {CategoryService} from '../../services/category.service';
 import {Observable} from 'rxjs';
 import {ICategory} from '../../models/category/category-model';
 import { TagService } from '../../services/tag.service';
-import { TagModel } from 'src/app/models/tag/tag-model';
 import { isNullOrUndefined } from 'util';
 import { RegionService } from 'src/app/services/region.service';
 import { IRegion } from 'src/app/models/region/region-model';
+import { AuthService } from 'src/app/services/auth.service';
+import { ITag } from 'src/app/models/tag/tag-model';
 
 @Component({
   selector: 'app-create-advertisement',
@@ -22,8 +23,8 @@ import { IRegion } from 'src/app/models/region/region-model';
 export class CreateAdvertisementComponent implements OnInit {
   form: FormGroup;
   categories$: Observable<ICategory[]>;
-  tags: TagModel[];
   regions$: Observable<IRegion[]>;
+  tags$: Observable<ITag[]>;
 
   constructor(private fb: FormBuilder,
               private advertisementService: AdvertisementService,
@@ -31,20 +32,17 @@ export class CreateAdvertisementComponent implements OnInit {
               private router: Router,
               private toastService: ToastService,
               private tagService: TagService,
-              private regionService: RegionService) {
+              private regionService: RegionService,
+              private authService: AuthService,) {
   }
 
   ngOnInit() {
-
-    // Подписка на таги
-    this.tagService.getTags().subscribe(getPagedTags => 
-      {
-        if (isNullOrUndefined(getPagedTags)) {
-          this.router.navigate(['/']);
-          return;
-        }
-        this.tags = getPagedTags.items;
-      });
+    
+    // Подписка на категории
+    this.categories$ = this.categoryService.getCategoryList({
+      pageSize: 1000,
+      page: 0,
+    });
 
     // Подписка на регионы
     this.regions$ = this.regionService.getRegionList({
@@ -52,19 +50,21 @@ export class CreateAdvertisementComponent implements OnInit {
       page: 0,
     });
 
+    // Подписка на таги
+    this.tags$ = this.tagService.getTagList({
+      pageSize: 1000,
+      page: 0,
+    });
 
+    // Валидаторы
     this.form = this.fb.group({
       title: ['', Validators.required],
       body: ['', Validators.required],
       price: ['', Validators.pattern("[0-9,]*")],
       categoryId: [null, Validators.required],
       regionId: [localStorage.getItem('regionId'), [Validators.required]],
-      address: ['', Validators.required],
+      address: [''],
       input_tags: [null]
-    });
-    this.categories$ = this.categoryService.getCategoryList({
-      pageSize: 1000,
-      page: 0,
     });
   }
 
@@ -81,20 +81,28 @@ export class CreateAdvertisementComponent implements OnInit {
     this.router.navigate(['/'], { queryParams: { tag: tag } });
   }
   
+  // Нажатие на кнопку "Добавить объявление"
   submit()
   {
+    // Если нет авторизации
+    if (!this.authService.isAuth) {
+      this.router.navigate(['/', 'login']);
+    }
+
+    // Если форма неправильно заполнена
     if (this.form.invalid) {
       return;
     }
 
+    // Разбиваем строку на таги
     var tagStr = this.input_tags.value;
-
     if(tagStr != null)
     {
       var tagStr_ = tagStr.replace(/[~!@"'#$%^:;&?*()+=\s]/g, ' ');
       var arrayOfStrings = tagStr_.split(/[\s,]+/);
     }
 
+    // Создает DTO объявления
     const model: Partial<ICreateAdvertisement> = {
       title: this.title.value,
       body: this.body.value,
@@ -105,6 +113,7 @@ export class CreateAdvertisementComponent implements OnInit {
       tags: arrayOfStrings
     };
 
+    // Отправлет DTO объявления на бэк
     this.advertisementService.create(new CreateAdvertisement(model)).pipe(take(1)).subscribe(() => {
       this.toastService.show('Объявление успешено добавлено', {classname: 'bg-success text-light'});
       this.router.navigate(['/']);

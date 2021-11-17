@@ -15,7 +15,7 @@ import { ChangeDetectionStrategy } from '@angular/core';
 import { CreateComment, ICreateComment } from '../../models/comment/comment-create-model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TagService } from '../../services/tag.service';
-import { TagModel } from 'src/app/models/tag/tag-model';
+import { ITag } from 'src/app/models/tag/tag-model';
 import { isNullOrUndefined } from 'util';
 
 @Component({
@@ -31,7 +31,7 @@ export class AdvertisementComponent implements OnInit {
   isAuth = this.authService.isAuth;
   isEditable: boolean;
   response$: Observable<GetPagedCommentResponseModel>;
-  tags: TagModel[];
+  tags$: Observable<ITag[]>;
 
   private commentsFilterSubject$ = new BehaviorSubject({
     contentId: 1,
@@ -54,23 +54,19 @@ export class AdvertisementComponent implements OnInit {
 
   ngOnInit() {
 
-    this.tagService.getTags().subscribe(getPagedTags => 
-      {
-        if (isNullOrUndefined(getPagedTags)) {
-          this.router.navigate(['/']);
-          return;
-        }
-  
-        this.tags = getPagedTags.items;
-      });
+    // Подписка на таги
+    this.tags$ = this.tagService.getTagList({
+      pageSize: 1000,
+      page: 0,
+    });
+    
+    // Валидация формы
     this.form = this.fb.group({
       commentBody: ['', Validators.required]
     });
 
     this.route.params.pipe(pluck('id')).subscribe(advertisementId => {
-
       this.commentsFilterSubject$.value.contentId = advertisementId;
-
       this.advertisementService.getAdvertisementById(advertisementId).subscribe(advertisement => {
         if (isNullOrUndefined(advertisement)) {
           this.router.navigate(['/']);
@@ -96,6 +92,7 @@ export class AdvertisementComponent implements OnInit {
       });
     });
 
+    // Комментарии
     this.response$ = this.commentsFilterChange$
       .pipe( // pipe - применить указанное действие ко всем элементам конвейера
         switchMap(commentsFilter => this.commentService.getCommentsList(commentsFilter)
@@ -127,10 +124,9 @@ export class AdvertisementComponent implements OnInit {
       this.commentsFilterSubject$.next({
         ...this.commentsFilter
       })
-
     });
-
   }
+
   getContentByTag(tag: string){
     this.router.navigate(['/'], { queryParams: { tag: tag } });
   }
@@ -182,7 +178,7 @@ export class AdvertisementComponent implements OnInit {
 
     });
 
-
+    // Валидаторы формы
     this.form = this.fb.group({
       commentBody: ['', Validators.required]
     });

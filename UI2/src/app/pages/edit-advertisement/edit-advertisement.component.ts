@@ -9,7 +9,7 @@ import {Observable, Subject} from 'rxjs';
 import {ICategory} from '../../models/category/category-model';
 import {EditAdvertisement, IEditAdvertisement} from '../../models/advertisement/advertisement-edit-model';
 import { TagService } from '../../services/tag.service';
-import { TagModel } from 'src/app/models/tag/tag-model';
+import { ITag } from 'src/app/models/tag/tag-model';
 import { isNullOrUndefined } from 'util';
 import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
@@ -26,7 +26,7 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
   advertisementId$ = this.route.params.pipe(pluck('id'));
   destroy$ = new Subject();
   tagstr: string;
-  tags: TagModel[];
+  tags$: Observable<ITag[]>;
 
   constructor(private fb: FormBuilder,
               private advertisementService: AdvertisementService,
@@ -40,26 +40,20 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    // Подписка на таги
-    this.tagService.getTags().subscribe(getPagedTags => 
-      {
-        if (isNullOrUndefined(getPagedTags)) {
-          this.router.navigate(['/']);
-          return;
-        }
-  
-        this.tags = getPagedTags.items;
-      });
-
-
+    // Подписка на категории
+    this.categories$ = this.categoryService.getCategoryList({
+      pageSize: 1000,
+      page: 0,
+    });
+    
     // Подписка на регионы
     this.regions$ = this.regionService.getRegionList({
       pageSize: 1000,
       page: 0,
     });
 
-    // Подписка на категории
-    this.categories$ = this.categoryService.getCategoryList({
+    // Подписка на таги
+    this.tags$ = this.tagService.getTagList({
       pageSize: 1000,
       page: 0,
     });

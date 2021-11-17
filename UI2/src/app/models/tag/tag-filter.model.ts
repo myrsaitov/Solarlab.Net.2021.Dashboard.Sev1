@@ -1,4 +1,4 @@
-export interface ICategoryFilter {
+export interface ITagFilter {
   page: number;
   pageSize: number;
 }

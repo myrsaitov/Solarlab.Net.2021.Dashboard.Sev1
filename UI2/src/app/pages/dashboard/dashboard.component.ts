@@ -7,7 +7,7 @@ import { GetPagedContentResponseModel } from '../../models/advertisement/get-pag
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { TagService } from '../../services/tag.service';
-import { TagModel } from 'src/app/models/tag/tag-model';
+import { ITag } from 'src/app/models/tag/tag-model';
 import { isNullOrUndefined } from 'util';
 
 @Component({
@@ -20,7 +20,7 @@ import { isNullOrUndefined } from 'util';
 export class DashboardComponent implements OnInit {
   response$: Observable<GetPagedContentResponseModel>;
   isAuth = this.authService.isAuth;
-  tags: TagModel[];
+  tags$: Observable<ITag[]>;
 
   private advertisementsFilterSubject$ = new BehaviorSubject({
     searchStr: null,
@@ -41,15 +41,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     
-    this.tagService.getTags().subscribe(getPagedTags => 
-      {
-        if (isNullOrUndefined(getPagedTags)) {
-          this.router.navigate(['/']);
-          return;
-        }
-  
-        this.tags = getPagedTags.items;
-      });
+    // Подписка на таги
+    this.tags$ = this.tagService.getTagList({
+      pageSize: 1000,
+      page: 0,
+    });
 
     // Загружает сессию
     this.authService.loadSession();

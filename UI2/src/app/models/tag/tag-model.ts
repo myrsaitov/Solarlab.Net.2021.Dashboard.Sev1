@@ -1,5 +1,5 @@
-export class TagModel {
-    public id?: number;
-    public body: string;
-    public count: number;
+export interface ITag  {
+    id?: number;
+    body: string;
+    count: number;
 }

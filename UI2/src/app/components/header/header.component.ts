@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {BaseService} from 'src/app/services/base.service';
 import {ApiUrls} from 'src/app/shared/apiURLs';
 import {Router} from '@angular/router';
-import {TagModel} from 'src/app/models/tag/tag-model';
+import {ITag} from 'src/app/models/tag/tag-model';
 import {TagService} from '../../services/tag.service';
 import {isNullOrUndefined} from 'util';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -20,7 +20,7 @@ import {CategoryService} from '../../services/category.service';
 export class HeaderComponent {
   form: FormGroup;
   isAuth$ = this.authService.isAuth$;
-  tags: TagModel[];
+  tags$: Observable<ITag[]>;
   categories$: Observable<ICategory[]>;
 
   constructor(
@@ -35,23 +35,21 @@ export class HeaderComponent {
 
 
   ngOnInit() {
-    this.form = this.fb.group({
-      searchStr: ['', Validators.required]
-    });
-
+    // Подписка на категории
     this.categories$ = this.categoryService.getCategoryList({
       pageSize: 1000,
       page: 0,
     });
 
-    this.tagService.getTags().subscribe(getPagedTags => 
-    {
-      if (isNullOrUndefined(getPagedTags)) {
-        this.router.navigate(['/']);
-        return;
-      }
+    // Подписка на таги
+    this.tags$ = this.tagService.getTagList({
+      pageSize: 1000,
+      page: 0,
+    });
 
-      this.tags = getPagedTags.items;
+    // Валидаторы формы
+    this.form = this.fb.group({
+      searchStr: ['', Validators.required]
     });
   }
 

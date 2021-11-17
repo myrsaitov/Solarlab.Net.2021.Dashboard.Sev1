@@ -8,6 +8,5 @@ export interface IRegister {
   middleName: string;
   address: string;
   regionId: number;
-  userPicPath: string;
   password: string;
 }

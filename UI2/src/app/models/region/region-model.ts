@@ -1,5 +1,5 @@
-export class IRegion {
-    public id?: number;
-    public name: string;
-    public parentRegionId?: number;
+export interface IRegion {
+    id?: number;
+    name: string;
+    parentRegionId?: number;
 }

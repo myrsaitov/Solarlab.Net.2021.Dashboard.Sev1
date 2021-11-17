@@ -1,5 +1,3 @@
-import {TagModel} from '../tag/tag-model';
-
 export interface IEditAdvertisement {
   id: number;
   title: string;

@@ -67,12 +67,6 @@ namespace Sev1.Accounts.Contracts.Contracts.User.Requests
         public int? RegionId { get; set; }
 
         /// <summary>
-        /// Путь к фото пользователя
-        /// </summary>
-        [MaxLength(2000, ErrorMessage = "Максимальная длина URI не должна превышать 2000  символов")]
-        public string UserPicPath { get; set; }
-
-        /// <summary>
         /// Пароль
         /// </summary>
         [Required]
