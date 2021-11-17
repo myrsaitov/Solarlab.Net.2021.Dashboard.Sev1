@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Contracts\Comments.Contracts.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\Base\" />
+  </ItemGroup>
+
 </Project>

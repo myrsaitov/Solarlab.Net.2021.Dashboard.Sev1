@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Comments.Contracts.Enums
 {
-    class ChatType
+    /// <summary>
+    /// Тип чата: Приватный чат(vежду продавцом и покупателем) или чат объявления
+    /// </summary>
+    public enum ChatType
     {
+        /// <summary>
+        /// Чат между продавцом и покупателем
+        /// </summary>
+        SellerConsumerChat,
+
+        /// <summary>
+        /// Чат объявления
+        /// </summary>
+        AdvertisementChat
     }
 }

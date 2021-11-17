@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Comments.Contracts
 {
-    public class CommentDtoRequestGetByChatId : BaseDto
+    public class CommentDtoRequestGetChatPaged : DtoBase
     {
         /// <summary>
         /// Номер страницы
@@ -12,6 +12,7 @@ namespace Comments.Contracts
         [Required]
         [GreaterThan(-1)]
         public int PageNumber { get; set; }
+
         /// <summary>
         /// Количество комментариев на странице
         /// </summary>
