@@ -13,9 +13,8 @@ namespace Comments.Domain.Entities
         /// <summary>
         /// Создание пустого массива, при создании чата
         /// </summary>
-        public Chat(Guid id)
+        public Chat()
         {
-            ChatId = id;
             Messages = new List<Comment>();
         }
 

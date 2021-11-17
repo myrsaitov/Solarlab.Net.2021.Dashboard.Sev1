@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Comments.Contracts
 {
-    public class CommentDtoRequestGetByChatId : DtoBase
+    public class CommentDtoRequestDeleteChat : DtoBase
     {
     }
 }

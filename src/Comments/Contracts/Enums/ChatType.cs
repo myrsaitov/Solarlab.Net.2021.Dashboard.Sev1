@@ -7,13 +7,13 @@ namespace Comments.Contracts.Enums
     public enum ChatType
     {
         /// <summary>
-        /// Чат между продавцом и покупателем
-        /// </summary>
-        SellerConsumerChat,
-
-        /// <summary>
         /// Чат объявления
         /// </summary>
-        AdvertisementChat
+        AdvertisementChat,
+
+        /// <summary>
+        /// Чат между продавцом и покупателем
+        /// </summary>
+        SellerConsumerChat
     }
 }
