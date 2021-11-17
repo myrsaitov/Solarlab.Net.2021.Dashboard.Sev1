@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Contracts.Category;
-using Sev1.Advertisements.Contracts.Authorization;
+using Sev1.Accounts.Contracts.Authorization;
+using Sev1.Advertisements.Contracts.Contracts.Category.Requests;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {
@@ -12,7 +12,7 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         /// <summary>
         /// Редактирование категории
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize("Administrator", "Moderator")]
@@ -20,11 +20,11 @@ namespace Sev1.Advertisements.Api.Controllers.Category
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Update(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            CategoryUpdateDto model, 
+            CategoryUpdateRequest request, 
             CancellationToken cancellationToken)
         {
             await _categoryService.Update(
-                model,
+                request,
                 cancellationToken);
 
             return NoContent();

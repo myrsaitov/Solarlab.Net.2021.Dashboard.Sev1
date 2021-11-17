@@ -2,25 +2,28 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Accounts.Contracts;
+using Sev1.Accounts.Contracts.Contracts.User.Responses;
 
 namespace Sev1.Accounts.Api.Controllers.Account
 {
     public partial class AccountController
     {
         /// <summary>
-        /// Возвращает Id текущего авторизированного пользователя
+        /// Возвращает идентификатор текущего авторизированного пользователя
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("currentuserid")]
-        public async Task<IActionResult> GetCurrentUserId(
+        [HttpPost("current-user-id")]
+        public IActionResult GetCurrentUserId(
             CancellationToken cancellationToken)
         {
-            var currentUserId = await Task.FromResult(_identityService.GetCurrentUserId(cancellationToken));
-            
-            return Ok(currentUserId);
+            // Т.к. GetCurrentUserId синхронный, то и контроллер делаем синхронным.
+            // Каждый такой случай нужно рассматривать индивидуально.
+            return Ok(new CurrentUserIdResponse()
+            {
+                UserId = _identityService.GetCurrentUserId(cancellationToken)
+            });
         }
 
         /// <summary>
@@ -29,37 +32,28 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("currentuser")]
+        [HttpPost("current-user")]
         public async Task<IActionResult> GetCurrentUser(
             CancellationToken cancellationToken)
         {
-            var currentUserId = _identityService.GetCurrentUserId(cancellationToken);
-            var domainUser = await _userService.Get(currentUserId, cancellationToken);
-
-            return Ok(new UserDto()
-            {
-                UserName = domainUser.UserName,
-                FirstName = domainUser.FirstName,
-                LastName = domainUser.LastName,
-                MiddleName = domainUser.MiddleName
-            });
+            return Ok(await _userService.GetCurrentUser(cancellationToken));
         }
 
         /// <summary>
-        /// Возвращает пользователя по его Id
+        /// Возвращает пользователя по его идентификатору
         /// </summary>
-        /// <param name="request">Id пользователя</param>
+        /// <param name="UserId">Идентификатор пользователя</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("user")]
         public async Task<IActionResult> GetUserById(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            UserIdDto request,
+            string UserId,
             CancellationToken cancellationToken)
         {
             var domainUser = await _userService.Get(
-                request.UserId,
+                UserId,
                 cancellationToken);
 
             return Ok(domainUser);

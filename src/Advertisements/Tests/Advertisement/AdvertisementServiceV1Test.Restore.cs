@@ -3,8 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
-using Sev1.Advertisements.Domain.Exceptions;
-using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Sev1.Advertisements.Domain.Base.Exceptions;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
@@ -13,13 +13,13 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка удачного удаления объявления пользователем-owner
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Restore_ByOwner_Returns_Response_Success(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -37,11 +37,11 @@ namespace Sev1.Advertisements.Tests.Advertisement
             };
             _advertisementRepositoryMock
                 .Setup(_ => _.FindByIdWithTagsInclude(
-                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(advertisement) // в результате выполнения возвращает объект
                 .Callback(( // Используем передаваемые в мок аргументы для имитации логики
-                    int _advertisementId,
+                    int? _advertisementId,
                     CancellationToken ct) => advertisement.Id = _advertisementId)
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
@@ -68,13 +68,13 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// Проверка исключения, если пользователь 
         /// не имеет права удалить объявление
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Restore_Throws_Exception_When_No_Rights(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -92,11 +92,11 @@ namespace Sev1.Advertisements.Tests.Advertisement
             };
             _advertisementRepositoryMock
                 .Setup(_ => _.FindByIdWithTagsInclude(
-                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(advertisement) // в результате выполнения возвращает объект
                 .Callback(( // Используем передаваемые в мок аргументы для имитации логики
-                    int _advertisementId,
+                    int? _advertisementId,
                     CancellationToken ct) => advertisement.Id = _advertisementId);
 
             // "Сохраняем" объявление в базу
@@ -118,13 +118,13 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка исключения, если в базе нет объявления с таким Id
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Restore_Throws_Exception_When_Advertisement_Is_Null(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -133,7 +133,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             Domain.Advertisement advertisement = null;
             _advertisementRepositoryMock
                 .Setup(_ => _.FindByIdWithTagsInclude(
-                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(advertisement); // в результате выполнения возвращает объект
 
@@ -147,13 +147,13 @@ namespace Sev1.Advertisements.Tests.Advertisement
         /// <summary>
         /// Проверка исключения, если не прошли валидацию Id
         /// </summary>
-        /// <param name="id">Id объявления</param>
+        /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null, null)]
         public async Task Restore_Throws_Exception_When_Id_Is_Not_Valid(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             // Act

@@ -3,9 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
-using Sev1.Advertisements.Domain.Exceptions;
-using Sev1.Advertisements.Application.Exceptions.Category;
-using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Sev1.Advertisements.Domain.Base.Exceptions;
+using Sev1.Advertisements.AppServices.Services.Category.Exceptions;
 
 namespace Sev1.Advertisements.Tests.Category
 {
@@ -14,13 +13,13 @@ namespace Sev1.Advertisements.Tests.Category
         /// <summary>
         /// Проверка удачного восстановления категории модератором
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Restore_ByModerator_Returns_Response_Success(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -44,11 +43,11 @@ namespace Sev1.Advertisements.Tests.Category
             };
             _categoryRepositoryMock
                 .Setup(_ => _.FindById(
-                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(category) // в результате выполнения возвращает объект
                 .Callback(( // Используем передаваемые в мок аргументы для имитации логики
-                    int _categoryId,
+                    int? _categoryId,
                     CancellationToken ct) => category.Id = _categoryId)
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
@@ -74,13 +73,13 @@ namespace Sev1.Advertisements.Tests.Category
         /// <summary>
         /// Проверка удачного восстановления категории админом
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Restore_ByAdministrator_Returns_Response_Success(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -104,11 +103,11 @@ namespace Sev1.Advertisements.Tests.Category
             };
             _categoryRepositoryMock
                 .Setup(_ => _.FindById(
-                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(category) // в результате выполнения возвращает объект
                 .Callback(( // Используем передаваемые в мок аргументы для имитации логики
-                    int _categoryId,
+                    int? _categoryId,
                     CancellationToken ct) => category.Id = id)
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
@@ -135,13 +134,13 @@ namespace Sev1.Advertisements.Tests.Category
         /// Проверка исключения, если обычный пользователь 
         /// хочет восстановить категорию
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Restore_Throws_Exception_When_No_Rights(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -165,11 +164,11 @@ namespace Sev1.Advertisements.Tests.Category
 
             _categoryRepositoryMock
                 .Setup(_ => _.FindById(
-                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(category) // в результате выполнения возвращает объект
                 .Callback(( // Используем передаваемые в мок аргументы для имитации логики
-                    int _categoryId,
+                    int? _categoryId,
                     CancellationToken ct) => category.Id = _categoryId);
 
             _categoryRepositoryMock
@@ -191,13 +190,13 @@ namespace Sev1.Advertisements.Tests.Category
         /// Проверка исключения, если в базе нет категории с таким Id
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [AutoData]
         public async Task Restore_Throws_Exception_When_Category_Is_Null(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -206,7 +205,7 @@ namespace Sev1.Advertisements.Tests.Category
             Domain.Category category = null;
             _categoryRepositoryMock
                 .Setup(_ => _.FindById(
-                    It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
+                    It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(category); // в результате выполнения возвращает объект
 
@@ -220,13 +219,13 @@ namespace Sev1.Advertisements.Tests.Category
         /// <summary>
         /// Проверка исключения, если не прошли валидацию Id
         /// </summary>
-        /// <param name="id">Id категории</param>
+        /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Theory]
         [InlineAutoData(null, null)]
         public async Task Restore_Throws_Exception_When_Id_Is_Not_Valid(
-            int id,
+            int? id,
             CancellationToken cancellationToken)
         {
             // Act

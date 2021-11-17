@@ -2,9 +2,8 @@
 using Sev1.Accounts.DataAccess.EntitiesConfiguration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Sev1.Accounts.Application.Contracts.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using IdentityUser = Sev1.Accounts.Application.Implementations.Identity.IdentityUser;
+using Sev1.Accounts.Contracts.Enums;
 
 namespace Sev1.Accounts.DataAccess
 {
@@ -71,9 +70,11 @@ namespace Sev1.Accounts.DataAccess
             {
                 Id = ADMINISTRATOR_ID,
                 UserName = "Administrator",
-                NormalizedUserName = "ADMINISTRATOR"
+                NormalizedUserName = "ADMINISTRATOR",
+                Email = "administrator@mail.ru",
+                NormalizedEmail = "ADMINISTRATOR@MAIL.RU"
             };
-            adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, "Administrator");
+            adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, "Zadm123!@#$%^()");
 
             modelBuilder.Entity<IdentityUser>(x =>
             {
@@ -108,9 +109,11 @@ namespace Sev1.Accounts.DataAccess
             {
                 Id = MODERATOR_ID,
                 UserName = "Moderator",
-                NormalizedUserName = "MODERATOR"
+                NormalizedUserName = "MODERATOR",
+                Email = "moderator@mail.ru",
+                NormalizedEmail = "MODERATOR@MAIL.RU"
             };
-            moderatorUser.PasswordHash = passwordHasher.HashPassword(moderatorUser, "Moderator");
+            moderatorUser.PasswordHash = passwordHasher.HashPassword(moderatorUser, "Zmod123!@#$%^()");
 
             modelBuilder.Entity<IdentityUser>(x =>
             {
@@ -145,9 +148,11 @@ namespace Sev1.Accounts.DataAccess
             {
                 Id = USER_ID,
                 UserName = "User",
-                NormalizedUserName = "USER"
+                NormalizedUserName = "USER",
+                Email = "user@mail.ru",
+                NormalizedEmail = "USER@MAIL.RU"
             };
-            userUser.PasswordHash = passwordHasher.HashPassword(moderatorUser, "User");
+            userUser.PasswordHash = passwordHasher.HashPassword(moderatorUser, "Zuse123!@#$%^()");
 
             modelBuilder.Entity<IdentityUser>(x =>
             {

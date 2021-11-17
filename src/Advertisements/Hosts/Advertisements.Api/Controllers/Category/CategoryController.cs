@@ -1,10 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Interfaces.Category;
-using Sev1.Advertisements.Contracts.Authorization;
+using Sev1.Advertisements.AppServices.Services.Category.Interfaces;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {
+    // Calls to this controller will only succeed
+    // if the client provides Content-Type header of "application/json".
+    // Otherwise a 415 (Unsupported Media Type) will be returned.
+    [Consumes("application/json")]
+
+    // Attribute routing for REST APIs
+    // https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-5.0
     [Route("api/v1/categories")]
+
+    // The[ApiController] attribute can be applied to
+    // a controller class to enable API-specific behaviors
     [ApiController]
     public partial class CategoryController : ControllerBase
     {

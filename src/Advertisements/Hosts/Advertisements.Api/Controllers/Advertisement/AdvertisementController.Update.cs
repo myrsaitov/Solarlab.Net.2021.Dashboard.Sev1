@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Sev1.Advertisements.Contracts.Authorization;
+using Sev1.Accounts.Contracts.Authorization;
+using Sev1.Advertisements.AppServices.Contracts.Advertisement.Requests;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
@@ -12,7 +12,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         /// <summary>
         /// Редактирует объявление
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize("User")]
@@ -20,11 +20,11 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Update(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            AdvertisementUpdateDto model, 
+            AdvertisementUpdateRequest request, 
             CancellationToken cancellationToken)
         {
             await _advertisementService.Update(
-                model, 
+                request, 
                 cancellationToken);
             
             //  Creates a Microsoft.AspNetCore.Mvc.NoContentResult object that produces an empty

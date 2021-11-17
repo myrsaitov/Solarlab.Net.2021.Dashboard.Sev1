@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 using Xunit;
 using AutoFixture.Xunit2;
 using System.Collections.Generic;
-using Sev1.Advertisements.Application.Contracts.Tag;
 using System.Linq;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
-using Sev1.Advertisements.Application.Exceptions.Advertisement;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
+using Sev1.Advertisements.Contracts.Contracts.Tag.Responses;
+using Sev1.Advertisements.AppServices.Services.Tag.Exceptions;
 
 namespace Sev1.Advertisements.Tests.Tag
 {
@@ -26,9 +26,9 @@ namespace Sev1.Advertisements.Tests.Tag
             CancellationToken cancellationToken)
         {
             // Arrange
-            int tagCount = 3;
+            int? tagCount = 3;
             var responce = new List<Domain.Tag>();
-            for (int tagId = 1; tagId <= tagCount; tagId++)
+            for (int? tagId = 1; tagId <= tagCount; tagId++)
             {
                 var tag = new Domain.Tag()
                 {
@@ -60,7 +60,7 @@ namespace Sev1.Advertisements.Tests.Tag
             Assert.NotNull(response);
             Assert.Equal(tagCount, response.Total);
             Assert.Equal(tagCount, response.Items.Count());
-            Assert.IsType<GetPagedResponse<TagPagedDto>>(response);
+            Assert.IsType<TagGetPagedResponse>(response);
         }
 
         /// <summary>
@@ -97,11 +97,11 @@ namespace Sev1.Advertisements.Tests.Tag
             Assert.Equal(
                 tagCount,
                 response.Items.Count());
-            Assert.IsType<GetPagedResponse<TagPagedDto>>(response);
+            Assert.IsType<TagGetPagedResponse>(response);
         }
 
         /// <summary>
-        /// 
+        /// Проверка исключения при пустом запросе
         /// </summary>
         /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
@@ -113,7 +113,7 @@ namespace Sev1.Advertisements.Tests.Tag
             CancellationToken cancellationToken)
         {
             // Act
-            await Assert.ThrowsAsync<GetPagedRequestNotValidException>(
+            await Assert.ThrowsAsync<TagGetPagedRequestNotValidException>(
                 async () => await _tagServiceV1.GetPaged(
                     request, 
                     cancellationToken));

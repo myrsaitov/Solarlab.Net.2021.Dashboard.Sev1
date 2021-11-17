@@ -1,21 +1,22 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Sev1.Advertisements.Domain.Base;
+using Sev1.Advertisements.Domain.Base.Entities;
 
 namespace Sev1.Advertisements.Domain
 {
-    public class Tag : Entity<int>
+    /// <summary>
+    /// Доменная модель тага
+    /// </summary>
+    public class Tag : Entity<int?>
     {
         /// <summary>
         /// Текст ярлыка
         /// </summary>
-        [MaxLength(32)]
         public string Body { get; set; }
 
         /// <summary>
         /// Количество объявлений, связанных с этим ярлыком
         /// </summary>
-        public int Count { get; set; }
+        public int? Count { get; set; }
 
         /// <summary>
         /// Объявления, связанные с этим ярлыком

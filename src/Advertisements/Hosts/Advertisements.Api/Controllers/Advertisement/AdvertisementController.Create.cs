@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Sev1.Advertisements.Contracts.Authorization;
+using Sev1.Accounts.Contracts.Authorization;
+using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
@@ -12,7 +12,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         /// <summary>
         /// Создает новое объявление
         /// </summary>
-        /// <param name="model">DTO-модель</param>
+        /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize("Administrator","Moderator","User")]
@@ -20,14 +20,12 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            AdvertisementCreateDto model, 
+            AdvertisementCreateRequest request, 
             CancellationToken cancellationToken)
         {
-            await _advertisementService.Create(
-                model, 
-                cancellationToken);
-
-            return Created(string.Empty, null);
+            return Ok(await _advertisementService.Create(
+                request,
+                cancellationToken));
         }
     }
 }
