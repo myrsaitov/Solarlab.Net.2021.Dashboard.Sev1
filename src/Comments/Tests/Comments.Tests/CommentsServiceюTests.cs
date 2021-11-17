@@ -9,6 +9,7 @@ using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -22,7 +23,7 @@ namespace Comments.Tests
         private readonly Fixture _fixture;
 
         private readonly ICommentsService _commentService;
-
+        
 
         public CommentsServiceюTests()
         {
@@ -35,34 +36,45 @@ namespace Comments.Tests
 
         [Theory]
         [AutoData]
-        public async Task GetCommentsByChatIdAsync_Shuld_Return_Comments(Guid id, int pageSize, int pageNumber, CancellationToken token)
+        public async Task GetCommentsByChatIdAsync_Shuld_Return_Comments(Guid id, int pageSize, int pageNumber, int pagesQuantity, CancellationToken token)
         {
             //Arrange
-            var comments = _fixture
+            var messages = _fixture
                 .Build<Comment>()
                 .CreateMany(10)
                 .ToList();
 
+            var chat = _fixture
+                .Build<Chat>()
+                .Create();
+
+            chat.Messages = messages;
+
             _repository
-                .Setup(r => r.GetCommentsByChatIdAsync(id, pageSize, pageNumber, token))
-                .ReturnsAsync(comments)
+                .Setup(r => r.CountPagesChatsAsync(It.IsAny<Expression<Func<Chat, bool>>>(), pageSize, token))
+                .ReturnsAsync(pagesQuantity)
                 .Verifiable();
 
-            var commentDto = new CommentDtoRequestGetChatPaged {Id = id, PageSize = pageSize, PageNumber = pageNumber};
+            _repository
+                .Setup(r => r.GetChatPagedAsync(It.IsAny<Expression<Func<Chat, bool>>>(), pageSize, pageNumber, pagesQuantity, token))
+                .ReturnsAsync(chat)
+                .Verifiable();
+
+            var commentDto = new CommentDtoRequestGetChatPaged {AdvertisementId = id, Type = Contracts.Enums.ChatType.AdvertisementChat, PageSize = pageSize, PageNumber = pageNumber};
 
             //Act
-            var result = await _commentService.GetCommentsByChatIdAsync(commentDto, token);
+            var result = await _commentService.GetChatPagedAsync(commentDto, token);
 
 
             //Assert
             _repository.Verify();
-            _repository.Verify(_ => _.GetCommentsByChatIdAsync(It.IsAny<Guid>(), 
-                                                                It.IsAny<int>(), 
-                                                                It.IsAny<int>(), 
+            _repository.Verify(_ => _.GetChatPagedAsync(It.IsAny<Expression<Func<Chat, bool>>>(), 
+                                                                It.IsAny<int>(),
+                                                                It.IsAny<int>(),
+                                                                It.IsAny<int>(),
                                                                 It.IsAny<CancellationToken>()), 
                                                                 Times.Once);
             Assert.NotNull(result);
-            Assert.NotEmpty(result);
         }
 
         [Theory]
@@ -70,14 +82,17 @@ namespace Comments.Tests
         public async Task DeleteCommentsByChatIdAsync_Shuld_Call_DeleteCommentsByChatIdAsync(Guid id, CancellationToken token)
         {
             //Arrange 
-            _repository.Setup(r => r.DeleteCommentsByChatIdAsync(id, token))
+            Expression<Func<Chat, bool>> predicate = c => c.ChatId == id;
+
+            _repository.Setup(r => r.RemoveChatAsync(predicate, token))
                 .Verifiable();
 
+            var dto = new CommentDtoRequestDeleteChat { AdvertisementId = new Guid(), Type = Contracts.Enums.ChatType.AdvertisementChat };
             //Act
-            await _commentService.DeleteCommentsByChatIdAsync(id, token);
+            await _commentService.DeleteChatAsync(dto, token);
 
             //Assert
-            _repository.Verify(_ => _.DeleteCommentsByChatIdAsync(It.IsAny<Guid>(), It.IsAny<CancellationToken>()), Times.Once);
+            _repository.Verify(_ => _.RemoveChatAsync(It.IsAny<Expression<Func<Chat, bool>>>(), It.IsAny<CancellationToken>()), Times.Once);
         }
 
         [Fact]
@@ -133,7 +148,7 @@ namespace Comments.Tests
             //Assert
             _repository.Verify();
             _repository.Verify(_ => _.UpdateCommentAsync(
-                It.Is<Comment>(c => (c.Message == commentDto.Message) && (c.CommentStatus == Contracts.Enums.CommentStatus.Changed)),
+                It.Is<Comment>(c => (c.Message == commentDto.Message) && (c.IsUpdated == true)),
                 It.IsAny<CancellationToken>()),
                 Times.Once);
         }
