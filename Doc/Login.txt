@@ -1,8 +1,8 @@
-myrsaitov
+myrsaitov@gmail.com
 Zxs123!@#$%^&*()
 
 {
-  "username": "myrsaitov",
+  "email": "myrsaitov@gmail.com",
   "password": "Zxs123!@#$%^&*()"
 }
 
@@ -12,6 +12,7 @@ myrsaitov@gmail.com
 Konstantin
 Myrsaitov
 Michailovich
++79787713935
 Zxs123!@#$%^&*()
 
 {
@@ -20,6 +21,21 @@ Zxs123!@#$%^&*()
   "firstName": "Konstantin",
   "lastName": "Myrsaitov",
   "middleName": "Michailovich",
+  "phoneNumber": "+79787713935",
   "password": "Zxs123!@#$%^&*()"
 }
 
+
+
+
+
+  "userName": "myrsaitovrus",
+  "email": "myrsaitovrus@gmail.com",
+  "phoneNumber": "+79787713935",
+  "password": "Zxs123!@#$%^&*()",
+  "firstName": "Константин",
+  "lastName": "Мирсаитов",
+  "middleName": "Михайлович",
+  "address": "г. Севастополь, ул. Новороссийская",
+  "regionId": 98,
+  "userPicPath": "string"

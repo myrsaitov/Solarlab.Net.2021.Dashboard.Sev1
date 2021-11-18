@@ -1,19 +1,24 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Accounts.Contracts.Authorization;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
     public partial class AdvertisementController
     {
+        /// <summary>
+        /// Возвращает объявления с пагинацией (и поиском)
+        /// </summary>
+        /// <param name="request">Запрос на пагинацию и поиск</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet]
-        //[AllowAnonymous]
         public async Task<IActionResult> GetPaged(
-            [FromQuery] GetPagedAdvertisementRequest request, 
+            [FromQuery] // Get values from the query string, e.g.: ?PageSize=10&Page=0
+            AdvertisementGetPagedRequest request, 
             CancellationToken cancellationToken)
         {
             var result = await _advertisementService.GetPaged(
@@ -23,10 +28,17 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
             return Ok(result);
         }
 
+        /// <summary>
+        /// Возвращает объявление по идентификатору
+        /// </summary>
+        /// <param name="id">Идентификатор объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet("{id}")]
-        //[AllowAnonymous]
         public async Task<IActionResult> GetById(
-            [FromRoute] int id, 
+            [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
+            int? id, 
             CancellationToken cancellationToken)
         {
             var found = await _advertisementService.GetById(

@@ -16,8 +16,23 @@ namespace Accounts.DataAccess.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.10")
+                .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("FavoriteAdvertisementUser", b =>
+                {
+                    b.Property<string>("FavoriteAdvertisementsId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsersId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("FavoriteAdvertisementsId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("FavoriteAdvertisementUser");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -48,15 +63,22 @@ namespace Accounts.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d3300ca5-846f-4e6b-ac5f-1d3933115e67",
-                            ConcurrencyStamp = "0f7beeea-5095-4017-a718-37a3c4070844",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
+                            Id = "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3",
+                            ConcurrencyStamp = "21c84a32-bbb7-4615-98fc-7680cfe3f6ea",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "185230d2-58d8-4e29-aefd-a257fb82a150",
-                            ConcurrencyStamp = "88c21aee-a6ee-4047-8f0a-2c49a13abc9f",
+                            Id = "c373fe1b-9e38-498b-9729-6c719222b00d",
+                            ConcurrencyStamp = "e0223608-aa24-430a-8343-4c51b1b0405e",
+                            Name = "Moderator",
+                            NormalizedName = "MODERATOR"
+                        },
+                        new
+                        {
+                            Id = "589a1f42-d43c-4315-8e02-432f64e02bc0",
+                            ConcurrencyStamp = "2e9b7baf-1ef5-4fa4-b3eb-285b9924a216",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -153,17 +175,51 @@ namespace Accounts.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "98b651ae-c9aa-4731-9996-57352d525f7e",
+                            Id = "757d5290-d036-4757-85ae-827b59e92cd3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "eb4e148c-c667-4c7e-a600-202258055b41",
+                            ConcurrencyStamp = "1bc11964-87a0-4dc3-9d49-52111ac79978",
+                            Email = "administrator@mail.ru",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAbL0ze3BnuAyD+7dhdXFcLAty5NwkJjsKaCpwxrOKcF+IQ96izzflkFIqx6Jp5r0Q==",
+                            NormalizedEmail = "ADMINISTRATOR@MAIL.RU",
+                            NormalizedUserName = "ADMINISTRATOR",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKzMgmM/+P7bw9rZnW+uAKTZvodUKPXmtcXl7EnDO1/v1QLne3NhmCuAWp7ma7K/Sg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5f32034d-e1aa-415a-bf7a-3758ef9b6ff5",
+                            SecurityStamp = "34e01d42-27ac-47bd-b59d-92d62c497a6d",
                             TwoFactorEnabled = false,
-                            UserName = "admin"
+                            UserName = "Administrator"
+                        },
+                        new
+                        {
+                            Id = "a0d74199-2ad5-4d2f-a184-eb52f5bf9094",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "aa5dc809-85d0-4936-b679-95da0cb42ff2",
+                            Email = "moderator@mail.ru",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "MODERATOR@MAIL.RU",
+                            NormalizedUserName = "MODERATOR",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJeAoAlhj1GfPlYih6RMZdCiH/Hfw09RvBYPQk1pW7J56C+DgEo/HwxlxljitUG8BQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "b55b7d7d-1b62-4651-a79a-c0857c6d563d",
+                            TwoFactorEnabled = false,
+                            UserName = "Moderator"
+                        },
+                        new
+                        {
+                            Id = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "218ca0f5-7b1a-4e0f-a248-e5551793ee1c",
+                            Email = "user@mail.ru",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER@MAIL.RU",
+                            NormalizedUserName = "USER",
+                            PasswordHash = "AQAAAAEAACcQAAAAEE9ax0yCtZfNudVUGSpYY2EN4eQvLm+/LegifFcNhBqhhlq51DjDx6qi4ZlCTnCfHA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "bf7d6920-1713-49f2-b1c1-e8caf721bc00",
+                            TwoFactorEnabled = false,
+                            UserName = "User"
                         });
                 });
 
@@ -230,8 +286,18 @@ namespace Accounts.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "98b651ae-c9aa-4731-9996-57352d525f7e",
-                            RoleId = "d3300ca5-846f-4e6b-ac5f-1d3933115e67"
+                            UserId = "757d5290-d036-4757-85ae-827b59e92cd3",
+                            RoleId = "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3"
+                        },
+                        new
+                        {
+                            UserId = "a0d74199-2ad5-4d2f-a184-eb52f5bf9094",
+                            RoleId = "c373fe1b-9e38-498b-9729-6c719222b00d"
+                        },
+                        new
+                        {
+                            UserId = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
+                            RoleId = "589a1f42-d43c-4315-8e02-432f64e02bc0"
                         });
                 });
 
@@ -254,11 +320,36 @@ namespace Accounts.DataAccess.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Sev1.Accounts.Domain.FavoriteAdvertisement", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AdvertisementId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FavoriteAdvertisement");
+                });
+
             modelBuilder.Entity("Sev1.Accounts.Domain.User", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -283,6 +374,12 @@ namespace Accounts.DataAccess.Migrations
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RegionId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -292,9 +389,74 @@ namespace Accounts.DataAccess.Migrations
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("UserPicPath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("DomainUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "757d5290-d036-4757-85ae-827b59e92cd3",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Administrator",
+                            IsDeleted = false,
+                            LastName = "Administrator",
+                            MiddleName = "Administrator",
+                            UserName = "Administrator"
+                        },
+                        new
+                        {
+                            Id = "a0d74199-2ad5-4d2f-a184-eb52f5bf9094",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Moderator",
+                            IsDeleted = false,
+                            LastName = "Moderator",
+                            MiddleName = "Moderator",
+                            UserName = "Moderator"
+                        },
+                        new
+                        {
+                            Id = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "User",
+                            IsDeleted = false,
+                            LastName = "User",
+                            MiddleName = "User",
+                            UserName = "User"
+                        });
+                });
+
+            modelBuilder.Entity("UserUser", b =>
+                {
+                    b.Property<string>("FriendUsersId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("IgnoredUsersId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("FriendUsersId", "IgnoredUsersId");
+
+                    b.HasIndex("IgnoredUsersId");
+
+                    b.ToTable("UserUser");
+                });
+
+            modelBuilder.Entity("FavoriteAdvertisementUser", b =>
+                {
+                    b.HasOne("Sev1.Accounts.Domain.FavoriteAdvertisement", null)
+                        .WithMany()
+                        .HasForeignKey("FavoriteAdvertisementsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Sev1.Accounts.Domain.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -345,6 +507,21 @@ namespace Accounts.DataAccess.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("UserUser", b =>
+                {
+                    b.HasOne("Sev1.Accounts.Domain.User", null)
+                        .WithMany()
+                        .HasForeignKey("FriendUsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Sev1.Accounts.Domain.User", null)
+                        .WithMany()
+                        .HasForeignKey("IgnoredUsersId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

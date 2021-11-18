@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
-using Sev1.Advertisements.Domain.Base;
+using Sev1.Advertisements.Domain.Base.Entities;
 
 namespace Sev1.Advertisements.Domain
 {
-    public class Category : EntityMutable<int>
+    /// <summary>
+    /// Доменная модель категории
+    /// </summary>
+    public class Category : EntityMutable<int?>
     {
         /// <summary>
         /// Название категории
@@ -11,9 +14,13 @@ namespace Sev1.Advertisements.Domain
         public string Name { get; set; }
 
         /// <summary>
-        /// Id и ссылка на родительскую категорию
+        /// Идентификатор родительской категории
         /// </summary>
         public int? ParentCategoryId { get; set; }
+
+        /// <summary>
+        /// Ссылка на родительскую категорию
+        /// </summary>
         public virtual Category ParentCategory { get; set; }
 
         /// <summary>

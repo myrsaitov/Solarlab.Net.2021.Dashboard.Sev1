@@ -1,18 +1,17 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NotificationsEmail.Services;
 using NotificationsEmail.Services.Interfaces;
-using NotificationsEmail.Notification;
-using NotificationsEmail.Mapper;
-using NotificationsEmail.Repository;
 using Microsoft.OpenApi.Models;
 using System.IO;
 using NotificationsEmail.ScheduledSender;
 using Quartz.Spi;
-using Quartz;
+using NotificationsEmail.Notification;
+using NotificationsEmail.Mapper;
+using NotificationsEmail.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace NotificationsEmail.API
 {

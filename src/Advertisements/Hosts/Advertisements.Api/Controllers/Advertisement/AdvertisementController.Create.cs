@@ -2,24 +2,30 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
+using Sev1.Accounts.Contracts.Authorization;
+using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
     public partial class AdvertisementController
     {
+        /// <summary>
+        /// Создает новое объявление
+        /// </summary>
+        /// <param name="request">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [Authorize("Administrator","Moderator","User")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        //[Authorize]
         public async Task<IActionResult> Create(
-            [FromBody] AdvertisementCreateDto model, 
+            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
+            AdvertisementCreateRequest request, 
             CancellationToken cancellationToken)
         {
-            await _advertisementService.Create(
-                model, 
-                cancellationToken);
-
-            return Created(string.Empty, null);
+            return Ok(await _advertisementService.Create(
+                request,
+                cancellationToken));
         }
     }
 }

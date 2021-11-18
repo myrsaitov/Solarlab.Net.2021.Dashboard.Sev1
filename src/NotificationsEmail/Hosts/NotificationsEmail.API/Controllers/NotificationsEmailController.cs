@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using NotificationsEmail.Contracts;
 using NotificationsEmail.Services.Interfaces;
 using System.Threading.Tasks;

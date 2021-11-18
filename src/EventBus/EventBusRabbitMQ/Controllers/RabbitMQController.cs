@@ -1,9 +1,6 @@
 ﻿using EventBusRabbitMQ.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using NotificationsEmail.Contracts;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 
 namespace EventBusRabbitMQ.Controllers

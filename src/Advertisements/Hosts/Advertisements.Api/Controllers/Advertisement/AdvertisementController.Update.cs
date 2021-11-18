@@ -2,21 +2,29 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Contracts.Advertisement;
+using Sev1.Accounts.Contracts.Authorization;
+using Sev1.Advertisements.AppServices.Contracts.Advertisement.Requests;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
     public partial class AdvertisementController
     {
-        [HttpPut("update/{id:int}")]
+        /// <summary>
+        /// Редактирует объявление
+        /// </summary>
+        /// <param name="request">DTO-модель</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [Authorize("User")]
+        [HttpPut("update")]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        //[Authorize]
         public async Task<IActionResult> Update(
-            [FromBody] AdvertisementUpdateDto model, 
+            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
+            AdvertisementUpdateRequest request, 
             CancellationToken cancellationToken)
         {
             await _advertisementService.Update(
-                model, 
+                request, 
                 cancellationToken);
             
             //  Creates a Microsoft.AspNetCore.Mvc.NoContentResult object that produces an empty

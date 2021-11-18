@@ -1,15 +1,23 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Sev1.Accounts.Contracts.Authorization;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
     public partial class AdvertisementController
     {
+        /// <summary>
+        /// Удаляет объявление (из БД не удаляет, но помечает, что оно удалено)
+        /// </summary>
+        /// <param name="id">Идентификатор объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [Authorize("Administrator","Moderator","User")]
         [HttpDelete("{id:int}")]
-        //[Authorize]
         public async Task<IActionResult> Delete(
-            [FromRoute] int id, 
+            [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
+            int? id, 
             CancellationToken cancellationToken)
         {
             await _advertisementService.Delete(

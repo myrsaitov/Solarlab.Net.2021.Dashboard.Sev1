@@ -1,32 +1,48 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sev1.Advertisements.Application.Contracts.GetPaged;
+using Sev1.Accounts.Contracts.Authorization;
+using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {
+
     public partial class CategoryController
     {
+        /// <summary>
+        /// Возвращает категории с пагинацией
+        /// </summary>
+        /// <param name="request">Запрос на пагинацию</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet]
-        //[AllowAnonymous]
         public async Task<IActionResult> GetPaged(
-            [FromQuery] GetPagedRequest request, 
+            [FromQuery] // Get values from the query string, e.g.: ?PageSize=10&Page=0
+            GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
-            var result = await _categoryService.GetPaged(new GetPagedRequest
-            {
-                PageSize = request.PageSize,
-                Page = request.Page
-            }, cancellationToken); ;
+            var result = await _categoryService
+                .GetPaged(new GetPagedRequest
+                    {
+                        PageSize = request.PageSize,
+                        Page = request.Page
+                    }, cancellationToken); ;
 
             return Ok(result);
         }
 
+        /// <summary>
+        /// Возвращает категорию по Id
+        /// </summary>
+        /// <param name="id">Идентификатор категории</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet("{id}")]
-        //[AllowAnonymous]
         public async Task<IActionResult> GetById(
-            [FromRoute] int id, 
+            [FromRoute] // Get values from route data, e.g.: "/api/v1/advertisements/{id}"
+            int? id, 
             CancellationToken cancellationToken)
         {
 

@@ -17,20 +17,18 @@
   
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
-
+  
   <ItemGroup>
-    <ProjectReference Include="..\..\..\EventBus\EventBusRabbitMQ\EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\..\Application\NotificationsEmail.ScheduledSender\NotificationsEmail.ScheduledSender.csproj" />
     <ProjectReference Include="..\..\Application\NotificationsEmail.Services\NotificationsEmail.Services.csproj" />
     <ProjectReference Include="..\..\Infrastructure\NotificationsEmail.Mapper\NotificationsEmail.Mapper.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\NotificationsEmail.Migrations\NotificationsEmail.Migrations.csproj" />
     <ProjectReference Include="..\..\Infrastructure\NotificationsEmail.Repository\NotificationsEmail.Repository.csproj" />
     <ProjectReference Include="..\..\Infrastructure\NotificationsEmail.SmtpNotifier\NotificationsEmail.Notification.csproj" />
   </ItemGroup>

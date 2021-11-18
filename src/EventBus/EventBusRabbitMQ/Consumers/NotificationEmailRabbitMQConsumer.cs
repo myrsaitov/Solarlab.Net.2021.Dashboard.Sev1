@@ -1,7 +1,6 @@
 ﻿using EventBusRabbitMQ.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using NotificationsEmail.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;

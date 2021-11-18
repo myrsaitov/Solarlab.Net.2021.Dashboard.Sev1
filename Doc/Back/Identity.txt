@@ -1,0 +1,35 @@
+JWT = JSON Web Token
+
+
+https://jasonwatmore.com/post/2021/06/02/net-5-create-and-validate-jwt-tokens-use-custom-jwt-middleware
+https://jasonwatmore.com/post/2021/05/25/net-5-simple-api-for-authentication-registration-and-user-management
+https://fuse8.ru/articles/using-asp-net-core-identity-and-jwt
+
+// Check Token Validated with Custom Authorize Attribute
+https://jasonwatmore.com/post/2021/06/02/net-5-create-and-validate-jwt-tokens-use-custom-jwt-middleware
+
+
+https://jasonwatmore.com/post/2019/10/11/aspnet-core-3-jwt-authentication-tutorial-with-example-api
+
+[AllowAnonymous] иммет приоритет над [Authorized] !!!
+Если весь контроллер сделан анонимным, то отдельные методы нельзя сделать Авторизированными.
+Лучше весь контроллер сделать авторизированным, а отдельные методы анонимными!!!!!!!!!!!!
+
+
+
+            var user = await _userManager.FindByIdAsync(userId);
+            var userRoles = await _userManager.GetRolesAsync(user);
+            var allRoles = _roleManager.Roles.ToList();
+
+
+[Authorize("Administrator", "Moderator")]
+[AllowAnonymous]
+
+"User"
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNjRkYmIxOTktMGE5NS00ZjFhLWFmY2YtMTBjYzgyN2ZkM2M4IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsIm5iZiI6MTYzNTg0NDc3NSwiZXhwIjoxNjQxMDI4Nzc1fQ.C9TF6KVdvzA1E5zTEq088i3QWiJ6QfBA7APg-jCp_jg
+
+"Moderator"
+Bearer 
+
+"Administrator"
+Bearer 

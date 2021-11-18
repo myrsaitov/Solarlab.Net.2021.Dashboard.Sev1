@@ -6,39 +6,33 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System;
-using Sev1.Advertisements.Application.Repositories.Advertisement;
+using Sev1.Advertisements.AppServices.Services.Advertisement.Repositories;
 using Sev1.Advertisements.DataAccess.Base;
+using sev1.Advertisements.Contracts.Enums;
 
 namespace Sev1.Advertisements.DataAccess.Repositories
 {
-    public sealed class AdvertisementRepository : EfRepository<Advertisement, int>, IAdvertisementRepository
+    public sealed class AdvertisementRepository : EfRepository<Advertisement, int?>, IAdvertisementRepository
     {
         public AdvertisementRepository(DatabaseContext dbСontext) : base(dbСontext)
         {
         }
 
-        public async Task<Advertisement> FindByIdWithUserInclude(
-            int id, 
+        public async Task<Advertisement> FindByIdWithTagsInclude(
+            int? id,
             CancellationToken cancellationToken)
         {
             return await DbСontext
                 .Set<Advertisement>()
-                //.Include(a => a.Owner)
-                .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
-        }
-        public async Task<Advertisement> FindByIdWithUserAndTagsInclude(int id, CancellationToken cancellationToken)
-        {
-            return await DbСontext
-                .Set<Advertisement>()
-                //.Include(a => a.Owner)
                 .Include(a => a.Tags)
                 .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
         }
-        public async Task<Advertisement> FindByIdWithUserAndCategoryAndTags(int id, CancellationToken cancellationToken)
+        public async Task<Advertisement> FindByIdWithCategoriesAndTags(
+            int? id,
+            CancellationToken cancellationToken)
         {
             return await DbСontext
                 .Set<Advertisement>()
-                //.Include(a => a.Owner)
                 .Include(a => a.Category)
                 .Include(a => a.Category.ChildCategories)
                 .Include(a => a.Category.ParentCategory)
@@ -46,17 +40,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
         }
 
-        public async Task<int> CountWithOutDeleted(CancellationToken cancellationToken)
-        {
-            var data = DbСontext
-                .Set<Advertisement>()
-                .AsNoTracking(); ;
-
-            return await data
-                .Where(c => c.IsDeleted == false)
-                .CountAsync(cancellationToken);
-        }
-        public async Task<int> CountWithOutDeleted(
+        public async Task<int?> CountActive(
             Expression<Func<Advertisement, bool>> predicate,
             CancellationToken cancellationToken)
         {
@@ -65,30 +49,12 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .AsNoTracking(); ;
 
             return await data
-                .Where(c => c.IsDeleted == false)
+                .Where(c => c.Status == AdvertisementStatus.Active)
                 .Where(predicate)
                 .CountAsync(cancellationToken);
         }
-        public async Task<IEnumerable<Advertisement>> GetPagedWithTagsAndOwnerAndCategoryInclude(
-            int offset,
-            int limit,
-            CancellationToken cancellationToken)
-        {
-            var data = DbСontext
-                .Set<Advertisement>()
-                .Include(a => a.Tags)
-                //.Include(a => a.Owner)
-                .Include(a => a.Category)
-                .AsNoTracking(); ;
 
-            return await data
-                .Where(c => c.IsDeleted == false)
-                .OrderBy(e => e.Id)
-                .Skip(offset)
-                .Take(limit)
-                .ToListAsync(cancellationToken);
-        }
-        public async Task<IEnumerable<Advertisement>> GetPagedWithTagsAndOwnerAndCategoryInclude(
+        public async Task<IEnumerable<Advertisement>> GetPagedWithTagsAndCategoryInclude(
             Expression<Func<Advertisement, bool>> predicate,
             int offset,
             int limit,
@@ -97,12 +63,11 @@ namespace Sev1.Advertisements.DataAccess.Repositories
             var data = DbСontext
                 .Set<Advertisement>()
                 .Include(a => a.Tags)
-                //.Include(a => a.Owner)
                 .Include(a => a.Category)
                 .AsNoTracking();
 
             return await data
-                .Where(c => c.IsDeleted == false)
+                .Where(c => c.Status == AdvertisementStatus.Active)
                 .Where(predicate)
                 .OrderBy(e => e.Id)
                 .Skip(offset)
