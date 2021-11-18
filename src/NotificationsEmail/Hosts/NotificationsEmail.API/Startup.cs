@@ -1,19 +1,17 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using NotificationsEmail.Services;
 using NotificationsEmail.Services.Interfaces;
-using NotificationsEmail.Notification;
-using NotificationsEmail.Mapper;
-using NotificationsEmail.Repository;
 using Microsoft.OpenApi.Models;
 using System.IO;
 using NotificationsEmail.ScheduledSender;
 using Quartz.Spi;
-using Quartz;
+using NotificationsEmail.Notification;
+using NotificationsEmail.Mapper;
+using NotificationsEmail.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace NotificationsEmail.API
 {
@@ -28,7 +26,6 @@ namespace NotificationsEmail.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
 #if DEBUG
             string connection = Configuration.GetConnectionString("RemoteConnection");
 #else
@@ -52,7 +49,7 @@ namespace NotificationsEmail.API
             services.AddSingleton<IJobFactory, SingletonJobFactory>();
             services.AddSingleton<ScheduledNotificationService>();
 
-
+            // Swagger
             services.AddSwaggerGen(swagger =>
             {
                 swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
