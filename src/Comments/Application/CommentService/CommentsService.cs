@@ -3,6 +3,7 @@ using Comments.Contracts;
 using Comments.Contracts.Enums;
 using Comments.Domain.Entities;
 using Comments.Domain.Exceptions;
+using sev1.Accounts.Contracts.UserProvider;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -22,17 +23,22 @@ namespace Comments.Services
     {
         private readonly ICommentsRepository _repository;
         private readonly IMapper _mapper;
+        private readonly IUserProvider _userProvider;
 
-        public CommentsService(ICommentsRepository repository, IMapper mapper)
+        public CommentsService(ICommentsRepository repository, 
+            IMapper mapper,
+            IUserProvider userProvider)
         {
             _repository = repository;
             _mapper = mapper;
+            _userProvider = userProvider;
         }
 
         /// <inheritdoc/>
         public async Task<SellerConsumerChatDtoResponceChats> GetUserChatsPagedAsync(CommentDtoRequestGetUserChatsPaged dto, CancellationToken token)
         {
-            Expression<Func<Chat, bool>> predicate = c => ((c.SellerId == dto.UserId || c.ConsumerId == dto.UserId) && c.Type == ChatType.SellerConsumerChat);
+            var userId = new Guid (_userProvider.GetUserId());
+            Expression<Func<Chat, bool>> predicate = c => ((c.SellerId == userId || c.ConsumerId == userId) && c.Type == ChatType.SellerConsumerChat);
             var a = dto;
             var pagesQuantity = await _repository.CountPagesChatsAsync(predicate, dto.PageSize, token);
 

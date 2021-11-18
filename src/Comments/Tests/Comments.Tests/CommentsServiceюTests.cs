@@ -56,7 +56,7 @@ namespace Comments.Tests
                 .Verifiable();
 
             _repository
-                .Setup(r => r.GetChatPagedAsync(It.IsAny<Expression<Func<Chat, bool>>>(), pageSize, pageNumber, pagesQuantity, token))
+                .Setup(r => r.GetChatPagedAsync(It.IsAny<Expression<Func<Chat, bool>>>(), pageSize, pageNumber, token))
                 .ReturnsAsync(chat)
                 .Verifiable();
 
@@ -69,7 +69,6 @@ namespace Comments.Tests
             //Assert
             _repository.Verify();
             _repository.Verify(_ => _.GetChatPagedAsync(It.IsAny<Expression<Func<Chat, bool>>>(), 
-                                                                It.IsAny<int>(),
                                                                 It.IsAny<int>(),
                                                                 It.IsAny<int>(),
                                                                 It.IsAny<CancellationToken>()), 

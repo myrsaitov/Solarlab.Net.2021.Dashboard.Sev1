@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Accounts\Contracts\Accounts.Contracts\Accounts.Contracts.csproj" />
     <ProjectReference Include="..\..\Application\CommentService\Comments.Services.csproj" />
     <ProjectReference Include="..\..\Infrastructure\CommentMigrations\Comments.Migrations.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Mapper\Comments.Mapper.csproj" />

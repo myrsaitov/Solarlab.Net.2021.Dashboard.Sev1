@@ -6,6 +6,7 @@ using Comments.Services;
 using Comments.Contracts;
 using Comments.API.Filters;
 using System.Threading;
+using Sev1.Accounts.Contracts.Authorization;
 
 namespace Comments.API.Controllers
 {
@@ -15,6 +16,7 @@ namespace Comments.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [ServiceFilter(typeof(CommentsExceptionFilter))]
+    [Authorize("Administrator", "Moderator", "User")]
     public class CommentController : ControllerBase
     {
         private readonly ILogger<CommentController> _logger;
@@ -46,6 +48,7 @@ namespace Comments.API.Controllers
         /// Получить все коментарии, прикреплённые к чату
         /// </summary>
         /// <response code="200">Ok</response>
+        [AllowAnonymous]
         [HttpGet("GetChatPaged")]
         public async Task<IActionResult> GetChatPaged([FromQuery] CommentDtoRequestGetChatPaged dto, CancellationToken token = default)
         {
