@@ -26,7 +26,7 @@ export class AdvertisementService {
   // Возвращает список объявлений с поиском
   getAdvertisementsList(model: GetPagedAdvertisementModel): Observable<GetPagedContentResponseModel> {
     
-    const {searchStr, userName, categoryId, tag, page, pageSize} = model;
+    const {searchStr, ownerId, categoryId, tag, page, pageSize} = model;
     if (page == null || pageSize == null) {
       return;
     }
@@ -38,7 +38,7 @@ export class AdvertisementService {
       this.decpage = page - 1;
     }
 
-    if((searchStr == null)&&(userName == null)&&(categoryId == null)&&(tag == null))
+    if((searchStr == null)&&(ownerId == null)&&(categoryId == null)&&(tag == null))
     {
       const params = new HttpParams()
       .set('page', `${this.decpage}`)
@@ -54,7 +54,7 @@ export class AdvertisementService {
       return ret;
 
     }
-    else if((searchStr != null)&&(userName == null)&&(categoryId == null)&&(tag == null))
+    else if((searchStr != null)&&(ownerId == null)&&(categoryId == null)&&(tag == null))
     {
       const params = new HttpParams()
       .set('searchStr', `${searchStr}`)
@@ -68,10 +68,10 @@ export class AdvertisementService {
           }));
       return ret;
     }
-    else if((searchStr == null)&&(userName != null)&&(categoryId == null)&&(tag == null))
+    else if((searchStr == null)&&(ownerId != null)&&(categoryId == null)&&(tag == null))
     {
       const params = new HttpParams()
-      .set('userName', `${userName}`)
+      .set('ownerId', `${ownerId}`)
       .set('page', `${this.decpage}`)
       .set('pageSize', `${pageSize}`);
 
@@ -82,7 +82,7 @@ export class AdvertisementService {
           }));
       return ret;
     }
-    else if((searchStr == null)&&(userName == null)&&(categoryId != null)&&(tag == null))
+    else if((searchStr == null)&&(ownerId == null)&&(categoryId != null)&&(tag == null))
     {
       const params = new HttpParams()
       .set('categoryId', `${categoryId}`)
@@ -96,7 +96,7 @@ export class AdvertisementService {
           }));
     return ret;
     }
-    else if((searchStr == null)&&(userName == null)&&(categoryId == null)&&(tag != null))
+    else if((searchStr == null)&&(ownerId == null)&&(categoryId == null)&&(tag != null))
     {
       const params = new HttpParams()
       .set('tag', `${tag}`)

@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
   passwordHide : boolean = true; // Показать/спрятать пароль
 
   private formObj = {
-    eMail: ['user@mail.ru', [Validators.required, Validators.email]],
-    password: ['Zuse123!@#$%^()', [Validators.required, Validators.min(6),Validators.min(20)]],
+    eMail: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.min(6),Validators.min(20)]],
     rememberMe: [false]
   };
 

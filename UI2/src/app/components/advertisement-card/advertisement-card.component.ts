@@ -27,7 +27,7 @@ export class AdvertisementCardComponent {
   }
 
   // Отобразить объявления заданного пользователя
-  getContentByUserName(userName: string){
-    this.router.navigate(['/'], { queryParams: { userName: userName } });
+  getContentByOwnerId(ownerId: string){
+    this.router.navigate(['/'], { queryParams: { ownerId: ownerId } });
   }
 }

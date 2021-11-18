@@ -6,8 +6,6 @@ import {ITag} from 'src/app/models/tag/tag-model';
 import {TagService} from '../../services/tag.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {ICategory} from '../../models/category/category-model';
-import {CategoryService} from '../../services/category.service';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -20,25 +18,17 @@ export class HeaderComponent {
   form: FormGroup;
   isAuth$ = this.authService.isAuth$;
   tags$: Observable<ITag[]>;
-  categories$: Observable<ICategory[]>;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private tagService: TagService,
     private readonly baseService: BaseService,
-    private readonly router: Router,
-    private categoryService: CategoryService
-  ) {
+    private readonly router: Router) {
   }
 
 
   ngOnInit() {
-    // Подписка на категории
-    this.categories$ = this.categoryService.getCategoryList({
-      pageSize: 1000,
-      page: 0,
-    });
 
     // Подписка на таги
     this.tags$ = this.tagService.getTagList({
