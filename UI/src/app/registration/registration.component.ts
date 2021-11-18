@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { AuthService, IUserRegisterDTO } from './../services/auth.service'; 
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -10,7 +10,7 @@ import { AuthService, IUserRegisterDTO } from './../services/auth.service';
 })
 export class RegistrationComponent {
   
-   constructor(private _authService: AuthService) { }
+   constructor(private _authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -19,6 +19,7 @@ export class RegistrationComponent {
         this._authService.register(event).subscribe(res => {
           console.log(res);
         });
+        this.router.navigateByUrl('authentication')
    }
- 
+  
 }

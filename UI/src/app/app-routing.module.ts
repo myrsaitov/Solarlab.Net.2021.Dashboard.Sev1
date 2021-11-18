@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CardComponent } from './dashboard/card/card.component';
 import { AdminComponent } from './admin/admin.component';
 const routes: Routes = [
   { 
@@ -13,17 +15,22 @@ const routes: Routes = [
     path: 'registration', component: RegistrationComponent
   },
   { 
-    path: '�reate-�nnouncement', component: CreateAnnouncementComponent
+    path: 'сreate-аnnouncement', component: CreateAnnouncementComponent
   },
   { 
-    path: 'edit-�nnouncement', component: CreateAnnouncementComponent
+    path: 'edit-аnnouncement', component: CreateAnnouncementComponent
+  },
+  { 
+    path: 'dashboard', component: DashboardComponent
   },
   {
     path: 'admin',
     component: AdminComponent,
-    canActivate: [AuthGuard]   //������ ��� ������� ������ ������ ������ �� ��������� �����
-  }
-
+    canActivate: [AuthGuard]   //только при наличии токена админа пустит на страничку админ
+  },
+  {
+    path: 'dashboard/:id',  component: CardComponent,
+  },
 ];
 
 @NgModule({

@@ -1,34 +1,16 @@
 <!-- <app-login></app-login>
 <app-registration></app-registration> 
  <app-announcement></app-announcement>
- <app-create-announcement></app-create-announcement>
- <app-card></app-card>  -->
+ <app-create-announcement></app-create-announcement>-->
 
 
 
-   <!-- <mat-form-field class="login" appearance="outline">
-      <mat-label>������� ��� �����</mat-label>
-      <input matInput type="text" [(ngModel)]="value">
-      <button class="button_log" *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-
-<div class="password">
-  <mat-form-field appearance="outline">
-    <mat-label>������� ��� ������</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'">
-    <button class="button_log" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-  </mat-form-field>
-</div> -->
 
 
-<app-header></app-header>
+<app-header class="app-header"></app-header>
 <main class="catalog-grid">
-
-
+   
+   <!-- <app-card></app-card>   -->
 <router-outlet></router-outlet>
 </main>
 <app-footer></app-footer>

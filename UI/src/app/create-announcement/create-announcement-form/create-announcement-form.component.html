@@ -1,94 +1,85 @@
 <div class="create_announcement form ">
-   <form [formGroup]="formGroup" (ngSubmit)="submit()" class="form_announcement" >
-     <fieldset>
-       <legend>Добавить объявление </legend>
- 
-<div>
-      <mat-form-field appearance="outline">
-         <mat-label for="title" >Наименование товара</mat-label>
-               <input  type="text" 
-                 matInput
-                 class="form-control" 
-                 [class.is-invalid]="titleControl?.invalid && titleControl?.touched"  
-                 id="title" 
-                 formControlName="title"> 
-                 <mat-error *ngIf="titleControl?.hasError('required')">
-                  Введите наименование <strong>товара</strong>
-                </mat-error>
-        </mat-form-field>  
+  <form [formGroup]="formGroup" (ngSubmit)="submit()" class="form_announcement">
+    <fieldset>
+      <legend>Добавить объявление </legend>
+
+      <div>
+        <mat-form-field appearance="outline" class="create_input">
+          <mat-label for="title">Наименование товара</mat-label>
+          <input type="text" matInput class="form-control"
+            [class.is-invalid]="titleControl?.invalid && titleControl?.touched" id="title" formControlName="title">
+          <mat-error *ngIf="titleControl?.hasError('required')">
+            Введите наименование <strong>товара</strong>
+          </mat-error>
+        </mat-form-field>
       </div>
-
-    
-
 
       <div>
         <mat-form-field appearance="outline" floatLabel="always">
-          <mat-label for="price" >Цена товара</mat-label>
-                <input  type="number" 
-                min="0"
-                  matInput
-                  class="form-control" 
-                  [class.is-invalid]="priceControl?.invalid && priceControl?.touched"  
-                  id="price" 
-                  formControlName="price">
-                  <span matPrefix></span>
-                  <span matSuffix> &nbsp;руб.</span>
-                  <mat-error *ngIf="priceControl?.hasError('required')">
-                   Введите цену <strong>товара</strong>
-                 </mat-error>
-         </mat-form-field>  
-        </div>
+          <mat-label for="price">Цена товара</mat-label>
+          <input type="number" min="0" matInput class="form-control"
+            [class.is-invalid]="priceControl?.invalid && priceControl?.touched" id="price" formControlName="price">
+          <span matPrefix></span>
+          <span matSuffix> &nbsp;руб.</span>
+          <mat-error *ngIf="priceControl?.hasError('required')">
+            Введите цену <strong>товара</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-        <div>
-          <mat-form-field appearance="outline">
-             <mat-label for="body" >Описание товара</mat-label>
-                   <textarea  type="text" 
-                     matInput
-                     class="form-control" 
-                     [class.is-invalid]="bodyControl?.invalid && bodyControl?.touched"  
-                     id="body" 
-                     formControlName="body"></textarea>
-                     <mat-error *ngIf="bodyControl?.hasError('required')">
-                      Введите описание <strong>товара</strong>
-                    </mat-error>
-            </mat-form-field>  
-          </div>
-          
- 
-        <div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label for="body">Описание товара</mat-label>
+          <textarea type="text" matInput class="form-control"
+            [class.is-invalid]="bodyControl?.invalid && bodyControl?.touched" id="body"
+            formControlName="body"></textarea>
+          <mat-error *ngIf="bodyControl?.hasError('required')">
+            Введите описание <strong>товара</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-          <!-- <div class="form-group">
-            <label for="categoryId">Категория</label>
-            <select  class="form-control custom-select" id="categoryId" formControlName="categoryId" autofocus [class.is-invalid]="categoryIdControl?.invalid"
-            *ngIf="categories$ | async as categories">
-                    <option [value]="null">Выберите категорию</option>
-                    <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
-            </select>
-          </div> -->
-         
- <mat-form-field appearance="outline">
-           <mat-label for="categoryId" >Выбрать категорию</mat-label>
-                 <mat-select  type="text" 
-                   matInput
-                   class="form-control"
-                   *ngIf="categories$ | async as categories" 
-                   [class.is-invalid]="categoryIdControl?.invalid && categoryIdControl?.touched"  
-                   id="categoryId" 
-                   formControlName="categoryId"> 
-                   <mat-option [value]="null" >-- None --</mat-option>
-                   <!-- <mat-optgroup *ngFor="let group of categoryGroups" [label]="group.name"> -->
-             <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}
-              </mat-option>
-           <!-- </mat-optgroup> -->
-        </mat-select>
+      <div>
+        <mat-form-field *ngIf="categories$ | async as categories" appearance="outline">
+          <mat-label for="categoryId">Выбрать категорию</mat-label>
 
-          </mat-form-field>  
+          <mat-select type="text" matInput class="form-control"
+            [class.is-invalid]="categoryIdControl?.invalid && categoryIdControl?.touched" id="categoryId"
+            formControlName="categoryId">
+            <mat-option [value]="null">-- None --</mat-option>
+            <ng-container *ngFor="let category of categories">
+              <mat-optgroup *ngIf="!category.parentCategoryId" [value]="category.id"><b>{{category.name}}</b>
+              </mat-optgroup>
+              <mat-option *ngIf="category.parentCategoryId" [value]="category.id">- {{category.name}}</mat-option>
+            </ng-container>
+          </mat-select>
+
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field *ngIf="regions$ | async as regions" appearance="outline">
+          <mat-label for="regionId">Выбрать регион</mat-label>
+
+          <mat-select type="text" matInput class="form-control"
+            [class.is-invalid]="regionIdControl?.invalid && regionIdControl?.touched" id="regionId"
+            formControlName="regionId">
+            <mat-option [value]="null">-- None --</mat-option>
+            <ng-container *ngFor="let region of regions">
+              <!-- <mat-optgroup *ngIf="!region.parentRegionId" [value]="region.id"><b>{{region.name}}</b></mat-optgroup> -->
+              <mat-option *ngIf="!region.parentRegionId" [value]="region.id"><b> {{region.name}} </b></mat-option>
+              <mat-option *ngIf="region.parentRegionId" [value]="region.id">- {{region.name}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
 
 
 
 
+      <!-- <input type="file" id="fileInput" multiple > -->
 
-        <!-- <mat-form-field appearance="outline">
+      <!-- <mat-form-field appearance="outline">
            <mat-label for="categoryId" >Выбрать категорию</mat-label>
                  <mat-select  type="text" 
                    matInput
@@ -105,9 +96,9 @@
         </mat-select>
 
           </mat-form-field>   -->
-          </div>
 
-        <mat-form-field class="example-chip-list" appearance="outline">
+
+      <!-- <mat-form-field class="example-chip-list" appearance="outline">
           <mat-label>Теги</mat-label>
           <mat-chip-list #chipList aria-label="Fruit selection">
             <mat-chip *ngFor="let tagBody of tagBodies" [selectable]="selectable"
@@ -124,47 +115,36 @@
                    (matChipInputTokenEnd)="add($event)">
           </mat-chip-list>
         </mat-form-field>
+ -->
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label for="address">Адрес</mat-label>
+          <textarea type="text" matInput class="form-control"
+            [class.is-invalid]="addressControl?.invalid && addressControl?.touched" id="address"
+            formControlName="address"></textarea>
+          <mat-error *ngIf="addressControl?.hasError('required')">
+            Введите адрес <strong>товара</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <app-upload></app-upload>
+
+      <input hidden="true" type="file" id="file-input">
+      <div class="button_an" >
+        <button type="submit" mat-raised-button color="primary" class="button_announcement">Добавить новое
+          обьявление</button>
+
+        <!-- <a routerLink="/">
+          <button mat-raised-button color="primary" class="button_announcement">Отменить</button>
+        </a> -->
+
+        <a mat-raised-button routerLink="/" color="primary" class="button_announcement">Отменить</a>
+
+      </div>
 
 
-
-          <div>
-            <mat-form-field appearance="outline">
-               <mat-label for="address" >Адрес</mat-label>
-                     <textarea  type="text" 
-                       matInput
-                       class="form-control" 
-                       [class.is-invalid]="addressControl?.invalid && addressControl?.touched"  
-                       id="address" 
-                       formControlName="address"></textarea> 
-                       <mat-error *ngIf="addressControl?.hasError('required')">
-                        Введите адрес <strong>товара</strong>
-                      </mat-error>
-              </mat-form-field>  
-            </div>
-<app-upload></app-upload>
-
-
-            
-<!-- <div>
-            <input ng2FileSelect type="file" accept="" [uploader]="uploader"/>
-          </div> -->
-            <input hidden="true" type="file" id="file-input">
-            <!-- <label for="file-input">
-              <a md-raised-button class="btn_file"><i class="material-icons">file_upload</i> 
-                Загрузить изображение товара
-              </a>
-            </label> -->
-
-            <div >
-              <button type="submit" mat-raised-button color="primary" class="button_announcement" >Добавить новое обьявление</button>
-              
-              <a routerLink="/">
-                <button mat-raised-button color="primary" class="button_announcement">Отменить</button>
-               </a>
-              
-              </div>
-
-       
-     </fieldset>
-   </form>
- </div>
+    </fieldset>
+  </form>
+</div>

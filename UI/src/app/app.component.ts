@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
   providers: []
 })
 
-export class AppComponent {
-  title = 'my-app';
+export class AppComponent { 
+  title = 'my-app'; 
   hide = true;
   value = ''
 }

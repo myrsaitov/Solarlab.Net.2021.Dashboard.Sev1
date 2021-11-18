@@ -14,22 +14,29 @@ export class RegistrationFormComponent  {
   hide = true;
   @Output() submitEvent = new EventEmitter();
   formGroup = new FormGroup({
-    login: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    userName: new FormControl('', [Validators.required, Validators.minLength(5)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    tel: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    repeatPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
-  })
-  get loginControl() {
-    return this.formGroup.get('login');
+    phoneNumber: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,20}$")]),
+    repeatPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,20}$")]),
+    regionId: new FormControl('1'), //временная затычка, что бы работал бэк
+    firstName: new FormControl('User'),//временная затычка, что бы работал бэк
+   lastName: new FormControl('User'),//временная затычка, что бы работал бэк
+   middleName: new FormControl('User'),//временная затычка, что бы работал бэк
+  }) 
+  
+  
+
+  get userNameControl() {
+    return this.formGroup.get('userName');
   }
 
   get emailControl() {
     return this.formGroup.get('email');
   }
 
-  get telControl() {
-    return this.formGroup.get('tel');
+  get phoneNumberControl() {
+    return this.formGroup.get('phoneNumber');
   }
 
   get passwordControl() {
@@ -38,6 +45,22 @@ export class RegistrationFormComponent  {
   get repeatPasswordControl() {
     return this.formGroup.get('repeatPassword');
   }
+  
+  get regionIdControl() {
+    return this.formGroup.get('1');
+  }
+
+  get firstNameControl() {
+    return this.formGroup.get('User');
+  }
+  get lastNameControl() {
+    return this.formGroup.get('User');
+  }
+  get middleNameIdControl() {
+    return this.formGroup.get('User');
+  }
+
+
 
     constructor() { }
 
@@ -50,4 +73,5 @@ export class RegistrationFormComponent  {
 
     this.submitEvent.next(this.formGroup.value);
   }
+  
 }

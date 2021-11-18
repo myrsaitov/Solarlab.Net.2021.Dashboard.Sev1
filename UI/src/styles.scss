@@ -1,36 +1,73 @@
-/* You can add global styles to this file, and also import other style files */
 body {
   background-color: #FBFBFB;
   min-width: 1280px;
 
 }
 
+.phoneNumber_span {
+  position: relative;
+  bottom: 3px;
+
+}
+
+.search_icon {
+  position: relative;
+  bottom: -3px;
+}
+
+
 .header {
   background-color: #FBFBFB;
-  margin-bottom: 50px;
+  // margin-bottom: 50px;
+  margin: 0 5px;
+  width: 1660px  !important;
 }
 
 .nav {
   display: grid;
-  grid-template-columns: auto 700px;
-  align-self: center;
+  grid-template-columns:  auto  650px 200px;
+  grid-template-rows:40px;
+  margin-left: 40px  ;
+  
 }
 
 .catalog-grid {
   display: flex;
-
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.button_nav {
-  grid-column: 2/2;
+
+.dashboard-grid {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  margin-left: 40px  ;
 }
 
-.nav_links {
-  grid-column: 1/1;
-  align-self: end;
+
+
+// .nav_links {
+//   grid-column: 1/1;
+//   align-self: end;
+// }
+
+.card_body {
+  height: 18px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
+
+.card_address {
+  height: 18px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+
 
 .footer {
   display: grid;
@@ -57,6 +94,13 @@ body {
 
 }
 
+.button_card {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  width: 295px;
+}
+
+
 .button_log {
   border: none;
   background-color: #FBFBFB;
@@ -71,13 +115,13 @@ body {
   justify-self: center;
 }
 
-// .form div {
-//   width: 400px;
-//   display: flex;
-//   justify-content: space-between;
-//   padding: 5px;
-//   margin: 5px;
-// }
+.card {
+  width: 280px;
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  margin: 10px;
+}
 
 .hidden {
   display: none;
@@ -95,15 +139,7 @@ body {
 
 
 
-.cart-1c {
-  grid-column: 1/1;
-  font-size: 20px;
-}
 
-.cart-2c {
-  grid-column: 2/2;
-  font-size: 20px;
-}
 
 .name,
 .price {
@@ -154,3 +190,6 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+// /* Importing Bootstrap SCSS file. */
+// @import '~bootstrap/scss/bootstrap';

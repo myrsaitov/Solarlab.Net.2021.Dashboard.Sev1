@@ -21,7 +21,7 @@ export class LoginComponent {
       email: loginModel.email,  
        password: loginModel.password
     }
-     this.router.navigateByUrl('/') 
+     this.router.navigateByUrl('сreate-аnnouncement') 
      this._authService.login(loginModel).subscribe(res => {    
  
      });

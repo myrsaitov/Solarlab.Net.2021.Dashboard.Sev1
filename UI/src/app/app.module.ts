@@ -16,7 +16,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { RegistrationComponent } from './registration/registration.component';
 import { AnnouncementComponent } from './announcement/announcement.component';
-import { CardComponent } from './card/card.component';
 import {MatCardModule} from '@angular/material/card';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 import { HeaderComponent } from './header/header.component';
@@ -33,16 +32,24 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
 import { MatFileUploadModule } from 'angular-material-fileupload';
 import { AuthInterceptor } from './auth.interceptor';
-
-
-
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {MatFormFieldControl} from '@angular/material/form-field';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { DatePipe } from '@angular/common';
+import { CardComponent } from './dashboard/card/card.component'
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    AnnouncementComponent,
-    CardComponent,
+    AnnouncementComponent,  
     CreateAnnouncementComponent,
     HeaderComponent,
     FooterComponent,
@@ -50,7 +57,9 @@ import { AuthInterceptor } from './auth.interceptor';
     RegistrationFormComponent,
     AdminComponent,
     CreateAnnouncementFormComponent,
-    UploadComponent
+    UploadComponent,
+    DashboardComponent,
+    CardComponent
     
   ],
   imports: [
@@ -68,16 +77,27 @@ import { AuthInterceptor } from './auth.interceptor';
     MatSelectModule,
     MatCardModule,
     MatChipsModule,
-    MatFileUploadModule
-  ],
+    MatFileUploadModule,
+    MatPaginatorModule,
+    CommonModule,
+    NgbModule,
+    MatExpansionModule,
+    MatListModule,
+    MatAutocompleteModule,
+    NgxMatSelectSearchModule,
+    
+   
+    
+     ],
 
-
+     
   
    providers: [{
-    provide: HTTP_INTERCEPTORS,
+    provide: HTTP_INTERCEPTORS, 
      multi: true,
      useClass: AuthInterceptor,
-   }],
-  bootstrap: [AppComponent]
+      }],
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

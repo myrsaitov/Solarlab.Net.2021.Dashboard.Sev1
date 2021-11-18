@@ -1,36 +1,49 @@
 <header class="header">
-   <a class="logo" href="#">
-     <img src="/assets/Logo.png" alt="Sevito" width="80">
-   </a>
+  
 
-   <div class="nav">
-       <div class="button_nav">
-       <a *ngIf="authService.isAuth" routerLink="сreate-аnnouncement">
+  <div class="nav">
+    <div class="logo">
+    <a  routerLink="dashboard">
+      <img src="/assets/Logo.png" alt="Sevito" width="80">
+    </a>
+  </div>
+    <div class="button_nav">
+      <!-- <a *ngIf="authService.isAuth" routerLink="сreate-аnnouncement">
         <button mat-raised-button color="primary" class="button_header">Подать объявление</button>
-       </a>
-
-       <a *ngIf="!authService.isAuth" routerLink="authentication">
-        <button mat-raised-button color="primary" class="button_header">Войти</button>
-       </a>
-
-       <a *ngIf="!authService.isAuth" routerLink="registration">
-        <button mat-raised-button color="primary" class="button_header">Регистрация</button>
-       </a>
-       
-       <button *ngIf="authService.isAuth" mat-raised-button color="primary" class="button_header" (click)="authService.logout()">Выйти</button>
-       
-
-      <!-- <a routerLink="сreate-аnnouncement">
-       <button class="button">Подать объявление</button>
       </a> -->
-      <!-- <a routerLink="authentication">
-       <button class="button">Войти</button>
-      </a>
-      <a routerLink="registration">
-       <button class="button">Регистрация</button>
-      </a> -->
-     </div>
-   </div> 
- </header>
 
- 
+      <!-- <a *ngIf="authService.isAuth" routerLink="dashboard">
+        <button mat-raised-button color="primary" class="button_header">Показать все объявления</button>
+      </a> -->
+
+
+      <a *ngIf="authService.isAuth" mat-raised-button routerLink="сreate-аnnouncement" color="primary"
+      class="button_header">Подать объявление</a>
+
+      <a *ngIf="authService.isAuth" mat-raised-button routerLink="dashboard" color="primary"
+      class="button_header">Показать все объявления</a>
+
+
+      <a *ngIf="!authService.isAuth" mat-raised-button routerLink="/authentication" color="primary"
+        class="button_header">Войти</a>
+
+
+      <a *ngIf="!authService.isAuth" mat-raised-button routerLink="/registration" color="primary"
+        class="button_header">Регистрация</a>
+
+        
+      <button *ngIf="authService.isAuth" mat-raised-button color="primary" class="button_header"
+        (click)="authService.logout()">Выйти</button>
+
+
+
+    </div>
+    <div class="search">
+      <mat-form-field>
+        <mat-icon class="search_icon" matPrefix>search</mat-icon>
+        <input matInput type="search" placeholder="Найти" class="search-input">
+      </mat-form-field>
+    </div>
+  </div>
+
+</header>

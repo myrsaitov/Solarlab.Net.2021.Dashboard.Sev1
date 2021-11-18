@@ -1,0 +1,29 @@
+
+<div class="dashboard-grid">
+      <ng-container *ngIf="cards$ | async as cards" >
+      <mat-card class="card" *ngFor="let card of cards">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title value="card.title">{{card.title }}</mat-card-title>
+       <mat-card-subtitle value="card.price"><b> {{card.price }} руб.</b></mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="/assets/Lada.jpg" alt="Изображение товара">
+        <mat-card-content>
+          <div class="card_body" value="card.body"> {{card.body }}</div>
+                   <div value="card.categoryId"><b>Категория:</b><br/> {{card.categoryName }}</div>
+                   <div value="card.regionId"><b>Регион</b><br/> {{card.regionName }}</div>
+                   <div  value="card.address"><b>Адрес:</b><br/> <div class="card_address">{{card.address }} </div> </div>
+          <div value="card.createdAt"><b>Дата добавления объявления:</b><br/>{{card.createdAt }}</div>
+          </mat-card-content>
+        <mat-card-actions>
+          <div>
+            <a routerLink="{{card.id}}" mat-raised-button  color="primary"
+            class="button_card">Просмотр</a>
+            
+            <!-- <button mat-raised-button color="primary" class="button_card">Просмотр</button> -->
+           </div>
+        </mat-card-actions>
+      </mat-card>
+    </ng-container> 
+  </div>
+

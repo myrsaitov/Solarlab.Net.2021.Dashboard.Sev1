@@ -1,5 +1,23 @@
 .button_announcement {
-   margin: 5px;
-   background-color: #A1887F;
    
+   margin: 15px;
+   background-color: #A1887F;
+  
    }
+
+   .button_an {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+   }
+
+.create_announcement {
+   margin: 5px;
+   padding: 5px;
+}
+   mat-form-field {
+width: 470px !important;
+ justify-content: center;
+
+}
