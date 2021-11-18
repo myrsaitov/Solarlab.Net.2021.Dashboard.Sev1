@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EventBusRabbitMQ</name>
+    </assembly>
+    <members>
+        <member name="T:NotificationsEmail.Services.NotificationEmailRabbitMQConsumer">
+            <summary>
+            Сервис прослушивания очереди
+            </summary>
+        </member>
+        <member name="M:NotificationsEmail.Services.NotificationEmailRabbitMQConsumer.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            Подписываемся на очередь, 
+            При получении сообщение - вызов ProcessMessageAsync
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NotificationsEmail.Services.NotificationEmailRabbitMQConsumer.ProcessMessageAsync(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Обработка сообщения - перенаправление на NotificationEmail.api
+            </summary>
+            <param name="message"></param>
+            <param name="headers"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NotificationsEmail.Services.NotificationEmailRabbitMQConsumer.StopAsync(System.Threading.CancellationToken)">
+            <summary>
+            Остановка приема сообщений 
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventBusRabbitMQ.Controllers.RabbitMQController.#ctor(EventBusRabbitMQ.Interfaces.IRabbitMQPublisher)">
+            <param name="commentService"></param>
+        </member>
+        <member name="M:EventBusRabbitMQ.Controllers.RabbitMQController.PublishObject(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Опубликоватьс сообщение в очередь rabbitMQ,
+            use Topic exchange
+            </summary>
+            <param name="dto">объект (json)</param>
+            <param name="routingKey">Направление сообщения</param>
+            <param name="token"></param>
+            <returns></returns>
+            <response code="200">Ok</response>
+            <response code="400">Bad Request</response>
+        </member>
+        <member name="M:EventBusRabbitMQ.Interfaces.IRabbitMQConnection.GetConnection">
+            <summary>
+            Получить IConnection 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EventBusRabbitMQ.Interfaces.IRabbitMQConnection.GetExhangeName">
+            <summary>
+            Получить имя Exhange 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EventBusRabbitMQ.Interfaces.IRabbitMQPublisher.Publish(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Отправить сообщение на exchange
+            exchange.Type = Topic
+            </summary>
+            <param name="message">сообщение</param>
+            <param name="routingKey">routing key</param>
+            <param name="messageAttributes">Аттрибуты</param>
+        </member>
+        <member name="M:EventBusRabbitMQ.Interfaces.IRabbitMQSubscriber.Subscribe(System.Func{System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Threading.Tasks.Task{System.Boolean}})">
+            <summary>
+            Подписаться на очередь
+            </summary>
+            <param name="callback">Функция, вызываемая при получении сообщения</param>
+        </member>
+        <member name="M:EventBusRabbitMQ.Services.RabbitMQConnection.GetConnection">
+            <inheritdoc/>
+        </member>
+        <member name="M:EventBusRabbitMQ.Services.RabbitMQConnection.GetExhangeName">
+            <inheritdoc/>
+        </member>
+        <member name="M:EventBusRabbitMQ.Services.RabbitMQPublisher.Publish(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="M:EventBusRabbitMQ.Services.RabbitMQSubscriber.Subscribe(System.Func{System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Threading.Tasks.Task{System.Boolean}})">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>
