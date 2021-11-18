@@ -52,8 +52,8 @@ namespace NotificationsEmail.Services
                 using (var client = new HttpClient())
                 {
                     var values = JsonSerializer.Deserialize<Dictionary<string, string>>(message);
-                    var contenta = new FormUrlEncodedContent(values);
-                    var response = await client.PostAsync(_serviceUrl, contenta);
+                    var content = new FormUrlEncodedContent(values);
+                    var response = await client.PostAsync(_serviceUrl, content);
                 }
                 return true;
             } catch (Exception e)

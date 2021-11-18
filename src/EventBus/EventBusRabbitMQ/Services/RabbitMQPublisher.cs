@@ -29,7 +29,7 @@ namespace EventBusRabbitMQ.Services
             var body = Encoding.UTF8.GetBytes(message);
             var properties = _model.CreateBasicProperties();
             properties.DeliveryMode = 2; // Persistence-режим сообщения
-            properties.Headers = messageAttributes;
+            //properties.Headers = messageAttributes;
 
             _model.BasicPublish(exchange: _exchange, routingKey: routingKey, basicProperties: properties, body: body);
         }
