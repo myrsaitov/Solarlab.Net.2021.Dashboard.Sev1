@@ -37,10 +37,13 @@
         </member>
         <member name="M:EventBusRabbitMQ.Controllers.RabbitMQController.PublishObject(System.String,System.String,System.Threading.CancellationToken)">
             <summary>
-            Создать комментарий
+            Опубликоватьс сообщение в очередь rabbitMQ,
+            use Topic exchange
             </summary>
-            <param name="dto"></param>
-            <returns>Id созданного комментария</returns>
+            <param name="dto">объект (json)</param>
+            <param name="routingKey">Направление сообщения</param>
+            <param name="token"></param>
+            <returns></returns>
             <response code="200">Ok</response>
             <response code="400">Bad Request</response>
         </member>
