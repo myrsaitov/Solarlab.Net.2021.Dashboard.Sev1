@@ -9,7 +9,6 @@ import {CategoryService} from '../../services/category.service';
 import {Observable} from 'rxjs';
 import {ICategory} from '../../models/category/category-model';
 import { TagService } from '../../services/tag.service';
-import { isNullOrUndefined } from 'util';
 import { RegionService } from 'src/app/services/region.service';
 import { IRegion } from 'src/app/models/region/region-model';
 import { AuthService } from 'src/app/services/auth.service';

@@ -1,15 +1,21 @@
 <div class="container" *ngIf="advertisement; else loadingBlock">
 
-  <div *ngIf="tags$ | async as tags" class="row">  
-    <div class="col-2">
-      <ul>  
-      <div *ngFor="let tag of tags">
-        <a class="badge badge-secondary" *ngIf="tag.count > 0" role="button" (click)="getContentByTag(tag.body)">{{tag.body}}({{tag.count}})</a>
-        &nbsp;&nbsp;
-      </div>
-      </ul>
-    </div>
-    <div class="col">
+<!-- Выдача категорий слева колонкой -->
+
+<div *ngIf="categories$ | async as categories" class="row">  
+<div class="col-3">
+<ul><div>Поиск по категориям</div></ul>
+  <ul>  
+  <div *ngFor="let category of categories">
+    <a 
+    class="badge badge-secondary" 
+    role="button" 
+    (click)="getContentByCategory(category.id)">{{category.name}}</a>
+    &nbsp;&nbsp;
+  </div>
+  </ul>
+</div>
+<div class="col">
 
   <ng-container [formGroup]="form">
   <article class="card">

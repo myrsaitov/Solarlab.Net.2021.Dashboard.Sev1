@@ -19,6 +19,7 @@ import { ITag } from 'src/app/models/tag/tag-model';
 import { isNullOrUndefined } from 'util';
 import { UserService } from 'src/app/services/user.service';
 import { IUser } from 'src/app/models/user/user-model';
+import { ICategory } from 'src/app/models/category/category-model';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -38,6 +39,7 @@ export class AdvertisementComponent implements OnInit {
   tags$: Observable<ITag[]>;
   users$: Observable<IUser[]>;
   users: IUser[];
+  categories$: Observable<ICategory[]>
 
   private commentsFilterSubject$ = new BehaviorSubject({
     contentId: 1,
@@ -60,6 +62,12 @@ export class AdvertisementComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    // Подписка на категории
+    this.categories$ = this.categoryService.getCategoryList({
+      pageSize: 1000,
+      page: 0,
+    });
 
     // Подписка на пользователей
     this.users$ = this.userService.getUserList({

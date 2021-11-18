@@ -67,7 +67,7 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
             // Если null, то ошибка авторизация
             if(res is null)
             {
-                throw new Exception("Ошибка авторизации!");
+                throw new Exception("Ошибка авторизации!"); // TODO сообщения подробнее
             }
 
             // Возвращаем DTO
