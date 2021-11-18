@@ -37,6 +37,7 @@ export class AdvertisementComponent implements OnInit {
   response$: Observable<GetPagedCommentResponseModel>;
   tags$: Observable<ITag[]>;
   users$: Observable<IUser[]>;
+  users: IUser[];
 
   private commentsFilterSubject$ = new BehaviorSubject({
     contentId: 1,
@@ -65,6 +66,7 @@ export class AdvertisementComponent implements OnInit {
       pageSize: 1000,
       page: 0,
     });
+    this.users$.subscribe(users => this.users = users);
 
     // Подписка на таги
     this.tags$ = this.tagService.getTagList({
@@ -87,11 +89,7 @@ export class AdvertisementComponent implements OnInit {
         this.advertisement = advertisement;
 
         // Возвращает UserName пользоватeля по идентификатору
-        this.users$
-          .pipe(
-            map(data => data
-              .find(x => x.userId === advertisement.ownerId)))
-          .subscribe(res => this.advertisementOwnerName = res.userName)
+        this.advertisementOwnerName =  this.getUserNameById(advertisement.ownerId);
 
         // Если объявление принадлежит авторизированному пользователю, то разрешаем редактирование
         if(this.advertisement.ownerId == localStorage.getItem('userId')) {
@@ -124,6 +122,11 @@ export class AdvertisementComponent implements OnInit {
   get commentsFilter() {
     this.commentsFilterSubject$.value.contentId = this.advertisement.id;
     return this.commentsFilterSubject$.value;
+  }
+
+    // Возвращает имя пользователя по идентификатору
+  getUserNameById(userId: string){
+      return this.users.find(s => s.userId === userId).userName;
   }
 
   updateCommentsFilterPage(page) {

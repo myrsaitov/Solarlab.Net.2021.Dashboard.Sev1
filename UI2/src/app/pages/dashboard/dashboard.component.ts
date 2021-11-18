@@ -2,7 +2,7 @@ import { AuthService } from '../../services/auth.service';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AdvertisementService } from '../../services/advertisement.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { find, map, switchMap } from 'rxjs/operators';
 import { GetPagedContentResponseModel } from '../../models/advertisement/get-paged-content-response-model';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -10,6 +10,7 @@ import { TagService } from '../../services/tag.service';
 import { ITag } from 'src/app/models/tag/tag-model';
 import { UserService } from 'src/app/services/user.service';
 import { IUser } from 'src/app/models/user/user-model';
+import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -22,9 +23,9 @@ import { IUser } from 'src/app/models/user/user-model';
 export class DashboardComponent implements OnInit {
   response$: Observable<GetPagedContentResponseModel>;
   isAuth = this.authService.isAuth;
-  users$: Observable<IUser[]>;
   tags$: Observable<ITag[]>;
-  tmpUserName: string;
+  users$: Observable<IUser[]>;
+  users: IUser[];
 
   private advertisementsFilterSubject$ = new BehaviorSubject({
     searchStr: null,
@@ -51,6 +52,7 @@ export class DashboardComponent implements OnInit {
       pageSize: 1000,
       page: 0,
     });
+    this.users$.subscribe(users => this.users = users);
 
     // Подписка на таги
     this.tags$ = this.tagService.getTagList({
@@ -96,22 +98,13 @@ export class DashboardComponent implements OnInit {
         switchMap(advertisementsFilter => this.advertisementService.getAdvertisementsList(advertisementsFilter)
       ));
 
+
   }
   
   // Возвращает имя пользователя по идентификатору
   getUserNameById(userId: string){
-    this.users$
-    .pipe(
-      map(data => data
-        .find(x => x.userId === userId)))
-    .subscribe(res => {
-      this.tmpUserName = res.userName
-    }),this;
-    
-    console.log("*******************************************");
-    console.log(this.tmpUserName);
-    return this.tmpUserName;
-  }
+    return this.users.find(s => s.userId === userId).userName;
+}
 
   getContentByTag(tag: string){
     this.router.navigate(['/'], { queryParams: { tag: tag } });

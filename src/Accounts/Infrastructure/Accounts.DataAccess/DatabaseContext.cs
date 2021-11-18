@@ -63,7 +63,11 @@ namespace Sev1.Accounts.DataAccess
 
             var ADMINISTRATOR_ID = "757d5290-d036-4757-85ae-827b59e92cd3";
             var MODERATOR_ID = "a0d74199-2ad5-4d2f-a184-eb52f5bf9094";
-            var USER_ID = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8";
+            var USER_ID_1 = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8";
+            var USER_ID_2 = "54b1ff98-6b5f-4c5e-97a9-747095e1f5dc";
+            var USER_ID_3 = "c191e5f8-bf5b-40a9-9ab6-4d08704e373b";
+            var USER_ID_4 = "09c529c8-e798-44ac-9eac-e0150182fa4c";
+            var USER_ID_5 = "7e24ccd2-34fd-4289-9a78-1aae93623bae";
 
             // Administrator
             var adminUser = new IdentityUser
@@ -98,7 +102,7 @@ namespace Sev1.Accounts.DataAccess
                 LastName = "Administrator",
                 MiddleName = "Administrator",
                 PhoneNumber = "+79787713935",
-                Address = "99011 г. Севастополь, ул. Чехова, 1",
+                Address = "299011 г. Севастополь, ул. Чехова, 1",
                 RegionId = 1
             };
 
@@ -140,7 +144,7 @@ namespace Sev1.Accounts.DataAccess
                 LastName = "Moderator",
                 MiddleName = "Moderator",
                 PhoneNumber = "+79787713935",
-                Address = "99011 г. Севастополь, ул. Гоголя, 1",
+                Address = "299011 г. Севастополь, ул. Гоголя, 1",
                 RegionId = 1
             };
 
@@ -149,16 +153,16 @@ namespace Sev1.Accounts.DataAccess
                 x.HasData(moderatorDomainUser);
             });
 
-            // User
+            // User1
             var userUser = new IdentityUser
             {
-                Id = USER_ID,
-                UserName = "User",
-                NormalizedUserName = "USER",
-                Email = "user@mail.ru",
-                NormalizedEmail = "USER@MAIL.RU"
+                Id = USER_ID_1,
+                UserName = "User1",
+                NormalizedUserName = "USER1",
+                Email = "user1@mail.ru",
+                NormalizedEmail = "USER1@MAIL.RU"
             };
-            userUser.PasswordHash = passwordHasher.HashPassword(moderatorUser, "Zuse123!@#$%^()");
+            userUser.PasswordHash = passwordHasher.HashPassword(userUser, "Zuse123!@#$%^()1");
 
             modelBuilder.Entity<IdentityUser>(x =>
             {
@@ -170,20 +174,188 @@ namespace Sev1.Accounts.DataAccess
                 x.HasData(new IdentityUserRole<string>
                 {
                     RoleId = USER_ROLE_ID,
-                    UserId = USER_ID
+                    UserId = USER_ID_1
                 });
             });
 
             var userDomainUser = new User
             {
-                Id = USER_ID,
-                UserName = "User",
-                FirstName = "User",
-                LastName = "User",
-                MiddleName = "User",
-                PhoneNumber = "+79787713935",
-                Address = "99011 г. Севастополь, ул. Достоевского, 1",
+                Id = USER_ID_1,
+                UserName = "alex_1",
+                FirstName = "Александр",
+                LastName = "Викторович",
+                MiddleName = "Булгаков",
+                PhoneNumber = "+79787713931",
+                Address = "299411 г. Москва, ул. Тургенева, 1",
                 RegionId = 1
+            };
+
+            modelBuilder.Entity<User>(x =>
+            {
+                x.HasData(userDomainUser);
+            });
+
+            // User2
+            userUser = new IdentityUser
+            {
+                Id = USER_ID_2,
+                UserName = "User2",
+                NormalizedUserName = "USER2",
+                Email = "user2@mail.ru",
+                NormalizedEmail = "USER2@MAIL.RU"
+            };
+            userUser.PasswordHash = passwordHasher.HashPassword(userUser, "Zuse123!@#$%^()2");
+
+            modelBuilder.Entity<IdentityUser>(x =>
+            {
+                x.HasData(userUser);
+            });
+
+            modelBuilder.Entity<IdentityUserRole<string>>(x =>
+            {
+                x.HasData(new IdentityUserRole<string>
+                {
+                    RoleId = USER_ROLE_ID,
+                    UserId = USER_ID_2
+                });
+            });
+
+            userDomainUser = new User
+            {
+                Id = USER_ID_2,
+                UserName = "sidor2",
+                FirstName = "Роман",
+                LastName = "Сидоров",
+                MiddleName = "Олегович",
+                PhoneNumber = "+79787713932",
+                Address = "299812 г. Судак, ул. Сергеева, 2",
+                RegionId = 2
+            };
+
+            modelBuilder.Entity<User>(x =>
+            {
+                x.HasData(userDomainUser);
+            });
+
+            // User3
+            userUser = new IdentityUser
+            {
+                Id = USER_ID_3,
+                UserName = "User3",
+                NormalizedUserName = "USER3",
+                Email = "user3@mail.ru",
+                NormalizedEmail = "USER3@MAIL.RU"
+            };
+            userUser.PasswordHash = passwordHasher.HashPassword(userUser, "Zuse123!@#$%^()3");
+
+            modelBuilder.Entity<IdentityUser>(x =>
+            {
+                x.HasData(userUser);
+            });
+
+            modelBuilder.Entity<IdentityUserRole<string>>(x =>
+            {
+                x.HasData(new IdentityUserRole<string>
+                {
+                    RoleId = USER_ROLE_ID,
+                    UserId = USER_ID_3
+                });
+            });
+
+            userDomainUser = new User
+            {
+                Id = USER_ID_3,
+                UserName = "ivanov3",
+                FirstName = "Иван",
+                LastName = "Иванов",
+                MiddleName = "Иванович",
+                PhoneNumber = "+79787713933",
+                Address = "299713 г. Керчь, ул. Куприна, 3",
+                RegionId = 3
+            };
+
+            modelBuilder.Entity<User>(x =>
+            {
+                x.HasData(userDomainUser);
+            });
+
+            // User4
+            userUser = new IdentityUser
+            {
+                Id = USER_ID_4,
+                UserName = "User4",
+                NormalizedUserName = "USER4",
+                Email = "user4@mail.ru",
+                NormalizedEmail = "USER4@MAIL.RU"
+            };
+            userUser.PasswordHash = passwordHasher.HashPassword(userUser, "Zuse123!@#$%^()4");
+
+            modelBuilder.Entity<IdentityUser>(x =>
+            {
+                x.HasData(userUser);
+            });
+
+            modelBuilder.Entity<IdentityUserRole<string>>(x =>
+            {
+                x.HasData(new IdentityUserRole<string>
+                {
+                    RoleId = USER_ROLE_ID,
+                    UserId = USER_ID_4
+                });
+            });
+
+            userDomainUser = new User
+            {
+                Id = USER_ID_4,
+                UserName = "vas_andr_4",
+                FirstName = "Василий",
+                LastName = "Максимов",
+                MiddleName = "Андреевич",
+                PhoneNumber = "+79485733234",
+                Address = "299314 г. Симферополь, ул. Чернышевского, 4",
+                RegionId = 4
+            };
+
+            modelBuilder.Entity<User>(x =>
+            {
+                x.HasData(userDomainUser);
+            });
+
+            // User5
+            userUser = new IdentityUser
+            {
+                Id = USER_ID_5,
+                UserName = "User5",
+                NormalizedUserName = "USER5",
+                Email = "user5@mail.ru",
+                NormalizedEmail = "USER5@MAIL.RU"
+            };
+            userUser.PasswordHash = passwordHasher.HashPassword(userUser, "Zuse123!@#$%^()5");
+
+            modelBuilder.Entity<IdentityUser>(x =>
+            {
+                x.HasData(userUser);
+            });
+
+            modelBuilder.Entity<IdentityUserRole<string>>(x =>
+            {
+                x.HasData(new IdentityUserRole<string>
+                {
+                    RoleId = USER_ROLE_ID,
+                    UserId = USER_ID_5
+                });
+            });
+
+            userDomainUser = new User
+            {
+                Id = USER_ID_5,
+                UserName = "petr_ivanov_5",
+                FirstName = "Пётр",
+                LastName = "Иванов",
+                MiddleName = "Сергеевич",
+                PhoneNumber = "+79687416935",
+                Address = "299415 г. Ялта, ул. Достоевского, 5",
+                RegionId = 5
             };
 
             modelBuilder.Entity<User>(x =>
