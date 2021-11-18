@@ -38,7 +38,7 @@ namespace Sev1.Accounts.Contracts.Authorization
                 var res = await _userApiClient.UserValidate(token);
 
                 // Если валидация JWT-токена удачная,
-                if (res != null)
+                if ((res.Roles != null)&&(!string.IsNullOrWhiteSpace(res.UserId)))
                 {
                     // то добавляем в каждую роль информацию о пользователе
                     foreach (var role in res.Roles)
