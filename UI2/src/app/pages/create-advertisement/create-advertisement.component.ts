@@ -25,6 +25,7 @@ export class CreateAdvertisementComponent implements OnInit {
   categories$: Observable<ICategory[]>;
   regions$: Observable<IRegion[]>;
   tags$: Observable<ITag[]>;
+  uri: string;
 
   constructor(private fb: FormBuilder,
               private advertisementService: AdvertisementService,
@@ -114,9 +115,17 @@ export class CreateAdvertisementComponent implements OnInit {
     };
 
     // Отправлет DTO объявления на бэк
-    this.advertisementService.create(new CreateAdvertisement(model)).pipe(take(1)).subscribe(() => {
-      this.toastService.show('Объявление успешено добавлено', {classname: 'bg-success text-light'});
-      this.router.navigate(['/']);
-    });
+    this.advertisementService.create(new CreateAdvertisement(model))
+      .pipe(take(1)).subscribe((res) => {
+        
+        // Определяем идентификатор вновь созданного объявления
+        let id = JSON.parse(JSON.stringify(res)).id;
+        
+        // Выдаёт всплывающее сообщение о результате
+        this.toastService.show('Объявление успешено добавлено', {classname: 'bg-success text-light'});
+        
+        // Переходит на страницу вновь созданного объявления
+        this.router.navigate(['/'+id]);
+      });
   }
 }

@@ -1,111 +1,225 @@
 <!-- "container": ограничивает ширину дочернего контента -->
 <div class="container" *ngIf="advertisement; else loadingBlock">
 
-  <!-- Выдача категорий слева колонкой -->
-  <div *ngIf="categories$ | async as categories" class="row">  
-    <div class="col-3">
+  <!-- Строка (начало) -->
+  <div class="row">
+
+    <!-- Выдача категорий слева колонкой -->
+    <!-- Колонка 1 (начало) -->
+    <div *ngIf="categories$ | async as categories" class="col-3">  
       <ul>
         <div>Поиск по категориям</div>
       </ul>
       <ul>  
         <div *ngFor="let category of categories">
-          <a 
-            class="badge badge-secondary" 
+          <a class="badge badge-secondary" 
             role="button" 
-            (click)="getContentByCategory(category.id)">{{category.name}}</a>
-            &nbsp;&nbsp;
+            (click)="getContentByCategoryId(category.id)">{{category.name}}
+          </a>
+          &nbsp;&nbsp;
         </div>
       </ul>
     </div>
-  <div class="col">
+    <!-- Колонка 1 (конец) -->
 
-  <ng-container [formGroup]="form">
-  <article class="card">
-    <div class="card-header d-flex">
-      <div>
-        <h1 class="h3">{{advertisement.title}}</h1>
-        <a class="badge badge-secondary" *ngIf="advertisement.category?.name" role="button" (click)="getContentByCategory(advertisement.categoryId)">{{advertisement.category?.name}}</a>
-        <a *ngFor="let tag of advertisement.tags">&nbsp;&nbsp;<a class="badge badge-secondary" role="button" (click)="getContentByTag(tag)">{{tag}}</a></a>
-      </div>
-      <div class="align-self-center ml-auto" *ngIf="isAuth">
-        <a class="btn btn-outline-secondary mr-2" [routerLink]="['/edit', advertisement.id]" *ngIf="isEditable">Редактировать</a>
-        <button *ngIf="isEditable" class="btn btn-outline-danger" (click)="openDeleteModal(content)">Удалить</button>
-      </div>
+<!-- *****************************************************************************
+     *****************************************************************************-->
 
-    </div>
-    <div class="card-body">
-      <p>
-        {{advertisement.body}}
-      </p>
-    </div>
-    <div class="card-header d-flex">
-    <h4>  Добавлено пользователем:
-      <a class="badge badge-secondary" *ngIf="advertisement?.ownerId" role="button" (click)="getContentByUserName(advertisement.ownerId)">{{advertisementOwnerName}}&nbsp;&nbsp;</a>
-      <div><div class="badge badge-secondary" *ngIf="advertisement?.createdAt">
-      {{advertisement.createdAt}}</div></div>
-        
-      <a routerLink="/" class="btn btn-primary">Купить</a>
-    </h4>
-      
-  </div>
-  
-  <h6>  Стоимость:
-    <div class="badge badge-secondary" *ngIf="advertisement?.price">{{advertisement.price}}&nbsp;р</div></h6>
-  </article>
-
-  <div class="form-group">
-    <label for="commentBody">Добавить комментарий</label>
-    <textarea class="form-control" id="commentBody" formControlName="commentBody" placeholder="Введите комментарий" autofocus></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary" (click)="submit()">Добавить</button>
-
-</ng-container>
-
-  <!-- Выводит переключение страниц пажинации комментариев -->
-  <div class="row">
-    <div class="col-12 justify-content-center"
-      *ngIf="response$ | async as response; else loadingBlock">
-      <div *ngIf="response.total > commentsFilter.pageSize">
-        <ngb-pagination
-          [page]="commentsFilter.page"
-          (pageChange)="updateCommentsFilterPage($event)"
-          [pageSize]="commentsFilter.pageSize"
-          [collectionSize]="response.total">
-        </ngb-pagination>
-      </div>
-    </div>
-  </div>
-
-  <!-- Выводит пажинированные комментарии -->
-  <div class="row" *ngIf="response$ | async as response; else loadingBlock">
+    <!-- Колонка 2 (начало) -->
     <div class="col">
-      <ng-container *ngFor="let item of response.items">
-        <app-comment-card
-          class="col-sm-4 mb-4"
-          [comment]="item">
-        </app-comment-card>
+
+      <!-- Выводит подробную информацию по объявлению (начало) -->
+      <ng-container [formGroup]="form">
+        <article class="card">
+          
+          <!-- Заголовок карточки (начало) -->
+          <div class="card-header d-flex"><!-- https://getbootstrap.com/docs/4.2/components/card/ -->
+
+            <!-- Заголовок объявления -->
+            <div>
+              <h1 class="h3">{{advertisement.title}}</h1>
+              <a class="badge badge-secondary" *ngIf="advertisement.category?.name" role="button" (click)="getContentByCategoryId(advertisement.categoryId)">{{advertisement.category?.name}}</a>
+              <a *ngFor="let tag of advertisement.tags">&nbsp;&nbsp;<a class="badge badge-secondary" role="button" (click)="getContentByTag(tag)">{{tag}}</a></a>
+            </div>
+
+            <!-- Кнопки "Редактировать" и "Удалить" объявление -->
+            <div class="align-self-center ml-auto" *ngIf="isAuth">
+              <a class="btn btn-outline-secondary mr-2" [routerLink]="['/edit', advertisement.id]" *ngIf="isEditable">Редактировать</a>
+              <button *ngIf="isEditable" class="btn btn-outline-danger" (click)="openDeleteModal(content)">Удалить</button>
+            </div>
+
+          </div>
+          <!-- Заголовок карточки (конец) -->
+
+          <!-- Подзаголовок карточки (начало) -->
+          <div class="card-header d-flex">
+            <p *ngIf="advertisement?.categoryId">
+              Категория объявления: 
+              <a class="badge badge-secondary" 
+                role="button" 
+                (click)="getContentByCategoryId(advertisement.categoryId)">
+                {{getCategoryNameById(advertisement.categoryId)}}
+              </a>
+            </p>
+          </div>
+          <!-- Подзаголовок карточки (конец) -->
+
+          <!-- Тело карточки (начало) -->
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              
+              <!-- Текст объявления -->
+              <li class="list-group-item">
+                <p class="card-text">
+                  {{advertisement.body}}
+                </p>
+              </li>
+
+              <!-- Владелец объявления и время создания объявления -->
+              <li class="list-group-item">
+                <p class="card-text">
+                  Добавлено пользователем:
+                  <a class="badge badge-secondary"
+                    *ngIf="advertisement?.ownerId"
+                    role="button"
+                    (click)="getContentByUserName(advertisement.ownerId)">
+                    {{advertisementOwnerName}}&nbsp;&nbsp;
+                  </a>
+                  <a *ngIf="advertisement?.createdAt">
+                    {{advertisement.createdAt}}
+                  </a>
+                </p>
+              </li>
+
+              <!-- Стоимость -->
+              <li class="list-group-item">
+                <p class="card-text" *ngIf="advertisement?.price">
+                  Стоимость: {{advertisement.price}}&nbsp;р.
+                </p>
+              </li>
+
+              <!-- Адрес -->
+              <li class="list-group-item">
+                <p class="card-text" *ngIf="advertisement?.price">
+                  Адрес: {{advertisement.address}}&nbsp;р.
+                </p>
+              </li>
+
+              <!-- Регион -->
+              <li class="list-group-item">
+                <p class="card-text" *ngIf="advertisement?.price">
+                  Регион: {{getRegionNameById(advertisement.regionId)}}
+                </p>
+              </li>
+
+            </ul>
+
+          </div>
+          <!-- Тело карточки (конец) -->
+
+          <!-- Футтер карточки (начало) -->
+          <div class="card-header d-flex">
+            
+            <!-- Кнопка "Купить" -->
+            <a routerLink="/" class="btn btn-primary">Купить</a>
+ 
+           </div>
+          <!-- Футтер карточки (конец) -->
+
+        </article>
       </ng-container>
-    </div>
-  </div>
+      <!-- Выводит подробную информацию по объявлению (конец) -->
 
-  <!-- Выводит переключение страниц пажинации комментариев -->
-  <div class="row">
-    <div class="col-12 justify-content-center"
-      *ngIf="response$ | async as response; else loadingBlock">
-      <div *ngIf="response.total > commentsFilter.pageSize">
-        <ngb-pagination
-          [page]="commentsFilter.page"
-          (pageChange)="updateCommentsFilterPage($event)"
-          [pageSize]="commentsFilter.pageSize"
-          [collectionSize]="response.total">
-        </ngb-pagination>
+      <!-- Форма отправки комментария (начало) -->
+      <div class="form-group">
+        <label for="commentBody">Добавить комментарий</label>
+        <textarea class="form-control"
+          id="commentBody"
+          formControlName="commentBody"
+          placeholder="Введите комментарий"
+          autofocus>
+        </textarea>
       </div>
+      <button type="submit"
+        class="btn btn-primary"
+        (click)="submit()">Добавить</button>
+      <!-- Форма отправки комментария (конец) -->
+
+      <!-- Выводит переключение страниц пажинации комментариев (начало) -->
+      <div class="row">
+        <div class="col-12 justify-content-center"
+          *ngIf="response$ | async as response; else loadingBlock">
+          <div *ngIf="response.total > commentsFilter.pageSize">
+            <ngb-pagination
+              [page]="commentsFilter.page"
+              (pageChange)="updateCommentsFilterPage($event)"
+              [pageSize]="commentsFilter.pageSize"
+              [collectionSize]="response.total">
+            </ngb-pagination>
+          </div>
+        </div>
+      </div>
+      <!-- Выводит переключение страниц пажинации комментариев (конец) -->
+
+      <!-- Выводит пажинированные комментарии (начало) -->
+      <div class="row" *ngIf="response$ | async as response; else loadingBlock">
+        <div class="col">
+          <ng-container *ngFor="let item of response.items">
+            <app-comment-card
+              class="col-sm-4 mb-4"
+              [comment]="item">
+            </app-comment-card>
+          </ng-container>
+        </div>
+      </div>
+      <!-- Выводит пажинированные комментарии (конец) -->
+
+      <!-- Выводит переключение страниц пажинации комментариев (начало) -->
+      <div class="row">
+        <div class="col-12 justify-content-center"
+          *ngIf="response$ | async as response; else loadingBlock">
+          <div *ngIf="response.total > commentsFilter.pageSize">
+            <ngb-pagination
+              [page]="commentsFilter.page"
+              (pageChange)="updateCommentsFilterPage($event)"
+              [pageSize]="commentsFilter.pageSize"
+              [collectionSize]="response.total">
+            </ngb-pagination>
+          </div>
+        </div>
+      </div>
+      <!-- Выводит переключение страниц пажинации комментариев (конец) -->
+
     </div>
+    <!-- Колонка 2 (конец) -->
+
+<!-- *****************************************************************************
+     *****************************************************************************-->
+
+    <!-- Выдача тагов справа колонкой -->
+    <!-- Колонка 3 (начало) -->
+    <div *ngIf="tags$ | async as tags" class="row">  
+    <div class="col-12">
+      <ul>
+        <div>Поиск по тагам</div>
+      </ul>
+      <ul>  
+        <div *ngFor="let tag of tags">
+          <a class="badge badge-secondary" 
+            role="button" 
+            (click)="getContentByTag(tag.body)">{{tag.body}}
+          </a>
+          &nbsp;&nbsp;
+        </div>
+      </ul>
+    </div>
+    <!-- Колонка 3 (конец) -->
+
   </div>
+  <!-- Строка (начало) -->
 
 </div>
-</div>
-</div>
+<!-- "container" (конец) -->
 
 <!-- Шаблоны:
   https://angular.io/api/core/ng-template#description

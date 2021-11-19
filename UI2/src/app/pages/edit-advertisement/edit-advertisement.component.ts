@@ -28,6 +28,7 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
   destroy$ = new Subject();
   tagstr: string;
   tags$: Observable<ITag[]>;
+  uri: string;
 
   constructor(private fb: FormBuilder,
               private advertisementService: AdvertisementService,
@@ -124,30 +125,32 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
     return this.form.get('input_tags');
   }
 
+  // Обработка события нажатия на кнопку
   submit() {
+
+    // Валидация формы
     if (this.form.invalid) {
       return;
     }
 
+    // Взяли строку с тагами с формы
+    var tagStr = this.input_tags.value;
 
-// Взяли строку с тагами с формы
-var tagStr = this.input_tags.value;
+    // Если строчка не пустая
+    if(tagStr != null)
+    {
+      console.log("TAG string:");
+      console.log(tagStr);
 
-if(tagStr != null)
-{
+      var tagStr_ = tagStr.replace(/[~!@"'#$%^:;&?*()+=\s]/g, ' ');
 
-  console.log("TAG string:");
-  console.log(tagStr);
+      console.log("TAG string with removed non-car symbols:");
+      console.log(tagStr_);
 
-  var tagStr_ = tagStr.replace(/[~!@"'#$%^:;&?*()+=\s]/g, ' ');
-
-  console.log("TAG string with removed non-car symbols:");
-  console.log(tagStr_);
-
-  var arrayOfStrings = tagStr_.split(/[\s,]+/);
-  console.log("Splitted TAG string:");
-  console.log(arrayOfStrings);
-}
+      var arrayOfStrings = tagStr_.split(/[\s,]+/);
+      console.log("Splitted TAG string:");
+      console.log(arrayOfStrings);
+    }
 
     this.advertisementId$.pipe(switchMap(id => {
       const model: Partial<IEditAdvertisement> = {
@@ -160,11 +163,14 @@ if(tagStr != null)
         regionId: this.regionId.value,
         address: this.address.value,
       };
-
+      this.uri = '/' + model.id;
       return this.advertisementService.edit(new EditAdvertisement(model));
     }), take(1)).subscribe(() => {
+      // Выдаёт всплывающее сообщение о результате
       this.toastService.show('Объявление успешено обновлено', {classname: 'bg-success text-light'});
-      this.router.navigate(['/']);
+      
+      // Переходит на страницу вновь созданного объявления
+      this.router.navigate([this.uri]);
     });
   }
 }

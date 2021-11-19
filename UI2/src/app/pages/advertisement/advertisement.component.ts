@@ -20,6 +20,8 @@ import { isNullOrUndefined } from 'util';
 import { UserService } from 'src/app/services/user.service';
 import { IUser } from 'src/app/models/user/user-model';
 import { ICategory } from 'src/app/models/category/category-model';
+import { IRegion } from 'src/app/models/region/region-model';
+import { RegionService } from 'src/app/services/region.service';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -39,7 +41,10 @@ export class AdvertisementComponent implements OnInit {
   tags$: Observable<ITag[]>;
   users$: Observable<IUser[]>;
   users: IUser[];
-  categories$: Observable<ICategory[]>
+  categories$: Observable<ICategory[]>;
+  categories: ICategory[];
+  regions$: Observable<IRegion[]>;
+  regions: IRegion[];
 
   private commentsFilterSubject$ = new BehaviorSubject({
     contentId: 1,
@@ -58,7 +63,8 @@ export class AdvertisementComponent implements OnInit {
               private commentService: CommentService,
               private modalService: NgbModal,
               private tagService: TagService,
-              private userService: UserService) {
+              private userService: UserService,
+              private regionService: RegionService) {
   }
 
   ngOnInit() {
@@ -68,6 +74,7 @@ export class AdvertisementComponent implements OnInit {
       pageSize: 1000,
       page: 0,
     });
+    this.categories$.subscribe(categories => this.categories = categories);
 
     // Подписка на пользователей
     this.users$ = this.userService.getUserList({
@@ -82,6 +89,13 @@ export class AdvertisementComponent implements OnInit {
       page: 0,
     });
     
+    // Подписка на регионы
+    this.regions$ = this.regionService.getRegionList({
+      pageSize: 1000,
+      page: 0,
+    });
+    this.regions$.subscribe(regions => this.regions = regions);
+
     // Валидация формы
     this.form = this.fb.group({
       commentBody: ['', Validators.required]
@@ -137,6 +151,16 @@ export class AdvertisementComponent implements OnInit {
       return this.users.find(s => s.userId === userId).userName;
   }
 
+  // Возвращает имя категории по идентификатору
+  getCategoryNameById(categoryId: number){
+    return this.categories.find(s => s.id === categoryId).name;
+  }
+
+  // Возвращает имя региона по идентификатору
+  getRegionNameById(regionId: number){
+    return this.regions.find(s => s.id === regionId).name;
+  }
+
   updateCommentsFilterPage(page) {
     this.commentsFilterSubject$.next({
       ...this.commentsFilter,
@@ -163,7 +187,7 @@ export class AdvertisementComponent implements OnInit {
   getContentByTag(tag: string){
     this.router.navigate(['/'], { queryParams: { tag: tag } });
   }
-  getContentByCategory(categoryId: number){
+  getContentByCategoryId(categoryId: number){
     this.router.navigate(['/'], { queryParams: { categoryId: categoryId } });
   }
   getContentByUserName(userName: string){

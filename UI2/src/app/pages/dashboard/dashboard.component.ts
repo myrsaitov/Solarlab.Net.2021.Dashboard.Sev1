@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
   users$: Observable<IUser[]>;
   users: IUser[];
   categories$: Observable<ICategory[]>;
+  categories: ICategory[];
   tags$: Observable<ITag[]>;
 
   private advertisementsFilterSubject$ = new BehaviorSubject({
@@ -112,7 +113,7 @@ export class DashboardComponent implements OnInit {
   }
 
   // Выполняет запрос на поиск по категории
-  getContentByCategory(categoryId: number){
+  getContentByCategoryId(categoryId: number){
     this.router.navigate(['/'], { queryParams: { categoryId: categoryId } });
   }
 

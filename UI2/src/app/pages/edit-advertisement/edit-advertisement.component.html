@@ -8,10 +8,10 @@
 <ul><div>Поиск по категориям</div></ul>
   <ul>  
   <div *ngFor="let category of categories">
-    <a 
-    class="badge badge-secondary" 
-    role="button" 
-    (click)="getContentByCategory(category.id)">{{category.name}}</a>
+    <a class="badge badge-secondary" 
+      role="button" 
+      (click)="getContentByCategoryId(category.id)">{{category.name}}
+    </a>
     &nbsp;&nbsp;
   </div>
   </ul>

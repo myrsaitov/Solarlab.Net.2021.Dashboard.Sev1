@@ -48,7 +48,7 @@ export class HeaderComponent {
   getContentByTag(tag: string){
     this.router.navigate(['/'], { queryParams: { tag: tag } });
   }
-  getContentByCategory(categoryId: number){
+  getContentByCategoryId(categoryId: number){
     this.router.navigate(['/'], { queryParams: { categoryId: categoryId } });
   }
   getContentByUserName(){
