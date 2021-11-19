@@ -31,5 +31,10 @@ namespace Sev1.Accounts.Contracts.Contracts.User.Responses
         /// Идентификатор региона
         /// </summary>
         public int? RegionId { get; set; }
+
+        /// <summary>
+        /// Электронная почта
+        /// </summary>
+        public string EMail { get; set; }
     }
 }

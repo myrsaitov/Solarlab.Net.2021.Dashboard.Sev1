@@ -10,6 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 import { IUser } from 'src/app/models/user/user-model';
 import { ICategory } from 'src/app/models/category/category-model';
 import { CategoryService } from 'src/app/services/category.service';
+import { ITag } from 'src/app/models/tag/tag-model';
+import { TagService } from 'src/app/services/tag.service';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -24,7 +26,8 @@ export class DashboardComponent implements OnInit {
   isAuth = this.authService.isAuth;
   users$: Observable<IUser[]>;
   users: IUser[];
-  categories$: Observable<ICategory[]>
+  categories$: Observable<ICategory[]>;
+  tags$: Observable<ITag[]>;
 
   private advertisementsFilterSubject$ = new BehaviorSubject({
     searchStr: null,
@@ -41,7 +44,8 @@ export class DashboardComponent implements OnInit {
               private route: ActivatedRoute,
               private readonly router: Router,
               private userService: UserService,
-              private categoryService: CategoryService) {
+              private categoryService: CategoryService,
+              private tagService: TagService) {
   }
 
   ngOnInit() {
@@ -59,14 +63,20 @@ export class DashboardComponent implements OnInit {
     });
     this.users$.subscribe(users => this.users = users);
 
+    // Подписка на таги
+    this.tags$ = this.tagService.getTagList({
+      pageSize: 1000,
+      page: 0,
+    });
+
     // Загружает сессию
     this.authService.loadSession();
 
     // Проверяет, произошла ли авторизация
     this.isAuth = this.authService.isAuth;
 
+    // Обработка запроса с фильтрацией объявлений
     this.route.queryParams.subscribe(params => {
-
       this.advertisementsFilterSubject$.value.searchStr = null;
       this.advertisementsFilterSubject$.value.ownerId = null;
       this.advertisementsFilterSubject$.value.categoryId = null;
@@ -90,14 +100,10 @@ export class DashboardComponent implements OnInit {
       });
     });
 
-
-
-
-      this.response$ = this.advertisementsFilterChange$.pipe( // pipe - применить указанное действие ко всем элементам конвейера
-        switchMap(advertisementsFilter => this.advertisementService.getAdvertisementsList(advertisementsFilter)
-      ));
-
-
+    // Возвращает список объявлений по фильтру
+    this.response$ = this.advertisementsFilterChange$.pipe( // pipe - применить указанное действие ко всем элементам конвейера
+      switchMap(advertisementsFilter => this.advertisementService.getAdvertisementsList(advertisementsFilter)
+    ));
   }
   
   // Возвращает имя пользователя по идентификатору
@@ -105,18 +111,22 @@ export class DashboardComponent implements OnInit {
     return this.users.find(s => s.userId === userId).userName;
   }
 
+  // Выполняет запрос на поиск по категории
   getContentByCategory(categoryId: number){
     this.router.navigate(['/'], { queryParams: { categoryId: categoryId } });
   }
 
+  // Выполняет запрос на поиск по тагу
   getContentByTag(tag: string){
     this.router.navigate(['/'], { queryParams: { tag: tag } });
   }
 
+  // Возвращает фильтр объявлений (параметры пагинации)
   get advertisementsFilter() {
     return this.advertisementsFilterSubject$.value;
   }
 
+  // Обновляет страницу при изменении фильтра
   updateAdvertisementsFilterPage(page) {
     this.advertisementsFilterSubject$.next({
       ...this.advertisementsFilter,

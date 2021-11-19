@@ -223,7 +223,7 @@ namespace Sev1.Accounts.DataAccess
             userDomainUser = new User
             {
                 Id = USER_ID_2,
-                UserName = "sidor2",
+                UserName = "sidorov_2",
                 FirstName = "Роман",
                 LastName = "Сидоров",
                 MiddleName = "Олегович",
@@ -265,7 +265,7 @@ namespace Sev1.Accounts.DataAccess
             userDomainUser = new User
             {
                 Id = USER_ID_3,
-                UserName = "ivanov3",
+                UserName = "ivanov_3",
                 FirstName = "Иван",
                 LastName = "Иванов",
                 MiddleName = "Иванович",

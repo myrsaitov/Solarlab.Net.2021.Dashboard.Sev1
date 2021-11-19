@@ -52,7 +52,8 @@ namespace Sev1.Accounts.AppServices.Services.User.Implementations
                 UserId = res.UserId,
                 Roles = res.Roles,
                 UserName = domainUser.UserName,
-                RegionId = domainUser.RegionId
+                RegionId = domainUser.RegionId,
+                EMail = request.EMail
             };
         }
     }

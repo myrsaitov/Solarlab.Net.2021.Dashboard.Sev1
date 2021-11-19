@@ -241,9 +241,9 @@ namespace Accounts.DataAccess.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3", "4014a1c4-4901-445c-b860-414c501e8d9b", "Administrator", "ADMINISTRATOR" },
-                    { "c373fe1b-9e38-498b-9729-6c719222b00d", "70f55f5f-8976-4823-a60d-ae6c6c048c02", "Moderator", "MODERATOR" },
-                    { "589a1f42-d43c-4315-8e02-432f64e02bc0", "61dc20cb-d0fc-403f-a65e-622295a85625", "User", "USER" }
+                    { "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3", "d54e66f6-cb81-49b2-8a8c-c2836ba9ce63", "Administrator", "ADMINISTRATOR" },
+                    { "c373fe1b-9e38-498b-9729-6c719222b00d", "0fffa432-50fa-45aa-8ba1-c535592fa58f", "Moderator", "MODERATOR" },
+                    { "589a1f42-d43c-4315-8e02-432f64e02bc0", "09269cb5-294b-4ffa-b53b-23184e6a27e5", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -251,13 +251,13 @@ namespace Accounts.DataAccess.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "7e24ccd2-34fd-4289-9a78-1aae93623bae", 0, "ca065898-16ca-4791-9d4c-f62522d6daa1", "user5@mail.ru", false, false, null, "USER5@MAIL.RU", "USER5", "AQAAAAEAACcQAAAAELUd9ojI1GopRsMcx31pPt1iRAoH6Q9Nx2XN+T4oxy93bBgFGWETaOzm7swldITDbg==", null, false, "a5b7d888-ec13-4914-961e-bce7af54ab6f", false, "User5" },
-                    { "c191e5f8-bf5b-40a9-9ab6-4d08704e373b", 0, "4a3a245d-8f59-41b3-beb9-c5dfd642a302", "user3@mail.ru", false, false, null, "USER3@MAIL.RU", "USER3", "AQAAAAEAACcQAAAAEDyKwykgNQDr5ejmewG5yDl6rdW8NjVDg3gKHKrcVr60cIboKuahFbrFHTMqC/ixgw==", null, false, "6b4030ef-c247-4672-95a3-584de8798d7a", false, "User3" },
-                    { "54b1ff98-6b5f-4c5e-97a9-747095e1f5dc", 0, "ca86a7b8-b85c-4212-998f-bf729c6a7263", "user2@mail.ru", false, false, null, "USER2@MAIL.RU", "USER2", "AQAAAAEAACcQAAAAEOx8wlRm2FWTbPl4ojk+jmk8hnKwpXdH/H121gL/HLgqfIn9Ui6nHF2Ksf4BvER7Wg==", null, false, "024fac35-0f6e-4bae-867c-f19e6924b548", false, "User2" },
-                    { "09c529c8-e798-44ac-9eac-e0150182fa4c", 0, "2fa79519-2b1e-4e63-9263-eaa4c9acd881", "user4@mail.ru", false, false, null, "USER4@MAIL.RU", "USER4", "AQAAAAEAACcQAAAAEBc1NdNDZkdfFB8GWZ69GtkaEdoqzlY8E/oX8IIo/wvLGCnwJ5KlPnMrtKnjUcMCmQ==", null, false, "bda7ff2f-85a8-4e55-a9ec-dfb0a5f4993f", false, "User4" },
-                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", 0, "a5296d0d-d103-400f-a1d0-31dcbeb35bc1", "moderator@mail.ru", false, false, null, "MODERATOR@MAIL.RU", "MODERATOR", "AQAAAAEAACcQAAAAENn6A7JFFAccNitm3k6SKLjufOExPZL10xUThp0VgMG+ce12Osmat1gO/KEN3ASY5g==", null, false, "9d4bbcc8-f82f-480f-b78e-8b12a6c8804f", false, "Moderator" },
-                    { "757d5290-d036-4757-85ae-827b59e92cd3", 0, "5fb35cec-8188-410f-b1f7-6f4054d0f2e4", "administrator@mail.ru", false, false, null, "ADMINISTRATOR@MAIL.RU", "ADMINISTRATOR", "AQAAAAEAACcQAAAAEOY+nDEs47wEqSuu5eP6Q2YTZkZ8bmC4hfIWg42tPthr4157euv0duJB0utE/SJI6w==", null, false, "3a86553e-4025-4c27-997b-97e1c34ff446", false, "Administrator" },
-                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", 0, "0c8490d4-5b4e-49b8-9281-d93054a754e4", "user1@mail.ru", false, false, null, "USER1@MAIL.RU", "USER1", "AQAAAAEAACcQAAAAEL7OUJwY+QJc1YDITj6Y44cfTcoNx4EJjJJ7+GDMOdy+pC41UjkkLif3wZrbs+ewkA==", null, false, "691bfd0e-5a73-42d9-a24d-9d314c6ad174", false, "User1" }
+                    { "7e24ccd2-34fd-4289-9a78-1aae93623bae", 0, "bcd58a6e-872b-4da2-a8b1-16e1b84e7f86", "user5@mail.ru", false, false, null, "USER5@MAIL.RU", "USER5", "AQAAAAEAACcQAAAAEOzESKyyvkltj19zFi0AJmMKUdWhpWNcz7QN4lHlLsGYfAN0uF3uCaMZFkrk+oy6fw==", null, false, "7351de01-7f9e-40b0-9656-44d0c8dcdaf0", false, "User5" },
+                    { "c191e5f8-bf5b-40a9-9ab6-4d08704e373b", 0, "66950f8a-9b36-4191-be4d-b648e315423b", "user3@mail.ru", false, false, null, "USER3@MAIL.RU", "USER3", "AQAAAAEAACcQAAAAEPk/IQ/Olr6eP3TRUX2CHLkg8Nkg8SOUf1DEQW1aguVVIIKXs3/yRd1RsQgZ9CTgMg==", null, false, "65e5006d-e3cb-444e-a249-04c4ba91b5be", false, "User3" },
+                    { "54b1ff98-6b5f-4c5e-97a9-747095e1f5dc", 0, "86f9c042-ec17-4cfd-acea-252305d0bf0d", "user2@mail.ru", false, false, null, "USER2@MAIL.RU", "USER2", "AQAAAAEAACcQAAAAEFJzwAqijBzolqTJHOE4/mGx6qMjtNPDI4wn8OQU59B5W1RK4anM4mttWZ27TT0BaQ==", null, false, "bb84686e-65bb-4af9-bf7e-601d51b49263", false, "User2" },
+                    { "09c529c8-e798-44ac-9eac-e0150182fa4c", 0, "d94f1c9c-f767-48b3-9a51-45d09052a51c", "user4@mail.ru", false, false, null, "USER4@MAIL.RU", "USER4", "AQAAAAEAACcQAAAAEH5EMM+RNvisGWc8Wex000efTCwOvIcgqYSqjZnBIuwFmtnHVfWRVFI7yeLvkEKLhA==", null, false, "819fef6d-aca8-4f6b-ade2-f97fda4a58da", false, "User4" },
+                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", 0, "47f8b308-6044-464e-8b02-4a0dce596143", "moderator@mail.ru", false, false, null, "MODERATOR@MAIL.RU", "MODERATOR", "AQAAAAEAACcQAAAAEMtkYr4QqkH8iViPt+YXqdpJOa0U3EmPsBDWdWMiIyKSs3VtuganSVNkTJskFsb3kQ==", null, false, "ab062afc-d8c6-4113-adec-22e331411b15", false, "Moderator" },
+                    { "757d5290-d036-4757-85ae-827b59e92cd3", 0, "39aa7ef7-fa60-446b-899a-15b2bc109ccd", "administrator@mail.ru", false, false, null, "ADMINISTRATOR@MAIL.RU", "ADMINISTRATOR", "AQAAAAEAACcQAAAAENvL1B9dPTKDj/cX211/kUiu8f7PeaoDbMA5dAhUCQ7lESVxAB5mQzfy8OCuxRIdmw==", null, false, "cf2efdae-9820-4989-b121-5ee816dd8946", false, "Administrator" },
+                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", 0, "03ba713b-dbbb-4e1e-93f8-6a66a2fe36ea", "user1@mail.ru", false, false, null, "USER1@MAIL.RU", "USER1", "AQAAAAEAACcQAAAAEF9oWcEuKW8T8NR0ccUXrOaZHZynW4yB24QeYjvC3MFY8VuRpm+MG2tXJ9AYyhSBCg==", null, false, "af6bc07e-0bed-4c2d-8b7d-6089f393ad62", false, "User1" }
                 });
 
             migrationBuilder.InsertData(
@@ -269,8 +269,8 @@ namespace Accounts.DataAccess.Migrations
                     { "757d5290-d036-4757-85ae-827b59e92cd3", "299011 г. Севастополь, ул. Чехова, 1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Administrator", false, "Administrator", "Administrator", "+79787713935", 1, null, "Administrator" },
                     { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", "299011 г. Севастополь, ул. Гоголя, 1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Moderator", false, "Moderator", "Moderator", "+79787713935", 1, null, "Moderator" },
                     { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", "299411 г. Москва, ул. Тургенева, 1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Александр", false, "Викторович", "Булгаков", "+79787713931", 1, null, "alex_1" },
-                    { "54b1ff98-6b5f-4c5e-97a9-747095e1f5dc", "299812 г. Судак, ул. Сергеева, 2", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Роман", false, "Сидоров", "Олегович", "+79787713932", 2, null, "sidor2" },
-                    { "c191e5f8-bf5b-40a9-9ab6-4d08704e373b", "299713 г. Керчь, ул. Куприна, 3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Иван", false, "Иванов", "Иванович", "+79787713933", 3, null, "ivanov3" },
+                    { "54b1ff98-6b5f-4c5e-97a9-747095e1f5dc", "299812 г. Судак, ул. Сергеева, 2", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Роман", false, "Сидоров", "Олегович", "+79787713932", 2, null, "sidorov_2" },
+                    { "c191e5f8-bf5b-40a9-9ab6-4d08704e373b", "299713 г. Керчь, ул. Куприна, 3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Иван", false, "Иванов", "Иванович", "+79787713933", 3, null, "ivanov_3" },
                     { "7e24ccd2-34fd-4289-9a78-1aae93623bae", "299415 г. Ялта, ул. Достоевского, 5", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Пётр", false, "Иванов", "Сергеевич", "+79687416935", 5, null, "petr_ivanov_5" }
                 });
 

@@ -1,21 +1,23 @@
+<!-- "container": ограничивает ширину дочернего контента -->
 <div class="container" *ngIf="advertisement; else loadingBlock">
 
-<!-- Выдача категорий слева колонкой -->
-
-<div *ngIf="categories$ | async as categories" class="row">  
-<div class="col-3">
-<ul><div>Поиск по категориям</div></ul>
-  <ul>  
-  <div *ngFor="let category of categories">
-    <a 
-    class="badge badge-secondary" 
-    role="button" 
-    (click)="getContentByCategory(category.id)">{{category.name}}</a>
-    &nbsp;&nbsp;
-  </div>
-  </ul>
-</div>
-<div class="col">
+  <!-- Выдача категорий слева колонкой -->
+  <div *ngIf="categories$ | async as categories" class="row">  
+    <div class="col-3">
+      <ul>
+        <div>Поиск по категориям</div>
+      </ul>
+      <ul>  
+        <div *ngFor="let category of categories">
+          <a 
+            class="badge badge-secondary" 
+            role="button" 
+            (click)="getContentByCategory(category.id)">{{category.name}}</a>
+            &nbsp;&nbsp;
+        </div>
+      </ul>
+    </div>
+  <div class="col">
 
   <ng-container [formGroup]="form">
   <article class="card">
@@ -59,52 +61,69 @@
 
 </ng-container>
 
+  <!-- Выводит переключение страниц пажинации комментариев -->
   <div class="row">
-    <div class="col-12 justify-content-center" *ngIf="response$ | async as response; else loadingBlock">
+    <div class="col-12 justify-content-center"
+      *ngIf="response$ | async as response; else loadingBlock">
       <div *ngIf="response.total > commentsFilter.pageSize">
-      <ngb-pagination
-        [page]="commentsFilter.page"
-        (pageChange)="updateCommentsFilterPage($event)"
-        [pageSize]="commentsFilter.pageSize"
-        [collectionSize]="response.total">
-      </ngb-pagination>
-    </div>
-    </div>
-  </div>
-
-  <div class="row" *ngIf="response$ | async as response; else loadingBlock">
-  <div class="col">
-    <ng-container *ngFor="let item of response.items">
-      <app-comment-card
-        class="col-sm-4 mb-4"
-        *ngIf="!item.isDeleted"
-        [comment]="item">
-      </app-comment-card>
-    </ng-container>
-  </div>
-  </div>
-
-  <div class="row">
-    <div class="col-12 justify-content-center" *ngIf="response$ | async as response; else loadingBlock">
-      <div *ngIf="response.total > commentsFilter.pageSize">
-      <ngb-pagination
-        [page]="commentsFilter.page"
-        (pageChange)="updateCommentsFilterPage($event)"
-        [pageSize]="commentsFilter.pageSize"
-        [collectionSize]="response.total">
-      </ngb-pagination>
+        <ngb-pagination
+          [page]="commentsFilter.page"
+          (pageChange)="updateCommentsFilterPage($event)"
+          [pageSize]="commentsFilter.pageSize"
+          [collectionSize]="response.total">
+        </ngb-pagination>
       </div>
     </div>
   </div>
+
+  <!-- Выводит пажинированные комментарии -->
+  <div class="row" *ngIf="response$ | async as response; else loadingBlock">
+    <div class="col">
+      <ng-container *ngFor="let item of response.items">
+        <app-comment-card
+          class="col-sm-4 mb-4"
+          [comment]="item">
+        </app-comment-card>
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- Выводит переключение страниц пажинации комментариев -->
+  <div class="row">
+    <div class="col-12 justify-content-center"
+      *ngIf="response$ | async as response; else loadingBlock">
+      <div *ngIf="response.total > commentsFilter.pageSize">
+        <ngb-pagination
+          [page]="commentsFilter.page"
+          (pageChange)="updateCommentsFilterPage($event)"
+          [pageSize]="commentsFilter.pageSize"
+          [collectionSize]="response.total">
+        </ngb-pagination>
+      </div>
+    </div>
+  </div>
+
 </div>
 </div>
 </div>
+
+<!-- Шаблоны:
+  https://angular.io/api/core/ng-template#description
+  With <ng-template>, you can define 
+  template content that is only being rendered 
+  by Angular when you, whether directly or indirectly, 
+  specifically instruct it to do so, allowing you to 
+  have full control over how and when the content is displayed. -->
+
+<!-- Выводится, если нет связи с сервисом комментариев -->
 <ng-template #loadingBlock>
+  <!-- "container": ограничивает ширину дочернего контента -->
   <div class="container">
     Загрузка...
   </div>
 </ng-template>
 
+<!-- Выводится, когда нажали на "Удалить объявление" -->
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Вы дейстивтельно хотите удалить Объявление?</h4>
