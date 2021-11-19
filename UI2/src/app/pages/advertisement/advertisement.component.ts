@@ -161,6 +161,36 @@ export class AdvertisementComponent implements OnInit {
     return this.regions.find(s => s.id === regionId).name;
   }
 
+  // Возвращает статус объявления по значению
+  getStatusNameByValue(value: number){
+    switch(value) { 
+      case 0: { 
+         return "Активно"; 
+         break; 
+      } 
+      case 1: { 
+        return "Приостановлено"; 
+        break; 
+      } 
+      case 2: { 
+        return "Черновик"; 
+        break; 
+      }
+      case 3: { 
+        return "Удалено"; 
+        break; 
+      }
+      case 4: { 
+        return "Недопустимое содержание"; 
+        break; 
+      } 
+      default: { 
+        return "No Status!"; 
+         break; 
+      } 
+    } 
+  }
+
   updateCommentsFilterPage(page) {
     this.commentsFilterSubject$.next({
       ...this.commentsFilter,

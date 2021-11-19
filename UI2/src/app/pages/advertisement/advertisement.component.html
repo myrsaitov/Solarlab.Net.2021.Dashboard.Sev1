@@ -112,6 +112,13 @@
                 </p>
               </li>
 
+              <!-- Статус объявления -->
+              <li class="list-group-item">
+                <p class="card-text" *ngIf="advertisement?.status">
+                  Статус объявления: {{getStatusNameByValue(advertisement.status)}}
+                </p>
+              </li>
+
             </ul>
 
           </div>

@@ -14,4 +14,5 @@ export interface IAdvertisement {
   comments: any[];
   createdAt: string;
   tags: string[];
+  status: number;
 }
