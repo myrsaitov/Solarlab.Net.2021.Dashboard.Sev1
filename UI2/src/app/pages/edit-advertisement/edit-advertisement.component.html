@@ -1,84 +1,145 @@
 <!-- "container": ограничивает ширину дочернего контента -->
 <div class="container">
 
-<!-- Выдача категорий слева колонкой -->
+  <!-- Строка (начало) -->
+  <div class="row">
 
-<div *ngIf="categories$ | async as categories" class="row">  
-<div class="col-3">
-<ul><div>Поиск по категориям</div></ul>
-  <ul>  
-  <div *ngFor="let category of categories">
-    <a class="badge badge-secondary" 
-      role="button" 
-      (click)="getContentByCategoryId(category.id)">{{category.name}}
-    </a>
-    &nbsp;&nbsp;
-  </div>
-  </ul>
-</div>
-<div class="col">
-
-  <div class="card">
-    <div class="card-body">
-      <h1 class="mb-4">Редактировать объявление</h1>
-      <ng-container [formGroup]="form">
-        <div class="form-group">
-          <label for="title">Название</label>
-          <input type="text" class="form-control" id="title" formControlName="title" placeholder="Введите название" autofocus [class.is-invalid]="title.invalid">
+    <!-- Выдача категорий слева колонкой -->
+    <!-- Колонка 1 (начало) -->
+    <div *ngIf="categories$ | async as categories" class="col-3">  
+      <ul>
+        <div>Поиск по категориям</div>
+      </ul>
+      <ul>  
+        <div *ngFor="let category of categories">
+          <a class="badge badge-secondary" 
+            role="button" 
+            (click)="getContentByCategoryId(category.id)">{{category.name}}
+          </a>
+          &nbsp;&nbsp;
         </div>
-        <div class="form-group">
-          <label for="body">Описание</label>
-          <textarea class="form-control"
-          id="body"
-          formControlName="body"
-          placeholder="Введите описание"
-          autofocus [class.is-invalid]="body.invalid"
-          rows="8"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="price">Цена</label>
-          <textarea class="form-control"
-            id="price"
-            formControlName="price"
-            placeholder="Введите цену"
-            autofocus [class.is-invalid]="price.invalid"
-            rows="1">
-          </textarea>
-        </div>
-        <div class="form-group">
-          <label for="categoryId">Категория</label>
-          <select class="form-control custom-select" id="categoryId" formControlName="categoryId" autofocus [class.is-invalid]="categoryId.invalid"
-                  *ngIf="categories$ | async as categories">
-            <option [value]="null">Выберите категорию</option>
-            <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
-          </select>
-        </div>
-
-  <!-- Регион -->
-  <div class="form-group">
-    <label for="regionId">Регион</label>
-    <select class="form-control custom-select" id="regionId" formControlName="regionId" autofocus [class.is-invalid]="regionId.invalid"
-        *ngIf="regions$ | async as regions">
-      <option [value]="null">Выберите регион</option>
-      <option *ngFor="let region of regions" [value]="region.id">{{region.name}}</option>
-    </select>
-  </div>
-
-  <!-- Адрес -->
-  <div class="form-group">
-    <label for="address">Адрес</label>
-    <input type="text" class="form-control" id="address" formControlName="address" placeholder="Введите название" autofocus [class.is-invalid]="address.invalid">
-  </div>
-
-        <div class="form-group">
-          <label for="input_tags">Введите тэги</label>
-          <input type="text" class="form-control" id="input_tags" formControlName="input_tags" placeholder="Введите тэги">
-        </div>
-        <button type="submit" class="btn btn-primary mr-2" [disabled]="form.invalid" (click)="submit()">Сохранить</button>
-        <a [routerLink]="['/',advertisementId$ | async]" class="btn btn-outline-secondary">Отмена</a>
-      </ng-container>
+      </ul>
     </div>
+    <!-- Колонка 1 (конец) -->
+
+    <!-- *****************************************************************************
+        *****************************************************************************-->
+
+    <!-- Колонка 2 (начало) -->
+    <div class="col">
+
+      <div class="card">
+        <div class="card-body">
+          <h1 class="mb-4">Редактировать объявление</h1>
+          <ng-container [formGroup]="form">
+
+            <!-- Название объявления -->
+            <div class="form-group">
+              <label for="title">Название *</label>
+              <input type="text" class="form-control" id="title" formControlName="title" placeholder="Введите название" autofocus [class.is-invalid]="title.invalid">
+            </div>
+
+            <!-- Текст объявления -->
+            <div class="form-group">
+              <label for="body">Описание *</label>
+              <textarea
+                class="form-control"
+                id="body"
+                formControlName="body"
+                placeholder="Введите описание"
+                autofocus [class.is-invalid]="body.invalid"
+                rows="8">
+              </textarea>
+            </div>
+
+            <!-- Цена -->
+            <div class="form-group">
+              <label for="price">Цена *</label>
+              <input type="text"
+                class="form-control"
+                id="price"
+                formControlName="price"
+                placeholder="Введите цену"
+                autofocus [class.is-invalid]="price.invalid"
+                rows="1">
+            </div>
+
+            <!-- Категория -->
+            <div class="form-group">
+              <label for="categoryId">Категория *</label>
+              <select class="form-control custom-select" id="categoryId" formControlName="categoryId" autofocus [class.is-invalid]="categoryId.invalid"
+                      *ngIf="categories$ | async as categories">
+                <option [value]="null">Выберите категорию</option>
+                <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+              </select>
+            </div>
+
+            <!-- Регион -->
+            <div class="form-group">
+              <label for="regionId">Регион</label>
+              <select class="form-control custom-select" id="regionId" formControlName="regionId" autofocus [class.is-invalid]="regionId.invalid"
+                  *ngIf="regions$ | async as regions">
+                <option [value]="null">Выберите регион</option>
+                <option *ngFor="let region of regions" [value]="region.id">{{region.name}}</option>
+              </select>
+            </div>
+
+            <!-- Адрес -->
+            <div class="form-group">
+              <label for="address">Адрес</label>
+              <input type="text" class="form-control" id="address" formControlName="address" placeholder="Введите название" autofocus [class.is-invalid]="address.invalid">
+            </div>
+
+            <!-- Таги -->
+            <div class="form-group">
+              <label for="input_tags">Введите тэги</label>
+              <input type="text" class="form-control" id="input_tags" formControlName="input_tags" placeholder="Введите тэги">
+            </div>
+
+            <!-- Кнопка "Сохранить" -->
+            <button type="submit"
+              class="btn btn-primary mr-2"
+              [disabled]="form.invalid"
+              (click)="submit()">
+              Сохранить
+            </button>
+            
+            <!-- Кнопка "Отмена" -->
+            <a [routerLink]="['/',advertisementId$ | async]"
+              class="btn btn-outline-secondary">
+              Отмена
+            </a>
+
+          </ng-container>
+        </div>
+      </div>
+
+    </div>
+    <!-- Колонка 2 (конец) -->
+
+    <!-- *****************************************************************************
+    *****************************************************************************-->
+
+    <!-- Выдача тагов справа колонкой -->
+    <!-- Колонка 3 (начало) -->
+    <div *ngIf="tags$ | async as tags" class="col-1">  
+      <ul>
+        <div>Поиск по тагам</div>
+      </ul>
+      <ul>  
+        <div *ngFor="let tag of tags">
+          <a class="badge badge-secondary" 
+            role="button" 
+            (click)="getContentByTag(tag.body)">{{tag.body}}
+          </a>
+          &nbsp;&nbsp;
+        </div>
+      </ul>
+    </div>
+    <!-- Колонка 3 (конец) -->
+
   </div>
+  <!-- Строка (начало) -->
+
 </div>
-</div>
-</div>
+<!-- "container" (конец) -->
