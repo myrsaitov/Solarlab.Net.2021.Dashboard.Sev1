@@ -107,7 +107,7 @@
                 class="form-control"
                 id="address"
                 formControlName="address"
-                placeholder="Введите название"
+                placeholder="Введите адрес"
                 autofocus
                 [class.is-invalid]="address.invalid">
             </div>
@@ -120,6 +120,22 @@
                 id="input_tags"
                 formControlName="input_tags"
                 placeholder="Введите тэги">
+            </div>
+
+            <!-- Статус объявления -->
+            <div class="form-group">
+              <label for="status">Статус объявления</label>
+              <select class="form-control custom-select"
+                id="status"
+                formControlName="status"
+                autofocus
+                [class.is-invalid]="status.invalid">
+                <option [value]="0">Активно</option>
+                <option [value]="1">Приостановлено</option>
+                <option [value]="2">Черновик</option>
+                <option [value]="3">Удалено</option>
+                <option [value]="4">Недопустимое содержание</option>
+              </select>
             </div>
 
             <!-- Кнопка "Сохранить" -->

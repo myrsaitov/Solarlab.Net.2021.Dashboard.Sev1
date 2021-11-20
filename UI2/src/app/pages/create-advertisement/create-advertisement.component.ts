@@ -59,13 +59,13 @@ export class CreateAdvertisementComponent implements OnInit {
 
     // Валидаторы
     this.form = this.fb.group({
-      title: ['', Validators.required],
-      body: ['', Validators.required],
-      price: ['', Validators.pattern("[0-9,]*")],
+      title: ['', [Validators.required, Validators.maxLength(100)]],
+      body: ['', [Validators.required, Validators.maxLength(1000)]],
+      price: ['', [Validators.pattern("[0-9,]*"), Validators.maxLength(10)]],
       categoryId: [null, Validators.required],
       regionId: [localStorage.getItem('regionId'), [Validators.required]],
-      address: [''],
-      input_tags: [null],
+      address: ['', [Validators.maxLength(100)]],
+      input_tags: ['', [Validators.maxLength(50)]],
       status: [0, [Validators.required]],
     });
   }

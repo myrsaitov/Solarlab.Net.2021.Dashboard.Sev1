@@ -44,6 +44,7 @@ namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests
         /// <summary>
         /// Адрес
         /// </summary>
+        [MaxLength(100, ErrorMessage = "Максимальная длина адреса не должна превышать 100 символов")]
         public string Address { get; set; }
 
         /// <summary>

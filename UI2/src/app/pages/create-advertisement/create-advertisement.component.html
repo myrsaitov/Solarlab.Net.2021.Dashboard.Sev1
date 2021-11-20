@@ -107,7 +107,7 @@
                 class="form-control"
                 id="address"
                 formControlName="address"
-                placeholder="Введите название"
+                placeholder="Введите адрес"
                 autofocus
                 [class.is-invalid]="address.invalid">
             </div>
@@ -119,7 +119,9 @@
                 class="form-control"
                 id="input_tags"
                 formControlName="input_tags"
-                placeholder="Введите тэги">
+                placeholder="Введите тэги"
+                autofocus
+                [class.is-invalid]="input_tags.invalid">
             </div>
 
             <!-- Статус объявления -->
