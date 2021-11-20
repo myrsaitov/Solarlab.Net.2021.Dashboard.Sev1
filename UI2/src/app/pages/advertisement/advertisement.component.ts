@@ -45,6 +45,7 @@ export class AdvertisementComponent implements OnInit {
   categories: ICategory[];
   regions$: Observable<IRegion[]>;
   regions: IRegion[];
+  advertisementStatus: string;
 
   private commentsFilterSubject$ = new BehaviorSubject({
     contentId: 1,
@@ -129,6 +130,7 @@ export class AdvertisementComponent implements OnInit {
           }
 
           this.advertisement.category = category;
+          this.advertisementStatus = this.getStatusNameByValue(this.advertisement.status);
 
           });
         });
@@ -202,6 +204,7 @@ export class AdvertisementComponent implements OnInit {
     return this.form.get('commentBody');
   }
 
+  // Удалить комментарий
   delete_comment(){
     this.commentService.delete(1).pipe(take(1)).subscribe(() => {
       this.toastService.show('Комментарий успешено удален', {classname: 'bg-success text-light'});
@@ -239,6 +242,7 @@ export class AdvertisementComponent implements OnInit {
   }
 
 
+  // Добавить комментарий
   submit() {
 
 
