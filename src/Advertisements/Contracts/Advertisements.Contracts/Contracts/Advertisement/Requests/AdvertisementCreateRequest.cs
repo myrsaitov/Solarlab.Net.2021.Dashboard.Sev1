@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using sev1.Advertisements.Contracts.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests
 {
@@ -50,5 +51,11 @@ namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests
         /// </summary>
         [Required]
         public int? RegionId { get; set; }
+
+        /// <summary>
+        /// Статус объявления
+        /// </summary>
+        [Required]
+        public AdvertisementStatus Status { get; set; }
     }
 }

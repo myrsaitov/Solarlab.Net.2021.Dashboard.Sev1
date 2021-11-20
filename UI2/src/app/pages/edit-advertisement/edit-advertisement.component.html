@@ -36,7 +36,13 @@
             <!-- Название объявления -->
             <div class="form-group">
               <label for="title">Название *</label>
-              <input type="text" class="form-control" id="title" formControlName="title" placeholder="Введите название" autofocus [class.is-invalid]="title.invalid">
+              <input type="text"
+                class="form-control"
+                id="title"
+                formControlName="title"
+                placeholder="Введите название"
+                autofocus
+                [class.is-invalid]="title.invalid">
             </div>
 
             <!-- Текст объявления -->
@@ -67,33 +73,69 @@
             <!-- Категория -->
             <div class="form-group">
               <label for="categoryId">Категория *</label>
-              <select class="form-control custom-select" id="categoryId" formControlName="categoryId" autofocus [class.is-invalid]="categoryId.invalid"
-                      *ngIf="categories$ | async as categories">
+              <select class="form-control custom-select"
+                id="categoryId"
+                formControlName="categoryId"
+                autofocus
+                [class.is-invalid]="categoryId.invalid"
+                *ngIf="categories$ | async as categories">
                 <option [value]="null">Выберите категорию</option>
-                <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                <option *ngFor="let category of categories"
+                  [value]="category.id">{{category.name}}</option>
               </select>
             </div>
 
             <!-- Регион -->
             <div class="form-group">
               <label for="regionId">Регион</label>
-              <select class="form-control custom-select" id="regionId" formControlName="regionId" autofocus [class.is-invalid]="regionId.invalid"
-                  *ngIf="regions$ | async as regions">
+              <select class="form-control custom-select"
+                id="regionId"
+                formControlName="regionId"
+                autofocus
+                [class.is-invalid]="regionId.invalid"
+                *ngIf="regions$ | async as regions">
                 <option [value]="null">Выберите регион</option>
-                <option *ngFor="let region of regions" [value]="region.id">{{region.name}}</option>
+                <option *ngFor="let region of regions"
+                  [value]="region.id">{{region.name}}</option>
               </select>
             </div>
 
             <!-- Адрес -->
             <div class="form-group">
               <label for="address">Адрес</label>
-              <input type="text" class="form-control" id="address" formControlName="address" placeholder="Введите название" autofocus [class.is-invalid]="address.invalid">
+              <input type="text"
+                class="form-control"
+                id="address"
+                formControlName="address"
+                placeholder="Введите название"
+                autofocus
+                [class.is-invalid]="address.invalid">
             </div>
 
             <!-- Таги -->
             <div class="form-group">
               <label for="input_tags">Введите тэги</label>
-              <input type="text" class="form-control" id="input_tags" formControlName="input_tags" placeholder="Введите тэги">
+              <input type="text"
+                class="form-control"
+                id="input_tags"
+                formControlName="input_tags"
+                placeholder="Введите тэги">
+            </div>
+
+            <!-- Статус объявления -->
+            <div class="form-group">
+              <label for="status">Статус объявления</label>
+              <select class="form-control custom-select"
+                id="status"
+                formControlName="status"
+                autofocus
+                [class.is-invalid]="status.invalid">
+                <option [value]="0">Активно</option>
+                <option [value]="1">Приостановлено</option>
+                <option [value]="2">Черновик</option>
+                <option [value]="3">Удалено</option>
+                <option [value]="4">Недопустимое содержание</option>
+              </select>
             </div>
 
             <!-- Кнопка "Сохранить" -->

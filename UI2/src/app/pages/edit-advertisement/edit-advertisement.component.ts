@@ -67,7 +67,8 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       categoryId: ['', Validators.required],
       regionId: ['1', [Validators.required]],
       address: [''],
-      input_tags: ['']
+      input_tags: [''],
+      status: ['', [Validators.required]],
     });
     this.advertisementId$.pipe(switchMap(advertisementId => {
       return this.advertisementService.getAdvertisementById(advertisementId);
@@ -80,6 +81,7 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       this.regionId.patchValue(advertisement.regionId);
       this.address.patchValue(advertisement.address);
       this.tagstr = "";
+      this.status.patchValue(advertisement.status);
       advertisement.tags.forEach(function (value){
         this.tagstr +=' ' + value;
       },this);
@@ -97,33 +99,15 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
     this.destroy$.unsubscribe();
   }
 
-  get title() {
-    return this.form.get('title');
-  }
-
-  get body() {
-    return this.form.get('body');
-  }
-
-  get price() {
-    return this.form.get('price');
-  }
-  
-  get categoryId() {
-    return this.form.get('categoryId');
-  }
-
-  get regionId() {
-    return this.form.get('regionId');
-  }
-
-  get address() {
-    return this.form.get('address');
-  }
-
-  get input_tags() {
-    return this.form.get('input_tags');
-  }
+  // Возвращает значение c формы соответсвующего поля
+  get title() { return this.form.get('title'); }
+  get body() { return this.form.get('body'); }
+  get price() { return this.form.get('price'); }
+  get categoryId() { return this.form.get('categoryId'); }
+  get regionId() { return this.form.get('regionId'); }
+  get address() { return this.form.get('address'); }
+  get input_tags() { return this.form.get('input_tags'); }
+  get status() { return this.form.get('status'); }
 
   // Обработка события нажатия на кнопку
   submit() {
@@ -162,6 +146,7 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
         categoryId: +this.categoryId.value,
         regionId: this.regionId.value,
         address: this.address.value,
+        status: this.status.value,
       };
       this.uri = '/' + model.id;
       return this.advertisementService.edit(new EditAdvertisement(model));

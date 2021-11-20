@@ -65,7 +65,8 @@ export class CreateAdvertisementComponent implements OnInit {
       categoryId: [null, Validators.required],
       regionId: [localStorage.getItem('regionId'), [Validators.required]],
       address: [''],
-      input_tags: [null]
+      input_tags: [null],
+      status: [0, [Validators.required]],
     });
   }
 
@@ -77,6 +78,7 @@ export class CreateAdvertisementComponent implements OnInit {
   get regionId() { return this.form.get('regionId'); }
   get address() { return this.form.get('address'); }
   get input_tags() { return this.form.get('input_tags'); }
+  get status() { return this.form.get('status'); }
 
   getContentByTag(tag: string){
     this.router.navigate(['/'], { queryParams: { tag: tag } });
@@ -111,7 +113,8 @@ export class CreateAdvertisementComponent implements OnInit {
       categoryId: +this.categoryId.value,
       regionId: this.regionId.value,
       address: this.address.value,
-      tagBodies: arrayOfStrings
+      tagBodies: arrayOfStrings,
+      status: this.status.value,
     };
 
     // Отправлет DTO объявления на бэк
