@@ -53,6 +53,8 @@
 
           <!-- Подзаголовок карточки (начало) -->
           <div class="card-header d-flex">
+
+            <!-- Категория объявления -->
             <p *ngIf="advertisement?.categoryId">
               Категория объявления: 
               <a class="badge badge-secondary" 
@@ -61,6 +63,25 @@
                 {{getCategoryNameById(advertisement.categoryId)}}
               </a>
             </p>
+
+            <!-- Статус объявления -->
+            <div class="align-self-center ml-auto" >
+              <div class="form-group">
+                <label for="status">Статус:</label>
+                <select class="form-control custom-select"
+                  id="status"
+                  formControlName="status"
+                  autofocus
+                  value = "0">
+                  <option [value]="0">Активно</option>
+                  <option [value]="1">Приостановлено</option>
+                  <option [value]="2">Черновик</option>
+                  <option [value]="3">Удалено</option>
+                  <option [value]="4">Недопустимое содержание</option>
+                </select>
+              </div>
+            </div>
+
           </div>
           <!-- Подзаголовок карточки (конец) -->
 

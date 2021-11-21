@@ -97,9 +97,11 @@ export class AdvertisementComponent implements OnInit {
     });
     this.regions$.subscribe(regions => this.regions = regions);
 
+
     // Валидация формы
     this.form = this.fb.group({
-      commentBody: ['', Validators.required]
+      commentBody: ['', Validators.required],
+      status: ['', Validators.required]
     });
 
     this.route.params.pipe(pluck('id')).subscribe(advertisementId => {
@@ -110,6 +112,9 @@ export class AdvertisementComponent implements OnInit {
           return;
         }
         this.advertisement = advertisement;
+        
+        // Устанавливаем значение статуса на форме
+        this.status.patchValue(advertisement.status);
 
         // Возвращает UserName пользоватeля по идентификатору
         this.advertisementOwnerName =  this.getUserNameById(advertisement.ownerId);
@@ -161,7 +166,7 @@ export class AdvertisementComponent implements OnInit {
   // Возвращает имя региона по идентификатору
   getRegionNameById(regionId: number){
     return this.regions.find(s => s.id === regionId).name;
-  }
+ }
 
   // Возвращает статус объявления по значению
   getStatusNameByValue(value: number){
@@ -192,6 +197,8 @@ export class AdvertisementComponent implements OnInit {
       } 
     } 
   }
+
+  get status() { return this.form.get('status'); }
 
   updateCommentsFilterPage(page) {
     this.commentsFilterSubject$.next({

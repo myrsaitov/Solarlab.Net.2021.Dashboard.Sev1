@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
-import {EMPTY, Observable} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IRegion } from '../models/region/region-model';
 import { IRegionFilter } from '../models/region/region-filter.model';
 import { GetPagedRegionResponseModel } from '../models/region/get-paged-region-response-model';
+import { EMPTY, Observable } from 'rxjs';
 
 // The @Injectable() decorator specifies that Angular can use this class in the DI system.
 // providedIn: 'root', means that the Service is visible throughout the application.
@@ -42,7 +42,6 @@ export class RegionService {
         .subscribe(region => {
           if (region !== null) {
             observer.next(region.items)
-            console.log(region)
           }
         });
     })
