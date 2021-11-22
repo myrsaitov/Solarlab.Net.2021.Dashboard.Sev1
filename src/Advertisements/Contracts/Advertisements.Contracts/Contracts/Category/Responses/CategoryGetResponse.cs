@@ -19,5 +19,10 @@
         /// Id родительской категории
         /// </summary>
         public int? ParentCategoryId { get; set; }
+
+        /// <summary>
+        /// Количество объявлений в базе по данной категории
+        /// </summary>
+        public int? Count { get; set; }
     }
 }

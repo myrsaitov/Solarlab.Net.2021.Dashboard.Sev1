@@ -14,7 +14,7 @@
         <div *ngFor="let category of categories">
           <a class="badge badge-secondary" 
             role="button" 
-            (click)="getContentByCategoryId(category.id)">{{category.name}}
+            (click)="getContentByCategoryId(category.id)">{{category.name}}({{category.count}})
           </a>
           &nbsp;&nbsp;
         </div>
@@ -174,7 +174,7 @@
         <div *ngFor="let tag of tags">
           <a class="badge badge-secondary" 
             role="button" 
-            (click)="getContentByTag(tag.body)">{{tag.body}}
+            (click)="getContentByTag(tag.body)">{{tag.body}}({{tag.count}})
           </a>
           &nbsp;&nbsp;
         </div>

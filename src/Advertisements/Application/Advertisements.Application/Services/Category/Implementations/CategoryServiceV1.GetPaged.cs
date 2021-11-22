@@ -50,7 +50,7 @@ namespace Sev1.Advertisements.AppServices.Services.Category.Implementations
             }
 
             // Если есть хоть одно
-            var entities = await _categoryRepository.GetPaged(
+            var entities = await _categoryRepository.GetPagedWhithAdvertisments(
                 offset, 
                 request.PageSize, 
                 cancellationToken

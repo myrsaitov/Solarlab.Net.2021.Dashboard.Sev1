@@ -11,9 +11,8 @@ namespace Sev1.Advertisements.AppServices.Services.Tag.Repositories
     public interface ITagRepository : IRepository<Domain.Tag, int?>
     {
         /// <summary>
-        /// Возвращает объявления с пагинацией и фильтром
+        /// Возвращает таги с пагинацией
         /// </summary>
-        /// <param name="predicate">Параметры фильтра</param>
         /// <param name="offset">Сколько объявлений пропущено</param>
         /// <param name="limit">Количество объявлений на странице</param>
         /// <param name="cancellationToken">Маркёр отмены</param>

@@ -1,4 +1,5 @@
 ﻿using Sev1.Advertisements.Domain.Base.Repositories;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,6 +17,21 @@ namespace Sev1.Advertisements.AppServices.Services.Category.Repositories
         /// <param name="id">Идентификатор категории</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public Task<Domain.Category> FindByIdWithParentAndChilds(int? id, CancellationToken cancellationToken);
+        public Task<Domain.Category> FindByIdWithParentAndChilds(
+            int? id,
+            CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Возвращает категории с пагинацией
+        /// </summary>
+        /// <param name="offset">Сколько объявлений пропущено</param>
+        /// <param name="limit">Количество объявлений на странице</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<IEnumerable<Domain.Category>> GetPagedWhithAdvertisments(
+            int offset,
+            int limit,
+            CancellationToken cancellationToken);
+
     }
 }
