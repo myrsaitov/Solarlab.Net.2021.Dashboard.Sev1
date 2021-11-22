@@ -39,7 +39,11 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
             }
 
             // Считыватем URI запроса из конфига "appsettings.json"
+#if DEBUG
             string uri = _configuration["UserValidateApiClientUri"];
+#else
+            string uri = _configuration["UserValidateApiClientUri_DockerNoSSL"];
+#endif
             if (string.IsNullOrWhiteSpace(uri))
             {
                 throw new Exception("API-клиент: адрес не задан");
