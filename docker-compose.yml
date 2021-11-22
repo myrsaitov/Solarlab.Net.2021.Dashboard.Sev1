@@ -7,7 +7,7 @@ services:
         context: ./
         dockerfile: Dockerfile_Accounts
     ports:
-      - 49171:80
+      - 44377:80
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
@@ -17,7 +17,7 @@ services:
         context: ./
         dockerfile: Dockerfile_Advertisements
     ports:
-      - 49172:80
+      - 44378:80
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
@@ -37,7 +37,29 @@ services:
         context: ./
         dockerfile: Dockerfile_NotificationsEmail
     ports:
-      - 49174:80
+      - 5003:80
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  eventbus:
+    image: skarfe/eventbus
+    build:
+        context: ./
+        dockerfile: Dockerfile_EventBus
+    ports:
+      - 49172:80
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - notificationsemail
+
+  userfiles:
+    image: skarfe/userfiles
+    build:
+        context: ./
+        dockerfile: Dockerfile_UserFiles
+    ports:
+      - 44379:80
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
