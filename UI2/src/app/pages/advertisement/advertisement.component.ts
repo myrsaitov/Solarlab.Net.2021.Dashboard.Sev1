@@ -252,32 +252,22 @@ export class AdvertisementComponent implements OnInit {
     this.modalService.open(content, {centered: true});
   }
 
-  onChange(statusValue) {
-   /* // Создает DTO объявления
-    const model: Partial<IEditAdvertisementStatus> = {
-      id: this.advertisement.id,
-      status: this.status.value
-    };
+  onChange() {
 
-    
-    this.advertisementService.editStatus(
-      new EditAdvertisementStatus(model));
+    this.advertisementId$.pipe(switchMap(id => {
+      const model: Partial<IEditAdvertisementStatus> = {
+        id: +id,
+        status: this.status.value,
+      };
 
-    this.toastService.show(
-      'Статус объявления успешено обновлён!',
-      {classname: 'bg-success text-light'});*/
+      return this.advertisementService.editStatus(new EditAdvertisementStatus(model));
+    }), take(1)).subscribe((res) => {
 
-      this.advertisementId$.pipe(switchMap(id => {
-        const model: Partial<IEditAdvertisementStatus> = {
-          id: +id,
-          status: this.status.value,
-        };
-
-        return this.advertisementService.editStatus(new EditAdvertisementStatus(model));
-      }), take(1)).subscribe(() => {
+        console.log(res);
         // Выдаёт всплывающее сообщение о результате
-        this.toastService.show('Объявление успешено обновлено', {classname: 'bg-success text-light'});
-
+        this.toastService.show(
+          'Статус успешно обновлён!',
+          {classname: 'bg-success text-light'});
       });
   }
 

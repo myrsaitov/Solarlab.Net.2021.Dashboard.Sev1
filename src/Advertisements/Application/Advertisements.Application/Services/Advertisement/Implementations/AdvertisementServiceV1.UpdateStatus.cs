@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces;
@@ -9,8 +8,6 @@ using Sev1.Advertisements.AppServices.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 using Sev1.Advertisements.Domain.Base.Exceptions;
 using sev1.Advertisements.Contracts.Enums;
-using Sev1.Advertisements.AppServices.Services.Region.Exceptions;
-using Sev1.Advertisements.AppServices.Services.Category.Exceptions;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
@@ -45,45 +42,65 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
                 throw new AdvertisementNotFoundException(request.Id);
             }
 
-            // Обычный пользователь может обновлять статус только свои собственные объявления
-            var isOwnerId = (advertisement.OwnerId == _userProvider.GetUserId());
-            if (!isOwnerId)
-            {
-                throw new NoRightsException("Вы не создали это объявление!");
-            }
-
-            // Модератор может только ставить статус "Не соответсвует нормам"
+            var isAdministrator = _userProvider.IsInRole("Administrator");
             var isModerator = _userProvider.IsInRole("Moderator");
-            if ((request.Status != AdvertisementStatus.NotAllowed)&&
-                (isModerator))
-            {
-                throw new ConflictException("Вы не можете установить этот статус!");
-            }
+            var isOwnerId = (advertisement.OwnerId == _userProvider.GetUserId());
+            var isUser = _userProvider.IsInRole("User");
 
             // Администратор может только ставить статус "Приостановлено",
             // если до этого было "Не соответсвует нормам"
-            var isAdministrator = _userProvider.IsInRole("Administrator");
-            if (((advertisement.Status != AdvertisementStatus.NotAllowed) ||
-                (request.Status != AdvertisementStatus.Stopped)) &&
-                (isAdministrator))
+            if (isAdministrator)
             {
-                throw new ConflictException("Вы не можете установить этот статус!");
+                if (((advertisement.Status != AdvertisementStatus.NotAllowed) ||
+                    (request.Status != AdvertisementStatus.Stopped)))
+                {
+                    throw new ConflictException("Вы не можете установить этот статус!");
+                }
+                else
+                {
+                    // Обновляет статус и время редактирования
+                    advertisement.Status = request.Status;
+                    advertisement.UpdatedAt = DateTime.UtcNow;
+                }
             }
 
-            // Обычный пользователь не может изменить
-            // установленный модератором статус "Не соответсвует нормам"
-            var isUser = _userProvider.IsInRole("User");
-            if ((advertisement.Status == AdvertisementStatus.NotAllowed) &&
-                (isUser))
+            // Модератор может только ставить статус "Не соответсвует нормам"
+            else if (isModerator)
             {
-                throw new ConflictException("Вы не можете изменить этот статус!");
+                if ((request.Status != AdvertisementStatus.NotAllowed))
+                {
+                    throw new ConflictException("Вы не можете установить этот статус!");
+                }
+                else
+                {
+                    // Обновляет статус и время редактирования
+                    advertisement.Status = request.Status;
+                    advertisement.UpdatedAt = DateTime.UtcNow;
+                }
             }
 
-            // Обновляет статус
-            advertisement.Status = request.Status;
+            // Обычный пользователь может обновлять статус только свои собственные объявления
+            else if (isOwnerId)
+            {
+                if (!isOwnerId)
+                {
+                    throw new NoRightsException("Вы не создали это объявление!");
+                }
+                else
+                {
+                    // Обычный пользователь не может изменить
+                    // установленный модератором статус "Не соответсвует нормам"
+                    if ((advertisement.Status == AdvertisementStatus.NotAllowed) &&
+                        (isUser))
+                    {
+                        throw new ConflictException("Вы не можете изменить этот статус!");
+                    }
 
-            // Обновляет время редактирования
-            advertisement.UpdatedAt = DateTime.UtcNow;
+                    // Обновляет статус и время редактирования
+                    advertisement.Status = request.Status;
+                    advertisement.UpdatedAt = DateTime.UtcNow;
+                }
+            }
 
             // Сохраняет в базе
             await _advertisementRepository.Save(

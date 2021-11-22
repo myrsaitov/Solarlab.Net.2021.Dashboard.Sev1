@@ -72,8 +72,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Validators
 
             // Статус объявления
             RuleFor(x => x.Status)
-                .NotNull()
-                .NotEmpty().WithMessage("Status не заполнен!");
+                .NotNull().WithMessage("Status не заполнен!");
         }
     }
 }

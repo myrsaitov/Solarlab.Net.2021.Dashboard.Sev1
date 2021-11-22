@@ -10,7 +10,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
     public partial class AdvertisementController
     {
         /// <summary>
-        /// Редактирует объявление
+        /// Изменяет статус объявления
         /// </summary>
         /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>

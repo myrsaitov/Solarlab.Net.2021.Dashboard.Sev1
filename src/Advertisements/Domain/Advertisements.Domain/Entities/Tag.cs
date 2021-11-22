@@ -14,11 +14,6 @@ namespace Sev1.Advertisements.Domain
         public string Body { get; set; }
 
         /// <summary>
-        /// Количество объявлений, связанных с этим ярлыком
-        /// </summary>
-        public int? Count { get; set; }
-
-        /// <summary>
         /// Объявления, связанные с этим ярлыком
         /// </summary>
         public virtual ICollection<Advertisement> Advertisements { get; set; }

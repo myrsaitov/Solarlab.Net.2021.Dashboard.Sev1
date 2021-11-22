@@ -38,14 +38,40 @@
             <!-- Заголовок объявления -->
             <div>
               <h1 class="h3">{{advertisement.title}}</h1>
-              <a class="badge badge-secondary" *ngIf="advertisement.category?.name" role="button" (click)="getContentByCategoryId(advertisement.categoryId)">{{advertisement.category?.name}}</a>
+              <a class="badge badge-secondary"
+                *ngIf="advertisement.category?.name"
+                role="button"
+                (click)="getContentByCategoryId(advertisement.categoryId)">{{advertisement.category?.name}}</a>
               <a *ngFor="let tag of advertisement.tags">&nbsp;&nbsp;<a class="badge badge-secondary" role="button" (click)="getContentByTag(tag)">{{tag}}</a></a>
             </div>
 
-            <!-- Кнопки "Редактировать" и "Удалить" объявление -->
+            <!-- Кнопки "Редактировать" и "Удалить", а также "Статус" -->
             <div class="align-self-center ml-auto" *ngIf="isAuth">
-              <a class="btn btn-outline-secondary mr-2" [routerLink]="['/edit', advertisement.id]" *ngIf="isEditable">Редактировать</a>
-              <button *ngIf="isEditable" class="btn btn-outline-danger" (click)="openDeleteModal(content)">Удалить</button>
+
+              <a class="btn btn-outline-secondary mr-2"
+                [routerLink]="['/edit', advertisement.id]"
+                *ngIf="isEditable">Редактировать</a>
+
+              <button *ngIf="isEditable"
+                class="btn btn-outline-danger"
+                (click)="openDeleteModal(content)">Удалить</button>
+
+              <div class="form-group">
+                <label for="status">Статус:</label>
+                <select class="form-control custom-select"
+                  id="status"
+                  formControlName="status"
+                  autofocus
+                  (change)="onChange($event.target.value)"
+                  value = "0">
+                  <option [value]="0">Активно</option>
+                  <option [value]="1">Приостановлено</option>
+                  <option [value]="2">Черновик</option>
+                  <option [value]="3">Удалено</option>
+                  <option [value]="4">Недопустимое содержание</option>
+                </select>
+              </div>
+
             </div>
 
           </div>
@@ -63,25 +89,6 @@
                 {{getCategoryNameById(advertisement.categoryId)}}
               </a>
             </p>
-
-            <!-- Статус объявления -->
-            <div class="align-self-center ml-auto" >
-              <div class="form-group">
-                <label for="status">Статус:</label>
-                <select class="form-control custom-select"
-                  id="status"
-                  formControlName="status"
-                  autofocus
-                  (change)="onChange($event.target.value)"
-                  value = "0">
-                  <option [value]="0">Активно</option>
-                  <option [value]="1">Приостановлено</option>
-                  <option [value]="2">Черновик</option>
-                  <option [value]="3">Удалено</option>
-                  <option [value]="4">Недопустимое содержание</option>
-                </select>
-              </div>
-            </div>
 
           </div>
           <!-- Подзаголовок карточки (конец) -->

@@ -119,7 +119,7 @@
         <div *ngFor="let tag of tags">
           <a class="badge badge-secondary" 
             role="button" 
-            (click)="getContentByTag(tag.body)">{{tag.body}}
+            (click)="getContentByTag(tag.body)">{{tag.body}}({{tag.count}})
           </a>
           &nbsp;&nbsp;
         </div>

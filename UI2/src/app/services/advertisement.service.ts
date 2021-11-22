@@ -141,7 +141,7 @@ export class AdvertisementService {
       }));
   }
 
-  // Редактирует объявление
+  // Изменяет статус объявления
   editStatus(model: IEditAdvertisementStatus) {
     return this.http.put(`${this.ROOT_URL}/update-status`, model)
       .pipe(catchError((err) => {
