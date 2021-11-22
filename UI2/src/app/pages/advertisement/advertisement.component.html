@@ -14,7 +14,7 @@
         <div *ngFor="let category of categories">
           <a class="badge badge-secondary" 
             role="button" 
-            (click)="getContentByCategoryId(category.id)">{{category.name}}({{category.count}})
+            (click)="getAdvertisementCategoryId(category.id)">{{category.name}}({{category.count}})
           </a>
           &nbsp;&nbsp;
         </div>
@@ -41,7 +41,7 @@
               <a class="badge badge-secondary"
                 *ngIf="advertisement.category?.name"
                 role="button"
-                (click)="getContentByCategoryId(advertisement.categoryId)">{{advertisement.category?.name}}</a>
+                (click)="getAdvertisementCategoryId(advertisement.categoryId)">{{advertisement.category?.name}}</a>
               <a *ngFor="let tag of advertisement.tags">&nbsp;&nbsp;<a class="badge badge-secondary" role="button" (click)="getContentByTag(tag)">{{tag}}</a></a>
             </div>
 
@@ -85,7 +85,7 @@
               Категория объявления: 
               <a class="badge badge-secondary" 
                 role="button" 
-                (click)="getContentByCategoryId(advertisement.categoryId)">
+                (click)="getAdvertisementCategoryId(advertisement.categoryId)">
                 {{getCategoryNameById(advertisement.categoryId)}}
               </a>
             </p>

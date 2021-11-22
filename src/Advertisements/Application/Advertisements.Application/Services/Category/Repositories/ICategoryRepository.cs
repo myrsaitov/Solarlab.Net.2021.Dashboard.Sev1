@@ -28,9 +28,19 @@ namespace Sev1.Advertisements.AppServices.Services.Category.Repositories
         /// <param name="limit">Количество объявлений на странице</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<IEnumerable<Domain.Category>> GetPagedWhithAdvertisments(
+        Task<ICollection<Domain.Category>> GetPagedWhithAdvertisments(
             int offset,
             int limit,
+            CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Возвращает все чайлды категории
+        /// </summary>
+        /// <param name="categoryId">Количество объявлений на странице</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<ICollection<Domain.Category>> GetAllChilds(
+            int? categoryId,
             CancellationToken cancellationToken);
 
     }

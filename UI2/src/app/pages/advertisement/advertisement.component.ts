@@ -229,7 +229,7 @@ export class AdvertisementComponent implements OnInit {
   getContentByTag(tag: string){
     this.router.navigate(['/'], { queryParams: { tag: tag } });
   }
-  getContentByCategoryId(categoryId: number){
+  getAdvertisementCategoryId(categoryId: number){
     this.router.navigate(['/'], { queryParams: { categoryId: categoryId } });
   }
   getContentByUserName(userName: string){

@@ -16,20 +16,16 @@ namespace Sev1.Advertisements.MapsterMapper.MapProfiles
         /// <returns></returns>
         private static int Count(Domain.Category src)
         {
-            /*if (src.ParentCategory is null)
+            if (src.Advertisements is not null)
             {
-                foreach(cat in src.ChildCategories)
-
-                var count = src.Advertisements
+                return src.Advertisements
                     .Where(a => a.Status == AdvertisementStatus.Active)
                     .Count();
             }
-            return count;*/
-
-            var count = src.Advertisements
-                    .Where(a => a.Status == AdvertisementStatus.Active)
-                    .Count();
-            return count;
+            else
+            {
+                return 0;
+            }
         }
 
         public static TypeAdapterConfig GetConfiguredMappingConfig()
@@ -47,7 +43,7 @@ namespace Sev1.Advertisements.MapsterMapper.MapProfiles
 
             config.NewConfig<Domain.Category, CategoryGetResponse>()
                 .Map(dest => dest.Name, src => src.Name)
-                .Map(dest => dest.ParentCategoryId, src => src.ParentCategoryId)
+                .Map(dest => dest.ChildCategoriesId, src => src.ChildCategories.Select(a => a.Id).ToList())
                 .Map(dest => dest.Count, src => Count(src));
 
             return config;

@@ -1,4 +1,6 @@
-﻿namespace Sev1.Advertisements.Contracts.Contracts.Category.Responses
+﻿using System.Collections.Generic;
+
+namespace Sev1.Advertisements.Contracts.Contracts.Category.Responses
 {
     /// <summary>
     /// DTO ответа при запросе категории по идентификатору
@@ -16,13 +18,18 @@
         public string Name { get; set; }
 
         /// <summary>
-        /// Id родительской категории
+        /// Количество объявлений в базе по данной категории
+        /// </summary>
+        public int? Count { get; set; }
+
+        /// <summary>
+        /// Ссылка на родительскую категорию
         /// </summary>
         public int? ParentCategoryId { get; set; }
 
         /// <summary>
-        /// Количество объявлений в базе по данной категории
+        /// Коллекция связанных подкатегорий
         /// </summary>
-        public int? Count { get; set; }
+        public int?[] ChildCategoriesId { get; set; }
     }
 }

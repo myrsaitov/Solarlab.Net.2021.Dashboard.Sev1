@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Sev1.Advertisements.AppServices.Services.Category.Interfaces;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 using Sev1.Advertisements.Contracts.Contracts.Category.Responses;
-using Sev1.Advertisements.AppServices.Services.Tag.Validators;
 using Sev1.Advertisements.AppServices.Services.Category.Validators;
 using Sev1.Advertisements.AppServices.Services.Category.Exceptions;
 
@@ -55,6 +54,14 @@ namespace Sev1.Advertisements.AppServices.Services.Category.Implementations
                 request.PageSize, 
                 cancellationToken
             );
+
+            // Найти чайлдов каждой категории
+            foreach(var cat in entities)
+            {
+                cat.ChildCategories = await _categoryRepository.GetAllChilds(
+                    cat.Id,
+                    cancellationToken);
+            }
 
             // Поместить массив объектов в обёртку
             return new CategoryGetPagedResponse

@@ -12,9 +12,13 @@
       </ul>
       <ul>  
         <div *ngFor="let category of categories">
+          <!-- Группы категорий -->
+          <h5 *ngIf="!category.parentCategoryId"><br><br>{{category.name}}</h5>
+          <!-- Подкатегории -->
           <a class="badge badge-secondary" 
+            *ngIf="category.parentCategoryId"
             role="button" 
-            (click)="getContentByCategoryId(category.id)">{{category.name}}({{category.count}})
+            (click)="getAdvertisementCategoryId(category.id)">{{category.name}}({{category.count}})
           </a>
           &nbsp;&nbsp;
         </div>

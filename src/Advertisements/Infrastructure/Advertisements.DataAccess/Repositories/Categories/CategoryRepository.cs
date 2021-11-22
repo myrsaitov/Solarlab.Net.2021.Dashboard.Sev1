@@ -26,9 +26,27 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
         }
 
-        public async Task<IEnumerable<Category>> GetPagedWhithAdvertisments(
+        public async Task<ICollection<Category>> GetPagedWhithAdvertisments(
             int offset,
             int limit,
+            CancellationToken cancellationToken)
+        {
+            var data = DbСontext
+                .Set<Category>()
+                .Include(a => a.Advertisements)
+                .Include(a => a.ParentCategory)
+                .Include(a => a.ChildCategories)
+                .AsNoTracking();
+
+            return await data
+                .OrderBy(e => e.Id)
+                .Skip(offset)
+                .Take(limit)
+                .ToListAsync(cancellationToken);
+        }
+
+        public async Task<ICollection<Category>> GetAllChilds(
+            int? categoryId,
             CancellationToken cancellationToken)
         {
             var data = DbСontext
@@ -38,8 +56,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
 
             return await data
                 .OrderBy(e => e.Id)
-                .Skip(offset)
-                .Take(limit)
+                .Where(a => a.ParentCategoryId == categoryId)
                 .ToListAsync(cancellationToken);
         }
     }

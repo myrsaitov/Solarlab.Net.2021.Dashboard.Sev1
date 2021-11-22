@@ -17,7 +17,7 @@ export class AdvertisementCardComponent {
   }
 
   // Отобразить объявления по заданной категории
-  getContentByCategoryId(categoryId: number){
+  getAdvertisementCategoryId(categoryId: number){
     this.router.navigate(['/'], { queryParams: { categoryId: categoryId } });
   }
 

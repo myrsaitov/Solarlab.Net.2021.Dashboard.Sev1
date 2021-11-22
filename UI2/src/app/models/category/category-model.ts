@@ -1,6 +1,7 @@
 export interface ICategory {
   id: number;
   name: string;
-  parentCategory: ICategory;
+  parentCategoryId: number;
+  childCategoriesId: number[];
   count: number;
 }

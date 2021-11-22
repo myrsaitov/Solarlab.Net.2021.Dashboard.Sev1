@@ -14,7 +14,7 @@
         <div *ngFor="let category of categories">
           <a class="badge badge-secondary" 
             role="button" 
-            (click)="getContentByCategoryId(category.id)">{{category.name}}({{category.count}})
+            (click)="getAdvertisementCategoryId(category.id)">{{category.name}}({{category.count}})
           </a>
           &nbsp;&nbsp;
         </div>
@@ -80,8 +80,15 @@
                 [class.is-invalid]="categoryId.invalid"
                 *ngIf="categories$ | async as categories">
                 <option [value]="null">Выберите категорию</option>
-                <option *ngFor="let category of categories"
-                  [value]="category.id">{{category.name}}</option>
+                <ng-container *ngFor="let category of categories">
+                  <optgroup *ngIf="!category.parentCategoryId" 
+                    label= "{{category.name}}">
+                    <ng-container *ngFor="let subcat of categories">
+                      <option *ngIf="subcat.parentCategoryId == category.id"
+                        [value]="subcat.id">{{subcat.name}}</option>
+                    </ng-container>
+                  </optgroup>
+                </ng-container>
               </select>
             </div>
 

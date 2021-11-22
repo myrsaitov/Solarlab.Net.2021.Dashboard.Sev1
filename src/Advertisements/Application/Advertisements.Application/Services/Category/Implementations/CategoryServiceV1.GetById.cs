@@ -39,6 +39,10 @@ namespace Sev1.Advertisements.AppServices.Services.Category.Implementations
                 throw new CategoryNotFoundException(id);
             }
 
+            category.ChildCategories = await _categoryRepository.GetAllChilds(
+                category.Id,
+                cancellationToken);
+
             // Возвращаем dto категории
             return _mapper.Map<CategoryGetResponse>(category);
         }

@@ -16,151 +16,151 @@ namespace Advertisements.DataAccess.Migrations
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Совокупность всех видов путей сообщения, транспортных средств, технических устройств и сооружений на путях сообщения, обеспечивающих процесс перемещения людей и грузов различного назначения из одного места в другое", 1, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8094), 100m, "Продам транспорт" });
+                values: new object[] { "Совокупность всех видов путей сообщения, транспортных средств, технических устройств и сооружений на путях сообщения, обеспечивающих процесс перемещения людей и грузов различного назначения из одного места в другое", 2, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9406), 100m, "Продам транспорт" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 2,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Основное назначение автомобиля заключается в совершении транспортной работы. Автомобильный транспорт в промышленно развитых странах занимает ведущее место по сравнению с другими видами транспорта по объёму перевозок пассажиров. Современный автомобиль состоит из 15—20 тысяч деталей, из которых 150—300 являются наиболее важными и требующими наибольших затрат в эксплуатации", 2, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8579), 400m, "Продам автомобиль" });
+                values: new object[] { "Основное назначение автомобиля заключается в совершении транспортной работы. Автомобильный транспорт в промышленно развитых странах занимает ведущее место по сравнению с другими видами транспорта по объёму перевозок пассажиров. Современный автомобиль состоит из 15—20 тысяч деталей, из которых 150—300 являются наиболее важными и требующими наибольших затрат в эксплуатации", 2, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9707), 400m, "Продам автомобиль" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 3,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Классические мотоциклы включают в себя двухколёсные, двухколёсные с боковой коляской, и трёхколёсные; в начале XXI века стали набирать популярность квадроциклы. Мотоциклы также подазделяются по своей конструкции и размерам: мопеды, мокики (имеют небольшой размер двигателя, как правило до 50 см³)", 3, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8583), 900m, "Продам мотоцикл" });
+                values: new object[] { "Классические мотоциклы включают в себя двухколёсные, двухколёсные с боковой коляской, и трёхколёсные; в начале XXI века стали набирать популярность квадроциклы. Мотоциклы также подазделяются по своей конструкции и размерам: мопеды, мокики (имеют небольшой размер двигателя, как правило до 50 см³)", 3, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9710), 900m, "Продам мотоцикл" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 4,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Классические мотоциклы включают в себя двухколёсные, двухколёсные с боковой коляской, и трёхколёсные; в начале XXI века стали набирать популярность квадроциклы. Мотоциклы также подазделяются по своей конструкции и размерам: мопеды, мокики (имеют небольшой размер двигателя, как правило до 50 см³)", 3, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8585), 1600m, "Продам мототехнику б/у" });
+                values: new object[] { "Классические мотоциклы включают в себя двухколёсные, двухколёсные с боковой коляской, и трёхколёсные; в начале XXI века стали набирать популярность квадроциклы. Мотоциклы также подазделяются по своей конструкции и размерам: мопеды, мокики (имеют небольшой размер двигателя, как правило до 50 см³)", 3, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9711), 1600m, "Продам мототехнику б/у" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 5,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Грузовой автомобиль (разг. грузовик) — автомобиль, предназначенный для перевозки грузов в кузове или на грузовой платформе. Для обобщённого обозначения машин, созданных на базе грузового автомобиля, используется термин грузовая техника.", 4, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8586), 2500m, "Продам грузовик б/у" });
+                values: new object[] { "Грузовой автомобиль (разг. грузовик) — автомобиль, предназначенный для перевозки грузов в кузове или на грузовой платформе. Для обобщённого обозначения машин, созданных на базе грузового автомобиля, используется термин грузовая техника.", 4, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9712), 2500m, "Продам грузовик б/у" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 6,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "За считанные месяцы были разработаны, изготовлены и подготовлены к участию во Всесоюзном мотопробеге пять мотоциклов пяти различных моделей. Наиболее удачными были мотоциклы — колоссы «Иж-1» и «Иж-2» с двухцилиндровыми V-образными двигателями рабочим объёмом 1200 см³ и максимальной мощностью 24 л. с. Для своего времени это были чрезвычайно оригинальные и передовые конструкции. Коленчатый вал двигателя располагался продольно, крутящий момент на заднее колесо передавался от трёхступенчатой коробки передач,", 4, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8587), 3600m, "Продам спецтехнику" });
+                values: new object[] { "За считанные месяцы были разработаны, изготовлены и подготовлены к участию во Всесоюзном мотопробеге пять мотоциклов пяти различных моделей. Наиболее удачными были мотоциклы — колоссы «Иж-1» и «Иж-2» с двухцилиндровыми V-образными двигателями рабочим объёмом 1200 см³ и максимальной мощностью 24 л. с. Для своего времени это были чрезвычайно оригинальные и передовые конструкции. Коленчатый вал двигателя располагался продольно, крутящий момент на заднее колесо передавался от трёхступенчатой коробки передач,", 4, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9713), 3600m, "Продам спецтехнику" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 7,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Недви́жимость — вид имущества, признаваемого в законодательном порядке недвижимым. К недвижимости по происхождению относятся земельные участки, участки недр и все, что прочно связано с землёй, то есть объекты, перемещение которых без несоразмерного ущерба их назначению невозможно, в том числе здания, сооружения, объекты незавершённого строительства.", 5, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8589), 4900m, "Продам недвижимость" });
+                values: new object[] { "Недви́жимость — вид имущества, признаваемого в законодательном порядке недвижимым. К недвижимости по происхождению относятся земельные участки, участки недр и все, что прочно связано с землёй, то есть объекты, перемещение которых без несоразмерного ущерба их назначению невозможно, в том числе здания, сооружения, объекты незавершённого строительства.", 6, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9715), 4900m, "Продам недвижимость" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 8,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Кварти́ра (от нем. Quartier[1]) — один из видов жилого помещения, состоящий из одной или нескольких смежных комнат а также в отдельных случаях с отдельным наружным выходом, составляющее отдельную часть дома.", 6, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8590), 6400m, "Продам квартиру" });
+                values: new object[] { "Кварти́ра (от нем. Quartier[1]) — один из видов жилого помещения, состоящий из одной или нескольких смежных комнат а также в отдельных случаях с отдельным наружным выходом, составляющее отдельную часть дома.", 6, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9716), 6400m, "Продам квартиру" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 9,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Кварти́ра (от нем. Quartier[1]) — один из видов жилого помещения, состоящий из одной или нескольких смежных комнат а также в отдельных случаях с отдельным наружным выходом, составляющее отдельную часть дома.", 7, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8591), 8100m, "Продам комнату" });
+                values: new object[] { "Кварти́ра (от нем. Quartier[1]) — один из видов жилого помещения, состоящий из одной или нескольких смежных комнат а также в отдельных случаях с отдельным наружным выходом, составляющее отдельную часть дома.", 7, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9717), 8100m, "Продам комнату" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 10,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Котте́дж (от англ. cottage) — индивидуальный городской или сельский малоэтажный (обычно двухэтажный) жилой дом с небольшим участком прилегающей земли[1] для постоянного или временного проживания одной нуклеарной семьи. Первый этаж занимают такие помещения как гостиная, кухня, санузел, котельная, часто гараж для легкового автомобиля;", 8, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8592), 10000m, "Продам дом" });
+                values: new object[] { "Котте́дж (от англ. cottage) — индивидуальный городской или сельский малоэтажный (обычно двухэтажный) жилой дом с небольшим участком прилегающей земли[1] для постоянного или временного проживания одной нуклеарной семьи. Первый этаж занимают такие помещения как гостиная, кухня, санузел, котельная, часто гараж для легкового автомобиля;", 8, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9718), 10000m, "Продам дом" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 11,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Котте́дж (от англ. cottage) — индивидуальный городской или сельский малоэтажный (обычно двухэтажный) жилой дом с небольшим участком прилегающей земли[1] для постоянного или временного проживания одной нуклеарной семьи. Первый этаж занимают такие помещения как гостиная, кухня, санузел, котельная, часто гараж для легкового автомобиля;", 8, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8593), 12100m, "Продам дачу" });
+                values: new object[] { "Котте́дж (от англ. cottage) — индивидуальный городской или сельский малоэтажный (обычно двухэтажный) жилой дом с небольшим участком прилегающей земли[1] для постоянного или временного проживания одной нуклеарной семьи. Первый этаж занимают такие помещения как гостиная, кухня, санузел, котельная, часто гараж для легкового автомобиля;", 8, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9720), 12100m, "Продам дачу" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 12,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Котте́дж (от англ. cottage) — индивидуальный городской или сельский малоэтажный (обычно двухэтажный) жилой дом с небольшим участком прилегающей земли[1] для постоянного или временного проживания одной нуклеарной семьи. Первый этаж занимают такие помещения как гостиная, кухня, санузел, котельная, часто гараж для легкового автомобиля;", 8, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8595), 14400m, "Продам котедж" });
+                values: new object[] { "Котте́дж (от англ. cottage) — индивидуальный городской или сельский малоэтажный (обычно двухэтажный) жилой дом с небольшим участком прилегающей земли[1] для постоянного или временного проживания одной нуклеарной семьи. Первый этаж занимают такие помещения как гостиная, кухня, санузел, котельная, часто гараж для легкового автомобиля;", 8, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9721), 14400m, "Продам котедж" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 13,
-                columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Возникновению электроники предшествовало открытие и изучение электричества, электромагнетизма, а далее изобретение радио. Поскольку радиопередатчики сразу же нашли применение (в первую очередь на кораблях и в военном деле), для них потребовалась элементная база, созданием и изучением которой и занялась электроника. Элементная база первого поколения была основана на электронных лампах. Соответственно получила развитие вакуумная электроника. Её развитию способствовало также изобретение телевидения и радаров, которые нашли широкое применение во время Второй мировой войны[2][3].Но электронные лампы обладали существенными недостатками. ", 9, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8626), 16900m, "Продам электронику" });
+                columns: new[] { "Body", "CreatedAt", "Price", "Title" },
+                values: new object[] { "Возникновению электроники предшествовало открытие и изучение электричества, электромагнетизма, а далее изобретение радио. Поскольку радиопередатчики сразу же нашли применение (в первую очередь на кораблях и в военном деле), для них потребовалась элементная база, созданием и изучением которой и занялась электроника. Элементная база первого поколения была основана на электронных лампах. Соответственно получила развитие вакуумная электроника. Её развитию способствовало также изобретение телевидения и радаров, которые нашли широкое применение во время Второй мировой войны[2][3].Но электронные лампы обладали существенными недостатками. ", new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9722), 16900m, "Продам электронику" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 14,
                 columns: new[] { "Body", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Аудиотехника (звуковая техника, звукотехника, аудиоэлектроника) — аппаратура (магнитофоны, ревербераторы, микшеры, усилители, ресиверы и пр.) и устройства (микрофоны, динамики и пр.), предназначенные для записи и воспроизведения аудио (звука).", new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8628), 19600m, "Продам аудиотехнику б/у" });
+                values: new object[] { "Аудиотехника (звуковая техника, звукотехника, аудиоэлектроника) — аппаратура (магнитофоны, ревербераторы, микшеры, усилители, ресиверы и пр.) и устройства (микрофоны, динамики и пр.), предназначенные для записи и воспроизведения аудио (звука).", new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9723), 19600m, "Продам аудиотехнику б/у" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 15,
                 columns: new[] { "Body", "CreatedAt", "Price", "Title" },
-                values: new object[] { "В середине 1980-х годов в СССР начали выпускать первые бытовые VHS- видеомагнитофоны «Электроника ВМ-12», которые стоили 1200 рублей (7-10 средних зарплат того времени[13]), но были дефицитным товаром и продавались по предварительной записи. Существовало даже такое понятие, как очередь на видеомагнитофон.", new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8629), 22500m, "Продам видеотехнику б/у" });
+                values: new object[] { "В середине 1980-х годов в СССР начали выпускать первые бытовые VHS- видеомагнитофоны «Электроника ВМ-12», которые стоили 1200 рублей (7-10 средних зарплат того времени[13]), но были дефицитным товаром и продавались по предварительной записи. Существовало даже такое понятие, как очередь на видеомагнитофон.", new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9724), 22500m, "Продам видеотехнику б/у" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 16,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Игрова́я приста́вка (игровая консоль) — специализированное электронное устройство, предназначенное для видеоигр; для таких устройств, в отличие от персональных компьютеров, запуск и воспроизв", 11, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8630), 25600m, "Продам игру" });
+                values: new object[] { "Игрова́я приста́вка (игровая консоль) — специализированное электронное устройство, предназначенное для видеоигр; для таких устройств, в отличие от персональных компьютеров, запуск и воспроизв", 11, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9726), 25600m, "Продам игру" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 17,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Игрова́я приста́вка (игровая консоль) — специализированное электронное устройство, предназначенное для видеоигр; для таких устройств, в отличие от персональных компьютеров, запуск и воспроизв", 11, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8631), 28900m, "Продам приставку" });
+                values: new object[] { "Игрова́я приста́вка (игровая консоль) — специализированное электронное устройство, предназначенное для видеоигр; для таких устройств, в отличие от персональных компьютеров, запуск и воспроизв", 11, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9727), 28900m, "Продам приставку" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 18,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Игрова́я приста́вка (игровая консоль) — специализированное электронное устройство, предназначенное для видеоигр; для таких устройств, в отличие от персональных компьютеров, запуск и воспроизв", 11, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8632), 32400m, "Продам программу" });
+                values: new object[] { "Игрова́я приста́вка (игровая консоль) — специализированное электронное устройство, предназначенное для видеоигр; для таких устройств, в отличие от персональных компьютеров, запуск и воспроизв", 11, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9728), 32400m, "Продам программу" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 19,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Насто́льный (стационарный) компью́тер, дескто́п (англ. desktop computer) — стационарный персональный компьютер, предназначенный для работы в офисе и дома. Термин обычно используется для того, чтобы обозначить вид компьютера и отличить его от компьютеров других типов, например портативного компьютера, карманного компьютера, встроенного компьютера или сервера. Как правило, состоит из монитора, системного блока, мыши, клавиатуры и звукогарнитуры", 12, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8634), 36100m, "Продам настольный компьютер б/у" });
+                values: new object[] { "Насто́льный (стационарный) компью́тер, дескто́п (англ. desktop computer) — стационарный персональный компьютер, предназначенный для работы в офисе и дома. Термин обычно используется для того, чтобы обозначить вид компьютера и отличить его от компьютеров других типов, например портативного компьютера, карманного компьютера, встроенного компьютера или сервера. Как правило, состоит из монитора, системного блока, мыши, клавиатуры и звукогарнитуры", 12, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9729), 36100m, "Продам настольный компьютер б/у" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 20,
                 columns: new[] { "Body", "CategoryId", "CreatedAt", "Title" },
-                values: new object[] { "Переносной компьютер, в корпусе которого объединены типичные компоненты ПК, включая дисплей, клавиатуру и устройство указания (обычно сенсорная панель или тачпад), а также аккумуляторные батареи. Ноутбуки отличаются небольшими размерами и весом, время автономной работы ноутбуков варьируется в пределах от 2 до 15 часов.", 13, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8635), "Продам ноутбук" });
+                values: new object[] { "Переносной компьютер, в корпусе которого объединены типичные компоненты ПК, включая дисплей, клавиатуру и устройство указания (обычно сенсорная панель или тачпад), а также аккумуляторные батареи. Ноутбуки отличаются небольшими размерами и весом, время автономной работы ноутбуков варьируется в пределах от 2 до 15 часов.", 13, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9730), "Продам ноутбук" });
 
             migrationBuilder.InsertData(
                 table: "Advertisements",
                 columns: new[] { "Id", "Address", "Body", "CategoryId", "CreatedAt", "IsDeleted", "OwnerId", "Price", "RegionId", "Status", "Title", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 21, "297415 г. Чебоксары, ул. Толстого, 25", "Интернет-планшет (англ. Internet tablet или Web tablet — Веб-планшет, или Pad tablet — Pad-планшет (Блокнотный планшет), или Web-pad — Веб-блокнот, или Surfpad — Веб-сёрфинг-блокнот) — мобильный компьютер, относящийся к типу планшетных компьютеров с диагональю экрана от 7 до 12 дюймов, построенный на аппаратной платформе того же класса, что и платформа для смартфонов.", 14, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8636), false, "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", 44100m, 21, 0, "Продам планшет", null },
-                    { 25, "295314 г. Симферополь, ул. Чернышевского, 4", "Фотоаппара́т (фотографи́ческий аппара́т, фотока́мера) — устройство для регистрации неподвижных изображений (получения фотографий). Запись изображения в фотоаппарате осуществляется фотохимическим способом при воздействии света на светочувствительный фотоматериал. Получаемое таким способом скрытое изображение преобразуется в видимое при лабораторной обработке. В цифровом фотоаппарате фотофиксация происходит путём фотоэлектрического преобразования оптического изображения в электрический сигнал, цифровые данные о котором сохраняются на энергонезависимом носителе.", 17, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8641), false, "7e24ccd2-34fd-4289-9a78-1aae93623bae", 62500m, 25, 0, "Продам фотоаппарат б/у", null },
-                    { 24, "293713 г. Керчь, ул. Куприна, 3", "Комплементарные блага (взаимодополняющие товары) — блага, совместное потребление которых является для агента более предпочтительным, чем потребление каждого", 16, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8640), false, "09c529c8-e798-44ac-9eac-e0150182fa4c", 57600m, 24, 0, "Продам товары для компьютера", null },
-                    { 23, "299812 г. Судак, ул. Сергеева, 2", "С точки зрения экономики и общества возможность осуществления телефонных переговоров рассматривается как благо и важное условие комфортной жизни человека. Существует область науки и техники, связанная с изучением направлений развития телефонной связи, она получила название телефонии.", 15, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8639), false, "c191e5f8-bf5b-40a9-9ab6-4d08704e373b", 52900m, 23, 0, "Продам телефон", null },
-                    { 22, "299411 г. Москва, ул. Тургенева, 1", "Электро́нная кни́га (Electronic book; e-book; eBook) — версия книги, хранящаяся в электронном виде, и показываемая на экране, в цифровом формате. Данное понятие применяется как для произведений, представленных в цифровой форме, так и в отношении устройств, используемых для их прочтения.", 14, new DateTime(2021, 11, 22, 14, 59, 1, 194, DateTimeKind.Utc).AddTicks(8637), false, "54b1ff98-6b5f-4c5e-97a9-747095e1f5dc", 48400m, 22, 0, "Продам электронную книгу", null }
+                    { 21, "297415 г. Чебоксары, ул. Толстого, 25", "Интернет-планшет (англ. Internet tablet или Web tablet — Веб-планшет, или Pad tablet — Pad-планшет (Блокнотный планшет), или Web-pad — Веб-блокнот, или Surfpad — Веб-сёрфинг-блокнот) — мобильный компьютер, относящийся к типу планшетных компьютеров с диагональю экрана от 7 до 12 дюймов, построенный на аппаратной платформе того же класса, что и платформа для смартфонов.", 14, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9732), false, "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", 44100m, 21, 0, "Продам планшет", null },
+                    { 25, "295314 г. Симферополь, ул. Чернышевского, 4", "Фотоаппара́т (фотографи́ческий аппара́т, фотока́мера) — устройство для регистрации неподвижных изображений (получения фотографий). Запись изображения в фотоаппарате осуществляется фотохимическим способом при воздействии света на светочувствительный фотоматериал. Получаемое таким способом скрытое изображение преобразуется в видимое при лабораторной обработке. В цифровом фотоаппарате фотофиксация происходит путём фотоэлектрического преобразования оптического изображения в электрический сигнал, цифровые данные о котором сохраняются на энергонезависимом носителе.", 17, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9736), false, "7e24ccd2-34fd-4289-9a78-1aae93623bae", 62500m, 25, 0, "Продам фотоаппарат б/у", null },
+                    { 24, "293713 г. Керчь, ул. Куприна, 3", "Комплементарные блага (взаимодополняющие товары) — блага, совместное потребление которых является для агента более предпочтительным, чем потребление каждого", 16, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9735), false, "09c529c8-e798-44ac-9eac-e0150182fa4c", 57600m, 24, 0, "Продам товары для компьютера", null },
+                    { 23, "299812 г. Судак, ул. Сергеева, 2", "С точки зрения экономики и общества возможность осуществления телефонных переговоров рассматривается как благо и важное условие комфортной жизни человека. Существует область науки и техники, связанная с изучением направлений развития телефонной связи, она получила название телефонии.", 15, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9734), false, "c191e5f8-bf5b-40a9-9ab6-4d08704e373b", 52900m, 23, 0, "Продам телефон", null },
+                    { 22, "299411 г. Москва, ул. Тургенева, 1", "Электро́нная кни́га (Electronic book; e-book; eBook) — версия книги, хранящаяся в электронном виде, и показываемая на экране, в цифровом формате. Данное понятие применяется как для произведений, представленных в цифровой форме, так и в отношении устройств, используемых для их прочтения.", 14, new DateTime(2021, 11, 22, 23, 13, 2, 6, DateTimeKind.Utc).AddTicks(9733), false, "54b1ff98-6b5f-4c5e-97a9-747095e1f5dc", 48400m, 22, 0, "Продам электронную книгу", null }
                 });
 
             migrationBuilder.UpdateData(
@@ -168,812 +168,812 @@ namespace Advertisements.DataAccess.Migrations
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 210, DateTimeKind.Utc).AddTicks(8920));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(4691));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 210, DateTimeKind.Utc).AddTicks(9406));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5221));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 210, DateTimeKind.Utc).AddTicks(9837));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5478));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 210, DateTimeKind.Utc).AddTicks(9840));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5480));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 210, DateTimeKind.Utc).AddTicks(9842));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5481));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 6,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 211, DateTimeKind.Utc).AddTicks(236));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5482));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 7,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 211, DateTimeKind.Utc).AddTicks(240));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5484));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 8,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 211, DateTimeKind.Utc).AddTicks(241));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5485));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 9,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 211, DateTimeKind.Utc).AddTicks(242));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5486));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 10,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 211, DateTimeKind.Utc).AddTicks(243));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5487));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 11,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 211, DateTimeKind.Utc).AddTicks(244));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5488));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 12,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 211, DateTimeKind.Utc).AddTicks(245));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5489));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 13,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 211, DateTimeKind.Utc).AddTicks(246));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5490));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 14,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 211, DateTimeKind.Utc).AddTicks(248));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5491));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 15,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 211, DateTimeKind.Utc).AddTicks(249));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5492));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 16,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 211, DateTimeKind.Utc).AddTicks(250));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5493));
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "Id",
                 keyValue: 17,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 211, DateTimeKind.Utc).AddTicks(251));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 19, DateTimeKind.Utc).AddTicks(5494));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(2642));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(8894));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3096));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9185));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3099));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9187));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3100));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9188));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3101));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9189));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 6,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3102));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9190));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 7,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3103));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9191));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 8,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3104));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9192));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 9,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3105));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9193));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 10,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3106));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9194));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 11,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3107));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9195));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 12,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3108));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9196));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 13,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3109));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9197));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 14,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3110));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9198));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 15,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3111));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9199));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 16,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3112));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9200));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 17,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3113));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9201));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 18,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3114));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9202));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 19,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3115));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9203));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 20,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3116));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9203));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 21,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3117));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9204));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 22,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3118));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9205));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 23,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3119));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9206));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 24,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3120));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9207));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 25,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3122));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9208));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 26,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3123));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9209));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 27,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3124));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9210));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 28,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3125));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9211));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 29,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3126));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9212));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 30,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3127));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9213));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 31,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3128));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9214));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 32,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3129));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9215));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 33,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3131));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9216));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 34,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3132));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9217));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 35,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3133));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9218));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 36,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3134));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9219));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 37,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3135));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9219));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 38,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3136));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9220));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 39,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3137));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9221));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 40,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3138));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9222));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 41,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3140));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9223));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 42,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3141));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9224));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 43,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3142));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9225));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 44,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3143));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9226));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 45,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3144));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9227));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 46,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3145));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9228));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 47,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3146));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9229));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 48,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3147));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9230));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 49,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3148));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9231));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 50,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3149));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9232));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 51,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3150));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9233));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 52,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3151));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9234));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 53,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3152));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9235));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 54,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3153));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9236));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 55,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3154));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9237));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 56,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3155));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9238));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 57,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3156));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9239));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 58,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3157));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9240));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 59,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3158));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9240));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 60,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3159));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9241));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 61,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3160));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9242));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 62,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3161));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9243));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 63,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3162));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9244));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 64,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3163));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9245));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 65,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3164));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9246));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 66,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3165));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9247));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 67,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3166));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9248));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 68,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3167));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9249));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 69,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3168));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9250));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 70,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3169));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9251));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 71,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3170));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9252));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 72,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3171));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9253));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 73,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3172));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9254));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 74,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3173));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9255));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 75,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3174));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9255));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 76,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3175));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9256));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 77,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3176));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9257));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 78,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3177));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9258));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 79,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3178));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9259));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 80,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3179));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9260));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 81,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3180));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9261));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 82,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3181));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9262));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 83,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3182));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9263));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 84,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3183));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9264));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 85,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3184));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9265));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 86,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3185));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9266));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 87,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3186));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9267));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 88,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3187));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9268));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 89,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3188));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9269));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 90,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3189));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9270));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 91,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3190));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9271));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 92,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3191));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9271));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 93,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3192));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9272));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 94,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3193));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9312));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 95,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3194));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9313));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 96,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3195));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9314));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 97,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3196));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9315));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 98,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3197));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9316));
 
             migrationBuilder.UpdateData(
                 table: "Regions",
                 keyColumn: "Id",
                 keyValue: 99,
                 column: "CreatedAt",
-                value: new DateTime(2021, 11, 22, 14, 59, 1, 216, DateTimeKind.Utc).AddTicks(3198));
+                value: new DateTime(2021, 11, 22, 23, 13, 2, 23, DateTimeKind.Utc).AddTicks(9317));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -1097,8 +1097,8 @@ namespace Advertisements.DataAccess.Migrations
                 table: "Advertisements",
                 keyColumn: "Id",
                 keyValue: 13,
-                columns: new[] { "Body", "CategoryId", "CreatedAt", "Price", "Title" },
-                values: new object[] { "Телевизор Xiaomi Mi TV 4S 50, 50, Ultra HD 4K", 10, new DateTime(2021, 11, 18, 9, 21, 51, 132, DateTimeKind.Utc).AddTicks(6463), 40000m, "Продам телевизор" });
+                columns: new[] { "Body", "CreatedAt", "Price", "Title" },
+                values: new object[] { "Телевизор Xiaomi Mi TV 4S 50, 50, Ultra HD 4K", new DateTime(2021, 11, 18, 9, 21, 51, 132, DateTimeKind.Utc).AddTicks(6463), 40000m, "Продам телевизор" });
 
             migrationBuilder.UpdateData(
                 table: "Advertisements",

@@ -113,7 +113,7 @@ export class DashboardComponent implements OnInit {
   }
 
   // Выполняет запрос на поиск по категории
-  getContentByCategoryId(categoryId: number){
+  getAdvertisementCategoryId(categoryId: number){
     this.router.navigate(['/'], { queryParams: { categoryId: categoryId } });
   }
 
