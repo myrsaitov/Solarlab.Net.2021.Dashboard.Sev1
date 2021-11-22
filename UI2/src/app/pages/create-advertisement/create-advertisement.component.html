@@ -12,7 +12,11 @@
       </ul>
       <ul>  
         <div *ngFor="let category of categories">
+          <!-- Группы категорий -->
+          <h5 *ngIf="!category.parentCategoryId"><br><br>{{category.name}}</h5>
+          <!-- Подкатегории -->
           <a class="badge badge-secondary" 
+            *ngIf="category.parentCategoryId"
             role="button" 
             (click)="getAdvertisementCategoryId(category.id)">{{category.name}}({{category.count}})
           </a>
@@ -102,6 +106,17 @@
                 [class.is-invalid]="regionId.invalid"
                 *ngIf="regions$ | async as regions">
                 <option [value]="null">Выберите регион</option>
+                <ng-container *ngFor="let region of regions">
+                  <optgroup *ngIf="region.parentRegionId==1" 
+                    label= "{{region.name}}">
+                    <ng-container *ngFor="let subreg of regions">
+                      <ng-container *ngIf="subreg.parentRegionId > 1">
+                        <option *ngIf="subreg.parentRegionId == region.id"
+                          [value]="subreg.id">{{subreg.name}}</option>
+                      </ng-container>
+                    </ng-container>
+                  </optgroup>
+                </ng-container>
                 <option *ngFor="let region of regions"
                   [value]="region.id">{{region.name}}</option>
               </select>
