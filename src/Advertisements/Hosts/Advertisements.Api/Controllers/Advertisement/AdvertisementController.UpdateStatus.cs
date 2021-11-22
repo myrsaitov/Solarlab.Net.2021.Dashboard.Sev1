@@ -16,14 +16,14 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize("User")]
-        [HttpPut("update")]
+        [HttpPut("update-status")]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> Update(
+        public async Task<IActionResult> UpdateStatus(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            AdvertisementUpdateRequest request, 
+            AdvertisementUpdateStatusRequest request, 
             CancellationToken cancellationToken)
         {
-            return Ok(await _advertisementService.Update(
+            return Ok(await _advertisementService.UpdateStatus(
                 request, 
                 cancellationToken));
         }

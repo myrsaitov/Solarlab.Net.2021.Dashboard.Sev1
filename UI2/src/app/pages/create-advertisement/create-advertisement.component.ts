@@ -97,7 +97,7 @@ export class CreateAdvertisementComponent implements OnInit {
       return;
     }
 
-    // Разбиваем строку на таги
+    // Разбивает строку на таги
     var tagStr = this.input_tags.value;
     if(tagStr != null)
     {
@@ -120,12 +120,13 @@ export class CreateAdvertisementComponent implements OnInit {
     // Отправлет DTO объявления на бэк
     this.advertisementService.create(new CreateAdvertisement(model))
       .pipe(take(1)).subscribe((res) => {
-        
+        // Выдаёт всплывающее сообщение о результате
+        this.toastService.show(
+          'Объявление успешено добавлено',
+          {classname: 'bg-success text-light'});
+
         // Определяем идентификатор вновь созданного объявления
         let id = JSON.parse(JSON.stringify(res)).id;
-        
-        // Выдаёт всплывающее сообщение о результате
-        this.toastService.show('Объявление успешено добавлено', {classname: 'bg-success text-light'});
         
         // Переходит на страницу вновь созданного объявления
         this.router.navigate(['/'+id]);

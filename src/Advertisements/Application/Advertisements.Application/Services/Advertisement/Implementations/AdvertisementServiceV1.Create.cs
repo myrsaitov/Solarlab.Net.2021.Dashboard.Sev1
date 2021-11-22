@@ -73,7 +73,6 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
             advertisement.CreatedAt = DateTime.UtcNow;
             advertisement.Category = category;
             advertisement.OwnerId = userId;
-            advertisement.Status = AdvertisementStatus.Active;
 
             // Добавляем таги
             await AddTags(

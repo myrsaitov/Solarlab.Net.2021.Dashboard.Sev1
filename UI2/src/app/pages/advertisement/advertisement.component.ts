@@ -22,6 +22,7 @@ import { IUser } from 'src/app/models/user/user-model';
 import { ICategory } from 'src/app/models/category/category-model';
 import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
+import { EditAdvertisementStatus, IEditAdvertisementStatus } from 'src/app/models/advertisement/advertisement-status-edit-model';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -46,6 +47,7 @@ export class AdvertisementComponent implements OnInit {
   regions$: Observable<IRegion[]>;
   regions: IRegion[];
   advertisementStatus: string;
+  advertisementId$ = this.route.params.pipe(pluck('id'));
 
   private commentsFilterSubject$ = new BehaviorSubject({
     contentId: 1,
@@ -239,7 +241,9 @@ export class AdvertisementComponent implements OnInit {
 
   delete(id: number) {
     this.advertisementService.delete(id).pipe(take(1)).subscribe(() => {
-      this.toastService.show('Объявление успешено удалено', {classname: 'bg-success text-light'});
+      this.toastService.show(
+        'Объявление успешено удалено',
+        {classname: 'bg-success text-light'});
       this.router.navigate(['/']);
     });
   }
@@ -248,6 +252,34 @@ export class AdvertisementComponent implements OnInit {
     this.modalService.open(content, {centered: true});
   }
 
+  onChange(statusValue) {
+   /* // Создает DTO объявления
+    const model: Partial<IEditAdvertisementStatus> = {
+      id: this.advertisement.id,
+      status: this.status.value
+    };
+
+    
+    this.advertisementService.editStatus(
+      new EditAdvertisementStatus(model));
+
+    this.toastService.show(
+      'Статус объявления успешено обновлён!',
+      {classname: 'bg-success text-light'});*/
+
+      this.advertisementId$.pipe(switchMap(id => {
+        const model: Partial<IEditAdvertisementStatus> = {
+          id: +id,
+          status: this.status.value,
+        };
+
+        return this.advertisementService.editStatus(new EditAdvertisementStatus(model));
+      }), take(1)).subscribe(() => {
+        // Выдаёт всплывающее сообщение о результате
+        this.toastService.show('Объявление успешено обновлено', {classname: 'bg-success text-light'});
+
+      });
+  }
 
   // Добавить комментарий
   submit() {

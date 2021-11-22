@@ -26,8 +26,18 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces
         /// <param name="request">Модель DTO объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<int?> Update(
+        Task<AdvertisementUpdatedResponse> Update(
             AdvertisementUpdateRequest request, 
+            CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Обновляет статус существующего обявления
+        /// </summary>
+        /// <param name="request">Модель DTO объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<AdvertisementUpdatedResponse> UpdateStatus(
+            AdvertisementUpdateStatusRequest request,
             CancellationToken cancellationToken);
 
         /// <summary>

@@ -8,6 +8,7 @@ import { GetPagedContentResponseModel } from '../models/advertisement/get-paged-
 import { ICreateAdvertisement } from '../models/advertisement/advertisement-create-model';
 import { IEditAdvertisement } from '../models/advertisement/advertisement-edit-model';
 import { environment } from 'src/environments/environment';
+import { IEditAdvertisementStatus } from '../models/advertisement/advertisement-status-edit-model';
 
 // The @Injectable() decorator specifies that Angular can use this class in the DI system.
 // providedIn: 'root', means that the Service is visible throughout the application.
@@ -134,6 +135,15 @@ export class AdvertisementService {
   // Редактирует объявление
   edit(model: IEditAdvertisement) {
     return this.http.put(`${this.ROOT_URL}/update`, model)
+      .pipe(catchError((err) => {
+        console.error(err);
+        return EMPTY;
+      }));
+  }
+
+  // Редактирует объявление
+  editStatus(model: IEditAdvertisementStatus) {
+    return this.http.put(`${this.ROOT_URL}/update-status`, model)
       .pipe(catchError((err) => {
         console.error(err);
         return EMPTY;

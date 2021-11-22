@@ -69,6 +69,11 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Validators
 
             // Проверка массива строк TagBodies
             //RuleForEach(x => x.TagBodies).SetValidator(new TagBodyValidator());
+
+            // Статус объявления
+            RuleFor(x => x.Status)
+                .NotNull()
+                .NotEmpty().WithMessage("Status не заполнен!");
         }
     }
 }
