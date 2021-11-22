@@ -252,6 +252,7 @@ export class AdvertisementComponent implements OnInit {
     this.modalService.open(content, {centered: true});
   }
 
+  // Реакция на изменение статуса объявления
   onChange() {
 
     this.advertisementId$.pipe(switchMap(id => {
@@ -263,7 +264,9 @@ export class AdvertisementComponent implements OnInit {
       return this.advertisementService.editStatus(new EditAdvertisementStatus(model));
     }), take(1)).subscribe((res) => {
 
+        console.log("***************************************");
         console.log(res);
+        this.status.patchValue(res);
         // Выдаёт всплывающее сообщение о результате
         this.toastService.show(
           'Статус успешно обновлён!',
@@ -273,8 +276,6 @@ export class AdvertisementComponent implements OnInit {
 
   // Добавить комментарий
   submit() {
-
-
 
     const model: Partial<ICreateComment> = {
       body: this.commentBody.value,

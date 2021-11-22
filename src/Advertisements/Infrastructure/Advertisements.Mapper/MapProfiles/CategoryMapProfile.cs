@@ -9,6 +9,29 @@ namespace Sev1.Advertisements.MapsterMapper.MapProfiles
 {
     public class CategoryMapProfile
     {
+        /// <summary>
+        /// Считает количество активных объявлений, связанных с данной категорией
+        /// </summary>
+        /// <param name="src">Категория</param>
+        /// <returns></returns>
+        private static int Count(Domain.Category src)
+        {
+            /*if (src.ParentCategory is null)
+            {
+                foreach(cat in src.ChildCategories)
+
+                var count = src.Advertisements
+                    .Where(a => a.Status == AdvertisementStatus.Active)
+                    .Count();
+            }
+            return count;*/
+
+            var count = src.Advertisements
+                    .Where(a => a.Status == AdvertisementStatus.Active)
+                    .Count();
+            return count;
+        }
+
         public static TypeAdapterConfig GetConfiguredMappingConfig()
         {
             var config = TypeAdapterConfig.GlobalSettings;
@@ -25,11 +48,7 @@ namespace Sev1.Advertisements.MapsterMapper.MapProfiles
             config.NewConfig<Domain.Category, CategoryGetResponse>()
                 .Map(dest => dest.Name, src => src.Name)
                 .Map(dest => dest.ParentCategoryId, src => src.ParentCategoryId)
-                // Считает количество активных объявлений,
-                // связанных с данным тагом
-                .Map(dest => dest.Count, src => src.Advertisements
-                    .Where(a => a.Status == AdvertisementStatus.Active)
-                    .Count());
+                .Map(dest => dest.Count, src => Count(src));
 
             return config;
         }

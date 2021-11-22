@@ -110,7 +110,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
             // Возвращаем идентификатор обновленного объявления
             return new AdvertisementUpdatedResponse()
             {
-                Id = advertisement.Id
+                Status = advertisement.Status
             };
         }
     }

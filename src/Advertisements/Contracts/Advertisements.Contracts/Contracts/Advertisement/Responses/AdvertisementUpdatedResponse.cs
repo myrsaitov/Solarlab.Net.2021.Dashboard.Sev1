@@ -1,4 +1,6 @@
-﻿namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses
+﻿using sev1.Advertisements.Contracts.Enums;
+
+namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses
 {
     /// <summary>
     /// DTO ответа на запрос обновления объявления
@@ -6,8 +8,8 @@
     public sealed class AdvertisementUpdatedResponse
     {
         /// <summary>
-        /// Id объявления
+        /// Статус объявления
         /// </summary>
-        public int? Id { get; set; }
+        public AdvertisementStatus Status { get; set; }
     }
 }

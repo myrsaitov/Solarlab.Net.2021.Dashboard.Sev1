@@ -61,6 +61,15 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
                     // Обновляет статус и время редактирования
                     advertisement.Status = request.Status;
                     advertisement.UpdatedAt = DateTime.UtcNow;
+                    // Сохраняет в базе
+                    await _advertisementRepository.Save(
+                        advertisement,
+                        cancellationToken);
+                    // Возвращаем идентификатор обновленного объявления
+                    return new AdvertisementUpdatedResponse()
+                    {
+                        Status = advertisement.Status
+                    };
                 }
             }
 
@@ -76,6 +85,15 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
                     // Обновляет статус и время редактирования
                     advertisement.Status = request.Status;
                     advertisement.UpdatedAt = DateTime.UtcNow;
+                    // Сохраняет в базе
+                    await _advertisementRepository.Save(
+                        advertisement,
+                        cancellationToken);
+                    // Возвращаем идентификатор обновленного объявления
+                    return new AdvertisementUpdatedResponse()
+                    {
+                        Status = advertisement.Status
+                    };
                 }
             }
 
@@ -99,19 +117,21 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
                     // Обновляет статус и время редактирования
                     advertisement.Status = request.Status;
                     advertisement.UpdatedAt = DateTime.UtcNow;
+                    // Сохраняет в базе
+                    await _advertisementRepository.Save(
+                        advertisement,
+                        cancellationToken);
+                    // Возвращаем идентификатор обновленного объявления
+                    return new AdvertisementUpdatedResponse()
+                    {
+                        Status = advertisement.Status
+                    };
                 }
             }
-
-            // Сохраняет в базе
-            await _advertisementRepository.Save(
-                advertisement, 
-                cancellationToken);
-
-            // Возвращаем идентификатор обновленного объявления
-            return new AdvertisementUpdatedResponse()
+            else
             {
-                Id = advertisement.Id
-            };
+                throw new NoRightsException("Нет прав обновить статус!");
+            }
         }
     }
 }

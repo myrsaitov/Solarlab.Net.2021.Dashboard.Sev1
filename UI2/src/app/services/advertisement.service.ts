@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { EMPTY, Observable } from 'rxjs';
 import { GetPagedAdvertisementModel } from '../models/advertisement/get-paged-advertisement-model';
 import { IAdvertisement } from '../models/advertisement/i-advertisement';
@@ -144,10 +144,16 @@ export class AdvertisementService {
   // Изменяет статус объявления
   editStatus(model: IEditAdvertisementStatus) {
     return this.http.put(`${this.ROOT_URL}/update-status`, model)
-      .pipe(catchError((err) => {
-        console.error(err);
-        return EMPTY;
-      }));
+      .pipe(
+        map(res => {
+          // Определяем статус объявления, который присвоил ему бэк
+          let status = JSON.parse(JSON.stringify(res)).status;
+          return status;
+        }),
+        catchError((err) => {
+          console.error(err);
+          return EMPTY;
+        }));
   }
 
   // Удаляет объявление
