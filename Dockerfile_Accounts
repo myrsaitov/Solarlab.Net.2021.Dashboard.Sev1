@@ -8,9 +8,11 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["src/Accounts/Hosts/Accounts.Api/Accounts.Api.csproj", "src/Accounts/Hosts/Accounts.Api/"]
-COPY ["src/Accounts/Application/Accounts.Application/Accounts.Application.csproj", "src/Accounts/Application/Accounts.Application/"]
-COPY ["src/Accounts/Domain/Accounts.Domain/Accounts.Domain.csproj", "src/Accounts/Domain/Accounts.Domain/"]
 COPY ["src/Accounts/Infrastructure/Accounts.DataAccess/Accounts.DataAccess.csproj", "src/Accounts/Infrastructure/Accounts.DataAccess/"]
+COPY ["src/Accounts/Domain/Accounts.Domain/Accounts.Domain.csproj", "src/Accounts/Domain/Accounts.Domain/"]
+COPY ["src/Accounts/Application/Accounts.Application/Accounts.AppServices.csproj", "src/Accounts/Application/Accounts.Application/"]
+COPY ["src/Accounts/Contracts/Accounts.Contracts/Accounts.Contracts.csproj", "src/Accounts/Contracts/Accounts.Contracts/"]
+COPY ["src/Advertisements/Contracts/Advertisements.Contracts/Advertisements.Contracts.csproj", "src/Advertisements/Contracts/Advertisements.Contracts/"]
 COPY ["src/Accounts/Infrastructure/Accounts.Mapper/Accounts.MapsterMapper.csproj", "src/Accounts/Infrastructure/Accounts.Mapper/"]
 RUN dotnet restore "src/Accounts/Hosts/Accounts.Api/Accounts.Api.csproj"
 COPY . .

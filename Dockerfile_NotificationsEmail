@@ -7,7 +7,6 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["src/NotificationsEmail/Hosts/NotificationsEmail.API/NotificationsEmail.API.csproj", "src/NotificationsEmail/Hosts/NotificationsEmail.API/"]
-COPY ["src/EventBus/EventBusRabbitMQ/EventBusRabbitMQ.csproj", "src/EventBus/EventBusRabbitMQ/"]
 COPY ["src/NotificationsEmail/Application/NotificationsEmail.ScheduledSender/NotificationsEmail.ScheduledSender.csproj", "src/NotificationsEmail/Application/NotificationsEmail.ScheduledSender/"]
 COPY ["src/NotificationsEmail/Application/NotificationsEmail.Services/NotificationsEmail.Services.csproj", "src/NotificationsEmail/Application/NotificationsEmail.Services/"]
 COPY ["src/NotificationsEmail/Domain/NotificationsEmail.Domain/NotificationsEmail.Domain.csproj", "src/NotificationsEmail/Domain/NotificationsEmail.Domain/"]
