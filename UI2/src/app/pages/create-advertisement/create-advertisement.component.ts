@@ -84,6 +84,11 @@ export class CreateAdvertisementComponent implements OnInit {
     this.router.navigate(['/'], { queryParams: { tag: tag } });
   }
   
+  // Отобразить объявления по заданной категории
+  getAdvertisementCategoryId(categoryId: number){
+    this.router.navigate(['/'], { queryParams: { categoryId: categoryId } });
+  }
+
   // Нажатие на кнопку "Добавить объявление"
   submit()
   {
