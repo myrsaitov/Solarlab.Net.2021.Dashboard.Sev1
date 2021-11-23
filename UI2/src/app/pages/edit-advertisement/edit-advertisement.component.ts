@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AdvertisementService} from '../../services/advertisement.service';
 import {pluck, switchMap, take, takeUntil} from 'rxjs/operators';
@@ -13,6 +13,8 @@ import { ITag } from 'src/app/models/tag/tag-model';
 import { isNullOrUndefined } from 'util';
 import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
+import { ViewChild } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -29,6 +31,10 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
   tagstr: string;
   tags$: Observable<ITag[]>;
   uri: string;
+  formData: FormData;
+  thumbnailImages: SafeResourceUrl[] = [];
+  @ViewChild('fileInput')
+  myInputVariable: ElementRef;
 
   constructor(private fb: FormBuilder,
               private advertisementService: AdvertisementService,
@@ -37,7 +43,8 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
               private router: Router,
               private toastService: ToastService,
               private tagService: TagService,
-              private regionService: RegionService) {
+              private regionService: RegionService,
+              private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
@@ -111,6 +118,50 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
   get userFiles() { return this.form.get('userFiles'); }
 
 
+  // Обработка загрузки файлов с формы https://blog.angular-university.io/angular-file-upload/
+  onFileSelected(event) {
+
+    // Если были ранее выбранные файлы, то удаляем
+    this.formData = new FormData();
+    this.thumbnailImages = [];
+
+    // Файлы, выбранные на форме
+    //var files = event.target.files;
+
+    // FileList и ForEach напрямую несовместимы, поэтому:
+    Array.from(event.target.files).forEach(
+      (file: any) => {
+        if (file) {
+
+          // Проверка размера файла
+          var size = file.size;
+          if(size > 10000000) // в байтах, ~10 МБ
+          {
+            // Сообщает об ошибке
+            this.toastService.show(
+              'Файл слишком объемный!',
+              {classname: 'bg-warning text-dark'});
+
+            // Удаляет выбранные на форме файлы
+            this.myInputVariable.nativeElement.value = "";
+          }
+
+          // Добавляет файл в данные формы
+          this.formData.append(
+            "Files",
+            file);
+
+            // Отключить защиту ссылок
+            // https://angular.io/api/platform-browser/DomSanitizer#description
+            var src = this.sanitizer.bypassSecurityTrustResourceUrl(
+              URL.createObjectURL(file));
+
+            this.thumbnailImages.push(src);
+        }
+    });
+    console.log(this.thumbnailImages);
+  }
+
   // Обработка события нажатия на кнопку
   submit() {
 
@@ -137,13 +188,8 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       console.log("Splitted TAG string:");
       console.log(arrayOfStrings);
     }
-//https://blog.angular-university.io/angular-file-upload/
-    let fileList: FileList = this.userFiles;
-    if(fileList.length > 0) {
-        let file: File = fileList[0];
-        let formData:FormData = new FormData();
-        formData.append('uploadFile', file, file.name);
-    }
+
+
 
     this.advertisementId$.pipe(switchMap(id => {
       const model: Partial<IEditAdvertisement> = {
@@ -155,15 +201,25 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
         categoryId: +this.categoryId.value,
         regionId: this.regionId.value,
         address: this.address.value,
-        status: this.status.value,
+        status: this.status.value
       };
+      
+      // Создает ссылку на отредактированное объявление
       this.uri = '/' + model.id;
-      return this.advertisementService.edit(new EditAdvertisement(model));
+
+      // Добавляет JSON к FormData
+      this.formData.append(
+        'jsonString',
+        JSON.stringify(model));
+
+      return this.advertisementService.edit(this.formData);
     }), take(1)).subscribe(() => {
       // Выдаёт всплывающее сообщение о результате
-      this.toastService.show('Объявление успешено обновлено', {classname: 'bg-success text-light'});
+      this.toastService.show(
+        'Объявление успешено обновлено',
+        {classname: 'bg-success text-light'});
       
-      // Переходит на страницу вновь созданного объявления
+      // Переходит на страницу отредактированного объявления
       this.router.navigate([this.uri]);
     });
   }

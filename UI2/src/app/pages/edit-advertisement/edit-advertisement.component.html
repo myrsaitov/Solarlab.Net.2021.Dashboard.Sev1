@@ -49,6 +49,37 @@
                 [class.is-invalid]="title.invalid">
             </div>
 
+            <!-- Файлы -->
+            <input #fileInput 
+              type="file"
+              class="file-upload"
+              (change)="onFileSelected($event)"
+              multiple>
+            
+            <!-- Превью файлов -->
+            <p><br></p>
+            
+              
+                <!--<img width="100"
+                  [src]="image"
+                  border="5"/>&nbsp;-->
+                  
+                
+           <div class="row">
+                  <ng-container *ngFor="let image of thumbnailImages">
+                    <div class="col-3">
+                        <button type="submit" class="close">
+                          <span>&times;</span>
+                        </button>
+                        <img class="w-100" [src]="image">
+                    </div>
+                  </ng-container>
+          </div>
+                
+                
+              
+           
+
             <!-- Текст объявления -->
             <div class="form-group">
               <label for="body">Описание *</label>
@@ -96,18 +127,6 @@
                   </optgroup>
                 </ng-container>
               </select>
-            </div>
-
-            <!-- Файлы -->
-            <div class="form-group">
-              <label for="userFiles">Регион</label>
-              <input type="file"
-                class="form-control"
-                id="userFiles"
-                formControlName="userFiles"
-                placeholder="Upload file"
-                autofocus
-                accept=".jpg,.jpe,.bmp,.gif,.png,.pdf">
             </div>
 
             <!-- Регион -->
@@ -172,7 +191,7 @@
                 <option [value]="1">Приостановлено</option>
                 <option [value]="2">Черновик</option>
                 <option [value]="3">Удалено</option>
-                <option [value]="4">Недопустимое содержание</option>
+              <!--<option [value]="4">Недопустимое содержание</option>-->
               </select>
             </div>
 

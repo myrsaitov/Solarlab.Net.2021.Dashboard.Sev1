@@ -1,5 +1,7 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Sev1.Advertisements.AppServices.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
@@ -27,7 +29,8 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<AdvertisementUpdatedResponse> Update(
-            AdvertisementUpdateRequest request, 
+            AdvertisementUpdateRequest request,
+            List<IFormFile> files,
             CancellationToken cancellationToken);
 
         /// <summary>

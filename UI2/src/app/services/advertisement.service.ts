@@ -133,12 +133,14 @@ export class AdvertisementService {
   }
 
   // Редактирует объявление
-  edit(model: IEditAdvertisement) {
-    return this.http.put(`${this.ROOT_URL}/update`, model)
-      .pipe(catchError((err) => {
-        console.error(err);
-        return EMPTY;
-      }));
+  edit(formData: FormData) {
+    return this.http.put(
+      `${this.ROOT_URL}/update`,
+      formData)
+        .pipe(catchError((err) => {
+          console.error(err);
+          return EMPTY;
+        }));
   }
 
   // Изменяет статус объявления
