@@ -108,6 +108,8 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
   get address() { return this.form.get('address'); }
   get input_tags() { return this.form.get('input_tags'); }
   get status() { return this.form.get('status'); }
+  get userFiles() { return this.form.get('userFiles'); }
+
 
   // Обработка события нажатия на кнопку
   submit() {
@@ -134,6 +136,13 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       var arrayOfStrings = tagStr_.split(/[\s,]+/);
       console.log("Splitted TAG string:");
       console.log(arrayOfStrings);
+    }
+//https://blog.angular-university.io/angular-file-upload/
+    let fileList: FileList = this.userFiles;
+    if(fileList.length > 0) {
+        let file: File = fileList[0];
+        let formData:FormData = new FormData();
+        formData.append('uploadFile', file, file.name);
     }
 
     this.advertisementId$.pipe(switchMap(id => {
