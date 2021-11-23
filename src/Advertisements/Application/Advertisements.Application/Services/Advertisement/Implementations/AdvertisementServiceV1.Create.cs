@@ -4,13 +4,14 @@ using System.Threading.Tasks;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Validators;
 using System.Linq;
-using sev1.Advertisements.Contracts.Enums;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 using Sev1.Advertisements.Domain.Base.Exceptions;
 using Sev1.Advertisements.AppServices.Services.Region.Exceptions;
 using Sev1.Advertisements.AppServices.Services.Category.Exceptions;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
 {
@@ -24,6 +25,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
         /// <returns></returns>
         public async Task<AdvertisementCreatedResponse> Create(
             AdvertisementCreateRequest request,
+            List<IFormFile> files,
             CancellationToken cancellationToken)
         {
             // Fluent Validation

@@ -19,7 +19,8 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<AdvertisementCreatedResponse> Create(
-            AdvertisementCreateRequest request, 
+            AdvertisementCreateRequest request,
+            List<IFormFile> files,
             CancellationToken cancellationToken);
 
         /// <summary>

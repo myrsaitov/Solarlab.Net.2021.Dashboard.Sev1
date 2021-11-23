@@ -124,12 +124,14 @@ export class AdvertisementService {
   }
 
   // Создает новое объявление
-  create(model: ICreateAdvertisement) {
-    return this.http.post(`${this.ROOT_URL}`, model)
-      .pipe(catchError((err) => {
-        console.error(err);
-        return EMPTY;
-      }));
+  create(formData: FormData) {
+    return this.http.post(
+      `${this.ROOT_URL}`,
+      formData)
+        .pipe(catchError((err) => {
+          console.error(err);
+          return EMPTY;
+        }));
   }
 
   // Редактирует объявление

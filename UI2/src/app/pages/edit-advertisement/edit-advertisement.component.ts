@@ -15,6 +15,7 @@ import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
 import { ViewChild } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import { IThumbnailImage, ThumbnailImage } from 'src/app/models/thumbnail-image/thumbnail-image-model';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -31,10 +32,11 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
   tagstr: string;
   tags$: Observable<ITag[]>;
   uri: string;
-  formData: FormData;
-  thumbnailImages: SafeResourceUrl[] = [];
+  formData: FormData = new FormData();
+  thumbnailImages: IThumbnailImage[] = [];
   @ViewChild('fileInput')
   myInputVariable: ElementRef;
+  fileId: number = 0; // уникальный id файла, который загружается на форму
 
   constructor(private fb: FormBuilder,
               private advertisementService: AdvertisementService,
@@ -115,15 +117,27 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
   get address() { return this.form.get('address'); }
   get input_tags() { return this.form.get('input_tags'); }
   get status() { return this.form.get('status'); }
-  get userFiles() { return this.form.get('userFiles'); }
 
+  // Удаление файла
+  onFileDeleteFromForm(id) {
+    // Удаляет элемент из массива картинок с индексом id.
+    // Тут надо заметить, что индекс элемента в массиве 
+    // может меняться (т.к. добавляются или удаляются элементы),
+    // а индекс файла уникален. В связи с чем, сначала нужно найти 
+    // элемент, у которого индекс равен id, вычислить его индекс и только потом удалять
+    this.thumbnailImages.forEach((element,index) => { //index - это индекс элемента в массиве
+      if(element.id==id) {
+        this.thumbnailImages.splice(index,1);
+      }
+    });
+  }
 
   // Обработка загрузки файлов с формы https://blog.angular-university.io/angular-file-upload/
   onFileSelected(event) {
 
     // Если были ранее выбранные файлы, то удаляем
-    this.formData = new FormData();
-    this.thumbnailImages = [];
+    //this.formData = new FormData();
+    //this.thumbnailImages = [];
 
     // Файлы, выбранные на форме
     //var files = event.target.files;
@@ -135,31 +149,34 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
 
           // Проверка размера файла
           var size = file.size;
-          if(size > 10000000) // в байтах, ~10 МБ
-          {
+          if(size > 10000000) {// размер в байтах, ~10 МБ
             // Сообщает об ошибке
             this.toastService.show(
               'Файл слишком объемный!',
               {classname: 'bg-warning text-dark'});
 
             // Удаляет выбранные на форме файлы
-            this.myInputVariable.nativeElement.value = "";
+            //this.myInputVariable.nativeElement.value = "";
           }
-
-          // Добавляет файл в данные формы
-          this.formData.append(
-            "Files",
-            file);
+          else {
 
             // Отключить защиту ссылок
             // https://angular.io/api/platform-browser/DomSanitizer#description
-            var src = this.sanitizer.bypassSecurityTrustResourceUrl(
+            var uri = this.sanitizer.bypassSecurityTrustResourceUrl(
               URL.createObjectURL(file));
 
-            this.thumbnailImages.push(src);
+            // Создает модель файла
+            const model: Partial<IThumbnailImage> = {
+              id: this.fileId++,
+              uri: uri,
+              file: file
+            };
+              
+            // Добавляет его в массив 
+            this.thumbnailImages.push(new ThumbnailImage(model));
+          }
         }
     });
-    console.log(this.thumbnailImages);
   }
 
   // Обработка события нажатия на кнопку
@@ -211,6 +228,13 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       this.formData.append(
         'jsonString',
         JSON.stringify(model));
+
+      // Добавляет все выбранные файлы к FormData
+      this.thumbnailImages.forEach(item => {
+        this.formData.append(
+          "Files",
+          item.file);
+      })
 
       return this.advertisementService.edit(this.formData);
     }), take(1)).subscribe(() => {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AdvertisementService} from '../../services/advertisement.service';
 import {CreateAdvertisement, ICreateAdvertisement} from '../../models/advertisement/advertisement-create-model';
@@ -13,6 +13,8 @@ import { RegionService } from 'src/app/services/region.service';
 import { IRegion } from 'src/app/models/region/region-model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ITag } from 'src/app/models/tag/tag-model';
+import { DomSanitizer } from '@angular/platform-browser';
+import { IThumbnailImage, ThumbnailImage } from 'src/app/models/thumbnail-image/thumbnail-image-model';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -26,6 +28,11 @@ export class CreateAdvertisementComponent implements OnInit {
   regions$: Observable<IRegion[]>;
   tags$: Observable<ITag[]>;
   uri: string;
+  formData: FormData = new FormData();
+  thumbnailImages: IThumbnailImage[] = [];
+  @ViewChild('fileInput')
+  myInputVariable: ElementRef;
+  fileId: number = 0; // уникальный id файла, который загружается на форму
 
   constructor(private fb: FormBuilder,
               private advertisementService: AdvertisementService,
@@ -34,7 +41,8 @@ export class CreateAdvertisementComponent implements OnInit {
               private toastService: ToastService,
               private tagService: TagService,
               private regionService: RegionService,
-              private authService: AuthService,) {
+              private authService: AuthService,
+              private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
@@ -89,6 +97,67 @@ export class CreateAdvertisementComponent implements OnInit {
     this.router.navigate(['/'], { queryParams: { categoryId: categoryId } });
   }
 
+  // Удаление файла
+  onFileDeleteFromForm(id) {
+    // Удаляет элемент из массива картинок с индексом id.
+    // Тут надо заметить, что индекс элемента в массиве 
+    // может меняться (т.к. добавляются или удаляются элементы),
+    // а индекс файла уникален. В связи с чем, сначала нужно найти 
+    // элемент, у которого индекс равен id, вычислить его индекс и только потом удалять
+    this.thumbnailImages.forEach((element,index) => { //index - это индекс элемента в массиве
+      if(element.id==id) {
+        this.thumbnailImages.splice(index,1);
+      }
+    });
+  }
+
+  // Обработка загрузки файлов с формы https://blog.angular-university.io/angular-file-upload/
+  onFileSelected(event) {
+
+    // Если были ранее выбранные файлы, то удаляем
+    //this.formData = new FormData();
+    //this.thumbnailImages = [];
+
+    // Файлы, выбранные на форме
+    //var files = event.target.files;
+
+    // FileList и ForEach напрямую несовместимы, поэтому:
+    Array.from(event.target.files).forEach(
+      (file: any) => {
+        if (file) {
+
+          // Проверка размера файла
+          var size = file.size;
+          if(size > 10000000) {// размер в байтах, ~10 МБ
+            // Сообщает об ошибке
+            this.toastService.show(
+              'Файл слишком объемный!',
+              {classname: 'bg-warning text-dark'});
+
+            // Удаляет выбранные на форме файлы
+            //this.myInputVariable.nativeElement.value = "";
+          }
+          else {
+
+            // Отключить защиту ссылок
+            // https://angular.io/api/platform-browser/DomSanitizer#description
+            var uri = this.sanitizer.bypassSecurityTrustResourceUrl(
+              URL.createObjectURL(file));
+
+            // Создает модель файла
+            const model: Partial<IThumbnailImage> = {
+              id: this.fileId++,
+              uri: uri,
+              file: file
+            };
+              
+            // Добавляет его в массив 
+            this.thumbnailImages.push(new ThumbnailImage(model));
+          }
+        }
+    });
+  }
+
   // Нажатие на кнопку "Добавить объявление"
   submit()
   {
@@ -122,8 +191,20 @@ export class CreateAdvertisementComponent implements OnInit {
       status: this.status.value,
     };
 
+    // Добавляет JSON к FormData
+    this.formData.append(
+      'jsonString',
+      JSON.stringify(model));
+    
+    // Добавляет все выбранные файлы к FormData
+    this.thumbnailImages.forEach(item => {
+      this.formData.append(
+        "Files",
+        item.file);
+    })
+
     // Отправлет DTO объявления на бэк
-    this.advertisementService.create(new CreateAdvertisement(model))
+    this.advertisementService.create(this.formData)
       .pipe(take(1)).subscribe((res) => {
         // Выдаёт всплывающее сообщение о результате
         this.toastService.show(

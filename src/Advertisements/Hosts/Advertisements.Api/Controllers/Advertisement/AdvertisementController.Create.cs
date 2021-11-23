@@ -1,7 +1,9 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Sev1.Accounts.Contracts.Authorization;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
 
@@ -12,19 +14,24 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         /// <summary>
         /// Создает новое объявление
         /// </summary>
-        /// <param name="request">DTO-модель</param>
+        /// <param name="jsonString">DTO-модель, переданная через FormData</param>
+        /// <param name="files">Файлы в FormData</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize("Administrator","Moderator","User")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(
-            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            AdvertisementCreateRequest request, 
+            [FromForm] string jsonString,
+            [FromForm] List<IFormFile> files,
             CancellationToken cancellationToken)
         {
+            var request = JsonConvert
+                .DeserializeObject<AdvertisementCreateRequest>(jsonString);
+
             return Ok(await _advertisementService.Create(
                 request,
+                files,
                 cancellationToken));
         }
     }

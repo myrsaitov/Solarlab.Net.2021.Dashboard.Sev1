@@ -58,27 +58,18 @@
             
             <!-- Превью файлов -->
             <p><br></p>
-            
-              
-                <!--<img width="100"
-                  [src]="image"
-                  border="5"/>&nbsp;-->
-                  
-                
-           <div class="row">
-                  <ng-container *ngFor="let image of thumbnailImages">
-                    <div class="col-3">
-                        <button type="submit" class="close">
-                          <span>&times;</span>
-                        </button>
-                        <img class="w-100" [src]="image">
-                    </div>
-                  </ng-container>
-          </div>
-                
-                
-              
-           
+            <div class="row">
+              <ng-container *ngFor="let image of thumbnailImages">
+                <div class="col-3">
+                  <button type="submit"
+                    class="close"
+                    (click)="onFileDeleteFromForm(image.id)">
+                    <span>&times;</span>
+                  </button>
+                  <img class="w-100" [src]="image.uri">
+                </div>
+              </ng-container>
+            </div>
 
             <!-- Текст объявления -->
             <div class="form-group">

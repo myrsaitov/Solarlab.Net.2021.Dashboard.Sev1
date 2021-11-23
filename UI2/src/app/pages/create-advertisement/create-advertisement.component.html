@@ -49,6 +49,28 @@
                 [class.is-invalid]="title.invalid">
             </div>
 
+            <!-- Файлы -->
+            <input #fileInput 
+              type="file"
+              class="file-upload"
+              (change)="onFileSelected($event)"
+              multiple>
+            
+            <!-- Превью файлов -->
+            <p><br></p>
+            <div class="row">
+              <ng-container *ngFor="let image of thumbnailImages">
+                <div class="col-3">
+                  <button type="submit"
+                    class="close"
+                    (click)="onFileDeleteFromForm(image.id)">
+                    <span>&times;</span>
+                  </button>
+                  <img class="w-100" [src]="image.uri">
+                </div>
+              </ng-container>
+            </div>
+
             <!-- Текст объявления -->
             <div class="form-group">
               <label for="body">Описание *</label>
