@@ -111,12 +111,16 @@ export class AdvertisementComponent implements OnInit {
     this.route.params.pipe(pluck('id')).subscribe(advertisementId => {
       this.commentsFilterSubject$.value.contentId = advertisementId;
       this.advertisementService.getAdvertisementById(advertisementId).subscribe(advertisement => {
+        
+        // Если объявление не найдено
         if (isNullOrUndefined(advertisement)) {
           this.router.navigate(['/']);
           return;
         }
         this.advertisement = advertisement;
         
+        // Загружаем картинки
+
         // Устанавливаем значение статуса на форме
         this.status.patchValue(advertisement.status);
 
