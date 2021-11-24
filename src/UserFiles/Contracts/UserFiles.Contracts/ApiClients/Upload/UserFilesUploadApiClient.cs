@@ -34,7 +34,7 @@ namespace Sev1.UserFiles.Contracts.ApiClients.UserFilesUpload
             List<IFormFile> files)
         {
             // Считыватем URI запроса из конфига "appsettings.json"
-            string uri = _configuration["AdvertisementValidateApiClientUri"];
+            string uri = _configuration["UserFilesUploadApiClientUri"];
             if (string.IsNullOrWhiteSpace(uri))
             {
                 throw new Exception("API-клиент: адрес не задан");
