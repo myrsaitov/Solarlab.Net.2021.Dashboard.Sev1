@@ -66,5 +66,10 @@ namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses
         /// Статус объявления
         /// </summary>
         public AdvertisementStatus Status { get; set; }
+
+        /// <summary>
+        /// Идентификаторы файлов
+        /// </summary>
+        public int?[] UserFiles { get; set; }
     }
 }

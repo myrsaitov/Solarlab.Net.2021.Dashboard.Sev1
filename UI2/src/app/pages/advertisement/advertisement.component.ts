@@ -23,6 +23,7 @@ import { ICategory } from 'src/app/models/category/category-model';
 import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
 import { EditAdvertisementStatus, IEditAdvertisementStatus } from 'src/app/models/advertisement/advertisement-status-edit-model';
+import { UserFilesService } from 'src/app/services/userfiles.service';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -67,6 +68,7 @@ export class AdvertisementComponent implements OnInit {
               private modalService: NgbModal,
               private tagService: TagService,
               private userService: UserService,
+              private userFilesService: UserFilesService,
               private regionService: RegionService) {
   }
 
@@ -155,7 +157,15 @@ export class AdvertisementComponent implements OnInit {
     return this.commentsFilterSubject$.value;
   }
 
-    // Возвращает имя пользователя по идентификатору
+  // Возвращает ссылку на файл по идентификатору
+  getUserFileUriById(id: number){
+    this.userFilesService.getUserFileById(id).subscribe(userFile => {
+      return userFile.filePath;
+    });
+  }
+  
+
+  // Возвращает имя пользователя по идентификатору
   getUserNameById(userId: string){
       return this.users.find(s => s.userId === userId).userName;
   }

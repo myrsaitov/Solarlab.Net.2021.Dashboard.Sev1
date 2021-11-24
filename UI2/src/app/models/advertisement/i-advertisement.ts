@@ -15,4 +15,5 @@ export interface IAdvertisement {
   createdAt: string;
   tags: string[];
   status: number;
+  userFiles: number[];
 }

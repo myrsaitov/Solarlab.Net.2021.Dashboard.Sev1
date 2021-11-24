@@ -31,7 +31,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
             }
 
             // Достаем объявление из базы по идентификатору
-            var advertisement = await _advertisementRepository.FindByIdWithCategoriesAndTags(
+            var advertisement = await _advertisementRepository.FindByIdWithCategoriesAndTagsAndUserFiles(
                 id,
                 cancellationToken);
 

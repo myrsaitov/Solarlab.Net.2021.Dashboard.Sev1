@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Configuration;
 using Sev1.UserFiles.Contracts.Contracts.YandexDisk.Responses;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
+using System.IO;
 
 namespace Sev1.UserFiles.Contracts.ApiClients.YandexDisk
 {
@@ -36,6 +38,30 @@ namespace Sev1.UserFiles.Contracts.ApiClients.YandexDisk
         {
             var uploadUri = await GetUploadUri(data.FileName);
             var result = await _httpClient.PutAsync(new Uri(uploadUri.Href), new StreamContent(data.OpenReadStream()));
+            result.EnsureSuccessStatusCode();
+
+            var downloadUri = await GetDownloadUri(data.FileName);
+            return downloadUri.Href;
+        }
+
+        /// <summary>
+        /// Загружает файл в облако
+        /// </summary>
+        /// <param name="data">Файл</param>
+        /// <returns></returns>
+        public async Task<string> UploadBase64(UserFileBase64UploadRequest data)
+        {
+            // Преобразование из base64
+            var file = Convert.FromBase64String(data.ContentBase64);
+
+            // Создаем поток
+            Stream stream = new MemoryStream(file);
+
+            var uploadUri = await GetUploadUri(data.FileName);
+            var result = await _httpClient.PutAsync(
+                new Uri(uploadUri.Href),
+                new StreamContent(stream));
+
             result.EnsureSuccessStatusCode();
 
             var downloadUri = await GetDownloadUri(data.FileName);

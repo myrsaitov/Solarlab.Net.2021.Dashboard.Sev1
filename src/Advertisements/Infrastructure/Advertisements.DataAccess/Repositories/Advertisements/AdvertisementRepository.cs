@@ -27,7 +27,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .Include(a => a.Tags)
                 .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
         }
-        public async Task<Advertisement> FindByIdWithCategoriesAndTags(
+        public async Task<Advertisement> FindByIdWithCategoriesAndTagsAndUserFiles(
             int? id,
             CancellationToken cancellationToken)
         {
@@ -37,6 +37,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .Include(a => a.Category.ChildCategories)
                 .Include(a => a.Category.ParentCategory)
                 .Include(a => a.Tags)
+                .Include(a => a.UserFiles)
                 .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
         }
 
@@ -54,7 +55,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .CountAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<Advertisement>> GetPagedWithTagsAndCategoryInclude(
+        public async Task<IEnumerable<Advertisement>> GetPagedWithTagsAndCategoryAndUserFilesInclude(
             Expression<Func<Advertisement, bool>> predicate,
             int offset,
             int limit,
@@ -65,6 +66,7 @@ namespace Sev1.Advertisements.DataAccess.Repositories
                 .Include(a => a.Tags)
                 .Include(a => a.Category)
                 .Include(a => a.Region)
+                .Include(a => a.UserFiles)
                 .AsNoTracking();
 
             return await data

@@ -10,7 +10,6 @@ using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 using Sev1.Advertisements.Domain.Base.Exceptions;
 using Sev1.Advertisements.AppServices.Services.Region.Exceptions;
 using Sev1.Advertisements.AppServices.Services.Category.Exceptions;
-using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
 {
@@ -65,10 +64,6 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
                 throw new RegionNotFoundException(request.RegionId);
             }
 
-            // Загружает файлы в UserFiles
-            var userFilesResponse = await _userFilesUploadApiClient
-                .UploadBase64(request.UserFiles);
-
             // Создаёт доменную сущность нового объявления
             var advertisement = _mapper.Map<Domain.Advertisement>(request);
 
@@ -77,6 +72,16 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
             advertisement.CreatedAt = DateTime.UtcNow;
             advertisement.Category = category;
             advertisement.OwnerId = userId;
+
+            // Загружает файлы в UserFiles
+            var userFilesResponse = await _userFilesUploadApiClient
+                .UploadBase64(request.UserFiles);
+
+            // Добавляем идентификаторы файлов в таблицу
+            await AddUserFiles(
+                advertisement,
+                userFilesResponse.Id,
+                cancellationToken);
 
             // Добавляем таги
             await AddTags(

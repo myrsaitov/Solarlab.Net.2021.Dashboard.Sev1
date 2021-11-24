@@ -14,6 +14,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
         private readonly ICategoryRepository _categoryRepository;
         private readonly IAdvertisementRepository _advertisementRepository;
         private readonly ITagRepository _tagRepository;
+        private readonly IUserFileRepository _userFileRepository;
         private readonly IRegionRepository _regionRepository;
         private readonly IUserProvider _userProvider;
         private readonly IUserFilesUploadApiClient _userFilesUploadApiClient;
@@ -22,6 +23,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
             IAdvertisementRepository advertisementRepository,
             ICategoryRepository categoryRepository,
             ITagRepository tagRepository,
+            IUserFileRepository userFileRepository,
             IRegionRepository regionRepository,
             IUserProvider userProvider,
             IUserFilesUploadApiClient userFilesUploadApiClient,
@@ -30,6 +32,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
             _advertisementRepository = advertisementRepository;
             _categoryRepository = categoryRepository;
             _tagRepository = tagRepository;
+            _userFileRepository = userFileRepository;
             _regionRepository = regionRepository;
             _userProvider = userProvider;
             _userFilesUploadApiClient = userFilesUploadApiClient;

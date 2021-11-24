@@ -140,11 +140,11 @@ export class CreateAdvertisementComponent implements OnInit {
                 fileIdOnForm: this.fileIdOnForm++,
                 tmpPreviewUri: tmpPreviewUri,
                 contentBase64: base64,
-                name: file.name,
-                fileName: file.fileName,
-                contentType: file.contentType,
-                contentDisposition: file.contentDisposition,
-                length: file.length
+                //name: file.name,
+                fileName: file.name, //
+                contentType: file.type, //
+                //contentDisposition: file.contentDisposition,
+                length: file.size //
               };
                 
               // Добавляет его в массив 

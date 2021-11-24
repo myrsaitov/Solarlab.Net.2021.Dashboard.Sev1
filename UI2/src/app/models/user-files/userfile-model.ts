@@ -5,6 +5,9 @@ export interface IUserFile  {
   // Идентификатор файла в базе
   id?: number;
 
+  // Ссылка на файл в облаке
+  filePath: string;
+
   // Идентификатор файла на форме UI
   fileIdOnForm?: number;
   
@@ -38,6 +41,7 @@ export interface IUserFile  {
 
 export class UserFile implements IUserFile {
   id?: number;
+  filePath: string;
   fileIdOnForm?: number;
   tmpPreviewUri: SafeResourceUrl;
   advertisementId?: number;
@@ -53,6 +57,7 @@ export class UserFile implements IUserFile {
   constructor(data?: Partial<IUserFile>) {
     const defaults: IUserFile = {
       id: null,
+      filePath: '',
       fileIdOnForm: null,
       tmpPreviewUri: '',
       advertisementId: null,
@@ -67,6 +72,7 @@ export class UserFile implements IUserFile {
       ...data
     };
     this.id = defaults.id;
+    this.filePath = defaults.filePath;
     this.fileIdOnForm = defaults.fileIdOnForm;
     this.tmpPreviewUri = defaults.tmpPreviewUri;
     this.advertisementId = defaults.advertisementId;

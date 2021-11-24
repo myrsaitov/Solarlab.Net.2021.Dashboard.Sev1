@@ -64,5 +64,10 @@
         /// Имя региона
         /// </summary>
         public int? RegionId { get; set; }
+
+        /// <summary>
+        /// Идентификаторы файлов
+        /// </summary>
+        public int?[] UserFiles { get; set; }
     }
 }

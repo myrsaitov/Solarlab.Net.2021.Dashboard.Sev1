@@ -28,9 +28,9 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
         {
             // Fluent Validation
             var validator = new UserFileBase64UploadToCloudDtoValidator();
-            foreach (var file in request)
+            foreach (var fileRequest in request)
             {
-                var result = await validator.ValidateAsync(file);
+                var result = await validator.ValidateAsync(fileRequest);
                 if (!result.IsValid)
                 {
                     throw new UserFileUploadDtoNotValidException(
@@ -55,32 +55,29 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
                 .Select(x => x.Value)
                 .ToList();
 
-            // Хранит количество удачных загрузок
-            var successful = 0;
-
-            // Хранит количество неудачных загрузок
-            var failed = 0;
-            /*
-            
-            // В цикле каждый файл по отдельности
-            foreach (var fileBase64 in request)
+            // Создаем сущность ответа на запрос
+            var response = new UserFileBase64UploadResponse()
             {
-                // Преобразование из base64
+                Id = new List<int?>() {}
+            };
 
-                var file = Convert.FromBase64String(fileBase64.ContentBase64);
-
+            // В цикле каждый файл по отдельности
+            foreach (var fileRequest in request)
+            {
                 // Проверка на разрешенные для загрузки типы файлов
-                if (AllowedFileExtensions.Contains(Path.GetExtension(file.FileName).ToUpperInvariant()))
+                if (AllowedFileExtensions.Contains(
+                    Path.GetExtension(fileRequest.FileName)
+                        .ToUpperInvariant()))
                 {
                     // Создаем карточку файла
                     var userFile = new Domain.UserFile()
                     {
-                        Name = file.Name,
-                        FileName = file.FileName,
-                        ContentType = file.ContentType,
-                        ContentDisposition = file.ContentDisposition,
-                        Length = file.Length,
-                        AdvertisementId = request.AdvertisementId,
+                        Name = fileRequest.Name,
+                        FileName = fileRequest.FileName,
+                        ContentType = fileRequest.ContentType,
+                        ContentDisposition = fileRequest.ContentDisposition,
+                        Length = fileRequest.Length,
+                        //AdvertisementId = request.AdvertisementId,
                         OwnerId = userId,
                         CreatedAt = DateTime.UtcNow,
                         Storage = UserFileStorageType.DataBase,
@@ -88,36 +85,25 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
                     };
 
                     // Сохраняем файл в облако
-                    userFile.FilePath = await _yandexDiskApiClient.Upload(file);
+#if DEBUG
+                    userFile.FilePath = "https://downloader.disk.yandex.ru/disk/51e39226f4af656ccabee210f7038078c7c5990928b30a16df38249d77c1ebb7/619ed1e0/SBdg01aXT8emYcX8MaHRojBeD62QqY1Ti6rVtoK4MrvMD8C3ttWrq7szNBnOFX9TV0s6G2agMy_G2hEEnBBq3A%3D%3D?uid=1130000047162420&filename=96635ee1505b9fbb57ae94bdd76620b1.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=1130000047162420&fsize=42729&hid=4e40359f5e5e7939d095312f1ef7f9de&media_type=image&tknv=v2&etag=ad1e3e189367159b9ea8e3706637b7d4";
+#else
+                    userFile.FilePath = await _yandexDiskApiClient
+                        .UploadBase64(fileRequest);
+#endif
 
                     // Сохраняем в базе карточку файла
                     await _userFileRepository.Save(
                         userFile,
                         cancellationToken);
 
-                // Количество удачно загруженных файлов
-                successful++;
-                }
-                else
-                {
-                    // Количество незагруженных файлов
-                    failed++;
+                    // Добавляем идентификатор файла в ответ на запрос
+                    response.Id.Add(userFile.Id);
+
                 }
             }
 
-                return new UserFileUploadResponse()
-            {
-                Total = request.Files.Count,
-                Successful = successful,
-                Failed = failed
-            }; */
-
-            return new UserFileBase64UploadResponse()
-            {
-                Total = 1,
-                Successful = 1,
-                Failed = 1
-            };
+            return response;
         }
     }
 }

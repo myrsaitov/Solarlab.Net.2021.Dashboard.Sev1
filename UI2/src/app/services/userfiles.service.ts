@@ -19,6 +19,16 @@ export class UserFilesService {
   constructor(private http: HttpClient) {
   }
 
+  // Возвращает файл по Id
+  getUserFileById(id: number) {
+    return this.http.get<IUserFile>(`${this.ROOT_URL}/${id}`)
+      .pipe(catchError((err) => {
+        console.error(err);
+        return EMPTY;
+      }));
+      
+  }
+
   // Возвращает список файлов
   getUserFileList(filter: IUserFilesFilter): Observable<IUserFile[]>{
 

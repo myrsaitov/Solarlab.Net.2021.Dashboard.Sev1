@@ -33,4 +33,11 @@
     <ProjectReference Include="..\..\Domain\Advertisements.Domain\Advertisements.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\UserFile\Exceptions\" />
+    <Folder Include="Services\UserFile\Implementations\" />
+    <Folder Include="Services\UserFile\Interfaces\" />
+    <Folder Include="Services\UserFile\Validators\" />
+  </ItemGroup>
+
 </Project>

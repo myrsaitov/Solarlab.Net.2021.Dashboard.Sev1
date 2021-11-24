@@ -37,7 +37,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
                 throw new AdvertisementUpdateRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
-            var advertisement = await _advertisementRepository.FindByIdWithCategoriesAndTags(
+            var advertisement = await _advertisementRepository.FindByIdWithCategoriesAndTagsAndUserFiles(
                 request.Id,
                 cancellationToken);
 

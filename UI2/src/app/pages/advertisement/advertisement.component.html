@@ -101,6 +101,17 @@
           <div class="card-body">
             <ul class="list-group list-group-flush">
               
+
+              <!-- Превью файлов -->
+              <p><br></p>
+              <div class="row">
+                <ng-container *ngFor="let fileId of advertisement.userFiles">
+                  <div class="col-3">
+                    <img class="w-100" [src]="getUserFileUriById(fileId)">
+                  </div>
+                </ng-container>
+              </div>
+
               <!-- Текст объявления -->
               <li class="list-group-item">
                 <p class="card-text">

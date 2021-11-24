@@ -31,7 +31,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Repositories
         /// <param name="id">Идентификатор объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<Domain.Advertisement> FindByIdWithCategoriesAndTags(
+        Task<Domain.Advertisement> FindByIdWithCategoriesAndTagsAndUserFiles(
             int? id, 
             CancellationToken cancellationToken);
 
@@ -54,7 +54,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Repositories
         /// <param name="limit">Количество объявлений на странице</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<IEnumerable<Domain.Advertisement>> GetPagedWithTagsAndCategoryInclude(
+        Task<IEnumerable<Domain.Advertisement>> GetPagedWithTagsAndCategoryAndUserFilesInclude(
             Expression<Func<Domain.Advertisement, bool>> predicate,
             int offset,
             int limit,
