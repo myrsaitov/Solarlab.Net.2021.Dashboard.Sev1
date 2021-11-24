@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Responses;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,10 +10,9 @@ namespace Sev1.UserFiles.Contracts.ApiClients.UserFilesUpload
         /// <summary>
         /// API-клиент для загрузки файлов микросервисами 
         /// </summary>
-        /// <param name="advertisementId">Идентификатор объявления, которое проверяем</param>
-        /// <param name="ownerId">Идентификатор владельца объявления</param>
+        /// <param name="files">Идентификатор владельца объявления</param>
         /// <returns></returns>
-        Task Upload(
-            List<IFormFile> files);
+        Task<UserFileBase64UploadResponse> UploadBase64(
+            List<UserFileBase64UploadRequest> Files);
     }
 }

@@ -65,6 +65,10 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
                 throw new RegionNotFoundException(request.RegionId);
             }
 
+            // Загружает файлы в UserFiles
+            var userFilesResponse = await _userFilesUploadApiClient
+                .UploadBase64(request.UserFiles);
+
             // Создаёт доменную сущность нового объявления
             var advertisement = _mapper.Map<Domain.Advertisement>(request);
 

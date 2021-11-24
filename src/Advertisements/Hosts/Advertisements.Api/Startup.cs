@@ -13,6 +13,7 @@ using Sev1.Accounts.Contracts.ApiClients.User;
 using sev1.Accounts.Contracts.UserProvider;
 using Sev1.Accounts.Contracts.Authorization;
 using Sev1.Advertisements.AppServices;
+using Sev1.UserFiles.Contracts.ApiClients.UserFilesUpload;
 
 namespace Sev1.Advertisements.Api
 {
@@ -71,6 +72,9 @@ namespace Sev1.Advertisements.Api
 
                 // Инжектирование API-клиента User
                 .AddTransient<IUserValidateApiClient, UserValidateApiClient>()
+
+                // Инжектирование API-клиента UserFiles
+                .AddTransient<IUserFilesUploadApiClient, UserFilesUploadApiClient>()
 
                 // Инжектирование UserProvider
                 .AddTransient<IUserProvider, UserProvider>()

@@ -22,6 +22,18 @@ export interface IUserFile  {
 
   // Массив данных файла
   contentBase64: string;
+
+  // FormFile Headers
+  // The form field name from the Content-Disposition header.
+  name: string;
+  // The file name from the Content-Disposition header.
+  fileName: string;
+  // The raw Content-Type header of the uploaded file.
+  contentType: string;
+  // The raw Content-Disposition header of the uploaded file.
+  contentDisposition: string;
+  // The file length in bytes.
+  length: number;
 }
 
 export class UserFile implements IUserFile {
@@ -32,6 +44,11 @@ export class UserFile implements IUserFile {
   ownerId: string;
   content: any;
   contentBase64: string;
+  name: string;
+  fileName: string;
+  contentType: string;
+  contentDisposition: string;
+  length: number;
   
   constructor(data?: Partial<IUserFile>) {
     const defaults: IUserFile = {
@@ -41,7 +58,12 @@ export class UserFile implements IUserFile {
       advertisementId: null,
       ownerId: '',
       content: null,
-      contentBase64: 'testtesttest',
+      contentBase64: '',
+      name: '',
+      fileName: '',
+      contentType: '',
+      contentDisposition: '',
+      length: null,
       ...data
     };
     this.id = defaults.id;
@@ -51,5 +73,10 @@ export class UserFile implements IUserFile {
     this.ownerId = defaults.ownerId;
     this.content = defaults.content;
     this.contentBase64 = defaults.contentBase64;
+    this.name = defaults.name;
+    this.fileName = defaults.fileName;
+    this.contentType = defaults.contentType;
+    this.contentDisposition = defaults.contentDisposition;
+    this.length = defaults.length;
   }
 }

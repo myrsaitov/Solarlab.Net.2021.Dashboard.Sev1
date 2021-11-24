@@ -1,10 +1,13 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 using System;
-using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Responses;
+using Newtonsoft.Json;
+using System.Text;
+using sev1.Accounts.Contracts.UserProvider;
 
 namespace Sev1.UserFiles.Contracts.ApiClients.UserFilesUpload
 {
@@ -12,13 +15,16 @@ namespace Sev1.UserFiles.Contracts.ApiClients.UserFilesUpload
     {
         private readonly IConfiguration _configuration;
         private readonly IHttpClientFactory _clientFactory;
+        private readonly IUserProvider _userProvider;
 
         public UserFilesUploadApiClient(
             IConfiguration configuration,
-            IHttpClientFactory clientFactory)
+            IHttpClientFactory clientFactory,
+            IUserProvider userProvider)
         {
             _configuration = configuration;
             _clientFactory = clientFactory;
+            _userProvider = userProvider;
         }
 
         /// <summary>
@@ -30,8 +36,8 @@ namespace Sev1.UserFiles.Contracts.ApiClients.UserFilesUpload
         /// <param name="advertisementId">Идентификатор объявления, которое проверяем</param>
         /// <param name="ownerId">Идентификатор владельца объявления</param>
         /// <returns></returns>
-        public async Task Upload(
-            List<IFormFile> files)
+        public async Task<UserFileBase64UploadResponse> UploadBase64(
+            List<UserFileBase64UploadRequest> Files)
         {
             // Считыватем URI запроса из конфига "appsettings.json"
             string uri = _configuration["UserFilesUploadApiClientUri"];
@@ -40,30 +46,41 @@ namespace Sev1.UserFiles.Contracts.ApiClients.UserFilesUpload
                 throw new Exception("API-клиент: адрес не задан");
             }
 
+            // Проверка авторизации
+            var authorizationHeader = _userProvider.GetAuthorizationHeader();
+            if (authorizationHeader is null)
+            {
+                throw new Exception("Ошибка авторизации!");
+            }
+
+            // Данные к пост-запросу
+            string jsonString = JsonConvert.SerializeObject(Files);
+            var payload = new StringContent(
+                jsonString,
+                Encoding.UTF8,
+                "application/json");
+
             // Создание клиента
             var client = _clientFactory.CreateClient();
 
-            // Выполнение GET-запроса
-            HttpResponseMessage response = await client.GetAsync(uri);
+            // Добавляем хидер авторизации
+            client.DefaultRequestHeaders.Add(
+                "Authorization",
+                authorizationHeader);
+
+            // Выполнение POST-запроса
+            HttpResponseMessage response = await client.PostAsync(
+                uri,
+                payload);
 
             // Преобразование в json
             string responseJson = await response.Content.ReadAsStringAsync();
-            /*
-            // Конвертируем JSON в DTO
-            var advertisementDto = JsonConvert
-                .DeserializeObject<AdvertisementGetResponse>(responseJson);
 
-            // Логика проверки объявления на соответствие
-            if (advertisementDto.OwnerId == ownerId)
-            {
-                // Если Id пользователей совпадает, то проверка пройдена
-                return true;
-            }
-            else
-            {
-                // Иначе - не достаточно прав!
-                throw new Exception("Не достаточно прав!");
-            }*/
+            // Конвертируем JSON в DTO
+            var responseDto = JsonConvert
+                .DeserializeObject<UserFileBase64UploadResponse>(responseJson);
+
+            return responseDto;
         }
     }
 }

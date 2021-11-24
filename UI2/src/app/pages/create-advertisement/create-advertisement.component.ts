@@ -139,7 +139,12 @@ export class CreateAdvertisementComponent implements OnInit {
               const model: Partial<IUserFile> = {
                 fileIdOnForm: this.fileIdOnForm++,
                 tmpPreviewUri: tmpPreviewUri,
-                contentBase64: base64
+                contentBase64: base64,
+                name: file.name,
+                fileName: file.fileName,
+                contentType: file.contentType,
+                contentDisposition: file.contentDisposition,
+                length: file.length
               };
                 
               // Добавляет его в массив 

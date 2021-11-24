@@ -23,5 +23,11 @@
         /// <param name="role">Роль, которая проверяется</param>
         /// <returns></returns>
         bool IsInRole(string role);
+
+        /// <summary>
+        /// Возвращает Authorization Header
+        /// </summary>
+        /// <returns></returns>
+        string GetAuthorizationHeader();
     }
 }

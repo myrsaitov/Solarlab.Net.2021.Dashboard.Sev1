@@ -5,6 +5,7 @@ using Sev1.Advertisements.AppServices.Services.Advertisement.Repositories;
 using Sev1.Advertisements.AppServices.Services.Category.Repositories;
 using Sev1.Advertisements.AppServices.Services.Region.Repositories;
 using Sev1.Advertisements.AppServices.Services.Tag.Repositories;
+using Sev1.UserFiles.Contracts.ApiClients.UserFilesUpload;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
 {
@@ -15,6 +16,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
         private readonly ITagRepository _tagRepository;
         private readonly IRegionRepository _regionRepository;
         private readonly IUserProvider _userProvider;
+        private readonly IUserFilesUploadApiClient _userFilesUploadApiClient;
         private readonly IMapper _mapper;
         public AdvertisementServiceV1(
             IAdvertisementRepository advertisementRepository,
@@ -22,6 +24,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
             ITagRepository tagRepository,
             IRegionRepository regionRepository,
             IUserProvider userProvider,
+            IUserFilesUploadApiClient userFilesUploadApiClient,
             IMapper mapper)
         {
             _advertisementRepository = advertisementRepository;
@@ -29,6 +32,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
             _tagRepository = tagRepository;
             _regionRepository = regionRepository;
             _userProvider = userProvider;
+            _userFilesUploadApiClient = userFilesUploadApiClient;
             _mapper = mapper;
         }
     }

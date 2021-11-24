@@ -119,5 +119,18 @@ namespace sev1.Accounts.Contracts.UserProvider
         {
             return GetUserRoles().Contains(role);
         }
+
+        /// <summary>
+        /// Возвращает Authorization Header
+        /// </summary>
+        /// <returns></returns>
+        public string GetAuthorizationHeader()
+        {
+            return _context
+                .HttpContext
+                .Request
+                .Headers["Authorization"]
+                .FirstOrDefault();
+        }
     }
 }

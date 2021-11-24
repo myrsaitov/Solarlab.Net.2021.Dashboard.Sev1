@@ -1,5 +1,6 @@
 ﻿using sev1.Advertisements.Contracts.Enums;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests
@@ -63,6 +64,6 @@ namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests
         /// <summary>
         /// Прикрепленные файлы
         /// </summary>
-        public UserFileDto[] UserFiles { get; set; }
+        public List<UserFileBase64UploadRequest> UserFiles { get; set; }
     }
 }
