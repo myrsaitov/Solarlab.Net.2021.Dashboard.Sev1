@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AdvertisementService} from '../../services/advertisement.service';
-import {ICreateAdvertisement} from '../../models/advertisement/advertisement-create-model';
+import {CreateAdvertisement, ICreateAdvertisement} from '../../models/advertisement/advertisement-create-model';
 import {take} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {ToastService} from '../../services/toast.service';
 import {CategoryService} from '../../services/category.service';
-import {Observable} from 'rxjs';
+import {Observable, ReplaySubject} from 'rxjs';
 import {ICategory} from '../../models/category/category-model';
 import { TagService } from '../../services/tag.service';
 import { RegionService } from 'src/app/services/region.service';
@@ -14,7 +14,7 @@ import { IRegion } from 'src/app/models/region/region-model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ITag } from 'src/app/models/tag/tag-model';
 import { DomSanitizer } from '@angular/platform-browser';
-import { IThumbnailImage, ThumbnailImage } from 'src/app/models/thumbnail-image/thumbnail-image-model';
+import { IUserFile, UserFile } from 'src/app/models/user-files/userfile-model';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -29,8 +29,8 @@ export class CreateAdvertisementComponent implements OnInit {
   tags$: Observable<ITag[]>;
   uri: string;
   formData: FormData = new FormData();
-  thumbnailImages: IThumbnailImage[] = [];
-  fileId: number = 0; // уникальный id файла, который загружается на форму
+  userFiles: IUserFile[] = [];
+  fileIdOnForm: number = 0; // идентификатор файла на форме
 
   constructor(private fb: FormBuilder,
               private advertisementService: AdvertisementService,
@@ -67,7 +67,7 @@ export class CreateAdvertisementComponent implements OnInit {
     this.form = this.fb.group({
       title: ['', [Validators.required, Validators.maxLength(100)]],
       body: ['', [Validators.required, Validators.maxLength(1000)]],
-      price: ['', [Validators.pattern("[0-9,]*"), Validators.maxLength(10)]],
+      price: ['', [Validators.required, Validators.pattern("[0-9,]*"), Validators.maxLength(10)]],
       categoryId: [null, Validators.required],
       regionId: [localStorage.getItem('regionId'), [Validators.required]],
       address: ['', [Validators.maxLength(100)]],
@@ -102,9 +102,9 @@ export class CreateAdvertisementComponent implements OnInit {
     // может меняться (т.к. добавляются или удаляются элементы),
     // а индекс файла уникален. В связи с чем, сначала нужно найти 
     // элемент, у которого индекс равен id, вычислить его индекс и только потом удалять
-    this.thumbnailImages.forEach((element,index) => { //index - это индекс элемента в массиве
-      if(element.id==id) {
-        this.thumbnailImages.splice(index,1);
+    this.userFiles.forEach((element,index) => { //index - это индекс элемента в массиве
+      if(element.fileIdOnForm==id) {
+        this.userFiles.splice(index,1);
       }
     });
   }
@@ -128,21 +128,35 @@ export class CreateAdvertisementComponent implements OnInit {
 
             // Отключить защиту ссылок
             // https://angular.io/api/platform-browser/DomSanitizer#description
-            var uri = this.sanitizer.bypassSecurityTrustResourceUrl(
+            var tmpPreviewUri = this.sanitizer.bypassSecurityTrustResourceUrl(
               URL.createObjectURL(file));
 
-            // Создает модель файла
-            const model: Partial<IThumbnailImage> = {
-              id: this.fileId++,
-              uri: uri,
-              file: file
-            };
-              
-            // Добавляет его в массив 
-            this.thumbnailImages.push(new ThumbnailImage(model));
+            // Конвертирует файл в base64
+            this.convertFile(file).subscribe(base64 => {
+              // Ожидание конца преобразования в base64, а затем:
+
+              // Создает модель файла
+              const model: Partial<IUserFile> = {
+                fileIdOnForm: this.fileIdOnForm++,
+                tmpPreviewUri: tmpPreviewUri,
+                contentBase64: base64
+              };
+                
+              // Добавляет его в массив 
+              this.userFiles.push(new UserFile(model));
+            });
           }
         }
     });
+  }
+
+  // Преобразует файл в base64
+  convertFile(file : File) : Observable<string> {
+    const result = new ReplaySubject<string>(1);
+    const reader = new FileReader();
+    reader.readAsBinaryString(file);
+    reader.onload = (event) => result.next(btoa(event.target.result.toString()));
+    return result;
   }
 
   // Нажатие на кнопку "Добавить объявление"
@@ -176,22 +190,11 @@ export class CreateAdvertisementComponent implements OnInit {
       address: this.address.value,
       tagBodies: arrayOfStrings,
       status: this.status.value,
+      userFiles: this.userFiles
     };
 
-    // Добавляет JSON к FormData
-    this.formData.append(
-      'jsonString',
-      JSON.stringify(model));
-    
-    // Добавляет все выбранные файлы к FormData
-    this.thumbnailImages.forEach(item => {
-      this.formData.append(
-        "Files",
-        item.file);
-    })
-
     // Отправлет DTO объявления на бэк
-    this.advertisementService.create(this.formData)
+    this.advertisementService.create(new CreateAdvertisement(model))
       .pipe(take(1)).subscribe((res) => {
         // Выдаёт всплывающее сообщение о результате
         this.toastService.show(

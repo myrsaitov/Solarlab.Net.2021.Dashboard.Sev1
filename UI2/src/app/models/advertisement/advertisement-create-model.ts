@@ -1,3 +1,5 @@
+import { IUserFile } from "../user-files/userfile-model";
+
 export interface ICreateAdvertisement {
   title: string;
   body: string;
@@ -7,6 +9,7 @@ export interface ICreateAdvertisement {
   address: string;
   tagBodies: string[];
   status: number;
+  userFiles: IUserFile[];
 }
 
 export class CreateAdvertisement implements ICreateAdvertisement {
@@ -18,6 +21,7 @@ export class CreateAdvertisement implements ICreateAdvertisement {
   address: string;
   tagBodies: string[];
   status: number;
+  userFiles: IUserFile[];
 
   constructor(data?: Partial<ICreateAdvertisement>) {
     const defaults: ICreateAdvertisement = {
@@ -29,6 +33,7 @@ export class CreateAdvertisement implements ICreateAdvertisement {
       address: '',
       tagBodies: [],
       status: 0,
+      userFiles: [],
       ...data
     };
     this.title = defaults.title;
@@ -39,5 +44,6 @@ export class CreateAdvertisement implements ICreateAdvertisement {
     this.address = defaults.address;
     this.tagBodies = defaults.tagBodies;
     this.status = defaults.status;
+    this.userFiles = defaults.userFiles;
   }
 }

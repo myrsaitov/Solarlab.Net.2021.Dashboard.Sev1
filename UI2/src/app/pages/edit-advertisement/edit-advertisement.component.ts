@@ -69,7 +69,7 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
     this.form = this.fb.group({
       title: ['', Validators.required],
       body: ['', Validators.required],
-      price: ['', Validators.pattern("[0-9,]*")],
+      price: ['', [Validators.required, Validators.pattern("[0-9,]*")]],
       categoryId: ['', Validators.required],
       regionId: ['1', [Validators.required]],
       address: [''],

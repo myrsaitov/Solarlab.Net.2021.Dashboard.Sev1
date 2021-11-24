@@ -124,10 +124,10 @@ export class AdvertisementService {
   }
 
   // Создает новое объявление
-  create(formData: FormData) {
+  create(model: ICreateAdvertisement) {
     return this.http.post(
       `${this.ROOT_URL}`,
-      formData)
+      model)
         .pipe(catchError((err) => {
           console.error(err);
           return EMPTY;

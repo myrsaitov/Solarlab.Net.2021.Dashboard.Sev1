@@ -69,14 +69,14 @@
             <!-- Превью файлов -->
             <p><br></p>
             <div class="row">
-              <ng-container *ngFor="let image of thumbnailImages">
+              <ng-container *ngFor="let file of userFiles">
                 <div class="col-3">
                   <button type="submit"
                     class="close"
-                    (click)="onFileDeleteFromForm(image.id)">
+                    (click)="onFileDeleteFromForm(file.fileIdOnForm)">
                     <span>&times;</span>
                   </button>
-                  <img class="w-100" [src]="image.uri">
+                  <img class="w-100" [src]="file.tmpPreviewUri">
                 </div>
               </ng-container>
             </div>

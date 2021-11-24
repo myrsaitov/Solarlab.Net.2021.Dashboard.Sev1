@@ -56,6 +56,8 @@
 
     <ItemGroup>
      
+      <ProjectReference Include="..\..\..\UserFiles\Contracts\UserFiles.Contracts\UserFiles.Contracts.csproj" />
+     
       <ProjectReference Include="..\..\Application\Advertisements.Application\Advertisements.AppServices.csproj" />
      
       <ProjectReference Include="..\..\Infrastructure\Advertisements.DataAccess\Advertisements.DataAccess.csproj" />

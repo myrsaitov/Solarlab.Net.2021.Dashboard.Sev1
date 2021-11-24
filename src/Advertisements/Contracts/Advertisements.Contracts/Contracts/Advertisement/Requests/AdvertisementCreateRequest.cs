@@ -1,4 +1,5 @@
 ﻿using sev1.Advertisements.Contracts.Enums;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 using System.ComponentModel.DataAnnotations;
 
 namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests
@@ -58,5 +59,10 @@ namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests
         /// </summary>
         [Required]
         public AdvertisementStatus Status { get; set; }
+
+        /// <summary>
+        /// Прикрепленные файлы
+        /// </summary>
+        public UserFileDto[] UserFiles { get; set; }
     }
 }

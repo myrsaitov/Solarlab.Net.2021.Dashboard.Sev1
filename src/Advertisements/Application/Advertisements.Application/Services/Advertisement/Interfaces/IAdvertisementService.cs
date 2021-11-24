@@ -7,6 +7,7 @@ using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces
 {
@@ -20,7 +21,6 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces
         /// <returns></returns>
         Task<AdvertisementCreatedResponse> Create(
             AdvertisementCreateRequest request,
-            List<IFormFile> files,
             CancellationToken cancellationToken);
 
         /// <summary>

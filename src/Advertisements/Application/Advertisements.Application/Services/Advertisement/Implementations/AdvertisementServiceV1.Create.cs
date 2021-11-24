@@ -10,8 +10,7 @@ using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 using Sev1.Advertisements.Domain.Base.Exceptions;
 using Sev1.Advertisements.AppServices.Services.Region.Exceptions;
 using Sev1.Advertisements.AppServices.Services.Category.Exceptions;
-using Microsoft.AspNetCore.Http;
-using System.Collections.Generic;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
 {
@@ -25,7 +24,6 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
         /// <returns></returns>
         public async Task<AdvertisementCreatedResponse> Create(
             AdvertisementCreateRequest request,
-            List<IFormFile> files,
             CancellationToken cancellationToken)
         {
             // Fluent Validation
