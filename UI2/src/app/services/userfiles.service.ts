@@ -3,9 +3,9 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
 import {EMPTY, Observable} from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IUserFilter } from '../models/user/user-filter.model';
-import { IUser } from '../models/user/user-model';
-import { GetPagedUserResponseModel } from '../models/user/get-paged-user-response-model';
+import { IUserFilesFilter } from '../models/user-files/userfiles-filter.model';
+import { IUserFile } from '../models/user-files/userfile-model';
+import { GetPagedUserFilesResponseModel } from '../models/user-files/get-paged-userfiles-response-model';
 
 // The @Injectable() decorator specifies that Angular can use this class in the DI system.
 // providedIn: 'root', means that the Service is visible throughout the application.
@@ -13,14 +13,14 @@ import { GetPagedUserResponseModel } from '../models/user/get-paged-user-respons
   providedIn: 'root' // declares that this service should be created by the root application injector.s
 })
 
-export class UserService {
-  private ROOT_URL = `${environment.baseAccountsApiUrl}api/v1/accounts`;
+export class UserFilesService {
+  private ROOT_URL = `${environment.baseUserFilesApiUrl}api/v1/userfiles`;
 
   constructor(private http: HttpClient) {
   }
 
-  // Возвращает список пользователей
-  getUserList(filter: IUserFilter): Observable<IUser[]>{
+  // Возвращает список файлов
+  getUserFileList(filter: IUserFilesFilter): Observable<IUserFile[]>{
 
     let source = Observable.create(observer => {
 
@@ -33,16 +33,16 @@ export class UserService {
       .set('page', `${page}`)
       .set('pageSize', `${pageSize}`);
  
-      this.http.get<GetPagedUserResponseModel>(`${this.ROOT_URL}`, {params})
+      this.http.get<GetPagedUserFilesResponseModel>(`${this.ROOT_URL}`, {params})
         .pipe( // pipe - применить указанное действие ко всем элементам конвейера
           catchError((err) => {
             console.error(err);
             return EMPTY;
           }))
-        .subscribe(user => {
-          if (user !== null) {
-            observer.next(user.items)
-            console.log(user)
+        .subscribe(userFile => {
+          if (userFile !== null) {
+            observer.next(userFile.items)
+            console.log(userFile)
           }
         });
     })

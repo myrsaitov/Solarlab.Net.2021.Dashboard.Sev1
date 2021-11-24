@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AdvertisementService} from '../../services/advertisement.service';
 import {pluck, switchMap, take, takeUntil} from 'rxjs/operators';
@@ -7,14 +7,13 @@ import {ToastService} from '../../services/toast.service';
 import {CategoryService} from '../../services/category.service';
 import {Observable, Subject} from 'rxjs';
 import {ICategory} from '../../models/category/category-model';
-import {EditAdvertisement, IEditAdvertisement} from '../../models/advertisement/advertisement-edit-model';
+import {IEditAdvertisement} from '../../models/advertisement/advertisement-edit-model';
 import { TagService } from '../../services/tag.service';
 import { ITag } from 'src/app/models/tag/tag-model';
 import { isNullOrUndefined } from 'util';
 import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
-import { ViewChild } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import { DomSanitizer} from '@angular/platform-browser';
 import { IThumbnailImage, ThumbnailImage } from 'src/app/models/thumbnail-image/thumbnail-image-model';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
@@ -34,8 +33,6 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
   uri: string;
   formData: FormData = new FormData();
   thumbnailImages: IThumbnailImage[] = [];
-  @ViewChild('fileInput')
-  myInputVariable: ElementRef;
   fileId: number = 0; // уникальный id файла, который загружается на форму
 
   constructor(private fb: FormBuilder,
@@ -135,28 +132,17 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
   // Обработка загрузки файлов с формы https://blog.angular-university.io/angular-file-upload/
   onFileSelected(event) {
 
-    // Если были ранее выбранные файлы, то удаляем
-    //this.formData = new FormData();
-    //this.thumbnailImages = [];
-
-    // Файлы, выбранные на форме
-    //var files = event.target.files;
-
     // FileList и ForEach напрямую несовместимы, поэтому:
     Array.from(event.target.files).forEach(
       (file: any) => {
         if (file) {
 
           // Проверка размера файла
-          var size = file.size;
-          if(size > 10000000) {// размер в байтах, ~10 МБ
+          if(file.size > 10000000) {// размер в байтах, ~10 МБ
             // Сообщает об ошибке
             this.toastService.show(
               'Файл слишком объемный!',
               {classname: 'bg-warning text-dark'});
-
-            // Удаляет выбранные на форме файлы
-            //this.myInputVariable.nativeElement.value = "";
           }
           else {
 
@@ -205,8 +191,6 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       console.log("Splitted TAG string:");
       console.log(arrayOfStrings);
     }
-
-
 
     this.advertisementId$.pipe(switchMap(id => {
       const model: Partial<IEditAdvertisement> = {

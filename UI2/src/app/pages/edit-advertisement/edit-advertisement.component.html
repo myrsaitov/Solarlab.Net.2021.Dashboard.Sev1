@@ -50,11 +50,21 @@
             </div>
 
             <!-- Файлы -->
-            <input #fileInput 
+            <input 
               type="file"
+              name="uploadfile"
+              id="uploadfile"
+              style="display:none;"
               class="file-upload"
               (change)="onFileSelected($event)"
               multiple>
+            <label style="cursor: pointer;
+                          background-color: PowderBlue;
+                          color: Black;
+                          border-style: double;
+                          border: 2px solid blue;
+                          border-radius: 5px;" 
+              for="uploadfile">&nbsp;&nbsp;Выберите файлы до 10 Мб каждый&nbsp;&nbsp;</label>
             
             <!-- Превью файлов -->
             <p><br></p>

@@ -1,7 +1,7 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AdvertisementService} from '../../services/advertisement.service';
-import {CreateAdvertisement, ICreateAdvertisement} from '../../models/advertisement/advertisement-create-model';
+import {ICreateAdvertisement} from '../../models/advertisement/advertisement-create-model';
 import {take} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {ToastService} from '../../services/toast.service';
@@ -30,8 +30,6 @@ export class CreateAdvertisementComponent implements OnInit {
   uri: string;
   formData: FormData = new FormData();
   thumbnailImages: IThumbnailImage[] = [];
-  @ViewChild('fileInput')
-  myInputVariable: ElementRef;
   fileId: number = 0; // уникальный id файла, который загружается на форму
 
   constructor(private fb: FormBuilder,
@@ -114,28 +112,17 @@ export class CreateAdvertisementComponent implements OnInit {
   // Обработка загрузки файлов с формы https://blog.angular-university.io/angular-file-upload/
   onFileSelected(event) {
 
-    // Если были ранее выбранные файлы, то удаляем
-    //this.formData = new FormData();
-    //this.thumbnailImages = [];
-
-    // Файлы, выбранные на форме
-    //var files = event.target.files;
-
     // FileList и ForEach напрямую несовместимы, поэтому:
     Array.from(event.target.files).forEach(
       (file: any) => {
         if (file) {
 
           // Проверка размера файла
-          var size = file.size;
-          if(size > 10000000) {// размер в байтах, ~10 МБ
+          if(file.size > 10000000) {// размер в байтах, ~10 МБ
             // Сообщает об ошибке
             this.toastService.show(
               'Файл слишком объемный!',
               {classname: 'bg-warning text-dark'});
-
-            // Удаляет выбранные на форме файлы
-            //this.myInputVariable.nativeElement.value = "";
           }
           else {
 
