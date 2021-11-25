@@ -30,7 +30,7 @@ export class UserFilesService {
   }
 
   // Возвращает список файлов
-  getUserFileList(filter: IUserFilesFilter): Observable<IUserFile[]>{
+  getUserFilesList(filter: IUserFilesFilter): Observable<IUserFile[]>{
 
     let source = Observable.create(observer => {
 

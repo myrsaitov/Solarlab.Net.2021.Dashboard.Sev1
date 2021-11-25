@@ -86,8 +86,8 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
 
                     // Сохраняем файл в облако
 #if DEBUG
-                    userFile.FilePath = "https://downloader.disk.yandex.ru/disk/51e39226f4af656ccabee210f7038078c7c5990928b30a16df38249d77c1ebb7/619ed1e0/SBdg01aXT8emYcX8MaHRojBeD62QqY1Ti6rVtoK4MrvMD8C3ttWrq7szNBnOFX9TV0s6G2agMy_G2hEEnBBq3A%3D%3D?uid=1130000047162420&filename=96635ee1505b9fbb57ae94bdd76620b1.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=1130000047162420&fsize=42729&hid=4e40359f5e5e7939d095312f1ef7f9de&media_type=image&tknv=v2&etag=ad1e3e189367159b9ea8e3706637b7d4";
-#else
+                    //userFile.FilePath = "https://downloader.disk.yandex.ru/disk/51e39226f4af656ccabee210f7038078c7c5990928b30a16df38249d77c1ebb7/619ed1e0/SBdg01aXT8emYcX8MaHRojBeD62QqY1Ti6rVtoK4MrvMD8C3ttWrq7szNBnOFX9TV0s6G2agMy_G2hEEnBBq3A%3D%3D?uid=1130000047162420&filename=96635ee1505b9fbb57ae94bdd76620b1.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=1130000047162420&fsize=42729&hid=4e40359f5e5e7939d095312f1ef7f9de&media_type=image&tknv=v2&etag=ad1e3e189367159b9ea8e3706637b7d4";
+//#else
                     userFile.FilePath = await _yandexDiskApiClient
                         .UploadBase64(fileRequest);
 #endif

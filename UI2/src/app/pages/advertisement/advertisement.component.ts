@@ -24,6 +24,7 @@ import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
 import { EditAdvertisementStatus, IEditAdvertisementStatus } from 'src/app/models/advertisement/advertisement-status-edit-model';
 import { UserFilesService } from 'src/app/services/userfiles.service';
+import { IUserFile } from 'src/app/models/user-files/userfile-model';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -49,6 +50,8 @@ export class AdvertisementComponent implements OnInit {
   regions: IRegion[];
   advertisementStatus: string;
   advertisementId$ = this.route.params.pipe(pluck('id'));
+  userFiles$: Observable<IUserFile[]>;
+  userFiles: IUserFile[];
 
   private commentsFilterSubject$ = new BehaviorSubject({
     contentId: 1,
@@ -88,6 +91,13 @@ export class AdvertisementComponent implements OnInit {
     });
     this.users$.subscribe(users => this.users = users);
 
+    // Подписка на пользователей
+    this.userFiles$ = this.userFilesService.getUserFilesList({
+      pageSize: 1000,
+      page: 0,
+    });
+    this.userFiles$.subscribe(userFiles => this.userFiles = userFiles);
+
     // Подписка на таги
     this.tags$ = this.tagService.getTagList({
       pageSize: 1000,
@@ -119,8 +129,6 @@ export class AdvertisementComponent implements OnInit {
         }
         this.advertisement = advertisement;
         
-        // Загружаем картинки
-
         // Устанавливаем значение статуса на форме
         this.status.patchValue(advertisement.status);
 
@@ -163,12 +171,9 @@ export class AdvertisementComponent implements OnInit {
 
   // Возвращает ссылку на файл по идентификатору
   getUserFileUriById(id: number){
-    this.userFilesService.getUserFileById(id).subscribe(userFile => {
-      return userFile.filePath;
-    });
+    return this.userFiles.find(s => s.id === id).filePath;
   }
   
-
   // Возвращает имя пользователя по идентификатору
   getUserNameById(userId: string){
       return this.users.find(s => s.userId === userId).userName;
