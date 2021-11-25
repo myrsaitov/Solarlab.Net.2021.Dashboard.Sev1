@@ -100,14 +100,16 @@
           <!-- Тело карточки (начало) -->
           <div class="card-body">
             <ul class="list-group list-group-flush">
-              
 
               <!-- Превью файлов -->
               <p><br></p>
               <div class="row">
-                <ng-container *ngFor="let fileId of advertisement.userFiles">
+                <ng-container *ngFor="let fileId of advertisement.userFiles; let i = index">
                   <div class="col-3">
-                    <img class="w-100"
+
+                    <!-- Если файл не выбран -->
+                    <img *ngIf="!getUserFilesSlideSelectedStatus(i)"
+                      class="w-100"
                       [src]="getUserFileUriById(fileId)"
                       style="cursor: pointer;
                         background-color: PowderBlue;
@@ -115,7 +117,20 @@
                         border-style: double;
                         border: 2px solid blue;
                         border-radius: 5px;" 
-                      (click)='getThis(fileId)'>
+                      (click)='getUserFilesThisSlide(i)'>
+
+                    <!-- Если файл выбран -->
+                    <img *ngIf="getUserFilesSlideSelectedStatus(i)"
+                      class="w-100"
+                      [src]="getUserFileUriById(fileId)"
+                      style="cursor: pointer;
+                        background-color: PowderBlue;
+                        color: Black;
+                        border-style: double;
+                        border: 6px solid blue;
+                        border-radius: 1px;
+                        filter: invert(1);" 
+                      (click)='getUserFilesThisSlide(i)'>
                   </div>
                 </ng-container>
               </div>
@@ -124,8 +139,8 @@
               <div id="carouselExampleControls"
                 class="carousel slide"
                 data-ride="carousel">
-                <button (click)='getUserFilesPrevSlide()'>Prev</button>
-                <button (click)='getUserFilesNextSlide()'>Next</button>
+                <button (click)='getUserFilesPrevSlide()'>Предыдущий</button>
+                <button (click)='getUserFilesNextSlide()'>Следующий</button>
                 <div class="carousel-inner" role="listbox">
                     <img class="w-100"
                       src="{{ getUserFilesSlide() }}" alt="userFilesSlides" 

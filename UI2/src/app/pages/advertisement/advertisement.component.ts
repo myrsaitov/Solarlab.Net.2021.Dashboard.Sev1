@@ -200,10 +200,14 @@ export class AdvertisementComponent implements OnInit {
     else {
       this.userFilesSlidesIndex += 1;
     }
-    //this.userFilesSlidesIndex = this.userFilesSlidesIndex===this.userFilesSlides.length ? this.userFilesSlidesIndex : this.userFilesSlidesIndex + 1;
   }
+  // Выбирает слайд из превьюшки
   getUserFilesThisSlide(index: number) {
     this.userFilesSlidesIndex = index;
+  }
+  // Проверяет, выбран ли слайд
+  getUserFilesSlideSelectedStatus(index: number) {
+    return this.userFilesSlidesIndex === index;
   }
 
 
