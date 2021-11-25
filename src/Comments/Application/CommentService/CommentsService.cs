@@ -51,7 +51,7 @@ namespace Comments.Services
             await _repository.LoadLastMessageInChat(chats, token);
 
 
-            Dictionary<string, UserResponse> usersInfoDict = new Dictionary<string, UserResponse>();
+            Dictionary<string, UserGetResponse> usersInfoDict = new Dictionary<string, UserGetResponse>();
 
             foreach (var chat in chats)
             {
@@ -100,7 +100,7 @@ namespace Comments.Services
             var chat = await _repository.GetChatPagedAsync(predicate, dto.PageSize, dto.PageNumber, token);
 
 
-            Dictionary<string, UserResponse> usersInfoDict = new Dictionary<string, UserResponse>();
+            Dictionary<string, UserGetResponse> usersInfoDict = new Dictionary<string, UserGetResponse>();
 
             AddUsersIdFromChatMassagesToDictionary(chat, usersInfoDict);
 
@@ -211,7 +211,7 @@ namespace Comments.Services
             var comment = _repository.GetCommentAsync(commentId, token);
             var commentDto = _mapper.Map<CommentDtoResponce>(comment);
 
-            Dictionary<string, UserResponse> usersInfoDict = new Dictionary<string, UserResponse>();
+            Dictionary<string, UserGetResponse> usersInfoDict = new Dictionary<string, UserGetResponse>();
             usersInfoDict.Add(commentDto.AuthorId.ToString(), null);
             usersInfoDict = await LoadUserInfo(usersInfoDict);
             commentDto.Author = usersInfoDict[commentDto.AuthorId.ToString()];
@@ -220,7 +220,7 @@ namespace Comments.Services
         }
 
         /// <inheritdoc/>
-        private async Task<Dictionary<string, UserResponse>> LoadUserInfo(Dictionary<string, UserResponse> userDict)
+        private async Task<Dictionary<string, UserGetResponse>> LoadUserInfo(Dictionary<string, UserGetResponse> userDict)
         {
             userDict = await _userApiClient.GetUsersByListId(userDict.Keys.ToList());
             return userDict;
@@ -231,7 +231,7 @@ namespace Comments.Services
         {
             var comments = await _repository.GetNextCommentsFromCurrent(dto.ChatId, dto.CommentId, dto.Quantity, token);
 
-            Dictionary<string, UserResponse> usersInfoDict = new Dictionary<string, UserResponse>();
+            Dictionary<string, UserGetResponse> usersInfoDict = new Dictionary<string, UserGetResponse>();
             foreach (Comment comment in comments)
             {
                 var userId = comment.AuthorId.ToString();
@@ -249,7 +249,7 @@ namespace Comments.Services
         }
 
         /// <inheritdoc/>
-        private Dictionary<string, UserResponse> AddUsersIdFromChatMassagesToDictionary(Chat chat, Dictionary<string, UserResponse> usersInfoDictionary)
+        private Dictionary<string, UserGetResponse> AddUsersIdFromChatMassagesToDictionary(Chat chat, Dictionary<string, UserGetResponse> usersInfoDictionary)
         {
             foreach (Comment comment in chat.Messages)
             {

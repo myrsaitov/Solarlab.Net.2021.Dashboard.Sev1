@@ -72,7 +72,7 @@ namespace Sev1.Accounts.AppServices.Services.User.Interfaces
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<Dictionary<string, UserResponse>> GetUsersByListId(
+        Task<Dictionary<string, UserGetResponse>> GetUsersByListId(
             List<string> UserList,
             CancellationToken cancellationToken);
     }

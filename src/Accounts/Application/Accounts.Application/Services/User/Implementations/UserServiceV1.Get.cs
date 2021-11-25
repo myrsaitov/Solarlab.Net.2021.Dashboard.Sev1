@@ -41,14 +41,14 @@ namespace Sev1.Accounts.AppServices.Services.User.Implementations
         /// <param name="UserList">Идентификаторы пользователей</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<Dictionary<string, UserResponse>> GetUsersByListId(
+        public async Task<Dictionary<string, UserGetResponse>> GetUsersByListId(
             List<string> UserList,
             CancellationToken cancellationToken)
         {
-            Dictionary<string, UserResponse> usersDict = new Dictionary<string, UserResponse>();
+            Dictionary<string, UserGetResponse> usersDict = new Dictionary<string, UserGetResponse>();
             foreach (string id in UserList)
             {
-                usersDict.Add(id, _mapper.Map<UserResponse>(await _userRepository.FindById(id, cancellationToken)));
+                usersDict.Add(id, _mapper.Map<UserGetResponse>(await _userRepository.FindById(id, cancellationToken)));
             }
 
             return usersDict;
