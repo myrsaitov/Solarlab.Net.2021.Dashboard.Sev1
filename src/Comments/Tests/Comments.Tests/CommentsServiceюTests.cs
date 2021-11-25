@@ -30,10 +30,10 @@ namespace Comments.Tests
             var config = new MapperConfiguration(mc => mc.AddProfile(new CommentMapperProfile()));
             _repository = new Mock<ICommentsRepository>();
             _mapper = config.CreateMapper();
-            _commentService = new CommentsService(_repository.Object, _mapper);
+            //_commentService = new CommentsService(_repository.Object, _mapper);
             _fixture = new Fixture();
         }
-
+        /*
         [Theory]
         [AutoData]
         public async Task GetCommentsByChatIdAsync_Shuld_Return_Comments(Guid id, int pageSize, int pageNumber, int pagesQuantity, CancellationToken token)
@@ -169,6 +169,6 @@ namespace Comments.Tests
                 It.Is<Guid>(id => id.ToString() == dtoId),
                 It.IsAny<CancellationToken>()),
                 Times.Once);
-        }
+        }*/
     }
 }
