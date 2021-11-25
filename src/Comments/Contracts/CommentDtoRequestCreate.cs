@@ -13,11 +13,5 @@ namespace Comments.Contracts
         [MaxLength(255)]
         [MinLength(2)]
         public string Message { get; set; }
-
-        /// <summary>
-        /// Id автора
-        /// </summary>
-        [Required]
-        public Guid AuthorId { get; set; }
     }
 }

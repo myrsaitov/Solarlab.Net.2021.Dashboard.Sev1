@@ -1,14 +1,10 @@
-﻿using System;
+﻿using Comments.Contracts.Base;
+using System;
 
 namespace Comments.Contracts
 {
-    public class SellerConsumerChatDtoResponceChatShort
+    public class SellerConsumerChatDtoResponceChatShort : DtoBase
     {
-        /// <summary>
-        /// Id объявления
-        /// </summary>
-        public Guid AdvertisementId { get; set; }
-
         /// <summary>
         /// Последнее сообщение
         /// </summary>

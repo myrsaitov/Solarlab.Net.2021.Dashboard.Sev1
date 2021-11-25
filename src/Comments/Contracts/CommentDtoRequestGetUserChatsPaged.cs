@@ -10,13 +10,6 @@ namespace Comments.Contracts
 {
     public class CommentDtoRequestGetUserChatsPaged
     {
-
-        /// <summary>
-        /// Id пользователя
-        /// </summary>
-        [Required]
-        public Guid UserId { get; set; }
-
         /// <summary>
         /// Номер страницы
         /// </summary>

@@ -32,7 +32,7 @@ namespace Comments.Domain.Entities
         /// <summary>
         /// Id Объявления
         /// </summary>
-        public Guid AdvertisementId { get; set; }
+        public int AdvertisementId { get; set; }
 
         /// <summary>
         /// Id Потребителя(пользователя)

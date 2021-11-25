@@ -1,4 +1,5 @@
 ﻿using Comments.Contracts.Enums;
+using Sev1.Accounts.Contracts.Contracts.User.Responses;
 using System;
 
 namespace Comments.Contracts
@@ -36,8 +37,13 @@ namespace Comments.Contracts
         public Guid ChatId { get; set; }
 
         /// <summary>
-        /// Id автора
+        /// Id автора сообщения
         /// </summary>
         public Guid AuthorId { get; set; }
+
+        /// <summary>
+        /// Автор
+        /// </summary>
+        public UserResponse Author { get; set; }
     }
 }

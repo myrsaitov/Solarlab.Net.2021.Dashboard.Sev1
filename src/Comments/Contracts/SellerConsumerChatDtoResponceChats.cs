@@ -15,6 +15,16 @@ namespace Comments.Contracts
         public int TotalPages { get; set; }
 
         /// <summary>
+        /// Номер страницы
+        /// </summary>
+        public int PageNumber { get; set; }
+
+        /// <summary>
+        /// Количество чатов на странице
+        /// </summary>
+        public int PageSize { get; set; }
+
+        /// <summary>
         /// Сообщения на странице
         /// </summary>
         public List<SellerConsumerChatDtoResponceChatShort> DtoChatsShort { get; set; }

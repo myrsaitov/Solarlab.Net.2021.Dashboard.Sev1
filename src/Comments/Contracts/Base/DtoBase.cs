@@ -14,7 +14,7 @@ namespace Comments.Contracts.Base
         /// Id объявления
         /// </summary>
         [Required]
-        public Guid AdvertisementId { get; set; }
+        public int AdvertisementId { get; set; }
 
         /// <summary>
         /// Id Покупателя
