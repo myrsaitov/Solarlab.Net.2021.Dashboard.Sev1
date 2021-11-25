@@ -56,24 +56,14 @@ export class AdvertisementComponent implements OnInit {
   userFilesSlides: string [] = [];
   userFilesSlidesIndex = 0;
 
+  // Для показа FullScreen
   currentIndex: any = -1;
   showFlag: any = false;
-  imageObject: Array<object> = [{
-    image: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/5.jpg',
-    thumbImage: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/5.jpg',
-    title: 'Hummingbirds are amazing creatures'
-}, {
-    image: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/9.jpg',
-    thumbImage: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/9.jpg'
-}, {
-    video: 'https://youtu.be/tYa6OLQHrEc',
-    posterImage: 'https://img.youtube.com/vi/tYa6OLQHrEc/hqdefault.jpg',
-    title: 'Youtube example one with title.'
-}, {
-    image: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/4.jpg',
-    thumbImage: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/4.jpg',
-    title: 'Most beautiful birds in the world flying.'
-}];
+  imageObject: Array<object> = [];
+  /*imageObject: Array<object> = [
+    {image: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/5.jpg'},
+    {image: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/9.jpg'},
+    {image: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/4.jpg'}];//*/
 
   private commentsFilterSubject$ = new BehaviorSubject({
     contentId: 1,
@@ -151,9 +141,12 @@ export class AdvertisementComponent implements OnInit {
         }
         this.advertisement = advertisement;
         
-        // Заполшняем слайдер
+        // Заполшняем слайдер и imageObject
         this.advertisement.userFiles.forEach(userFile => {
-          this.userFilesSlides.push(this.getUserFileUriById(userFile));
+          var uri = this.getUserFileUriById(userFile);
+          this.userFilesSlides.push(uri);
+          var obj = {image: uri};
+          this.imageObject.push(obj);
         });
         
         // Устанавливаем значение статуса на форме
@@ -234,15 +227,9 @@ export class AdvertisementComponent implements OnInit {
     return this.userFilesSlides.length > 0;
   }
   // Увеличивает картинку при зажатии мышкой
-  userFilesMouseDown(){
-    console.log("userFilesMouseDown");
-  }
-  userFilesMouseUp(){
-    console.log("userFilesMouseUp");
-  }
 
-  showLightbox(index) {
-    this.currentIndex = index;
+  showLightbox() {
+    this.currentIndex = this.userFilesSlidesIndex;
     this.showFlag = true;
   }
 

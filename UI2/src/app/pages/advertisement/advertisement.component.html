@@ -107,18 +107,13 @@
               <!-- Если существуют файлы к объявлению (начало) -->
               <ng-container *ngIf="getUserFilesExists()">
 
-<div class="group-2">
-    <div>
-        <img *ngFor="let img of imageObject; let i = index" [src]="img.thumbImage || img.posterImage" (click)="showLightbox(i)" />
-    </div>
-</div>
-
-<!-- ng-image-fullscreen-view  -->
-<ng-image-fullscreen-view
-        [images]="imageObject"
-        [imageIndex]="currentIndex"
-        [show]="showFlag"
-        (close)="closeEventHandler()"></ng-image-fullscreen-view>
+                <!-- ng-image-fullscreen-view  -->
+                <ng-image-fullscreen-view
+                  [images]="imageObject"
+                  [imageIndex]="currentIndex"
+                  [show]="showFlag"
+                  (close)="closeEventHandler()">
+                </ng-image-fullscreen-view>
 
                 <!-- Карусель файлов (начало) -->
                 <p><br></p>
@@ -139,7 +134,7 @@
                           height: 480px;
                           overflow: hidden;">
                         <img src="{{ getUserFilesSlide() }}" alt="userFilesSlides" 
-                          (click)="getUserFilesNextSlide()"
+                          (click)="showLightbox()"
                           (mousedown)="userFilesMouseDown()"
                           (mouseup)="userFilesMouseUp()"
                           (mouseleave)="userFilesMouseUp()"
@@ -190,9 +185,10 @@
                               background-color: PowderBlue;
                               color: Black;
                               border-style: double;
-                              border: 10px solid yellow;
+                              border: 5px solid blue;
+                              border-image: radial-gradient(#ff2, #55f) 40;
                               border-radius: 1px;
-                              filter: invert(1);" 
+                              filter: invert(30%)" 
                             (click)='getUserFilesThisSlide(i)'>
                         </div>
                       </div>
