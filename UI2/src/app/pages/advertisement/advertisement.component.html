@@ -1,6 +1,9 @@
 <!-- "container": ограничивает ширину дочернего контента -->
 <div class="container" *ngIf="advertisement; else loadingBlock">
 
+
+
+
   <!-- Строка (начало) -->
   <div class="row">
 
@@ -104,7 +107,18 @@
               <!-- Если существуют файлы к объявлению (начало) -->
               <ng-container *ngIf="getUserFilesExists()">
 
+<div class="group-2">
+    <div>
+        <img *ngFor="let img of imageObject; let i = index" [src]="img.thumbImage || img.posterImage" (click)="showLightbox(i)" />
+    </div>
+</div>
 
+<!-- ng-image-fullscreen-view  -->
+<ng-image-fullscreen-view
+        [images]="imageObject"
+        [imageIndex]="currentIndex"
+        [show]="showFlag"
+        (close)="closeEventHandler()"></ng-image-fullscreen-view>
 
                 <!-- Карусель файлов (начало) -->
                 <p><br></p>

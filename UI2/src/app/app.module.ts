@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Provider } from '@angular/core';
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -51,6 +52,7 @@ import { ConnectionpageComponent } from './components/connectionpage/connectionp
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgImageFullscreenViewModule
   ],
   providers: [ // The set of injectable objects that are available in the injector of this module.
     AuthService,
