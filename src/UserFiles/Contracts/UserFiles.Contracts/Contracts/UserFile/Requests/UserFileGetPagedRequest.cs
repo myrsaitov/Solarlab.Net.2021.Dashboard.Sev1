@@ -11,7 +11,7 @@ namespace Sev1.UserFiles.Contracts.Contracts.UserFile.Requests
         /// Количество объектов на странице
         /// </summary>
         [Required]
-        [Range(1, 100, ErrorMessage = "Значение должно быть от 1 до 100")]
+        [Range(1, 1000, ErrorMessage = "Значение должно быть от 1 до 1000")]
         public int PageSize { get; set; } = 20;
 
         /// <summary>

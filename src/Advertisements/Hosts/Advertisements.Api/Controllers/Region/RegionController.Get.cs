@@ -22,11 +22,8 @@ namespace Sev1.Advertisements.Api.Controllers.Region
             CancellationToken cancellationToken)
         {
             var result = await _regionService.GetPaged(
-                new GetPagedRequest
-                {
-                    PageSize = request.PageSize,
-                    Page = request.Page
-                }, cancellationToken);
+                request,
+                cancellationToken);
 
             return Ok(result);
         }
@@ -49,6 +46,30 @@ namespace Sev1.Advertisements.Api.Controllers.Region
                 cancellationToken);
 
             return Ok(found);
+        }
+
+        /// <summary>
+        /// Возвращает регионы с пагинацией (V2)
+        /// </summary>
+        /// <param name="request">Запрос на пагинацию</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [HttpGet("v2")]
+        public async Task<IActionResult> GetPagedV2(
+            [FromQuery] // Get values from the query string, e.g.: ?PageSize=10&Page=0
+            GetPagedRequest request,
+            CancellationToken cancellationToken)
+        {
+            var result = await _regionService.GetPagedV2(
+                new GetPagedRequest
+                {
+                    PageSize = request.PageSize,
+                    Page = request.Page
+                },
+                cancellationToken);
+
+            return Ok(result);
         }
     }
 }

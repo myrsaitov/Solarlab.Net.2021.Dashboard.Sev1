@@ -44,6 +44,6 @@ namespace Comments.Contracts
         /// <summary>
         /// Автор
         /// </summary>
-        public UserResponse Author { get; set; }
+        public UserGetResponse Author { get; set; }
     }
 }

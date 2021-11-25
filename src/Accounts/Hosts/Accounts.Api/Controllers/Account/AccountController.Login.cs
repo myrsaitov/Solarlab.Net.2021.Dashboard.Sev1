@@ -11,7 +11,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <summary>
         /// Идентификация пользователя
         /// </summary>
-        /// <param name="request">Логин и пароль USER: {"email":"user@mail.ru","password":"Zuse123!@#$%^()"}; MODERATOR: {"email":"moderator@mail.ru","password":"Zmod123!@#$%^()"}; ADMINISTRATOR: {"email":"administrator@mail.ru","password":"Zadm123!@#$%^()"}</param>
+        /// <param name="request">Логин и пароль [alex_1]{"eMail": "user1@mail.ru","password": "Zuse123!@#$%^()1"}  [sidorov_2]{ "eMail": "user2@mail.ru","password": "Zuse123!@#$%^()2"}  [ivanov_3]{ "eMail": "user3@mail.ru","password": "Zuse123!@#$%^()3"}  [vas_andr_4]{ "eMail": "user4@mail.ru","password": "Zuse123!@#$%^()4"}  [petr_ivanov_5]{ "eMail": "user5@mail.ru","password": "Zuse123!@#$%^()5"}  [moderator]{"eMail": "moderator@mail.ru","password": "Zadm123!@#$%^()"}  [administrator]{"eMail": "administrator@mail.ru","password": "Zadm123!@#$%^()"}</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [AllowAnonymous]
@@ -21,11 +21,9 @@ namespace Sev1.Accounts.Api.Controllers.Account
             UserLoginRequest request,
             CancellationToken cancellationToken)
         {
-            var token = await _identityService.CreateToken(
+            return Ok(await _userService.Login(
                 request,
-                cancellationToken);
-
-            return Ok(token);
+                cancellationToken));
         }
     }
 }

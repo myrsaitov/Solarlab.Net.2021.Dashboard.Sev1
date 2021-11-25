@@ -26,7 +26,8 @@ namespace Sev1.Accounts.MapsterMapper.MapProfiles
                 .Map(dest => dest.UserName, src => src.UserName)
                 .Map(dest => dest.Role, src => RoleConstants.User.ToString());
 
-            config.NewConfig<Domain.User, UserResponse>();
+            config.NewConfig<Domain.User, UserGetResponse>()
+                .Map(dest => dest.UserId, src => src.Id);
 
             return config;
         }

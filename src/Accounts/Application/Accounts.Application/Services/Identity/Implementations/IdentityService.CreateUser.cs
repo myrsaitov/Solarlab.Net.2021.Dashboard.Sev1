@@ -26,7 +26,7 @@ namespace Sev1.Accounts.AppServices.Services.Identity.Implementations
             // Проверка, существует ли такой пользователь в базе
             var existedUser = await _userManager
                 .FindByEmailAsync(
-                request.Email);
+                request.EMail);
             if (existedUser != null)
             {
                 throw new ConflictException("Пользователь с таким Email уже существует");
@@ -36,7 +36,7 @@ namespace Sev1.Accounts.AppServices.Services.Identity.Implementations
             var identityUser = new IdentityUser
             {
                 UserName = request.UserName,
-                Email = request.Email
+                Email = request.EMail
             };
 
             // Помещаем его в базу

@@ -63,5 +63,10 @@ namespace Sev1.Advertisements.Domain
         /// Регион
         /// </summary>
         public Region Region { get; set; }
+
+        /// <summary>
+        /// Коллекция связанных UserFile
+        /// </summary>
+        public virtual ICollection<UserFile> UserFiles { get; set; }
     }
 }

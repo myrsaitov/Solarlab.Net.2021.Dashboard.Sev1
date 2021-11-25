@@ -13,7 +13,7 @@ namespace Sev1.Accounts.Contracts.Contracts.Identity.Requests
         [Required]
         [MaxLength(254, ErrorMessage = "Максимальная длина E-mail не должна превышать 254 символов")]
         [MinLength(5, ErrorMessage = "Минимальная длина E-mail не должна быть меньше 5 символов")]
-        public string Email { get; set; }
+        public string EMail { get; set; }
 
         /// <summary>
         /// Никнейм

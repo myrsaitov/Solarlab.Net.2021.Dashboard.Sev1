@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.Accounts.Contracts.Authorization;
-using Sev1.UserFiles.Contracts.Contracts.UserFile;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
 namespace Sev1.UserFiles.Api.Controllers.UserFile

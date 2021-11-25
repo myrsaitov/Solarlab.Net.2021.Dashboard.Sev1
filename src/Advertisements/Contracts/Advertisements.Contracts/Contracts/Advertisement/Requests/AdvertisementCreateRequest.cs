@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using sev1.Advertisements.Contracts.Enums;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests
 {
@@ -43,6 +46,7 @@ namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests
         /// <summary>
         /// Адрес
         /// </summary>
+        [MaxLength(100, ErrorMessage = "Максимальная длина адреса не должна превышать 100 символов")]
         public string Address { get; set; }
 
         /// <summary>
@@ -50,5 +54,16 @@ namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests
         /// </summary>
         [Required]
         public int? RegionId { get; set; }
+
+        /// <summary>
+        /// Статус объявления
+        /// </summary>
+        [Required]
+        public AdvertisementStatus Status { get; set; }
+
+        /// <summary>
+        /// Прикрепленные файлы
+        /// </summary>
+        public List<UserFileBase64UploadRequest> UserFiles { get; set; }
     }
 }

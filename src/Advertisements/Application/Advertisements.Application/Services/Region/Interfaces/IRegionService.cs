@@ -26,5 +26,15 @@ namespace Sev1.Advertisements.AppServices.Services.Region.Interfaces
         Task<RegionGetPagedResponse> GetPaged(
             GetPagedRequest request,
             CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Возвращает Regions с пагинацией (V2)
+        /// </summary>
+        /// <param name="request">Параметры пагинации</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<RegionGetPagedResponseV2> GetPagedV2(
+            GetPagedRequest request,
+            CancellationToken cancellationToken);
     }
 }

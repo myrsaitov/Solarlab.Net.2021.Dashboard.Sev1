@@ -20,6 +20,6 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
         /// </summary>
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <returns></returns>
-        Task<Dictionary<string, UserResponse>> GetUsersByListId(List<string> userList);
+        Task<Dictionary<string, UserGetResponse>> GetUsersByListId(List<string> userList);
     }
 }

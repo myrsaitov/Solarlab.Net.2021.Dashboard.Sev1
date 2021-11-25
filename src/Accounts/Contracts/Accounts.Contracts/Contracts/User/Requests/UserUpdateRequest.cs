@@ -83,11 +83,5 @@ namespace Sev1.Accounts.AppServices.Contracts.User.Requests
         /// </summary>
         [Range(1, 100_000_000_000, ErrorMessage = "Значение RegionId должно быть от 1 до 100_000_000_000")]
         public int? RegionId { get; set; }
-
-        /// <summary>
-        /// Путь к фото пользователя
-        /// </summary>
-        [MaxLength(2000, ErrorMessage = "Максимальная длина URI не должна превышать 2000  символов")]
-        public string UserPicPath { get; set; }
     }
 }

@@ -20,6 +20,16 @@ namespace Sev1.Accounts.AppServices.Services.User.Interfaces
             CancellationToken cancellationToken);
 
         /// <summary>
+        /// Выполняет авторизацию
+        /// </summary>
+        /// <param name="request">Данные пользователя</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<UserLoginResponse> Login(
+            UserLoginRequest request,
+            CancellationToken cancellationToken);
+
+        /// <summary>
         /// Обновляет данные пользователя
         /// </summary>
         /// <param name="request">DTO запроса</param>
@@ -44,7 +54,17 @@ namespace Sev1.Accounts.AppServices.Services.User.Interfaces
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<UserResponse> GetCurrentUser(
+        Task<UserGetResponse> GetCurrentUser(
+            CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Возвращает пагинированных пользователей
+        /// </summary>
+        /// <param name="request">Запрос на пагинацию</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<UserGetPagedResponse> GetPaged(
+            UserGetPagedRequest request,
             CancellationToken cancellationToken);
 
         /// <summary>

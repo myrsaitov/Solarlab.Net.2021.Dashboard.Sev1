@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using sev1.Accounts.Contracts.UserProvider;
 using Sev1.Accounts.Contracts.Contracts.User.Responses;
 
 namespace Sev1.Accounts.Contracts.ApiClients.User
@@ -31,10 +32,10 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
         /// <param name="accessToken">JWT Token, который пришел с запросом</param>
         /// <returns></returns>
         public async Task<ValidateTokenResponse> UserValidate(
-            string accessToken)
+            string authorizationHeader)
         {
-            // Проверка наличия токена
-            if (accessToken is null)
+            // Проверка авторизации
+            if (authorizationHeader is null)
             {
                 throw new Exception("Ошибка авторизации!");
             }
@@ -52,27 +53,35 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
 
             // Данные к пост-запросу
             string jsonString = "";
-            var payload = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            var payload = new StringContent(
+                jsonString,
+                Encoding.UTF8,
+                "application/json");
 
             // Создание клиента
             var client = _clientFactory.CreateClient();
 
             // Добавляем хидер авторизации
-            client.DefaultRequestHeaders.Add("Authorization", accessToken);
+            client.DefaultRequestHeaders.Add(
+                "Authorization",
+                authorizationHeader);
 
             // Выполнение POST-запроса
-            HttpResponseMessage response = await client.PostAsync(uri, payload);
+            HttpResponseMessage response = await client.PostAsync(
+                uri,
+                payload);
 
             // Преобразование в json
             string responseJson = await response.Content.ReadAsStringAsync();
 
             // Преобразуем json в DTO
-            ValidateTokenResponse res = JsonConvert.DeserializeObject<ValidateTokenResponse>(responseJson);
+            ValidateTokenResponse res = JsonConvert
+                .DeserializeObject<ValidateTokenResponse>(responseJson);
 
             // Если null, то ошибка авторизация
             if (res is null)
             {
-                throw new Exception("Ошибка авторизации!");
+                throw new Exception("Ошибка авторизации!"); // TODO сообщения подробнее
             }
 
             // Возвращаем DTO
@@ -83,7 +92,7 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
         /// API-client получить данные пользователей по их идентификаторам.
         /// </summary>
         /// <returns></returns>
-        public async Task<Dictionary<string, UserResponse>> GetUsersByListId(List<string> userList)
+        public async Task<Dictionary<string, UserGetResponse>> GetUsersByListId(List<string> userList)
         {
             // Считыватем URI запроса из конфига "appsettings.json"
 #if DEBUG
@@ -111,7 +120,7 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
             var responseJson = await response.Content.ReadAsStringAsync();
 
             // Преобразуем json в DTO
-            var userResponceDict = JsonConvert.DeserializeObject<Dictionary<string, UserResponse>>(responseJson);
+            var userResponceDict = JsonConvert.DeserializeObject<Dictionary<string, UserGetResponse>>(responseJson);
 
             // Возвращаем Dictionary
             return userResponceDict;
