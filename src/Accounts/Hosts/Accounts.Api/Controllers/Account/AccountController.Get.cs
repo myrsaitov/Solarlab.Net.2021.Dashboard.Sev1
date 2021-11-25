@@ -1,8 +1,10 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sev1.Accounts.Contracts.Contracts.User.Responses;
+using Sev1.Accounts.Domain;
 
 namespace Sev1.Accounts.Api.Controllers.Account
 {
@@ -57,6 +59,24 @@ namespace Sev1.Accounts.Api.Controllers.Account
                 cancellationToken);
 
             return Ok(domainUser);
+        }
+
+        /// <summary>
+        /// Возвращает пользователя по его идентификатору
+        /// </summary>
+        /// <param name="UserList">Идентификаторы пользователей</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [HttpPost("users")]
+        public async Task<IActionResult> GetUsersByListId(
+            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
+            List<string> UserList,
+            CancellationToken cancellationToken)
+        {
+            var result = await _userService.GetUsersByListId(UserList, cancellationToken);
+
+            return Ok(result);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +34,7 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
             string accessToken)
         {
             // Проверка наличия токена
-            if(accessToken is null)
+            if (accessToken is null)
             {
                 throw new Exception("Ошибка авторизации!");
             }
@@ -69,13 +70,51 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
             ValidateTokenResponse res = JsonConvert.DeserializeObject<ValidateTokenResponse>(responseJson);
 
             // Если null, то ошибка авторизация
-            if(res is null)
+            if (res is null)
             {
                 throw new Exception("Ошибка авторизации!");
             }
 
             // Возвращаем DTO
             return res;
+        }
+
+        /// <summary>
+        /// API-client получить данные пользователей по их идентификаторам.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<Dictionary<string, UserResponse>> GetUsersByListId(List<string> userList)
+        {
+            // Считыватем URI запроса из конфига "appsettings.json"
+#if DEBUG
+            string uri = _configuration["AccountGetUsersApiClientUri"];
+#else
+            string uri = _configuration["AccountGetUsersApiClientUri_DockerNoSSL"];
+#endif
+            if (string.IsNullOrWhiteSpace(uri))
+            {
+                throw new Exception("API-клиент: адрес не задан");
+            }
+
+            // Данные к пост-запросу
+            string jsonString = JsonConvert.SerializeObject(userList);
+            var payload = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+            // Создание клиента
+            var client = _clientFactory.CreateClient();
+
+
+            // Выполнение POST-запроса
+            HttpResponseMessage response = await client.PostAsync(uri, payload);
+
+            // Преобразование в json
+            var responseJson = await response.Content.ReadAsStringAsync();
+
+            // Преобразуем json в DTO
+            var userResponceDict = JsonConvert.DeserializeObject<Dictionary<string, UserResponse>>(responseJson);
+
+            // Возвращаем Dictionary
+            return userResponceDict;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Sev1.Accounts.AppServices.Contracts.User.Requests;
 using Sev1.Accounts.Contracts.Contracts.User.Requests;
 using Sev1.Accounts.Contracts.Contracts.User.Responses;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@ namespace Sev1.Accounts.AppServices.Services.User.Interfaces
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<UserIdResponse> Register(
-            UserRegisterRequest registerRequest, 
+            UserRegisterRequest registerRequest,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -25,7 +26,7 @@ namespace Sev1.Accounts.AppServices.Services.User.Interfaces
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task Update(
-            UserUpdateRequest request, 
+            UserUpdateRequest request,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -44,6 +45,15 @@ namespace Sev1.Accounts.AppServices.Services.User.Interfaces
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<UserResponse> GetCurrentUser(
+            CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Возвращает пользователей по массиву идентификаторов
+        /// </summary>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<Dictionary<string, UserResponse>> GetUsersByListId(
+            List<string> UserList,
             CancellationToken cancellationToken);
     }
 }

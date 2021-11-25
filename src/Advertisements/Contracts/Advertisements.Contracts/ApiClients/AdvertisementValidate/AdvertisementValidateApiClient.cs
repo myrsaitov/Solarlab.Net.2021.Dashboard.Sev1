@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
 using System;
+using Sev1.Accounts.Domain.Base.Exceptions;
 
 namespace Sev1.Avdertisements.Contracts.ApiClients.AdvertisementValidate
 {
@@ -68,6 +69,44 @@ namespace Sev1.Avdertisements.Contracts.ApiClients.AdvertisementValidate
                 // Иначе - не достаточно прав!
                 throw new Exception("Не достаточно прав!");
             }
+        }
+
+        /// <summary>
+        /// Получить объявление по Id 
+        /// </summary>
+        /// <param name="advertisementId">Идентификатор объявления</param>
+        /// <returns></returns>
+        public async Task<AdvertisementGetResponse> GetAdvertisementById(int advertisementId)
+        {
+            // Считыватем URI запроса из конфига "appsettings.json"
+#if DEBUG
+            string uri = _configuration["AdvertisementApiClientUriGet"] + advertisementId.ToString();
+#else
+            string uri = _configuration["AdvertisementApiClientUriGet_DockerNoSSL"] + advertisementId.ToString();
+#endif
+            if (string.IsNullOrWhiteSpace(uri))
+            {
+                throw new Exception("API-клиент: адрес не задан");
+            }
+
+            // Создание клиента
+            var client = _clientFactory.CreateClient();
+
+            // Выполнение GET-запроса
+            HttpResponseMessage response = await client.GetAsync(uri);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                throw new NotFoundException($"Объявление {advertisementId} не было найдено!");
+            }
+            // Преобразование в json
+            string responseJson = await response.Content.ReadAsStringAsync();
+
+            // Конвертируем JSON в DTO
+            var advertisementDto = JsonConvert
+                .DeserializeObject<AdvertisementGetResponse>(responseJson);
+
+            return advertisementDto;
         }
     }
 }
