@@ -45,7 +45,7 @@ namespace Comments.API.Controllers
         }
 
         /// <summary>
-        /// Получить все коментарии, прикреплённые к чату
+        /// Получить коментарии, постранично
         /// </summary>
         /// <response code="200">Ok</response>
         [AllowAnonymous]
@@ -128,6 +128,24 @@ namespace Comments.API.Controllers
                 await _commentService.DeleteCommentAsync(dto, token);
                 return Ok();
             }
+            return BadRequest();
+        }
+
+
+        /// <summary>
+        /// Получить коментарии чата, от текущего комментария в колличестве quantity
+        /// </summary>
+        /// <response code="200">Ok</response>
+        [AllowAnonymous]
+        [HttpGet("GetNextMessagesFromCurrent")]
+        public async Task<IActionResult> GetNextMessagesFromCurrent([FromQuery] CommentDtoRequestGetNextFromCurrent dto, CancellationToken token = default)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _commentService.GetNextCommentsFromCurrent(dto, token);
+                return Ok(result);
+            }
+
             return BadRequest();
         }
     }

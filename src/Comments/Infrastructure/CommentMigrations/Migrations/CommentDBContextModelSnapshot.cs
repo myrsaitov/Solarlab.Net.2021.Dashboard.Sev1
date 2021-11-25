@@ -25,8 +25,8 @@ namespace Comments.Migrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AdvertisementId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("AdvertisementId")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("ConsumerId")
                         .HasColumnType("uniqueidentifier");

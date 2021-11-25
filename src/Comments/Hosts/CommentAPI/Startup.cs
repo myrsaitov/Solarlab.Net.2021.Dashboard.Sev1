@@ -13,6 +13,7 @@ using Microsoft.OpenApi.Models;
 using sev1.Accounts.Contracts.UserProvider;
 using Sev1.Accounts.Contracts.ApiClients.User;
 using Sev1.Accounts.Contracts.Authorization;
+using Sev1.Avdertisements.Contracts.ApiClients.AdvertisementValidate;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -45,6 +46,7 @@ namespace Comments.API
                 .AddCors()
                 .AddHttpClient()
                 .AddTransient<IUserValidateApiClient, UserValidateApiClient>()
+                .AddTransient<IAdvertisementValidateApiClient, AdvertisementValidateApiClient>()
                 .AddTransient<IUserProvider, UserProvider>()
                 .AddHttpContextAccessor();
 
@@ -89,7 +91,7 @@ namespace Comments.API
             });
 
 #if DEBUG
-            string connection = Configuration.GetConnectionString("LocalConnection");
+            string connection = Configuration.GetConnectionString("RemoteConnection");
 #else
             string connection = Configuration.GetConnectionString("DefaultConnection");
 #endif

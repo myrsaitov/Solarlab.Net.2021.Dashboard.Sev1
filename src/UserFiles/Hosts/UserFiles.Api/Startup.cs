@@ -196,7 +196,7 @@ namespace Sev1.UserFiles.Api
             }
 
             // This middleware is used to redirects HTTP requests to HTTPS.  
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
 
             // Cross-Origin Requests

@@ -21,7 +21,7 @@
         </member>
         <member name="M:Comments.API.Controllers.CommentController.GetChatPaged(Comments.Contracts.CommentDtoRequestGetChatPaged,System.Threading.CancellationToken)">
             <summary>
-            Получить все коментарии, прикреплённые к чату
+            Получить коментарии, постранично
             </summary>
             <response code="200">Ok</response>
         </member>
@@ -59,6 +59,12 @@
             <returns></returns>
             <response code="200">Ok</response>
             <response code="404">Not Found</response>
+        </member>
+        <member name="M:Comments.API.Controllers.CommentController.GetNextMessagesFromCurrent(Comments.Contracts.CommentDtoRequestGetNextFromCurrent,System.Threading.CancellationToken)">
+            <summary>
+            Получить коментарии чата, от текущего комментария в колличестве quantity
+            </summary>
+            <response code="200">Ok</response>
         </member>
         <member name="T:Comments.API.Filters.CommentsExceptionFilter">
             <summary>

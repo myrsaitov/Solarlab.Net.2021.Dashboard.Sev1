@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Comments.Migrations.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial_Create : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace Comments.Migrations.Migrations
                 {
                     ChatId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Type = table.Column<int>(type: "int", nullable: false),
-                    AdvertisementId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AdvertisementId = table.Column<int>(type: "int", nullable: false),
                     ConsumerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SellerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },

@@ -25,6 +25,14 @@ namespace Comments.Services
         Task<CommentDtoResponceChat> GetChatPagedAsync(CommentDtoRequestGetChatPaged dto, CancellationToken token);
 
         /// <summary>
+        /// Получить последние комментарии, после токущего.
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        Task<List<CommentDtoResponce>> GetNextCommentsFromCurrent(CommentDtoRequestGetNextFromCurrent dto, CancellationToken token);
+
+        /// <summary>
         /// Удалить чат
         /// </summary>
         /// <param name="dto"></param>
@@ -48,6 +56,14 @@ namespace Comments.Services
         /// <param name="token"></param>
         /// <returns></returns>
         Task<Guid> UpdateCommentAsync(CommentDtoRequestUpdate dto, CancellationToken token);
+
+        /// <summary>
+        /// Зпгрузить комментарий(сообщение)
+        /// </summary>
+        /// <param name="commentId"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        Task<CommentDtoResponce> GetCommentAsync(Guid commentId, CancellationToken token);
 
         /// <summary>
         /// Удалить комментарий(сообщение)

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Comments.Migrations.Migrations
 {
     [DbContext(typeof(CommentDBContext))]
-    [Migration("20211117111511_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20211123231742_Initial_Create")]
+    partial class Initial_Create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,8 +27,8 @@ namespace Comments.Migrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AdvertisementId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("AdvertisementId")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("ConsumerId")
                         .HasColumnType("uniqueidentifier");

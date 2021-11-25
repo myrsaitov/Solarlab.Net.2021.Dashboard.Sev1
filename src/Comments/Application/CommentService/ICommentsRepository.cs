@@ -111,6 +111,16 @@ namespace Comments.Services
         /// <param name="id"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public Task<Comment> GetCommentAsync(Guid id, CancellationToken token);
+        Task<Comment> GetCommentAsync(Guid id, CancellationToken token);
+
+        /// <summary>
+        /// Получить последние комментарии, после токущего.
+        /// </summary>
+        /// <param name="chatId"></param>
+        /// <param name="commentId"></param>
+        /// <param name="quantity"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        Task<List<Comment>> GetNextCommentsFromCurrent(Guid chatId, Guid commentId, int quantity, CancellationToken token);
     }
 }

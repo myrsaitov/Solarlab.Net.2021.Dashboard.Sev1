@@ -56,6 +56,7 @@ namespace Comments.Repository.Persistance
 
             chat.Messages = await _context.Comment_Table
                 .Where(msg => msg.ChatId == chat.ChatId)
+                .OrderByDescending(_ => _)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
@@ -142,6 +143,29 @@ namespace Comments.Repository.Persistance
                 throw new NotFoundException(id.ToString());
             }
             return result;
+        }
+
+        /// <inheritdoc/>
+        public async Task<List<Comment>> GetNextCommentsFromCurrent(Guid chatId, Guid commentId, int quantity = 10, CancellationToken token = default)
+        {
+            if (!commentId.Equals(Guid.Empty))
+            {
+                return _context.Comment_Table
+                    .Where(C => C.ChatId == chatId)
+                    .OrderByDescending(c => c.CreationTime)
+                    .AsEnumerable()
+                    .SkipWhile(c => c.Id != commentId)
+                    .Skip(1)
+                    .Take(quantity)
+                    .ToList();
+            } else
+            {
+                return _context.Comment_Table
+                    .Where(C => C.ChatId == chatId)
+                    .OrderByDescending(c => c.CreationTime)
+                    .Take(quantity)
+                    .ToList();
+            }
         }
 
         /// <inheritdoc/>
