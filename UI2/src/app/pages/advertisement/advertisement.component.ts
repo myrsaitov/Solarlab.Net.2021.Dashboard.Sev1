@@ -1,7 +1,7 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, pluck, take } from 'rxjs/operators';
+import { pluck, take } from 'rxjs/operators';
 import { AdvertisementService } from '../../services/advertisement.service';
 import { CommentService } from '../../services/comment.service';
 import { IAdvertisement } from '../../models/advertisement/i-advertisement';
@@ -25,6 +25,7 @@ import { RegionService } from 'src/app/services/region.service';
 import { EditAdvertisementStatus, IEditAdvertisementStatus } from 'src/app/models/advertisement/advertisement-status-edit-model';
 import { UserFilesService } from 'src/app/services/userfiles.service';
 import { IUserFile } from 'src/app/models/user-files/userfile-model';
+import { Input, Output, EventEmitter } from '@angular/core';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -209,7 +210,17 @@ export class AdvertisementComponent implements OnInit {
   getUserFilesSlideSelectedStatus(index: number) {
     return this.userFilesSlidesIndex === index;
   }
-
+  // Проверяет, существуют ли файлы к данному объявлению
+  getUserFilesExists() {
+    return this.userFilesSlides.length > 0;
+  }
+  // Увеличивает картинку при зажатии мышкой
+  userFilesMouseDown(){
+    console.log("userFilesMouseDown");
+  }
+  userFilesMouseUp(){
+    console.log("userFilesMouseUp");
+  }
 
   // Возвращает ссылку на файл по идентификатору
   getUserFileUriById(id: number){

@@ -2,3 +2,17 @@
     display: flex !important;
     justify-content: center !important;
 }
+
+.gallery1 { overflow: hidden; width: 480px; }
+.gallery1 .ramka1 { float: left; margin-right: 10px; margin-bottom: 10px; width: 150px; height: 150px; overflow: hidden;}
+.gallery1 img { width: 150px; height: 150px; object-fit: cover;  }
+
+.unselectable {
+  user-drag: none; 
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+

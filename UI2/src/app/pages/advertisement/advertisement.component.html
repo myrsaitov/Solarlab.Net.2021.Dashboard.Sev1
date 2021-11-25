@@ -101,58 +101,94 @@
           <div class="card-body">
             <ul class="list-group list-group-flush">
 
-              <!-- Превью файлов -->
-              <p><br></p>
-              <div class="row">
-                <ng-container *ngFor="let fileId of advertisement.userFiles; let i = index">
-                  <div class="col-3">
+              <!-- Если существуют файлы к объявлению (начало) -->
+              <ng-container *ngIf="getUserFilesExists()">
 
-                    <!-- Если файл не выбран -->
-                    <img *ngIf="!getUserFilesSlideSelectedStatus(i)"
-                      class="w-100"
-                      [src]="getUserFileUriById(fileId)"
-                      style="cursor: pointer;
-                        background-color: PowderBlue;
-                        color: Black;
-                        border-style: double;
-                        border: 2px solid blue;
-                        border-radius: 5px;" 
-                      (click)='getUserFilesThisSlide(i)'>
 
-                    <!-- Если файл выбран -->
-                    <img *ngIf="getUserFilesSlideSelectedStatus(i)"
-                      class="w-100"
-                      [src]="getUserFileUriById(fileId)"
-                      style="cursor: pointer;
-                        background-color: PowderBlue;
-                        color: Black;
-                        border-style: double;
-                        border: 6px solid blue;
-                        border-radius: 1px;
-                        filter: invert(1);" 
-                      (click)='getUserFilesThisSlide(i)'>
+
+                <!-- Карусель файлов (начало) -->
+                <p><br></p>
+                <div id="carouselExampleControls"
+                  class="carousel slide"
+                  data-ride="carousel">
+                  <button (click)='getUserFilesPrevSlide()'>Предыдущий</button>
+                  <button (click)='getUserFilesNextSlide()'>Следующий</button>
+                  <div class="carousel-inner" role="listbox">
+                    <div class="gallery2"
+                      style="overflow: hidden;
+                        width: 640px;">
+                      <div class="ramka2"
+                        style="float: left;
+                          margin-right: 10px;
+                          margin-bottom: 10px;
+                          width: 640px;
+                          height: 480px;
+                          overflow: hidden;">
+                        <img src="{{ getUserFilesSlide() }}" alt="userFilesSlides" 
+                          (click)="getUserFilesNextSlide()"
+                          (mousedown)="userFilesMouseDown()"
+                          (mouseup)="userFilesMouseUp()"
+                          (mouseleave)="userFilesMouseUp()"
+                          draggable="false"
+                          (dragstart)="false;" 
+                          class="unselectable"
+                          style="cursor: pointer;
+                            background-color: PowderBlue;
+                            color: Black;
+                            border-style: double;
+                            border: 2px solid blue;
+                            border-radius: 5px;
+                            width: 640px;
+                            height: 480px;
+                            object-fit: cover;">
+                      </div>
+                    </div>
                   </div>
-                </ng-container>
-              </div>
-              <!-- Карусель файлов -->
-              <p><br></p>
-              <div id="carouselExampleControls"
-                class="carousel slide"
-                data-ride="carousel">
-                <button (click)='getUserFilesPrevSlide()'>Предыдущий</button>
-                <button (click)='getUserFilesNextSlide()'>Следующий</button>
-                <div class="carousel-inner" role="listbox">
-                    <img class="w-100"
-                      src="{{ getUserFilesSlide() }}" alt="userFilesSlides" 
-                      (click)='getUserFilesNextSlide()'
-                      style="cursor: pointer;
-                        background-color: PowderBlue;
-                        color: Black;
-                        border-style: double;
-                        border: 2px solid blue;
-                        border-radius: 5px;" >
                 </div>
-              </div>
+                <!-- Карусель файлов (конец) -->
+
+                <!-- Превью файлов (начало) -->
+                <p><br></p>
+                <div class="row">
+                  <ng-container *ngFor="let fileId of advertisement.userFiles; let i = index">
+                    <div class="col-3">
+                      <div class="gallery1">
+                        <div class="ramka1">
+                          <!-- Если файл не выбран -->
+                          <img *ngIf="!getUserFilesSlideSelectedStatus(i)"
+                            [src]="getUserFileUriById(fileId)"
+                            style="cursor: pointer;
+                              background-color: PowderBlue;
+                              color: Black;
+                              border-style: double;
+                              border: 2px solid blue;
+                              border-radius: 5px;" 
+                            (click)="getUserFilesThisSlide(i)"
+                            draggable="false"
+                            (dragstart)="false;" 
+                            class="unselectable">
+
+                          <!-- Если файл выбран -->
+                          <img *ngIf="getUserFilesSlideSelectedStatus(i)"
+                            class="w-100"
+                            [src]="getUserFileUriById(fileId)"
+                            style="cursor: pointer;
+                              background-color: PowderBlue;
+                              color: Black;
+                              border-style: double;
+                              border: 10px solid yellow;
+                              border-radius: 1px;
+                              filter: invert(1);" 
+                            (click)='getUserFilesThisSlide(i)'>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+                <!-- Превью файлов (конец) -->
+              
+              </ng-container>
+              <!-- Если существуют файлы к объявлению (конец) -->
 
               <!-- Текст объявления -->
               <li class="list-group-item">
