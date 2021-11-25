@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit {
   categories$: Observable<ICategory[]>;
   categories: ICategory[];
   tags$: Observable<ITag[]>;
+  defaultImageUri: string = "https://vjoy.cc/wp-content/uploads/2019/07/3-5.jpg";
 
   private advertisementsFilterSubject$ = new BehaviorSubject({
     searchStr: null,

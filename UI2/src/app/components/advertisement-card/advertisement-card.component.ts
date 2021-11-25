@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 export class AdvertisementCardComponent {
   @Input() advertisement: IAdvertisement;
   @Input() userName: string;
+  @Input() defaultImageUri: string;
 
   constructor(private readonly router: Router) {
   }

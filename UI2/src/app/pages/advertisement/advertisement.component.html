@@ -1,9 +1,6 @@
 <!-- "container": ограничивает ширину дочернего контента -->
 <div class="container" *ngIf="advertisement; else loadingBlock">
 
-
-
-
   <!-- Строка (начало) -->
   <div class="row">
 
@@ -58,10 +55,6 @@
               <a class="btn btn-outline-secondary mr-2"
                 [routerLink]="['/edit', advertisement.id]"
                 *ngIf="isEditable">Редактировать</a>
-
-              <button *ngIf="isEditable"
-                class="btn btn-outline-danger"
-                (click)="openDeleteModal(content)">Удалить</button>
 
               <div class="form-group">
                 <label for="status">Статус:</label>
@@ -119,14 +112,16 @@
                 <p><br></p>
                 <div id="carouselExampleControls"
                   class="carousel slide"
-                  data-ride="carousel">
+                  data-ride="carousel"
+                  style="text-align:center">
                   <button (click)='getUserFilesPrevSlide()'>Предыдущий</button>
+                  ({{userFilesSlidesIndex + 1}})
                   <button (click)='getUserFilesNextSlide()'>Следующий</button>
                   <div class="carousel-inner" role="listbox">
                     <div class="gallery2"
                       style="overflow: hidden;
                         width: 640px;">
-                      <div class="ramka2"
+                      <div class="center"
                         style="float: left;
                           margin-right: 10px;
                           margin-bottom: 10px;

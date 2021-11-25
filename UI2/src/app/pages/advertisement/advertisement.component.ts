@@ -25,7 +25,6 @@ import { RegionService } from 'src/app/services/region.service';
 import { EditAdvertisementStatus, IEditAdvertisementStatus } from 'src/app/models/advertisement/advertisement-status-edit-model';
 import { UserFilesService } from 'src/app/services/userfiles.service';
 import { IUserFile } from 'src/app/models/user-files/userfile-model';
-import { Input, Output, EventEmitter } from '@angular/core';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -89,6 +88,13 @@ export class AdvertisementComponent implements OnInit {
 
   ngOnInit() {
 
+    // Подписка на файлы
+    this.userFiles$ = this.userFilesService.getUserFilesList({
+      pageSize: 1000,
+      page: 0,
+    });
+    this.userFiles$.subscribe(userFiles => this.userFiles = userFiles);    
+
     // Подписка на категории
     this.categories$ = this.categoryService.getCategoryList({
       pageSize: 1000,
@@ -102,13 +108,6 @@ export class AdvertisementComponent implements OnInit {
       page: 0,
     });
     this.users$.subscribe(users => this.users = users);
-
-    // Подписка на пользователей
-    this.userFiles$ = this.userFilesService.getUserFilesList({
-      pageSize: 1000,
-      page: 0,
-    });
-    this.userFiles$.subscribe(userFiles => this.userFiles = userFiles);
 
     // Подписка на таги
     this.tags$ = this.tagService.getTagList({

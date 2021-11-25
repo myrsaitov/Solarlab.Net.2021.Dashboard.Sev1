@@ -8,7 +8,7 @@
 .gallery1 img { width: 150px; height: 150px; object-fit: cover;  }
 
 .unselectable {
-  user-drag: none; 
+
   user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
@@ -32,4 +32,11 @@
     height: 100px;
     padding: 5px;
     border-radius: 10px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
