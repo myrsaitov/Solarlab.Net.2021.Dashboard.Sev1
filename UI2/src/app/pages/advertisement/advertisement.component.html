@@ -107,9 +107,36 @@
               <div class="row">
                 <ng-container *ngFor="let fileId of advertisement.userFiles">
                   <div class="col-3">
-                    <img class="w-100" [src]="getUserFileUriById(fileId)">
+                    <img class="w-100"
+                      [src]="getUserFileUriById(fileId)"
+                      style="cursor: pointer;
+                        background-color: PowderBlue;
+                        color: Black;
+                        border-style: double;
+                        border: 2px solid blue;
+                        border-radius: 5px;" 
+                      (click)='getThis(fileId)'>
                   </div>
                 </ng-container>
+              </div>
+              <!-- Карусель файлов -->
+              <p><br></p>
+              <div id="carouselExampleControls"
+                class="carousel slide"
+                data-ride="carousel">
+                <button (click)='getUserFilesPrevSlide()'>Prev</button>
+                <button (click)='getUserFilesNextSlide()'>Next</button>
+                <div class="carousel-inner" role="listbox">
+                    <img class="w-100"
+                      src="{{ getUserFilesSlide() }}" alt="userFilesSlides" 
+                      (click)='getUserFilesNextSlide()'
+                      style="cursor: pointer;
+                        background-color: PowderBlue;
+                        color: Black;
+                        border-style: double;
+                        border: 2px solid blue;
+                        border-radius: 5px;" >
+                </div>
               </div>
 
               <!-- Текст объявления -->

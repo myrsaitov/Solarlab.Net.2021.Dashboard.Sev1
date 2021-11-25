@@ -52,6 +52,8 @@ export class AdvertisementComponent implements OnInit {
   advertisementId$ = this.route.params.pipe(pluck('id'));
   userFiles$: Observable<IUserFile[]>;
   userFiles: IUserFile[];
+  userFilesSlides: string [] = [];
+  userFilesSlidesIndex = 0;
 
   private commentsFilterSubject$ = new BehaviorSubject({
     contentId: 1,
@@ -129,6 +131,11 @@ export class AdvertisementComponent implements OnInit {
         }
         this.advertisement = advertisement;
         
+        // Заполшняем слайдер
+        this.advertisement.userFiles.forEach(userFile => {
+          this.userFilesSlides.push(this.getUserFileUriById(userFile));
+        });
+        
         // Устанавливаем значение статуса на форме
         this.status.patchValue(advertisement.status);
 
@@ -168,6 +175,37 @@ export class AdvertisementComponent implements OnInit {
     this.commentsFilterSubject$.value.contentId = this.advertisement.id;
     return this.commentsFilterSubject$.value;
   }
+
+  // Карусель картинок
+  // Возвращает слайд
+  getUserFilesSlide() {
+    return this.userFilesSlides[this.userFilesSlidesIndex];
+  }
+  // Переводит счетчик слайдов на предыдущий
+  getUserFilesPrevSlide() {
+    if (this.userFilesSlidesIndex === 0) {
+      // Если дошли до самого левого, то переходим на самый правый
+      this.userFilesSlidesIndex = this.userFilesSlides.length - 1;
+    }
+    else {
+      this.userFilesSlidesIndex -= 1;
+    }
+  }
+  // Переводит счетчик слайдов на следующий
+  getUserFilesNextSlide() {
+    if (this.userFilesSlidesIndex === this.userFilesSlides.length - 1) {
+      // Если дошли до самого правого, то переходим на самый левый
+      this.userFilesSlidesIndex = 0;
+    }
+    else {
+      this.userFilesSlidesIndex += 1;
+    }
+    //this.userFilesSlidesIndex = this.userFilesSlidesIndex===this.userFilesSlides.length ? this.userFilesSlidesIndex : this.userFilesSlidesIndex + 1;
+  }
+  getUserFilesThisSlide(index: number) {
+    this.userFilesSlidesIndex = index;
+  }
+
 
   // Возвращает ссылку на файл по идентификатору
   getUserFileUriById(id: number){
@@ -255,9 +293,7 @@ export class AdvertisementComponent implements OnInit {
     this.router.navigate(['/'], { queryParams: { userName: userName } });
   }
 
-
-
-
+  // Обработка "Удалить объявление"
   delete(id: number) {
     this.advertisementService.delete(id).pipe(take(1)).subscribe(() => {
       this.toastService.show(
@@ -267,6 +303,7 @@ export class AdvertisementComponent implements OnInit {
     });
   }
 
+  // Вызов модальной формы "Подтвердите удаление"
   openDeleteModal(content: TemplateRef<any>) {
     this.modalService.open(content, {centered: true});
   }

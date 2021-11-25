@@ -86,8 +86,57 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
 
                     // Сохраняем файл в облако
 #if DEBUG
-                    //userFile.FilePath = "https://downloader.disk.yandex.ru/disk/51e39226f4af656ccabee210f7038078c7c5990928b30a16df38249d77c1ebb7/619ed1e0/SBdg01aXT8emYcX8MaHRojBeD62QqY1Ti6rVtoK4MrvMD8C3ttWrq7szNBnOFX9TV0s6G2agMy_G2hEEnBBq3A%3D%3D?uid=1130000047162420&filename=96635ee1505b9fbb57ae94bdd76620b1.jpg&disposition=attachment&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=1130000047162420&fsize=42729&hid=4e40359f5e5e7939d095312f1ef7f9de&media_type=image&tknv=v2&etag=ad1e3e189367159b9ea8e3706637b7d4";
-//#else
+                    Random rnd = new Random();
+                    int picNumber = rnd.Next(1, 10);
+
+                    switch (picNumber)
+                    {
+                        case 1:
+                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/1-5.jpg";
+                            break;
+
+                        case 2:
+                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/2-5.jpg";
+                            break;
+
+                        case 3:
+                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/3-5.jpg";
+                            break;
+
+                        case 4:
+                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/4-5.jpg";
+                            break;
+
+                        case 5:
+                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/5-5.jpg";
+                            break;
+
+                        case 6:
+                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/6-5.jpg";
+                            break;
+
+                        case 7:
+                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/7-5.jpg";
+                            break;
+
+                        case 8:
+                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/8-5.jpg";
+                            break;
+
+                        case 9:
+                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/9-5.jpg";
+                            break;
+
+                        case 10:
+                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/10-5.jpg";
+                            break;
+
+                        default:
+                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/11-5.jpg";
+                            break;
+                    }
+                   
+ #else
                     userFile.FilePath = await _yandexDiskApiClient
                         .UploadBase64(fileRequest);
 #endif
