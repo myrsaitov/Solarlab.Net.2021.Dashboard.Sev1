@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  baseAccountsApiUrl: 'https://localhost:44377/',
-  baseAdvertisementsApiUrl: 'https://localhost:44378/',
-  baseUserFilesApiUrl: 'https://localhost:44379/'
+  baseAccountsApiUrl: 'http://s45773.vds.mylinked.ru:44377/',
+  baseAdvertisementsApiUrl: 'http://s45773.vds.mylinked.ru:44378/',
+  baseUserFilesApiUrl: 'http://s45773.vds.mylinked.ru:44379/'
 };
 
 /*

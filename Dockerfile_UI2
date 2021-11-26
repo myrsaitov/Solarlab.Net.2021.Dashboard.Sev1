@@ -1,0 +1,9 @@
+FROM node:14.18.1 as build
+WORKDIR /usr/src/app
+COPY UI2/package.json UI2/package-lock.json ./
+RUN npm install
+COPY UI2/ .
+RUN npm run build
+
+FROM nginx
+COPY --from=build /usr/src/app/dist/sev1-spa /usr/share/nginx/html
