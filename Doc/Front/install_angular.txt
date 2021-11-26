@@ -7,6 +7,7 @@ npm install -g @angular/cli
 
 # Image Viewer
 npm install ng-image-fullscreen-view
+npm install ngx-progressbar --save
 
 #https://www.npmjs.com/package/angular-tag-cloud-module
 npm install --save angular-tag-cloud-module@3.8.2 

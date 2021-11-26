@@ -9,8 +9,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Provider } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
+import { NgProgressModule } from 'ngx-progressbar';
+import { NgProgressHttpModule } from "ngx-progressbar/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,7 +54,11 @@ import { ConnectionpageComponent } from './components/connectionpage/connectionp
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgImageFullscreenViewModule
+    NgImageFullscreenViewModule,
+    NgProgressModule.withConfig({
+      color: "green"
+    }),
+    NgProgressHttpModule
   ],
   providers: [ // The set of injectable objects that are available in the injector of this module.
     AuthService,

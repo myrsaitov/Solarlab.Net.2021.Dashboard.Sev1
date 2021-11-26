@@ -85,8 +85,9 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
                     };
 
                     // Сохраняем файл в облако
- /*#if DEBUG
-                   Random rnd = new Random();
+ //#if DEBUG
+                    //*
+                    Random rnd = new Random();
                     int picNumber = rnd.Next(1, 10);
 
                     switch (picNumber)
@@ -134,11 +135,11 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
                         default:
                             userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/11-5.jpg";
                             break;
-                    }
+                    }//*/
                    
- #else*/
-                    userFile.FilePath = await _yandexDiskApiClient
-                        .UploadBase64(fileRequest);
+// #else
+                    //userFile.FilePath = await _yandexDiskApiClient
+                    //    .UploadBase64(fileRequest);
 //#endif
 
                     // Сохраняем в базе карточку файла
