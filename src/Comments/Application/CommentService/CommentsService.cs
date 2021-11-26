@@ -182,7 +182,7 @@ namespace Comments.Services
                 Message = dto.Message,
                 ChatId = chatId,
                 IsUpdated = false,
-                CreationTime = DateTime.Now,
+                CreationTime = DateTime.UtcNow,
                 CommentStatus = CommentStatus.New
             };
 

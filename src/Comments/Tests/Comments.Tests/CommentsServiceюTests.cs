@@ -2,10 +2,16 @@
 using AutoFixture.Xunit2;
 using AutoMapper;
 using Comments.Contracts;
+using Comments.Contracts.Enums;
 using Comments.Domain.Entities;
 using Comments.Mapper;
 using Comments.Services;
 using Moq;
+using sev1.Accounts.Contracts.UserProvider;
+using Sev1.Accounts.Contracts.ApiClients.User;
+using Sev1.Accounts.Contracts.Contracts.User.Responses;
+using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
+using Sev1.Avdertisements.Contracts.ApiClients.AdvertisementValidate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +26,10 @@ namespace Comments.Tests
     {
         private readonly IMapper _mapper;
         private readonly Mock<ICommentsRepository> _repository;
+        private readonly Mock<IUserValidateApiClient> _userApiClient;
+        private readonly Mock<IAdvertisementValidateApiClient> _advertisementValidateApiClient;
+        private readonly Mock<IUserProvider> _userProvider;
+
         private readonly Fixture _fixture;
 
         private readonly ICommentsService _commentService;
@@ -29,14 +39,17 @@ namespace Comments.Tests
         {
             var config = new MapperConfiguration(mc => mc.AddProfile(new CommentMapperProfile()));
             _repository = new Mock<ICommentsRepository>();
+            _userApiClient = new Mock<IUserValidateApiClient>();
+            _advertisementValidateApiClient = new Mock<IAdvertisementValidateApiClient>();
+            _userProvider = new Mock<IUserProvider>();
             _mapper = config.CreateMapper();
-            //_commentService = new CommentsService(_repository.Object, _mapper);
+            _commentService = new CommentsService(_repository.Object, _mapper, _userApiClient.Object, _advertisementValidateApiClient.Object, _userProvider.Object);
             _fixture = new Fixture();
         }
-        /*
+
         [Theory]
         [AutoData]
-        public async Task GetCommentsByChatIdAsync_Shuld_Return_Comments(Guid id, int pageSize, int pageNumber, int pagesQuantity, CancellationToken token)
+        public async Task GetChatPagedAsync_Shuld_Return_CommentDtoResponceChatWithUsers(int id, int pageSize, int pageNumber, int pagesQuantity, int totalPages, CancellationToken token)
         {
             //Arrange
             var messages = _fixture
@@ -47,6 +60,7 @@ namespace Comments.Tests
             var chat = _fixture
                 .Build<Chat>()
                 .Create();
+
 
             chat.Messages = messages;
 
@@ -60,6 +74,23 @@ namespace Comments.Tests
                 .ReturnsAsync(chat)
                 .Verifiable();
 
+            _repository
+                .Setup(r => r.CountPagesMessagesAsync(It.IsAny<Guid>(), pageSize, token))
+                .ReturnsAsync(totalPages)
+                .Verifiable();
+
+
+            var usersId = messages.Select(m => m.AuthorId.ToString()).ToList();
+            var userInfoResponce = new Dictionary<string, UserGetResponse>();
+            foreach(var strId in usersId)
+            {
+                userInfoResponce.Add(strId, _fixture.Build<UserGetResponse>().Create());
+            }
+
+            _userApiClient
+                .Setup(r => r.GetUsersByListId(It.IsAny<List<string>>()))
+                .ReturnsAsync(userInfoResponce);
+
             var commentDto = new CommentDtoRequestGetChatPaged {AdvertisementId = id, Type = Contracts.Enums.ChatType.AdvertisementChat, PageSize = pageSize, PageNumber = pageNumber};
 
             //Act
@@ -67,26 +98,30 @@ namespace Comments.Tests
 
 
             //Assert
-            _repository.Verify();
+            //_repository.Verify();
             _repository.Verify(_ => _.GetChatPagedAsync(It.IsAny<Expression<Func<Chat, bool>>>(), 
                                                                 It.IsAny<int>(),
                                                                 It.IsAny<int>(),
                                                                 It.IsAny<CancellationToken>()), 
                                                                 Times.Once);
             Assert.NotNull(result);
+            Assert.DoesNotContain(null, result.Messages.Select(m => m.Author).ToList());
+            Assert.Equal(result.TotalPages, totalPages);
         }
 
         [Theory]
         [AutoData]
-        public async Task DeleteCommentsByChatIdAsync_Shuld_Call_DeleteCommentsByChatIdAsync(Guid id, CancellationToken token)
+        public async Task DeleteChatAsync_Shuld_Call_DeleteCommentsByChatIdAsync(CancellationToken token)
         {
             //Arrange 
-            Expression<Func<Chat, bool>> predicate = c => c.ChatId == id;
 
-            _repository.Setup(r => r.RemoveChatAsync(predicate, token))
+            var dto = _fixture
+                .Build<CommentDtoRequestDeleteChat>()
+                .Create();
+
+            _repository.Setup(r => r.RemoveChatAsync(It.IsAny<Expression<Func<Chat, bool>>>(), token))
                 .Verifiable();
 
-            var dto = new CommentDtoRequestDeleteChat { AdvertisementId = new Guid(), Type = Contracts.Enums.ChatType.AdvertisementChat };
             //Act
             await _commentService.DeleteChatAsync(dto, token);
 
@@ -103,9 +138,25 @@ namespace Comments.Tests
                 .Create();
             CancellationToken token = default;
 
+            _repository.Setup(r => r.GetChatId(It.IsAny<Expression<Func<Chat, bool>>>(), token))
+                .ReturnsAsync(new Guid())
+                .Verifiable();
+
             _repository.Setup(r => r.AddCommentAsync(It.IsAny<Comment>(), token))
                 .ReturnsAsync(new Guid())
                 .Verifiable();
+
+            var advDto = _fixture
+                .Build<AdvertisementGetResponse>()
+                .Create();
+
+            _advertisementValidateApiClient
+                .Setup(a => a.GetAdvertisementById(commentDto.AdvertisementId))
+                .ReturnsAsync(advDto);
+
+            _userProvider
+                .Setup(u => u.GetUserId())
+                .Returns(new Guid().ToString());
 
             //Act
             var result = await _commentService.AddCommentAsync(commentDto, token);
@@ -169,6 +220,6 @@ namespace Comments.Tests
                 It.Is<Guid>(id => id.ToString() == dtoId),
                 It.IsAny<CancellationToken>()),
                 Times.Once);
-        }*/
+        }
     }
 }
