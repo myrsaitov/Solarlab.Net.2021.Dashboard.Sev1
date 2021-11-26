@@ -12,6 +12,10 @@ import { ICategory } from 'src/app/models/category/category-model';
 import { CategoryService } from 'src/app/services/category.service';
 import { ITag } from 'src/app/models/tag/tag-model';
 import { TagService } from 'src/app/services/tag.service';
+import { IUserFile } from 'src/app/models/user-files/userfile-model';
+import { UserFilesService } from 'src/app/services/userfiles.service';
+import { IRegion } from 'src/app/models/region/region-model';
+import { RegionService } from 'src/app/services/region.service';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -30,7 +34,11 @@ export class DashboardComponent implements OnInit {
   categories: ICategory[];
   tags$: Observable<ITag[]>;
   defaultImageUri: string = "https://vjoy.cc/wp-content/uploads/2019/07/3-5.jpg";
-
+  userFiles$: Observable<IUserFile[]>;
+  userFiles: IUserFile[];
+  regions$: Observable<IRegion[]>;
+  regions: IRegion[];
+  
   private advertisementsFilterSubject$ = new BehaviorSubject({
     searchStr: null,
     ownerId: null,
@@ -47,11 +55,22 @@ export class DashboardComponent implements OnInit {
               private readonly router: Router,
               private userService: UserService,
               private categoryService: CategoryService,
-              private tagService: TagService) {
+              private tagService: TagService,
+              private userFilesService: UserFilesService,
+              private regionService: RegionService) {
   }
 
   ngOnInit() {
     
+    // Подписка на файлы
+    this.userFiles$ = this.userFilesService.getUserFilesList({
+      pageSize: 1000,
+      page: 0,
+    });
+    this.userFiles$.subscribe(userFiles => {
+      this.userFiles = userFiles;
+    });   
+
     // Подписка на категории
     this.categories$ = this.categoryService.getCategoryList({
       pageSize: 1000,
@@ -70,6 +89,13 @@ export class DashboardComponent implements OnInit {
       pageSize: 1000,
       page: 0,
     });
+
+    // Подписка на регионы
+    this.regions$ = this.regionService.getRegionList({
+      pageSize: 1000,
+      page: 0,
+    });
+    this.regions$.subscribe(regions => this.regions = regions);
 
     // Загружает сессию
     this.authService.loadSession();
@@ -111,6 +137,16 @@ export class DashboardComponent implements OnInit {
   // Возвращает имя пользователя по идентификатору
   getUserNameById(userId: string){
     return this.users.find(s => s.userId === userId).userName;
+  }
+
+  // Возвращает имя региона по идентификатору
+  getRegionNameById(regionId: number){
+    return this.regions.find(s => s.id === regionId).name;
+ }
+ 
+  // Возвращает ссылку на файл по идентификатору
+  getUserFileUriById(id: number){
+    return this.userFiles.find(s => s.id === id).filePath;
   }
 
   // Выполняет запрос на поиск по категории

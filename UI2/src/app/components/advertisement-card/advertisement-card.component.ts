@@ -13,6 +13,7 @@ export class AdvertisementCardComponent {
   @Input() advertisement: IAdvertisement;
   @Input() userName: string;
   @Input() defaultImageUri: string;
+  @Input() RegionName: string;
 
   constructor(private readonly router: Router) {
   }
