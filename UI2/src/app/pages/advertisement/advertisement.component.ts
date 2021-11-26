@@ -54,6 +54,7 @@ export class AdvertisementComponent implements OnInit {
   userFiles: IUserFile[];
   userFilesSlides: string [] = [];
   userFilesSlidesIndex = 0;
+  userFilesCount = 0;
 
   // Для показа FullScreen
   currentIndex: any = -1;
@@ -162,6 +163,9 @@ export class AdvertisementComponent implements OnInit {
           this.imageObject.push(obj);
         });
         
+        // Количество файлов к объявлению
+        this.userFilesCount = this.advertisement.userFiles.length;
+
         // Устанавливаем значение статуса на форме
         this.status.patchValue(advertisement.status);
 

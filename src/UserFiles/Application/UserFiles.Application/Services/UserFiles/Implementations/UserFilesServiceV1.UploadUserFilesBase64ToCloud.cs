@@ -19,10 +19,12 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
         /// <summary>
         /// Загрузить файл в базу данных
         /// </summary>
+        /// <param name="baseUri">Базовый URI сервера</param>
         /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task<UserFileBase64UploadResponse> UploadUserFilesBase64ToCloud(
+            string baseUri,
             List<UserFileBase64UploadRequest> request,
             CancellationToken cancellationToken)
         {
@@ -69,11 +71,14 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
                     Path.GetExtension(fileRequest.FileName)
                         .ToUpperInvariant()))
                 {
+                    // Генерируем имя файла
+                    var newFileName = Guid.NewGuid().ToString() + Path.GetExtension(fileRequest.FileName);
+
                     // Создаем карточку файла
                     var userFile = new Domain.UserFile()
                     {
                         Name = fileRequest.Name,
-                        FileName = fileRequest.FileName,
+                        FileName = newFileName,
                         ContentType = fileRequest.ContentType,
                         ContentDisposition = fileRequest.ContentDisposition,
                         Length = fileRequest.Length,
@@ -84,63 +89,34 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
                         IsDeleted = false
                     };
 
+
+#if DEBUG
+                    // Для отладки записываем файл в FS
+
+                    // Путь в FS
+                    var fsFilePath = Path.Combine(
+                        @"UserFilesData",
+                        newFileName);
+
+                    // Путь в URI
+                    var uriFilePath = baseUri + Path.Combine(
+                        @"/api/v1/userfiles/filesystem/",
+                        newFileName);
+                    userFile.FilePath = uriFilePath;
+
+                    new FileInfo(fsFilePath).Directory?.Create();
+
+                    var file = Convert.FromBase64String(fileRequest.ContentBase64);
+                    Stream fileStream = new MemoryStream(file);
+
+                    await using var stream = new FileStream(fsFilePath, FileMode.Create);
+                    await fileStream.CopyToAsync(stream);
+
+#else
                     // Сохраняем файл в облако
- //#if DEBUG
-                    //*
-                    Random rnd = new Random();
-                    int picNumber = rnd.Next(1, 10);
-
-                    switch (picNumber)
-                    {
-                        case 1:
-                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/1-5.jpg";
-                            break;
-
-                        case 2:
-                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/2-5.jpg";
-                            break;
-
-                        case 3:
-                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/3-5.jpg";
-                            break;
-
-                        case 4:
-                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/4-5.jpg";
-                            break;
-
-                        case 5:
-                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/5-5.jpg";
-                            break;
-
-                        case 6:
-                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/6-5.jpg";
-                            break;
-
-                        case 7:
-                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/7-5.jpg";
-                            break;
-
-                        case 8:
-                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/8-5.jpg";
-                            break;
-
-                        case 9:
-                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/9-5.jpg";
-                            break;
-
-                        case 10:
-                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/10-5.jpg";
-                            break;
-
-                        default:
-                            userFile.FilePath = "https://vjoy.cc/wp-content/uploads/2019/07/11-5.jpg";
-                            break;
-                    }//*/
-                   
-// #else
-                    //userFile.FilePath = await _yandexDiskApiClient
-                    //    .UploadBase64(fileRequest);
-//#endif
+                    userFile.FilePath = await _yandexDiskApiClient
+                        .UploadBase64(fileRequest);
+#endif
 
                     // Сохраняем в базе карточку файла
                     await _userFileRepository.Save(

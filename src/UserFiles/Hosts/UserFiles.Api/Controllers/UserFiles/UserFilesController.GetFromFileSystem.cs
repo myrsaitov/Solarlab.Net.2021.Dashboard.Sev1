@@ -12,21 +12,18 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
         /// <summary>
         /// Возвращает файл по URI
         /// </summary>
-        /// <param name="id">Идентификатор файла</param>
         /// <param name="imageName">Имя файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [AllowAnonymous]
-        [HttpGet("{id:int}/{imageName}")]
+        [HttpGet("filesystem/{imageName}")]
         public async Task<IActionResult> GetFromFileSystem(
-            [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}"
-            int? id,
             [FromRoute] // Get values from route data, e.g.: "/api/v1/userfiles/{id}/{imageName}"
             string imageName,
             CancellationToken cancellationToken)
         {
             // Место хранения файлов в файловой системе
-            var filePath = $"UserFilesData/Advertisements/{id}/{imageName}";
+            var filePath = $"UserFilesData/{imageName}";
             if (!System.IO.File.Exists(filePath))
             {
                 return BadRequest("Not found");

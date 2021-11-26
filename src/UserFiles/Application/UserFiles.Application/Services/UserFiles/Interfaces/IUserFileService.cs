@@ -11,10 +11,12 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Interfaces
         /// <summary>
         /// Загружает файл в облачное хранилище 
         /// </summary>
+        /// <param name="baseUri">Базовый URI сервера</param>
         /// <param name="request">Модель DTO файла</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<UserFileBase64UploadResponse> UploadUserFilesBase64ToCloud(
+            string baseUri,
             List<UserFileBase64UploadRequest> request,
             CancellationToken cancellationToken);
 

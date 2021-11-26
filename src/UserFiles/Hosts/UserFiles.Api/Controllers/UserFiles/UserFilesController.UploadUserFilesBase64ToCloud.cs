@@ -24,7 +24,13 @@ namespace Sev1.UserFiles.Api.Controllers.UserFile
             List<UserFileBase64UploadRequest> request,
             CancellationToken cancellationToken)
         {
+            // Определяем URI хоста (для загрузки в БД или FS)
+            var baseUri = string.Format(
+                        "{0}://{1}",
+                        HttpContext.Request.Scheme, HttpContext.Request.Host);
+
             return Ok(await _userFileService.UploadUserFilesBase64ToCloud(
+                baseUri,
                 request, 
                 cancellationToken));
         }
