@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Comments.API.Hubs
 {
+    /// <summary>
+    /// Использование signalR для чатов
+    /// </summary>
     [Authorize]
     public class ChatHub : Hub
     {
@@ -17,6 +20,13 @@ namespace Comments.API.Hubs
         {
             _service = service;
         }
+        /// <summary>
+        /// Метод, принимающий созданное сообщение пользователем.
+        /// Сохранение сообщения в БД
+        /// Отправка сообщения другим пользователям, подключенным к чату.
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         public async Task SendMessage(CommentDtoRequestCreate dto)
         {
             var commentId = await _service.AddCommentAsync(dto, default);
@@ -25,6 +35,11 @@ namespace Comments.API.Hubs
 
             await Clients.Group(dto.AdvertisementId + dto.ConsumerId.ToString()).SendAsync("ReceiveMessage", commentResponce);
         }
+        /// <summary>
+        /// Добавить пользователя в группу чата для приема сообещний.
+        /// </summary>
+        /// <param name="GroupId"></param>
+        /// <returns></returns>
         public async Task AddToGroup(string GroupId)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, GroupId);
