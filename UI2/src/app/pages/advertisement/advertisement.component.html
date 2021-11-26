@@ -41,7 +41,8 @@
 
             <!-- Заголовок объявления -->
             <div>
-              <h1 class="h3">{{advertisement.title}}</h1>
+              <h1 class="h1">{{advertisement.title}}</h1>
+              <b>{{advertisement.price}}&nbsp;&#8381;</b>
               <a class="badge badge-secondary"
                 *ngIf="advertisement.category?.name"
                 role="button"
@@ -100,11 +101,14 @@
               <!-- Если существуют файлы к объявлению (начало) -->
               <ng-container *ngIf="getUserFilesExists()">
 
-                <!-- ng-image-fullscreen-view  -->
+                <!-- ng-image-fullscreen-view https://morioh.com/p/6bd2fa8478c4 -->
                 <ng-image-fullscreen-view
                   [images]="imageObject"
                   [imageIndex]="currentIndex"
                   [show]="showFlag"
+                  [infinite]="true"
+                  [paginationShow]="true"
+                  [arrowKeyMove]="true"
                   (close)="closeEventHandler()">
                 </ng-image-fullscreen-view>
 
@@ -180,10 +184,8 @@
                               background-color: PowderBlue;
                               color: Black;
                               border-style: double;
-                              border: 5px solid blue;
-                              border-image: radial-gradient(#ff2, #55f) 40;
-                              border-radius: 1px;
-                              filter: invert(30%)" 
+                              border: 5px solid greenyellow;
+                              border-radius: 1px;" 
                             (click)='getUserFilesThisSlide(i)'>
                         </div>
                       </div>
@@ -221,7 +223,7 @@
               <!-- Стоимость -->
               <li class="list-group-item">
                 <p class="card-text" *ngIf="advertisement?.price">
-                  Стоимость: {{advertisement.price}}&nbsp;р.
+                  Стоимость: {{advertisement.price}}&nbsp;&#8381;
                 </p>
               </li>
 

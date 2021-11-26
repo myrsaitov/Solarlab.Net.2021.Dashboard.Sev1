@@ -88,13 +88,6 @@ export class AdvertisementComponent implements OnInit {
 
   ngOnInit() {
 
-    // Подписка на файлы
-    this.userFiles$ = this.userFilesService.getUserFilesList({
-      pageSize: 1000,
-      page: 0,
-    });
-    this.userFiles$.subscribe(userFiles => this.userFiles = userFiles);    
-
     // Подписка на категории
     this.categories$ = this.categoryService.getCategoryList({
       pageSize: 1000,
@@ -122,6 +115,16 @@ export class AdvertisementComponent implements OnInit {
     });
     this.regions$.subscribe(regions => this.regions = regions);
 
+    // Подписка на файлы
+    this.userFiles$ = this.userFilesService.getUserFilesList({
+      pageSize: 1000,
+      page: 0,
+    });
+    this.userFiles$.subscribe(userFiles => {
+      this.userFiles = userFiles;
+      // Инициализация объявления
+      this.advertisementInit();
+    });   
 
     // Валидация формы
     this.form = this.fb.group({
@@ -129,6 +132,17 @@ export class AdvertisementComponent implements OnInit {
       status: ['', Validators.required]
     });
 
+
+
+    // Комментарии
+    this.response$ = this.commentsFilterChange$
+      .pipe( // pipe - применить указанное действие ко всем элементам конвейера
+        switchMap(commentsFilter => this.commentService.getCommentsList(commentsFilter)
+      ));
+  }
+
+  // Инициализация объявления
+  advertisementInit(){
     this.route.params.pipe(pluck('id')).subscribe(advertisementId => {
       this.commentsFilterSubject$.value.contentId = advertisementId;
       this.advertisementService.getAdvertisementById(advertisementId).subscribe(advertisement => {
@@ -171,17 +185,11 @@ export class AdvertisementComponent implements OnInit {
 
           this.advertisement.category = category;
           this.advertisementStatus = this.getStatusNameByValue(this.advertisement.status);
-
           });
         });
     });
-
-    // Комментарии
-    this.response$ = this.commentsFilterChange$
-      .pipe( // pipe - применить указанное действие ко всем элементам конвейера
-        switchMap(commentsFilter => this.commentService.getCommentsList(commentsFilter)
-      ));
   }
+
 
   get commentsFilter() {
     this.commentsFilterSubject$.value.contentId = this.advertisement.id;

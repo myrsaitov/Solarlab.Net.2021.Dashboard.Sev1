@@ -85,8 +85,8 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
                     };
 
                     // Сохраняем файл в облако
-#if DEBUG
-                    Random rnd = new Random();
+ /*#if DEBUG
+                   Random rnd = new Random();
                     int picNumber = rnd.Next(1, 10);
 
                     switch (picNumber)
@@ -136,10 +136,10 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations
                             break;
                     }
                    
- #else
+ #else*/
                     userFile.FilePath = await _yandexDiskApiClient
                         .UploadBase64(fileRequest);
-#endif
+//#endif
 
                     // Сохраняем в базе карточку файла
                     await _userFileRepository.Save(
