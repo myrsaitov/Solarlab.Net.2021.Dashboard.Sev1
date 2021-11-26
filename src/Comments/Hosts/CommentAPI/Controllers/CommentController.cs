@@ -84,7 +84,7 @@ namespace Comments.API.Controllers
         /// <response code="400">Bad Request</response>
         [HttpPost]
         [ProducesResponseType(typeof(Guid), 201)]
-        public async Task<IActionResult> Add([FromForm] CommentDtoRequestCreate dto, CancellationToken token = default)
+        public async Task<IActionResult> Add([FromBody] CommentDtoRequestCreate dto, CancellationToken token = default)
         {
             if (ModelState.IsValid)
             {
