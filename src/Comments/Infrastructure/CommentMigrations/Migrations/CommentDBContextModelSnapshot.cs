@@ -4,6 +4,7 @@ using Comments.Repository.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Comments.Migrations.Migrations
 {
@@ -15,10 +16,33 @@ namespace Comments.Migrations.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.9")
+                .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Domain.Entities.Comment", b =>
+            modelBuilder.Entity("Comments.Domain.Entities.Chat", b =>
+                {
+                    b.Property<Guid>("ChatId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AdvertisementId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("ConsumerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SellerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("ChatId");
+
+                    b.ToTable("Chat_Table");
+                });
+
+            modelBuilder.Entity("Comments.Domain.Entities.Comment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,12 +60,31 @@ namespace Comments.Migrations.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsUpdated")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Message")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Comment");
+                    b.HasIndex("ChatId");
+
+                    b.ToTable("Comment_Table");
+                });
+
+            modelBuilder.Entity("Comments.Domain.Entities.Comment", b =>
+                {
+                    b.HasOne("Comments.Domain.Entities.Chat", null)
+                        .WithMany("Messages")
+                        .HasForeignKey("ChatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Comments.Domain.Entities.Chat", b =>
+                {
+                    b.Navigation("Messages");
                 });
 #pragma warning restore 612, 618
         }

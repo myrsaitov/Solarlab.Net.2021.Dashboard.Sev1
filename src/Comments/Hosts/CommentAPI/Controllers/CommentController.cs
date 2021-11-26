@@ -6,6 +6,7 @@ using Comments.Services;
 using Comments.Contracts;
 using Comments.API.Filters;
 using System.Threading;
+using Sev1.Accounts.Contracts.Authorization;
 
 namespace Comments.API.Controllers
 {
@@ -15,6 +16,7 @@ namespace Comments.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [ServiceFilter(typeof(CommentsExceptionFilter))]
+    [Authorize("Administrator", "Moderator", "User")]
     public class CommentController : ControllerBase
     {
         private readonly ILogger<CommentController> _logger;
@@ -29,45 +31,45 @@ namespace Comments.API.Controllers
         }
 
         /// <summary>
-        /// Получить все коментарии, прикреплённые к чату
+        /// Получить чаты пользователя
         /// </summary>
         /// <response code="200">Ok</response>
-        [HttpGet("GetCommentsByChatId")]
-        public async Task<IActionResult> GetCommentsByChatId([FromQuery] CommentDtoRequestGetByChatId dto, CancellationToken token = default)
+        [HttpGet("GetUserChatsPaged")]
+        public async Task<IActionResult> GetUserChatsPaged([FromQuery] CommentDtoRequestGetUserChatsPaged dto, CancellationToken token = default)
         {
             if (ModelState.IsValid)
             {
-                return Ok(await _commentService.GetCommentsByChatIdAsync(dto, token));
+                return Ok(await _commentService.GetUserChatsPagedAsync(dto, token));
             }
             return BadRequest();
         }
 
         /// <summary>
-        /// Посчитать количество страниц комментариев в чате
+        /// Получить коментарии, постранично
         /// </summary>
         /// <response code="200">Ok</response>
-        [HttpGet("CountPagesByChatId")]
-        public async Task<IActionResult> CountPagesByChatId([FromQuery] CommentDtoRequestCountPagesByChatId dto, CancellationToken token = default)
+        [AllowAnonymous]
+        [HttpGet("GetChatPaged")]
+        public async Task<IActionResult> GetChatPaged([FromQuery] CommentDtoRequestGetChatPaged dto, CancellationToken token = default)
         {
             if (ModelState.IsValid)
             {
-                return Ok(await _commentService.CountPagesAsync(dto.Id, dto.PageSize, token));
+                return Ok(await _commentService.GetChatPagedAsync(dto, token));
             }
             return BadRequest();
         }
 
         /// <summary>
-        /// Удалить все коментарии, прикреплённые к чату
+        /// Удалить чат
         /// </summary>
-        /// <param name="id">Chat Id</param>
         /// <returns></returns>
         /// <response code="200">Ok</response>
-        [HttpDelete("DeleteCommentsByChatId")]
-        public async Task<IActionResult> DeleteCommentsByChatId([FromQuery] Guid id, CancellationToken token = default)
+        [HttpDelete("DeleteChat")]
+        public async Task<IActionResult> DeleteChat([FromQuery] CommentDtoRequestDeleteChat dto, CancellationToken token = default)
         {
             if (ModelState.IsValid)
             {
-                await _commentService.DeleteCommentsByChatIdAsync(id, token);
+                await _commentService.DeleteChatAsync(dto, token);
                 return Ok();
             }
             return BadRequest();
@@ -82,7 +84,7 @@ namespace Comments.API.Controllers
         /// <response code="400">Bad Request</response>
         [HttpPost]
         [ProducesResponseType(typeof(Guid), 201)]
-        public async Task<IActionResult> Add([FromForm] CommentDtoRequestCreate dto, CancellationToken token = default)
+        public async Task<IActionResult> Add([FromBody] CommentDtoRequestCreate dto, CancellationToken token = default)
         {
             if (ModelState.IsValid)
             {
@@ -126,6 +128,24 @@ namespace Comments.API.Controllers
                 await _commentService.DeleteCommentAsync(dto, token);
                 return Ok();
             }
+            return BadRequest();
+        }
+
+
+        /// <summary>
+        /// Получить коментарии чата, от текущего комментария в колличестве quantity
+        /// </summary>
+        /// <response code="200">Ok</response>
+        [AllowAnonymous]
+        [HttpGet("GetNextMessagesFromCurrent")]
+        public async Task<IActionResult> GetNextMessagesFromCurrent([FromQuery] CommentDtoRequestGetNextFromCurrent dto, CancellationToken token = default)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _commentService.GetNextCommentsFromCurrent(dto, token);
+                return Ok(result);
+            }
+
             return BadRequest();
         }
     }

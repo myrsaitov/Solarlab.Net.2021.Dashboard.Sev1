@@ -8,9 +8,10 @@ using System.Linq;
 using Sev1.Advertisements.AppServices.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 using Sev1.Advertisements.Domain.Base.Exceptions;
-using sev1.Advertisements.Contracts.Enums;
 using Sev1.Advertisements.AppServices.Services.Region.Exceptions;
 using Sev1.Advertisements.AppServices.Services.Category.Exceptions;
+using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
+using Microsoft.AspNetCore.Http;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
 {
@@ -22,8 +23,9 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
         /// <param name="request">DTO-модель</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<int?> Update(
+        public async Task<AdvertisementUpdatedResponse> Update(
             AdvertisementUpdateRequest request,
+            List<IFormFile> files,
             CancellationToken cancellationToken)
         {
           
@@ -35,7 +37,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
                 throw new AdvertisementUpdateRequestNotValidException(result.Errors.Select(x => x.ErrorMessage).ToString());
             }
 
-            var advertisement = await _advertisementRepository.FindByIdWithCategoriesAndTags(
+            var advertisement = await _advertisementRepository.FindByIdWithCategoriesAndTagsAndUserFiles(
                 request.Id,
                 cancellationToken);
 
@@ -71,21 +73,24 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
             advertisement.CategoryId = request.CategoryId;
             advertisement.Address = request.Address;
             advertisement.RegionId = request.RegionId;
+            advertisement.Status = request.Status;
 
-            advertisement.Status = AdvertisementStatus.Active; // TODO request.Status
             advertisement.IsDeleted = false;
             advertisement.UpdatedAt = DateTime.UtcNow;
 
+            // Ищет категорию в базе
             var category = await _categoryRepository.FindById(
                 advertisement.CategoryId,
                 cancellationToken);
-
             if (category == null)
             {
                 throw new CategoryNotFoundException(advertisement.CategoryId);
             }
 
+            // Если категория существует, то присваивает объявлению
             advertisement.Category = category;
+
+            // Если переданы таги
             if (advertisement.Tags == null)
             {
                 advertisement.Tags = new List<Domain.Tag>();
@@ -98,11 +103,16 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
                 request.TagBodies,
                 cancellationToken);
 
+            // Сохраняем в базу
             await _advertisementRepository.Save(
                 advertisement, 
                 cancellationToken);
 
-            return advertisement.Id;
+            // Возвращаем идентификатор обновленного объявления
+            return new AdvertisementUpdatedResponse()
+            {
+                Status = advertisement.Status
+            };
         }
     }
 }

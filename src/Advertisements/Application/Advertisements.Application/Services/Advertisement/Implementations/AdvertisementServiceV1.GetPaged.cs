@@ -105,7 +105,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
             }
 
             // Если объявления найдены
-            var entities = await _advertisementRepository.GetPagedWithTagsAndCategoryInclude(
+            var entities = await _advertisementRepository.GetPagedWithTagsAndCategoryAndUserFilesInclude(
                 predicate,
                 offset,
                 request.PageSize,

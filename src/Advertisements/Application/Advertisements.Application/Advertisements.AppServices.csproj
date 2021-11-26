@@ -28,8 +28,16 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Accounts\Contracts\Accounts.Contracts\Accounts.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\UserFiles\Contracts\UserFiles.Contracts\UserFiles.Contracts.csproj" />
     <ProjectReference Include="..\..\Contracts\Advertisements.Contracts\Advertisements.Contracts.csproj" />
     <ProjectReference Include="..\..\Domain\Advertisements.Domain\Advertisements.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\UserFile\Exceptions\" />
+    <Folder Include="Services\UserFile\Implementations\" />
+    <Folder Include="Services\UserFile\Interfaces\" />
+    <Folder Include="Services\UserFile\Validators\" />
   </ItemGroup>
 
 </Project>

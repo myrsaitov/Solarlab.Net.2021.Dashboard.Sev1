@@ -40,6 +40,12 @@ namespace sev1.Accounts.Contracts.UserProvider
                 .Split(" ")
                 .Last();
 
+            // Если JWT-токена не существует, то пользователь анонимный
+            if (string.IsNullOrWhiteSpace(token))
+            {
+                return "Anonymous";
+            }
+
             // Считыватем ключ из конфига "appsettings.json"
             string secret = _configuration["Token:Key"];
 
@@ -72,6 +78,15 @@ namespace sev1.Accounts.Contracts.UserProvider
                 .Split(" ")
                 .Last();
 
+            // Если JWT-токена не существует, то пользователь анонимный
+            if(string.IsNullOrWhiteSpace(token))
+            {
+                return new string[]
+                {
+                    "Anonymous"
+                };
+            }
+
             // Считыватем ключ из конфига "appsettings.json"
             string secret = _configuration["Token:Key"];
 
@@ -103,6 +118,19 @@ namespace sev1.Accounts.Contracts.UserProvider
         public bool IsInRole(string role)
         {
             return GetUserRoles().Contains(role);
+        }
+
+        /// <summary>
+        /// Возвращает Authorization Header
+        /// </summary>
+        /// <returns></returns>
+        public string GetAuthorizationHeader()
+        {
+            return _context
+                .HttpContext
+                .Request
+                .Headers["Authorization"]
+                .FirstOrDefault();
         }
     }
 }

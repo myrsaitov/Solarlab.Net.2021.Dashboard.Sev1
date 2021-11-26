@@ -1,0 +1,6 @@
+copy src\Accounts\Hosts\Accounts.Api\DockerFile Dockerfile_Accounts
+copy src\Advertisements\Hosts\Advertisements.Api\DockerFile Dockerfile_Advertisements
+copy src\Comments\Hosts\CommentAPI\DockerFile Dockerfile_Comments
+copy src\EventBus\EventBusRabbitMQ\DockerFile Dockerfile_EventBus
+copy src\NotificationsEmail\Hosts\NotificationsEmail.API\DockerFile Dockerfile_NotificationsEmail
+copy src\UserFiles\Hosts\UserFiles.Api\DockerFile Dockerfile_UserFiles

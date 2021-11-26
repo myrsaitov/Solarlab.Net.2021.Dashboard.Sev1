@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Responses;
@@ -7,6 +8,17 @@ namespace Sev1.UserFiles.AppServices.Services.UserFile.Interfaces
 {
     public interface IUserFileService
     {
+        /// <summary>
+        /// Загружает файл в облачное хранилище 
+        /// </summary>
+        /// <param name="request">Модель DTO файла</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<UserFileBase64UploadResponse> UploadUserFilesBase64ToCloud(
+            List<UserFileBase64UploadRequest> request,
+            CancellationToken cancellationToken);
+
+
         /// <summary>
         /// Загружает файл в файловую систему сервера
         /// </summary>

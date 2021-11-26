@@ -1,5 +1,6 @@
 bin/
 obj/
+UI2/dist/*
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
@@ -399,3 +400,5 @@ FodyWeavers.xsd
 .idea/
 *.sln.iml
 /src/UserFiles/Hosts/UserFiles.Api/UserFilesData
+/UI2/out-tsc/e2e
+/UI2/dist/out-tsc

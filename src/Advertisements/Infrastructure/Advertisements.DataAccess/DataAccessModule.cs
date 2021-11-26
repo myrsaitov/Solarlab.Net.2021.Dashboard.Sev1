@@ -80,6 +80,7 @@ namespace Sev1.Advertisements.DataAccess
             moduleConfiguration.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             moduleConfiguration.Services.AddScoped<ITagRepository, TagRepository>();
             moduleConfiguration.Services.AddScoped<IRegionRepository, RegionRepository>();
+            moduleConfiguration.Services.AddScoped<IUserFileRepository, UserFileRepository>();
 
         }
     }

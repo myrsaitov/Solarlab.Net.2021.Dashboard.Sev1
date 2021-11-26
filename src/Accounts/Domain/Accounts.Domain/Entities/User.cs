@@ -44,11 +44,6 @@ namespace Sev1.Accounts.Domain
         public int? RegionId { get; set; }
 
         /// <summary>
-        /// Путь к фото пользователя
-        /// </summary>
-        public string UserPicPath { get; set; }
-
-        /// <summary>
         /// "Избранное"
         /// </summary>
         public ICollection<FavoriteAdvertisement> FavoriteAdvertisements { get; set; }

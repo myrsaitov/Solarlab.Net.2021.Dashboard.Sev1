@@ -1,4 +1,6 @@
-﻿namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses
+﻿using sev1.Advertisements.Contracts.Enums;
+
+namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses
 {
     /// <summary>
     /// DTO ответа на запрос объявления по идентификатору
@@ -59,5 +61,15 @@
         /// Идентификатор региона
         /// </summary>
         public int? RegionId { get; set; }
+
+        /// <summary>
+        /// Статус объявления
+        /// </summary>
+        public AdvertisementStatus Status { get; set; }
+
+        /// <summary>
+        /// Идентификаторы файлов
+        /// </summary>
+        public int?[] UserFiles { get; set; }
     }
 }

@@ -12,6 +12,7 @@ using Sev1.Accounts.Contracts.Contracts.User.Requests;
 using Sev1.Accounts.Contracts.Contracts.User.Responses;
 using Sev1.Accounts.Domain.Base.Exceptions;
 using Sev1.Accounts.AppServices.Services.Identity.Exceptions;
+using Sev1.Accounts.Contracts.Contracts.Identity.Responses;
 
 namespace Sev1.Accounts.AppServices.Services.Identity.Implementations
 {
@@ -23,7 +24,7 @@ namespace Sev1.Accounts.AppServices.Services.Identity.Implementations
         /// <param name="request">E-mail и пароль</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<UserLoginResponse> CreateToken(
+        public async Task<IdentityUserCreateTokenResponse> CreateToken(
             UserLoginRequest request, 
             CancellationToken cancellationToken = default)
         {
@@ -31,7 +32,7 @@ namespace Sev1.Accounts.AppServices.Services.Identity.Implementations
 
             // Проверка, существует ли пользователь с таким именем
             var identityUser = await _userManager.FindByEmailAsync(
-                request.Email);
+                request.EMail);
             if (identityUser == null)
             {
                 throw new IdentityUserNotFoundException("Пользователь не найден");
@@ -51,7 +52,7 @@ namespace Sev1.Accounts.AppServices.Services.Identity.Implementations
             {
                 new Claim(
                     ClaimTypes.Email,
-                    request.Email),
+                    request.EMail),
 
                 new Claim(
                     ClaimTypes.NameIdentifier,
@@ -80,10 +81,12 @@ namespace Sev1.Accounts.AppServices.Services.Identity.Implementations
                 )
             );
 
-            // Генерирует токен
-            return new UserLoginResponse
+            // Генерирует ответ
+            return new IdentityUserCreateTokenResponse()
             {
-                Token = new JwtSecurityTokenHandler().WriteToken(token)
+                Token = new JwtSecurityTokenHandler().WriteToken(token),
+                UserId = identityUser.Id,
+                Roles = userRoles
             };
         }
 

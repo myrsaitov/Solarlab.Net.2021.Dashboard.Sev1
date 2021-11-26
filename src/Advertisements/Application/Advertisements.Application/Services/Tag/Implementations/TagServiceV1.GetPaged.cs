@@ -45,7 +45,7 @@ namespace Sev1.Advertisements.AppServices.Services.Tag.Implementations
                 };
             }
 
-            var entities = await _tagRepository.GetPaged(
+            var entities = await _tagRepository.GetPagedWhereAdvertismentsNotNull(
                 offset,
                 request.PageSize,
                 cancellationToken);

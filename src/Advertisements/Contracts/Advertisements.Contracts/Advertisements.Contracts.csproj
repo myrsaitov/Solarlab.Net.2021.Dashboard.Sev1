@@ -12,4 +12,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Accounts\Domain\Accounts.Domain\Accounts.Domain.csproj" />
+    <ProjectReference Include="..\..\..\UserFiles\Contracts\UserFiles.Contracts\UserFiles.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>

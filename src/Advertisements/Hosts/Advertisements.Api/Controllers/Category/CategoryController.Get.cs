@@ -22,14 +22,10 @@ namespace Sev1.Advertisements.Api.Controllers.Category
             GetPagedRequest request, 
             CancellationToken cancellationToken)
         {
-            var result = await _categoryService
-                .GetPaged(new GetPagedRequest
-                    {
-                        PageSize = request.PageSize,
-                        Page = request.Page
-                    }, cancellationToken); ;
-
-            return Ok(result);
+            return Ok(await _categoryService
+                .GetPaged(
+                    request,
+                    cancellationToken));
         }
 
         /// <summary>

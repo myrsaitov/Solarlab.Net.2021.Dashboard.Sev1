@@ -1,11 +1,16 @@
-﻿using Comments.Contracts.Base;
-using Comments.Contracts.Enums;
+﻿using Comments.Contracts.Enums;
+using Sev1.Accounts.Contracts.Contracts.User.Responses;
 using System;
 
 namespace Comments.Contracts
 {
-    public class CommentDtoResponce : BaseDto
+    public class CommentDtoResponce
     {
+        /// <summary>
+        /// Id Комментария
+        /// </summary>
+        public Guid Id { get; set; }
+
         /// <summary>
         /// Текст сообщения
         /// </summary>
@@ -17,9 +22,14 @@ namespace Comments.Contracts
         public DateTime CreationTime { get; set; }
 
         /// <summary>
-        /// Статус сообщения : Обычное, Изменённое, Новое
+        /// Статус сообщения : Обычное, Новое
         /// </summary>
         public CommentStatus CommentStatus { get; set; }
+
+        /// <summary>
+        /// Сообщение отредактировано?
+        /// </summary>
+        public bool IsChanged { get; set; }
 
         /// <summary>
         /// Id объявления, к которому прикреплён коментарий
@@ -27,8 +37,13 @@ namespace Comments.Contracts
         public Guid ChatId { get; set; }
 
         /// <summary>
-        /// Id автора
+        /// Id автора сообщения
         /// </summary>
-        public string AuthorName { get; set; }
+        public Guid AuthorId { get; set; }
+
+        /// <summary>
+        /// Автор
+        /// </summary>
+        public UserGetResponse Author { get; set; }
     }
 }

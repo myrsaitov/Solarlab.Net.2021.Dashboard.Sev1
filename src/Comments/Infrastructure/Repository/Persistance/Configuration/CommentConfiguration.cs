@@ -8,8 +8,6 @@ namespace Comments.Repository.Persistance.Configuration
     {
         public void Configure(EntityTypeBuilder<Comment> builder)
         {
-            builder.ToTable(nameof (Comment));
-
             builder.HasKey(c => c.Id);
 
             builder.Property(c => c.Id)

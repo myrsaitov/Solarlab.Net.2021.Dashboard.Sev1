@@ -3,6 +3,7 @@ using Sev1.Accounts.AppServices.Services.User.Exceptions;
 using System.Threading;
 using System.Threading.Tasks;
 using Sev1.Accounts.Contracts.Contracts.User.Responses;
+using System.Collections.Generic;
 
 namespace Sev1.Accounts.AppServices.Services.User.Implementations
 {
@@ -15,7 +16,7 @@ namespace Sev1.Accounts.AppServices.Services.User.Implementations
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         public async Task<Domain.User> Get(
-            string userId, 
+            string userId,
             CancellationToken cancellationToken)
         {
             // Возвращает пользователя по идентификатору
@@ -35,11 +36,30 @@ namespace Sev1.Accounts.AppServices.Services.User.Implementations
         }
 
         /// <summary>
+        /// Возвращает словарь пользователей
+        /// </summary>
+        /// <param name="UserList">Идентификаторы пользователей</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        public async Task<Dictionary<string, UserGetResponse>> GetUsersByListId(
+            List<string> UserList,
+            CancellationToken cancellationToken)
+        {
+            Dictionary<string, UserGetResponse> usersDict = new Dictionary<string, UserGetResponse>();
+            foreach (string id in UserList)
+            {
+                usersDict.Add(id, _mapper.Map<UserGetResponse>(await _userRepository.FindById(id, cancellationToken)));
+            }
+
+            return usersDict;
+        }
+
+        /// <summary>
         /// Возвращает DTO авторизированного пользователя
         /// </summary>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<UserResponse> GetCurrentUser(
+        public async Task<UserGetResponse> GetCurrentUser(
             CancellationToken cancellationToken)
         {
             // Определяет идентификатор авторизированного пользователя
@@ -51,7 +71,7 @@ namespace Sev1.Accounts.AppServices.Services.User.Implementations
                     cancellationToken);
 
             // Маппит и возвращает ответ
-            return _mapper.Map<UserResponse>(domainUser);
+            return _mapper.Map<UserGetResponse>(domainUser);
         }
     }
 }

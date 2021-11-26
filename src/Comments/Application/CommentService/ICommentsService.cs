@@ -6,54 +6,71 @@ using System.Threading.Tasks;
 
 namespace Comments.Services
 {
-    /// <summary>
-    /// Сервис комментариев
-    /// </summary>
     public interface ICommentsService
     {
-        
         /// <summary>
-        /// Получить все коментарии, прикреплённые к объявлению
+        /// Загрузить чаты пользлвателя с последними сообщениями
         /// </summary>
-        /// <param name="id">Id чата</param>
+        /// <param name="dto"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public Task<List<CommentDtoResponce>> GetCommentsByChatIdAsync(CommentDtoRequestGetByChatId dto, CancellationToken token);
+        Task<SellerConsumerChatDtoResponceChats> GetUserChatsPagedAsync(CommentDtoRequestGetUserChatsPaged dto, CancellationToken token);
 
         /// <summary>
-        /// Удалить все коментарии, прикреплённые к чату
+        /// Загрузить чат с определённой страницей комментариев(сообщений)
         /// </summary>
-        /// <param name="id">Id чата</param>
+        /// <param name="dto"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public Task DeleteCommentsByChatIdAsync(Guid id, CancellationToken token);
+        Task<CommentDtoResponceChat> GetChatPagedAsync(CommentDtoRequestGetChatPaged dto, CancellationToken token);
 
         /// <summary>
-        /// Посчитать количество страниц комментариев в чате
+        /// Получить последние комментарии, после токущего.
         /// </summary>
-        /// <param name="id">Id чата</param>
-        /// <param name="pageSize">Размер страницы</param>
-        /// <param name="token">CancellationToken</param>
+        /// <param name="dto"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public Task<int> CountPagesAsync(Guid id, int pageSize, CancellationToken token);
+        Task<List<CommentDtoResponce>> GetNextCommentsFromCurrent(CommentDtoRequestGetNextFromCurrent dto, CancellationToken token);
 
         /// <summary>
-        /// Создать коментарий
+        /// Удалить чат
         /// </summary>
-        /// <param name="comment">Коментарий</param>
+        /// <param name="dto"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public Task<Guid> AddCommentAsync(CommentDtoRequestCreate dto, CancellationToken token);
+        Task DeleteChatAsync(CommentDtoRequestDeleteChat dto, CancellationToken token);
 
         /// <summary>
-        /// Изменить коментарий
+        /// Добавить комментарий(сообщение) в чат.
+        /// Если чата не существует - создать новый.
         /// </summary>
-        /// <param name="comment">Коментарий</param>
+        /// <param name="dto"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public Task<Guid> UpdateCommentAsync(CommentDtoRequestUpdate dto, CancellationToken token);
+        Task<Guid> AddCommentAsync(CommentDtoRequestCreate dto, CancellationToken token);
 
         /// <summary>
-        /// Удалить коментарий
+        /// Обновить комментарий(сообщение)
         /// </summary>
-        /// <param name="id">Id коментария</param>
+        /// <param name="dto"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public Task DeleteCommentAsync(CommentDtoRequestDelete dto, CancellationToken token);
+        Task<Guid> UpdateCommentAsync(CommentDtoRequestUpdate dto, CancellationToken token);
+
+        /// <summary>
+        /// Зпгрузить комментарий(сообщение)
+        /// </summary>
+        /// <param name="commentId"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        Task<CommentDtoResponce> GetCommentAsync(Guid commentId, CancellationToken token);
+
+        /// <summary>
+        /// Удалить комментарий(сообщение)
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        Task DeleteCommentAsync(CommentDtoRequestDelete dto, CancellationToken token);
     }
 }

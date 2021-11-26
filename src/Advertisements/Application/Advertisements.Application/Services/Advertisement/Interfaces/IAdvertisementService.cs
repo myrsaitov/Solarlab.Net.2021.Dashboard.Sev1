@@ -1,10 +1,13 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Sev1.Advertisements.AppServices.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 using Sev1.Advertisements.Contracts.Contracts.GetPaged.Responses;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces
 {
@@ -17,7 +20,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         Task<AdvertisementCreatedResponse> Create(
-            AdvertisementCreateRequest request, 
+            AdvertisementCreateRequest request,
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -26,8 +29,19 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces
         /// <param name="request">Модель DTO объявления</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<int?> Update(
-            AdvertisementUpdateRequest request, 
+        Task<AdvertisementUpdatedResponse> Update(
+            AdvertisementUpdateRequest request,
+            List<IFormFile> files,
+            CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Обновляет статус существующего обявления
+        /// </summary>
+        /// <param name="request">Модель DTO объявления</param>
+        /// <param name="cancellationToken">Маркёр отмены</param>
+        /// <returns></returns>
+        Task<AdvertisementUpdatedResponse> UpdateStatus(
+            AdvertisementUpdateStatusRequest request,
             CancellationToken cancellationToken);
 
         /// <summary>

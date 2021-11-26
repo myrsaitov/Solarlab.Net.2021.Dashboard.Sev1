@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Comments.Contracts;
 using Comments.Domain.Entities;
+using System.Collections.Generic;
 
 namespace Comments.Mapper
 {
@@ -8,12 +9,13 @@ namespace Comments.Mapper
     {
         public CommentMapperProfile()
         {
-            CreateMap<CommentDtoRequestCreate, Comment>();
-
-            CreateMap<CommentDtoRequestUpdate, Comment>();
-
-            /// TODO: username => CommentDtoResponce
+            CreateMap<Chat, SellerConsumerChatDtoResponceChatShort>()
+                .ForMember(dest => dest.LastMessage, o => o.MapFrom(src => src.Messages[0]));
             CreateMap<Comment, CommentDtoResponce>();
+            CreateMap<Chat, CommentDtoResponceChat>();
+
+            CreateMap<CommentDtoRequestCreate, Chat>();
+            CreateMap<CommentDtoRequestCreate, Comment>();
         }
     }
 }

@@ -2,6 +2,7 @@ using Comments.API.Filters;
 using Comments.Mapper;
 using Comments.Repository.Persistance;
 using Comments.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using sev1.Accounts.Contracts.UserProvider;
+using Sev1.Accounts.Contracts.ApiClients.User;
+using Sev1.Accounts.Contracts.Authorization;
+using Sev1.Avdertisements.Contracts.ApiClients.AdvertisementValidate;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 
 namespace Comments.API
 {
@@ -26,9 +34,57 @@ namespace Comments.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddSwaggerGen(c =>
+            /*services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "Comments.API.xml");
+                c.IncludeXmlComments(filePath);
+            });*/
+
+            services
+                .AddCors()
+                .AddHttpClient()
+                .AddTransient<IUserValidateApiClient, UserValidateApiClient>()
+                .AddTransient<IAdvertisementValidateApiClient, AdvertisementValidateApiClient>()
+                .AddTransient<IUserProvider, UserProvider>()
+                .AddHttpContextAccessor();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.CustomSchemaIds(type => type.FullName.Replace("+", "_"));
+
+                //The generated Swagger JSON file will have these properties.
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n 
+                        Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\n
+                        Example: 'Bearer 12345abcdef'",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = JwtBearerDefaults.AuthenticationScheme
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header,
+                        },
+                        new List<string>()
+                    }
+                });
 
                 var filePath = Path.Combine(System.AppContext.BaseDirectory, "Comments.API.xml");
                 c.IncludeXmlComments(filePath);
@@ -48,7 +104,7 @@ namespace Comments.API
             services.AddScoped<CommentsExceptionFilter>();
 
 
-            services.AddScoped<ICommentsRepository, CommentRepository>();
+            services.AddScoped<ICommentsRepository, CommentsRepository>();
             services.AddAutoMapper(typeof(CommentMapperProfile));
         }
 
@@ -62,11 +118,25 @@ namespace Comments.API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
+            // Cross-Origin Requests
+            // Безопасность браузера предотвращает отправку веб-страницей запросов в домен, 
+            // отличный от того, который обслуживает веб-страницу. 
+            // Это ограничение называется политикой одинакового происхождения. 
+            // Политика того же происхождения не позволяет вредоносному сайту 
+            // читать конфиденциальные данные с другого сайта. 
+            // Иногда может потребоваться разрешить другим сайтам делать запросы к приложению из разных источников.
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod());
+
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+            app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

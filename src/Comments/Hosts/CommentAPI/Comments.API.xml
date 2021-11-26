@@ -13,23 +13,22 @@
             <param name="logger"></param>
             <param name="commentService"></param>
         </member>
-        <member name="M:Comments.API.Controllers.CommentController.GetCommentsByChatId(Comments.Contracts.CommentDtoRequestGetByChatId,System.Threading.CancellationToken)">
+        <member name="M:Comments.API.Controllers.CommentController.GetUserChatsPaged(Comments.Contracts.CommentDtoRequestGetUserChatsPaged,System.Threading.CancellationToken)">
             <summary>
-            Получить все коментарии, прикреплённые к чату
+            Получить чаты пользователя
             </summary>
             <response code="200">Ok</response>
         </member>
-        <member name="M:Comments.API.Controllers.CommentController.CountPagesByChatId(Comments.Contracts.CommentDtoRequestCountPagesByChatId,System.Threading.CancellationToken)">
+        <member name="M:Comments.API.Controllers.CommentController.GetChatPaged(Comments.Contracts.CommentDtoRequestGetChatPaged,System.Threading.CancellationToken)">
             <summary>
-            Посчитать количество страниц комментариев в чате
+            Получить коментарии, постранично
             </summary>
             <response code="200">Ok</response>
         </member>
-        <member name="M:Comments.API.Controllers.CommentController.DeleteCommentsByChatId(System.Guid,System.Threading.CancellationToken)">
+        <member name="M:Comments.API.Controllers.CommentController.DeleteChat(Comments.Contracts.CommentDtoRequestDeleteChat,System.Threading.CancellationToken)">
             <summary>
-            Удалить все коментарии, прикреплённые к чату
+            Удалить чат
             </summary>
-            <param name="id">Chat Id</param>
             <returns></returns>
             <response code="200">Ok</response>
         </member>
@@ -60,6 +59,12 @@
             <returns></returns>
             <response code="200">Ok</response>
             <response code="404">Not Found</response>
+        </member>
+        <member name="M:Comments.API.Controllers.CommentController.GetNextMessagesFromCurrent(Comments.Contracts.CommentDtoRequestGetNextFromCurrent,System.Threading.CancellationToken)">
+            <summary>
+            Получить коментарии чата, от текущего комментария в колличестве quantity
+            </summary>
+            <response code="200">Ok</response>
         </member>
         <member name="T:Comments.API.Filters.CommentsExceptionFilter">
             <summary>

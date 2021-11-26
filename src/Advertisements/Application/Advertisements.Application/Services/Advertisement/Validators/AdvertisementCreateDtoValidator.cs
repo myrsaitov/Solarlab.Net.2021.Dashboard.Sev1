@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using Sev1.Advertisements.AppServices.Services.Tag.Validators;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.Domain.Base.Validators;
 
@@ -39,7 +38,7 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Validators
             // Текст объявления
             RuleFor(x => x.Body)
                 .NotNull()
-                .NotEmpty().WithMessage("Body не заполнен!")
+                .NotEmpty().WithMessage("Body не заполнен!");
 
                 // Протестировать тут: https://regex101.com/
                 // Тест: "Продаются утята, котята, 3 коровы(?) и трактор!"
@@ -52,9 +51,9 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Validators
                 // или "\w": символы латиницы, цифры и подчеркивание;
                 // или "\s": пробел, табуляция, перенос строки;
                 // или ".?!)(,:-": знаки препинания.
-                .Matches(@"^[а-яА-ЯёЁ\w\s.?!)(,:-]+$")
-                .MinimumLength(5)
-                .MaximumLength(1000);
+                //.Matches(@"^[а-яА-ЯёЁ\w\s.?!)(,:-]+$")
+                //.MinimumLength(5)
+                //.MaximumLength(1000);
 
             // Цена
             RuleFor(x => x.Price)
@@ -69,7 +68,11 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Validators
                 .InclusiveBetween(1, int.MaxValue);
 
             // Проверка массива строк TagBodies
-            RuleForEach(x => x.TagBodies).SetValidator(new TagBodyValidator());
+            //RuleForEach(x => x.TagBodies).SetValidator(new TagBodyValidator());
+
+            // Статус объявления
+            RuleFor(x => x.Status)
+                .NotNull().WithMessage("Status не заполнен!");
         }
     }
 }

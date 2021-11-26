@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
+using System.Threading.Tasks;
 
 namespace Sev1.Avdertisements.Contracts.ApiClients.AdvertisementValidate
 {
@@ -16,5 +17,12 @@ namespace Sev1.Avdertisements.Contracts.ApiClients.AdvertisementValidate
         Task<bool> AdvertisementValidate(
             int? advertisementId,
             string ownerId);
+
+        /// <summary>
+        /// Получить объявление по Id 
+        /// </summary>
+        /// <param name="advertisementId">Идентификатор объявления</param>
+        /// <returns></returns>
+        Task<AdvertisementGetResponse> GetAdvertisementById(int advertisementId);
     }
 }

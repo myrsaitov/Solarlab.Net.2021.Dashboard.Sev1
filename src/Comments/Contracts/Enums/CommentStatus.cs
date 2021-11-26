@@ -1,7 +1,7 @@
 ﻿namespace Comments.Contracts.Enums
 {
     /// <summary>
-    /// Статус сообщения : Обычное, Изменённое, Новое
+    /// Статус сообщения : Обычное, Новое
     /// </summary>
     public enum CommentStatus
     {
@@ -9,10 +9,7 @@
         /// Обычное сообщение
         /// </summary>
         Common,
-        /// <summary>
-        /// Изсенённое сообщение
-        /// </summary>
-        Changed,
+
         /// <summary>
         /// Новое сообщение
         /// </summary>

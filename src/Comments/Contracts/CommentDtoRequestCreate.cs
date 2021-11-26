@@ -1,20 +1,17 @@
-﻿using System;
+﻿using Comments.Contracts.Base;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Comments.Contracts
 {
-    public class CommentDtoRequestCreate : CommentDtoRequestBase
+    public class CommentDtoRequestCreate : DtoBase
     {
         /// <summary>
-        /// Id объявления, к которому прикреплён коментарий
+        /// Текст сообщения
         /// </summary>
         [Required]
-        public Guid ChatId { get; set; }
-
-        /// <summary>
-        /// Id автора
-        /// </summary>
-        [Required]
-        public Guid AuthorId { get; set; }
+        [MaxLength(255)]
+        [MinLength(2)]
+        public string Message { get; set; }
     }
 }

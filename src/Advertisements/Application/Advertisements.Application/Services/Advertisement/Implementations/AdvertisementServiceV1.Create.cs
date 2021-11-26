@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Validators;
 using System.Linq;
-using sev1.Advertisements.Contracts.Enums;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
@@ -73,7 +72,16 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
             advertisement.CreatedAt = DateTime.UtcNow;
             advertisement.Category = category;
             advertisement.OwnerId = userId;
-            advertisement.Status = AdvertisementStatus.Active;
+
+            // Загружает файлы в UserFiles
+            var userFilesResponse = await _userFilesUploadApiClient
+                .UploadBase64(request.UserFiles);
+
+            // Добавляем идентификаторы файлов в таблицу
+            await AddUserFiles(
+                advertisement,
+                userFilesResponse.Id,
+                cancellationToken);
 
             // Добавляем таги
             await AddTags(

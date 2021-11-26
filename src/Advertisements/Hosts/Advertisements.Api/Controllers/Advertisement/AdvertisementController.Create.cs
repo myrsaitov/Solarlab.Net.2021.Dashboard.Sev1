@@ -1,9 +1,12 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Sev1.Accounts.Contracts.Authorization;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Requests;
+using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 
 namespace Sev1.Advertisements.Api.Controllers.Advertisement
 {
@@ -19,8 +22,7 @@ namespace Sev1.Advertisements.Api.Controllers.Advertisement
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(
-            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            AdvertisementCreateRequest request, 
+            [FromBody] AdvertisementCreateRequest request,
             CancellationToken cancellationToken)
         {
             return Ok(await _advertisementService.Create(

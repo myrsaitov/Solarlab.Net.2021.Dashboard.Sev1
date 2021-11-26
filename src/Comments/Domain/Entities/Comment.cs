@@ -31,6 +31,11 @@ namespace Comments.Domain.Entities
         public CommentStatus CommentStatus { get; set; }
 
         /// <summary>
+        /// Сообщение отредактировано?
+        /// </summary>
+        public bool IsUpdated { get; set; }
+
+        /// <summary>
         /// Id чата
         /// </summary>
         public Guid ChatId { get; set; }

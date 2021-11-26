@@ -1,4 +1,5 @@
-﻿using Comments.Repository.Persistance.Configuration;
+﻿using Comments.Domain.Entities;
+using Comments.Repository.Persistance.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace Comments.Repository.Persistance
@@ -8,6 +9,8 @@ namespace Comments.Repository.Persistance
     /// </summary>
     public class CommentDBContext : DbContext
     {
+        public DbSet<Comment> Comment_Table { get; set; }
+        public DbSet<Chat> Chat_Table { get; set; }
         public CommentDBContext(DbContextOptions<CommentDBContext> options) : base(options)
         {
         }
@@ -15,6 +18,9 @@ namespace Comments.Repository.Persistance
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
+            modelBuilder.ApplyConfiguration(new ChatConfiguration());
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

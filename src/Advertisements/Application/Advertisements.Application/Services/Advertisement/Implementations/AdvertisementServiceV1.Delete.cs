@@ -59,22 +59,6 @@ namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
             // Обновляется дата редактирования
             advertisement.UpdatedAt = DateTime.UtcNow;
 
-            // TODO Сделать нормальный подсчет количества Tags
-            // Убираем из количества объявлений по данному тагу единицу
-            if (advertisement.Tags is not null)
-            {
-                foreach (var tag in advertisement.Tags)
-                {
-                    if (tag.Count > 0)
-                    {
-                        tag.Count -= 1;
-                        await _tagRepository.Save(
-                            tag,
-                            cancellationToken);
-                    }
-                }
-            }
-
             // Сохраняет изменения в базу
             await _advertisementRepository.Save(
                 advertisement, 
