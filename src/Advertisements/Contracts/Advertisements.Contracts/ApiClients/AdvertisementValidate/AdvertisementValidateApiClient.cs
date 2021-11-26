@@ -34,7 +34,11 @@ namespace Sev1.Avdertisements.Contracts.ApiClients.AdvertisementValidate
             string ownerId)
         {
             // Считыватем URI запроса из конфига "appsettings.json"
+#if DEBUG
             string uri = _configuration["AdvertisementValidateApiClientUri"] + advertisementId.ToString();
+#else
+            string uri = _configuration["AdvertisementValidateApiClientUri_DockerNoSSL"] + advertisementId.ToString();
+#endif
             if (string.IsNullOrWhiteSpace(uri))
             {
                 throw new Exception("API-клиент: адрес не задан");

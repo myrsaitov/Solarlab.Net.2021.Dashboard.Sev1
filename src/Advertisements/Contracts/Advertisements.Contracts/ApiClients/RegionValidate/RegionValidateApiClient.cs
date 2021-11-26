@@ -33,8 +33,13 @@ namespace Sev1.Avdertisements.Contracts.ApiClients.RegionValidate
             int? regionId)
         {
             // Считыватем URI запроса из конфига "appsettings.json"
+#if DEBUG
             string uri = _configuration["RegionValidateApiClientUri"] + regionId.ToString();
-            if(string.IsNullOrWhiteSpace(uri))
+#else
+            string uri = _configuration["RegionValidateApiClientUri_DockerNoSSL"] + regionId.ToString();
+#endif
+
+            if (string.IsNullOrWhiteSpace(uri))
             {
                 throw new Exception("API-клиент: адрес не задан");
             }
