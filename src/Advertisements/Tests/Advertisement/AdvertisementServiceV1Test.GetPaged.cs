@@ -65,7 +65,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 .ReturnsAsync(advertisementCount) // в результате выполнения возвращает объект
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
 
-            _advertisementRepositoryMock
+          /*  _advertisementRepositoryMock
                 .Setup(_ => _.GetPagedWithTagsAndCategoryInclude(
                     It.IsAny<Expression<Func<Domain.Advertisement, bool>>>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<int>(), // проверяет, что параметр имеет указанный тип <>
@@ -73,7 +73,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(response) // в результате выполнения возвращает объект
                 .Verifiable(); // Verify all verifiable expectations on all mocks created through the repository
-
+          */
             // Act
             var res = await _advertisementServiceV1.GetPaged(
                 request,

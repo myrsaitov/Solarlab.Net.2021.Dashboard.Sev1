@@ -9,6 +9,8 @@ using Sev1.Advertisements.AppServices.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.Domain.Base.Exceptions;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 using Sev1.Advertisements.AppServices.Services.Category.Exceptions;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 
 namespace Sev1.Advertisements.Tests.Advertisement
 {
@@ -24,6 +26,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [AutoData]
         public async Task Update_Returns_Response_Success(
             AdvertisementUpdateRequest request,
+            List<IFormFile> files,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -55,7 +58,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 OwnerId = "24cb4b25-c819-45ab-8755-d95120fbb868"
             };
             _advertisementRepositoryMock
-                .Setup(_ => _.FindByIdWithCategoriesAndTags(
+                .Setup(_ => _.FindByIdWithCategoriesAndTagsAndUserFiles(
                     It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(advertisement) // в результате выполнения возвращает объект
@@ -96,6 +99,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             // Act
             await _advertisementServiceV1.Update(
                 request,
+                files,
                 cancellationToken);
 
             // Assert
@@ -115,6 +119,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [AutoData] //accessToken = null, а остальное автозаполняется
         public async Task Update_Throws_Exception_When_CurrentUserId_Is_Null(
             AdvertisementUpdateRequest request,
+            List<IFormFile> files,
             CancellationToken cancellationToken)
         {
             {
@@ -141,7 +146,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                     OwnerId = "24cb4b25-c819-45ab-8755-d95120fbb868"
                 };
                 _advertisementRepositoryMock
-                    .Setup(_ => _.FindByIdWithCategoriesAndTags(
+                    .Setup(_ => _.FindByIdWithCategoriesAndTagsAndUserFiles(
                         It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                         It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                     .ReturnsAsync(advertisement) // в результате выполнения возвращает объект
@@ -159,6 +164,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 await Assert.ThrowsAsync<NoRightsException>(
                     async () => await _advertisementServiceV1.Update(
                         request,
+                        files,
                         cancellationToken));
             }
         }
@@ -173,12 +179,14 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [InlineAutoData(null, null)]
         public async Task Update_Throws_Exception_When_Request_Is_Null(
             AdvertisementUpdateRequest request,
+            List<IFormFile> files,
             CancellationToken cancellationToken)
         {
             // Act
             await Assert.ThrowsAsync<AdvertisementUpdateRequestNotValidException>(
                 async () => await _advertisementServiceV1.Update(
                     request,
+                    files,
                     cancellationToken));
         }
 
@@ -192,6 +200,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [AutoData]
         public async Task Update_Throws_Exception_When_Advertisement_Is_Null(
             AdvertisementUpdateRequest request,
+            List<IFormFile> files,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -212,6 +221,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             await Assert.ThrowsAsync<AdvertisementNotFoundException>(
                 async () => await _advertisementServiceV1.Update(
                     request,
+                    files,
                     cancellationToken));
         }
 
@@ -226,6 +236,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
         [AutoData]
         public async Task Update_Throws_Exception_When_Category_Is_Null(
             AdvertisementUpdateRequest request,
+            List<IFormFile> files,
             CancellationToken cancellationToken)
         {
             // Arrange
@@ -254,7 +265,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
                 OwnerId = "24cb4b25-c819-45ab-8755-d95120fbb868"
             };
             _advertisementRepositoryMock
-                .Setup(_ => _.FindByIdWithCategoriesAndTags(
+                .Setup(_ => _.FindByIdWithCategoriesAndTagsAndUserFiles(
                     It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(advertisement) // в результате выполнения возвращает объект
@@ -267,6 +278,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
             await Assert.ThrowsAsync<CategoryNotFoundException>(
                 async () => await _advertisementServiceV1.Update(
                     request,
+                    files,
                     cancellationToken));
         }
     }

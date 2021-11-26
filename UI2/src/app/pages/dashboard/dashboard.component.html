@@ -84,7 +84,7 @@
             class="col-sm-4 mb-4"
             [advertisement]="item"
             [userName]="getUserNameById(item.ownerId)"
-            [defaultImageUri]="getUserFileUriById(1)"
+            [defaultImageUri]="getUserFileUriById(item.userFiles[0])"
             [RegionName]="getRegionNameById(item.regionId)">
           </app-advertisement-card>
         </ng-container>

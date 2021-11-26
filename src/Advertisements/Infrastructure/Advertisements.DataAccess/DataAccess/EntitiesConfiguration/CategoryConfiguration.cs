@@ -156,6 +156,35 @@ namespace Sev1.Advertisements.DataAccess.EntitiesConfiguration
             ParentCategoryId = 9
         };
 
+        // Группа 4 - "Искусство"
+        private static Category category4 = new Category
+        {
+            Id = 18,
+            Name = "Искусство",
+            CreatedAt = DateTime.UtcNow,
+            IsDeleted = false,
+            ParentCategory = null
+        };
+
+        private static Category category4_1 = new Category
+        {
+            Id = 19,
+            Name = "Живопись маслом",
+            CreatedAt = DateTime.UtcNow,
+            IsDeleted = false,
+            ParentCategoryId = 18
+        };
+
+        private static Category category4_2 = new Category
+        {
+            Id = 20,
+            Name = "Акварель",
+            CreatedAt = DateTime.UtcNow,
+            IsDeleted = false,
+            ParentCategoryId = 18
+        };
+
+
         private readonly Category[] categories = new Category[]
         {
             category1,
@@ -174,7 +203,10 @@ namespace Sev1.Advertisements.DataAccess.EntitiesConfiguration
             category3_5,
             category3_6,
             category3_7,
-            category3_8
+            category3_8,
+            category4,
+            category4_1,
+            category4_2,
         };
         
         public void Configure(EntityTypeBuilder<Category> builder)

@@ -146,12 +146,17 @@ export class DashboardComponent implements OnInit {
  
   // Возвращает ссылку на файл по идентификатору
   getUserFileUriById(id: number){
-    var file = this.userFiles.find(s => s.id === id);
-    if (typeof file === 'undefined') {
+    if (typeof id === 'undefined') {
       return "https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png";
     }
     else {
-      return file.filePath;
+      var file = this.userFiles.find(s => s.id === id);
+      if (typeof file === 'undefined') {
+        return "https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png";
+      }
+      else {
+        return file.filePath;
+      }
     }
   }
 

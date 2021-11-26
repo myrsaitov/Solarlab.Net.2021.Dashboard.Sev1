@@ -62,7 +62,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // "Достаем" из базы
             _advertisementRepositoryMock
-                .Setup(_ => _.FindByIdWithCategoriesAndTags(
+                .Setup(_ => _.FindByIdWithCategoriesAndTagsAndUserFiles(
                     It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(advertisement) // в результате выполнения возвращает объект
@@ -101,7 +101,7 @@ namespace Sev1.Advertisements.Tests.Advertisement
 
             // "Достаем" из базы
             _advertisementRepositoryMock
-                .Setup(_ => _.FindByIdWithCategoriesAndTags(
+                .Setup(_ => _.FindByIdWithCategoriesAndTagsAndUserFiles(
                     It.IsAny<int?>(), // проверяет, что параметр имеет указанный тип <>
                     It.IsAny<CancellationToken>())) // проверяет, что параметр имеет указанный тип <>
                 .ReturnsAsync(advertisement); // в результате выполнения возвращает объект
