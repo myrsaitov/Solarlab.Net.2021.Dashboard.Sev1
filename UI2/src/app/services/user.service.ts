@@ -15,8 +15,29 @@ import { GetPagedUserResponseModel } from '../models/user/get-paged-user-respons
 
 export class UserService {
   private ROOT_URL = `${environment.baseAccountsApiUrl}api/v1/accounts`;
+  users$: Observable<IUser[]>;
+  users: IUser[];
 
   constructor(private http: HttpClient) {
+  }
+
+  userInit() {
+    this.users$ = this.getUserList({
+      pageSize: 1000,
+      page: 0,
+    });
+
+    this.users$.subscribe(users => {
+      this.users = users;
+    });
+  }
+
+  // Возвращает имя пользователя по идентификатору
+  getUserNameById(userId: string){
+    return this.users.find(s => s.userId === userId).userName;
+    /*this.users$.subscribe(users => {
+      return users.find(s => s.userId === userId).userName
+    });*/
   }
 
   // Возвращает список пользователей

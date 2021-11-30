@@ -83,9 +83,9 @@
           <app-advertisement-card
             class="col-sm-4 mb-4"
             [advertisement]="item"
-            [userName]="getUserNameById(item.ownerId)"
+            [userService]="userService"
             [defaultImageUri]="getUserFileUriById(item.userFiles[0])"
-            [RegionName]="getRegionNameById(item.regionId)">
+            [regionName]="getRegionNameById(item.regionId)">
           </app-advertisement-card>
         </ng-container>
       </div>

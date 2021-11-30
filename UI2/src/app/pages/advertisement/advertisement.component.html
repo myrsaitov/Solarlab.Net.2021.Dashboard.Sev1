@@ -216,7 +216,7 @@
                     *ngIf="advertisement?.ownerId"
                     role="button"
                     (click)="getContentByUserName(advertisement.ownerId)">
-                    {{advertisementOwnerName}}&nbsp;&nbsp;
+                    {{userService.getUserNameById(advertisement.ownerId)}}&nbsp;&nbsp;
                   </a>
                   <a *ngIf="advertisement?.createdAt">
                     {{advertisement.createdAt}}

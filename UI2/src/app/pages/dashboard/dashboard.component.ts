@@ -28,12 +28,9 @@ import { RegionService } from 'src/app/services/region.service';
 export class DashboardComponent implements OnInit {
   response$: Observable<GetPagedContentResponseModel>;
   isAuth = this.authService.isAuth;
-  users$: Observable<IUser[]>;
-  users: IUser[];
   categories$: Observable<ICategory[]>;
   categories: ICategory[];
   tags$: Observable<ITag[]>;
-  defaultImageUri: string = "https://vjoy.cc/wp-content/uploads/2019/07/3-5.jpg";
   userFiles$: Observable<IUserFile[]>;
   userFiles: IUserFile[];
   regions$: Observable<IRegion[]>;
@@ -77,12 +74,8 @@ export class DashboardComponent implements OnInit {
       page: 0,
     });
 
-    // Подписка на пользователей
-    this.users$ = this.userService.getUserList({
-      pageSize: 1000,
-      page: 0,
-    });
-    this.users$.subscribe(users => this.users = users);
+    // Инициализация сервиса пользователей
+    this.userService.userInit();
 
     // Подписка на таги
     this.tags$ = this.tagService.getTagList({
@@ -134,11 +127,6 @@ export class DashboardComponent implements OnInit {
     ));
   }
   
-  // Возвращает имя пользователя по идентификатору
-  getUserNameById(userId: string){
-    return this.users.find(s => s.userId === userId).userName;
-  }
-
   // Возвращает имя региона по идентификатору
   getRegionNameById(regionId: number){
     return this.regions.find(s => s.id === regionId).name;

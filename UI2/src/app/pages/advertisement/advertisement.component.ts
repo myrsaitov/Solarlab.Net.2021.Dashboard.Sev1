@@ -37,13 +37,10 @@ import { IUserFile } from 'src/app/models/user-files/userfile-model';
 export class AdvertisementComponent implements OnInit {
   form: FormGroup;
   advertisement: IAdvertisement;
-  advertisementOwnerName: string;
   isAuth = this.authService.isAuth;
   isEditable: boolean;
   response$: Observable<GetPagedCommentResponseModel>;
   tags$: Observable<ITag[]>;
-  users$: Observable<IUser[]>;
-  users: IUser[];
   categories$: Observable<ICategory[]>;
   categories: ICategory[];
   regions$: Observable<IRegion[]>;
@@ -60,10 +57,6 @@ export class AdvertisementComponent implements OnInit {
   currentIndex: any = -1;
   showFlag: any = false;
   imageObject: Array<object> = [];
-  /*imageObject: Array<object> = [
-    {image: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/5.jpg'},
-    {image: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/9.jpg'},
-    {image: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/4.jpg'}];//*/
 
   private commentsFilterSubject$ = new BehaviorSubject({
     contentId: 1,
@@ -96,12 +89,8 @@ export class AdvertisementComponent implements OnInit {
     });
     this.categories$.subscribe(categories => this.categories = categories);
 
-    // Подписка на пользователей
-    this.users$ = this.userService.getUserList({
-      pageSize: 1000,
-      page: 0,
-    });
-    this.users$.subscribe(users => this.users = users);
+    // Инициализация сервиса пользователей
+    this.userService.userInit();
 
     // Подписка на таги
     this.tags$ = this.tagService.getTagList({
@@ -168,9 +157,6 @@ export class AdvertisementComponent implements OnInit {
 
         // Устанавливаем значение статуса на форме
         this.status.patchValue(advertisement.status);
-
-        // Возвращает UserName пользоватeля по идентификатору
-        this.advertisementOwnerName =  this.getUserNameById(advertisement.ownerId);
 
         // Если объявление принадлежит авторизированному пользователю, то разрешаем редактирование
         if(this.advertisement.ownerId == localStorage.getItem('userId')) {
@@ -255,11 +241,6 @@ export class AdvertisementComponent implements OnInit {
     return this.userFiles.find(s => s.id === id).filePath;
   }
   
-  // Возвращает имя пользователя по идентификатору
-  getUserNameById(userId: string){
-      return this.users.find(s => s.userId === userId).userName;
-  }
-
   // Возвращает имя категории по идентификатору
   getCategoryNameById(categoryId: number){
     return this.categories.find(s => s.id === categoryId).name;

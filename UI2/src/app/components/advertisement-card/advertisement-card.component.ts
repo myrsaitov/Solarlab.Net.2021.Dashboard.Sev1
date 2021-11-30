@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {IAdvertisement} from '../../models/advertisement/i-advertisement';
 import {Router} from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -11,9 +12,9 @@ import {Router} from '@angular/router';
 
 export class AdvertisementCardComponent {
   @Input() advertisement: IAdvertisement;
-  @Input() userName: string;
   @Input() defaultImageUri: string;
-  @Input() RegionName: string;
+  @Input() regionName: string;
+  @Input() userService: UserService;
 
   constructor(private readonly router: Router) {
   }

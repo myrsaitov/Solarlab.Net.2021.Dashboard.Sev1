@@ -29,6 +29,7 @@
     style="width: 14rem; height: 7rem;">
     <br>
     <h6>
+      <small>{{userService.getUserNameById(advertisement.ownerId)}}</small>
       <!-- Стоимость -->
       <div class="badge badge-secondary"
         *ngIf="advertisement?.price">
@@ -39,7 +40,7 @@
         {{advertisement.title.substring(0,20)}}
       </h6>
       <!-- Регион -->
-      <small>{{RegionName}}</small>
+      <small>{{regionName}}</small>
     </h6>
 
   </div>
