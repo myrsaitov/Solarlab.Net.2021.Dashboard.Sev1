@@ -26,18 +26,25 @@ export class UserService {
       pageSize: 1000,
       page: 0,
     });
-
+    //return this.users$;
     this.users$.subscribe(users => {
       this.users = users;
     });
   }
 
   // Возвращает имя пользователя по идентификатору
+  getUserById(userId: string): Observable<IUser>{
+    return this.http.get<IUser>(`${this.ROOT_URL}/user/${userId}`)
+      .pipe(
+        catchError((err) => {
+          console.error(err);
+          return EMPTY;
+        }));
+  }
+
+
   getUserNameById(userId: string){
     return this.users.find(s => s.userId === userId).userName;
-    /*this.users$.subscribe(users => {
-      return users.find(s => s.userId === userId).userName
-    });*/
   }
 
   // Возвращает список пользователей

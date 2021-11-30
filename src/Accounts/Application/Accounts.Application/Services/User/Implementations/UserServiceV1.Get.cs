@@ -14,7 +14,7 @@ namespace Sev1.Accounts.AppServices.Services.User.Implementations
         /// <param name="userId">Идентификатор пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        public async Task<Domain.User> Get(
+        public async Task<UserGetResponse> Get(
             string userId, 
             CancellationToken cancellationToken)
         {
@@ -30,8 +30,8 @@ namespace Sev1.Accounts.AppServices.Services.User.Implementations
                 throw new UserNotFoundException($"Пользователь с идентификатором {userId} не найден");
             }
 
-            // Возвращат пользователя
-            return domainUser;
+            // Маппит и возвращает ответ
+            return _mapper.Map<UserGetResponse>(domainUser);
         }
 
         /// <summary>

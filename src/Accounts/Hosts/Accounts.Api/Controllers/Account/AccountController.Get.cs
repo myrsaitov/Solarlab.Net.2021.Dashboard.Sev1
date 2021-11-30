@@ -15,7 +15,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("current-user-id")]
+        [HttpGet("current-user-id")]
         public IActionResult GetCurrentUserId(
             CancellationToken cancellationToken)
         {
@@ -33,7 +33,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("current-user")]
+        [HttpGet("current-user")]
         public async Task<IActionResult> GetCurrentUser(
             CancellationToken cancellationToken)
         {
@@ -43,21 +43,19 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <summary>
         /// Возвращает пользователя по его идентификатору
         /// </summary>
-        /// <param name="UserId">Идентификатор пользователя</param>
+        /// <param name="userId">Идентификатор пользователя</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [AllowAnonymous]
-        [HttpPost("user")]
+        [HttpGet("user/{userId}")]
         public async Task<IActionResult> GetUserById(
-            [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
-            string UserId,
+            [FromRoute]
+            string userId,
             CancellationToken cancellationToken)
         {
-            var domainUser = await _userService.Get(
-                UserId,
-                cancellationToken);
-
-            return Ok(domainUser);
+            return Ok(await _userService.Get(
+                userId,
+                cancellationToken));
         }
 
         /// <summary>

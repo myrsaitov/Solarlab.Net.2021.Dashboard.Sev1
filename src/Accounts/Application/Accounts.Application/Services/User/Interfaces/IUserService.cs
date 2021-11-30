@@ -44,7 +44,7 @@ namespace Sev1.Accounts.AppServices.Services.User.Interfaces
         /// <param name="userId">Идентификатор пользователя</param>
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
-        Task<Domain.User> Get(
+        Task<UserGetResponse> Get(
             string userId,
             CancellationToken cancellationToken);
 
