@@ -44,10 +44,14 @@ export class LoginComponent implements OnInit {
 
   // Обработка нажатия кнопки "Войти"
   public submit() {
+
+    // Проверка валидности формы
     this.loginForm.markAllAsTouched();
     if (this.loginForm.invalid) {
       return;
     }
+
+    // Загрузить данные с формы
     const payload: ILogin = this.loginForm.getRawValue();
 
     // Отправляет данные с формы на бэк,
