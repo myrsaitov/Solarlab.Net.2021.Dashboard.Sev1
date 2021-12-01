@@ -13,7 +13,10 @@ import { environment } from 'src/environments/environment';
 
 export class AccountService {
   private ROOT_URL = `${environment.baseAccountsApiUrl}api/v1/accounts`;
-  constructor(private http: HttpClient) { }
+  
+  constructor(
+    private http: HttpClient) {
+  }
 
   register(model: IRegister) {
     return this.http.post(`${this.ROOT_URL}/register`, model).pipe(catchError((error) => {

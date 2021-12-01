@@ -9,7 +9,8 @@ export class CreateComment implements ICreateComment {
   contentId: number;
   parentCommentId: number;
 
-  constructor(data?: Partial<ICreateComment>) {
+  constructor(
+    data?: Partial<ICreateComment>) {
     const defaults: ICreateComment = {
       body: '',
       contentId: 0,

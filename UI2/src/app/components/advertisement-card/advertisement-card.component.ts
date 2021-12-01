@@ -16,7 +16,8 @@ export class AdvertisementCardComponent {
   @Input() regionName: string;
   @Input() userService: UserService;
 
-  constructor(private readonly router: Router) {
+  constructor(
+    private readonly router: Router) {
   }
 
   // Отобразить объявления по заданной категории

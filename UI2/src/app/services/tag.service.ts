@@ -16,7 +16,8 @@ import { ITagFilter } from '../models/tag/tag-filter.model';
 export class TagService {
   private ROOT_URL = `${environment.baseAdvertisementsApiUrl}api/v1/tags`;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient) {
   }
 
   // Возвращает список тагов

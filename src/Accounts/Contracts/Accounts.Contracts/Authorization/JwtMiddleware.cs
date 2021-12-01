@@ -22,12 +22,12 @@ namespace Sev1.Accounts.Contracts.Authorization
             HttpContext context)
         {
             // Возвращаем JWT-токен из Headers
-            var token = context
+            var authorizationHeader = context
                 .Request
                 .Headers["Authorization"]
                 .FirstOrDefault();
             
-            if (string.IsNullOrWhiteSpace(token))
+            if (string.IsNullOrWhiteSpace(authorizationHeader))
             {
                 // Если токена нет (работаем анонимно)
                 context.Items["Anonimous"] = "Anonimous";
@@ -35,7 +35,7 @@ namespace Sev1.Accounts.Contracts.Authorization
             else
             {
                 // Валидация JWT-токена
-                var res = await _userApiClient.UserValidate(token);
+                var res = await _userApiClient.UserValidate(authorizationHeader);
 
                 // Если валидация JWT-токена удачная,
                 if ((res.Roles != null)&&(!string.IsNullOrWhiteSpace(res.UserId)))

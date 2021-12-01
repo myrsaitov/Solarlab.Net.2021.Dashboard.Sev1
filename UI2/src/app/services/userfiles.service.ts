@@ -16,7 +16,8 @@ import { GetPagedUserFilesResponseModel } from '../models/user-files/get-paged-u
 export class UserFilesService {
   private ROOT_URL = `${environment.baseUserFilesApiUrl}api/v1/userfiles`;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient) {
   }
 
   // Возвращает файл по Id

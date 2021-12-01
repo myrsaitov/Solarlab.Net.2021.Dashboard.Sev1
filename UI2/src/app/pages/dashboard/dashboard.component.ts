@@ -7,7 +7,6 @@ import { GetPagedContentResponseModel } from '../../models/advertisement/get-pag
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
-import { IUser } from 'src/app/models/user/user-model';
 import { ICategory } from 'src/app/models/category/category-model';
 import { CategoryService } from 'src/app/services/category.service';
 import { ITag } from 'src/app/models/tag/tag-model';
@@ -46,15 +45,16 @@ export class DashboardComponent implements OnInit {
   });
   advertisementsFilterChange$ = this.advertisementsFilterSubject$.asObservable();
 
-  constructor(private authService: AuthService,
-              private advertisementService: AdvertisementService,
-              private route: ActivatedRoute,
-              private readonly router: Router,
-              private userService: UserService,
-              private categoryService: CategoryService,
-              private tagService: TagService,
-              private userFilesService: UserFilesService,
-              private regionService: RegionService) {
+  constructor(
+    private authService: AuthService,
+    private advertisementService: AdvertisementService,
+    private route: ActivatedRoute,
+    private readonly router: Router,
+    private userService: UserService,
+    private categoryService: CategoryService,
+    private tagService: TagService,
+    private userFilesService: UserFilesService,
+    private regionService: RegionService) {
   }
 
   ngOnInit() {

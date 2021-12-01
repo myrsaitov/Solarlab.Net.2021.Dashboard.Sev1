@@ -8,8 +8,8 @@ import { AuthService } from '../services/auth.service';
 export class AuthHeadersInterceptor implements HttpInterceptor {
 
   constructor(
-    private readonly authService: AuthService
-  ) { }
+    private readonly authService: AuthService) {
+  }
 
   // Интерцептор добавляет хидеры авторизации, если авторизированы, а если нет, то делает next
   intercept(req: HttpRequest<any>, next: HttpHandler) {

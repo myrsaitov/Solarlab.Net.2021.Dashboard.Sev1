@@ -30,17 +30,18 @@ export class AuthService {
   }
 
   // Сохраняет данные о сессии в хранилище
-  saveSession(response: string): void {
+  saveSession(response: any): void {
+    var resStr = JSON.stringify(response);
     // Токен
-    localStorage.setItem(this.sessionToken, JSON.parse(response).token);
+    localStorage.setItem(this.sessionToken, JSON.parse(resStr).token);
     // UserName
-    localStorage.setItem(this.sessionUserName, JSON.parse(response).userName);
+    localStorage.setItem(this.sessionUserName, JSON.parse(resStr).userName);
     // UserId
-    localStorage.setItem(this.sessionUserId, JSON.parse(response).userId);
+    localStorage.setItem(this.sessionUserId, JSON.parse(resStr).userId);
     // RegionId
-    localStorage.setItem(this.sessionRegionId, JSON.parse(response).regionId);
+    localStorage.setItem(this.sessionRegionId, JSON.parse(resStr).regionId);
     // Roles
-    localStorage.setItem(this.sessionRoles, JSON.parse(response).roles);
+    localStorage.setItem(this.sessionRoles, JSON.parse(resStr).roles);
 
     // Загружает эту сессию после сохранения
     this.isAuthSubject$.next(!!this.getSession());

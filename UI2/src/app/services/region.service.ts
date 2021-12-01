@@ -16,7 +16,8 @@ import { EMPTY, Observable } from 'rxjs';
 export class RegionService {
   private ROOT_URL = `${environment.baseAdvertisementsApiUrl}api/v1/regions/v2`;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient) {
   }
 
   // Возвращает список регионов

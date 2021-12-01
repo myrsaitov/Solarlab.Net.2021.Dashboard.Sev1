@@ -31,7 +31,8 @@ export class SignupComponent implements OnInit {
     private readonly auth: AuthService,
     private readonly baseService: BaseService,
     private readonly router: Router,
-    private regionService: RegionService) {}
+    private regionService: RegionService) {
+  }
 
   // Обработка события инициализации
   ngOnInit() {

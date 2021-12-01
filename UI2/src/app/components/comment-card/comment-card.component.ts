@@ -17,7 +17,8 @@ export class CommentCardComponent {
   form: FormGroup;
   @Input() comment: IComment;
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private authService: AuthService,
     private toastService: ToastService,
     private router: Router,

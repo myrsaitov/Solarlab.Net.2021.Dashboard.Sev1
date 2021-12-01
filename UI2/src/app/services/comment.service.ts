@@ -17,7 +17,8 @@ export class CommentService {
   private ROOT_URL = `api/v1/comments`;
   private decpage: number;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient) {
   }
 
   getCommentsList(model: GetPagedCommentModel): Observable<GetPagedCommentResponseModel> {

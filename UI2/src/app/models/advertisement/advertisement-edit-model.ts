@@ -21,7 +21,8 @@ export class EditAdvertisement implements IEditAdvertisement {
   title: string;
   status: number;
 
-  constructor(data?: Partial<IEditAdvertisement>) {
+  constructor(
+    data?: Partial<IEditAdvertisement>) {
     const defaults: IEditAdvertisement = {
       id: 0,
       body: '',

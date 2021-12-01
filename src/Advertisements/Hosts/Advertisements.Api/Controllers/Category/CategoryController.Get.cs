@@ -6,7 +6,6 @@ using Sev1.Advertisements.Contracts.Contracts.GetPaged.Requests;
 
 namespace Sev1.Advertisements.Api.Controllers.Category
 {
-
     public partial class CategoryController
     {
         /// <summary>

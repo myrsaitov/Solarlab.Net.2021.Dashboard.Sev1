@@ -23,7 +23,8 @@ export class CreateAdvertisement implements ICreateAdvertisement {
   status: number;
   userFiles: IUserFile[];
 
-  constructor(data?: Partial<ICreateAdvertisement>) {
+  constructor(
+    data?: Partial<ICreateAdvertisement>) {
     const defaults: ICreateAdvertisement = {
       title: '',
       body: '',

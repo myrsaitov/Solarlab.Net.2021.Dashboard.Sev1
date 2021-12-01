@@ -16,7 +16,8 @@ import { environment } from 'src/environments/environment';
 export class CategoryService {
   private ROOT_URL = `${environment.baseAdvertisementsApiUrl}api/v1/categories`;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient) {
   }
 
 

@@ -10,8 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class BaseService {
 
   constructor(
-    private readonly http: HttpClient,
-  ) { }
+    private readonly http: HttpClient) {
+  }
 
   public post(apiURL: string, payload: any = {}): Promise<any> {
 

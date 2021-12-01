@@ -35,15 +35,16 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
   thumbnailImages: IThumbnailImage[] = [];
   fileId: number = 0; // уникальный id файла, который загружается на форму
 
-  constructor(private fb: FormBuilder,
-              private advertisementService: AdvertisementService,
-              private categoryService: CategoryService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private toastService: ToastService,
-              private tagService: TagService,
-              private regionService: RegionService,
-              private sanitizer: DomSanitizer) {
+  constructor(
+    private fb: FormBuilder,
+    private advertisementService: AdvertisementService,
+    private categoryService: CategoryService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private toastService: ToastService,
+    private tagService: TagService,
+    private regionService: RegionService,
+    private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {

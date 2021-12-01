@@ -65,19 +65,20 @@ export class AdvertisementComponent implements OnInit {
   });
   commentsFilterChange$ = this.commentsFilterSubject$.asObservable();
 
-  constructor(private fb: FormBuilder,
-              private route: ActivatedRoute,
-              private router: Router,
-              private advertisementService: AdvertisementService,
-              private authService: AuthService,
-              private toastService: ToastService,
-              private categoryService: CategoryService,
-              private commentService: CommentService,
-              private modalService: NgbModal,
-              private tagService: TagService,
-              private userService: UserService,
-              private userFilesService: UserFilesService,
-              private regionService: RegionService) {
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private advertisementService: AdvertisementService,
+    private authService: AuthService,
+    private toastService: ToastService,
+    private categoryService: CategoryService,
+    private commentService: CommentService,
+    private modalService: NgbModal,
+    private tagService: TagService,
+    private userService: UserService,
+    private userFilesService: UserFilesService,
+    private regionService: RegionService) {
   }
 
   ngOnInit() {

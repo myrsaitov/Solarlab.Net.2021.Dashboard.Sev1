@@ -54,7 +54,8 @@ export class UserFile implements IUserFile {
   contentDisposition: string;
   length: number;
   
-  constructor(data?: Partial<IUserFile>) {
+  constructor(
+    data?: Partial<IUserFile>) {
     const defaults: IUserFile = {
       id: null,
       filePath: '',

@@ -32,15 +32,16 @@ export class CreateAdvertisementComponent implements OnInit {
   userFiles: IUserFile[] = [];
   fileIdOnForm: number = 0; // идентификатор файла на форме
 
-  constructor(private fb: FormBuilder,
-              private advertisementService: AdvertisementService,
-              private categoryService: CategoryService,
-              private router: Router,
-              private toastService: ToastService,
-              private tagService: TagService,
-              private regionService: RegionService,
-              private authService: AuthService,
-              private sanitizer: DomSanitizer) {
+  constructor(
+    private fb: FormBuilder,
+    private advertisementService: AdvertisementService,
+    private categoryService: CategoryService,
+    private router: Router,
+    private toastService: ToastService,
+    private tagService: TagService,
+    private regionService: RegionService,
+    private authService: AuthService,
+    private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {

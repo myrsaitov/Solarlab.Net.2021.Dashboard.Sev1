@@ -11,7 +11,8 @@ export class ThumbnailImage implements IThumbnailImage {
     uri: SafeResourceUrl;
     file: any;
   
-    constructor(data?: Partial<IThumbnailImage>) {
+    constructor(
+      data?: Partial<IThumbnailImage>) {
       const defaults: IThumbnailImage = {
         id: null,
         uri: '',

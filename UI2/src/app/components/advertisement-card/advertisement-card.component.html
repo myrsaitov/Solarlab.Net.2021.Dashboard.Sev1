@@ -29,9 +29,9 @@
     style="width: 14rem; height: 7rem;">
     <br>
     <h6>
-      <ng-container *ngIf="userService.getUserById(advertisement.ownerId) | async as user">
+      <!--<ng-container *ngIf="userService.getUserById(advertisement.ownerId) | async as user">
         <small>{{user}}</small>
-      </ng-container>
+      </ng-container>-->
       <!-- Стоимость -->
       <div class="badge badge-secondary"
         *ngIf="advertisement?.price">

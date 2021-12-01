@@ -9,9 +9,11 @@ import { Router } from '@angular/router';
 @Injectable()
 
 export class AuthInterceptor implements HttpInterceptor {
+  
   constructor(
-    private readonly router: Router,
-  ) { }
+    private readonly router: Router) {
+  }
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req)
       .pipe( // pipe - применить указанное действие ко всем элементам конвейера

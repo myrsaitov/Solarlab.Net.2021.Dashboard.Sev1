@@ -46,13 +46,6 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
                 throw new Exception("API-клиент: адрес не задан");
             }
 
-            // Данные к пост-запросу
-            string jsonString = "";
-            var payload = new StringContent(
-                jsonString,
-                Encoding.UTF8,
-                "application/json");
-
             // Создание клиента
             var client = _clientFactory.CreateClient();
 
@@ -61,10 +54,8 @@ namespace Sev1.Accounts.Contracts.ApiClients.User
                 "Authorization",
                 authorizationHeader);
 
-            // Выполнение POST-запроса
-            HttpResponseMessage response = await client.PostAsync(
-                uri,
-                payload);
+            // Выполнение GET-запроса
+            HttpResponseMessage response = await client.GetAsync(uri);
 
             // Преобразование в json
             string responseJson = await response.Content.ReadAsStringAsync();

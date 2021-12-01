@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ILogin} from 'src/app/models/account/login.model';
-import {BaseService} from 'src/app/services/base.service';
-import {ApiUrls} from 'src/app/shared/apiURLs';
-import {Router} from '@angular/router';
-import {AuthService} from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -24,16 +21,12 @@ export class LoginComponent implements OnInit {
   };
 
   constructor(
-    private readonly baseService: BaseService,
-    private readonly router: Router,
-    private readonly auth: AuthService,
-    private fb: FormBuilder,
-  ) {
+    private readonly userService: UserService,
+    private fb: FormBuilder) {
     this.loginForm = fb.group(this.formObj);
   }
 
   ngOnInit() {
-
   }
 
   get eMail() {
@@ -44,28 +37,24 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
+  // Обработка нажатия галочки "Показать пароль"
   onCheckboxChange(event: any) {
     this.passwordHide = !this.passwordHide;
   }
 
-  
-  public async login() {
+  // Обработка нажатия кнопки "Войти"
+  public submit() {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.invalid) {
       return;
     }
     const payload: ILogin = this.loginForm.getRawValue();
 
-    await this.baseService.post(ApiUrls.login, payload)
-      .then(res => {
-        if (res) {
-          // Сохраняет сессию
-          this.auth.saveSession(res);
+    // Отправляет данные с формы на бэк,
+    // если удачно, то статус НЕавторизации меняет на false
+    this.userService.login(payload).subscribe(res => {
+      this.notloginedstatus = res;
+    });
+  }
 
-          // Открывает главную страницу
-          this.router.navigate(['/']);
-        }
-          else{this.notloginedstatus = true;}
-      });
-}
 }
