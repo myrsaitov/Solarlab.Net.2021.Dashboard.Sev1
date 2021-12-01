@@ -15,7 +15,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [AllowAnonymous]
-        [HttpPost("login")]
+        [HttpPut("login")]
         public async Task<IActionResult> Login(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
             UserLoginRequest request,

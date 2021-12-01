@@ -15,7 +15,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("validate-token")]
+        [HttpGet("validate-token")]
         public async Task<IActionResult> ValidateToken(
             CancellationToken cancellationToken)
         {

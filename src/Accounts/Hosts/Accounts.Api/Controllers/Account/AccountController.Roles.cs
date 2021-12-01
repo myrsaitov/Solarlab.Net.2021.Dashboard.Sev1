@@ -15,7 +15,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("get-current-user-roles")]
+        [HttpGet("get-current-user-roles")]
         public async Task<IActionResult> GetCurrentUserRoles(
             CancellationToken cancellationToken)
         {
@@ -30,7 +30,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="cancellationToken">Маркёр отмены</param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost("get-user-roles")]
+        [HttpGet("get-user-roles")]
         public async Task<IActionResult> GetUserRoles(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
             string UserId,
@@ -48,7 +48,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="cancellationToken">Маркер отмены</param>
         /// <returns></returns>
         [Authorize(Roles = "Administrator, Moderator")]
-        [HttpPost("role-add")]
+        [HttpPut("role-add")]
         public async Task<IActionResult> AddToRole(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
             UserRoleChangeRequest request,
@@ -69,7 +69,7 @@ namespace Sev1.Accounts.Api.Controllers.Account
         /// <param name="cancellationToken">Маркер отмены</param>
         /// <returns></returns>
         [Authorize(Roles = "Administrator, Moderator")]
-        [HttpPost("role-remove")]
+        [HttpPut("role-remove")]
         public async Task<IActionResult> RemoveFromRole(
             [FromBody] //[FromBody] <= "Content-Type: application/json-patch+json"
             UserRoleChangeRequest request,
