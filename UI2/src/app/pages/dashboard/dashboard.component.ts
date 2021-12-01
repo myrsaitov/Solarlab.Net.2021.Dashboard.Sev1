@@ -46,15 +46,15 @@ export class DashboardComponent implements OnInit {
   advertisementsFilterChange$ = this.advertisementsFilterSubject$.asObservable();
 
   constructor(
-    private authService: AuthService,
-    private advertisementService: AdvertisementService,
-    private route: ActivatedRoute,
+    private readonly authService: AuthService,
+    private readonly advertisementService: AdvertisementService,
+    private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private userService: UserService,
-    private categoryService: CategoryService,
-    private tagService: TagService,
-    private userFilesService: UserFilesService,
-    private regionService: RegionService) {
+    private readonly userService: UserService,
+    private readonly categoryService: CategoryService,
+    private readonly tagService: TagService,
+    private readonly userFilesService: UserFilesService,
+    private readonly regionService: RegionService) {
   }
 
   ngOnInit() {

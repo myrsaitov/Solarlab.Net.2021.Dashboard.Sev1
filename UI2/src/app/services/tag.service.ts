@@ -17,7 +17,7 @@ export class TagService {
   private ROOT_URL = `${environment.baseAdvertisementsApiUrl}api/v1/tags`;
 
   constructor(
-    private http: HttpClient) {
+    private readonly http: HttpClient) {
   }
 
   // Возвращает список тагов

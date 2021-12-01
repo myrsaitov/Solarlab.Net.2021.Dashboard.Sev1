@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private readonly userService: UserService,
-    private fb: FormBuilder) {
+    private readonly fb: FormBuilder) {
     this.loginForm = fb.group(this.formObj);
   }
 

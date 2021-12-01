@@ -17,7 +17,7 @@ export class CategoryService {
   private ROOT_URL = `${environment.baseAdvertisementsApiUrl}api/v1/categories`;
 
   constructor(
-    private http: HttpClient) {
+    private readonly http: HttpClient) {
   }
 
 

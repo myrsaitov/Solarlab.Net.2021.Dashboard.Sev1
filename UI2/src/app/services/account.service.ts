@@ -15,7 +15,7 @@ export class AccountService {
   private ROOT_URL = `${environment.baseAccountsApiUrl}api/v1/accounts`;
   
   constructor(
-    private http: HttpClient) {
+    private readonly http: HttpClient) {
   }
 
   register(model: IRegister) {

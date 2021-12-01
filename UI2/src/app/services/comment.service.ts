@@ -18,7 +18,7 @@ export class CommentService {
   private decpage: number;
 
   constructor(
-    private http: HttpClient) {
+    private readonly http: HttpClient) {
   }
 
   getCommentsList(model: GetPagedCommentModel): Observable<GetPagedCommentResponseModel> {

@@ -21,7 +21,7 @@ export class AdvertisementService {
   private decpage: number;
 
   constructor(
-    private http: HttpClient) {
+    private readonly http: HttpClient) {
   }
 
   // Возвращает список объявлений с поиском

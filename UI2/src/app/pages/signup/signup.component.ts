@@ -26,12 +26,12 @@ export class SignupComponent implements OnInit {
   pattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,20}$/g;
 
   constructor(
-    private fb: FormBuilder, 
-    private accountService: AccountService,
+    private readonly fb: FormBuilder, 
+    private readonly accountService: AccountService,
     private readonly auth: AuthService,
     private readonly baseService: BaseService,
     private readonly router: Router,
-    private regionService: RegionService) {
+    private readonly regionService: RegionService) {
   }
 
   // Обработка события инициализации

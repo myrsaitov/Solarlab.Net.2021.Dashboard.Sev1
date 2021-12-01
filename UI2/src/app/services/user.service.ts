@@ -22,7 +22,7 @@ export class UserService {
   users: IUser[];
 
   constructor(
-    private http: HttpClient,
+    private readonly http: HttpClient,
     private readonly auth: AuthService,
     private readonly router: Router) {
   }

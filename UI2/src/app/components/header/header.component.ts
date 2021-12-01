@@ -20,9 +20,9 @@ export class HeaderComponent {
   tags$: Observable<ITag[]>;
 
   constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private tagService: TagService,
+    private readonly fb: FormBuilder,
+    private readonly authService: AuthService,
+    private readonly tagService: TagService,
     private readonly baseService: BaseService,
     private readonly router: Router) {
   }

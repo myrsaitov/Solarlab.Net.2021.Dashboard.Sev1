@@ -24,7 +24,7 @@ import {ToastService} from '../../services/toast.service';
 })
 export class ToastsContainerComponent {
   constructor(
-    public toastService: ToastService) {
+    public readonly toastService: ToastService) {
   }
 
   isTemplate(toast) { return toast.textOrTpl instanceof TemplateRef; }

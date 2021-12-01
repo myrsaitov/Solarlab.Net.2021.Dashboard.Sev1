@@ -18,11 +18,11 @@ export class CommentCardComponent {
   @Input() comment: IComment;
 
   constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private toastService: ToastService,
-    private router: Router,
-    private commentService: CommentService) {
+    private readonly fb: FormBuilder,
+    private readonly authService: AuthService,
+    private readonly toastService: ToastService,
+    private readonly router: Router,
+    private readonly commentService: CommentService) {
 }
 
 delete_comment(){

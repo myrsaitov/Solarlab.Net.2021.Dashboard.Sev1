@@ -17,7 +17,7 @@ export class UserFilesService {
   private ROOT_URL = `${environment.baseUserFilesApiUrl}api/v1/userfiles`;
 
   constructor(
-    private http: HttpClient) {
+    private readonly http: HttpClient) {
   }
 
   // Возвращает файл по Id
