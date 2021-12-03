@@ -18,13 +18,13 @@ import { TagService } from '../../services/tag.service';
 import { ITag } from 'src/app/models/tag/tag-model';
 import { isNullOrUndefined } from 'util';
 import { UserService } from 'src/app/services/user.service';
-import { IUser } from 'src/app/models/user/user-model';
 import { ICategory } from 'src/app/models/category/category-model';
 import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
 import { EditAdvertisementStatus, IEditAdvertisementStatus } from 'src/app/models/advertisement/advertisement-status-edit-model';
 import { UserFilesService } from 'src/app/services/userfiles.service';
 import { IUserFile } from 'src/app/models/user-files/userfile-model';
+import { RouterService } from 'src/app/services/router.service';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -68,7 +68,7 @@ export class AdvertisementComponent implements OnInit {
   constructor(
     private readonly fb: FormBuilder,
     private readonly route: ActivatedRoute,
-    private readonly router: Router,
+    private readonly router: RouterService,
     private readonly advertisementService: AdvertisementService,
     private readonly authService: AuthService,
     private readonly toastService: ToastService,
@@ -89,9 +89,6 @@ export class AdvertisementComponent implements OnInit {
       page: 0,
     });
     this.categories$.subscribe(categories => this.categories = categories);
-
-    // Инициализация сервиса пользователей
-    this.userService.userInit();
 
     // Подписка на таги
     this.tags$ = this.tagService.getTagList({
@@ -140,11 +137,14 @@ export class AdvertisementComponent implements OnInit {
         
         // Если объявление не найдено
         if (isNullOrUndefined(advertisement)) {
-          this.router.navigate(['/']);
+          this.router.goToMainPage();
           return;
         }
         this.advertisement = advertisement;
         
+        // Загружает данные пользователя
+        this.userService.getUserById(advertisement.ownerId);
+
         // Заполшняем слайдер и imageObject
         this.advertisement.userFiles.forEach(userFile => {
           var uri = this.getUserFileUriById(userFile);
@@ -170,7 +170,7 @@ export class AdvertisementComponent implements OnInit {
         // Возвращаем имя категории по идентификатору
         this.categoryService.getCategoryById(this.advertisement.categoryId).subscribe(category => {
           if (isNullOrUndefined(category)) {
-            this.router.navigate(['/']);
+            this.router.goToMainPage();
             return;
           }
 
@@ -277,7 +277,7 @@ export class AdvertisementComponent implements OnInit {
       } 
       default: { 
         return "No Status!"; 
-         break; 
+        break; 
       } 
     } 
   }
@@ -300,22 +300,12 @@ export class AdvertisementComponent implements OnInit {
     this.commentService.delete(1).pipe(take(1)).subscribe(() => {
       this.toastService.show('Комментарий успешено удален', {classname: 'bg-success text-light'});
     
-      this.router.navigate(['/',this.advertisement.id]);
+      this.router.goToAdvertisementPageById(this.advertisement.id);
 
       this.commentsFilterSubject$.next({
         ...this.commentsFilter
       })
     });
-  }
-
-  getContentByTag(tag: string){
-    this.router.navigate(['/'], { queryParams: { tag: tag } });
-  }
-  getAdvertisementCategoryId(categoryId: number){
-    this.router.navigate(['/'], { queryParams: { categoryId: categoryId } });
-  }
-  getContentByUserName(userName: string){
-    this.router.navigate(['/'], { queryParams: { userName: userName } });
   }
 
   // Обработка "Удалить объявление"
@@ -324,7 +314,7 @@ export class AdvertisementComponent implements OnInit {
       this.toastService.show(
         'Объявление успешено удалено',
         {classname: 'bg-success text-light'});
-      this.router.navigate(['/']);
+      this.router.goToMainPage();
     });
   }
 
@@ -372,7 +362,7 @@ export class AdvertisementComponent implements OnInit {
     this.commentService.create(new CreateComment(model)).pipe(take(1)).subscribe(() => {
       this.toastService.show('Комментарий успешено добавлен', {classname: 'bg-success text-light'});
     
-      this.router.navigate(['/',this.advertisement.id]);
+      this.router.goToAdvertisementPageById(this.advertisement.id);
 
       this.commentsFilterSubject$.next({
         ...this.commentsFilter

@@ -6,7 +6,7 @@
   
   <!-- Выводит логотип -->
   <a class="navbar-brand"
-    role="button" (click)="getContent()">Sevito</a>
+    role="button" (click)="router.goToMainPage()">Sevito</a>
 
   <ul class="nav nav-pills ml-auto">
 
@@ -30,7 +30,13 @@
     <!-- Поиск по строке -->
     <ng-container [formGroup]="form">
       <div class="form-group">
-        <input type="text" class="form-control" (keydown.enter)="getContentBySearchStr($event)" id="searchStr" formControlName="searchStr" placeholder="Поиск" autofocus>&nbsp;&nbsp;
+        <input type="text"
+          class="form-control"
+          (keydown.enter)="onKeyDownEnter($event)"
+          id="searchStr"
+          formControlName="searchStr"
+          placeholder="Поиск"
+          autofocus>&nbsp;&nbsp;
       </div>
     </ng-container>
 
@@ -52,12 +58,17 @@
           <span class="badge badge-secondary"
             *ngIf="userName"
             role="button"
-            (click)="getContentByUserName()">{{userName()}}</span>&nbsp;&nbsp;
+            (click)="router.getAdvertisementsByUserId()">{{userName()}}</span>&nbsp;&nbsp;
         </h4>
       </li>
       <!-- Картинка пользователя, вход в личный кабинет -->
-      <!--<a *ngIf="userName" role="button" (click)="getContentByOwnerId(userName)"><img src="/api/v1/userpics/{{userName()}}" width="100" height="100">&nbsp;&nbsp;</a>-->
-      <a *ngIf="userName" role="button" (click)="getContentByOwnerId(userName)"><img src="https://www.seekpng.com/png/full/847-8474751_download-empty-profile.png" width="100" height="100">&nbsp;&nbsp;</a>
+      <!--<a *ngIf="userName" role="button" (click)="router.getAdvertisementsByUserId(userName)"><img src="/api/v1/userpics/{{userName()}}" width="100" height="100">&nbsp;&nbsp;</a>-->
+      <a *ngIf="userName"
+        role="button"
+        (click)="router.getAdvertisementsByUserId(userName)">
+        <img src="https://www.seekpng.com/png/full/847-8474751_download-empty-profile.png"
+          width="100"
+          height="100">&nbsp;&nbsp;</a>
     </ng-template>
   </ul>
 </nav>

@@ -18,7 +18,7 @@
           <a class="badge badge-secondary" 
             *ngIf="category.parentCategoryId"
             role="button" 
-            (click)="getAdvertisementCategoryId(category.id)">{{category.name}}({{category.count}})
+            (click)="router.getAdvertisementsByCategoryId(category.id)">{{category.name}}({{category.count}})
           </a>
           &nbsp;&nbsp;
         </div>
@@ -34,7 +34,7 @@
 
       <!-- Выводит подробную информацию по объявлению (начало) -->
       <ng-container [formGroup]="form">
-        <article class="card">
+        <article class="card" style="width: 43rem;">
           
           <!-- Заголовок карточки (начало) -->
           <div class="card-header d-flex"><!-- https://getbootstrap.com/docs/4.2/components/card/ -->
@@ -46,8 +46,8 @@
               <a class="badge badge-secondary"
                 *ngIf="advertisement.category?.name"
                 role="button"
-                (click)="getAdvertisementCategoryId(advertisement.categoryId)">{{advertisement.category?.name}}</a>
-              <a *ngFor="let tag of advertisement.tags">&nbsp;&nbsp;<a class="badge badge-secondary" role="button" (click)="getContentByTag(tag)">{{tag}}</a></a>
+                (click)="router.getAdvertisementsByCategoryId(advertisement.categoryId)">{{advertisement.category?.name}}</a>
+              <a *ngFor="let tag of advertisement.tags">&nbsp;&nbsp;<a class="badge badge-secondary" role="button" (click)="router.getAdvertisementsByTag(tag)">{{tag}}</a></a>
             </div>
 
             <!-- Кнопки "Редактировать" и "Удалить", а также "Статус" -->
@@ -86,7 +86,7 @@
               Категория объявления: 
               <a class="badge badge-secondary" 
                 role="button" 
-                (click)="getAdvertisementCategoryId(advertisement.categoryId)">
+                (click)="router.getAdvertisementsByCategoryId(advertisement.categoryId)">
                 {{getCategoryNameById(advertisement.categoryId)}}
               </a>
             </p>
@@ -215,8 +215,8 @@
                   <a class="badge badge-secondary"
                     *ngIf="advertisement?.ownerId"
                     role="button"
-                    (click)="getContentByUserName(advertisement.ownerId)">
-                    {{userService.getUserNameById(advertisement.ownerId)}}&nbsp;&nbsp;
+                    (click)="router.getAdvertisementsByUserId(advertisement.ownerId)">
+                    {{userService.user.userName}}&nbsp;&nbsp;
                   </a>
                   <a *ngIf="advertisement?.createdAt">
                     {{advertisement.createdAt}}
@@ -346,7 +346,7 @@
         <div *ngFor="let tag of tags">
           <a class="badge badge-secondary" 
             role="button" 
-            (click)="getContentByTag(tag.body)">{{tag.body}}({{tag.count}})
+            (click)="router.getAdvertisementsByTag(tag.body)">{{tag.body}}({{tag.count}})
           </a>
           &nbsp;&nbsp;
         </div>

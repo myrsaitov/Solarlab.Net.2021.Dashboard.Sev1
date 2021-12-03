@@ -1,11 +1,10 @@
 import {AuthService} from '../../services/auth.service';
 import {Component} from '@angular/core';
-import {BaseService} from 'src/app/services/base.service';
-import {Router} from '@angular/router';
 import {ITag} from 'src/app/models/tag/tag-model';
 import {TagService} from '../../services/tag.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
+import { RouterService } from 'src/app/services/router.service';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -23,8 +22,7 @@ export class HeaderComponent {
     private readonly fb: FormBuilder,
     private readonly authService: AuthService,
     private readonly tagService: TagService,
-    private readonly baseService: BaseService,
-    private readonly router: Router) {
+    private readonly router: RouterService) {
   }
 
 
@@ -42,40 +40,22 @@ export class HeaderComponent {
     });
   }
 
-  getContent(){
-    this.router.navigate(['/']);
-  }
-  getContentByTag(tag: string){
-    this.router.navigate(['/'], { queryParams: { tag: tag } });
-  }
-  getAdvertisementCategoryId(categoryId: number){
-    this.router.navigate(['/'], { queryParams: { categoryId: categoryId } });
-  }
-  getContentByUserName(){
-    this.router.navigate(['/'], { queryParams: { userName: this.authService.getUserName() } });
-  }
-
-  get searchStr() {
-    return this.form.get('searchStr');
-}
-
-  getContentBySearchStr(){
-    this.router.navigate(['/'], { queryParams: { searchStr:  this.searchStr.value} });
-  }
-
   userName(){
     return this.authService.getUserName();
   }
 
-  logout() { //TODO зачем вызывать LogOut на бэке?
-    /*this.baseService.post(ApiUrls.logout)
-      .then(() => {
-        this.router.navigate(['/', 'login']);
-      })
-      .finally(() => {
-        this.authService.deleteSession();
-      });*/
-      this.router.navigate(['/', 'login']);
-      this.authService.deleteSession();
+  logout() {
+    this.router.goToLoginPage();
+    this.authService.deleteSession();
   }
+
+  // Обработка поиска по строке
+  get searchStr() {
+    return this.form.get('searchStr');
+  }
+
+  onKeyDownEnter(){
+    this.router.getAdvertisementsBySearchStr(this.searchStr.value);
+  }
+
 }

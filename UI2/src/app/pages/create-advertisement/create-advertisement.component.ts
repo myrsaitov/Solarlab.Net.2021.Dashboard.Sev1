@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AdvertisementService} from '../../services/advertisement.service';
 import {CreateAdvertisement, ICreateAdvertisement} from '../../models/advertisement/advertisement-create-model';
 import {take} from 'rxjs/operators';
-import {Router} from '@angular/router';
 import {ToastService} from '../../services/toast.service';
 import {CategoryService} from '../../services/category.service';
 import {Observable, ReplaySubject} from 'rxjs';
@@ -15,6 +14,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ITag } from 'src/app/models/tag/tag-model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { IUserFile, UserFile } from 'src/app/models/user-files/userfile-model';
+import { RouterService } from 'src/app/services/router.service';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -36,7 +36,7 @@ export class CreateAdvertisementComponent implements OnInit {
     private readonly fb: FormBuilder,
     private readonly advertisementService: AdvertisementService,
     private readonly categoryService: CategoryService,
-    private readonly router: Router,
+    private readonly router: RouterService,
     private readonly toastService: ToastService,
     private readonly tagService: TagService,
     private readonly regionService: RegionService,
@@ -86,15 +86,6 @@ export class CreateAdvertisementComponent implements OnInit {
   get address() { return this.form.get('address'); }
   get input_tags() { return this.form.get('input_tags'); }
   get status() { return this.form.get('status'); }
-
-  getContentByTag(tag: string){
-    this.router.navigate(['/'], { queryParams: { tag: tag } });
-  }
-  
-  // Отобразить объявления по заданной категории
-  getAdvertisementCategoryId(categoryId: number){
-    this.router.navigate(['/'], { queryParams: { categoryId: categoryId } });
-  }
 
   // Удаление файла
   onFileDeleteFromForm(id) {
@@ -170,7 +161,7 @@ export class CreateAdvertisementComponent implements OnInit {
   {
     // Если нет авторизации
     if (!this.authService.isAuth) {
-      this.router.navigate(['/', 'login']);
+      this.router.goToLoginPage();
     }
 
     // Если форма неправильно заполнена
@@ -211,7 +202,7 @@ export class CreateAdvertisementComponent implements OnInit {
         let id = JSON.parse(JSON.stringify(res)).id;
         
         // Переходит на страницу вновь созданного объявления
-        this.router.navigate(['/'+id]);
+        this.router.goToAdvertisementPageById(id);
       });
   }
 }

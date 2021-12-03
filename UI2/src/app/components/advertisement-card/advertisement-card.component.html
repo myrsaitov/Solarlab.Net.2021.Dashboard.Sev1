@@ -1,7 +1,7 @@
 <!-- Карточка объявления (начало) -->
 <div class="card" style="width: 14rem;" *ngIf="advertisement">
 
-  <!-- Категория и текст объявления (начало) -->
+  <!-- Картинка объявления (начало) -->
   <div class="card-body" style="width: 14rem; height: 12rem;">
     <a routerLink="{{advertisement.id}}">
       <img [src]="defaultImageUri"
@@ -19,19 +19,15 @@
           height: 190px;
           object-fit: cover;">
     </a>
-    <!--<p>{{advertisement.body.substring(0,100)}}...</p>-->
   </div>
-
-  <!-- Категория и текст объявления (конец) -->
+  <!-- Картинка объявления (конец) -->
 
   <!-- Футтер (начало) -->
   <div class="card-header"
     style="width: 14rem; height: 7rem;">
     <br>
     <h6>
-      <!--<ng-container *ngIf="userService.getUserById(advertisement.ownerId) | async as user">
-        <small>{{user}}</small>
-      </ng-container>-->
+      
       <!-- Стоимость -->
       <div class="badge badge-secondary"
         *ngIf="advertisement?.price">

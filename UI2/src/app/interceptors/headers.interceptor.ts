@@ -21,7 +21,6 @@ export class AuthHeadersInterceptor implements HttpInterceptor {
           'Authorization': `Bearer ${this.authService.getSession()}`
         }
       });
-      console.log(httpRequest.body);
       return next.handle(httpRequest);
     }
     else {

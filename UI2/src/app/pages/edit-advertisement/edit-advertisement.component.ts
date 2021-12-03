@@ -15,6 +15,7 @@ import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
 import { DomSanitizer} from '@angular/platform-browser';
 import { IThumbnailImage, ThumbnailImage } from 'src/app/models/thumbnail-image/thumbnail-image-model';
+import { RouterService } from 'src/app/services/router.service';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -30,7 +31,7 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
   destroy$ = new Subject();
   tagstr: string;
   tags$: Observable<ITag[]>;
-  uri: string;
+  id: number;
   formData: FormData = new FormData();
   thumbnailImages: IThumbnailImage[] = [];
   fileId: number = 0; // уникальный id файла, который загружается на форму
@@ -40,7 +41,7 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
     private readonly advertisementService: AdvertisementService,
     private readonly categoryService: CategoryService,
     private readonly route: ActivatedRoute,
-    private readonly router: Router,
+    private readonly router: RouterService,
     private readonly toastService: ToastService,
     private readonly tagService: TagService,
     private readonly regionService: RegionService,
@@ -98,9 +99,7 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
 
     });
   }
-  getContentByTag(tag: string){
-    this.router.navigate(['/'], { queryParams: { tag: tag } });
-  }
+
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.unsubscribe();
@@ -207,7 +206,7 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       };
       
       // Создает ссылку на отредактированное объявление
-      this.uri = '/' + model.id;
+      this.id = model.id;
 
       // Добавляет JSON к FormData
       this.formData.append(
@@ -229,7 +228,7 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
         {classname: 'bg-success text-light'});
       
       // Переходит на страницу отредактированного объявления
-      this.router.navigate([this.uri]);
+      this.router.goToAdvertisementPageById(this.id);
     });
   }
 }

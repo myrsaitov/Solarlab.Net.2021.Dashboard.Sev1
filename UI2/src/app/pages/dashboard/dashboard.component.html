@@ -18,7 +18,7 @@
           <a class="badge badge-secondary" 
             *ngIf="category.parentCategoryId"
             role="button" 
-            (click)="getAdvertisementCategoryId(category.id)">{{category.name}}({{category.count}})
+            (click)="router.getAdvertisementsByCategoryId(category.id)">{{category.name}}({{category.count}})
           </a>
           &nbsp;&nbsp;
         </div>
@@ -83,7 +83,6 @@
           <app-advertisement-card
             class="col-sm-4 mb-4"
             [advertisement]="item"
-            [userService]="userService"
             [defaultImageUri]="getUserFileUriById(item.userFiles[0])"
             [regionName]="getRegionNameById(item.regionId)">
           </app-advertisement-card>
@@ -125,7 +124,7 @@
         <div *ngFor="let tag of tags">
           <a class="badge badge-secondary" 
             role="button" 
-            (click)="getContentByTag(tag.body)">{{tag.body}}({{tag.count}})
+            (click)="router.getAdvertisementsByTag(tag.body)">{{tag.body}}({{tag.count}})
           </a>
           &nbsp;&nbsp;
         </div>

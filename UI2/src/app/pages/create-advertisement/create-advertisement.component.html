@@ -18,7 +18,7 @@
           <a class="badge badge-secondary" 
             *ngIf="category.parentCategoryId"
             role="button" 
-            (click)="getAdvertisementCategoryId(category.id)">{{category.name}}({{category.count}})
+            (click)="router.getAdvertisementsByCategoryId(category.id)">{{category.name}}({{category.count}})
           </a>
           &nbsp;&nbsp;
         </div>
@@ -230,7 +230,7 @@
         <div *ngFor="let tag of tags">
           <a class="badge badge-secondary" 
             role="button" 
-            (click)="getContentByTag(tag.body)">{{tag.body}}({{tag.count}})
+            (click)="router.getAdvertisementsByTag(tag.body)">{{tag.body}}({{tag.count}})
           </a>
           &nbsp;&nbsp;
         </div>

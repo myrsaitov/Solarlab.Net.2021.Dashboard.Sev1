@@ -5,8 +5,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { GetPagedContentResponseModel } from '../../models/advertisement/get-paged-content-response-model';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
 import { ICategory } from 'src/app/models/category/category-model';
 import { CategoryService } from 'src/app/services/category.service';
 import { ITag } from 'src/app/models/tag/tag-model';
@@ -15,6 +13,7 @@ import { IUserFile } from 'src/app/models/user-files/userfile-model';
 import { UserFilesService } from 'src/app/services/userfiles.service';
 import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
+import { RouterService } from 'src/app/services/router.service';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -49,8 +48,7 @@ export class DashboardComponent implements OnInit {
     private readonly authService: AuthService,
     private readonly advertisementService: AdvertisementService,
     private readonly route: ActivatedRoute,
-    private readonly router: Router,
-    private readonly userService: UserService,
+    private readonly router: RouterService,
     private readonly categoryService: CategoryService,
     private readonly tagService: TagService,
     private readonly userFilesService: UserFilesService,
@@ -73,9 +71,6 @@ export class DashboardComponent implements OnInit {
       pageSize: 1000,
       page: 0,
     });
-
-    // Инициализация сервиса пользователей
-    this.userService.userInit();
 
     // Подписка на таги
     this.tags$ = this.tagService.getTagList({
@@ -146,16 +141,6 @@ export class DashboardComponent implements OnInit {
         return file.filePath;
       }
     }
-  }
-
-  // Выполняет запрос на поиск по категории
-  getAdvertisementCategoryId(categoryId: number){
-    this.router.navigate(['/'], { queryParams: { categoryId: categoryId } });
-  }
-
-  // Выполняет запрос на поиск по тагу
-  getContentByTag(tag: string){
-    this.router.navigate(['/'], { queryParams: { tag: tag } });
   }
 
   // Возвращает фильтр объявлений (параметры пагинации)

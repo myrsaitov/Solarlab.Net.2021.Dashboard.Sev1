@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { CommentService } from '../../services/comment.service';
 import { AuthService } from '../../services/auth.service';
 import { ToastService } from '../../services/toast.service';
-import { Router } from '@angular/router';
+import { RouterService } from 'src/app/services/router.service';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -21,20 +21,15 @@ export class CommentCardComponent {
     private readonly fb: FormBuilder,
     private readonly authService: AuthService,
     private readonly toastService: ToastService,
-    private readonly router: Router,
+    private readonly router: RouterService,
     private readonly commentService: CommentService) {
 }
 
-delete_comment(){
-  this.commentService.delete(1).pipe().subscribe(() => {
-    this.toastService.show('Комментарий успешено удален', {classname: 'bg-success text-light'});
- 
-
+  // Удаляет комментарий
+  delete_comment(){
+    this.commentService.delete(1).pipe().subscribe(() => {
+      this.toastService.show('Комментарий успешено удален', {classname: 'bg-success text-light'});
     });
-}
-
-getContentByUserName(userName: string){
-  this.router.navigate(['/'], { queryParams: { userName: userName } });
-}
+  }
 
 }
