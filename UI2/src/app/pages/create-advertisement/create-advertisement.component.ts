@@ -25,7 +25,6 @@ import { RouterService } from 'src/app/services/router.service';
 export class CreateAdvertisementComponent implements OnInit {
   form: FormGroup;
   categories$: Observable<ICategory[]>;
-  regions$: Observable<IRegion[]>;
   tags$: Observable<ITag[]>;
   uri: string;
   formData: FormData = new FormData();
@@ -48,12 +47,6 @@ export class CreateAdvertisementComponent implements OnInit {
     
     // Подписка на категории
     this.categories$ = this.categoryService.getCategoryList({
-      pageSize: 1000,
-      page: 0,
-    });
-
-    // Подписка на регионы
-    this.regions$ = this.regionService.getRegionList({
       pageSize: 1000,
       page: 0,
     });

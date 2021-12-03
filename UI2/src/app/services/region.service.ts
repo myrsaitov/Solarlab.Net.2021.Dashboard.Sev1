@@ -15,9 +15,22 @@ import { EMPTY, Observable } from 'rxjs';
 
 export class RegionService {
   private ROOT_URL = `${environment.baseAdvertisementsApiUrl}api/v1/regions/v2`;
+  regions$: Observable<IRegion[]>;
+  regions: IRegion[];
 
   constructor(
     private readonly http: HttpClient) {
+          
+    this.regions$ = this.getRegionList({
+      pageSize: 1000,
+      page: 0,
+    });
+    this.regions$.subscribe(regions => this.regions = regions);
+  }
+
+  // Возвращает имя региона по идентификатору
+  getRegionNameById(regionId: number){
+    return this.regions.find(s => s.id === regionId).name;
   }
 
   // Возвращает список регионов

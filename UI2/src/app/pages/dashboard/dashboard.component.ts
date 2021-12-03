@@ -31,8 +31,6 @@ export class DashboardComponent implements OnInit {
   tags$: Observable<ITag[]>;
   userFiles$: Observable<IUserFile[]>;
   userFiles: IUserFile[];
-  regions$: Observable<IRegion[]>;
-  regions: IRegion[];
   
   private advertisementsFilterSubject$ = new BehaviorSubject({
     searchStr: null,
@@ -48,11 +46,11 @@ export class DashboardComponent implements OnInit {
     private readonly authService: AuthService,
     private readonly advertisementService: AdvertisementService,
     private readonly route: ActivatedRoute,
-    private readonly router: RouterService,
+    private readonly router: RouterService, // используется на форме
     private readonly categoryService: CategoryService,
     private readonly tagService: TagService,
     private readonly userFilesService: UserFilesService,
-    private readonly regionService: RegionService) {
+    private readonly regionService: RegionService) { // используется на форме
   }
 
   ngOnInit() {
@@ -77,13 +75,6 @@ export class DashboardComponent implements OnInit {
       pageSize: 1000,
       page: 0,
     });
-
-    // Подписка на регионы
-    this.regions$ = this.regionService.getRegionList({
-      pageSize: 1000,
-      page: 0,
-    });
-    this.regions$.subscribe(regions => this.regions = regions);
 
     // Загружает сессию
     this.authService.loadSession();
@@ -122,11 +113,6 @@ export class DashboardComponent implements OnInit {
     ));
   }
   
-  // Возвращает имя региона по идентификатору
-  getRegionNameById(regionId: number){
-    return this.regions.find(s => s.id === regionId).name;
- }
- 
   // Возвращает ссылку на файл по идентификатору
   getUserFileUriById(id: number){
     if (typeof id === 'undefined') {

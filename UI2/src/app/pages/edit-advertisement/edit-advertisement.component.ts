@@ -26,7 +26,6 @@ import { RouterService } from 'src/app/services/router.service';
 export class EditAdvertisementComponent implements OnInit, OnDestroy {
   form: FormGroup;
   categories$: Observable<ICategory[]>;
-  regions$: Observable<IRegion[]>;
   advertisementId$ = this.route.params.pipe(pluck('id'));
   destroy$ = new Subject();
   tagstr: string;
@@ -56,12 +55,6 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       page: 0,
     });
     
-    // Подписка на регионы
-    this.regions$ = this.regionService.getRegionList({
-      pageSize: 1000,
-      page: 0,
-    });
-
     // Подписка на таги
     this.tags$ = this.tagService.getTagList({
       pageSize: 1000,

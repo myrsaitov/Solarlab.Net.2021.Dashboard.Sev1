@@ -20,7 +20,6 @@ import { RegionService } from 'src/app/services/region.service';
 
 export class SignupComponent implements OnInit {
   form: FormGroup;
-  regions$: Observable<IRegion[]>;
   notregisterstatus = false;
   passwordHide : boolean = true; // Показать/спрятать пароль
   pattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,20}$/g;
@@ -37,12 +36,6 @@ export class SignupComponent implements OnInit {
   // Обработка события инициализации
   ngOnInit() {
     
-    // Подписка на регионы
-    this.regions$ = this.regionService.getRegionList({
-      pageSize: 1000,
-      page: 0,
-    });
-
     this.form = this.fb.group({
       eMail: ['user@mail.ru', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
       userName: ['myrsaitov', [Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern("[a-zA-Z_][a-zA-Z0-9_]*")]],

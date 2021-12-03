@@ -138,7 +138,7 @@
                 formControlName="regionId"
                 autofocus
                 [class.is-invalid]="regionId.invalid"
-                *ngIf="regions$ | async as regions">
+                *ngIf="regionService.regions$ | async as regions">
                 <option [value]="null">Выберите регион</option>
                 <ng-container *ngFor="let region of regions">
                   <optgroup *ngIf="region.parentRegionId==1" 

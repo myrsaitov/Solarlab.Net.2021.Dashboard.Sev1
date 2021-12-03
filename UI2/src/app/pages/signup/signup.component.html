@@ -80,7 +80,7 @@
   <div class="form-group">
     <label for="regionId">Регион</label>
     <select class="form-control custom-select" id="regionId" formControlName="regionId" autofocus [class.is-invalid]="regionId.invalid"
-        *ngIf="regions$ | async as regions">
+        *ngIf="regionService.regions$ | async as regions">
       <option [value]="null">Выберите регион</option>
       <option *ngFor="let region of regions" [value]="region.id">{{region.name}}</option>
     </select>

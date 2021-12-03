@@ -43,8 +43,6 @@ export class AdvertisementComponent implements OnInit {
   tags$: Observable<ITag[]>;
   categories$: Observable<ICategory[]>;
   categories: ICategory[];
-  regions$: Observable<IRegion[]>;
-  regions: IRegion[];
   advertisementStatus: string;
   advertisementId$ = this.route.params.pipe(pluck('id'));
   userFiles$: Observable<IUserFile[]>;
@@ -96,13 +94,6 @@ export class AdvertisementComponent implements OnInit {
       page: 0,
     });
     
-    // Подписка на регионы
-    this.regions$ = this.regionService.getRegionList({
-      pageSize: 1000,
-      page: 0,
-    });
-    this.regions$.subscribe(regions => this.regions = regions);
-
     // Подписка на файлы
     this.userFiles$ = this.userFilesService.getUserFilesList({
       pageSize: 1000,
@@ -246,11 +237,6 @@ export class AdvertisementComponent implements OnInit {
   getCategoryNameById(categoryId: number){
     return this.categories.find(s => s.id === categoryId).name;
   }
-
-  // Возвращает имя региона по идентификатору
-  getRegionNameById(regionId: number){
-    return this.regions.find(s => s.id === regionId).name;
- }
 
   // Возвращает статус объявления по значению
   getStatusNameByValue(value: number){
