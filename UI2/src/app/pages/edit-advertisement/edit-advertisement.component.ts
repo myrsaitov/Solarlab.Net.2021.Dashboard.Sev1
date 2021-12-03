@@ -10,8 +10,6 @@ import {ICategory} from '../../models/category/category-model';
 import {IEditAdvertisement} from '../../models/advertisement/advertisement-edit-model';
 import { TagService } from '../../services/tag.service';
 import { ITag } from 'src/app/models/tag/tag-model';
-import { isNullOrUndefined } from 'util';
-import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
 import { DomSanitizer} from '@angular/platform-browser';
 import { IThumbnailImage, ThumbnailImage } from 'src/app/models/thumbnail-image/thumbnail-image-model';
@@ -29,7 +27,6 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
   advertisementId$ = this.route.params.pipe(pluck('id'));
   destroy$ = new Subject();
   tagstr: string;
-  tags$: Observable<ITag[]>;
   id: number;
   formData: FormData = new FormData();
   thumbnailImages: IThumbnailImage[] = [];
@@ -55,12 +52,6 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       page: 0,
     });
     
-    // Подписка на таги
-    this.tags$ = this.tagService.getTagList({
-      pageSize: 1000,
-      page: 0,
-    });
-
     this.form = this.fb.group({
       title: ['', Validators.required],
       body: ['', Validators.required],

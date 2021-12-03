@@ -7,8 +7,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ApiUrls } from 'src/app/shared/apiURLs';
 import { ILogin } from 'src/app/models/account/login.model';
 import { BaseService } from 'src/app/services/base.service';
-import { Observable } from 'rxjs';
-import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.

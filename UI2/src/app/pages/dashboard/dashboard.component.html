@@ -116,7 +116,7 @@
 
     <!-- Выдача тагов справа колонкой -->
     <!-- Колонка 3 (начало) -->
-    <div *ngIf="tags$ | async as tags" class="col-1">  
+    <div *ngIf="tagService.tags$ | async as tags" class="col-1">  
       <ul>
         <div>Поиск по тагам</div>
       </ul>

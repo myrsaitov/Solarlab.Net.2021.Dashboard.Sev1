@@ -9,7 +9,6 @@ import {Observable, ReplaySubject} from 'rxjs';
 import {ICategory} from '../../models/category/category-model';
 import { TagService } from '../../services/tag.service';
 import { RegionService } from 'src/app/services/region.service';
-import { IRegion } from 'src/app/models/region/region-model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ITag } from 'src/app/models/tag/tag-model';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -25,7 +24,6 @@ import { RouterService } from 'src/app/services/router.service';
 export class CreateAdvertisementComponent implements OnInit {
   form: FormGroup;
   categories$: Observable<ICategory[]>;
-  tags$: Observable<ITag[]>;
   uri: string;
   formData: FormData = new FormData();
   userFiles: IUserFile[] = [];
@@ -47,12 +45,6 @@ export class CreateAdvertisementComponent implements OnInit {
     
     // Подписка на категории
     this.categories$ = this.categoryService.getCategoryList({
-      pageSize: 1000,
-      page: 0,
-    });
-
-    // Подписка на таги
-    this.tags$ = this.tagService.getTagList({
       pageSize: 1000,
       page: 0,
     });

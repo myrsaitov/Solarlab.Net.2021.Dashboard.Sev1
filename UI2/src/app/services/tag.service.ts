@@ -15,9 +15,16 @@ import { ITagFilter } from '../models/tag/tag-filter.model';
 
 export class TagService {
   private ROOT_URL = `${environment.baseAdvertisementsApiUrl}api/v1/tags`;
+  tags$: Observable<ITag[]>;
 
   constructor(
     private readonly http: HttpClient) {
+    
+    // Подписка на таги
+    this.tags$ = this.getTagList({
+      pageSize: 1000,
+      page: 0,
+    });
   }
 
   // Возвращает список тагов

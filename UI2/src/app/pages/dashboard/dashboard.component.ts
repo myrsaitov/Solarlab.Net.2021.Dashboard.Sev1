@@ -7,11 +7,9 @@ import { GetPagedContentResponseModel } from '../../models/advertisement/get-pag
 import { ActivatedRoute } from '@angular/router';
 import { ICategory } from 'src/app/models/category/category-model';
 import { CategoryService } from 'src/app/services/category.service';
-import { ITag } from 'src/app/models/tag/tag-model';
 import { TagService } from 'src/app/services/tag.service';
 import { IUserFile } from 'src/app/models/user-files/userfile-model';
 import { UserFilesService } from 'src/app/services/userfiles.service';
-import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
 import { RouterService } from 'src/app/services/router.service';
 
@@ -28,7 +26,6 @@ export class DashboardComponent implements OnInit {
   isAuth = this.authService.isAuth;
   categories$: Observable<ICategory[]>;
   categories: ICategory[];
-  tags$: Observable<ITag[]>;
   userFiles$: Observable<IUserFile[]>;
   userFiles: IUserFile[];
   
@@ -48,7 +45,7 @@ export class DashboardComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly router: RouterService, // используется на форме
     private readonly categoryService: CategoryService,
-    private readonly tagService: TagService,
+    private readonly tagService: TagService, // используется на форме
     private readonly userFilesService: UserFilesService,
     private readonly regionService: RegionService) { // используется на форме
   }
@@ -66,12 +63,6 @@ export class DashboardComponent implements OnInit {
 
     // Подписка на категории
     this.categories$ = this.categoryService.getCategoryList({
-      pageSize: 1000,
-      page: 0,
-    });
-
-    // Подписка на таги
-    this.tags$ = this.tagService.getTagList({
       pageSize: 1000,
       page: 0,
     });

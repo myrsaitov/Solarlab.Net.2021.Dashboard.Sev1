@@ -19,7 +19,6 @@ import { ITag } from 'src/app/models/tag/tag-model';
 import { isNullOrUndefined } from 'util';
 import { UserService } from 'src/app/services/user.service';
 import { ICategory } from 'src/app/models/category/category-model';
-import { IRegion } from 'src/app/models/region/region-model';
 import { RegionService } from 'src/app/services/region.service';
 import { EditAdvertisementStatus, IEditAdvertisementStatus } from 'src/app/models/advertisement/advertisement-status-edit-model';
 import { UserFilesService } from 'src/app/services/userfiles.service';
@@ -40,7 +39,6 @@ export class AdvertisementComponent implements OnInit {
   isAuth = this.authService.isAuth;
   isEditable: boolean;
   response$: Observable<GetPagedCommentResponseModel>;
-  tags$: Observable<ITag[]>;
   categories$: Observable<ICategory[]>;
   categories: ICategory[];
   advertisementStatus: string;
@@ -88,12 +86,6 @@ export class AdvertisementComponent implements OnInit {
     });
     this.categories$.subscribe(categories => this.categories = categories);
 
-    // Подписка на таги
-    this.tags$ = this.tagService.getTagList({
-      pageSize: 1000,
-      page: 0,
-    });
-    
     // Подписка на файлы
     this.userFiles$ = this.userFilesService.getUserFilesList({
       pageSize: 1000,
