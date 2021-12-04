@@ -52,6 +52,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     
+    // Инициализация сервиса регионов
+    this.regionService.onInit();
+
     // Подписка на файлы
     this.userFiles$ = this.userFilesService.getUserFilesList({
       pageSize: 1000,
@@ -132,4 +135,10 @@ export class DashboardComponent implements OnInit {
       page
     });
   }
+
+  // Действия на закрытие
+  ngOnDestroy() {
+    this.regionService.onDestroy();
+  }
+  
 }

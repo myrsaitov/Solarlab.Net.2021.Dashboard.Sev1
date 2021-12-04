@@ -43,6 +43,9 @@ export class CreateAdvertisementComponent implements OnInit {
 
   ngOnInit() {
     
+    // Инициализация сервиса регионов
+    this.regionService.onInit();
+
     // Подписка на категории
     this.categories$ = this.categoryService.getCategoryList({
       pageSize: 1000,
@@ -189,5 +192,10 @@ export class CreateAdvertisementComponent implements OnInit {
         // Переходит на страницу вновь созданного объявления
         this.router.goToAdvertisementPageById(id);
       });
+  }
+
+  // Действия на закрытие
+  ngOnDestroy() {
+    this.regionService.onDestroy();
   }
 }

@@ -33,7 +33,7 @@
     <div class="col">
 
       <!-- Выводит подробную информацию по объявлению (начало) -->
-      <ng-container [formGroup]="form">
+      <ng-container [formGroup]="advertisementForm">
         <article class="card" style="width: 43rem;">
           
           <!-- Заголовок карточки (начало) -->
@@ -241,7 +241,7 @@
               <!-- Регион -->
               <li class="list-group-item">
                 <p class="card-text" *ngIf="advertisement?.price">
-                  Регион: {{getRegionNameById(advertisement.regionId)}}
+                  Регион: {{regionService.getRegionNameById(advertisement.regionId)}}
                 </p>
               </li>
 
@@ -267,26 +267,32 @@
           <!-- Футтер карточки (конец) -->
 
         </article>
+
+
+
+        <!-- Форма отправки комментария (начало) -->
+        <!--<div class="form-group">
+          <label for="commentBody">Добавить комментарий</label>
+          <textarea class="form-control"
+            id="commentBody"
+            formControlName="commentBody"
+            placeholder="Введите комментарий"
+            autofocus>
+          </textarea>
+        </div>
+        <button type="submit"
+          class="btn btn-primary"
+          (click)="submit()">Добавить</button>
+        <!-- Форма отправки комментария (конец) -->
+
+
       </ng-container>
       <!-- Выводит подробную информацию по объявлению (конец) -->
 
-      <!-- Форма отправки комментария (начало) -->
-      <div class="form-group">
-        <label for="commentBody">Добавить комментарий</label>
-        <textarea class="form-control"
-          id="commentBody"
-          formControlName="commentBody"
-          placeholder="Введите комментарий"
-          autofocus>
-        </textarea>
-      </div>
-      <button type="submit"
-        class="btn btn-primary"
-        (click)="submit()">Добавить</button>
-      <!-- Форма отправки комментария (конец) -->
+
 
       <!-- Выводит переключение страниц пажинации комментариев (начало) -->
-      <div class="row">
+      <!--<div class="row">
         <div class="col-12 justify-content-center"
           *ngIf="response$ | async as response; else loadingBlock">
           <div *ngIf="response.total > commentsFilter.pageSize">
@@ -302,7 +308,7 @@
       <!-- Выводит переключение страниц пажинации комментариев (конец) -->
 
       <!-- Выводит пажинированные комментарии (начало) -->
-      <div class="row" *ngIf="response$ | async as response; else loadingBlock">
+      <!--<div class="row" *ngIf="response$ | async as response; else loadingBlock">
         <div class="col">
           <ng-container *ngFor="let item of response.items">
             <app-comment-card
@@ -315,7 +321,7 @@
       <!-- Выводит пажинированные комментарии (конец) -->
 
       <!-- Выводит переключение страниц пажинации комментариев (начало) -->
-      <div class="row">
+      <!--<div class="row">
         <div class="col-12 justify-content-center"
           *ngIf="response$ | async as response; else loadingBlock">
           <div *ngIf="response.total > commentsFilter.pageSize">

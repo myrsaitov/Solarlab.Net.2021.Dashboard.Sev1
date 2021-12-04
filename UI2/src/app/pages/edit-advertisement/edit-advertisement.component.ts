@@ -46,6 +46,9 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    // Инициализация сервиса регионов
+    this.regionService.onInit();
+
     // Подписка на категории
     this.categories$ = this.categoryService.getCategoryList({
       pageSize: 1000,
@@ -62,31 +65,29 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       input_tags: [''],
       status: ['', [Validators.required]],
     });
-    this.advertisementId$.pipe(switchMap(advertisementId => {
-      return this.advertisementService.getAdvertisementById(advertisementId);
-    }), takeUntil(this.destroy$)).subscribe(advertisement => {
-
-      this.title.patchValue(advertisement.title);
-      this.body.patchValue(advertisement.body);
-      this.price.patchValue(advertisement.price);
-      this.categoryId.patchValue(advertisement.categoryId);
-      this.regionId.patchValue(advertisement.regionId);
-      this.address.patchValue(advertisement.address);
-      this.tagstr = "";
-      this.status.patchValue(advertisement.status);
-      advertisement.tags.forEach(function (value){
-        this.tagstr +=' ' + value;
+    
+    this
+      .advertisementId$
+      .pipe(
+        switchMap(advertisementId => {
+          return this.advertisementService.getAdvertisementById(advertisementId);
+        }),
+        takeUntil(this.destroy$))
+      .subscribe(advertisement => {
+        this.title.patchValue(advertisement.title);
+        this.body.patchValue(advertisement.body);
+        this.price.patchValue(advertisement.price);
+        this.categoryId.patchValue(advertisement.categoryId);
+        this.regionId.patchValue(advertisement.regionId);
+        this.address.patchValue(advertisement.address);
+        this.tagstr = "";
+        this.status.patchValue(advertisement.status);
+        advertisement.tags.forEach(function (value){
+          this.tagstr +=' ' + value;
       },this);
 
       this.input_tags.patchValue(this.tagstr);
-
-
     });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.unsubscribe();
   }
 
   // Возвращает значение c формы соответсвующего поля
@@ -215,4 +216,12 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       this.router.goToAdvertisementPageById(this.id);
     });
   }
+
+  // Действия на закрытие
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.unsubscribe();
+    this.regionService.onDestroy();
+  }
+
 }

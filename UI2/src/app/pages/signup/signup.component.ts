@@ -8,6 +8,7 @@ import { ApiUrls } from 'src/app/shared/apiURLs';
 import { ILogin } from 'src/app/models/account/login.model';
 import { BaseService } from 'src/app/services/base.service';
 import { RegionService } from 'src/app/services/region.service';
+import { UserService } from 'src/app/services/user.service';
 
 // The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
 @Component({
@@ -17,12 +18,13 @@ import { RegionService } from 'src/app/services/region.service';
 })
 
 export class SignupComponent implements OnInit {
-  form: FormGroup;
+  signupForm: FormGroup;
   notregisterstatus = false;
   passwordHide : boolean = true; // Показать/спрятать пароль
   pattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,20}$/g;
 
   constructor(
+    private readonly userService: UserService,
     private readonly fb: FormBuilder, 
     private readonly accountService: AccountService,
     private readonly auth: AuthService,
@@ -34,7 +36,10 @@ export class SignupComponent implements OnInit {
   // Обработка события инициализации
   ngOnInit() {
     
-    this.form = this.fb.group({
+    // Инициализация сервиса регионов
+    this.regionService.onInit();
+
+    this.signupForm = this.fb.group({
       eMail: ['user@mail.ru', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
       userName: ['myrsaitov', [Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern("[a-zA-Z_][a-zA-Z0-9_]*")]],
       phoneNumber: ['+79787713935', [Validators.minLength(4), Validators.maxLength(15), Validators.pattern("^[0-9+]*$")]],
@@ -49,16 +54,16 @@ export class SignupComponent implements OnInit {
   }
 
   // Возвращает значение c формы соответсвующего поля
-  get eMail() { return this.form.get('eMail'); }
-  get userName() { return this.form.get('userName'); }
-  get phoneNumber() { return this.form.get('phoneNumber'); }
-  get firstName() { return this.form.get('firstName'); }
-  get lastName() { return this.form.get('lastName'); }
-  get middleName() { return this.form.get('middleName'); }
-  get address() { return this.form.get('address'); }
-  get regionId() { return this.form.get('regionId'); }
-  get password() { return this.form.get('password'); }
-  get confirmPassword() { return this.form.get('confirmPassword'); }
+  get eMail() { return this.signupForm.get('eMail'); }
+  get userName() { return this.signupForm.get('userName'); }
+  get phoneNumber() { return this.signupForm.get('phoneNumber'); }
+  get firstName() { return this.signupForm.get('firstName'); }
+  get lastName() { return this.signupForm.get('lastName'); }
+  get middleName() { return this.signupForm.get('middleName'); }
+  get address() { return this.signupForm.get('address'); }
+  get regionId() { return this.signupForm.get('regionId'); }
+  get password() { return this.signupForm.get('password'); }
+  get confirmPassword() { return this.signupForm.get('confirmPassword'); }
 
   // Обработка события нажатия на CheckBox: Показать-спрятать пароль
   onCheckboxChange(event: any) {
@@ -67,7 +72,7 @@ export class SignupComponent implements OnInit {
     if(!this.passwordHide)
     {
       // Если пароль видимый, то не проверяем confirmPassword
-      this.form = this.fb.group({
+      this.signupForm = this.fb.group({
         eMail: ['user@mail.ru', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
         userName: ['myrsaitov', [Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern("[a-zA-Z_][a-zA-Z0-9_]*")]],
         phoneNumber: ['+79787713935', [Validators.minLength(4), Validators.maxLength(15), Validators.pattern("^[0-9+]*$")]],
@@ -83,7 +88,7 @@ export class SignupComponent implements OnInit {
     else
     {
       // Если пароль скрыт, то не проверяем confirmPassword
-      this.form = this.fb.group({
+      this.signupForm = this.fb.group({
         eMail: ['user@mail.ru', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
         userName: ['myrsaitov', [Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern("[a-zA-Z_][a-zA-Z0-9_]*")]],
         phoneNumber: ['+79787713935', [Validators.minLength(4), Validators.maxLength(15), Validators.pattern("^[0-9+]*$")]],
@@ -104,14 +109,14 @@ export class SignupComponent implements OnInit {
     console.log("Called register()");
 
     // Если форма не валидна
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
+    if (this.signupForm.invalid) {
+      this.signupForm.markAllAsTouched();
       return;
     }
 
     // Вызываем запрос на регистрацию пользователя
     var res = await this.accountService
-      .register(this.form.value)
+      .register(this.signupForm.value)
       .toPromise();
 
     // Если регистрация удачная, то сразу логинимся
@@ -119,27 +124,28 @@ export class SignupComponent implements OnInit {
     {
       // Отметить все поля формы как "затронутые",
       // чтобы валидатор активизировался
-      this.form.markAllAsTouched();
+      this.signupForm.markAllAsTouched();
 
       // Если поля в форме не прошли валидацию, то выход
-      if (this.form.invalid) 
+      if (this.signupForm.invalid) 
       {  
         return;
       }
     
-      const payload: ILogin = this.form.getRawValue();
+      const payload: ILogin = this.signupForm.getRawValue();
 
-      await this.baseService.post(ApiUrls.login, payload)
-        .then(res => {
-          if (res) {
-            this.auth.saveSession(res);
-            this.router.navigate(['/']);
-          }
-        });
+      this.userService.login(payload).subscribe(res => {
+        this.notregisterstatus = res;
+      });
     }
     else
     {
       this.notregisterstatus = true;
     }
+  }
+
+  // Действия на закрытие
+  ngOnDestroy(): void {
+    this.regionService.onDestroy();
   }
 }

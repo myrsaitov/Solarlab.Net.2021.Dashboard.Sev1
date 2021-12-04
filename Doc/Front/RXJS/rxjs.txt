@@ -1,0 +1,6 @@
+
+MoscowJS 42 – RxJS по косточкам – Андрей Алексеев
+https://www.youtube.com/watch?v=3rEDHnqn-Cw
+https://github.com/aalexeev239/rxjs-intro
+
+https://github.com/hH39797J/javascript-videos-ru-2018#moscowjs-42

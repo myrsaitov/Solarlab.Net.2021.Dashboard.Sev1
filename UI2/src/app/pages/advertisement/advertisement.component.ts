@@ -1,7 +1,7 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { pluck, take } from 'rxjs/operators';
+import { pluck, take, takeUntil } from 'rxjs/operators';
 import { AdvertisementService } from '../../services/advertisement.service';
 import { CommentService } from '../../services/comment.service';
 import { IAdvertisement } from '../../models/advertisement/i-advertisement';
@@ -9,13 +9,12 @@ import { AuthService } from '../../services/auth.service';
 import { ToastService } from '../../services/toast.service';
 import { CategoryService } from '../../services/category.service';
 import { GetPagedCommentResponseModel } from '../../models/comment/get-paged-comment-response-model';
-import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, Subscriber } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { CreateComment, ICreateComment } from '../../models/comment/comment-create-model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TagService } from '../../services/tag.service';
-import { ITag } from 'src/app/models/tag/tag-model';
 import { isNullOrUndefined } from 'util';
 import { UserService } from 'src/app/services/user.service';
 import { ICategory } from 'src/app/models/category/category-model';
@@ -34,7 +33,7 @@ import { RouterService } from 'src/app/services/router.service';
 })
 
 export class AdvertisementComponent implements OnInit {
-  form: FormGroup;
+  advertisementForm: FormGroup;
   advertisement: IAdvertisement;
   isAuth = this.authService.isAuth;
   isEditable: boolean;
@@ -43,6 +42,7 @@ export class AdvertisementComponent implements OnInit {
   categories: ICategory[];
   advertisementStatus: string;
   advertisementId$ = this.route.params.pipe(pluck('id'));
+  destroy$ = new Subject();
   userFiles$: Observable<IUserFile[]>;
   userFiles: IUserFile[];
   userFilesSlides: string [] = [];
@@ -79,6 +79,9 @@ export class AdvertisementComponent implements OnInit {
 
   ngOnInit() {
 
+    // Инициализация сервиса регионов
+    this.regionService.onInit();
+
     // Подписка на категории
     this.categories$ = this.categoryService.getCategoryList({
       pageSize: 1000,
@@ -98,7 +101,7 @@ export class AdvertisementComponent implements OnInit {
     });   
 
     // Валидация формы
-    this.form = this.fb.group({
+    this.advertisementForm = this.fb.group({
       commentBody: ['', Validators.required],
       status: ['', Validators.required]
     });
@@ -114,15 +117,22 @@ export class AdvertisementComponent implements OnInit {
 
   // Инициализация объявления
   advertisementInit(){
-    this.route.params.pipe(pluck('id')).subscribe(advertisementId => {
-      this.commentsFilterSubject$.value.contentId = advertisementId;
-      this.advertisementService.getAdvertisementById(advertisementId).subscribe(advertisement => {
-        
+    this
+      .advertisementId$
+      .pipe(
+        switchMap(advertisementId => {
+          return this.advertisementService.getAdvertisementById(advertisementId);
+        }),
+        takeUntil(this.destroy$))
+      .subscribe(advertisement => {
         // Если объявление не найдено
         if (isNullOrUndefined(advertisement)) {
           this.router.goToMainPage();
           return;
         }
+
+        this.commentsFilterSubject$.value.contentId = advertisement.id;
+
         this.advertisement = advertisement;
         
         // Загружает данные пользователя
@@ -159,9 +169,8 @@ export class AdvertisementComponent implements OnInit {
 
           this.advertisement.category = category;
           this.advertisementStatus = this.getStatusNameByValue(this.advertisement.status);
-          });
         });
-    });
+      });
   }
 
 
@@ -260,7 +269,7 @@ export class AdvertisementComponent implements OnInit {
     } 
   }
 
-  get status() { return this.form.get('status'); }
+  get status() { return this.advertisementForm.get('status'); }
 
   updateCommentsFilterPage(page) {
     this.commentsFilterSubject$.next({
@@ -270,7 +279,7 @@ export class AdvertisementComponent implements OnInit {
   }
 
   get commentBody() {
-    return this.form.get('commentBody');
+    return this.advertisementForm.get('commentBody');
   }
 
   // Удалить комментарий
@@ -349,9 +358,17 @@ export class AdvertisementComponent implements OnInit {
     });
 
     // Валидаторы формы
-    this.form = this.fb.group({
+    this.advertisementForm = this.fb.group({
       commentBody: ['', Validators.required]
     });
 
   }
+
+  // Действия на закрытие
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.unsubscribe();
+    this.regionService.onDestroy();
+  }
+  
 }
