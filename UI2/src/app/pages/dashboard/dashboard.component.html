@@ -6,7 +6,7 @@
 
     <!-- Выдача категорий слева колонкой -->
     <!-- Колонка 1 (начало) -->
-    <div *ngIf="categories$ | async as categories" class="col-3">  
+    <div *ngIf="categoryService.categories as categories" class="col-3">  
       <ul>
         <div>Поиск по категориям</div>
       </ul>

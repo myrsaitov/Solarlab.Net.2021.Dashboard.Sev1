@@ -6,7 +6,7 @@
 
     <!-- Выдача категорий слева колонкой -->
     <!-- Колонка 1 (начало) -->
-    <div *ngIf="categories$ | async as categories" class="col-3">  
+    <div *ngIf="categoryService.categories as categories" class="col-3">  
       <ul>
         <div>Поиск по категориям</div>
       </ul>
@@ -116,7 +116,7 @@
                 formControlName="categoryId"
                 autofocus
                 [class.is-invalid]="categoryId.invalid"
-                *ngIf="categories$ | async as categories">
+                *ngIf="categoryService.categories as categories">
                 <option [value]="null">Выберите категорию</option>
                 <ng-container *ngFor="let category of categories">
                   <optgroup *ngIf="!category.parentCategoryId" 

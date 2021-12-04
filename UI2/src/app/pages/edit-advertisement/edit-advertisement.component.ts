@@ -2,14 +2,13 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AdvertisementService} from '../../services/advertisement.service';
 import {pluck, switchMap, take, takeUntil} from 'rxjs/operators';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {ToastService} from '../../services/toast.service';
 import {CategoryService} from '../../services/category.service';
 import {Observable, Subject} from 'rxjs';
 import {ICategory} from '../../models/category/category-model';
 import {IEditAdvertisement} from '../../models/advertisement/advertisement-edit-model';
 import { TagService } from '../../services/tag.service';
-import { ITag } from 'src/app/models/tag/tag-model';
 import { RegionService } from 'src/app/services/region.service';
 import { DomSanitizer} from '@angular/platform-browser';
 import { IThumbnailImage, ThumbnailImage } from 'src/app/models/thumbnail-image/thumbnail-image-model';
@@ -23,9 +22,8 @@ import { RouterService } from 'src/app/services/router.service';
 })
 export class EditAdvertisementComponent implements OnInit, OnDestroy {
   form: FormGroup;
-  categories$: Observable<ICategory[]>;
   advertisementId$ = this.route.params.pipe(pluck('id'));
-  destroy$ = new Subject();
+  private destroy$: Subject<boolean>;
   tagstr: string;
   id: number;
   formData: FormData = new FormData();
@@ -49,11 +47,8 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
     // Инициализация сервиса регионов
     this.regionService.onInit();
 
-    // Подписка на категории
-    this.categories$ = this.categoryService.getCategoryList({
-      pageSize: 1000,
-      page: 0,
-    });
+    // Инициализация сервиса категорий
+    this.categoryService.onInit();
     
     this.form = this.fb.group({
       title: ['', Validators.required],
@@ -66,13 +61,16 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       status: ['', [Validators.required]],
     });
     
+    // Иначе ошибка ObjectUnsubscribedError
+    this.destroy$ = new Subject<boolean>();
+
     this
       .advertisementId$
       .pipe(
         switchMap(advertisementId => {
           return this.advertisementService.getAdvertisementById(advertisementId);
         }),
-        takeUntil(this.destroy$))
+        takeUntil(this.destroy$)) // Поток действует, пока не придет условие destroy$
       .subscribe(advertisement => {
         this.title.patchValue(advertisement.title);
         this.body.patchValue(advertisement.body);
@@ -219,9 +217,10 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
 
   // Действия на закрытие
   ngOnDestroy(): void {
-    this.destroy$.next();
+    this.destroy$.next(true); // Условие остановки потока
     this.destroy$.unsubscribe();
     this.regionService.onDestroy();
+    this.categoryService.onDestroy();
   }
 
 }

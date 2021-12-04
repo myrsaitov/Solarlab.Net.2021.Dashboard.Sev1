@@ -10,7 +10,6 @@ import {ICategory} from '../../models/category/category-model';
 import { TagService } from '../../services/tag.service';
 import { RegionService } from 'src/app/services/region.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { ITag } from 'src/app/models/tag/tag-model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { IUserFile, UserFile } from 'src/app/models/user-files/userfile-model';
 import { RouterService } from 'src/app/services/router.service';
@@ -23,7 +22,6 @@ import { RouterService } from 'src/app/services/router.service';
 })
 export class CreateAdvertisementComponent implements OnInit {
   form: FormGroup;
-  categories$: Observable<ICategory[]>;
   uri: string;
   formData: FormData = new FormData();
   userFiles: IUserFile[] = [];
@@ -47,10 +45,8 @@ export class CreateAdvertisementComponent implements OnInit {
     this.regionService.onInit();
 
     // Подписка на категории
-    this.categories$ = this.categoryService.getCategoryList({
-      pageSize: 1000,
-      page: 0,
-    });
+    // Инициализация сервиса категорий
+    this.categoryService.onInit();
 
     // Валидаторы
     this.form = this.fb.group({
@@ -197,5 +193,6 @@ export class CreateAdvertisementComponent implements OnInit {
   // Действия на закрытие
   ngOnDestroy() {
     this.regionService.onDestroy();
+    this.categoryService.onDestroy();
   }
 }

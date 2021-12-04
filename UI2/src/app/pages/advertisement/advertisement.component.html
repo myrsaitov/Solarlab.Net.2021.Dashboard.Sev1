@@ -6,7 +6,7 @@
 
     <!-- Выдача категорий слева колонкой -->
     <!-- Колонка 1 (начало) -->
-    <div *ngIf="categories$ | async as categories" class="col-3">  
+    <div *ngIf="categoryService.categories as categories" class="col-3">  
       <ul>
         <div>Поиск по категориям</div>
       </ul>
@@ -82,14 +82,16 @@
           <div class="card-header d-flex">
 
             <!-- Категория объявления -->
-            <p *ngIf="advertisement?.categoryId">
-              Категория объявления: 
-              <a class="badge badge-secondary" 
-                role="button" 
-                (click)="router.getAdvertisementsByCategoryId(advertisement.categoryId)">
-                {{getCategoryNameById(advertisement.categoryId)}}
-              </a>
-            </p>
+            <ng-container *ngIf="categoryService?.categories">
+              <p *ngIf="advertisement?.categoryId">
+                Категория объявления: 
+                <a class="badge badge-secondary" 
+                  role="button" 
+                  (click)="router.getAdvertisementsByCategoryId(advertisement.categoryId)">
+                  {{categoryService.getCategoryNameById(advertisement.categoryId)}}
+                </a>
+              </p>
+            </ng-container>
 
           </div>
           <!-- Подзаголовок карточки (конец) -->

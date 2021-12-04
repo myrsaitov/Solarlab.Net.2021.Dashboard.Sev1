@@ -17,7 +17,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TagService } from '../../services/tag.service';
 import { isNullOrUndefined } from 'util';
 import { UserService } from 'src/app/services/user.service';
-import { ICategory } from 'src/app/models/category/category-model';
 import { RegionService } from 'src/app/services/region.service';
 import { EditAdvertisementStatus, IEditAdvertisementStatus } from 'src/app/models/advertisement/advertisement-status-edit-model';
 import { UserFilesService } from 'src/app/services/userfiles.service';
@@ -38,11 +37,9 @@ export class AdvertisementComponent implements OnInit {
   isAuth = this.authService.isAuth;
   isEditable: boolean;
   response$: Observable<GetPagedCommentResponseModel>;
-  categories$: Observable<ICategory[]>;
-  categories: ICategory[];
   advertisementStatus: string;
   advertisementId$ = this.route.params.pipe(pluck('id'));
-  destroy$ = new Subject();
+  private destroy$: Subject<boolean>;
   userFiles$: Observable<IUserFile[]>;
   userFiles: IUserFile[];
   userFilesSlides: string [] = [];
@@ -82,12 +79,9 @@ export class AdvertisementComponent implements OnInit {
     // Инициализация сервиса регионов
     this.regionService.onInit();
 
-    // Подписка на категории
-    this.categories$ = this.categoryService.getCategoryList({
-      pageSize: 1000,
-      page: 0,
-    });
-    this.categories$.subscribe(categories => this.categories = categories);
+    // Инициализация сервиса категорий
+    this.categoryService.onInit();
+
 
     // Подписка на файлы
     this.userFiles$ = this.userFilesService.getUserFilesList({
@@ -117,13 +111,17 @@ export class AdvertisementComponent implements OnInit {
 
   // Инициализация объявления
   advertisementInit(){
+
+    // Иначе ошибка ObjectUnsubscribedError
+    this.destroy$ = new Subject<boolean>();
+
     this
       .advertisementId$
       .pipe(
         switchMap(advertisementId => {
           return this.advertisementService.getAdvertisementById(advertisementId);
         }),
-        takeUntil(this.destroy$))
+        takeUntil(this.destroy$)) // Поток действует, пока не придет условие destroy$
       .subscribe(advertisement => {
         // Если объявление не найдено
         if (isNullOrUndefined(advertisement)) {
@@ -234,11 +232,6 @@ export class AdvertisementComponent implements OnInit {
     return this.userFiles.find(s => s.id === id).filePath;
   }
   
-  // Возвращает имя категории по идентификатору
-  getCategoryNameById(categoryId: number){
-    return this.categories.find(s => s.id === categoryId).name;
-  }
-
   // Возвращает статус объявления по значению
   getStatusNameByValue(value: number){
     switch(value) { 
@@ -366,9 +359,10 @@ export class AdvertisementComponent implements OnInit {
 
   // Действия на закрытие
   ngOnDestroy(): void {
-    this.destroy$.next();
+    this.destroy$.next(true); // Условие остановки потока
     this.destroy$.unsubscribe();
     this.regionService.onDestroy();
+    this.categoryService.onDestroy();
   }
   
 }

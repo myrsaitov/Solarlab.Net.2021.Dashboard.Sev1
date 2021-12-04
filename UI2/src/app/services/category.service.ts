@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
+import {catchError, takeUntil} from 'rxjs/operators';
 import {ICategory} from '../models/category/category-model';
 import {ICategoryFilter} from '../models/category/category-filter.model';
 import {GetPagedCategoryResponseModel} from '../models/category/get-paged-category-response-model';
-import {EMPTY, Observable} from 'rxjs';
+import {EMPTY, Observable, Subject} from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 // The @Injectable() decorator specifies that Angular can use this class in the DI system.
@@ -15,11 +15,33 @@ import { environment } from 'src/environments/environment';
 
 export class CategoryService {
   private ROOT_URL = `${environment.baseAdvertisementsApiUrl}api/v1/categories`;
-
+  categories: ICategory[];
+  private destroy$: Subject<boolean>;
+  
   constructor(
     private readonly http: HttpClient) {
   }
 
+  // Действия при инициализации
+  onInit() {
+    
+    // Иначе ошибка ObjectUnsubscribedError
+    this.destroy$ = new Subject<boolean>();
+
+    this
+      .getCategoryList({
+        pageSize: 1000,
+        page: 0})
+      .pipe(
+        takeUntil(this.destroy$)) // Поток действует, пока не придет условие destroy$
+      .subscribe(categories => 
+        this.categories = categories);
+  }
+
+  // Возвращает имя категории по идентификатору
+  getCategoryNameById(categoryId: number){
+    return this.categories.find(s => s.id === categoryId).name;
+  }
 
   // Возвращает список категорий
   getCategoryList(filter: ICategoryFilter): Observable<ICategory[]>{
@@ -61,4 +83,11 @@ export class CategoryService {
         }));
       
   }
+
+  // Действия на закрытие
+  onDestroy(): void  {
+    this.destroy$.next(true); // Условие остановки потока
+    this.destroy$.unsubscribe();
+  }
+
 }

@@ -24,8 +24,6 @@ import { RouterService } from 'src/app/services/router.service';
 export class DashboardComponent implements OnInit {
   response$: Observable<GetPagedContentResponseModel>;
   isAuth = this.authService.isAuth;
-  categories$: Observable<ICategory[]>;
-  categories: ICategory[];
   userFiles$: Observable<IUserFile[]>;
   userFiles: IUserFile[];
   
@@ -55,6 +53,9 @@ export class DashboardComponent implements OnInit {
     // Инициализация сервиса регионов
     this.regionService.onInit();
 
+    // Инициализация сервиса категорий
+    this.categoryService.onInit();
+
     // Подписка на файлы
     this.userFiles$ = this.userFilesService.getUserFilesList({
       pageSize: 1000,
@@ -64,11 +65,7 @@ export class DashboardComponent implements OnInit {
       this.userFiles = userFiles;
     });   
 
-    // Подписка на категории
-    this.categories$ = this.categoryService.getCategoryList({
-      pageSize: 1000,
-      page: 0,
-    });
+
 
     // Загружает сессию
     this.authService.loadSession();
@@ -139,6 +136,7 @@ export class DashboardComponent implements OnInit {
   // Действия на закрытие
   ngOnDestroy() {
     this.regionService.onDestroy();
+    this.categoryService.onDestroy();
   }
   
 }
