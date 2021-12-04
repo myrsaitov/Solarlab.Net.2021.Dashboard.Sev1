@@ -123,6 +123,7 @@ export class AdvertisementComponent implements OnInit {
         }),
         takeUntil(this.destroy$)) // Поток действует, пока не придет условие destroy$
       .subscribe(advertisement => {
+        
         // Если объявление не найдено
         if (isNullOrUndefined(advertisement)) {
           this.router.goToMainPage();
