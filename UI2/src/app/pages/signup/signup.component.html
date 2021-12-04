@@ -1,4 +1,4 @@
-<ng-container [formGroup]="signupForm">
+<form [formGroup]="signupForm">
   <style>
     .colortext {
       color: red; /* Красный цвет выделения */
@@ -171,14 +171,14 @@
       id="inputPasswordRepeat"
       class="form-control mb-3"
       placeholder="Повторите пароль"
-      [class.is-invalid]="(confirmPassword.invalid || form.hasError('confirmPassword')) && confirmPassword.touched"
+      [class.is-invalid]="(confirmPassword.invalid || signupForm.hasError('confirmPassword')) && confirmPassword.touched"
       formControlName="confirmPassword">
     <div class="invalid-feedback"
       *ngIf="confirmPassword.hasError('required')">
       Пожалуйста, повторите пароль
     </div>
     <div class="invalid-feedback"
-      *ngIf="form.hasError('confirmPassword')">
+      *ngIf="signupForm.hasError('confirmPassword')">
       Пароль не совпадает
     </div>
   </div>
@@ -187,4 +187,4 @@
   <button class="btn btn-lg btn-primary btn-block"
     (click)="register()">Регистрация</button>
     
-</ng-container>
+</form>

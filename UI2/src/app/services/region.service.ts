@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {catchError, takeUntil} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { catchError, takeUntil } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IRegion } from '../models/region/region-model';
 import { IRegionFilter } from '../models/region/region-filter.model';
 import { GetPagedRegionResponseModel } from '../models/region/get-paged-region-response-model';
-import { EMPTY, Observable, Subject } from 'rxjs';
+import { EMPTY, Subject } from 'rxjs';
 
 // The @Injectable() decorator specifies that Angular can use this class in the DI system.
 // providedIn: 'root', means that the Service is visible throughout the application.
@@ -31,45 +31,47 @@ export class RegionService {
     this
       .getRegionList({
         pageSize: 1000,
-        page: 0})
-      .pipe(
-        takeUntil(this.destroy$)) // Поток действует, пока не придет условие destroy$
-      .subscribe(regions => 
-        this.regions = regions);
+        page: 0});
+
   }
 
   // Возвращает имя региона по идентификатору
   getRegionNameById(regionId: number){
-    return this.regions.find(s => s.id === regionId).name;
+    if (typeof this.regions === 'undefined') {
+      return "[region unavailable]";
+    }
+    else {
+      return this.regions.find(s => s.id === regionId).name;
+    }
   }
 
   // Возвращает список регионов
-  getRegionList(filter: IRegionFilter): Observable<IRegion[]>{
+  getRegionList(filter: IRegionFilter) {
 
-    let source = Observable.create(observer => {
-
-      const {page, pageSize} = filter;
-      if (page == null || pageSize == null) {
-        return;
-      }
+    // Считывает значения фильтра
+    const {page, pageSize} = filter;
+    if (page == null || pageSize == null) {
+      return;
+    }
   
-      const params = new HttpParams()
+    // Преобразует значения фильтра в параметры HTTP-запроса
+    const params = new HttpParams()
       .set('page', `${page}`)
       .set('pageSize', `${pageSize}`);
  
-      this.http.get<GetPagedRegionResponseModel>(`${this.ROOT_URL}`, {params})
-        .pipe( // pipe - применить указанное действие ко всем элементам конвейера
-          catchError((err) => {
-            console.error(err);
-            return EMPTY;
-          }))
-        .subscribe(region => {
-          if (region !== null) {
-            observer.next(region.items)
-          }
-        });
-    })
-  return source;
+    // Выполняет HTTP-запрос
+    this.http.get<GetPagedRegionResponseModel>(`${this.ROOT_URL}`, {params})
+      .pipe( // pipe - применить указанное действие ко всем элементам конвейера
+        catchError((err) => {
+          console.error(err);
+          return EMPTY;
+        }),
+        takeUntil(this.destroy$)) // Поток действует, пока не придет условие destroy$)
+      .subscribe(res => {
+        if (res !== null) {
+          this.regions = res.items
+        }
+      });
   }
 
   // Действия на закрытие

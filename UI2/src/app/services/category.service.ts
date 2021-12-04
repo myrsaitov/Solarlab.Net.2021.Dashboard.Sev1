@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {catchError, takeUntil} from 'rxjs/operators';
-import {ICategory} from '../models/category/category-model';
-import {ICategoryFilter} from '../models/category/category-filter.model';
-import {GetPagedCategoryResponseModel} from '../models/category/get-paged-category-response-model';
-import {EMPTY, Observable, Subject} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { catchError, takeUntil } from 'rxjs/operators';
+import { ICategory } from '../models/category/category-model';
+import { ICategoryFilter } from '../models/category/category-filter.model';
+import { GetPagedCategoryResponseModel } from '../models/category/get-paged-category-response-model';
+import { EMPTY, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 // The @Injectable() decorator specifies that Angular can use this class in the DI system.
@@ -31,57 +31,46 @@ export class CategoryService {
     this
       .getCategoryList({
         pageSize: 1000,
-        page: 0})
-      .pipe(
-        takeUntil(this.destroy$)) // Поток действует, пока не придет условие destroy$
-      .subscribe(categories => 
-        this.categories = categories);
+        page: 0});
   }
 
   // Возвращает имя категории по идентификатору
   getCategoryNameById(categoryId: number){
-    return this.categories.find(s => s.id === categoryId).name;
+    if (typeof this.categories === 'undefined') {
+      return "[categories unavailable]";
+    }
+    else {
+      return this.categories.find(s => s.id === categoryId).name;
+    }
   }
 
   // Возвращает список категорий
-  getCategoryList(filter: ICategoryFilter): Observable<ICategory[]>{
+  getCategoryList(filter: ICategoryFilter){
 
-    let source = Observable.create(observer => {
-
-      const {page, pageSize} = filter;
-      if (page == null || pageSize == null) {
-        return;
-      }
+    // Считывает значения фильтра
+    const {page, pageSize} = filter;
+    if (page == null || pageSize == null) {
+      return;
+    }
   
-      const params = new HttpParams()
+    // Преобразует значения фильтра в параметры HTTP-запроса
+    const params = new HttpParams()
       .set('page', `${page}`)
       .set('pageSize', `${pageSize}`);
  
-      this.http.get<GetPagedCategoryResponseModel>(`${this.ROOT_URL}`, {params})
-        .pipe( // pipe - применить указанное действие ко всем элементам конвейера
-          catchError((err) => {
-            console.error(err);
-            return EMPTY;
-          }))
-        .subscribe(category => {
-          if (category !== null) {
-            observer.next(category.items)
-          }
-        });
-    })
-
-    return source;
-  }
-
-  // Возвращает категорию по идентификатору
-  getCategoryById(id: number) {
-    return this.http.get<ICategory>(`${this.ROOT_URL}/${id}`)
+    // Выполняет HTTP-запрос
+    this.http.get<GetPagedCategoryResponseModel>(`${this.ROOT_URL}`, {params})
       .pipe( // pipe - применить указанное действие ко всем элементам конвейера
         catchError((err) => {
           console.error(err);
           return EMPTY;
-        }));
-      
+        }),
+        takeUntil(this.destroy$)) // Поток действует, пока не придет условие destroy$)
+      .subscribe(res => {
+        if (res !== null) {
+          this.categories = res.items
+        }
+      });
   }
 
   // Действия на закрытие

@@ -44,9 +44,9 @@
               <h1 class="h1">{{advertisement.title}}</h1>
               <b>{{advertisement.price}}&nbsp;&#8381;</b>
               <a class="badge badge-secondary"
-                *ngIf="advertisement.category?.name"
+                *ngIf="advertisement.categoryId"
                 role="button"
-                (click)="router.getAdvertisementsByCategoryId(advertisement.categoryId)">{{advertisement.category?.name}}</a>
+                (click)="router.getAdvertisementsByCategoryId(advertisement.categoryId)">{{categoryService.getCategoryNameById(advertisement.categoryId)}}</a>
               <a *ngFor="let tag of advertisement.tags">&nbsp;&nbsp;<a class="badge badge-secondary" role="button" (click)="router.getAdvertisementsByTag(tag)">{{tag}}</a></a>
             </div>
 
@@ -218,7 +218,7 @@
                     *ngIf="advertisement?.ownerId"
                     role="button"
                     (click)="router.getAdvertisementsByUserId(advertisement.ownerId)">
-                    {{userService.user.userName}}&nbsp;&nbsp;
+                    {{userService.user?.userName}}&nbsp;&nbsp;
                   </a>
                   <a *ngIf="advertisement?.createdAt">
                     {{advertisement.createdAt}}
@@ -242,7 +242,7 @@
 
               <!-- Регион -->
               <li class="list-group-item">
-                <p class="card-text" *ngIf="advertisement?.price">
+                <p class="card-text" *ngIf="regionService.regions">
                   Регион: {{regionService.getRegionNameById(advertisement.regionId)}}
                 </p>
               </li>

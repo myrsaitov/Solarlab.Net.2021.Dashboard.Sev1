@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
+import {catchError, take} from 'rxjs/operators';
 import {EMPTY, Observable} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IUserFilesFilter } from '../models/user-files/userfiles-filter.model';
@@ -23,7 +23,9 @@ export class UserFilesService {
   // Возвращает файл по Id
   getUserFileById(id: number) {
     return this.http.get<IUserFile>(`${this.ROOT_URL}/${id}`)
-      .pipe(catchError((err) => {
+      .pipe(
+        take(1), // Берёт одно значение и закрывает поток
+        catchError((err) => {
         console.error(err);
         return EMPTY;
       }));

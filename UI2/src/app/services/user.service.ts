@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {catchError,  switchMap } from 'rxjs/operators';
-import {EMPTY, Observable, of} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { catchError,  switchMap, take } from 'rxjs/operators';
+import { EMPTY, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IUser } from '../models/user/user-model';
 import { ILogin } from '../models/account/login.model';
@@ -29,6 +29,7 @@ export class UserService {
     this.http
       .get<IUser>(`${this.ROOT_URL}/user/${userId}`)
       .pipe(
+        take(1), // Берёт одно значение и закрывает поток
         catchError((err) => {
           console.error(err);
           return EMPTY;
@@ -44,6 +45,7 @@ export class UserService {
       `${this.ROOT_URL}/login`,
       formData)
       .pipe(
+        take(1), // Берёт одно значение и закрывает поток
         switchMap((res: any) => {
           // Сохраняет сессию
           this.auth.saveSession(res);

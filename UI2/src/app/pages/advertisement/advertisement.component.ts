@@ -158,16 +158,9 @@ export class AdvertisementComponent implements OnInit {
           this.isEditable = false;
         }
 
-        // Возвращаем имя категории по идентификатору
-        this.categoryService.getCategoryById(this.advertisement.categoryId).subscribe(category => {
-          if (isNullOrUndefined(category)) {
-            this.router.goToMainPage();
-            return;
-          }
+        // Статус
+        this.advertisementStatus = this.getStatusNameByValue(this.advertisement.status);
 
-          this.advertisement.category = category;
-          this.advertisementStatus = this.getStatusNameByValue(this.advertisement.status);
-        });
       });
   }
 
