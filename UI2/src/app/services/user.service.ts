@@ -7,6 +7,7 @@ import { IUser } from '../models/user/user-model';
 import { ILogin } from '../models/account/login.model';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { IRegister } from '../models/account/register.model';
 
 // The @Injectable() decorator specifies that Angular can use this class in the DI system.
 // providedIn: 'root', means that the Service is visible throughout the application.
@@ -40,10 +41,12 @@ export class UserService {
   }
 
   // Авторизация пользователя
-  login(formData: ILogin): Observable<boolean> {
-    return this.http.put(
-      `${this.ROOT_URL}/login`,
-      formData)
+  login(model: ILogin): Observable<boolean> {
+    return this
+      .http
+      .put(
+        `${this.ROOT_URL}/login`,
+        model)
       .pipe(
         take(1), // Берёт одно значение и закрывает поток
         switchMap((res: any) => {
@@ -51,13 +54,33 @@ export class UserService {
           this.auth.saveSession(res);
           // Открывает главную страницу
           this.router.navigate(['/']);
-          // Возвращаем NotLoginedStatus = false
-          return of(false);
+          // Возвращает удачный результат авторизации
+          return of(true);
         }),
         catchError(() => {
-          // Возвращаем NotLoginedStatus = true 
-          return of(true);
+          // Возвращает удачный результат авторизации 
+          return of(false);
         })
       );
   }
+
+  // Регистрация пользователя
+  register(model: IRegister): Observable<boolean> {
+    return this
+      .http
+      .post(
+        `${this.ROOT_URL}/register`,
+        model)
+      .pipe(
+        take(1), // Берёт одно значение и закрывает поток
+        switchMap(() => {
+          // Возвращает удачный результат регистрации
+          return of(true);
+        }),
+        catchError(() => {
+          // Возвращает неудачный результат регистрации
+          return of(false);
+        }));
+  }
+  
 }

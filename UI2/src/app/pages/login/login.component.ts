@@ -55,9 +55,9 @@ export class LoginComponent implements OnInit {
     const payload: ILogin = this.loginForm.getRawValue();
 
     // Отправляет данные с формы на бэк,
-    // если удачно, то статус НЕавторизации меняет на false
+    // если удачно, то статус НЕавторизации присваивает false
     this.userService.login(payload).subscribe(res => {
-      this.notloginedstatus = res;
+      this.notloginedstatus = !res;
     });
   }
 

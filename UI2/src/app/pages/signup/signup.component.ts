@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../../services/account.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { confirmPasswordValidator } from '../../directives/confirm-password-validator.directive';
 import { Router } from '@angular/router';
@@ -26,7 +25,6 @@ export class SignupComponent implements OnInit {
   constructor(
     private readonly userService: UserService,
     private readonly fb: FormBuilder, 
-    private readonly accountService: AccountService,
     private readonly auth: AuthService,
     private readonly baseService: BaseService,
     private readonly router: Router,
@@ -115,33 +113,39 @@ export class SignupComponent implements OnInit {
     }
 
     // Вызываем запрос на регистрацию пользователя
-    var res = await this.accountService
+    this
+      .userService
       .register(this.signupForm.value)
-      .toPromise();
+      .subscribe(res => {
 
-    // Если регистрация удачная, то сразу логинимся
-    if(res)
-    {
-      // Отметить все поля формы как "затронутые",
-      // чтобы валидатор активизировался
-      this.signupForm.markAllAsTouched();
+        // Если регистрация удачная, то сразу логинимся
+        if(res)
+        {
+          // Отметить все поля формы как "затронутые",
+          // чтобы валидатор активизировался
+          this.signupForm.markAllAsTouched();
 
-      // Если поля в форме не прошли валидацию, то выход
-      if (this.signupForm.invalid) 
-      {  
-        return;
-      }
-    
-      const payload: ILogin = this.signupForm.getRawValue();
+          // Если поля в форме не прошли валидацию, то выход
+          if (this.signupForm.invalid) 
+          {  
+            return;
+          }
+        
+          // Загрузить данные с формы
+          const payload: ILogin = this.signupForm.getRawValue();
 
-      this.userService.login(payload).subscribe(res => {
-        this.notregisterstatus = res;
+          // Отправляет данные с формы на бэк,
+          // если удачно, то статус НЕавторизации присваивает false
+          this.userService.login(payload).subscribe(res => {
+            this.notregisterstatus = !res;
+          });
+        }
+        else
+        {
+          this.notregisterstatus = true;
+        }
       });
-    }
-    else
-    {
-      this.notregisterstatus = true;
-    }
+
   }
 
   // Действия на закрытие
