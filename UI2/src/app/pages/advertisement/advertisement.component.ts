@@ -65,23 +65,21 @@ export class AdvertisementComponent implements OnInit {
     private readonly advertisementService: AdvertisementService,
     private readonly authService: AuthService,
     private readonly toastService: ToastService,
-    private readonly categoryService: CategoryService,
     private readonly commentService: CommentService,
     private readonly modalService: NgbModal,
-    private readonly tagService: TagService,
     private readonly userService: UserService,
     private readonly userFilesService: UserFilesService,
-    private readonly regionService: RegionService) {
+    private readonly categoryService: CategoryService,
+    private readonly regionService: RegionService,
+    private readonly tagService: TagService) {
   }
 
   ngOnInit() {
 
-    // Инициализация сервиса регионов
-    this.regionService.onInit();
-
-    // Инициализация сервиса категорий
+    // Инициализация сервисов
     this.categoryService.onInit();
-
+    this.regionService.onInit();
+    this.tagService.onInit();
 
     // Подписка на файлы
     this.userFiles$ = this.userFilesService.getUserFilesList({
@@ -123,7 +121,7 @@ export class AdvertisementComponent implements OnInit {
         }),
         takeUntil(this.destroy$)) // Поток действует, пока не придет условие destroy$
       .subscribe(advertisement => {
-        
+
         // Если объявление не найдено
         if (isNullOrUndefined(advertisement)) {
           this.router.goToMainPage();
@@ -353,10 +351,17 @@ export class AdvertisementComponent implements OnInit {
 
   // Действия на закрытие
   ngOnDestroy(): void {
-    this.destroy$.next(true); // Условие остановки потока
+
+    // Устанавливает значение предиката завершения потока - "завершить поток"
+    this.destroy$.next(true);
+    // И отписывается от сабджекта
     this.destroy$.unsubscribe();
-    this.regionService.onDestroy();
+
+    // Завершение сервисов
     this.categoryService.onDestroy();
+    this.regionService.onDestroy();
+    this.tagService.onDestroy();
+
   }
   
 }

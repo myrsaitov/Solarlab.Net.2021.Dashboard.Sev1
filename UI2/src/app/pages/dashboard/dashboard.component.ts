@@ -42,19 +42,18 @@ export class DashboardComponent implements OnInit {
     private readonly advertisementService: AdvertisementService,
     private readonly route: ActivatedRoute,
     private readonly router: RouterService, // используется на форме
-    private readonly categoryService: CategoryService,
-    private readonly tagService: TagService, // используется на форме
     private readonly userFilesService: UserFilesService,
-    private readonly regionService: RegionService) { // используется на форме
+    private readonly categoryService: CategoryService,
+    private readonly regionService: RegionService,
+    private readonly tagService: TagService) {
   }
 
   ngOnInit() {
     
-    // Инициализация сервиса регионов
-    this.regionService.onInit();
-
-    // Инициализация сервиса категорий
+    // Инициализация сервисов
     this.categoryService.onInit();
+    this.regionService.onInit();
+    this.tagService.onInit();
 
     // Подписка на файлы
     this.userFiles$ = this.userFilesService.getUserFilesList({
@@ -64,8 +63,6 @@ export class DashboardComponent implements OnInit {
     this.userFiles$.subscribe(userFiles => {
       this.userFiles = userFiles;
     });   
-
-
 
     // Загружает сессию
     this.authService.loadSession();
@@ -135,8 +132,10 @@ export class DashboardComponent implements OnInit {
 
   // Действия на закрытие
   ngOnDestroy() {
-    this.regionService.onDestroy();
+    // Завершение сервисов
     this.categoryService.onDestroy();
+    this.regionService.onDestroy();
+    this.tagService.onDestroy();
   }
   
 }

@@ -30,23 +30,21 @@ export class CreateAdvertisementComponent implements OnInit {
   constructor(
     private readonly fb: FormBuilder,
     private readonly advertisementService: AdvertisementService,
-    private readonly categoryService: CategoryService,
     private readonly router: RouterService,
     private readonly toastService: ToastService,
-    private readonly tagService: TagService,
-    private readonly regionService: RegionService,
     private readonly authService: AuthService,
-    private readonly sanitizer: DomSanitizer) {
+    private readonly sanitizer: DomSanitizer,
+    private readonly categoryService: CategoryService,
+    private readonly regionService: RegionService,
+    private readonly tagService: TagService) {
   }
 
   ngOnInit() {
     
-    // Инициализация сервиса регионов
-    this.regionService.onInit();
-
-    // Подписка на категории
-    // Инициализация сервиса категорий
+    // Инициализация сервисов
     this.categoryService.onInit();
+    this.regionService.onInit();
+    this.tagService.onInit();
 
     // Валидаторы
     this.form = this.fb.group({
@@ -192,7 +190,9 @@ export class CreateAdvertisementComponent implements OnInit {
 
   // Действия на закрытие
   ngOnDestroy() {
-    this.regionService.onDestroy();
+    // Завершение сервисов
     this.categoryService.onDestroy();
+    this.regionService.onDestroy();
+    this.tagService.onDestroy();
   }
 }

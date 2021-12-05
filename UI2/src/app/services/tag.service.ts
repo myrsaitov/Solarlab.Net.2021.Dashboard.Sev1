@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
-import {EMPTY, Observable} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
+import {EMPTY, Observable, Subject} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { GetPagedTagResponseModel } from '../models/tag/get-paged-tag-response-model';
 import { ITag } from '../models/tag/tag-model';
@@ -16,44 +16,56 @@ import { ITagFilter } from '../models/tag/tag-filter.model';
 export class TagService {
   private ROOT_URL = `${environment.baseAdvertisementsApiUrl}api/v1/tags`;
   tags$: Observable<ITag[]>;
+  private destroy$: Subject<boolean>;
 
   constructor(
     private readonly http: HttpClient) {
+  }
+
+  // Действия при инициализации
+  onInit() {
     
-    // Подписка на таги
-    this.tags$ = this.getTagList({
-      pageSize: 1000,
-      page: 0,
-    });
+    // Иначе ошибка ObjectUnsubscribedError
+    this.destroy$ = new Subject<boolean>();
+
+    this
+      .getList({
+        pageSize: 1000,
+        page: 0});
+
   }
 
   // Возвращает список тагов
-  getTagList(filter: ITagFilter): Observable<ITag[]>{
+  getList(filter: ITagFilter) {
 
-    let source = Observable.create(observer => {
-
-      const {page, pageSize} = filter;
-      if (page == null || pageSize == null) {
-        return;
-      }
+    // Считывает значения фильтра
+    const {page, pageSize} = filter;
+    if (page == null || pageSize == null) {
+      return;
+    }
   
-      const params = new HttpParams()
+    // Преобразует значения фильтра в параметры HTTP-запроса
+    const params = new HttpParams()
       .set('page', `${page}`)
       .set('pageSize', `${pageSize}`);
  
-      this.http.get<GetPagedTagResponseModel>(`${this.ROOT_URL}`, {params})
-        .pipe( // pipe - применить указанное действие ко всем элементам конвейера
-          catchError((err) => {
-            console.error(err);
-            return EMPTY;
-          }))
-        .subscribe(tag => {
-          if (tag !== null) {
-            observer.next(tag.items)
-            console.log(tag)
-          }
-        });
-    })
-  return source;
+    // Выполняет HTTP-запрос
+    this.tags$ = this.http.get<GetPagedTagResponseModel>(`${this.ROOT_URL}`, {params})
+      .pipe( // pipe - применить указанное действие ко всем элементам конвейера
+        map(res => res.items),
+        catchError((err) => {
+          console.error(err);
+          return EMPTY;
+        }));
+
   }
+
+  // Действия на закрытие
+  onDestroy(): void  {
+    // Устанавливает значение предиката завершения потока - "завершить поток"
+    this.destroy$.next(true);
+    // И отписывается от сабджекта
+    this.destroy$.unsubscribe();
+  }
+
 }

@@ -29,7 +29,7 @@ export class RegionService {
     this.destroy$ = new Subject<boolean>();
 
     this
-      .getRegionList({
+      .getList({
         pageSize: 1000,
         page: 0});
 
@@ -46,7 +46,7 @@ export class RegionService {
   }
 
   // Возвращает список регионов
-  getRegionList(filter: IRegionFilter) {
+  getList(filter: IRegionFilter) {
 
     // Считывает значения фильтра
     const {page, pageSize} = filter;
@@ -76,7 +76,9 @@ export class RegionService {
 
   // Действия на закрытие
   onDestroy(): void  {
-    this.destroy$.next(true); // Условие остановки потока
+    // Устанавливает значение предиката завершения потока - "завершить поток"
+    this.destroy$.next(true);
+    // И отписывается от сабджекта
     this.destroy$.unsubscribe();
   }
   

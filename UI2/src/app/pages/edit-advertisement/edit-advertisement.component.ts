@@ -33,22 +33,21 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
   constructor(
     private readonly fb: FormBuilder,
     private readonly advertisementService: AdvertisementService,
-    private readonly categoryService: CategoryService,
     private readonly route: ActivatedRoute,
     private readonly router: RouterService,
     private readonly toastService: ToastService,
-    private readonly tagService: TagService,
+    private readonly sanitizer: DomSanitizer,
+    private readonly categoryService: CategoryService,
     private readonly regionService: RegionService,
-    private readonly sanitizer: DomSanitizer) {
+    private readonly tagService: TagService) {
   }
 
   ngOnInit() {
 
-    // Инициализация сервиса регионов
-    this.regionService.onInit();
-
-    // Инициализация сервиса категорий
+    // Инициализация сервисов
     this.categoryService.onInit();
+    this.regionService.onInit();
+    this.tagService.onInit();
     
     this.form = this.fb.group({
       title: ['', Validators.required],
@@ -217,10 +216,17 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
 
   // Действия на закрытие
   ngOnDestroy(): void {
-    this.destroy$.next(true); // Условие остановки потока
+
+    // Устанавливает значение предиката завершения потока - "завершить поток"
+    this.destroy$.next(true);
+    // И отписывается от сабджекта
     this.destroy$.unsubscribe();
-    this.regionService.onDestroy();
+
+    // Завершение сервисов
     this.categoryService.onDestroy();
+    this.regionService.onDestroy();
+    this.tagService.onDestroy();
+
   }
 
 }

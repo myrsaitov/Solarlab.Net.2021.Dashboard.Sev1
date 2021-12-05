@@ -29,7 +29,7 @@ export class CategoryService {
     this.destroy$ = new Subject<boolean>();
 
     this
-      .getCategoryList({
+      .getList({
         pageSize: 1000,
         page: 0});
   }
@@ -45,7 +45,7 @@ export class CategoryService {
   }
 
   // Возвращает список категорий
-  getCategoryList(filter: ICategoryFilter){
+  getList(filter: ICategoryFilter){
 
     // Считывает значения фильтра
     const {page, pageSize} = filter;
@@ -75,7 +75,9 @@ export class CategoryService {
 
   // Действия на закрытие
   onDestroy(): void  {
-    this.destroy$.next(true); // Условие остановки потока
+    // Устанавливает значение предиката завершения потока - "завершить поток"
+    this.destroy$.next(true);
+    // И отписывается от сабджекта
     this.destroy$.unsubscribe();
   }
 
