@@ -25,7 +25,7 @@ export class UserFilesService {
     return this.http.get<IUserFile>(`${this.ROOT_URL}/${id}`)
       .pipe(
         take(1), // Берёт одно значение и закрывает поток
-        catchError((err) => {
+        catchError((err) => { // Если в ответ на запрос пришла ошибка
         console.error(err);
         return EMPTY;
       }));
@@ -48,7 +48,7 @@ export class UserFilesService {
  
       this.http.get<GetPagedUserFilesResponseModel>(`${this.ROOT_URL}`, {params})
         .pipe( // pipe - применить указанное действие ко всем элементам конвейера
-          catchError((err) => {
+          catchError((err) => { // Если в ответ на запрос пришла ошибка
             console.error(err);
             return EMPTY;
           }))

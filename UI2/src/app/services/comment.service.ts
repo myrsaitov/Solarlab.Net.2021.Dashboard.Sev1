@@ -21,6 +21,7 @@ export class CommentService {
     private readonly http: HttpClient) {
   }
 
+  // Возвращает список комментариев
   getCommentsList(model: GetPagedCommentModel): Observable<GetPagedCommentResponseModel> {
     
     const {contentId, page, pageSize} = model;
@@ -41,47 +42,29 @@ export class CommentService {
       .set('pageSize', `${pageSize}`);
 
       var ret = this.http.get<GetPagedCommentResponseModel>(`${this.ROOT_URL}`, {params})
-    .pipe(catchError((err) => {
+    .pipe(catchError((err) => { // Если в ответ на запрос пришла ошибка
       console.error(err);
       return EMPTY;
     }));
     return ret;
   }
 
+  // Создаёт новый комментарий
   create(model: ICreateComment) {
     return this.http.post(`${this.ROOT_URL}`, model)
-      .pipe(catchError((err) => {
+      .pipe(catchError((err) => { // Если в ответ на запрос пришла ошибка
         console.error(err);
         return EMPTY;
       }));
   }
 
+  // Удаляет комментарий
   delete(id: number) {
     return this.http.delete<IComment>(`${this.ROOT_URL}/${id}`)
-      .pipe(catchError((err) => {
-        console.error(err);
-        return EMPTY;
-      }));
-  }
-/*
-
-
-  create(model: ICreateAdvertisement) {
-    return this.http.post(`${this.ROOT_URL}`, model)
-      .pipe(catchError((err) => {
+      .pipe(catchError((err) => { // Если в ответ на запрос пришла ошибка
         console.error(err);
         return EMPTY;
       }));
   }
 
-  edit(model: IEditAdvertisement) {
-    return this.http.put(`${this.ROOT_URL}/update/${model.id}`, model)
-      .pipe(catchError((err) => {
-        console.error(err);
-        return EMPTY;
-      }));
-  }
-
-
-  */
 }

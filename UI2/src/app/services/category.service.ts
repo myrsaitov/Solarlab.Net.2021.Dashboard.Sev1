@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { catchError, takeUntil } from 'rxjs/operators';
+import { catchError, map, takeUntil } from 'rxjs/operators';
 import { ICategory } from '../models/category/category-model';
 import { ICategoryFilter } from '../models/category/category-filter.model';
 import { GetPagedCategoryResponseModel } from '../models/category/get-paged-category-response-model';
-import { EMPTY, Subject } from 'rxjs';
+import { EMPTY, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 // The @Injectable() decorator specifies that Angular can use this class in the DI system.
@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
 export class CategoryService {
   private ROOT_URL = `${environment.baseAdvertisementsApiUrl}api/v1/categories`;
   categories: ICategory[];
+  categories$: Observable<ICategory[]>;
   private destroy$: Subject<boolean>;
   
   constructor(
@@ -59,16 +60,20 @@ export class CategoryService {
       .set('pageSize', `${pageSize}`);
  
     // Выполняет HTTP-запрос
-    this.http.get<GetPagedCategoryResponseModel>(`${this.ROOT_URL}`, {params})
+    this.categories$ = this.http.get<GetPagedCategoryResponseModel>(`${this.ROOT_URL}`, {params})
       .pipe( // pipe - применить указанное действие ко всем элементам конвейера
-        catchError((err) => {
+        map(res => res.items), // Достаёт массив с содержимым из под обёртки
+        catchError((err) => { // Если в ответ на запрос пришла ошибка
           console.error(err);
           return EMPTY;
         }),
-        takeUntil(this.destroy$)) // Поток действует, пока не придет условие destroy$)
-      .subscribe(res => {
-        if (res !== null) {
-          this.categories = res.items
+        takeUntil(this.destroy$)); // Поток действует, пока не придет условие destroy$)
+    
+    // Подписка
+    this.categories$
+       .subscribe(categories => {
+        if (categories !== null) {
+          this.categories = categories
         }
       });
   }

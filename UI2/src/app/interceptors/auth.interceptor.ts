@@ -17,10 +17,9 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req)
       .pipe( // pipe - применить указанное действие ко всем элементам конвейера
-        catchError((error) => {
+        catchError((error) => { // Если в ответ на запрос пришла ошибка
           if (error.status === HTTPCodeEnum.Unauthorized) {
             this.router.navigate(['/', 'login_error']);
-           
           }
           return throwError(error);
         })

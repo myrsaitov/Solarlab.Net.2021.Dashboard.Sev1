@@ -62,7 +62,7 @@ export class RegionService {
     // Выполняет HTTP-запрос
     this.http.get<GetPagedRegionResponseModel>(`${this.ROOT_URL}`, {params})
       .pipe( // pipe - применить указанное действие ко всем элементам конвейера
-        catchError((err) => {
+        catchError((err) => { // Если в ответ на запрос пришла ошибка
           console.error(err);
           return EMPTY;
         }),

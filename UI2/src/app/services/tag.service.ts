@@ -52,8 +52,8 @@ export class TagService {
     // Выполняет HTTP-запрос
     this.tags$ = this.http.get<GetPagedTagResponseModel>(`${this.ROOT_URL}`, {params})
       .pipe( // pipe - применить указанное действие ко всем элементам конвейера
-        map(res => res.items),
-        catchError((err) => {
+        map(res => res.items), // Достаёт массив с содержимым из под обёртки
+        catchError((err) => { // Если в ответ на запрос пришла ошибка
           console.error(err);
           return EMPTY;
         }));

@@ -48,7 +48,7 @@ export class AdvertisementService {
 
       var ret = this.http.get<GetPagedContentResponseModel>(`${this.ROOT_URL}`, {params})
         .pipe(
-            catchError((err) => {
+            catchError((err) => { // Если в ответ на запрос пришла ошибка
               console.error(err);
               return EMPTY;
             }));
@@ -63,7 +63,7 @@ export class AdvertisementService {
       .set('pageSize', `${pageSize}`);
 
       var ret = this.http.get<GetPagedContentResponseModel>(`${this.ROOT_URL}`, {params})
-        .pipe(catchError((err) => {
+        .pipe(catchError((err) => { // Если в ответ на запрос пришла ошибка
             console.error(err);
             return EMPTY;
           }));
@@ -77,7 +77,7 @@ export class AdvertisementService {
       .set('pageSize', `${pageSize}`);
 
       var ret = this.http.get<GetPagedContentResponseModel>(`${this.ROOT_URL}`, {params})
-        .pipe(catchError((err) => {
+        .pipe(catchError((err) => { // Если в ответ на запрос пришла ошибка
             console.error(err);
             return EMPTY;
           }));
@@ -91,7 +91,7 @@ export class AdvertisementService {
       .set('pageSize', `${pageSize}`);
 
       var ret = this.http.get<GetPagedContentResponseModel>(`${this.ROOT_URL}`, {params})
-        .pipe(catchError((err) => {
+        .pipe(catchError((err) => { // Если в ответ на запрос пришла ошибка
             console.error(err);
             return EMPTY;
           }));
@@ -105,7 +105,7 @@ export class AdvertisementService {
       .set('pageSize', `${pageSize}`);
 
       var ret = this.http.get<GetPagedContentResponseModel>(`${this.ROOT_URL}`, {params})
-        .pipe(catchError((err) => {
+        .pipe(catchError((err) => { // Если в ответ на запрос пришла ошибка
             console.error(err);
             return EMPTY;
           }));
@@ -116,7 +116,7 @@ export class AdvertisementService {
   // Возвращает объявление по Id
   getAdvertisementById(id: number) {
     return this.http.get<IAdvertisement>(`${this.ROOT_URL}/${id}`)
-      .pipe(catchError((err) => {
+      .pipe(catchError((err) => { // Если в ответ на запрос пришла ошибка
         console.error(err);
         return EMPTY;
       }));
@@ -128,7 +128,7 @@ export class AdvertisementService {
     return this.http.post(
       `${this.ROOT_URL}`,
       model)
-        .pipe(catchError((err) => {
+        .pipe(catchError((err) => { // Если в ответ на запрос пришла ошибка
           console.error(err);
           return EMPTY;
         }));
@@ -139,7 +139,7 @@ export class AdvertisementService {
     return this.http.put(
       `${this.ROOT_URL}/update`,
       formData)
-        .pipe(catchError((err) => {
+        .pipe(catchError((err) => { // Если в ответ на запрос пришла ошибка
           console.error(err);
           return EMPTY;
         }));
@@ -154,7 +154,7 @@ export class AdvertisementService {
           let status = JSON.parse(JSON.stringify(res)).status;
           return status;
         }),
-        catchError((err) => {
+        catchError((err) => { // Если в ответ на запрос пришла ошибка
           console.error(err);
           return EMPTY;
         }));
@@ -163,7 +163,7 @@ export class AdvertisementService {
   // Удаляет объявление
   delete(id: number) {
     return this.http.delete<IAdvertisement>(`${this.ROOT_URL}/${id}`)
-      .pipe(catchError((err) => {
+      .pipe(catchError((err) => { // Если в ответ на запрос пришла ошибка
         console.error(err);
         return EMPTY;
       }));

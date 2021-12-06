@@ -31,7 +31,7 @@ export class UserService {
       .get<IUser>(`${this.ROOT_URL}/user/${userId}`)
       .pipe(
         take(1), // Берёт одно значение и закрывает поток
-        catchError((err) => {
+        catchError((err) => { // Если в ответ на запрос пришла ошибка
           console.error(err);
           return EMPTY;
         }))
@@ -57,7 +57,7 @@ export class UserService {
           // Возвращает удачный результат авторизации
           return of(true);
         }),
-        catchError(() => {
+        catchError(() => { // Если в ответ на запрос пришла ошибка
           // Возвращает удачный результат авторизации 
           return of(false);
         })
@@ -77,7 +77,7 @@ export class UserService {
           // Возвращает удачный результат регистрации
           return of(true);
         }),
-        catchError(() => {
+        catchError(() => { // Если в ответ на запрос пришла ошибка
           // Возвращает неудачный результат регистрации
           return of(false);
         }));
