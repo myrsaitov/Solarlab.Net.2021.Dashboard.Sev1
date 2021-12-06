@@ -28,11 +28,22 @@ export class CategoryService {
     
     // Иначе ошибка ObjectUnsubscribedError
     this.destroy$ = new Subject<boolean>();
-
-    this
+    this.destroy$.next(false);
+    
+    // Возвращает список
+    this.categories$ = this
       .getList({
         pageSize: 1000,
         page: 0});
+
+    // Подписка
+    this.categories$
+      .subscribe(res => {
+        if (res !== null) {
+          this.categories = res
+        }
+      });
+
   }
 
   // Возвращает имя категории по идентификатору
@@ -46,7 +57,7 @@ export class CategoryService {
   }
 
   // Возвращает список категорий
-  getList(filter: ICategoryFilter){
+  getList(filter: ICategoryFilter): Observable<ICategory[]> {
 
     // Считывает значения фильтра
     const {page, pageSize} = filter;
@@ -60,7 +71,7 @@ export class CategoryService {
       .set('pageSize', `${pageSize}`);
  
     // Выполняет HTTP-запрос
-    this.categories$ = this.http.get<GetPagedCategoryResponseModel>(`${this.ROOT_URL}`, {params})
+    return this.http.get<GetPagedCategoryResponseModel>(`${this.ROOT_URL}`, {params})
       .pipe( // pipe - применить указанное действие ко всем элементам конвейера
         map(res => res.items), // Достаёт массив с содержимым из под обёртки
         catchError((err) => { // Если в ответ на запрос пришла ошибка
@@ -68,14 +79,7 @@ export class CategoryService {
           return EMPTY;
         }),
         takeUntil(this.destroy$)); // Поток действует, пока не придет условие destroy$)
-    
-    // Подписка
-    this.categories$
-       .subscribe(categories => {
-        if (categories !== null) {
-          this.categories = categories
-        }
-      });
+
   }
 
   // Действия на закрытие

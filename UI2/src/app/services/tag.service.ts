@@ -27,8 +27,10 @@ export class TagService {
     
     // Иначе ошибка ObjectUnsubscribedError
     this.destroy$ = new Subject<boolean>();
+    this.destroy$.next(false);
 
-    this
+    // Возвращает список
+    this.tags$ = this
       .getList({
         pageSize: 1000,
         page: 0});
@@ -36,7 +38,7 @@ export class TagService {
   }
 
   // Возвращает список тагов
-  getList(filter: ITagFilter) {
+  getList(filter: ITagFilter): Observable<ITag[]> {
 
     // Считывает значения фильтра
     const {page, pageSize} = filter;
@@ -50,7 +52,7 @@ export class TagService {
       .set('pageSize', `${pageSize}`);
  
     // Выполняет HTTP-запрос
-    this.tags$ = this.http.get<GetPagedTagResponseModel>(`${this.ROOT_URL}`, {params})
+    return this.http.get<GetPagedTagResponseModel>(`${this.ROOT_URL}`, {params})
       .pipe( // pipe - применить указанное действие ко всем элементам конвейера
         map(res => res.items), // Достаёт массив с содержимым из под обёртки
         catchError((err) => { // Если в ответ на запрос пришла ошибка

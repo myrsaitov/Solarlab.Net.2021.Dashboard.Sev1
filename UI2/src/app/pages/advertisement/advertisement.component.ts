@@ -112,6 +112,7 @@ export class AdvertisementComponent implements OnInit {
 
     // Иначе ошибка ObjectUnsubscribedError
     this.destroy$ = new Subject<boolean>();
+    this.destroy$.next(false);
 
     this
       .advertisementId$

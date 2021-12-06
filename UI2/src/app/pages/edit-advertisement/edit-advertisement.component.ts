@@ -62,6 +62,7 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
     
     // Иначе ошибка ObjectUnsubscribedError
     this.destroy$ = new Subject<boolean>();
+    this.destroy$.next(false);
 
     this
       .advertisementId$
