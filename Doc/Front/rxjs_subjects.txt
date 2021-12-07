@@ -1,0 +1,5 @@
+https://www.youtube.com/watch?v=C9eaRG1dNlg !!!
+
+Subject
+BehhaviourSubject
+ReplaySubject - имеет буфер, размер буфера ограничит длину массива
