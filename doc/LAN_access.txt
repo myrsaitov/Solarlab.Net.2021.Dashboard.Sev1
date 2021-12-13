@@ -54,6 +54,9 @@ nslookup yandex.ru
 	route -p add 140.82.121.3 mask 255.255.255.255 172.16.6.100
 	route -p add 140.82.121.4 mask 255.255.255.255 172.16.6.100
 
+	//https://disk.yandex.ru/
+	route -p add 87.250.250.50 mask 255.255.255.255 172.16.6.100
+
 	//isp-manager
 	route -p add 31.31.194.145 mask 255.255.255.255 172.16.6.100
 
