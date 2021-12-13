@@ -1,0 +1,15 @@
+https://stackoverflow.com/questions/66629862/cannot-determine-the-organization-name-for-this-dev-azure-com-remote-url
+
+
+
+
+What fixed the issue for me is going to Tools > Options > Source Control > Git Global Settings, there I changed all 4 dropdowns which were still selected as "Unset":
+
+    Prune remote branches during fetch - False
+    Rebase local branch when pulling - False
+    Cryptographic network provider - OpenSSL
+    Credential helper - GCM Core
+
+Source: https://docs.microsoft.com/en-us/visualstudio/ide/git-with-visual-studio?view=vs-2019#personalize-your-git-settings
+
+Note: These are the settings my organization requires. You might have to tweak them around according to your exact issue.
