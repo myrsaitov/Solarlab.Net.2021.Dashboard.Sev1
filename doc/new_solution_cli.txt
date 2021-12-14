@@ -1,0 +1,5 @@
+From PowerShell:
+dotnet new sln -o TestProject
+cd .\src\
+dotnet new webapi -o TestProject.WebApi
+dotnet sln add src/TestProject.WebApi/TestProject.WebApi.csproj
