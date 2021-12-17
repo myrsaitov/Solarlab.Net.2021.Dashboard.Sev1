@@ -1,4 +1,4 @@
-﻿using sev1.UserFiles.Contracts.Enums;
+﻿using Sev1.UserFiles.Contracts.Enums;
 using Sev1.UserFiles.Domain.Base.Entities;
 
 namespace Sev1.UserFiles.Domain

@@ -1,4 +1,4 @@
-﻿using sev1.UserFiles.Contracts.Enums;
+﻿using Sev1.UserFiles.Contracts.Enums;
 
 namespace Sev1.UserFiles.Contracts.Contracts.UserFile.Responses
 {

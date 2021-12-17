@@ -1,4 +1,4 @@
-﻿using sev1.Advertisements.Contracts.Enums;
+﻿using Sev1.Advertisements.Contracts.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace Sev1.Advertisements.AppServices.Contracts.Advertisement.Requests

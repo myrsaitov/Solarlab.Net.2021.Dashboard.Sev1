@@ -1,4 +1,4 @@
-﻿namespace sev1.Accounts.Contracts.UserProvider
+﻿namespace Sev1.Accounts.Contracts.UserProvider
 {
     /// <summary>
     /// Возвращает идентификатор и роли авторизированного пользователя

@@ -1,5 +1,5 @@
 ﻿using MapsterMapper;
-using sev1.Accounts.Contracts.UserProvider;
+using Sev1.Accounts.Contracts.UserProvider;
 using Sev1.Advertisements.AppServices.Services.Category.Interfaces;
 using Sev1.Advertisements.AppServices.Services.Category.Repositories;
 

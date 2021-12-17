@@ -6,7 +6,7 @@ using Sev1.Advertisements.AppServices.Services.Advertisement.Interfaces;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Validators;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 using Sev1.Advertisements.Domain.Base.Exceptions;
-using sev1.Advertisements.Contracts.Enums;
+using Sev1.Advertisements.Contracts.Enums;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations
 {

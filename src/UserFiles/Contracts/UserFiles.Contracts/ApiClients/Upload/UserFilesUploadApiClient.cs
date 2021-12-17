@@ -7,7 +7,7 @@ using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Responses;
 using Newtonsoft.Json;
 using System.Text;
-using sev1.Accounts.Contracts.UserProvider;
+using Sev1.Accounts.Contracts.UserProvider;
 
 namespace Sev1.UserFiles.Contracts.ApiClients.UserFilesUpload
 {

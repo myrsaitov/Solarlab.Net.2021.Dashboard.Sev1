@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Repositories;
 using Sev1.Advertisements.DataAccess.Base;
-using sev1.Advertisements.Contracts.Enums;
+using Sev1.Advertisements.Contracts.Enums;
 
 namespace Sev1.Advertisements.DataAccess.Repositories
 {

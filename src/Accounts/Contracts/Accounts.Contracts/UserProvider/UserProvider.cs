@@ -7,7 +7,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
-namespace sev1.Accounts.Contracts.UserProvider
+namespace Sev1.Accounts.Contracts.UserProvider
 {
     /// <summary>
     /// Возвращает идентификатор и роли авторизированного пользователя

@@ -1,4 +1,4 @@
-﻿namespace sev1.UserFiles.Contracts.Enums
+﻿namespace Sev1.UserFiles.Contracts.Enums
 
 {
     /// <summary>

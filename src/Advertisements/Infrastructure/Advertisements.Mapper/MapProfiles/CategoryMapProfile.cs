@@ -1,5 +1,5 @@
 ﻿using Mapster;
-using sev1.Advertisements.Contracts.Enums;
+using Sev1.Advertisements.Contracts.Enums;
 using Sev1.Advertisements.Contracts.Contracts.Category;
 using Sev1.Advertisements.Contracts.Contracts.Category.Requests;
 using Sev1.Advertisements.Contracts.Contracts.Category.Responses;

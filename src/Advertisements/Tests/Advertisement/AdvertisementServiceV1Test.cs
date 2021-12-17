@@ -7,7 +7,7 @@ using Sev1.Advertisements.AppServices.Services.Advertisement.Implementations;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Repositories;
 using Sev1.Advertisements.AppServices.Services.Category.Repositories;
 using Sev1.Advertisements.AppServices.Services.Tag.Repositories;
-using sev1.Accounts.Contracts.UserProvider;
+using Sev1.Accounts.Contracts.UserProvider;
 using Sev1.Advertisements.AppServices.Services.Region.Repositories;
 using Sev1.UserFiles.Contracts.ApiClients.UserFilesUpload;
 

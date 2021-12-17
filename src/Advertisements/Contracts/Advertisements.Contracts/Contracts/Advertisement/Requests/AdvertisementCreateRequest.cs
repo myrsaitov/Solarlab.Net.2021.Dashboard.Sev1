@@ -1,4 +1,4 @@
-﻿using sev1.Advertisements.Contracts.Enums;
+﻿using Sev1.Advertisements.Contracts.Enums;
 using Sev1.UserFiles.Contracts.Contracts.UserFile.Requests;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

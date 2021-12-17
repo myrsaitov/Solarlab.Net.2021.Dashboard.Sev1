@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
-using sev1.Advertisements.Contracts.Enums;
+using Sev1.Advertisements.Contracts.Enums;
 
 namespace Sev1.Advertisements.DataAccess.EntitiesConfiguration
 {

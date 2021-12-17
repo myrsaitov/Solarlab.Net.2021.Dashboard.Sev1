@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using sev1.Advertisements.Contracts.Enums;
+using Sev1.Advertisements.Contracts.Enums;
 
 namespace Sev1.Advertisements.DataAccess.Repositories
 {

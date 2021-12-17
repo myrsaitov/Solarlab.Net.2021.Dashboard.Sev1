@@ -3,7 +3,7 @@ using Sev1.UserFiles.AppServices.Services.UserFile.Interfaces;
 using Sev1.UserFiles.AppServices.Services.UserFile.Repositories;
 using Microsoft.Extensions.Configuration;
 using Sev1.UserFiles.Contracts.ApiClients.YandexDisk;
-using sev1.Accounts.Contracts.UserProvider;
+using Sev1.Accounts.Contracts.UserProvider;
 using Sev1.Avdertisements.Contracts.ApiClients.AdvertisementValidate;
 
 namespace Sev1.UserFiles.AppServices.Services.UserFile.Implementations

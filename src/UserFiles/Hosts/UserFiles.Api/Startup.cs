@@ -12,7 +12,7 @@ using Sev1.UserFile.Api;
 using Sev1.UserFiles.Contracts.ApiClients.YandexDisk;
 using System;
 using Sev1.Accounts.Contracts.ApiClients.User;
-using sev1.Accounts.Contracts.UserProvider;
+using Sev1.Accounts.Contracts.UserProvider;
 using Sev1.Accounts.Contracts.Authorization;
 using Sev1.Avdertisements.Contracts.ApiClients.AdvertisementValidate;
 using Sev1.UserFiles.AppServices;

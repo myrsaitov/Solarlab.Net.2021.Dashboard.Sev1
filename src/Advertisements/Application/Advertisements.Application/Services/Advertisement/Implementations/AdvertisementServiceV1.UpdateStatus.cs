@@ -7,7 +7,7 @@ using System.Linq;
 using Sev1.Advertisements.AppServices.Contracts.Advertisement.Requests;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Exceptions;
 using Sev1.Advertisements.Domain.Base.Exceptions;
-using sev1.Advertisements.Contracts.Enums;
+using Sev1.Advertisements.Contracts.Enums;
 using Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses;
 
 namespace Sev1.Advertisements.AppServices.Services.Advertisement.Implementations

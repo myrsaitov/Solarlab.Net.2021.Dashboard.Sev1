@@ -1,5 +1,5 @@
 ﻿using Mapster;
-using sev1.Advertisements.Contracts.Enums;
+using Sev1.Advertisements.Contracts.Enums;
 using Sev1.Advertisements.Contracts.Contracts.Tag.Requests;
 using Sev1.Advertisements.Contracts.Contracts.Tag.Responses;
 using System.Linq;

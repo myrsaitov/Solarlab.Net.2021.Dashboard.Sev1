@@ -10,7 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Sev1.Advertisements.DataAccess;
 using Sev1.Advertisement.Api;
 using Sev1.Accounts.Contracts.ApiClients.User;
-using sev1.Accounts.Contracts.UserProvider;
+using Sev1.Accounts.Contracts.UserProvider;
 using Sev1.Accounts.Contracts.Authorization;
 using Sev1.Advertisements.AppServices;
 using Sev1.UserFiles.Contracts.ApiClients.UserFilesUpload;

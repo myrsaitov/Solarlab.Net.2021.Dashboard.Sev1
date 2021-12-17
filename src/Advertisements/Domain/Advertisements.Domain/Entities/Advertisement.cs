@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using sev1.Advertisements.Contracts.Enums;
+using Sev1.Advertisements.Contracts.Enums;
 using Sev1.Advertisements.Domain.Base.Entities;
 
 namespace Sev1.Advertisements.Domain

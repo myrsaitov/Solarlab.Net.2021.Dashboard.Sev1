@@ -1,4 +1,4 @@
-﻿using sev1.Advertisements.Contracts.Enums;
+﻿using Sev1.Advertisements.Contracts.Enums;
 
 namespace Sev1.Advertisements.Contracts.Contracts.Advertisement.Responses
 {
