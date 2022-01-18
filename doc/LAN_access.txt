@@ -77,3 +77,28 @@ https://jtprog.ru/windows-route-add/
 6. st.com:
 	В программе прописать ручной прокси 172.16.6.56:8080
 
+7. NuGet:
+	ping api.nuget.org
+
+7.1. Добавить маршрут:
+	route -p add 52.237.135.91 mask 255.255.255.255 172.16.6.100
+	route -p add 152.199.23.209 mask 255.255.255.255 172.16.6.100
+
+7.2. C:\Users\mirkm\AppData\Roaming\NuGet\NuGet.Config
+
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" protocolVersion="3" />
+  </packageSources>
+ <!-- <config>
+    <add key="http_proxy" value="http://172.16.6.100:8080" />
+    <add key="https_proxy" value="http://172.16.6.100:8080" />
+  </config> -->
+</configuration>
+
+
+
+
+
+http://server15.tavrida.local - 172.16.6.56

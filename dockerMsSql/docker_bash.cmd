@@ -6,6 +6,6 @@ REM 3> GO
 ...
 REM ...> QUIT
 
-docker exec -it mssql "bash"
+docker exec -it MsSqlExpress "bash"
 
 pause
