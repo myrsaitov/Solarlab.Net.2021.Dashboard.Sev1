@@ -1,2 +1,2 @@
 python get.py
-pause
+PAUSE

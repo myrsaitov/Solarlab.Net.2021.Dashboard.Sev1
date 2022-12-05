@@ -8,4 +8,4 @@ REM ...> QUIT
 
 docker exec -it MsSqlExpress "bash"
 
-pause
+PAUSE

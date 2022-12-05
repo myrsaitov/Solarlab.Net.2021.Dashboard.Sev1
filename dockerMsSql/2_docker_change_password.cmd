@@ -2,4 +2,4 @@ REM Учетная запись SA обладает правами админи�
 
 docker exec -it MsSqlExpress /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "u9UWLHeR2feY" -Q "ALTER LOGIN SA WITH PASSWORD='Pf~BBag~iFDt'"
 
-pause
+PAUSE

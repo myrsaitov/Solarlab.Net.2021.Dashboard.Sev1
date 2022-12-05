@@ -1,3 +1,3 @@
 dotnet dev-certs https --trust
 
-pause
+PAUSE
