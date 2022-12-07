@@ -1,0 +1,29 @@
+version: "3.7"
+
+services: 
+
+  # api:
+    # build:
+      # contex: .
+      # dockerfile: src/ShoppingCart/Hosts/ShoppingCart.Api/Dockerfile
+    # ports:
+      # - 5000:80
+    # environment:
+     # - ConnectionStrings_PostgresShoppingCartDb=Server=postgres;Database=ShoppingCart;Username=postgres;Password=postgres;Port=5432
+    # depends_on: 
+      # - postgres
+
+  postgres:
+    image: "postgres" # use latest official postgres version
+    restart: always
+    environment: # configure postgres 
+        - POSTGRES_USER=postgres
+        - POSTGRES_DB=ShoppingCart
+        - POSTGRES_PASSWORD=postgres
+    ports: 
+        - "5432:5432"
+    volumes: # persist data even if container shuts down
+        - postgres_data:/var/lib/postgresql/data/
+        
+volumes: # named volumes can be managed easier using docker-compose
+  postgres_data:
