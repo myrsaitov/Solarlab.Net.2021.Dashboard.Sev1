@@ -1,3 +1,0 @@
-docker ps -a
-
-PAUSE
