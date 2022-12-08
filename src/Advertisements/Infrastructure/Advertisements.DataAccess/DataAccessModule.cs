@@ -15,6 +15,7 @@ using Sev1.Advertisements.AppServices.Services.Region.Repositories;
 // Microsoft.EntityFrameworkCore.SqlServer
 // Microsoft.EntityFrameworkCore.Tools
 // Microsoft.Extensions.DependencyInjection.Abstractions
+// Npgsql.EntityFrameworkCore.PostgreSQL
 // Mapster
 // Mapster.DependencyInjection
 
@@ -52,6 +53,40 @@ namespace Sev1.Advertisements.DataAccess
             return services;
         }
 
+        /// <summary>
+        /// Вызывается из "ConfigureServices"
+        /// </summary>
+        /// <param name="moduleConfiguration">Настройки</param>
+        /// <param name="connectionString">Строка подключения БД PostgreSQL</param>
+        public static void InPostgress(this ModuleConfiguration moduleConfiguration, string connectionString)
+        {
+            moduleConfiguration.Services.AddDbContextPool<DatabaseContext>(options =>
+            {
+                options.UseNpgsql(
+                    connectionString,
+                    builder =>
+                        builder.MigrationsAssembly(
+                            typeof(DataAccessModule).Assembly.FullName)); // Для самой первой миграции
+                            //typeof(DatabaseContextModelSnapshot).Assembly.FullName)); // Для остальных миграций
+            });
+
+            // AddScoped:
+            //
+            // This method creates a Scoped service.
+            // A new instance of a Scoped service is created
+            // once per request within the scope.
+            // For example, in a web application it creates 1 instance
+            // per each http request but uses the same instance
+            // in the other calls within that same web request.
+            moduleConfiguration.Services.AddScoped(typeof(IRepository<,>), typeof(EfRepository<,>));
+            moduleConfiguration.Services.AddScoped<IAdvertisementRepository, AdvertisementRepository>();
+            moduleConfiguration.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            moduleConfiguration.Services.AddScoped<ITagRepository, TagRepository>();
+            moduleConfiguration.Services.AddScoped<IRegionRepository, RegionRepository>();
+            moduleConfiguration.Services.AddScoped<IUserFileRepository, UserFileRepository>();
+
+        }
+        
         /// <summary>
         /// Вызывается из "ConfigureServices"
         /// </summary>

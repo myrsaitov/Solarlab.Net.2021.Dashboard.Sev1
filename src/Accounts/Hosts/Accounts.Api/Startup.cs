@@ -61,7 +61,8 @@ namespace Sev1.Accounts.Api
                 // Подключение к БД через информацию в "ConnectionString"
                 .AddDataAccessModule(configuration =>
 #if DEBUG
-                    configuration.InSqlServer(Configuration.GetConnectionString("RemoteConnection"))
+                    configuration.InPostgress(Configuration.GetConnectionString("PostgresDb"))
+                    //configuration.InSqlServer(Configuration.GetConnectionString("RemoteConnection"))
 #else
                     configuration.InSqlServer(Configuration.GetConnectionString("DefaultConnection"))
 #endif

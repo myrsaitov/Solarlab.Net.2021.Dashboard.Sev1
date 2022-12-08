@@ -2,8 +2,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Sev1.Advertisements.DataAccess;
 
 namespace Advertisements.DataAccess.Migrations
@@ -15,17 +15,17 @@ namespace Advertisements.DataAccess.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.11")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             modelBuilder.Entity("AdvertisementTag", b =>
                 {
                     b.Property<int>("AdvertisementsId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("TagsId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("AdvertisementsId", "TagsId");
 
@@ -38,41 +38,41 @@ namespace Advertisements.DataAccess.Migrations
                 {
                     b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Body")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("OwnerId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
 
                     b.Property<int?>("RegionId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("Status")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
@@ -89,7 +89,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "299411 г. Москва, ул. Тургенева, 1",
                             Body = "Совокупность всех видов путей сообщения, транспортных средств, технических устройств и сооружений на путях сообщения, обеспечивающих процесс перемещения людей и грузов различного назначения из одного места в другое",
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(3692),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5327),
                             IsDeleted = false,
                             OwnerId = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
                             Price = 100m,
@@ -103,7 +103,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "299812 г. Судак, ул. Сергеева, 2",
                             Body = "Основное назначение автомобиля заключается в совершении транспортной работы. Автомобильный транспорт в промышленно развитых странах занимает ведущее место по сравнению с другими видами транспорта по объёму перевозок пассажиров. Современный автомобиль состоит из 15—20 тысяч деталей, из которых 150—300 являются наиболее важными и требующими наибольших затрат в эксплуатации",
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4157),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5696),
                             IsDeleted = false,
                             OwnerId = "54b1ff98-6b5f-4c5e-97a9-747095e1f5dc",
                             Price = 400m,
@@ -117,7 +117,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "293713 г. Керчь, ул. Куприна, 3",
                             Body = "Классические мотоциклы включают в себя двухколёсные, двухколёсные с боковой коляской, и трёхколёсные; в начале XXI века стали набирать популярность квадроциклы. Мотоциклы также подазделяются по своей конструкции и размерам: мопеды, мокики (имеют небольшой размер двигателя, как правило до 50 см³)",
                             CategoryId = 3,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4160),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5699),
                             IsDeleted = false,
                             OwnerId = "c191e5f8-bf5b-40a9-9ab6-4d08704e373b",
                             Price = 900m,
@@ -131,7 +131,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "295314 г. Симферополь, ул. Чернышевского, 4",
                             Body = "Классические мотоциклы включают в себя двухколёсные, двухколёсные с боковой коляской, и трёхколёсные; в начале XXI века стали набирать популярность квадроциклы. Мотоциклы также подазделяются по своей конструкции и размерам: мопеды, мокики (имеют небольшой размер двигателя, как правило до 50 см³)",
                             CategoryId = 3,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4162),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5701),
                             IsDeleted = false,
                             OwnerId = "09c529c8-e798-44ac-9eac-e0150182fa4c",
                             Price = 1600m,
@@ -145,7 +145,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "292415 г. Ялта, ул. Достоевского, 5",
                             Body = "Грузовой автомобиль (разг. грузовик) — автомобиль, предназначенный для перевозки грузов в кузове или на грузовой платформе. Для обобщённого обозначения машин, созданных на базе грузового автомобиля, используется термин грузовая техника.",
                             CategoryId = 4,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4163),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5702),
                             IsDeleted = false,
                             OwnerId = "7e24ccd2-34fd-4289-9a78-1aae93623bae",
                             Price = 2500m,
@@ -159,7 +159,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "299411 г. Казань, ул. Тургенева, 1",
                             Body = "За считанные месяцы были разработаны, изготовлены и подготовлены к участию во Всесоюзном мотопробеге пять мотоциклов пяти различных моделей. Наиболее удачными были мотоциклы — колоссы «Иж-1» и «Иж-2» с двухцилиндровыми V-образными двигателями рабочим объёмом 1200 см³ и максимальной мощностью 24 л. с. Для своего времени это были чрезвычайно оригинальные и передовые конструкции. Коленчатый вал двигателя располагался продольно, крутящий момент на заднее колесо передавался от трёхступенчатой коробки передач,",
                             CategoryId = 4,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4164),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5703),
                             IsDeleted = false,
                             OwnerId = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
                             Price = 3600m,
@@ -173,7 +173,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "297812 г. Астрахань, ул. Сергеева, 2",
                             Body = "Недви́жимость — вид имущества, признаваемого в законодательном порядке недвижимым. К недвижимости по происхождению относятся земельные участки, участки недр и все, что прочно связано с землёй, то есть объекты, перемещение которых без несоразмерного ущерба их назначению невозможно, в том числе здания, сооружения, объекты незавершённого строительства.",
                             CategoryId = 6,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4166),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5705),
                             IsDeleted = false,
                             OwnerId = "54b1ff98-6b5f-4c5e-97a9-747095e1f5dc",
                             Price = 4900m,
@@ -187,7 +187,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "298413 г. Джанкой, ул. Куприна, 3",
                             Body = "Кварти́ра (от нем. Quartier[1]) — один из видов жилого помещения, состоящий из одной или нескольких смежных комнат а также в отдельных случаях с отдельным наружным выходом, составляющее отдельную часть дома.",
                             CategoryId = 6,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4167),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5707),
                             IsDeleted = false,
                             OwnerId = "c191e5f8-bf5b-40a9-9ab6-4d08704e373b",
                             Price = 6400m,
@@ -201,7 +201,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "295314 г. Краснодар, ул. Чернышевского, 4",
                             Body = "Кварти́ра (от нем. Quartier[1]) — один из видов жилого помещения, состоящий из одной или нескольких смежных комнат а также в отдельных случаях с отдельным наружным выходом, составляющее отдельную часть дома.",
                             CategoryId = 7,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4168),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5708),
                             IsDeleted = false,
                             OwnerId = "09c529c8-e798-44ac-9eac-e0150182fa4c",
                             Price = 8100m,
@@ -215,7 +215,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "297415 г. Красноярск, ул. Достоевского, 5",
                             Body = "Котте́дж (от англ. cottage) — индивидуальный городской или сельский малоэтажный (обычно двухэтажный) жилой дом с небольшим участком прилегающей земли[1] для постоянного или временного проживания одной нуклеарной семьи. Первый этаж занимают такие помещения как гостиная, кухня, санузел, котельная, часто гараж для легкового автомобиля;",
                             CategoryId = 8,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4170),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5710),
                             IsDeleted = false,
                             OwnerId = "7e24ccd2-34fd-4289-9a78-1aae93623bae",
                             Price = 10000m,
@@ -229,7 +229,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "299411 г. Москва, ул. Тургенева, 1",
                             Body = "Котте́дж (от англ. cottage) — индивидуальный городской или сельский малоэтажный (обычно двухэтажный) жилой дом с небольшим участком прилегающей земли[1] для постоянного или временного проживания одной нуклеарной семьи. Первый этаж занимают такие помещения как гостиная, кухня, санузел, котельная, часто гараж для легкового автомобиля;",
                             CategoryId = 8,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4171),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5711),
                             IsDeleted = false,
                             OwnerId = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
                             Price = 12100m,
@@ -243,7 +243,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "299812 г. Судак, ул. Сергеева, 2",
                             Body = "Котте́дж (от англ. cottage) — индивидуальный городской или сельский малоэтажный (обычно двухэтажный) жилой дом с небольшим участком прилегающей земли[1] для постоянного или временного проживания одной нуклеарной семьи. Первый этаж занимают такие помещения как гостиная, кухня, санузел, котельная, часто гараж для легкового автомобиля;",
                             CategoryId = 8,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4172),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5712),
                             IsDeleted = false,
                             OwnerId = "54b1ff98-6b5f-4c5e-97a9-747095e1f5dc",
                             Price = 14400m,
@@ -257,7 +257,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "293713 г. Керчь, ул. Куприна, 3",
                             Body = "Возникновению электроники предшествовало открытие и изучение электричества, электромагнетизма, а далее изобретение радио. Поскольку радиопередатчики сразу же нашли применение (в первую очередь на кораблях и в военном деле), для них потребовалась элементная база, созданием и изучением которой и занялась электроника. Элементная база первого поколения была основана на электронных лампах. Соответственно получила развитие вакуумная электроника. Её развитию способствовало также изобретение телевидения и радаров, которые нашли широкое применение во время Второй мировой войны[2][3].Но электронные лампы обладали существенными недостатками. ",
                             CategoryId = 10,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4174),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5714),
                             IsDeleted = false,
                             OwnerId = "c191e5f8-bf5b-40a9-9ab6-4d08704e373b",
                             Price = 16900m,
@@ -271,7 +271,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "295314 г. Симферополь, ул. Чернышевского, 4",
                             Body = "Аудиотехника (звуковая техника, звукотехника, аудиоэлектроника) — аппаратура (магнитофоны, ревербераторы, микшеры, усилители, ресиверы и пр.) и устройства (микрофоны, динамики и пр.), предназначенные для записи и воспроизведения аудио (звука).",
                             CategoryId = 10,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4175),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5715),
                             IsDeleted = false,
                             OwnerId = "09c529c8-e798-44ac-9eac-e0150182fa4c",
                             Price = 19600m,
@@ -285,7 +285,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "292415 г. Ялта, ул. Достоевского, 5",
                             Body = "В середине 1980-х годов в СССР начали выпускать первые бытовые VHS- видеомагнитофоны «Электроника ВМ-12», которые стоили 1200 рублей (7-10 средних зарплат того времени[13]), но были дефицитным товаром и продавались по предварительной записи. Существовало даже такое понятие, как очередь на видеомагнитофон.",
                             CategoryId = 10,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4176),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5716),
                             IsDeleted = false,
                             OwnerId = "7e24ccd2-34fd-4289-9a78-1aae93623bae",
                             Price = 22500m,
@@ -299,7 +299,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "299411 г. Казань, ул. Тургенева, 1",
                             Body = "Игрова́я приста́вка (игровая консоль) — специализированное электронное устройство, предназначенное для видеоигр; для таких устройств, в отличие от персональных компьютеров, запуск и воспроизв",
                             CategoryId = 11,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4177),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5718),
                             IsDeleted = false,
                             OwnerId = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
                             Price = 25600m,
@@ -313,7 +313,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "297812 г. Астрахань, ул. Сергеева, 2",
                             Body = "Игрова́я приста́вка (игровая консоль) — специализированное электронное устройство, предназначенное для видеоигр; для таких устройств, в отличие от персональных компьютеров, запуск и воспроизв",
                             CategoryId = 11,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4179),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5719),
                             IsDeleted = false,
                             OwnerId = "54b1ff98-6b5f-4c5e-97a9-747095e1f5dc",
                             Price = 28900m,
@@ -327,7 +327,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "298413 г. Джанкой, ул. Куприна, 3",
                             Body = "Игрова́я приста́вка (игровая консоль) — специализированное электронное устройство, предназначенное для видеоигр; для таких устройств, в отличие от персональных компьютеров, запуск и воспроизв",
                             CategoryId = 11,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4180),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5721),
                             IsDeleted = false,
                             OwnerId = "c191e5f8-bf5b-40a9-9ab6-4d08704e373b",
                             Price = 32400m,
@@ -341,7 +341,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "295314 г. Краснодар, ул. Чернышевского, 4",
                             Body = "Насто́льный (стационарный) компью́тер, дескто́п (англ. desktop computer) — стационарный персональный компьютер, предназначенный для работы в офисе и дома. Термин обычно используется для того, чтобы обозначить вид компьютера и отличить его от компьютеров других типов, например портативного компьютера, карманного компьютера, встроенного компьютера или сервера. Как правило, состоит из монитора, системного блока, мыши, клавиатуры и звукогарнитуры",
                             CategoryId = 12,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4181),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5723),
                             IsDeleted = false,
                             OwnerId = "09c529c8-e798-44ac-9eac-e0150182fa4c",
                             Price = 36100m,
@@ -355,7 +355,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "297415 г. Красноярск, ул. Достоевского, 5",
                             Body = "Переносной компьютер, в корпусе которого объединены типичные компоненты ПК, включая дисплей, клавиатуру и устройство указания (обычно сенсорная панель или тачпад), а также аккумуляторные батареи. Ноутбуки отличаются небольшими размерами и весом, время автономной работы ноутбуков варьируется в пределах от 2 до 15 часов.",
                             CategoryId = 13,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4182),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5724),
                             IsDeleted = false,
                             OwnerId = "7e24ccd2-34fd-4289-9a78-1aae93623bae",
                             Price = 40000m,
@@ -369,7 +369,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "297415 г. Чебоксары, ул. Толстого, 25",
                             Body = "Интернет-планшет (англ. Internet tablet или Web tablet — Веб-планшет, или Pad tablet — Pad-планшет (Блокнотный планшет), или Web-pad — Веб-блокнот, или Surfpad — Веб-сёрфинг-блокнот) — мобильный компьютер, относящийся к типу планшетных компьютеров с диагональю экрана от 7 до 12 дюймов, построенный на аппаратной платформе того же класса, что и платформа для смартфонов.",
                             CategoryId = 14,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4184),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5726),
                             IsDeleted = false,
                             OwnerId = "64dbb199-0a95-4f1a-afcf-10cc827fd3c8",
                             Price = 44100m,
@@ -383,7 +383,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "299411 г. Москва, ул. Тургенева, 1",
                             Body = "Электро́нная кни́га (Electronic book; e-book; eBook) — версия книги, хранящаяся в электронном виде, и показываемая на экране, в цифровом формате. Данное понятие применяется как для произведений, представленных в цифровой форме, так и в отношении устройств, используемых для их прочтения.",
                             CategoryId = 14,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4185),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5727),
                             IsDeleted = false,
                             OwnerId = "54b1ff98-6b5f-4c5e-97a9-747095e1f5dc",
                             Price = 48400m,
@@ -397,7 +397,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "299812 г. Судак, ул. Сергеева, 2",
                             Body = "С точки зрения экономики и общества возможность осуществления телефонных переговоров рассматривается как благо и важное условие комфортной жизни человека. Существует область науки и техники, связанная с изучением направлений развития телефонной связи, она получила название телефонии.",
                             CategoryId = 15,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4186),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5728),
                             IsDeleted = false,
                             OwnerId = "c191e5f8-bf5b-40a9-9ab6-4d08704e373b",
                             Price = 52900m,
@@ -411,7 +411,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "293713 г. Керчь, ул. Куприна, 3",
                             Body = "Комплементарные блага (взаимодополняющие товары) — блага, совместное потребление которых является для агента более предпочтительным, чем потребление каждого",
                             CategoryId = 16,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4187),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5730),
                             IsDeleted = false,
                             OwnerId = "09c529c8-e798-44ac-9eac-e0150182fa4c",
                             Price = 57600m,
@@ -425,7 +425,7 @@ namespace Advertisements.DataAccess.Migrations
                             Address = "295314 г. Симферополь, ул. Чернышевского, 4",
                             Body = "Фотоаппара́т (фотографи́ческий аппара́т, фотока́мера) — устройство для регистрации неподвижных изображений (получения фотографий). Запись изображения в фотоаппарате осуществляется фотохимическим способом при воздействии света на светочувствительный фотоматериал. Получаемое таким способом скрытое изображение преобразуется в видимое при лабораторной обработке. В цифровом фотоаппарате фотофиксация происходит путём фотоэлектрического преобразования оптического изображения в электрический сигнал, цифровые данные о котором сохраняются на энергонезависимом носителе.",
                             CategoryId = 17,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 101, DateTimeKind.Utc).AddTicks(4217),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 9, 993, DateTimeKind.Utc).AddTicks(5731),
                             IsDeleted = false,
                             OwnerId = "7e24ccd2-34fd-4289-9a78-1aae93623bae",
                             Price = 62500m,
@@ -439,24 +439,24 @@ namespace Advertisements.DataAccess.Migrations
                 {
                     b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int?>("ParentCategoryId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
@@ -468,14 +468,14 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(6244),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(3414),
                             IsDeleted = false,
                             Name = "Транспорт"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7153),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4069),
                             IsDeleted = false,
                             Name = "Автомобили",
                             ParentCategoryId = 1
@@ -483,7 +483,7 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7580),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4383),
                             IsDeleted = false,
                             Name = "Мотоциклы и мототехника",
                             ParentCategoryId = 1
@@ -491,7 +491,7 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7583),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4387),
                             IsDeleted = false,
                             Name = "Грузовики и спецтехника",
                             ParentCategoryId = 1
@@ -499,14 +499,14 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7584),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4388),
                             IsDeleted = false,
                             Name = "Недвижимость"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7586),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4390),
                             IsDeleted = false,
                             Name = "Квартиры",
                             ParentCategoryId = 5
@@ -514,7 +514,7 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7587),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4391),
                             IsDeleted = false,
                             Name = "Комнаты",
                             ParentCategoryId = 5
@@ -522,7 +522,7 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7588),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4393),
                             IsDeleted = false,
                             Name = "Дома, дачи, коттеджи",
                             ParentCategoryId = 5
@@ -530,14 +530,14 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7589),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4394),
                             IsDeleted = false,
                             Name = "Электроника"
                         },
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7590),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4395),
                             IsDeleted = false,
                             Name = "Аудио и видео",
                             ParentCategoryId = 9
@@ -545,7 +545,7 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 11,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7592),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4396),
                             IsDeleted = false,
                             Name = "Игры, приставки и программы",
                             ParentCategoryId = 9
@@ -553,7 +553,7 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 12,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7593),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4398),
                             IsDeleted = false,
                             Name = "Настольные компьютеры",
                             ParentCategoryId = 9
@@ -561,7 +561,7 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 13,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7594),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4399),
                             IsDeleted = false,
                             Name = "Ноутбуки",
                             ParentCategoryId = 9
@@ -569,7 +569,7 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 14,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7595),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4400),
                             IsDeleted = false,
                             Name = "Планшеты и электронные книги",
                             ParentCategoryId = 9
@@ -577,7 +577,7 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 15,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7597),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4401),
                             IsDeleted = false,
                             Name = "Телефоны",
                             ParentCategoryId = 9
@@ -585,7 +585,7 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 16,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7598),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4403),
                             IsDeleted = false,
                             Name = "Товары для компьютера",
                             ParentCategoryId = 9
@@ -593,7 +593,7 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 17,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7599),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4404),
                             IsDeleted = false,
                             Name = "Фототехника",
                             ParentCategoryId = 9
@@ -601,14 +601,14 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 18,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7600),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4405),
                             IsDeleted = false,
                             Name = "Искусство"
                         },
                         new
                         {
                             Id = 19,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7601),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4406),
                             IsDeleted = false,
                             Name = "Живопись маслом",
                             ParentCategoryId = 18
@@ -616,7 +616,7 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 20,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 118, DateTimeKind.Utc).AddTicks(7602),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 10, DateTimeKind.Utc).AddTicks(4408),
                             IsDeleted = false,
                             Name = "Акварель",
                             ParentCategoryId = 18
@@ -627,18 +627,18 @@ namespace Advertisements.DataAccess.Migrations
                 {
                     b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int?>("ParentRegionId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -650,692 +650,692 @@ namespace Advertisements.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 123, DateTimeKind.Utc).AddTicks(9973),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5272),
                             Name = "Российская Федерация"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(452),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5652),
                             Name = "Центральный федеральный округ",
                             ParentRegionId = 1
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(455),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5655),
                             Name = "Белгородская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(456),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5657),
                             Name = "Брянская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(458),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5658),
                             Name = "Владимирская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(459),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5659),
                             Name = "Воронежская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(460),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5660),
                             Name = "Ивановская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(461),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5661),
                             Name = "Калужская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(462),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5663),
                             Name = "Костромская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(463),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5664),
                             Name = "Курская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 11,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(496),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5665),
                             Name = "Липецкая область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 12,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(498),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5666),
                             Name = "Московская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 13,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(499),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5667),
                             Name = "Орловская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 14,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(500),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5669),
                             Name = "Рязанская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 15,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(501),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5670),
                             Name = "Смоленская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 16,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(502),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5671),
                             Name = "Тамбовская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 17,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(503),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5672),
                             Name = "Тверская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 18,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(504),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5675),
                             Name = "Тульская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 19,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(505),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5677),
                             Name = "Ярославская область",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 20,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(506),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5678),
                             Name = "г. Москва",
                             ParentRegionId = 2
                         },
                         new
                         {
                             Id = 21,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(507),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5679),
                             Name = "Северо-Западный федеральный округ",
                             ParentRegionId = 1
                         },
                         new
                         {
                             Id = 22,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(508),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5680),
                             Name = "Республика Карелия",
                             ParentRegionId = 21
                         },
                         new
                         {
                             Id = 23,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(509),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5681),
                             Name = "Республика Коми",
                             ParentRegionId = 21
                         },
                         new
                         {
                             Id = 24,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(510),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5682),
                             Name = "Архангельская область",
                             ParentRegionId = 21
                         },
                         new
                         {
                             Id = 25,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(511),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5683),
                             Name = "в том числе Ненецкий автономный округ",
                             ParentRegionId = 21
                         },
                         new
                         {
                             Id = 26,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(512),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5685),
                             Name = "Вологодская область",
                             ParentRegionId = 21
                         },
                         new
                         {
                             Id = 27,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(514),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5686),
                             Name = "Калининградская область",
                             ParentRegionId = 21
                         },
                         new
                         {
                             Id = 28,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(515),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5687),
                             Name = "Ленинградская область",
                             ParentRegionId = 21
                         },
                         new
                         {
                             Id = 29,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(516),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5688),
                             Name = "Мурманская область",
                             ParentRegionId = 21
                         },
                         new
                         {
                             Id = 30,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(517),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5689),
                             Name = "Новгородская область",
                             ParentRegionId = 21
                         },
                         new
                         {
                             Id = 31,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(518),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5690),
                             Name = "Псковская область",
                             ParentRegionId = 21
                         },
                         new
                         {
                             Id = 32,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(519),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5691),
                             Name = "г. Санкт-Петербург",
                             ParentRegionId = 21
                         },
                         new
                         {
                             Id = 33,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(520),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5693),
                             Name = "Южный федеральный округ",
                             ParentRegionId = 1
                         },
                         new
                         {
                             Id = 34,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(521),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5694),
                             Name = "Республика Адыгея",
                             ParentRegionId = 33
                         },
                         new
                         {
                             Id = 35,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(522),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5695),
                             Name = "Республика Дагестан",
                             ParentRegionId = 33
                         },
                         new
                         {
                             Id = 36,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(523),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5696),
                             Name = "Республика Ингушетия",
                             ParentRegionId = 33
                         },
                         new
                         {
                             Id = 37,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(524),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5698),
                             Name = "Кабардино-Балкарская Республика",
                             ParentRegionId = 33
                         },
                         new
                         {
                             Id = 38,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(525),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5699),
                             Name = "Республика Калмыкия",
                             ParentRegionId = 33
                         },
                         new
                         {
                             Id = 39,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(526),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5700),
                             Name = "Карачаево-Черкесская Республика",
                             ParentRegionId = 33
                         },
                         new
                         {
                             Id = 40,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(528),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5701),
                             Name = "Республика Северная Осетия - Алания",
                             ParentRegionId = 33
                         },
                         new
                         {
                             Id = 41,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(529),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5703),
                             Name = "Чеченская Республика",
                             ParentRegionId = 33
                         },
                         new
                         {
                             Id = 42,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(530),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5704),
                             Name = "Краснодарский край",
                             ParentRegionId = 33
                         },
                         new
                         {
                             Id = 43,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(531),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5705),
                             Name = "Ставропольский край",
                             ParentRegionId = 33
                         },
                         new
                         {
                             Id = 44,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(532),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5706),
                             Name = "Астраханская область",
                             ParentRegionId = 33
                         },
                         new
                         {
                             Id = 45,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(533),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5770),
                             Name = "Волгоградская область",
                             ParentRegionId = 33
                         },
                         new
                         {
                             Id = 46,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(534),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5772),
                             Name = "Ростовская область",
                             ParentRegionId = 33
                         },
                         new
                         {
                             Id = 47,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(535),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5773),
                             Name = "Приволжский федеральный округ",
                             ParentRegionId = 1
                         },
                         new
                         {
                             Id = 48,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(536),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5774),
                             Name = "Республика Башкортостан",
                             ParentRegionId = 47
                         },
                         new
                         {
                             Id = 49,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(537),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5775),
                             Name = "Республика Марий Эл",
                             ParentRegionId = 47
                         },
                         new
                         {
                             Id = 50,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(538),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5776),
                             Name = "Республика Мордовия",
                             ParentRegionId = 47
                         },
                         new
                         {
                             Id = 51,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(539),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5777),
                             Name = "Республика Татарстан",
                             ParentRegionId = 47
                         },
                         new
                         {
                             Id = 52,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(540),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5779),
                             Name = "Удмуртская Республика",
                             ParentRegionId = 47
                         },
                         new
                         {
                             Id = 53,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(541),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5780),
                             Name = "Чувашская Республика",
                             ParentRegionId = 47
                         },
                         new
                         {
                             Id = 54,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(542),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5781),
                             Name = "Кировская область",
                             ParentRegionId = 47
                         },
                         new
                         {
                             Id = 55,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(543),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5782),
                             Name = "Нижегородская область",
                             ParentRegionId = 47
                         },
                         new
                         {
                             Id = 56,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(544),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5783),
                             Name = "Оренбургская область",
                             ParentRegionId = 47
                         },
                         new
                         {
                             Id = 57,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(545),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5784),
                             Name = "Пензенская область",
                             ParentRegionId = 47
                         },
                         new
                         {
                             Id = 58,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(546),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5786),
                             Name = "Пермская область",
                             ParentRegionId = 47
                         },
                         new
                         {
                             Id = 59,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(547),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5787),
                             Name = "в том числе Коми-Пермяцкий автономный округ",
                             ParentRegionId = 47
                         },
                         new
                         {
                             Id = 60,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(548),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5788),
                             Name = "Самарская область",
                             ParentRegionId = 47
                         },
                         new
                         {
                             Id = 61,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(549),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5789),
                             Name = "Саратовская область",
                             ParentRegionId = 47
                         },
                         new
                         {
                             Id = 62,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(550),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5790),
                             Name = "Ульяновская область",
                             ParentRegionId = 47
                         },
                         new
                         {
                             Id = 63,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(551),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5791),
                             Name = "Уральский федеральный округ",
                             ParentRegionId = 1
                         },
                         new
                         {
                             Id = 64,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(552),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5793),
                             Name = "Курганская область",
                             ParentRegionId = 63
                         },
                         new
                         {
                             Id = 65,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(553),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5794),
                             Name = "Свердловская область",
                             ParentRegionId = 63
                         },
                         new
                         {
                             Id = 66,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(554),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5795),
                             Name = "Тюменская область",
                             ParentRegionId = 63
                         },
                         new
                         {
                             Id = 67,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(556),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5796),
                             Name = "в том числе Ханты-Мансийский автономный округ - Югра",
                             ParentRegionId = 63
                         },
                         new
                         {
                             Id = 68,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(557),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5797),
                             Name = "в том числе Ямало-Ненецкий автономный округ",
                             ParentRegionId = 63
                         },
                         new
                         {
                             Id = 69,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(558),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5799),
                             Name = "в том числе Челябинская область",
                             ParentRegionId = 63
                         },
                         new
                         {
                             Id = 70,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(559),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5800),
                             Name = "Сибирский федеральный округ",
                             ParentRegionId = 1
                         },
                         new
                         {
                             Id = 71,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(560),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5801),
                             Name = "Республика Алтай",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 72,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(561),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5802),
                             Name = "Республика Бурятия",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 73,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(562),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5803),
                             Name = "Республика Тыва",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 74,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(563),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5804),
                             Name = "Республика Хакасия",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 75,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(564),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5805),
                             Name = "Алтайский край",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 76,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(565),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5807),
                             Name = "Красноярский край",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 77,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(566),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5808),
                             Name = "в том числе Таймырский (Долгано-Ненецкий) автономный округ",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 78,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(567),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5809),
                             Name = "Эвенкийский автономный округ",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 79,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(568),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5810),
                             Name = "Иркутская область",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 80,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(569),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5812),
                             Name = "в том числе Усть-Ордынский Бурятский автономный округ",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 81,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(570),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5813),
                             Name = "Кемеровская область",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 82,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(571),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5814),
                             Name = "Новосибирская область",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 83,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(572),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5815),
                             Name = "Омская область",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 84,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(573),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5816),
                             Name = "Томская область",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 85,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(574),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5817),
                             Name = "Читинская область",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 86,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(575),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5818),
                             Name = "в том числе Агинский Бурятский автономный округ",
                             ParentRegionId = 70
                         },
                         new
                         {
                             Id = 87,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(576),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5820),
                             Name = "Дальневосточный федеральный округ",
                             ParentRegionId = 1
                         },
                         new
                         {
                             Id = 88,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(577),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5821),
                             Name = "Республика Саха (Якутия)",
                             ParentRegionId = 87
                         },
                         new
                         {
                             Id = 89,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(578),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5822),
                             Name = "Приморский край",
                             ParentRegionId = 87
                         },
                         new
                         {
                             Id = 90,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(579),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5823),
                             Name = "Хабаровский край",
                             ParentRegionId = 87
                         },
                         new
                         {
                             Id = 91,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(580),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5824),
                             Name = "Амурская край",
                             ParentRegionId = 87
                         },
                         new
                         {
                             Id = 92,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(581),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5825),
                             Name = "Камчатская область",
                             ParentRegionId = 87
                         },
                         new
                         {
                             Id = 93,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(583),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5826),
                             Name = "Корякский автономный округ",
                             ParentRegionId = 87
                         },
                         new
                         {
                             Id = 94,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(584),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5828),
                             Name = "Магаданская область",
                             ParentRegionId = 87
                         },
                         new
                         {
                             Id = 95,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(585),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5829),
                             Name = "Сахалинская область",
                             ParentRegionId = 87
                         },
                         new
                         {
                             Id = 96,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(586),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5830),
                             Name = "Еврейская автономная область",
                             ParentRegionId = 87
                         },
                         new
                         {
                             Id = 97,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(587),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5831),
                             Name = "Чукотский автономный округ",
                             ParentRegionId = 87
                         },
                         new
                         {
                             Id = 98,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(588),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5832),
                             Name = "Севастополь",
                             ParentRegionId = 1
                         },
                         new
                         {
                             Id = 99,
-                            CreatedAt = new DateTime(2021, 11, 26, 15, 2, 22, 124, DateTimeKind.Utc).AddTicks(589),
+                            CreatedAt = new DateTime(2022, 12, 8, 23, 11, 10, 16, DateTimeKind.Utc).AddTicks(5833),
                             Name = "Крым",
                             ParentRegionId = 1
                         });
@@ -1345,15 +1345,15 @@ namespace Advertisements.DataAccess.Migrations
                 {
                     b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Body")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
@@ -1364,17 +1364,17 @@ namespace Advertisements.DataAccess.Migrations
                 {
                     b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int?>("AdvertisementId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int?>("FileId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
