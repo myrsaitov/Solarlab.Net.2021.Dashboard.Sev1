@@ -1,5 +1,0 @@
-https://www.reddit.com/r/dotnet/comments/nc7k1u/can_i_share_dtos_between_my_api_project_and/
-
-Absolutely. I often keep a “contracts” project with shared interfaces and DTOs just for this case. This isn’t necessarily all DTOs in all projects but just the ones that are consumable
-
-Yep, highly recommend you create a separate library project just for DTOs. Also recommend strictly avoiding referencing any other projects in the DTO project. It will help you avoid leaking stuff that shouldn't be in a DTO. They should be plain old class objects with no logic to them.

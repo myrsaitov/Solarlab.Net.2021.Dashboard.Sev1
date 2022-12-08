@@ -1,4 +1,0 @@
-https://stackoverflow.com/questions/2268699/domain-driven-design-domain-service-application-service
-
-DomainSevices имеют дело с доменными сущностями
-ApplicationServices имеют дело с DTO

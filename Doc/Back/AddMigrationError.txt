@@ -1,4 +1,0 @@
-Unable to create an object of type 'DatabaseContext'. For the different patterns supported at design time, see https://go.microsoft.com/fwlink/?linkid=851728
-
-Если появляется такая ошибка, то скорее всего  включены Multiple Startup Projects
-Нужно изменить на текущий проект (startup)
