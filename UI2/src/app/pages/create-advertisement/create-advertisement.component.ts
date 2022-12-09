@@ -30,17 +30,17 @@ export class CreateAdvertisementComponent implements OnInit {
   constructor(
     private readonly fb: FormBuilder,
     private readonly advertisementService: AdvertisementService,
-    private readonly router: RouterService,
+    public readonly router: RouterService,
     private readonly toastService: ToastService,
     private readonly authService: AuthService,
     private readonly sanitizer: DomSanitizer,
-    private readonly categoryService: CategoryService,
-    private readonly regionService: RegionService,
-    private readonly tagService: TagService) {
+    public readonly categoryService: CategoryService,
+    public readonly regionService: RegionService,
+    public readonly tagService: TagService) {
   }
 
   ngOnInit() {
-    
+
     // Инициализация сервисов
     this.categoryService.onInit();
     this.regionService.onInit();
@@ -72,9 +72,9 @@ export class CreateAdvertisementComponent implements OnInit {
   // Удаление файла
   onFileDeleteFromForm(id) {
     // Удаляет элемент из массива картинок с индексом id.
-    // Тут надо заметить, что индекс элемента в массиве 
+    // Тут надо заметить, что индекс элемента в массиве
     // может меняться (т.к. добавляются или удаляются элементы),
-    // а индекс файла уникален. В связи с чем, сначала нужно найти 
+    // а индекс файла уникален. В связи с чем, сначала нужно найти
     // элемент, у которого индекс равен id, вычислить его индекс и только потом удалять
     this.userFiles.forEach((element,index) => { //index - это индекс элемента в массиве
       if(element.fileIdOnForm==id) {
@@ -120,8 +120,8 @@ export class CreateAdvertisementComponent implements OnInit {
                 //contentDisposition: file.contentDisposition,
                 length: file.size //
               };
-                
-              // Добавляет его в массив 
+
+              // Добавляет его в массив
               this.userFiles.push(new UserFile(model));
             });
           }
@@ -182,7 +182,7 @@ export class CreateAdvertisementComponent implements OnInit {
 
         // Определяем идентификатор вновь созданного объявления
         let id = JSON.parse(JSON.stringify(res)).id;
-        
+
         // Переходит на страницу вновь созданного объявления
         this.router.goToAdvertisementPageById(id);
       });

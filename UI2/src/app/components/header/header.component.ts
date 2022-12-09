@@ -18,8 +18,7 @@ export class HeaderComponent {
   constructor(
     private readonly fb: FormBuilder,
     private readonly authService: AuthService,
-    private readonly tagService: TagService,
-    private readonly router: RouterService) {
+    public readonly router: RouterService) {
   }
 
 

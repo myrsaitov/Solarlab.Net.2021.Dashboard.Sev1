@@ -4,7 +4,6 @@ import { AdvertisementCardComponent } from './components/advertisement-card/adve
 import { CommentCardComponent } from './components/comment-card/comment-card.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
-import { TagCloudComponent } from './components/tag-cloud/tag-cloud.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -13,7 +12,6 @@ import { NgModule } from '@angular/core';
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { NgProgressModule } from 'ngx-progressbar';
 import { NgProgressHttpModule } from "ngx-progressbar/http";
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -33,7 +31,6 @@ import { ConnectionpageComponent } from './components/connectionpage/connectionp
 @NgModule({
   declarations: [ // The set of components, directives, and pipes (declarables) that belong to this module.
     AppComponent,
-    TagCloudComponent,
     DashboardComponent,
     HeaderComponent,
     FooterComponent,

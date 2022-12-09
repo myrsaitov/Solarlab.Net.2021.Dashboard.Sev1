@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 
 export class RouterService {
-  
+
   constructor(
     private readonly router: Router) {
   }

@@ -15,7 +15,7 @@ import { ChangeDetectionStrategy } from '@angular/core';
 import { CreateComment, ICreateComment } from '../../models/comment/comment-create-model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TagService } from '../../services/tag.service';
-import { isNullOrUndefined } from 'util';
+import { isNullOrUndefined } from 'is-what';
 import { UserService } from 'src/app/services/user.service';
 import { RegionService } from 'src/app/services/region.service';
 import { EditAdvertisementStatus, IEditAdvertisementStatus } from 'src/app/models/advertisement/advertisement-status-edit-model';
@@ -27,7 +27,7 @@ import { RouterService } from 'src/app/services/router.service';
 @Component({
   selector: 'app-advertisement', // A CSS selector that tells Angular to create and insert an instance of this component wherever it finds the corresponding tag in template HTML
   templateUrl: './advertisement.component.html', // The module-relative address of this component's HTML template.
-  styleUrls: ['./advertisement.component.scss'], // 
+  styleUrls: ['./advertisement.component.scss'], //
   changeDetection: ChangeDetectionStrategy.Default
 })
 
@@ -61,17 +61,17 @@ export class AdvertisementComponent implements OnInit {
   constructor(
     private readonly fb: FormBuilder,
     private readonly route: ActivatedRoute,
-    private readonly router: RouterService,
+    public readonly router: RouterService,
     private readonly advertisementService: AdvertisementService,
     private readonly authService: AuthService,
     private readonly toastService: ToastService,
     private readonly commentService: CommentService,
     private readonly modalService: NgbModal,
-    private readonly userService: UserService,
+    public readonly userService: UserService,
     private readonly userFilesService: UserFilesService,
-    private readonly categoryService: CategoryService,
-    private readonly regionService: RegionService,
-    private readonly tagService: TagService) {
+    public readonly categoryService: CategoryService,
+    public readonly regionService: RegionService,
+    public readonly tagService: TagService) {
   }
 
   ngOnInit() {
@@ -90,7 +90,7 @@ export class AdvertisementComponent implements OnInit {
       this.userFiles = userFiles;
       // Инициализация объявления
       this.advertisementInit();
-    });   
+    });
 
     // Валидация формы
     this.advertisementForm = this.fb.group({
@@ -132,7 +132,7 @@ export class AdvertisementComponent implements OnInit {
         this.commentsFilterSubject$.value.contentId = advertisement.id;
 
         this.advertisement = advertisement;
-        
+
         // Загружает данные пользователя
         this.userService.getUserById(advertisement.ownerId);
 
@@ -143,7 +143,7 @@ export class AdvertisementComponent implements OnInit {
           var obj = {image: uri};
           this.imageObject.push(obj);
         });
-        
+
         // Количество файлов к объявлению
         this.userFilesCount = this.advertisement.userFiles.length;
 
@@ -224,35 +224,35 @@ export class AdvertisementComponent implements OnInit {
   getUserFileUriById(id: number){
     return this.userFiles.find(s => s.id === id).filePath;
   }
-  
+
   // Возвращает статус объявления по значению
   getStatusNameByValue(value: number){
-    switch(value) { 
-      case 0: { 
-         return "Активно"; 
-         break; 
-      } 
-      case 1: { 
-        return "Приостановлено"; 
-        break; 
-      } 
-      case 2: { 
-        return "Черновик"; 
-        break; 
+    switch(value) {
+      case 0: {
+         return "Активно";
+         break;
       }
-      case 3: { 
-        return "Удалено"; 
-        break; 
+      case 1: {
+        return "Приостановлено";
+        break;
       }
-      case 4: { 
-        return "Недопустимое содержание"; 
-        break; 
-      } 
-      default: { 
-        return "No Status!"; 
-        break; 
-      } 
-    } 
+      case 2: {
+        return "Черновик";
+        break;
+      }
+      case 3: {
+        return "Удалено";
+        break;
+      }
+      case 4: {
+        return "Недопустимое содержание";
+        break;
+      }
+      default: {
+        return "No Status!";
+        break;
+      }
+    }
   }
 
   get status() { return this.advertisementForm.get('status'); }
@@ -272,7 +272,7 @@ export class AdvertisementComponent implements OnInit {
   delete_comment(){
     this.commentService.delete(1).pipe(take(1)).subscribe(() => {
       this.toastService.show('Комментарий успешено удален', {classname: 'bg-success text-light'});
-    
+
       this.router.goToAdvertisementPageById(this.advertisement.id);
 
       this.commentsFilterSubject$.next({
@@ -334,7 +334,7 @@ export class AdvertisementComponent implements OnInit {
 
     this.commentService.create(new CreateComment(model)).pipe(take(1)).subscribe(() => {
       this.toastService.show('Комментарий успешено добавлен', {classname: 'bg-success text-light'});
-    
+
       this.router.goToAdvertisementPageById(this.advertisement.id);
 
       this.commentsFilterSubject$.next({
@@ -364,5 +364,5 @@ export class AdvertisementComponent implements OnInit {
     this.tagService.onDestroy();
 
   }
-  
+
 }

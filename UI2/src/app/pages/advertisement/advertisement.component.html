@@ -6,18 +6,18 @@
 
     <!-- Выдача категорий слева колонкой -->
     <!-- Колонка 1 (начало) -->
-    <div *ngIf="categoryService.categories$ | async as categories" class="col-3">  
+    <div *ngIf="categoryService.categories$ | async as categories" class="col-3">
       <ul>
         <div>Поиск по категориям</div>
       </ul>
-      <ul>  
+      <ul>
         <div *ngFor="let category of categories">
           <!-- Группы категорий -->
           <h5 *ngIf="!category.parentCategoryId"><br><br>{{category.name}}</h5>
           <!-- Подкатегории -->
-          <a class="badge badge-secondary" 
+          <a class="badge badge-secondary"
             *ngIf="category.parentCategoryId"
-            role="button" 
+            role="button"
             (click)="router.getAdvertisementsByCategoryId(category.id)">{{category.name}}({{category.count}})
           </a>
           &nbsp;&nbsp;
@@ -35,7 +35,7 @@
       <!-- Выводит подробную информацию по объявлению (начало) -->
       <ng-container [formGroup]="advertisementForm">
         <article class="card" style="width: 43rem;">
-          
+
           <!-- Заголовок карточки (начало) -->
           <div class="card-header d-flex"><!-- https://getbootstrap.com/docs/4.2/components/card/ -->
 
@@ -63,7 +63,7 @@
                   id="status"
                   formControlName="status"
                   autofocus
-                  (change)="onChange($event.target.value)"
+                  (change)="onChange()"
                   value = "0">
                   <option [value]="0">Активно</option>
                   <option [value]="1">Приостановлено</option>
@@ -84,9 +84,9 @@
             <!-- Категория объявления -->
             <ng-container *ngIf="categoryService?.categories">
               <p *ngIf="advertisement?.categoryId">
-                Категория объявления: 
-                <a class="badge badge-secondary" 
-                  role="button" 
+                Категория объявления:
+                <a class="badge badge-secondary"
+                  role="button"
                   (click)="router.getAdvertisementsByCategoryId(advertisement.categoryId)">
                   {{categoryService.getCategoryNameById(advertisement.categoryId)}}
                 </a>
@@ -136,13 +136,16 @@
                           width: 640px;
                           height: 480px;
                           overflow: hidden;">
-                        <img src="{{ getUserFilesSlide() }}" alt="userFilesSlides" 
-                          (click)="showLightbox()"
+                        <!--
                           (mousedown)="userFilesMouseDown()"
                           (mouseup)="userFilesMouseUp()"
                           (mouseleave)="userFilesMouseUp()"
+                        -->
+                        <img src="{{ getUserFilesSlide() }}" alt="userFilesSlides"
+                          (click)="showLightbox()"
+
                           draggable="false"
-                          (dragstart)="false;" 
+                          (dragstart)="false;"
                           class="unselectable"
                           style="cursor: pointer;
                             background-color: PowderBlue;
@@ -175,10 +178,10 @@
                                 color: Black;
                                 border-style: double;
                                 border: 2px solid blue;
-                                border-radius: 5px;" 
+                                border-radius: 5px;"
                               (click)="getUserFilesThisSlide(i)"
                               draggable="false"
-                              (dragstart)="false;" 
+                              (dragstart)="false;"
                               class="unselectable">
 
                             <!-- Если файл выбран -->
@@ -190,7 +193,7 @@
                                 color: Black;
                                 border-style: double;
                                 border: 5px solid greenyellow;
-                                border-radius: 1px;" 
+                                border-radius: 1px;"
                               (click)='getUserFilesThisSlide(i)'>
                           </div>
                         </div>
@@ -199,7 +202,7 @@
                   </div>
               </ng-container>
                 <!-- Превью файлов (конец) -->
-              
+
               </ng-container>
               <!-- Если существуют файлы к объявлению (конец) -->
 
@@ -261,10 +264,10 @@
 
           <!-- Футтер карточки (начало) -->
           <div class="card-header d-flex">
-            
+
             <!-- Кнопка "Купить" -->
             <a routerLink="/" class="btn btn-primary">Купить</a>
- 
+
            </div>
           <!-- Футтер карточки (конец) -->
 
@@ -284,7 +287,7 @@
         </div>
         <button type="submit"
           class="btn btn-primary"
-          (click)="submit()">Добавить</button>
+          (click)="submit()">Добавить</button>-->
         <!-- Форма отправки комментария (конец) -->
 
 
@@ -306,7 +309,7 @@
             </ngb-pagination>
           </div>
         </div>
-      </div>
+      </div>-->
       <!-- Выводит переключение страниц пажинации комментариев (конец) -->
 
       <!-- Выводит пажинированные комментарии (начало) -->
@@ -319,7 +322,7 @@
             </app-comment-card>
           </ng-container>
         </div>
-      </div>
+      </div>-->
       <!-- Выводит пажинированные комментарии (конец) -->
 
       <!-- Выводит переключение страниц пажинации комментариев (начало) -->
@@ -335,7 +338,7 @@
             </ngb-pagination>
           </div>
         </div>
-      </div>
+      </div>-->
       <!-- Выводит переключение страниц пажинации комментариев (конец) -->
 
     </div>
@@ -346,14 +349,14 @@
 
     <!-- Выдача тагов справа колонкой -->
     <!-- Колонка 3 (начало) -->
-    <div *ngIf="tagService.tags$ | async as tags" class="col-1">  
+    <div *ngIf="tagService.tags$ | async as tags" class="col-1">
       <ul>
         <div>Поиск по тагам</div>
       </ul>
-      <ul>  
+      <ul>
         <div *ngFor="let tag of tags">
-          <a class="badge badge-secondary" 
-            role="button" 
+          <a class="badge badge-secondary"
+            role="button"
             (click)="router.getAdvertisementsByTag(tag.body)">{{tag.body}}({{tag.count}})
           </a>
           &nbsp;&nbsp;
@@ -370,10 +373,10 @@
 
 <!-- Шаблоны:
   https://angular.io/api/core/ng-template#description
-  With <ng-template>, you can define 
-  template content that is only being rendered 
-  by Angular when you, whether directly or indirectly, 
-  specifically instruct it to do so, allowing you to 
+  With <ng-template>, you can define
+  template content that is only being rendered
+  by Angular when you, whether directly or indirectly,
+  specifically instruct it to do so, allowing you to
   have full control over how and when the content is displayed. -->
 
 <!-- Выводится, если нет связи с сервисом комментариев -->

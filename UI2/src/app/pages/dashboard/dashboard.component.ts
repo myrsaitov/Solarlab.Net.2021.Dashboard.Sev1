@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
   isAuth = this.authService.isAuth;
   userFiles$: Observable<IUserFile[]>;
   userFiles: IUserFile[];
-  
+
   private advertisementsFilterSubject$ = new BehaviorSubject({
     searchStr: null,
     ownerId: null,
@@ -41,15 +41,15 @@ export class DashboardComponent implements OnInit {
     private readonly authService: AuthService,
     private readonly advertisementService: AdvertisementService,
     private readonly route: ActivatedRoute,
-    private readonly router: RouterService, // используется на форме
+    public readonly router: RouterService, // используется на форме
     private readonly userFilesService: UserFilesService,
-    private readonly categoryService: CategoryService,
-    private readonly regionService: RegionService,
-    private readonly tagService: TagService) {
+    public readonly categoryService: CategoryService,
+    public readonly regionService: RegionService,
+    public readonly tagService: TagService) {
   }
 
   ngOnInit() {
-    
+
     // Инициализация сервисов
     this.categoryService.onInit();
     this.regionService.onInit();
@@ -62,7 +62,7 @@ export class DashboardComponent implements OnInit {
     });
     this.userFiles$.subscribe(userFiles => {
       this.userFiles = userFiles;
-    });   
+    });
 
     // Загружает сессию
     this.authService.loadSession();
@@ -100,7 +100,7 @@ export class DashboardComponent implements OnInit {
       switchMap(advertisementsFilter => this.advertisementService.getAdvertisementsList(advertisementsFilter)
     ));
   }
-  
+
   // Возвращает ссылку на файл по идентификатору
   getUserFileUriById(id: number){
     if (typeof id === 'undefined') {
@@ -137,5 +137,5 @@ export class DashboardComponent implements OnInit {
     this.regionService.onDestroy();
     this.tagService.onDestroy();
   }
-  
+
 }

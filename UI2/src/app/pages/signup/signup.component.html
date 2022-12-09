@@ -6,7 +6,7 @@
   </style>
 
   <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
-  
+
   <!-- Сообщение об ошибке регистрации -->
   <div class="form-group">
     <div *ngIf="notregisterstatus">
@@ -98,7 +98,7 @@
       class="form-control"
       placeholder="Отчество"
       autofocus
-      [class.is-invalid]="middleName.invalid && middle.touched"
+      [class.is-invalid]="middleName.invalid && middleName.touched"
       formControlName="middleName">
   </div>
 
@@ -186,5 +186,5 @@
   <!-- Кнопка "Зарегистрироваться" -->
   <button class="btn btn-lg btn-primary btn-block"
     (click)="register()">Регистрация</button>
-    
+
 </form>

@@ -24,16 +24,16 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private readonly userService: UserService,
-    private readonly fb: FormBuilder, 
+    private readonly fb: FormBuilder,
     private readonly auth: AuthService,
     private readonly baseService: BaseService,
     private readonly router: Router,
-    private readonly regionService: RegionService) {
+    public readonly regionService: RegionService) {
   }
 
   // Обработка события инициализации
   ngOnInit() {
-    
+
     // Инициализация сервиса регионов
     this.regionService.onInit();
 
@@ -126,11 +126,11 @@ export class SignupComponent implements OnInit {
           this.signupForm.markAllAsTouched();
 
           // Если поля в форме не прошли валидацию, то выход
-          if (this.signupForm.invalid) 
-          {  
+          if (this.signupForm.invalid)
+          {
             return;
           }
-        
+
           // Загрузить данные с формы
           const payload: ILogin = this.signupForm.getRawValue();
 

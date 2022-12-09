@@ -34,12 +34,12 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
     private readonly fb: FormBuilder,
     private readonly advertisementService: AdvertisementService,
     private readonly route: ActivatedRoute,
-    private readonly router: RouterService,
+    readonly router: RouterService,
     private readonly toastService: ToastService,
     private readonly sanitizer: DomSanitizer,
-    private readonly categoryService: CategoryService,
-    private readonly regionService: RegionService,
-    private readonly tagService: TagService) {
+    public readonly categoryService: CategoryService,
+    public readonly regionService: RegionService,
+    public readonly tagService: TagService) {
   }
 
   ngOnInit() {
@@ -48,7 +48,7 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
     this.categoryService.onInit();
     this.regionService.onInit();
     this.tagService.onInit();
-    
+
     this.form = this.fb.group({
       title: ['', Validators.required],
       body: ['', Validators.required],
@@ -59,7 +59,7 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       input_tags: [''],
       status: ['', [Validators.required]],
     });
-    
+
     // Иначе ошибка ObjectUnsubscribedError
     this.destroy$ = new Subject<boolean>();
     this.destroy$.next(false);
@@ -101,9 +101,9 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
   // Удаление файла
   onFileDeleteFromForm(id) {
     // Удаляет элемент из массива картинок с индексом id.
-    // Тут надо заметить, что индекс элемента в массиве 
+    // Тут надо заметить, что индекс элемента в массиве
     // может меняться (т.к. добавляются или удаляются элементы),
-    // а индекс файла уникален. В связи с чем, сначала нужно найти 
+    // а индекс файла уникален. В связи с чем, сначала нужно найти
     // элемент, у которого индекс равен id, вычислить его индекс и только потом удалять
     this.thumbnailImages.forEach((element,index) => { //index - это индекс элемента в массиве
       if(element.id==id) {
@@ -140,8 +140,8 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
               uri: uri,
               file: file
             };
-              
-            // Добавляет его в массив 
+
+            // Добавляет его в массив
             this.thumbnailImages.push(new ThumbnailImage(model));
           }
         }
@@ -187,7 +187,7 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
         address: this.address.value,
         status: this.status.value
       };
-      
+
       // Создает ссылку на отредактированное объявление
       this.id = model.id;
 
@@ -209,7 +209,7 @@ export class EditAdvertisementComponent implements OnInit, OnDestroy {
       this.toastService.show(
         'Объявление успешено обновлено',
         {classname: 'bg-success text-light'});
-      
+
       // Переходит на страницу отредактированного объявления
       this.router.goToAdvertisementPageById(this.id);
     });
