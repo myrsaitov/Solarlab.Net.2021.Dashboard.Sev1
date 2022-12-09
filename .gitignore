@@ -7,7 +7,7 @@ Sev1.sln.DotSettings.user
 *.cache
 
 *.mkm.txt
-
+.angular/
 .vscode/
 
 ## Ignore Visual Studio temporary files, build results, and
