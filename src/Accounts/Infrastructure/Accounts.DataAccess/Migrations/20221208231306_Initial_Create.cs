@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Accounts.DataAccess.Migrations
 {
-    public partial class UserWereAdded : Migration
+    public partial class Initial_Create : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,10 +12,10 @@ namespace Accounts.DataAccess.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -25,21 +26,21 @@ namespace Accounts.DataAccess.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<string>(type: "text", nullable: false),
+                    UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "boolean", nullable: false),
+                    PasswordHash = table.Column<string>(type: "text", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "text", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "text", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "text", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "boolean", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "boolean", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "boolean", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -50,17 +51,17 @@ namespace Accounts.DataAccess.Migrations
                 name: "DomainUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    MiddleName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RegionId = table.Column<int>(type: "int", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    Id = table.Column<string>(type: "text", nullable: false),
+                    UserName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    FirstName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    LastName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    MiddleName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    PhoneNumber = table.Column<string>(type: "text", nullable: true),
+                    Address = table.Column<string>(type: "text", nullable: true),
+                    RegionId = table.Column<int>(type: "integer", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -71,11 +72,11 @@ namespace Accounts.DataAccess.Migrations
                 name: "FavoriteAdvertisement",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    AdvertisementId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    Id = table.Column<string>(type: "text", nullable: false),
+                    AdvertisementId = table.Column<string>(type: "text", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -86,11 +87,11 @@ namespace Accounts.DataAccess.Migrations
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    RoleId = table.Column<string>(type: "text", nullable: false),
+                    ClaimType = table.Column<string>(type: "text", nullable: true),
+                    ClaimValue = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -107,11 +108,11 @@ namespace Accounts.DataAccess.Migrations
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserId = table.Column<string>(type: "text", nullable: false),
+                    ClaimType = table.Column<string>(type: "text", nullable: true),
+                    ClaimValue = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -128,10 +129,10 @@ namespace Accounts.DataAccess.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    LoginProvider = table.Column<string>(type: "text", nullable: false),
+                    ProviderKey = table.Column<string>(type: "text", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "text", nullable: true),
+                    UserId = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -148,8 +149,8 @@ namespace Accounts.DataAccess.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserId = table.Column<string>(type: "text", nullable: false),
+                    RoleId = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -172,10 +173,10 @@ namespace Accounts.DataAccess.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UserId = table.Column<string>(type: "text", nullable: false),
+                    LoginProvider = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Value = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -192,8 +193,8 @@ namespace Accounts.DataAccess.Migrations
                 name: "UserUser",
                 columns: table => new
                 {
-                    FriendUsersId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    IgnoredUsersId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    FriendUsersId = table.Column<string>(type: "text", nullable: false),
+                    IgnoredUsersId = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -209,15 +210,15 @@ namespace Accounts.DataAccess.Migrations
                         column: x => x.IgnoredUsersId,
                         principalTable: "DomainUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "FavoriteAdvertisementUser",
                 columns: table => new
                 {
-                    FavoriteAdvertisementsId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UsersId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    FavoriteAdvertisementsId = table.Column<string>(type: "text", nullable: false),
+                    UsersId = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -229,7 +230,7 @@ namespace Accounts.DataAccess.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_FavoriteAdvertisementUser_FavoriteAdvertisement_FavoriteAdvertisementsId",
+                        name: "FK_FavoriteAdvertisementUser_FavoriteAdvertisement_FavoriteAdv~",
                         column: x => x.FavoriteAdvertisementsId,
                         principalTable: "FavoriteAdvertisement",
                         principalColumn: "Id",
@@ -241,9 +242,9 @@ namespace Accounts.DataAccess.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3", "d54e66f6-cb81-49b2-8a8c-c2836ba9ce63", "Administrator", "ADMINISTRATOR" },
-                    { "c373fe1b-9e38-498b-9729-6c719222b00d", "0fffa432-50fa-45aa-8ba1-c535592fa58f", "Moderator", "MODERATOR" },
-                    { "589a1f42-d43c-4315-8e02-432f64e02bc0", "09269cb5-294b-4ffa-b53b-23184e6a27e5", "User", "USER" }
+                    { "cc836c4d-a3dd-4434-92f3-f45a9ed19dd3", "1e7ea002-2501-47e5-b5f7-4a21a40f28e8", "Administrator", "ADMINISTRATOR" },
+                    { "c373fe1b-9e38-498b-9729-6c719222b00d", "76a944c8-b598-4446-ad4b-251110759a08", "Moderator", "MODERATOR" },
+                    { "589a1f42-d43c-4315-8e02-432f64e02bc0", "435a6a18-75d6-4512-bb18-6d5bcd1acc40", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -251,13 +252,13 @@ namespace Accounts.DataAccess.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "7e24ccd2-34fd-4289-9a78-1aae93623bae", 0, "bcd58a6e-872b-4da2-a8b1-16e1b84e7f86", "user5@mail.ru", false, false, null, "USER5@MAIL.RU", "USER5", "AQAAAAEAACcQAAAAEOzESKyyvkltj19zFi0AJmMKUdWhpWNcz7QN4lHlLsGYfAN0uF3uCaMZFkrk+oy6fw==", null, false, "7351de01-7f9e-40b0-9656-44d0c8dcdaf0", false, "User5" },
-                    { "c191e5f8-bf5b-40a9-9ab6-4d08704e373b", 0, "66950f8a-9b36-4191-be4d-b648e315423b", "user3@mail.ru", false, false, null, "USER3@MAIL.RU", "USER3", "AQAAAAEAACcQAAAAEPk/IQ/Olr6eP3TRUX2CHLkg8Nkg8SOUf1DEQW1aguVVIIKXs3/yRd1RsQgZ9CTgMg==", null, false, "65e5006d-e3cb-444e-a249-04c4ba91b5be", false, "User3" },
-                    { "54b1ff98-6b5f-4c5e-97a9-747095e1f5dc", 0, "86f9c042-ec17-4cfd-acea-252305d0bf0d", "user2@mail.ru", false, false, null, "USER2@MAIL.RU", "USER2", "AQAAAAEAACcQAAAAEFJzwAqijBzolqTJHOE4/mGx6qMjtNPDI4wn8OQU59B5W1RK4anM4mttWZ27TT0BaQ==", null, false, "bb84686e-65bb-4af9-bf7e-601d51b49263", false, "User2" },
-                    { "09c529c8-e798-44ac-9eac-e0150182fa4c", 0, "d94f1c9c-f767-48b3-9a51-45d09052a51c", "user4@mail.ru", false, false, null, "USER4@MAIL.RU", "USER4", "AQAAAAEAACcQAAAAEH5EMM+RNvisGWc8Wex000efTCwOvIcgqYSqjZnBIuwFmtnHVfWRVFI7yeLvkEKLhA==", null, false, "819fef6d-aca8-4f6b-ade2-f97fda4a58da", false, "User4" },
-                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", 0, "47f8b308-6044-464e-8b02-4a0dce596143", "moderator@mail.ru", false, false, null, "MODERATOR@MAIL.RU", "MODERATOR", "AQAAAAEAACcQAAAAEMtkYr4QqkH8iViPt+YXqdpJOa0U3EmPsBDWdWMiIyKSs3VtuganSVNkTJskFsb3kQ==", null, false, "ab062afc-d8c6-4113-adec-22e331411b15", false, "Moderator" },
-                    { "757d5290-d036-4757-85ae-827b59e92cd3", 0, "39aa7ef7-fa60-446b-899a-15b2bc109ccd", "administrator@mail.ru", false, false, null, "ADMINISTRATOR@MAIL.RU", "ADMINISTRATOR", "AQAAAAEAACcQAAAAENvL1B9dPTKDj/cX211/kUiu8f7PeaoDbMA5dAhUCQ7lESVxAB5mQzfy8OCuxRIdmw==", null, false, "cf2efdae-9820-4989-b121-5ee816dd8946", false, "Administrator" },
-                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", 0, "03ba713b-dbbb-4e1e-93f8-6a66a2fe36ea", "user1@mail.ru", false, false, null, "USER1@MAIL.RU", "USER1", "AQAAAAEAACcQAAAAEF9oWcEuKW8T8NR0ccUXrOaZHZynW4yB24QeYjvC3MFY8VuRpm+MG2tXJ9AYyhSBCg==", null, false, "af6bc07e-0bed-4c2d-8b7d-6089f393ad62", false, "User1" }
+                    { "7e24ccd2-34fd-4289-9a78-1aae93623bae", 0, "a0cf9bd0-2dfd-40a1-bdd8-e592140cedd4", "user5@mail.ru", false, false, null, "USER5@MAIL.RU", "USER5", "AQAAAAEAACcQAAAAELb0hQWP4T/JFCcAfLQkg+LCT6Dgsp8fcSAcV+CtlYRMDNsi+Pyerg9/yP02XTxDvw==", null, false, "f591dacb-6664-48f0-8b82-da6123c9f1b2", false, "User5" },
+                    { "c191e5f8-bf5b-40a9-9ab6-4d08704e373b", 0, "c1359c92-6c45-421f-ac2e-4002c54435d1", "user3@mail.ru", false, false, null, "USER3@MAIL.RU", "USER3", "AQAAAAEAACcQAAAAEA+xTjhdOyThf6UgHbA1bS7D0RHka1Nb5KD5/7oBsG1H3Ab1kzKMfe09d6E1IZNgdQ==", null, false, "b1b366e0-07b5-42c9-95d1-ec8699d02713", false, "User3" },
+                    { "54b1ff98-6b5f-4c5e-97a9-747095e1f5dc", 0, "040d3204-408b-49a5-9fad-52d56396530f", "user2@mail.ru", false, false, null, "USER2@MAIL.RU", "USER2", "AQAAAAEAACcQAAAAEEv5UdqFzWn9LiCZ7/XMMuj8ZwfGpqqqNTVNhEnncn6+FWL1Y5ititIvl7Uvzf0pmA==", null, false, "a0a65d52-0fc1-4a69-a9bd-6e076df2525a", false, "User2" },
+                    { "09c529c8-e798-44ac-9eac-e0150182fa4c", 0, "01aae025-18d1-43c4-9ead-0e32d6613f71", "user4@mail.ru", false, false, null, "USER4@MAIL.RU", "USER4", "AQAAAAEAACcQAAAAEE5zoSeEk/UEjRtlswW+CtmyvQe+PQM1hpp7K22VAjsxXAGISN5zZoRoXmVzca+iRA==", null, false, "07efd003-fb14-4bcc-8f3f-3f2f6459e42e", false, "User4" },
+                    { "a0d74199-2ad5-4d2f-a184-eb52f5bf9094", 0, "84fa14dd-e722-49d2-b6a1-63405dc52b27", "moderator@mail.ru", false, false, null, "MODERATOR@MAIL.RU", "MODERATOR", "AQAAAAEAACcQAAAAEO/USzQKZENxDHEECjp3n1Mt9DaMQDFXj2dQIo1C03Thc5a7at5rI4zGS/M05eU2RQ==", null, false, "b5a653ba-8a03-447a-8895-778989d06384", false, "Moderator" },
+                    { "757d5290-d036-4757-85ae-827b59e92cd3", 0, "30b6f92a-c25d-469c-93b3-74a39a62681c", "administrator@mail.ru", false, false, null, "ADMINISTRATOR@MAIL.RU", "ADMINISTRATOR", "AQAAAAEAACcQAAAAEHbA59k6R9CidRWBBLl1cQw/jGM6Tv6jjBVzOI9+aSIweJFWDQmSrZv2iDwqq7K1vQ==", null, false, "a85197a1-e5e1-428c-a909-968776bf78f8", false, "Administrator" },
+                    { "64dbb199-0a95-4f1a-afcf-10cc827fd3c8", 0, "bc119491-4d98-4cbb-a1c3-cc1904fd4a98", "user1@mail.ru", false, false, null, "USER1@MAIL.RU", "USER1", "AQAAAAEAACcQAAAAEEPQ5p8yryXe2TWs1fxIpgAhhRs1ANxbiAHQEDeh6sI3SptpLc4mSEeRG1CZLoQSdQ==", null, false, "52e27e73-3a71-4e1e-80db-d0661d77b2a3", false, "User1" }
                 });
 
             migrationBuilder.InsertData(
@@ -297,8 +298,7 @@ namespace Accounts.DataAccess.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -324,8 +324,7 @@ namespace Accounts.DataAccess.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_FavoriteAdvertisementUser_UsersId",
