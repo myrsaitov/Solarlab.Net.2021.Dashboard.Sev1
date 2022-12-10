@@ -5,6 +5,7 @@ using Sev1.UserFiles.DataAccess.Repositories;
 using Sev1.UserFiles.DataAccess.Base;
 using Sev1.UserFiles.AppServices.Services.UserFile.Repositories;
 using Sev1.UserFiles.Domain.Base.Repositories;
+using UserFiles.DataAccess.Migrations;
 
 // Nugets:
 // Microsoft.EntityFrameworkCore
@@ -63,8 +64,8 @@ namespace Sev1.UserFiles.DataAccess
                     connectionString,
                     builder =>
                         builder.MigrationsAssembly(
-                            typeof(DataAccessModule).Assembly.FullName)); // Для самой первой миграции
-                //typeof(DatabaseContextModelSnapshot).Assembly.FullName)); // Для остальных миграций
+                            //typeof(DataAccessModule).Assembly.FullName)); // Для самой первой миграции
+                            typeof(DatabaseContextModelSnapshot).Assembly.FullName)); // Для остальных миграций
             });
 
             // AddScoped:

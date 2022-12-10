@@ -1,4 +1,5 @@
 ﻿using System;
+using Advertisements.DataAccess.Migrations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Sev1.Advertisements.AppServices.Services.Advertisement.Repositories;
@@ -66,8 +67,8 @@ namespace Sev1.Advertisements.DataAccess
                     connectionString,
                     builder =>
                         builder.MigrationsAssembly(
-                            typeof(DataAccessModule).Assembly.FullName)); // Для самой первой миграции
-                            //typeof(DatabaseContextModelSnapshot).Assembly.FullName)); // Для остальных миграций
+                            //typeof(DataAccessModule).Assembly.FullName)); // Для самой первой миграции
+                            typeof(DatabaseContextModelSnapshot).Assembly.FullName)); // Для остальных миграций
             });
 
             // AddScoped:

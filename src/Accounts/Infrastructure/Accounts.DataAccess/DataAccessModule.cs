@@ -1,4 +1,5 @@
 ﻿using System;
+using Accounts.DataAccess.Migrations;
 using Sev1.Accounts.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -63,8 +64,8 @@ namespace Sev1.Accounts.DataAccess
                     connectionString,
                     builder =>
                         builder.MigrationsAssembly(
-                            typeof(DataAccessModule).Assembly.FullName)); // Для самой первой миграции
-                            //typeof(DatabaseContextModelSnapshot).Assembly.FullName)); // Для остальных миграций
+                            //typeof(DataAccessModule).Assembly.FullName)); // Для самой первой миграции
+                            typeof(DatabaseContextModelSnapshot).Assembly.FullName)); // Для остальных миграций
             });
 
             // AddScoped:

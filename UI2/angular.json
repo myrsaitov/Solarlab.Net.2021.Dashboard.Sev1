@@ -131,5 +131,8 @@
         }
       }
     }},
-  "defaultProject": "sev1-spa"
+  "defaultProject": "sev1-spa",
+  "cli": {
+    "analytics": false
+  }
 }
