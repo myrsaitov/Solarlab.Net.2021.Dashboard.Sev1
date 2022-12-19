@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:49532",
-      "sslPort": 44378 // Не изменять в широких пределах, иначе не будет работать!
+      "applicationUrl": "http://localhost:50002",
+      "sslPort": 44302  // 44300...44399 https://learn.microsoft.com/en-us/iis/extensions/using-iis-express/handling-url-binding-failures-in-iis-express#:~:text=http%3A//myhostname%3A8080/-,Using%20a%20Custom%20SSL%20Port,-If%20you%20want
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
@@ -24,7 +24,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": "true",
-      "applicationUrl": "https://localhost:49032",
+      "applicationUrl": "https://localhost:44302",
       "launchUrl": "swagger"
     },
     "Docker": {

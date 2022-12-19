@@ -1,0 +1,78 @@
+version: "3.7"
+
+# Postgres only!
+
+# First time: run "_docker_compose_create_volumes.cmd"!!!
+
+services: 
+
+  ##############################################################
+  # Accounts
+  ##############################################################
+
+  bulleting_board-postgres-accounts:
+    image: "postgres:15.1"
+    restart: always
+    environment:
+        - POSTGRES_DB=accounts_db
+        - POSTGRES_USER=accounts_user
+        - POSTGRES_PASSWORD=#V6G&W%2OB6H
+    ports: 
+        - "49021:5432"
+    volumes:
+        - accounts_data:/mnt/largedb
+
+
+  ##############################################################
+  # Advertisements
+  ##############################################################
+
+  bulleting_board-postgres-advertisements:
+    image: "postgres:15.1"
+    restart: always
+    environment:
+        - POSTGRES_DB=advertisements_db
+        - POSTGRES_USER=advertisements_user
+        - POSTGRES_PASSWORD=1BI(R5#bz*yT
+    ports: 
+        - "49022:5432"
+    volumes:
+        - advertisements_data:/mnt/largedb
+        
+        
+  ##############################################################
+  # UserFiles
+  ##############################################################
+
+  bulleting_board-postgres-user_files:
+    image: "postgres:15.1"
+    restart: always
+    environment:
+        - POSTGRES_DB=user_files_db
+        - POSTGRES_USER=user_files_user
+        - POSTGRES_PASSWORD=5t6k%%4ovq&u
+    ports: 
+        - "49023:5432"
+    volumes:
+        - user_files_data:/mnt/largedb
+
+  
+volumes:
+
+  accounts_data:
+    driver_opts:
+      type: none
+      device: /c/Docker/Root/BulletingBoard/Postgres/Accounts/largedb
+      o: bind
+
+  advertisements_data:
+    driver_opts:
+      type: none
+      device: /c/Docker/Root/BulletingBoard/Postgres/Advertisements/largedb
+      o: bind
+
+  user_files_data:
+    driver_opts:
+      type: none
+      device: /c/Docker/Root/BulletingBoard/Postgres/UserFiles/largedb
+      o: bind

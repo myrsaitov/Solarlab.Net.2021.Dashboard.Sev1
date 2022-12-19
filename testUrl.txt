@@ -1,9 +1,3 @@
-"Sev1"
-https://localhost:49031/api/v1/accounts?PageSize=10&Page=0
-https://localhost:49032/api/v1/advertisements?PageSize=10&Page=0
-https://localhost:49033/api/v1/userfiles?PageSize=10&Page=0
-
-"IIS"
-https://localhost:44377/api/v1/accounts?PageSize=10&Page=0
-https://localhost:44378/api/v1/advertisements?PageSize=10&Page=0
-https://localhost:44379/api/v1/userfiles?PageSize=10&Page=0
+https://localhost:44301/api/v1/accounts?PageSize=10&Page=0
+https://localhost:44302/api/v1/advertisements?PageSize=10&Page=0
+https://localhost:44303/api/v1/userfiles?PageSize=10&Page=0
