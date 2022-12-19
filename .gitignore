@@ -6,6 +6,8 @@ riderModule.iml
 Sev1.sln.DotSettings.user
 *.cache
 
+Certificates
+
 *.mkm.txt
 .angular/
 .vscode/

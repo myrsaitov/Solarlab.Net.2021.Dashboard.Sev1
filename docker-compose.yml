@@ -1,51 +1,22 @@
-version: "3.7"
+version: '3.4'
 
-# Sercives only!
-
-# First time: run "_docker_compose_create_volumes.cmd"!!!
-
-services: 
-
-  ##############################################################
-  # Accounts
-  ##############################################################
-
-  bulleting_board-services-accounts:
-    image: myrsaitov/bulleting_board-accounts
+services:
+  accounts.api:
+    image: ${DOCKER_REGISTRY-}accountsapi
     build:
-        context: ./
-        dockerfile: ./src/Accounts/Hosts/Accounts.Api/Dockerfile
-    ports:
-      - "44301:44301"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+      context: .
+      dockerfile: src/Accounts/Hosts/Accounts.Api/Dockerfile
 
-
-  ##############################################################
-  # Advertisements
-  ##############################################################
-
-  bulleting_board-services-advertisements:
-    image: myrsaitov/bulleting_board-advertisements
+  advertisements.api:
+    image: ${DOCKER_REGISTRY-}advertisementsapi
     build:
-        context: ./
-        dockerfile: ./src/Advertisements/Hosts/Advertisements.Api/Dockerfile
-    ports:
-      - "44302:44302"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+      context: .
+      dockerfile: src/Advertisements/Hosts/Advertisements.Api/Dockerfile
 
-   
-  ##############################################################
-  # UserFiles
-  ##############################################################
 
-  bulleting_board-services-user_files:
-    image: myrsaitov/bulleting_board-user_files
+  userfiles.api:
+    image: ${DOCKER_REGISTRY-}userfilesapi
     build:
-        context: ./
-        dockerfile: ./src/UserFiles/Hosts/UserFiles.Api/Dockerfile
-    ports:
-      - "44303:44303"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+      context: .
+      dockerfile: src/UserFiles/Hosts/UserFiles.Api/Dockerfile
+
