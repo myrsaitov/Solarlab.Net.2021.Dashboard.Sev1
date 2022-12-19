@@ -93,16 +93,17 @@ namespace Sev1.UserFiles.Api
 
                 // Подключение к БД через информацию в "ConnectionString"
                 .AddDataAccessModule(configuration =>
-#if DEBUG
-                    configuration.InPostgress(Configuration.GetConnectionString("PostgresDb"))
-                    //configuration.InSqlServer(Configuration.GetConnectionString("RemoteConnection"))
-#else
-                    configuration.InSqlServer(Configuration.GetConnectionString("DefaultConnection"))
-#endif
+                    #if DEBUG
+                        configuration.InPostgress(Configuration.GetConnectionString("PostgresDebug"))
+                    #else
+                        configuration.InPostgress(Configuration.GetConnectionString("PostgresRelease"))
+                    #endif
                 );
 
             // Подключение Swagger
-            services.AddSwaggerModule();
+            #if DEBUG
+                services.AddSwaggerModule();
+            #endif
 
             // AddTransient
             // Transient(временные) объекты всегда разные; каждому контроллеру и сервису предоставляется новый инстанс.
@@ -212,12 +213,25 @@ namespace Sev1.UserFiles.Api
                 .AllowAnyHeader()
                 .AllowAnyMethod());
 
-            // In the Startup.Configure method, 
-            // enable the middleware for serving the generated JSON document 
-            // and the Swagger UI:
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PublicApi v1"));
+            #if DEBUG
+                // In the Startup.Configure method, 
+                // enable the middleware for serving the generated JSON document 
+                // and the Swagger UI.
+                // This line enables the app to use Swagger, 
+                // with the configuration in the ConfigureServices method.
+                app.UseSwagger();
 
+                // This line enables Swagger UI, 
+                // which provides us with a nice, simple UI 
+                // with which we can view our API calls.
+                app.UseSwaggerUI(c =>
+                { 
+                    c.SwaggerEndpoint(
+                        "/swagger/v1/swagger.json",
+                        "PublicApi v1");
+                });
+            #endif
+            
             // Обработка исключительных ситуаций
             app.UseApplicationException();
 
