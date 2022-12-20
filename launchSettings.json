@@ -1,15 +1,66 @@
 {
   "profiles": {
-    "Docker Compose": {
+    "Start All With Debugging": {
       "commandName": "DockerCompose",
       "composeLaunchAction": "LaunchBrowser",
-      "composeLaunchServiceName": "userfiles.api",
+      "composeLaunchServiceName": "user_files.api",
       "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/swagger",
       "commandVersion": "1.0",
       "serviceActions": {
         "accounts.api": "StartDebugging",
         "advertisements.api": "StartDebugging",
-        "userfiles.api": "StartDebugging"
+        "user_files.api": "StartDebugging",
+        "accounts.postgres": "StartWithoutDebugging",
+        "advertisements.postgres": "StartWithoutDebugging",
+        "user_files.postgres": "StartWithoutDebugging"
+      }
+    },
+    "Start All Without Debugging": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "accounts.api": "StartWithoutDebugging",
+        "accounts.postgres": "StartWithoutDebugging",
+        "advertisements.api": "StartWithoutDebugging",
+        "advertisements.postgres": "StartWithoutDebugging",
+        "user_files.api": "StartWithoutDebugging",
+        "user_files.postgres": "StartWithoutDebugging"
+      }
+    },
+    "Start Postgres": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "accounts.api": "DoNotStart",
+        "accounts.postgres": "StartWithoutDebugging",
+        "advertisements.api": "DoNotStart",
+        "advertisements.postgres": "StartWithoutDebugging",
+        "user_files.api": "DoNotStart",
+        "user_files.postgres": "StartWithoutDebugging"
+      }
+    },
+    "Start Services Without Debugging": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "accounts.api": "StartDebugging",
+        "accounts.postgres": "DoNotStart",
+        "advertisements.api": "StartDebugging",
+        "advertisements.postgres": "DoNotStart",
+        "user_files.api": "StartDebugging",
+        "user_files.postgres": "DoNotStart"
+      }
+    },
+    "Start Services With Debugging": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "accounts.api": "StartWithoutDebugging",
+        "accounts.postgres": "DoNotStart",
+        "advertisements.api": "StartWithoutDebugging",
+        "advertisements.postgres": "DoNotStart",
+        "user_files.api": "StartWithoutDebugging",
+        "user_files.postgres": "DoNotStart"
       }
     }
   }
