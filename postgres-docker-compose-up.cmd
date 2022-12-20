@@ -5,6 +5,6 @@
 TITLE Run "docker-compose up -d"
 
 :: Запускает docker-compose
-docker-compose up -d
+docker-compose  -f docker-compose-postgres.yml up -d
 
 PAUSE

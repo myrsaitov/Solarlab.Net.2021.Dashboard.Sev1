@@ -5,6 +5,6 @@
 TITLE Run "docker-compose down"
 
 :: Останавливает docker-compose
-docker-compose down
+docker-compose  -f docker-compose-postgres.yml down
 
 PAUSE
