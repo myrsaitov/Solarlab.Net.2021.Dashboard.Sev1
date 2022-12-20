@@ -68,9 +68,10 @@ namespace Sev1.Accounts.Api
                 .AddIdentity(Configuration);
 
             // Подключение Swagger
-            #if DEBUG
+            if (Configuration.GetSection("SwaggerOptions:UseSwagger").Get<bool>())
+            {
                 services.AddSwaggerModule();
-            #endif
+            }
 
             // Инжектируем Mapster
             //
@@ -133,24 +134,25 @@ namespace Sev1.Accounts.Api
                 .AllowAnyHeader()
                 .AllowAnyMethod());
 
-            #if DEBUG
-                // In the Startup.Configure method, 
-                // enable the middleware for serving the generated JSON document 
-                // and the Swagger UI.
-                // This line enables the app to use Swagger, 
-                // with the configuration in the ConfigureServices method.
+            // In the Startup.Configure method, 
+            // enable the middleware for serving the generated JSON document 
+            // and the Swagger UI.
+            // This line enables the app to use Swagger, 
+            // with the configuration in the ConfigureServices method.
+            if (Configuration.GetSection("SwaggerOptions:UseSwagger").Get<bool>())
+            {
                 app.UseSwagger();
+            }
 
-                // This line enables Swagger UI, 
-                // which provides us with a nice, simple UI 
-                // with which we can view our API calls.
-                app.UseSwaggerUI(c =>
-                { 
-                    c.SwaggerEndpoint(
-                        "/swagger/v1/swagger.json",
-                        "PublicApi v1");
-                });
-            #endif
+            // This line enables Swagger UI, 
+            // which provides us with a nice, simple UI 
+            // with which we can view our API calls.
+            app.UseSwaggerUI(c =>
+            { 
+                c.SwaggerEndpoint(
+                    "/swagger/v1/swagger.json",
+                    "PublicApi v1");
+            });
 
             // Обработка исключительных ситуаций
             app.UseApplicationException();

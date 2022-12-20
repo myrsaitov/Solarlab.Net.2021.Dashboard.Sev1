@@ -12,6 +12,7 @@ namespace Sev1.UserFile.Api
     {
         public static IServiceCollection AddSwaggerModule(this IServiceCollection services)
         {
+            
             services.AddSwaggerGen(c =>
             {
                 c.CustomSchemaIds(type => type.FullName.Replace("+", "_"));
