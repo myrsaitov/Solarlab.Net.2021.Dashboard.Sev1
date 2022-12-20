@@ -3,10 +3,10 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <RootNamespace>Sev1.Advertisements.Api</RootNamespace>
-        <UserSecretsId>b06248f5-8976-47a6-bf46-a8c4203df343</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <DockerfileContext>..\..\..\..</DockerfileContext>
         <DockerComposeProjectPath>..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
+        <UserSecretsId>28939add-08d3-45f3-a225-f5e2ae1864af</UserSecretsId>
     </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
