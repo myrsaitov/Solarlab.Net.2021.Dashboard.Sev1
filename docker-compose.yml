@@ -13,14 +13,22 @@ services:
   
   accounts.api:
     image: ${DOCKER_REGISTRY-}accountsapi
+    restart: always
     build:
       context: .
       dockerfile: src/Accounts/Hosts/Accounts.Api/Dockerfile
+    depends_on:
+      accounts.postgres:
+        condition: service_healthy
 
   accounts.postgres:
     image: "postgres:15.1"
     restart: always
-
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   ##############################################################
   # Advertisements
@@ -28,14 +36,22 @@ services:
   
   advertisements.api:
     image: ${DOCKER_REGISTRY-}advertisementsapi
+    restart: always
     build:
       context: .
       dockerfile: src/Advertisements/Hosts/Advertisements.Api/Dockerfile
-      
+    depends_on:
+      advertisements.postgres:
+        condition: service_healthy
+        
   advertisements.postgres:
     image: "postgres:15.1"
     restart: always
-
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   ##############################################################
   # UserFiles
@@ -43,10 +59,19 @@ services:
   
   user_files.api:
     image: ${DOCKER_REGISTRY-}userfilesapi
+    restart: always   
     build:
       context: .
       dockerfile: src/UserFiles/Hosts/UserFiles.Api/Dockerfile
-
+    depends_on:
+      user_files.postgres:
+        condition: service_healthy
+        
   user_files.postgres:
     image: "postgres:15.1"
     restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
