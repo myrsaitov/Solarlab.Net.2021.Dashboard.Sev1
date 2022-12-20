@@ -15,24 +15,6 @@
   </PropertyGroup>
   
     <ItemGroup>
-      <Compile Remove="App_Data\**" />
-      <Compile Remove="Controllers\Parser\**" />
-      <Compile Remove="UserFilesData\**" />
-      <Content Remove="App_Data\**" />
-      <Content Remove="Controllers\Parser\**" />
-      <Content Remove="UserFilesData\**" />
-      <EmbeddedResource Remove="App_Data\**" />
-      <EmbeddedResource Remove="Controllers\Parser\**" />
-      <EmbeddedResource Remove="UserFilesData\**" />
-      <None Remove="App_Data\**" />
-      <None Remove="Controllers\Parser\**" />
-      <None Remove="UserFilesData\**" />
-      <TypeScriptCompile Remove="App_Data\**" />
-      <TypeScriptCompile Remove="Controllers\Parser\**" />
-      <TypeScriptCompile Remove="UserFilesData\**" />
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="ExpressionDebugger" Version="2.2.0" />
         <PackageReference Include="HtmlAgilityPack" Version="1.11.37" />
         <PackageReference Include="Mapster" Version="7.2.0" />
@@ -48,10 +30,6 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.11" />
-        <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.4.4">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
         <PackageReference Include="System.Net.Http" Version="4.3.4" />
@@ -71,12 +49,6 @@
       <ProjectReference Include="..\..\Infrastructure\UserFiles.DataAccess\UserFiles.DataAccess.csproj" />
      
       <ProjectReference Include="..\..\Infrastructure\UserFiles.Mapper\UserFiles.MapsterMapper.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Controllers\Image\ImageController - Copy.Upload.cs">
-        <DependentUpon>ImageController.Upload.cs</DependentUpon>
-      </Compile>
     </ItemGroup>
 
 </Project>
