@@ -92,12 +92,9 @@ namespace Sev1.UserFiles.Api
                 .AddTransient<IUserProvider, UserProvider>()
 
                 // Подключение к БД через информацию в "ConnectionString"
-                .AddDataAccessModule(configuration =>
-                    #if DEBUG
-                        configuration.InPostgress(Configuration.GetConnectionString("PostgresDebug"))
-                    #else
-                        configuration.InPostgress(Configuration.GetConnectionString("PostgresRelease"))
-                    #endif
+                .AddDataAccessModule(configuration => 
+                    configuration.InPostgress(Configuration.GetConnectionString("PostgresUserFilesDb"))
+                    //configuration.InSqlServer(Configuration.GetConnectionString("MsSqlUserFilesDb"))
                 );
 
             // Подключение Swagger

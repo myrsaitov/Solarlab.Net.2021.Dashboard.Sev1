@@ -83,12 +83,9 @@ namespace Sev1.Advertisements.Api
                 .AddHttpContextAccessor()
 
                 // Подключение к БД через информацию в "ConnectionString"
-                .AddDataAccessModule(configuration =>
-                    #if DEBUG
-                        configuration.InPostgress(Configuration.GetConnectionString("PostgresDebug"))
-                    #else
-                        configuration.InPostgress(Configuration.GetConnectionString("PostgresRelease"))
-                    #endif
+                .AddDataAccessModule(configuration => 
+                    configuration.InPostgress(Configuration.GetConnectionString("PostgresAdvertisementsDb"))
+                    //configuration.InSqlServer(Configuration.GetConnectionString("MsSqlAdvertisementsDb"))
                 );
 
             // Подключение Swagger

@@ -59,12 +59,9 @@ namespace Sev1.Accounts.Api
                 .AddTransient<IRegionValidateApiClient, RegionValidateApiClient>()
 
                 // Подключение к БД через информацию в "ConnectionString"
-                .AddDataAccessModule(configuration =>
-                    #if DEBUG
-                        configuration.InPostgress(Configuration.GetConnectionString("PostgresDebug"))
-                    #else
-                        configuration.InPostgress(Configuration.GetConnectionString("PostgresRelease"))
-                    #endif
+                .AddDataAccessModule(configuration => 
+                    configuration.InPostgress(Configuration.GetConnectionString("PostgresAccountsDb"))
+                    //configuration.InSqlServer(Configuration.GetConnectionString("MsSqlAccountsDb"))
                 )
                 
                 // Подключение Identity
