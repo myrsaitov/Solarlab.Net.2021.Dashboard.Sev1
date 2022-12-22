@@ -2,9 +2,9 @@
 :: Запускает docker-compose
 
 :: Устанавливает заголовок окна
-TITLE Run "docker-compose up -d"
+TITLE Run "postgres-docker-compose UP"
 
 :: Запускает docker-compose
-docker-compose  -f docker-compose-postgres.yml up -d
+docker-compose  --file postgres-docker-compose.yml up --detach
 
 PAUSE

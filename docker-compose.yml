@@ -5,6 +5,7 @@ version: '3.4'
 ## Services
 ##############################################################
 ##############################################################
+
 services:
 
   ##############################################################
@@ -20,7 +21,9 @@ services:
     depends_on:
       accounts.postgres:
         condition: service_healthy
-
+    networks:
+        - dev-network  
+        
   accounts.postgres:
     image: "postgres:15.1"
     restart: always
@@ -29,7 +32,9 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-
+    networks:
+        - dev-network  
+        
   ##############################################################
   # Advertisements
   ##############################################################
@@ -43,6 +48,8 @@ services:
     depends_on:
       advertisements.postgres:
         condition: service_healthy
+    networks:
+        - dev-network  
         
   advertisements.postgres:
     image: "postgres:15.1"
@@ -52,20 +59,25 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-
+    networks:
+        - dev-network  
+        
+        
   ##############################################################
   # UserFiles
   ##############################################################
   
   user_files.api:
     image: ${DOCKER_REGISTRY-}userfilesapi
-    restart: always   
+    restart: always
     build:
       context: .
       dockerfile: src/UserFiles/Hosts/UserFiles.Api/Dockerfile
     depends_on:
       user_files.postgres:
         condition: service_healthy
+    networks:
+        - dev-network  
         
   user_files.postgres:
     image: "postgres:15.1"
@@ -75,3 +87,21 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    networks:
+        - dev-network  
+
+##############################################################
+##############################################################
+## Networks
+##############################################################
+##############################################################
+
+networks:
+  dev-network:
+    external: true
+    
+#networks:
+  #default:
+    #name: dev_network
+    #external: true
+    #driver: bridge
