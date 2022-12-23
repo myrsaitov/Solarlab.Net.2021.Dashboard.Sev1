@@ -14,7 +14,7 @@ services:
   
   accounts.api:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      #- ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
       - "49001:80"
@@ -40,7 +40,7 @@ services:
   
   advertisements.api:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      #- ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
       - "49002:80"
@@ -65,7 +65,7 @@ services:
   
   user_files.api:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      #- ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
       - "49003:80"

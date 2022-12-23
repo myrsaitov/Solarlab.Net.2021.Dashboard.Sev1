@@ -18,10 +18,10 @@ COPY ["src/Advertisements/Infrastructure/Advertisements.Mapper/Advertisements.Ma
 RUN dotnet restore "src/Advertisements/Hosts/Advertisements.Api/Advertisements.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Advertisements/Hosts/Advertisements.Api"
-RUN dotnet build "Advertisements.Api.csproj" -c Debug -o /app/build
+RUN dotnet build "Advertisements.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Advertisements.Api.csproj" -c Debug -o /app/publish
+RUN dotnet publish "Advertisements.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

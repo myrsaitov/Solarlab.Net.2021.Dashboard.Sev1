@@ -6,8 +6,8 @@
 
 :: Помогло:
 :: Очистить все папки:
-:: C:\Users\user\AppData\Roaming/Microsoft/UserSecrets
-:: C:\Users\user\AppData\Roaming/ASP.NET/Https
+:: C:\Users\user\AppData\Roaming\Microsoft\UserSecrets
+:: C:\Users\user\AppData\Roaming\ASP.NET\Https
 ::
 :: Удалить все сертификаты:
 :: dotnet dev-certs https --clean
@@ -17,27 +17,76 @@
 :: 
 :: Очистить все бинарники у докера и в проекте
 :: 
-:: Запустить полностью чистый проект, подтвердить создание сертификата
+:: Запустить полностью чистый проект в режиме docker-compose, подтвердить создание сертификата
 
 :: Устанавливает заголовок окна
 TITLE Run "dev-certs clean and set"
 
-:: To clean a developer certificate:
-dotnet dev-certs https --clean
 
+
+:: Удаление вручную
+ECHO;
+ECHO ********************************************************
+ECHO * 1. Manually remove UserSecrets and ASP.NET\Https in APPDATA
+ECHO ********************************************************
+ECHO;
+ECHO %APPDATA%\Microsoft\UserSecrets
+START %APPDATA%\Microsoft\UserSecrets
+ECHO;
+ECHO %APPDATA%\ASP.NET\Https
+START %APPDATA%\ASP.NET\Https
+
+ECHO;
+ECHO ********************************************************
+ECHO * 2. Manually remove Certificates in "certmgr.msc"
+ECHO ********************************************************
+ECHO;
+ECHO Check Sertificates in "certmgr.msc":
+ECHO   - Personal/Certificates: REMOVE "localhost"
+ECHO   - Current User Trusted Root Certification Authorities/Certificates: REMOVE "localhost"
+ECHO;
+certmgr.msc
+
+:: To clean a developer certificate:
+ECHO;
+ECHO ********************************************************
+ECHO * 3. Automatic remove certificates
+ECHO ********************************************************
+ECHO;
+dotnet dev-certs https --clean
+ECHO;
+ECHO;
 PAUSE
 
 :: To generate a developer certificate:
-dotnet dev-certs https -t -p "rPWw?sBn6%dh"
-
-PAUSE
-
+:: dotnet dev-certs https -p "rPWw?sBn6%dh"
 :: To trust the certificate (Windows and macOS only):
+ECHO;
+ECHO ********************************************************
+ECHO * 4. Generating new certificate
+ECHO ********************************************************
+ECHO;
 dotnet dev-certs https --trust
 
-PAUSE
+:: Проверка наличия нового сертификата
+ECHO;
+ECHO ********************************************************
+ECHO * 5. Checking new certificate
+ECHO ********************************************************
+ECHO;
+ECHO Check Sertificates in "certmgr.msc":
+ECHO   - Personal/Certificates: "localhost"
+ECHO   - Current User Trusted Root Certification Authorities/Certificates: "localhost"
+ECHO;
+certmgr.msc
 
-
-ECHO Restart Visual Studio!!!
+:: Перезапустите MS Visual Studio!!!
+ECHO;
+ECHO ********************************************************
+ECHO * 6. Restarting!
+ECHO ********************************************************
+ECHO;
+ECHO Restart MS Visual Studio!!!
+ECHO;
 
 PAUSE
