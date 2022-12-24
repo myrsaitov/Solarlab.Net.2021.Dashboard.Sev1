@@ -58,21 +58,25 @@ ECHO;
 ECHO;
 PAUSE
 
-:: To generate a developer certificate:
-:: dotnet dev-certs https -p "rPWw?sBn6%dh"
-:: To trust the certificate (Windows and macOS only):
+
+:: https://learn.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-5.0&tabs=visual-studio#trust-https-certificate-from-windows-subsystem-for-linux-1
 ECHO;
 ECHO ********************************************************
 ECHO * 4. Generating new certificate
 ECHO ********************************************************
 ECHO;
-dotnet dev-certs https --trust
+dotnet dev-certs https -ep %APPDATA%\ASP.NET\Https\bulleting_board.pfx -p pgRu#5~#BcJd --trust
+wsl dotnet dev-certs https --clean --import %APPDATA%\ASP.NET\Https\bulleting_board.pfx --password pgRu#5~#BcJd --trust
+wsl dotnet dev-certs https --trust
 
 :: Проверка наличия нового сертификата
 ECHO;
 ECHO ********************************************************
 ECHO * 5. Checking new certificate
 ECHO ********************************************************
+ECHO;
+ECHO %APPDATA%\ASP.NET\Https
+START %APPDATA%\ASP.NET\Https
 ECHO;
 ECHO Check Sertificates in "certmgr.msc":
 ECHO   - Personal/Certificates: "localhost"
