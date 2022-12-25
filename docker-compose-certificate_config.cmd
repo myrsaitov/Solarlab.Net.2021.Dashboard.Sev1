@@ -66,7 +66,7 @@ ECHO * 4. Generating new certificate
 ECHO ********************************************************
 ECHO;
 dotnet dev-certs https -ep %APPDATA%\ASP.NET\Https\bulleting_board.pfx -p pgRu#5~#BcJd --trust
-wsl dotnet dev-certs https --clean --import %APPDATA%\ASP.NET\Https\bulleting_board.pfx --password pgRu#5~#BcJd --trust
+wsl dotnet dev-certs https --clean --import /mnt/c/Users/user/AppData/Roaming/ASP.NET/Https/bulleting_board.pfx --password pgRu#5~#BcJd
 wsl dotnet dev-certs https --trust
 
 :: Проверка наличия нового сертификата
@@ -94,3 +94,6 @@ ECHO Restart MS Visual Studio!!!
 ECHO;
 
 PAUSE
+
+:: Еще способ
+:: https://stackoverflow.com/questions/69801822/how-to-configure-a-custom-cert-and-key-for-a-net-core-application-for-rider-or
