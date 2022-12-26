@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using MapsterMapper;
 using Sev1.Accounts.Api.Controllers;
 using Microsoft.AspNetCore.Builder;
@@ -17,7 +19,29 @@ namespace Sev1.Accounts.Api
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            
+            // https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0
+            //
+            // Сделано по примерм:
+            // https://referbruv.com/blog/accessing-environment-variables-in-aspnet-core-inside-host-and-startup/
+            // https://stackoverflow.com/questions/39231951/how-do-i-access-configuration-in-any-class-in-asp-net-core
+            // https://dusted.codes/dotenv-in-dotnet
+            // https://enlabsoftware.com/development/dotnet-core-environment-how-config-examples.html
+            // https://www.reddit.com/r/dotnet/comments/xp7c7e/how_do_i_replace_a_value_in_appsettingsjson_with/
+            
+            var builder = new ConfigurationBuilder();
+            
+            builder
+                .SetBasePath(Directory.GetCurrentDirectory())
+                // Подключение основного файла "appsettings.json" (обязательно)
+                .AddJsonFile("appsettings.json", optional: false)
+                // Замещение значений из файла "appsettings.{ENV}.json" (необязательно)
+                .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", optional: true)
+                // Замещение значений из переменных среды
+                .AddEnvironmentVariables();
+            
+            Configuration = builder.Build();
+            
         }
 
         public IConfiguration Configuration { get; }

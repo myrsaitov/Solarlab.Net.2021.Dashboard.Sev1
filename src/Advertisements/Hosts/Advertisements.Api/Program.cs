@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Sev1.Advertisements.Api
 {
-    // Õîñò íàñòðàèâàåòñÿ, ñòðîèòñÿ è çàïóñêàåòñÿ â êëàññå Program
+    // Ð¥Ð¾ÑÑ‚ Ð½Ð°ÑÑ‚Ñ€Ð°Ð¸Ð²Ð°ÐµÑ‚ÑÑ, ÑÑ‚Ñ€Ð¾Ð¸Ñ‚ÑÑ Ð¸ Ð·Ð°Ð¿ÑƒÑÐºÐ°ÐµÑ‚ÑÑ Ð² ÐºÐ»Ð°ÑÑÐµ Program
     public class Program
     {
         
@@ -12,15 +12,15 @@ namespace Sev1.Advertisements.Api
             CreateHostBuilder(args).Build().Run();
 
             // Run()
-            // Ýòîò ìåòîä äîáàâëÿåò middleware-êîìïîíåíò â âèäå Run[Middleware],
-            // êîòîðûé âûïîëíèòñÿ â êîíöå êîíâåéåðà.Êàê ïðàâèëî,
-            // îí äåéñòâóåò êàê çàìûêàþùåå middleware è äîáàâëÿåòñÿ
-            // â êîíöå êîíâåéåðà çàïðîñîâ, ïîñêîëüêó íå ìîæåò âûçûâàòü
-            // ñëåäóþùèé middleware - êîìïîíåíò.
+            // Ð­Ñ‚Ð¾Ñ‚ Ð¼ÐµÑ‚Ð¾Ð´ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÐµÑ‚ middleware-ÐºÐ¾Ð¼Ð¿Ð¾Ð½ÐµÐ½Ñ‚ Ð² Ð²Ð¸Ð´Ðµ Run[Middleware],
+            // ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð²Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑÑ Ð² ÐºÐ¾Ð½Ñ†Ðµ ÐºÐ¾Ð½Ð²ÐµÐ¹ÐµÑ€Ð°.ÐšÐ°Ðº Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾,
+            // Ð¾Ð½ Ð´ÐµÐ¹ÑÑ‚Ð²ÑƒÐµÑ‚ ÐºÐ°Ðº Ð·Ð°Ð¼Ñ‹ÐºÐ°ÑŽÑ‰ÐµÐµ middleware Ð¸ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÐµÑ‚ÑÑ
+            // Ð² ÐºÐ¾Ð½Ñ†Ðµ ÐºÐ¾Ð½Ð²ÐµÐ¹ÐµÑ€Ð° Ð·Ð°Ð¿Ñ€Ð¾ÑÐ¾Ð², Ð¿Ð¾ÑÐºÐ¾Ð»ÑŒÐºÑƒ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð²Ñ‹Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ
+            // ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ middleware - ÐºÐ¾Ð¼Ð¿Ð¾Ð½ÐµÐ½Ñ‚.
             // https://habr.com/ru/company/otus/blog/528692/
         }
 
-        // Àáñòðàêöèÿ èíèöèàëèçàöèè ïðîãðàììû
+        // ÐÐ±ÑÑ‚Ñ€Ð°ÐºÑ†Ð¸Ñ Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¸ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
