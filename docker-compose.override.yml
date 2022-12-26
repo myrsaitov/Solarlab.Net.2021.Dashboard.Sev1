@@ -17,7 +17,7 @@ services:
       #- ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTPS_PORT=44301
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=pgRu#5~#BcJd
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=changeit
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/root/.aspnet/DataProtection-Keys/bulleting_board.pfx
     ports:
       - "49001:80"
@@ -46,7 +46,7 @@ services:
       #- ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTPS_PORT=44302
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=pgRu#5~#BcJd
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=changeit
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/root/.aspnet/DataProtection-Keys/bulleting_board.pfx
 
     ports:
@@ -75,7 +75,7 @@ services:
       #- ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTPS_PORT=44303
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=pgRu#5~#BcJd
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=changeit
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/root/.aspnet/DataProtection-Keys/bulleting_board.pfx
     ports:
       - "49003:80"

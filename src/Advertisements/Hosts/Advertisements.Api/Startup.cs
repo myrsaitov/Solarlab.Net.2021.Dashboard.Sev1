@@ -1,3 +1,6 @@
+using System;
+using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using MapsterMapper;
 using Sev1.Advertisements.Api.Controllers;
 using Microsoft.AspNetCore.Builder;
@@ -65,10 +68,35 @@ namespace Sev1.Advertisements.Api
                 .AddCors()
 
                 // Инжектирование сервисов приложения
-                .AddApplicationModule(Configuration)
+                .AddApplicationModule(Configuration);
 
-                // Добавляем фабрику API-клиентов
-                .AddHttpClient()
+            string kestrelCertificatesDefaultPassword = Environment.GetEnvironmentVariable("ASPNETCORE_Kestrel__Certificates__Default__Password");
+            string kestrelCertificatesDefaultPath = Environment.GetEnvironmentVariable("ASPNETCORE_Kestrel__Certificates__Default__Path");
+            
+            if (!(string.IsNullOrWhiteSpace(kestrelCertificatesDefaultPassword) &&
+                  string.IsNullOrWhiteSpace(kestrelCertificatesDefaultPassword)))
+            {
+                services
+                    // Добавляем фабрику API-клиентов
+                    // https://stackoverflow.com/questions/54547937/how-to-config-certificate-with-httpclientfactory
+                    // https://stackoverflow.com/questions/63879068/net-core-httpclientfactory-how-to-configure-configureprimaryhttpmessagehandle
+                    .AddHttpClient("signed")
+                    .ConfigurePrimaryHttpMessageHandler(() =>
+                        {
+                            var handler = new HttpClientHandler();
+                            var certificate = new X509Certificate2(
+                                fileName: kestrelCertificatesDefaultPath,
+                                password: kestrelCertificatesDefaultPassword);
+
+                            handler.ClientCertificateOptions = ClientCertificateOption.Manual;
+                            handler.ClientCertificates.Add(certificate);
+
+                            return handler;
+                        }
+                    );
+            }
+
+            services
 
                 // Инжектирование API-клиента User
                 .AddTransient<IUserValidateApiClient, UserValidateApiClient>()

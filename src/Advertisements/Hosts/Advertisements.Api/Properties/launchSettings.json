@@ -14,7 +14,9 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_Kestrel__Certificates__Default__Password": "changeit",
+        "ASPNETCORE_Kestrel__Certificates__Default__Path": "%APPDATA%\\ASP.NET\\Https"
       }
     },
     "sev1": {
