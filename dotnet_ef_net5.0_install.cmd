@@ -1,8 +1,8 @@
 @ECHO OFF
 :: Устанавливает инструменты Entity Framework
 
-:: Устанавливает заголовок окна
-TITLE Installing Entity Framework CLI
+:: Заголовок окна - путь и имя файла
+TITLE %~0
 
 :: Устанавливает инструменты Entity Framework
 :: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-tool-install

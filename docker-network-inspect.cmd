@@ -1,8 +1,8 @@
 @ECHO OFF
 :: Запускает docker inspect
 
-:: Устанавливает заголовок окна
-TITLE Run "docker network inspect"
+:: Заголовок окна - путь и имя файла
+TITLE %~0
 
 :: Запускает docker inspect
 

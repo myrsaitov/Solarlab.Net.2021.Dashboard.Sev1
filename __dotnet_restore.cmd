@@ -1,8 +1,8 @@
 @ECHO OFF
 :: Восстанавливает зависимости и средства проекта
 
-:: Устанавливает заголовок окна
-TITLE Run "dotnet RESTORE"
+:: Заголовок окна - путь и имя файла
+TITLE %~0
 
 :: Восстанавливает зависимости и средства проекта
 :: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-restore

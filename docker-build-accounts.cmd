@@ -1,8 +1,8 @@
 @ECHO OFF
 :: Выполняет сборку проекта в DOCKER
 
-:: Устанавливает заголовок окна
-TITLE Run "docker BUILD Accounts"
+:: Заголовок окна - путь и имя файла
+TITLE %~0
 
 :: Выполняет сборку проекта в DOCKER
 docker build --no-cache^

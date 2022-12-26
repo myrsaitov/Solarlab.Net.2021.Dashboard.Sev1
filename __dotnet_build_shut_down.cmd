@@ -1,8 +1,8 @@
 @ECHO OFF
 :: Останавливает сервер
 
-:: Устанавливает заголовок окна
-TITLE Run "dotnet ShutDown"
+:: Заголовок окна - путь и имя файла
+TITLE %~0
 
 :: Останавливает сервер
 dotnet build-server shutdown

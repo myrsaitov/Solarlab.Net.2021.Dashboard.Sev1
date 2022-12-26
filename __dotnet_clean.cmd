@@ -1,8 +1,8 @@
 @ECHO OFF
 :: Удаляет выходные файлы прошлой сборки
 
-:: Устанавливает заголовок окна
-TITLE Run "dotnet CLEAN"
+:: Заголовок окна - путь и имя файла
+TITLE %~0
 
 :: Удаляет выходные файлы прошлой сборки
 :: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-clean

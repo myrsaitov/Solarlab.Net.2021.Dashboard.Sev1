@@ -1,8 +1,8 @@
 @ECHO OFF
 :: Выполняет сборку проекта
 
-:: Устанавливает заголовок окна
-TITLE Run "dotnet BUILD Debug"
+:: Заголовок окна - путь и имя файла
+TITLE %~0
 
 :: Выполняет сборку проекта
 :: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-build
