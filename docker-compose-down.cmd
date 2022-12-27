@@ -5,6 +5,6 @@
 TITLE %~0
 
 :: Останавливает docker-compose
-docker-compose down
+docker-compose --env-file=.env.dev down
 
 PAUSE

@@ -54,6 +54,6 @@ ECHO *****************************************
 ECHO * Starting containers
 ECHO *****************************************
 ECHO;
-docker-compose up --detach
+docker-compose --env-file=.env.dev up --detach
 
 PAUSE

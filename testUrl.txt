@@ -5,3 +5,17 @@ https://localhost:44303/api/v1/userfiles?PageSize=10&Page=0
 https://localhost:44301/swagger/index.html
 https://localhost:44302/swagger/index.html
 https://localhost:44303/swagger/index.html
+
+
+https://www.reddit.com/r/dotnet/comments/xp7c7e/how_do_i_replace_a_value_in_appsettingsjson_with/
+Loads app configuration from:
+
+	appsettings.json.
+
+	appsettings.{Environment}.json.
+
+	User secrets when the app runs in the Development environment.
+
+	Environment variables.
+
+	Command-line arguments.

@@ -16,19 +16,19 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_HTTPS_PORT=44301
+      - ASPNETCORE_HTTPS_PORT=${PORT_SSL_ACCOUNTS_API}
       - ASPNETCORE_Kestrel__Certificates__Default__Password=changeit
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/root/.aspnet/DataProtection-Keys/bulleting_board.pfx
-      - AllowedHosts=*
-      - Token__Key=N8WAVl[{#{aR#x'|@XWw((u+,+G,*W`)F0A4Clj[:?b)4z>K:CAuXJy@BN$_rJm/n
+      - AllowedHosts=${ALLOWED_HOSTS_ACCOUNTS_API}
+      - Token__Key=${TOKEN_KEY_ACCOUNTS_API}
       - SwaggerOptions__UseSwagger=true
       - DataBaseOptions__UseMsSql=false
-      - ConnectionStrings__PostgresAdvertisementsDb=Host=host.docker.internal;Database=accounts_db;Username=accounts_user;Password=#V6G&W%2OB6H;Port=49021;Pooling=false;Timeout=300;CommandTimeout=300
+      - ConnectionStrings__PostgresAdvertisementsDb=Host=host.docker.internal;Database=accounts_db;Username=accounts_user;Password=${PASSWORD_POSTGRES_ACCOUNTS_API};Port=${PORT_POSTGRES_ACCOUNTS_API};Pooling=false;Timeout=300;CommandTimeout=300
       - ConnectionStrings__MsSqlAdvertisementsDb=Server=localhost;Database=trunk_dictionary;uid=BaseTrade;password=1q2w3e4r+;TrustServerCertificate=true
-      - RegionValidateApiClientUri=https://host.docker.internal:44302/api/v1/regions/
-     ports:
-      - "49001:80"
-      - "44301:443"
+      - RegionValidateApiClientUri=https://host.docker.internal:${PORT_SSL_ADVERTISEMENTS_API}/api/v1/regions/
+    ports:
+      - "${PORT_ACCOUNTS_API}:80"
+      - "${PORT_SSL_ACCOUNTS_API}:443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
@@ -37,9 +37,9 @@ services:
     environment:
         - POSTGRES_DB=accounts_db
         - POSTGRES_USER=accounts_user
-        - POSTGRES_PASSWORD=#V6G&W%2OB6H
+        - POSTGRES_PASSWORD=${PASSWORD_POSTGRES_ACCOUNTS_API}
     ports: 
-        - "49021:5432"
+        - "${PORT_POSTGRES_ACCOUNTS_API}:5432"
     volumes:
         - accounts_data:/mnt/largedb
 
@@ -52,20 +52,20 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_HTTPS_PORT=44302
+      - ASPNETCORE_HTTPS_PORT=${PORT_SSL_ADVERTISEMENTS_API}
       - ASPNETCORE_Kestrel__Certificates__Default__Password=changeit
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/root/.aspnet/DataProtection-Keys/bulleting_board.pfx
-      - AllowedHosts=*
-      - Token__Key=6g}I-I+!*ye'2&5b3&*2^utQQ:C}0vjd2EN_&,|oY3odqDr9aJB{(pB0L;bcHMw/n
+      - AllowedHosts=${ALLOWED_HOSTS_ADVERTISEMENTS_API}
+      - Token__Key=${TOKEN_KEY_ADVERTISEMENTS_API}
       - SwaggerOptions__UseSwagger=true
       - DataBaseOptions__UseMsSql=false
-      - ConnectionStrings__PostgresAdvertisementsDb=Host=host.docker.internal;Database=advertisements_db;Username=advertisements_user;Password=1BI(R5#bz*yT;Port=49022;Pooling=false;Timeout=300;CommandTimeout=300
+      - ConnectionStrings__PostgresAdvertisementsDb=Host=host.docker.internal;Database=advertisements_db;Username=advertisements_user;Password=${PASSWORD_POSTGRES_ADVERTISEMENTS_API};Port=${PORT_POSTGRES_ADVERTISEMENTS_API};Pooling=false;Timeout=300;CommandTimeout=300
       - ConnectionStrings__MsSqlAdvertisementsDb=Server=localhost;Database=trunk_dictionary;uid=BaseTrade;password=1q2w3e4r+;TrustServerCertificate=true
-      - UserValidateApiClientUri=https://host.docker.internal:44301/api/v1/accounts/validate-token
-      - UserFilesUploadApiClientUri=https://host.docker.internal:44303/api/v1/userfiles/upload-base64
+      - UserValidateApiClientUri=https://host.docker.internal:${PORT_SSL_ACCOUNTS_API}/api/v1/accounts/validate-token
+      - UserFilesUploadApiClientUri=https://host.docker.internal:${PORT_SSL_USER_FILES_API}/api/v1/userfiles/upload-base64
     ports:
-      - "49002:80"
-      - "44302:443"
+      - "${PORT_ADVERTISEMENTS_API}:80"
+      - "${PORT_SSL_ADVERTISEMENTS_API}:443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
@@ -74,9 +74,9 @@ services:
     environment:
         - POSTGRES_DB=advertisements_db
         - POSTGRES_USER=advertisements_user
-        - POSTGRES_PASSWORD=1BI(R5#bz*yT
+        - POSTGRES_PASSWORD=${PASSWORD_POSTGRES_ADVERTISEMENTS_API}
     ports: 
-        - "49022:5432"
+        - "${PORT_POSTGRES_ADVERTISEMENTS_API}:5432"
     volumes:
         - advertisements_data:/mnt/largedb
 
@@ -88,24 +88,24 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_HTTPS_PORT=44303
+      - ASPNETCORE_HTTPS_PORT=${PORT_SSL_USER_FILES_API}
       - ASPNETCORE_Kestrel__Certificates__Default__Password=changeit
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/root/.aspnet/DataProtection-Keys/bulleting_board.pfx
-      - AllowedHosts=*
-      - Token__Key='R//g9ep*PMoOY5RmgwjoGU%`AnE?V8K>3AkQ}v9|.2nz`7De`l`c?}A?//E;,zr:/n
+      - AllowedHosts=${ALLOWED_HOSTS_USER_FILES_API}
+      - Token__Key=${TOKEN_KEY_USER_FILES_API}
       - SwaggerOptions__UseSwagger=true
       - DataBaseOptions__UseMsSql=false
-      - ConnectionStrings__PostgresUserFilesDb=Host=host.docker.internal;Database=user_files_db;Username=user_files_user;Password=5t6k%%4ovq&u;Port=49023;Pooling=false;Timeout=300;CommandTimeout=300
+      - ConnectionStrings__PostgresUserFilesDb=Host=host.docker.internal;Database=user_files_db;Username=user_files_user;Password=${PASSWORD_POSTGRES_USER_FILES_API};Port=${PORT_POSTGRES_USER_FILES_API};Pooling=false;Timeout=300;CommandTimeout=300
       - ConnectionStrings__MsSqlUserFilesDb=Server=localhost;Database=trunk_dictionary;uid=BaseTrade;password=1q2w3e4r+;TrustServerCertificate=true
-      - UserValidateApiClientUri=https://host.docker.internal:44301/api/v1/accounts/validate-token
-      - AdvertisementValidateApiClientUri=https://host.docker.internal:44302/api/v1/advertisements
-      - UserFilesUploadApiClientUri=https://host.docker.internal:44303/api/v1/userfiles/upload-base64
+      - UserValidateApiClientUri=https://host.docker.internal:${PORT_SSL_ACCOUNTS_API}/api/v1/accounts/validate-token
+      - AdvertisementValidateApiClientUri=https://host.docker.internal:${PORT_SSL_ADVERTISEMENTS_API}/api/v1/advertisements
+      - UserFilesUploadApiClientUri=https://host.docker.internal:${PORT_SSL_USER_FILES_API}/api/v1/userfiles/upload-base64
       - YandexDisk__URI=https://cloud-api.yandex.net/v1/disk/
       - YandexDisk__BasePath=disk:/
       - YandexDisk__OAuthValue=AQAAAAAW4aqKAADLW26sI3bxvEVwuA0Xk8VP48g
     ports:
-      - "49003:80"
-      - "44303:443"
+      - "${PORT_USER_FILES_API}:80"
+      - "${PORT_SSL_USER_FILES_API}:443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
@@ -114,9 +114,9 @@ services:
     environment:
         - POSTGRES_DB=user_files_db
         - POSTGRES_USER=user_files_user
-        - POSTGRES_PASSWORD=5t6k%%4ovq&u
+        - POSTGRES_PASSWORD=${PASSWORD_POSTGRES_USER_FILES_API}
     ports: 
-        - "49023:5432"
+        - "${PORT_POSTGRES_USER_FILES_API}:5432"
     volumes:
         - user_files_data:/mnt/largedb
 
