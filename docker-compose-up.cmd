@@ -36,15 +36,23 @@ IF NOT EXIST c:\Docker\Root\BulletingBoard\Postgres\UserFiles (
         --opt o=bind
 )
 
+:: Redis
+IF NOT EXIST c:\Docker\Root\BulletingBoard\Redis (
+    docker volume create^
+        --opt type=none^
+        --opt device=/c/Docker/Root/BulletingBoard/Redis^
+        --opt o=bind
+)
 
-:: Проверка наличия сети "dev-network", если нет, то создает её
+
+:: Проверка наличия сети "app-network", если нет, то создает её
 ECHO;
 ECHO *****************************************
-ECHO * Checking network "dev-network"
+ECHO * Checking network "app-network"
 ECHO *****************************************
 ECHO;
-docker network inspect dev-network || (
-    docker network create -d bridge dev-network
+docker network inspect app-network || (
+    docker network create -d bridge app-network
 )
 
 

@@ -56,7 +56,30 @@ services:
     volumes:
         - user_files_data:/mnt/largedb
 
+
+  ##############################################################
+  # Redis
+  ##############################################################
+
+  redis:
+    image: 'bitnami/redis:7.0.7'
+    restart: always
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL,CONFIG
+      - REDIS_PORT_NUMBER=7000
+    ports:
+      - '7000:7000'
+    volumes:
+      - redis_data:/bitnami/redis/data
+
   
+##############################################################
+##############################################################
+## Volumes
+##############################################################
+##############################################################
+
 volumes:
 
   accounts_data:
@@ -75,4 +98,10 @@ volumes:
     driver_opts:
       type: none
       device: /c/Docker/Root/BulletingBoard/Postgres/UserFiles/largedb
+      o: bind
+
+  redis_data:
+    driver_opts:
+      type: none
+      device: /c/Docker/Root/BulletingBoard/Redis
       o: bind

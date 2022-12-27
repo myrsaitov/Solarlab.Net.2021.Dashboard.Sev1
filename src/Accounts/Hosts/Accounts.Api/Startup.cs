@@ -12,6 +12,11 @@ using Microsoft.Extensions.Hosting;
 using Sev1.Accounts.DataAccess;
 using Sev1.Avdertisements.Contracts.ApiClients.RegionValidate;
 using Sev1.Accounts.AppServices;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.DataProtection.StackExchangeRedis;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using StackExchange.Redis; // nuget Microsoft.AspNetCore.DataProtection.StackExchangeRedis
 
 namespace Sev1.Accounts.Api
 {
@@ -61,6 +66,13 @@ namespace Sev1.Accounts.Api
         // https://habr.com/ru/company/otus/blog/542494/
         public void ConfigureServices(IServiceCollection services)
         {
+            
+            // Data-protection
+            var redis = ConnectionMultiplexer.Connect(Configuration.GetConnectionString("RedisAccountsDb"));
+            services
+                .AddDataProtection()
+                .PersistKeysToStackExchangeRedis(redis, "DataProtection-Keys");
+            
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
