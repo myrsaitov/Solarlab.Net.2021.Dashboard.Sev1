@@ -28,9 +28,6 @@ services:
       accounts.postgres:
         condition: service_healthy
     restart: always
-    extends:
-      file: docker-compose.postgres.yml
-      service: accounts.postgres
 
 
   ##############################################################
@@ -51,9 +48,6 @@ services:
       advertisements.postgres:
         condition: service_healthy
     restart: always
-    extends:
-      file: docker-compose.postgres.yml
-      service: advertisements.postgres
       
 
   ##############################################################
@@ -74,7 +68,3 @@ services:
       user_files.postgres:
         condition: service_healthy
     restart: always
-    extends:
-      file: docker-compose.postgres.yml
-      service: user_files.postgres
-      

@@ -43,16 +43,6 @@ IF NOT EXIST c:\Docker\BulletingBoard\Postgres\UserFiles (
 		   user_files.volume
 ) ELSE ECHO Volume "UserFiles" exists!
 
-:: Redis
-IF NOT EXIST c:\Docker\BulletingBoard\Redis (
-    ECHO Creating volume "Redis"
-    docker volume create^
-           --opt type=none^
-           --opt device=/c/Docker/BulletingBoard/Redis^
-           --opt o=bind^
-		   redis.volume
-) ELSE ECHO Volume "Redis" exists!
-
 
 :: С паузой или без паузы в конце
 IF "%~1" EQU "--no_pause" (EXIT /B 0) ELSE PAUSE

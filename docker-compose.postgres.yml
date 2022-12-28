@@ -15,15 +15,15 @@ services:
   accounts.postgres:
     image: "postgres:15.1"
     volumes:
-      - accounts_data:/mnt/largedb
+      - accounts.volume:/mnt/largedb
     networks:
       - app-network 
     environment:
-        - POSTGRES_DB=accounts_db
-        - POSTGRES_USER=accounts_user
-        - POSTGRES_PASSWORD=${PASSWORD_POSTGRES_ACCOUNTS_API}
+      - POSTGRES_DB=accounts_db
+      - POSTGRES_USER=accounts_user
+      - POSTGRES_PASSWORD=${PASSWORD_POSTGRES_ACCOUNTS_API}
     ports: 
-        - "${PORT_POSTGRES_ACCOUNTS_API}:5432"
+      - "${PORT_POSTGRES_ACCOUNTS_API}:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
@@ -38,15 +38,15 @@ services:
   advertisements.postgres:
     image: "postgres:15.1"
     volumes:
-      - advertisements_data:/mnt/largedb
+      - advertisements.volume:/mnt/largedb
     networks:
       - app-network 
     environment:
-        - POSTGRES_DB=advertisements_db
-        - POSTGRES_USER=advertisements_user
-        - POSTGRES_PASSWORD=${PASSWORD_POSTGRES_ADVERTISEMENTS_API}
+      - POSTGRES_DB=advertisements_db
+      - POSTGRES_USER=advertisements_user
+      - POSTGRES_PASSWORD=${PASSWORD_POSTGRES_ADVERTISEMENTS_API}
     ports: 
-        - "${PORT_POSTGRES_ADVERTISEMENTS_API}:5432"
+      - "${PORT_POSTGRES_ADVERTISEMENTS_API}:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
@@ -62,15 +62,15 @@ services:
   user_files.postgres:
     image: "postgres:15.1"
     volumes:
-      - user_files_data:/mnt/largedb
+      - user_files.volume:/mnt/largedb
     networks:
       - app-network 
     environment:
-        - POSTGRES_DB=user_files_db
-        - POSTGRES_USER=user_files_user
-        - POSTGRES_PASSWORD=${PASSWORD_POSTGRES_USER_FILES_API}
+      - POSTGRES_DB=user_files_db
+      - POSTGRES_USER=user_files_user
+      - POSTGRES_PASSWORD=${PASSWORD_POSTGRES_USER_FILES_API}
     ports: 
-        - "${PORT_POSTGRES_USER_FILES_API}:5432"
+      - "${PORT_POSTGRES_USER_FILES_API}:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
@@ -87,19 +87,19 @@ services:
 
 volumes:
 
-  accounts_data:
+  accounts.volume:
     driver_opts:
       type: none
       device: /c/Docker/BulletingBoard/Postgres/Accounts/largedb
       o: bind
-
-  advertisements_data:
+  
+  advertisements.volume:
     driver_opts:
       type: none
       device: /c/Docker/BulletingBoard/Postgres/Advertisements/largedb
       o: bind
 
-  user_files_data:
+  user_files.volume:
     driver_opts:
       type: none
       device: /c/Docker/BulletingBoard/Postgres/UserFiles/largedb

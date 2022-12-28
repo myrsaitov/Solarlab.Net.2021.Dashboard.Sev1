@@ -6,7 +6,7 @@ TITLE %~0
 
 
 :: Создание Networks
-CALL docker-compose-create-networks.cmd --no_pause
+CALL docker-compose.create.networks.cmd --no_pause
 
 :: Запускает docker-compose
 ECHO;
