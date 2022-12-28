@@ -6,11 +6,11 @@ TITLE %~0
 
 
 :: Создание Volumes
-CALL docker-compose-create-volumes.cmd
+CALL docker-compose-create-volumes.cmd --no_pause
 
 
 :: Проверка наличия сети "app-network", если нет, то создает её
-CALL docker-compose-create-networks.cmd
+CALL docker-compose-create-networks.cmd --no_pause
 
 
 :: Запускает docker-compose

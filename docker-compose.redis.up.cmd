@@ -5,11 +5,8 @@
 TITLE %~0
 
 
-:: Создание Volumes
-CALL docker-compose-create-volumes.cmd
-
 :: Создание Networks
-CALL docker-compose-create-networks.cmd
+CALL docker-compose-create-networks.cmd --no_pause
 
 :: Запускает docker-compose
 ECHO;

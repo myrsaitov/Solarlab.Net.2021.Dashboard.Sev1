@@ -93,6 +93,7 @@ namespace Sev1.Advertisements.Api
                 // Инжектирование сервисов приложения
                 .AddApplicationModule(Configuration);
 
+/*
             string kestrelCertificatesDefaultPassword = Environment.GetEnvironmentVariable("ASPNETCORE_Kestrel__Certificates__Default__Password");
             string kestrelCertificatesDefaultPath = Environment.GetEnvironmentVariable("ASPNETCORE_Kestrel__Certificates__Default__Path");
             
@@ -117,8 +118,9 @@ namespace Sev1.Advertisements.Api
                             return handler;
                         }
                     );
-            }
-
+            }*/
+            services.AddHttpClient();
+            
             services
 
                 // Инжектирование API-клиента User

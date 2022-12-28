@@ -20,6 +20,7 @@ ECHO;
 docker-compose --env-file=.env.dev^
                --file docker-compose.networks.yml^
                --file docker-compose.postgres.yml^
+			   --file docker-compose.redis.yml^
                up --detach
 
 

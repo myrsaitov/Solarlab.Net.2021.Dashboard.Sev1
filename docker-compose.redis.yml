@@ -16,7 +16,7 @@ services:
   redis:
     image: 'bitnami/redis:7.0.7'
     volumes:
-      - redis_data:/bitnami/redis/data
+      - '/c/Docker/BulletingBoard/Redis:/bitnami/redis/data'
     networks:
       - app-network  
     environment:
@@ -28,19 +28,3 @@ services:
       - '7000:7000'
     command: /opt/bitnami/scripts/redis/run.sh --maxmemory 100mb
     restart: always
-    
-  
-##############################################################
-##############################################################
-## Volumes
-##############################################################
-##############################################################
-
-volumes:
-
-  redis_data:
-    driver_opts:
-      type: none
-      device: /c/Docker/Root/BulletingBoard/Redis
-      o: bind
-      

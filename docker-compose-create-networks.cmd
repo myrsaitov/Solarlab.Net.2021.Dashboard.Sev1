@@ -14,3 +14,6 @@ ECHO;
 docker network inspect app-network || (
     docker network create -d bridge app-network
 )
+
+:: С паузой или без паузы в конце
+IF "%~1" EQU "--no_pause" (EXIT /B 0) ELSE PAUSE

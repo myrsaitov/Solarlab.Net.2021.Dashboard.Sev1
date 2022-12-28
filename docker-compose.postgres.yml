@@ -90,17 +90,17 @@ volumes:
   accounts_data:
     driver_opts:
       type: none
-      device: /c/Docker/Root/BulletingBoard/Postgres/Accounts/largedb
+      device: /c/Docker/BulletingBoard/Postgres/Accounts/largedb
       o: bind
 
   advertisements_data:
     driver_opts:
       type: none
-      device: /c/Docker/Root/BulletingBoard/Postgres/Advertisements/largedb
+      device: /c/Docker/BulletingBoard/Postgres/Advertisements/largedb
       o: bind
 
   user_files_data:
     driver_opts:
       type: none
-      device: /c/Docker/Root/BulletingBoard/Postgres/UserFiles/largedb
+      device: /c/Docker/BulletingBoard/Postgres/UserFiles/largedb
       o: bind
