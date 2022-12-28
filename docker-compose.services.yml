@@ -15,32 +15,22 @@ services:
   
   accounts.api:
     image: ${DOCKER_REGISTRY-}accountsapi
-    #restart: always
     build:
       context: .
       dockerfile: src/Accounts/Hosts/Accounts.Api/Dockerfile
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      # Я сделал так, чтобы ключ записывался на диск. Нужно передлелать под Redis
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys
+    networks:
+      - app-network  
     depends_on:
       accounts.postgres:
         condition: service_healthy
-    networks:
-      - app-network  
-        
-  accounts.postgres:
-    image: "postgres:15.1"
     restart: always
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-    networks:
-      - app-network  
-
-  accounts.redis:
-    image: 'bitnami/redis:7.0.7'
-    restart: always
-    networks:
-      - app-network  
+    extends:
+      file: docker-compose.postgres.yml
+      service: accounts.postgres
 
 
   ##############################################################
@@ -49,27 +39,22 @@ services:
   
   advertisements.api:
     image: ${DOCKER_REGISTRY-}advertisementsapi
-    restart: always
     build:
       context: .
       dockerfile: src/Advertisements/Hosts/Advertisements.Api/Dockerfile
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
+    networks:
+      - app-network  
     depends_on:
       advertisements.postgres:
         condition: service_healthy
-    networks:
-      - app-network  
-        
-  advertisements.postgres:
-    image: "postgres:15.1"
     restart: always
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-    networks:
-      - app-network  
-
+    extends:
+      file: docker-compose.postgres.yml
+      service: advertisements.postgres
+      
 
   ##############################################################
   # UserFiles
@@ -77,41 +62,19 @@ services:
   
   user_files.api:
     image: ${DOCKER_REGISTRY-}userfilesapi
-    restart: always
     build:
       context: .
       dockerfile: src/UserFiles/Hosts/UserFiles.Api/Dockerfile
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
+    networks:
+      - app-network  
     depends_on:
       user_files.postgres:
         condition: service_healthy
-    networks:
-      - app-network  
-        
-  user_files.postgres:
-    image: "postgres:15.1"
     restart: always
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-    networks:
-      - app-network  
-
-
-##############################################################
-##############################################################
-## Networks
-##############################################################
-##############################################################
-
-networks:
-  app-network:
-    driver: bridge
-    external: true
-    
-#networks:
-  #default:
-    #name: dev_network
-    #external: true
-    #driver: bridge
+    extends:
+      file: docker-compose.postgres.yml
+      service: user_files.postgres
+      

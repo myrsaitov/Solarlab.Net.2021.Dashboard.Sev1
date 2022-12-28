@@ -1,0 +1,46 @@
+version: "3.7"
+
+##############################################################
+##############################################################
+## Services
+##############################################################
+##############################################################
+
+services: 
+
+  ##############################################################
+  # Redis
+  # https://cloudinfrastructureservices.co.uk/run-redis-with-docker-compose/
+  ##############################################################
+
+  redis:
+    image: 'bitnami/redis:7.0.7'
+    volumes:
+      - redis_data:/bitnami/redis/data
+    networks:
+      - app-network  
+    environment:
+      - REDIS_PASSWORD=password123
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL,CONFIG
+      - REDIS_AOF_ENABLED=no
+      - REDIS_PORT_NUMBER=7000
+    ports:
+      - '7000:7000'
+    command: /opt/bitnami/scripts/redis/run.sh --maxmemory 100mb
+    restart: always
+    
+  
+##############################################################
+##############################################################
+## Volumes
+##############################################################
+##############################################################
+
+volumes:
+
+  redis_data:
+    driver_opts:
+      type: none
+      device: /c/Docker/Root/BulletingBoard/Redis
+      o: bind
+      

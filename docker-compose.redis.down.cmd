@@ -7,11 +7,7 @@ TITLE %~0
 :: Останавливает docker-compose
 docker-compose --env-file=.env.dev^
                --file docker-compose.networks.yml^
-               --file docker-compose.postgres.yml^
                --file docker-compose.redis.yml^
-               --file docker-compose.services.yml^
-               --file docker-compose.services.override.yml^
                down
-
 
 PAUSE

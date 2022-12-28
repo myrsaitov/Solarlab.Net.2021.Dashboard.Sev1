@@ -5,6 +5,10 @@
 TITLE %~0
 
 :: Останавливает docker-compose
-docker-compose  -f postgres-docker-compose.yml down
+docker-compose  --env-file=.env.dev^
+                --file docker-compose.networks.yml^
+                --file docker-compose.postgres.yml^
+                down
+
 
 PAUSE

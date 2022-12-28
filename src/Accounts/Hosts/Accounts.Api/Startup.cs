@@ -17,6 +17,11 @@ using Microsoft.AspNetCore.DataProtection.StackExchangeRedis;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis; // nuget Microsoft.AspNetCore.DataProtection.StackExchangeRedis
+// nuget Microsoft.Extensions.Caching.StackExchangeRedis
+using Microsoft.CodeAnalysis;
+using Pipelines.Sockets.Unofficial.Arenas;
+using static System.Net.Mime.MediaTypeNames;
+using System.Collections.Generic;
 
 namespace Sev1.Accounts.Api
 {
@@ -27,7 +32,7 @@ namespace Sev1.Accounts.Api
             
             // https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0
             //
-            // Сделано по примерм:
+            // Сделано по примерам:
             // https://referbruv.com/blog/accessing-environment-variables-in-aspnet-core-inside-host-and-startup/
             // https://stackoverflow.com/questions/39231951/how-do-i-access-configuration-in-any-class-in-asp-net-core
             // https://dusted.codes/dotenv-in-dotnet
@@ -68,18 +73,27 @@ namespace Sev1.Accounts.Api
         {
             
             // Data-protection
-            var redis = ConnectionMultiplexer.Connect(Configuration.GetConnectionString("RedisAccountsDb"));
+            var redis = ConnectionMultiplexer.Connect(Configuration.GetConnectionString("Redis"));
             services
                 .AddDataProtection()
-                .PersistKeysToStackExchangeRedis(redis, "DataProtection-Keys");
-            
+                    .PersistKeysToStackExchangeRedis(redis, "DataProtection-Keys")
+                    
+                    // SetApplicationName: https://medium.com/swlh/how-to-distribute-data-protection-keys-with-an-asp-net-core-web-app-8b2b5d52851b
+                    // The application descriptor in the data protection
+                    // system enables the isolation of applications.
+                    // By default, the name is the content root path,
+                    // but for some scenarios listed above the path can be
+                    // different for different environments. So it is
+                    // important to always set the application name when
+                    // you want to share protected payloads among apps.
+                    .SetApplicationName("Accounts");
+
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            );
+        );
+        services
 
-            services
-
-                // Добавить сервис Cross-Origin Requests
+        // Добавить сервис Cross-Origin Requests
                 .AddCors()
 
                 // Инжектирование сервисов приложения

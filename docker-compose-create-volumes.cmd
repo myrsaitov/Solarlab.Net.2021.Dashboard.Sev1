@@ -1,5 +1,5 @@
 @ECHO OFF
-:: Запускает docker-compose
+:: Создаёт Volumes для docker-compose
 
 :: Заголовок окна - путь и имя файла
 TITLE %~0
@@ -36,13 +36,10 @@ IF NOT EXIST c:\Docker\Root\BulletingBoard\Postgres\UserFiles (
         --opt o=bind
 )
 
-
-:: Запускает docker-compose
-ECHO;
-ECHO *****************************************
-ECHO * Starting containers
-ECHO *****************************************
-ECHO;
-docker-compose  --file postgres-docker-compose.yml up --detach
-
-PAUSE
+:: Redis
+IF NOT EXIST c:\Docker\Root\BulletingBoard\Redis (
+    docker volume create^
+        --opt type=none^
+        --opt device=/c/Docker/Root/BulletingBoard/Redis^
+        --opt o=bind
+)

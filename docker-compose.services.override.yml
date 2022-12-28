@@ -8,6 +8,7 @@ version: '3.4'
 
 services:
 
+
   ##############################################################
   # Accounts
   ##############################################################
@@ -25,35 +26,11 @@ services:
       - DataBaseOptions__UseMsSql=false
       - ConnectionStrings__PostgresAccountsDb=Host=host.docker.internal;Database=accounts_db;Username=accounts_user;Password=${PASSWORD_POSTGRES_ACCOUNTS_API};Port=${PORT_POSTGRES_ACCOUNTS_API};Pooling=false;Timeout=300;CommandTimeout=300
       - ConnectionStrings__MsSqlAccountsDb=Server=localhost;Database=trunk_dictionary;uid=BaseTrade;password=1q2w3e4r+;TrustServerCertificate=true
-      - ConnectionStrings__RedisAccountsDb=localhost:7000,ssl=False,allowAdmin=True,abortConnect=False,defaultDatabase=0
+      - ConnectionStrings__Redis=localhost:6379,ssl=False,allowAdmin=True,abortConnect=False,defaultDatabase=0
       - RegionValidateApiClientUri=https://host.docker.internal:${PORT_SSL_ADVERTISEMENTS_API}/api/v1/regions/
     ports:
       - "${PORT_ACCOUNTS_API}:80"
       - "${PORT_SSL_ACCOUNTS_API}:443"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      # Я сделал так, чтобы ключ записывался на диск. Нужно передлелать под Redis
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys
-      
-  accounts.postgres:
-    environment:
-        - POSTGRES_DB=accounts_db
-        - POSTGRES_USER=accounts_user
-        - POSTGRES_PASSWORD=${PASSWORD_POSTGRES_ACCOUNTS_API}
-    ports: 
-        - "${PORT_POSTGRES_ACCOUNTS_API}:5432"
-    volumes:
-        - accounts_data:/mnt/largedb
-
-  accounts.redis:
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL,CONFIG
-      - REDIS_PORT_NUMBER=7000
-    ports:
-      - '7000:7000'
-    volumes:
-      - redis_data:/bitnami/redis/data
 
 
   ##############################################################
@@ -78,19 +55,7 @@ services:
     ports:
       - "${PORT_ADVERTISEMENTS_API}:80"
       - "${PORT_SSL_ADVERTISEMENTS_API}:443"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
 
-  advertisements.postgres:
-    environment:
-        - POSTGRES_DB=advertisements_db
-        - POSTGRES_USER=advertisements_user
-        - POSTGRES_PASSWORD=${PASSWORD_POSTGRES_ADVERTISEMENTS_API}
-    ports: 
-        - "${PORT_POSTGRES_ADVERTISEMENTS_API}:5432"
-    volumes:
-        - advertisements_data:/mnt/largedb
 
   ##############################################################
   # UserFiles
@@ -118,49 +83,4 @@ services:
     ports:
       - "${PORT_USER_FILES_API}:80"
       - "${PORT_SSL_USER_FILES_API}:443"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
 
-  user_files.postgres:
-    environment:
-        - POSTGRES_DB=user_files_db
-        - POSTGRES_USER=user_files_user
-        - POSTGRES_PASSWORD=${PASSWORD_POSTGRES_USER_FILES_API}
-    ports: 
-        - "${PORT_POSTGRES_USER_FILES_API}:5432"
-    volumes:
-        - user_files_data:/mnt/largedb
-
-
-##############################################################
-##############################################################
-## Volumes
-##############################################################
-##############################################################
-
-volumes:
-
-  accounts_data:
-    driver_opts:
-      type: none
-      device: /c/Docker/Root/BulletingBoard/Postgres/Accounts/largedb
-      o: bind
-
-  advertisements_data:
-    driver_opts:
-      type: none
-      device: /c/Docker/Root/BulletingBoard/Postgres/Advertisements/largedb
-      o: bind
-
-  user_files_data:
-    driver_opts:
-      type: none
-      device: /c/Docker/Root/BulletingBoard/Postgres/UserFiles/largedb
-      o: bind
-
-  redis_data:
-    driver_opts:
-      type: none
-      device: /c/Docker/Root/BulletingBoard/Redis
-      o: bind
