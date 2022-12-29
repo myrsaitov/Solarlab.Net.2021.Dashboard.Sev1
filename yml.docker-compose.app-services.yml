@@ -1,0 +1,71 @@
+version: '3.4'
+
+##############################################################
+##############################################################
+## Services
+##############################################################
+##############################################################
+
+services:
+
+
+  ##############################################################
+  # Accounts
+  ##############################################################
+  
+  accounts.api:
+    image: ${DOCKER_REGISTRY-}accountsapi
+    build:
+      context: .
+      dockerfile: src/Accounts/Hosts/Accounts.Api/Dockerfile
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
+    networks:
+      - app-network  
+    depends_on:
+      accounts.postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: always
+
+
+  ##############################################################
+  # Advertisements
+  ##############################################################
+  
+  advertisements.api:
+    image: ${DOCKER_REGISTRY-}advertisementsapi
+    build:
+      context: .
+      dockerfile: src/Advertisements/Hosts/Advertisements.Api/Dockerfile
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
+    networks:
+      - app-network  
+    depends_on:
+      advertisements.postgres:
+        condition: service_healthy
+    restart: always
+      
+
+  ##############################################################
+  # UserFiles
+  ##############################################################
+  
+  user_files.api:
+    image: ${DOCKER_REGISTRY-}userfilesapi
+    build:
+      context: .
+      dockerfile: src/UserFiles/Hosts/UserFiles.Api/Dockerfile
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
+    networks:
+      - app-network  
+    depends_on:
+      user_files.postgres:
+        condition: service_healthy
+    restart: always

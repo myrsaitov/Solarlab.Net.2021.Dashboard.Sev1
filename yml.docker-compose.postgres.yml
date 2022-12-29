@@ -1,0 +1,106 @@
+version: "3.7"
+
+##############################################################
+##############################################################
+## Services
+##############################################################
+##############################################################
+
+services: 
+
+  ##############################################################
+  # Accounts
+  ##############################################################
+
+  accounts.postgres:
+    image: "postgres:15.1"
+    volumes:
+      - accounts.volume:/mnt/largedb
+    networks:
+      - app-network 
+    environment:
+      - POSTGRES_DB=accounts_db
+      - POSTGRES_USER=accounts_user
+      - POSTGRES_PASSWORD=${PASSWORD_POSTGRES_ACCOUNTS_API}
+    ports: 
+      - "${PORT_POSTGRES_ACCOUNTS_API}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: always
+
+  ##############################################################
+  # Advertisements
+  ##############################################################
+
+  advertisements.postgres:
+    image: "postgres:15.1"
+    volumes:
+      - advertisements.volume:/mnt/largedb
+    networks:
+      - app-network 
+    environment:
+      - POSTGRES_DB=advertisements_db
+      - POSTGRES_USER=advertisements_user
+      - POSTGRES_PASSWORD=${PASSWORD_POSTGRES_ADVERTISEMENTS_API}
+    ports: 
+      - "${PORT_POSTGRES_ADVERTISEMENTS_API}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: always
+    
+        
+  ##############################################################
+  # UserFiles
+  ##############################################################
+
+  user_files.postgres:
+    image: "postgres:15.1"
+    volumes:
+      - user_files.volume:/mnt/largedb
+    networks:
+      - app-network 
+    environment:
+      - POSTGRES_DB=user_files_db
+      - POSTGRES_USER=user_files_user
+      - POSTGRES_PASSWORD=${PASSWORD_POSTGRES_USER_FILES_API}
+    ports: 
+      - "${PORT_POSTGRES_USER_FILES_API}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: always
+    
+
+##############################################################
+##############################################################
+## Volumes
+##############################################################
+##############################################################
+
+volumes:
+
+  accounts.volume:
+    driver_opts:
+      type: none
+      device: /c/Docker/BulletingBoard/Postgres/Accounts/largedb
+      o: bind
+  
+  advertisements.volume:
+    driver_opts:
+      type: none
+      device: /c/Docker/BulletingBoard/Postgres/Advertisements/largedb
+      o: bind
+
+  user_files.volume:
+    driver_opts:
+      type: none
+      device: /c/Docker/BulletingBoard/Postgres/UserFiles/largedb
+      o: bind
