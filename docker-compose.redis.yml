@@ -23,8 +23,8 @@ services:
       - REDIS_PASSWORD=password123
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL,CONFIG
       - REDIS_AOF_ENABLED=no
-      - REDIS_PORT_NUMBER=7000
+      - REDIS_PORT_NUMBER=6379
     ports:
-      - '7000:7000'
+      - '6379:6379'
     command: /opt/bitnami/scripts/redis/run.sh --maxmemory 100mb
     restart: always
