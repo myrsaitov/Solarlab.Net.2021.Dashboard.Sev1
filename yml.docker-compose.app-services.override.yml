@@ -15,13 +15,13 @@ services:
   
   accounts.api:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Release
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_HTTPS_PORT=${PORT_SSL_ACCOUNTS_API}
+      - ASPNETCORE_ENVIRONMENT=${ACTIVE_ENVIRONMENT}
+      - ASPNETCORE_URLS=${HTTP_URLS}
+      - ASPNETCORE_HTTPS_PORT=${PORT_SSL_ACCOUNTS}
       - ASPNETCORE_Kestrel__Certificates__Default__Password=${KESTREL_CERTIFICATE_PASSWORD}
       - ASPNETCORE_Kestrel__Certificates__Default__Path=${KESTREL_CERTIFICATE_PATH}
-      - AllowedHosts=${ALLOWED_HOSTS_ACCOUNTS_API}
-      - Token__Key=${TOKEN_KEY_ACCOUNTS_API}
+      - AllowedHosts=${ALLOWED_HOSTS_ACCOUNTS}
+      - Token__Key=${TOKEN_KEY_ACCOUNTS}
       - SwaggerOptions__UseSwagger=${USE_SWAGGER}
       - DataBaseOptions__UseMsSql=${USE_MSSQL}
       - ConnectionStrings__PostgresAccountsDb=${ACCOUNTS_POSTGRES_CONNECTION}
@@ -29,8 +29,7 @@ services:
       - ConnectionStrings__Redis=${REDIS_CONNECTION}
       - RegionValidateApiClientUri=${REGION_VALIDATE_API_CLIENT_URI}
     ports:
-      - "${PORT_ACCOUNTS_API}:80"
-      - "${PORT_SSL_ACCOUNTS_API}:443"
+      - "${PORT_MAP_ACCOUNTS}"
 
 
   ##############################################################
@@ -39,13 +38,13 @@ services:
   
   advertisements.api:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Release
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_HTTPS_PORT=${PORT_SSL_ADVERTISEMENTS_API}
+      - ASPNETCORE_ENVIRONMENT=${ACTIVE_ENVIRONMENT}
+      - ASPNETCORE_URLS=${HTTP_URLS}
+      - ASPNETCORE_HTTPS_PORT=${PORT_SSL_ADVERTISEMENTS}
       - ASPNETCORE_Kestrel__Certificates__Default__Password=${KESTREL_CERTIFICATE_PASSWORD}
       - ASPNETCORE_Kestrel__Certificates__Default__Path=${KESTREL_CERTIFICATE_PATH}
-      - AllowedHosts=${ALLOWED_HOSTS_ADVERTISEMENTS_API}
-      - Token__Key=${TOKEN_KEY_ADVERTISEMENTS_API}
+      - AllowedHosts=${ALLOWED_HOSTS_ADVERTISEMENTS}
+      - Token__Key=${TOKEN_KEY_ADVERTISEMENTS}
       - SwaggerOptions__UseSwagger=${USE_SWAGGER}
       - DataBaseOptions__UseMsSql=${USE_MSSQL}
       - ConnectionStrings__PostgresAdvertisementsDb=${ADVERTISEMENTS_POSTGRES_CONNECTION}
@@ -53,8 +52,7 @@ services:
       - UserValidateApiClientUri=${USER_VALIDATE_API_CLIENT_URI}
       - UserFilesUploadApiClientUri=${USER_FILES_UPLOAD_API_CLIENT_URI}
     ports:
-      - "${PORT_ADVERTISEMENTS_API}:80"
-      - "${PORT_SSL_ADVERTISEMENTS_API}:443"
+      - "${PORT_MAP_ADVERTISEMENTS}"
 
 
   ##############################################################
@@ -63,13 +61,13 @@ services:
   
   user_files.api:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Release
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_HTTPS_PORT=${PORT_SSL_USER_FILES_API}
+      - ASPNETCORE_ENVIRONMENT=${ACTIVE_ENVIRONMENT}
+      - ASPNETCORE_URLS=${HTTP_URLS}
+      - ASPNETCORE_HTTPS_PORT=${PORT_SSL_USER_FILES}
       - ASPNETCORE_Kestrel__Certificates__Default__Password=${KESTREL_CERTIFICATE_PASSWORD}
       - ASPNETCORE_Kestrel__Certificates__Default__Path=${KESTREL_CERTIFICATE_PATH}
-      - AllowedHosts=${ALLOWED_HOSTS_USER_FILES_API}
-      - Token__Key=${TOKEN_KEY_USER_FILES_API}
+      - AllowedHosts=${ALLOWED_HOSTS_USER_FILES}
+      - Token__Key=${TOKEN_KEY_USER_FILES}
       - SwaggerOptions__UseSwagger=${USE_SWAGGER}
       - DataBaseOptions__UseMsSql=${USE_MSSQL}
       - ConnectionStrings__PostgresUserFilesDb=${USER_FILES_POSTGRES_CONNECTION}
@@ -81,6 +79,4 @@ services:
       - YandexDisk__BasePath=${YANDEX_DISK_BASE_PATH}
       - YandexDisk__OAuthValue=${YANDEX_DISK_OAUTH_VALUE}
     ports:
-      - "${PORT_USER_FILES_API}:80"
-      - "${PORT_SSL_USER_FILES_API}:443"
-
+      - "${PORT_MAP_USER_FILES}"
