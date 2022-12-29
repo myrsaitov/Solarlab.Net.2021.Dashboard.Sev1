@@ -18,16 +18,15 @@ services:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTPS_PORT=${PORT_SSL_ACCOUNTS_API}
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=changeit
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/root/.aspnet/DataProtection-Keys/bulleting_board.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=${KESTREL_CERTIFICATE_PASSWORD}
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=${KESTREL_CERTIFICATE_PATH}
       - AllowedHosts=${ALLOWED_HOSTS_ACCOUNTS_API}
       - Token__Key=${TOKEN_KEY_ACCOUNTS_API}
-      - SwaggerOptions__UseSwagger=true
-      - DataBaseOptions__UseMsSql=false
-      - ConnectionStrings__PostgresAccountsDb=Host=host.docker.internal;Database=accounts_db;Username=accounts_user;Password=${PASSWORD_POSTGRES_ACCOUNTS_API};Port=${PORT_POSTGRES_ACCOUNTS_API};Pooling=false;Timeout=300;CommandTimeout=300
-      - ConnectionStrings__MsSqlAccountsDb=Server=localhost;Database=trunk_dictionary;uid=BaseTrade;password=1q2w3e4r+;TrustServerCertificate=true
-        # https://stackexchange.github.io/StackExchange.Redis/Configuration.html
-      - ConnectionStrings__Redis=redis:${REDIS_PORT},password=${REDIS_PASSWORD},ssl=False,allowAdmin=True,abortConnect=False,defaultDatabase=0
+      - SwaggerOptions__UseSwagger=${USE_SWAGGER}
+      - DataBaseOptions__UseMsSql=${USE_MSSQL}
+      - ConnectionStrings__PostgresAccountsDb=${ACCOUNTS_POSTGRES_CONNECTION}
+      - ConnectionStrings__MsSqlAccountsDb=${ACCOUNTS_MSSQL_CONNECTION}
+      - ConnectionStrings__Redis=${REDIS_CONNECTION}
       - RegionValidateApiClientUri=${REGION_VALIDATE_API_CLIENT_URI}
     ports:
       - "${PORT_ACCOUNTS_API}:80"
@@ -43,14 +42,14 @@ services:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTPS_PORT=${PORT_SSL_ADVERTISEMENTS_API}
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=changeit
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/root/.aspnet/DataProtection-Keys/bulleting_board.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=${KESTREL_CERTIFICATE_PASSWORD}
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=${KESTREL_CERTIFICATE_PATH}
       - AllowedHosts=${ALLOWED_HOSTS_ADVERTISEMENTS_API}
       - Token__Key=${TOKEN_KEY_ADVERTISEMENTS_API}
-      - SwaggerOptions__UseSwagger=true
-      - DataBaseOptions__UseMsSql=false
-      - ConnectionStrings__PostgresAdvertisementsDb=Host=host.docker.internal;Database=advertisements_db;Username=advertisements_user;Password=${PASSWORD_POSTGRES_ADVERTISEMENTS_API};Port=${PORT_POSTGRES_ADVERTISEMENTS_API};Pooling=false;Timeout=300;CommandTimeout=300
-      - ConnectionStrings__MsSqlAdvertisementsDb=Server=localhost;Database=trunk_dictionary;uid=BaseTrade;password=1q2w3e4r+;TrustServerCertificate=true
+      - SwaggerOptions__UseSwagger=${USE_SWAGGER}
+      - DataBaseOptions__UseMsSql=${USE_MSSQL}
+      - ConnectionStrings__PostgresAdvertisementsDb=${ADVERTISEMENTS_POSTGRES_CONNECTION}
+      - ConnectionStrings__MsSqlAdvertisementsDb=${ADVERTISEMENTS_MSSQL_CONNECTION}
       - UserValidateApiClientUri=${USER_VALIDATE_API_CLIENT_URI}
       - UserFilesUploadApiClientUri=${USER_FILES_UPLOAD_API_CLIENT_URI}
     ports:
@@ -67,20 +66,20 @@ services:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTPS_PORT=${PORT_SSL_USER_FILES_API}
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=changeit
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/root/.aspnet/DataProtection-Keys/bulleting_board.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=${KESTREL_CERTIFICATE_PASSWORD}
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=${KESTREL_CERTIFICATE_PATH}
       - AllowedHosts=${ALLOWED_HOSTS_USER_FILES_API}
       - Token__Key=${TOKEN_KEY_USER_FILES_API}
-      - SwaggerOptions__UseSwagger=true
-      - DataBaseOptions__UseMsSql=false
-      - ConnectionStrings__PostgresUserFilesDb=Host=host.docker.internal;Database=user_files_db;Username=user_files_user;Password=${PASSWORD_POSTGRES_USER_FILES_API};Port=${PORT_POSTGRES_USER_FILES_API};Pooling=false;Timeout=300;CommandTimeout=300
-      - ConnectionStrings__MsSqlUserFilesDb=Server=localhost;Database=trunk_dictionary;uid=BaseTrade;password=1q2w3e4r+;TrustServerCertificate=true
+      - SwaggerOptions__UseSwagger=${USE_SWAGGER}
+      - DataBaseOptions__UseMsSql=${USE_MSSQL}
+      - ConnectionStrings__PostgresUserFilesDb=${USER_FILES_POSTGRES_CONNECTION}
+      - ConnectionStrings__MsSqlUserFilesDb=${USER_FILES_MSSQL_CONNECTION}
       - UserValidateApiClientUri=${USER_VALIDATE_API_CLIENT_URI}
       - AdvertisementValidateApiClientUri=${ADVERTISEMENT_VALIDATE_API_CLIENT_URI}
       - UserFilesUploadApiClientUri=${USER_FILES_UPLOAD_API_CLIENT_URI}
-      - YandexDisk__URI=https://cloud-api.yandex.net/v1/disk/
-      - YandexDisk__BasePath=disk:/
-      - YandexDisk__OAuthValue=AQAAAAAW4aqKAADLW26sI3bxvEVwuA0Xk8VP48g
+      - YandexDisk__URI=${YANDEX_DISK_URI}
+      - YandexDisk__BasePath=${YANDEX_DISK_BASE_PATH}
+      - YandexDisk__OAuthValue=${YANDEX_DISK_OAUTH_VALUE}
     ports:
       - "${PORT_USER_FILES_API}:80"
       - "${PORT_SSL_USER_FILES_API}:443"
