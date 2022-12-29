@@ -26,7 +26,7 @@ services:
       - DataBaseOptions__UseMsSql=false
       - ConnectionStrings__PostgresAccountsDb=Host=host.docker.internal;Database=accounts_db;Username=accounts_user;Password=${PASSWORD_POSTGRES_ACCOUNTS_API};Port=${PORT_POSTGRES_ACCOUNTS_API};Pooling=false;Timeout=300;CommandTimeout=300
       - ConnectionStrings__MsSqlAccountsDb=Server=localhost;Database=trunk_dictionary;uid=BaseTrade;password=1q2w3e4r+;TrustServerCertificate=true
-      # https://stackexchange.github.io/StackExchange.Redis/Configuration.html
+        # https://stackexchange.github.io/StackExchange.Redis/Configuration.html
       - ConnectionStrings__Redis=redis:6379,password=password123,ssl=False,allowAdmin=True,abortConnect=False,defaultDatabase=0
       - RegionValidateApiClientUri=https://host.docker.internal:${PORT_SSL_ADVERTISEMENTS_API}/api/v1/regions/
     ports:

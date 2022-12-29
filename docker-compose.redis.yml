@@ -25,6 +25,11 @@ services:
       - REDIS_AOF_ENABLED=no
       - REDIS_PORT_NUMBER=6379
     ports:
-      - '6379:6379'
+      - 6379:6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 1s
+      timeout: 3s
+      retries: 30
     command: /opt/bitnami/scripts/redis/run.sh --maxmemory 100mb
     restart: always
