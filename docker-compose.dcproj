@@ -26,22 +26,14 @@
     (dcproj) are allowed.
 
     -->
-    <AdditionalComposeFilePaths>yml.docker-compose.networks.yml</AdditionalComposeFilePaths>
-    <AdditionalComposeFilePaths>yml.docker-compose.postgres.yml</AdditionalComposeFilePaths>
-    <AdditionalComposeFilePaths>yml.docker-compose.redis.yml</AdditionalComposeFilePaths>
+    <AdditionalComposeFilePaths>yml.docker-compose.networks.yml;yml.docker-compose.postgres.yml;yml.docker-compose.redis.yml</AdditionalComposeFilePaths>
 
   </PropertyGroup>
   <ItemGroup>
-
     <None Include="yml.docker-compose.back-end.override.yml">
       <DependentUpon>yml.docker-compose.back-end.yml</DependentUpon>
     </None>
-    <None Include="yml.docker-compose.back-end.yml">
-      <DependentUpon>yml.docker-compose.networks.yml</DependentUpon>
-    </None>
-    <None Include="yml.docker-compose.networks.yml" />
-    <None Include="yml.docker-compose.postgres.yml" />
-    <None Include="yml.docker-compose.redis.yml" />
+    <None Include="yml.docker-compose.back-end.yml" />
     <None Include=".dockerignore" />
   </ItemGroup>
 </Project>
