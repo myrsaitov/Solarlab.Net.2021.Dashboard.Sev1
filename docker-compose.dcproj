@@ -7,12 +7,41 @@
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>accounts.api</DockerServiceName>
+    
+    <!-- 
+    https://learn.microsoft.com/en-us/visualstudio/containers/docker-compose-properties?view=vs-2022
+    
+    Так как я изменил стандартное название dokcer-compose.yml на своё,
+    то нужно задать DockerComposeBaseFilePath без расширения .yml, т.к.
+    DockerComposeBaseFilePath specifies the first part of the filenames
+    of the docker-compose files, without the .yml extension.
+    
+    -->
+    <DockerComposeBaseFilePath>yml.docker-compose.back-end</DockerComposeBaseFilePath>
+
+    <!--
+    AdditionalComposeFilePaths specifies additional compose files in 
+    a semicolon-delimited list to be sent out to docker-compose.exe 
+    for all commands. Relative paths from the docker-compose project file 
+    (dcproj) are allowed.
+
+    -->
+    <AdditionalComposeFilePaths>yml.docker-compose.networks.yml</AdditionalComposeFilePaths>
+    <AdditionalComposeFilePaths>yml.docker-compose.postgres.yml</AdditionalComposeFilePaths>
+    <AdditionalComposeFilePaths>yml.docker-compose.redis.yml</AdditionalComposeFilePaths>
+
   </PropertyGroup>
   <ItemGroup>
-    <None Include="docker-compose.override.yml">
-      <DependentUpon>docker-compose.yml</DependentUpon>
+
+    <None Include="yml.docker-compose.back-end.override.yml">
+      <DependentUpon>yml.docker-compose.back-end.yml</DependentUpon>
     </None>
-    <None Include="docker-compose.yml" />
+    <None Include="yml.docker-compose.back-end.yml">
+      <DependentUpon>yml.docker-compose.networks.yml</DependentUpon>
+    </None>
+    <None Include="yml.docker-compose.networks.yml" />
+    <None Include="yml.docker-compose.postgres.yml" />
+    <None Include="yml.docker-compose.redis.yml" />
     <None Include=".dockerignore" />
   </ItemGroup>
 </Project>
