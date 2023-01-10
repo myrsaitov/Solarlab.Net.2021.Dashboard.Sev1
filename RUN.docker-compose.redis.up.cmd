@@ -15,8 +15,8 @@ ECHO * Starting containers
 ECHO *****************************************
 ECHO;
 docker-compose --env-file=.env^
-               --file yml.docker-compose.networks.yml^
-               --file yml.docker-compose.redis.yml^
+               --file docker-compose.networks.yml^
+               --file docker-compose.redis.yml^
                up --detach
 
 PAUSE

@@ -18,8 +18,8 @@ ECHO * Starting containers
 ECHO *****************************************
 ECHO;
 docker-compose --env-file=.env^
-               --file yml.docker-compose.networks.yml^
-               --file yml.docker-compose.postgres.yml^
+               --file docker-compose.networks.yml^
+               --file docker-compose.postgres.yml^
                up --detach
 
 

@@ -17,7 +17,7 @@
     of the docker-compose files, without the .yml extension.
     
     -->
-    <DockerComposeBaseFilePath>yml.docker-compose.back-end</DockerComposeBaseFilePath>
+    <DockerComposeBaseFilePath>docker-compose.back-end</DockerComposeBaseFilePath>
 
     <!--
     AdditionalComposeFilePaths specifies additional compose files in 
@@ -26,14 +26,15 @@
     (dcproj) are allowed.
 
     -->
-    <AdditionalComposeFilePaths>yml.docker-compose.networks.yml;yml.docker-compose.postgres.yml;yml.docker-compose.redis.yml</AdditionalComposeFilePaths>
+    <AdditionalComposeFilePaths>docker-compose.networks.yml;docker-compose.postgres.yml;docker-compose.redis.yml</AdditionalComposeFilePaths>
 
   </PropertyGroup>
   <ItemGroup>
-    <None Include="yml.docker-compose.back-end.override.yml">
-      <DependentUpon>yml.docker-compose.back-end.yml</DependentUpon>
+    <None Include="dev.env" />
+    <None Include="docker-compose.back-end.override.yml">
+      <DependentUpon>docker-compose.back-end.yml</DependentUpon>
     </None>
-    <None Include="yml.docker-compose.back-end.yml" />
+    <None Include="docker-compose.back-end.yml" />
     <None Include=".dockerignore" />
   </ItemGroup>
 </Project>

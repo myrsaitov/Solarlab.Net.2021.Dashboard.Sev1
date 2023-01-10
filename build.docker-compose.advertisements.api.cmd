@@ -6,11 +6,11 @@ TITLE %~0
 
 :: Запускает docker-compose
 docker-compose --env-file=.env^
-               --file yml.docker-compose.networks.yml^
-               --file yml.docker-compose.postgres.yml^
-               --file yml.docker-compose.redis.yml^
-               --file yml.docker-compose.back-end.yml^
-               --file yml.docker-compose.back-end.override.yml^
+               --file docker-compose.networks.yml^
+               --file docker-compose.postgres.yml^
+               --file docker-compose.redis.yml^
+               --file docker-compose.back-end.yml^
+               --file docker-compose.back-end.override.yml^
                build --no-cache advertisements.api
 
 :: Удаляет устаревшие образы
