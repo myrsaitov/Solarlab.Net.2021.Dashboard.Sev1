@@ -19,12 +19,12 @@ ECHO *****************************************
 ECHO * Starting containers
 ECHO *****************************************
 ECHO;
-docker-compose --env-file=.env^
-               --file docker-compose.networks.yml^
-               --file docker-compose.postgres.yml^
-               --file docker-compose.redis.yml^
-               --file docker-compose.back-end.yml^
-               --file docker-compose.back-end.override.yml^
+docker-compose --env-file=configs/.env^
+               --file configs/docker-compose.networks.yml^
+               --file configs/docker-compose.postgres.yml^
+               --file configs/docker-compose.redis.yml^
+               --file configs/docker-compose.back-end.yml^
+               --file configs/docker-compose.back-end.override.yml^
                up --detach
 
 

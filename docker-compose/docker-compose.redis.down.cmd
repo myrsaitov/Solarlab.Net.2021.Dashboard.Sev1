@@ -5,9 +5,9 @@
 TITLE %~0
 
 :: Останавливает docker-compose
-docker-compose --env-file=.env^
-               --file docker-compose.networks.yml^
-               --file docker-compose.redis.yml^
+docker-compose --env-file=configs/.env^
+               --file configs/docker-compose.networks.yml^
+               --file configs/docker-compose.redis.yml^
                down
 
 PAUSE

@@ -5,12 +5,12 @@
 TITLE %~0
 
 :: Останавливает docker-compose
-docker-compose --env-file=.env^
-               --file docker-compose.networks.yml^
-               --file docker-compose.postgres.yml^
-               --file docker-compose.redis.yml^
-               --file docker-compose.back-end.yml^
-               --file docker-compose.back-end.override.yml^
+docker-compose --env-file=configs/.env^
+               --file docker-compose.networks^
+               --file docker-compose.postgres^
+               --file docker-compose.redis^
+               --file docker-compose.back-end^
+               --file docker-compose.back-end.override^
                down
 
 

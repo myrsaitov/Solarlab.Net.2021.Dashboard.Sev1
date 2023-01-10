@@ -6,6 +6,9 @@ https://localhost:44301/swagger/index.html
 https://localhost:44302/swagger/index.html
 https://localhost:44303/swagger/index.html
 
+http://localhost:49001/swagger/index.html
+http://localhost:49002/swagger/index.html
+http://localhost:49003/swagger/index.html
 
 https://www.reddit.com/r/dotnet/comments/xp7c7e/how_do_i_replace_a_value_in_appsettingsjson_with/
 Loads app configuration from:
