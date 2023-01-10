@@ -10,14 +10,15 @@
     
     <!-- 
     https://learn.microsoft.com/en-us/visualstudio/containers/docker-compose-properties?view=vs-2022
-    
+    https://github.com/microsoft/DockerTools/issues/121
+
     Так как я изменил стандартное название dokcer-compose.yml на своё,
     то нужно задать DockerComposeBaseFilePath без расширения .yml, т.к.
     DockerComposeBaseFilePath specifies the first part of the filenames
     of the docker-compose files, without the .yml extension.
     
     -->
-    <DockerComposeBaseFilePath>docker-compose.back-end</DockerComposeBaseFilePath>
+    <DockerComposeBaseFilePath>docker-compose\docker-compose.back-end</DockerComposeBaseFilePath>
 
     <!--
     AdditionalComposeFilePaths specifies additional compose files in 
@@ -26,15 +27,14 @@
     (dcproj) are allowed.
 
     -->
-    <AdditionalComposeFilePaths>docker-compose.networks.yml;docker-compose.postgres.yml;docker-compose.redis.yml</AdditionalComposeFilePaths>
+    <AdditionalComposeFilePaths>docker-compose\docker-compose.networks.yml;docker-compose\docker-compose.postgres.yml;docker-compose\docker-compose.redis.yml</AdditionalComposeFilePaths>
 
   </PropertyGroup>
   <ItemGroup>
-    <None Include="dev.env" />
-    <None Include="docker-compose.back-end.override.yml">
-      <DependentUpon>docker-compose.back-end.yml</DependentUpon>
+    <None Include="docker-compose\docker-compose.back-end.override.yml">
+      <DependentUpon>docker-compose\docker-compose.back-end.yml</DependentUpon>
     </None>
-    <None Include="docker-compose.back-end.yml" />
+    <None Include="docker-compose\docker-compose.back-end.yml" />
     <None Include=".dockerignore" />
   </ItemGroup>
 </Project>
