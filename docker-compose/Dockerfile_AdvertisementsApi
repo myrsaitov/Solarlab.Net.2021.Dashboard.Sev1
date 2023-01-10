@@ -1,12 +1,31 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
+
+##################################################
+# Docker build stage: "base"
+##################################################
+
+# Задаёт базовый образ и идентификатор текущего этапа сборки
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+
+# Задаёт текущую рабочую директорию
 WORKDIR /app
+
+# Открывает порты
 EXPOSE 80
 EXPOSE 443
 
+
+##################################################
+# Docker build stage: "build"
+##################################################
+
+# Задаёт базовый образ и идентификатор текущего этапа сборки
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+
+# Задаёт текущую рабочую директорию
 WORKDIR /src
+
 COPY ["src/Advertisements/Hosts/Advertisements.Api/Advertisements.Api.csproj", "src/Advertisements/Hosts/Advertisements.Api/"]
 COPY ["src/Advertisements/Infrastructure/Advertisements.DataAccess/Advertisements.DataAccess.csproj", "src/Advertisements/Infrastructure/Advertisements.DataAccess/"]
 COPY ["src/Advertisements/Application/Advertisements.Application/Advertisements.AppServices.csproj", "src/Advertisements/Application/Advertisements.Application/"]
@@ -17,13 +36,37 @@ COPY ["src/Advertisements/Domain/Advertisements.Domain/Advertisements.Domain.csp
 COPY ["src/Advertisements/Infrastructure/Advertisements.Mapper/Advertisements.MapsterMapper.csproj", "src/Advertisements/Infrastructure/Advertisements.Mapper/"]
 RUN dotnet restore "src/Advertisements/Hosts/Advertisements.Api/Advertisements.Api.csproj"
 COPY . .
+
+# Задаёт текущую рабочую директорию
 WORKDIR "/src/src/Advertisements/Hosts/Advertisements.Api"
+
 RUN dotnet build "Advertisements.Api.csproj" -c Release -o /app/build
 
+
+##################################################
+# Docker build stage: "publish"
+##################################################
+
+# Задаёт базовый образ и идентификатор текущего этапа сборки
 FROM build AS publish
 RUN dotnet publish "Advertisements.Api.csproj" -c Release -o /app/publish
 
+
+##################################################
+# Docker build stage: "final"
+##################################################
+
+# Задаёт базовый образ и идентификатор текущего этапа сборки
 FROM base AS final
+
+# Задаёт текущую рабочую директорию
 WORKDIR /app
+
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Advertisements.Api.dll"]
+
+# An ENTRYPOINT allows you to configure a container that will run as an executable.
+# В отличии от CMD, исполняемый файл заранее определен.
+# https://docs.docker.com/engine/reference/builder/#entrypoint
+# https://habr.com/ru/company/southbridge/blog/329138/
+# ENTRYPOINT ["cmd", "arg1", "arg2", ..., "arg..."]
+ENTRYPOINT ["dotnet", "Advertisements.Api.dll"]  # "exec" format 

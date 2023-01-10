@@ -1,0 +1,72 @@
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+
+##################################################
+# Docker build stage: "base"
+##################################################
+
+# Задаёт базовый образ и идентификатор текущего этапа сборки
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+
+# Задаёт текущую рабочую директорию
+WORKDIR /app
+
+# Открывает порты
+EXPOSE 80
+EXPOSE 443
+
+
+##################################################
+# Docker build stage: "build"
+##################################################
+
+# Задаёт базовый образ и идентификатор текущего этапа сборки
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+
+# Задаёт текущую рабочую директорию
+WORKDIR /src
+
+COPY ["src/UserFiles/Hosts/UserFiles.Api/UserFiles.Api.csproj", "src/UserFiles/Hosts/UserFiles.Api/"]
+COPY ["src/UserFiles/Application/UserFiles.Application/UserFiles.AppServices.csproj", "src/UserFiles/Application/UserFiles.Application/"]
+COPY ["src/UserFiles/Domain/UserFiles.Domain/UserFiles.Domain.csproj", "src/UserFiles/Domain/UserFiles.Domain/"]
+COPY ["src/UserFiles/Contracts/UserFiles.Contracts/UserFiles.Contracts.csproj", "src/UserFiles/Contracts/UserFiles.Contracts/"]
+COPY ["src/Accounts/Contracts/Accounts.Contracts/Accounts.Contracts.csproj", "src/Accounts/Contracts/Accounts.Contracts/"]
+COPY ["src/Advertisements/Contracts/Advertisements.Contracts/Advertisements.Contracts.csproj", "src/Advertisements/Contracts/Advertisements.Contracts/"]
+COPY ["src/UserFiles/Infrastructure/UserFiles.Mapper/UserFiles.MapsterMapper.csproj", "src/UserFiles/Infrastructure/UserFiles.Mapper/"]
+COPY ["src/UserFiles/Infrastructure/UserFiles.DataAccess/UserFiles.DataAccess.csproj", "src/UserFiles/Infrastructure/UserFiles.DataAccess/"]
+RUN dotnet restore "src/UserFiles/Hosts/UserFiles.Api/UserFiles.Api.csproj"
+COPY . .
+
+# Задаёт текущую рабочую директорию
+WORKDIR "/src/src/UserFiles/Hosts/UserFiles.Api"
+
+RUN dotnet build "UserFiles.Api.csproj" -c Release -o /app/build
+
+
+##################################################
+# Docker build stage: "publish"
+##################################################
+
+# Задаёт базовый образ и идентификатор текущего этапа сборки
+FROM build AS publish
+RUN dotnet publish "UserFiles.Api.csproj" -c Release -o /app/publish
+
+
+##################################################
+# Docker build stage: "final"
+##################################################
+
+# Задаёт базовый образ и идентификатор текущего этапа сборки
+FROM base AS final
+
+# Задаёт текущую рабочую директорию
+WORKDIR /app
+
+COPY --from=publish /app/publish .
+
+# An ENTRYPOINT allows you to configure a container that will run as an executable.
+# В отличии от CMD, исполняемый файл заранее определен.
+# https://docs.docker.com/engine/reference/builder/#entrypoint
+# https://habr.com/ru/company/southbridge/blog/329138/
+# ENTRYPOINT ["cmd", "arg1", "arg2", ..., "arg..."]
+ENTRYPOINT ["dotnet", "UserFiles.Api.dll"]  # "exec" format 
