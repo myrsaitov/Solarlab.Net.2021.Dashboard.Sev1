@@ -8,7 +8,7 @@
 # Задаёт базовый образ и идентификатор текущего этапа сборки
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 
-# Задаёт текущую рабочую директорию
+# Задаёт текущую рабочую директорию для следующей инструкции
 WORKDIR /app
 
 # Открывает порты
@@ -23,9 +23,10 @@ EXPOSE 443
 # Задаёт базовый образ и идентификатор текущего этапа сборки
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 
-# Задаёт текущую рабочую директорию
+# Задаёт текущую рабочую директорию для следующей инструкции
 WORKDIR /src
 
+# Копирует указанные локальные файлы в указанные папки образа
 COPY ["src/UserFiles/Hosts/UserFiles.Api/UserFiles.Api.csproj", "src/UserFiles/Hosts/UserFiles.Api/"]
 COPY ["src/UserFiles/Application/UserFiles.Application/UserFiles.AppServices.csproj", "src/UserFiles/Application/UserFiles.Application/"]
 COPY ["src/UserFiles/Domain/UserFiles.Domain/UserFiles.Domain.csproj", "src/UserFiles/Domain/UserFiles.Domain/"]
@@ -34,12 +35,18 @@ COPY ["src/Accounts/Contracts/Accounts.Contracts/Accounts.Contracts.csproj", "sr
 COPY ["src/Advertisements/Contracts/Advertisements.Contracts/Advertisements.Contracts.csproj", "src/Advertisements/Contracts/Advertisements.Contracts/"]
 COPY ["src/UserFiles/Infrastructure/UserFiles.Mapper/UserFiles.MapsterMapper.csproj", "src/UserFiles/Infrastructure/UserFiles.Mapper/"]
 COPY ["src/UserFiles/Infrastructure/UserFiles.DataAccess/UserFiles.DataAccess.csproj", "src/UserFiles/Infrastructure/UserFiles.DataAccess/"]
+
+# Выполняет команду и создаёт слой образа
 RUN dotnet restore "src/UserFiles/Hosts/UserFiles.Api/UserFiles.Api.csproj"
+
+# Копирует файлы и папки из локального контекста сборки и 
+# добавляет их в текущую рабочую директорию образа
 COPY . .
 
-# Задаёт текущую рабочую директорию
+# Задаёт текущую рабочую директорию для следующей инструкции
 WORKDIR "/src/src/UserFiles/Hosts/UserFiles.Api"
 
+# Выполняет команду и создаёт слой образа
 RUN dotnet build "UserFiles.Api.csproj" -c Release -o /app/build
 
 
@@ -49,6 +56,8 @@ RUN dotnet build "UserFiles.Api.csproj" -c Release -o /app/build
 
 # Задаёт базовый образ и идентификатор текущего этапа сборки
 FROM build AS publish
+
+# Выполняет команду и создаёт слой образа
 RUN dotnet publish "UserFiles.Api.csproj" -c Release -o /app/publish
 
 
@@ -59,14 +68,19 @@ RUN dotnet publish "UserFiles.Api.csproj" -c Release -o /app/publish
 # Задаёт базовый образ и идентификатор текущего этапа сборки
 FROM base AS final
 
-# Задаёт текущую рабочую директорию
+# Задаёт текущую рабочую директорию для следующей инструкции
 WORKDIR /app
 
+# You can use the "COPY --from" instruction to copy from a separate image
+# https://docs.docker.com/build/building/multi-stage/
 COPY --from=publish /app/publish .
 
+# Предоставляет команду с аргументами для вызова во время 
+# выполнения контейнера. Аргументы не переопределяются.
+# Эта инструкция выполняется при запуске контейнера.
 # An ENTRYPOINT allows you to configure a container that will run as an executable.
 # В отличии от CMD, исполняемый файл заранее определен.
 # https://docs.docker.com/engine/reference/builder/#entrypoint
 # https://habr.com/ru/company/southbridge/blog/329138/
 # ENTRYPOINT ["cmd", "arg1", "arg2", ..., "arg..."]
-ENTRYPOINT ["dotnet", "UserFiles.Api.dll"]  # "exec" format 
+ENTRYPOINT ["dotnet", "UserFiles.Api.dll"]  # "exec" format

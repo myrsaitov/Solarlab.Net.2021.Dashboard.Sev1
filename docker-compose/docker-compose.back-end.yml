@@ -16,8 +16,8 @@ services:
   accounts.api:
     image: ${DOCKER_REGISTRY-}accountsapi
     build:
-      context: .
-      dockerfile: Dockerfile_AccountsApi
+      context: ./..
+      dockerfile: ./docker-compose/Dockerfile_Accounts
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
@@ -38,8 +38,8 @@ services:
   advertisements.api:
     image: ${DOCKER_REGISTRY-}advertisementsapi
     build:
-      context: .
-      dockerfile: Dockerfile_AdvertisementsApi
+      context: ./..
+      dockerfile: ./docker-compose/Dockerfile_Advertisements
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
@@ -58,8 +58,8 @@ services:
   user_files.api:
     image: ${DOCKER_REGISTRY-}userfilesapi
     build:
-      context: .
-      dockerfile: Dockerfile_UserFilesApi
+      context: ./..
+      dockerfile: ./docker-compose/Dockerfile_UserFiles
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
