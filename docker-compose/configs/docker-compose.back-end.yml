@@ -17,6 +17,8 @@ services:
     image: ${DOCKER_REGISTRY-}accountsapi
     build:
       context: ./../..
+      args:
+        MODE: ${MODE}
       dockerfile: ./docker-compose/configs/Dockerfile_Accounts
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
@@ -39,6 +41,8 @@ services:
     image: ${DOCKER_REGISTRY-}advertisementsapi
     build:
       context: ./../..
+      args:
+        MODE: ${MODE}
       dockerfile: ./docker-compose/configs/Dockerfile_Advertisements
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
@@ -59,6 +63,8 @@ services:
     image: ${DOCKER_REGISTRY-}userfilesapi
     build:
       context: ./../..
+      args:
+        MODE: ${MODE}
       dockerfile: ./docker-compose/configs/Dockerfile_UserFiles
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro

@@ -47,7 +47,9 @@ COPY . .
 WORKDIR "/src/src/UserFiles/Hosts/UserFiles.Api"
 
 # Выполняет команду и создаёт слой образа
-RUN dotnet build "UserFiles.Api.csproj" -c Release -o /app/build
+# https://benkyriakou.com/posts/docker-args-empty
+ARG MODE
+RUN dotnet build "UserFiles.Api.csproj" -c $MODE -o /app/build
 
 
 ##################################################
@@ -58,7 +60,9 @@ RUN dotnet build "UserFiles.Api.csproj" -c Release -o /app/build
 FROM build AS publish
 
 # Выполняет команду и создаёт слой образа
-RUN dotnet publish "UserFiles.Api.csproj" -c Release -o /app/publish
+# https://benkyriakou.com/posts/docker-args-empty
+ARG MODE
+RUN dotnet publish "UserFiles.Api.csproj" -c $MODE -o /app/publish
 
 
 ##################################################
