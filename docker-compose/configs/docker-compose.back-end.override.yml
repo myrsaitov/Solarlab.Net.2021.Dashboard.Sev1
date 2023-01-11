@@ -24,7 +24,6 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Path=${KESTREL_CERTIFICATE_PATH}
       - AllowedHosts=${ALLOWED_HOSTS_ACCOUNTS}
       - Token__Key=${TOKEN_KEY_ACCOUNTS}
-      - SwaggerOptions__UseSwagger=${USE_SWAGGER}
       - DataBaseOptions__UseMsSql=${USE_MSSQL}
       - ConnectionStrings__PostgresAccountsDb=${ACCOUNTS_POSTGRES_CONNECTION}
       - ConnectionStrings__MsSqlAccountsDb=${ACCOUNTS_MSSQL_CONNECTION}
@@ -49,7 +48,6 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Path=${KESTREL_CERTIFICATE_PATH}
       - AllowedHosts=${ALLOWED_HOSTS_ADVERTISEMENTS}
       - Token__Key=${TOKEN_KEY_ADVERTISEMENTS}
-      - SwaggerOptions__UseSwagger=${USE_SWAGGER}
       - DataBaseOptions__UseMsSql=${USE_MSSQL}
       - ConnectionStrings__PostgresAdvertisementsDb=${ADVERTISEMENTS_POSTGRES_CONNECTION}
       - ConnectionStrings__MsSqlAdvertisementsDb=${ADVERTISEMENTS_MSSQL_CONNECTION}
@@ -74,7 +72,6 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Path=${KESTREL_CERTIFICATE_PATH}
       - AllowedHosts=${ALLOWED_HOSTS_USER_FILES}
       - Token__Key=${TOKEN_KEY_USER_FILES}
-      - SwaggerOptions__UseSwagger=${USE_SWAGGER}
       - DataBaseOptions__UseMsSql=${USE_MSSQL}
       - ConnectionStrings__PostgresUserFilesDb=${USER_FILES_POSTGRES_CONNECTION}
       - ConnectionStrings__MsSqlUserFilesDb=${USER_FILES_MSSQL_CONNECTION}
