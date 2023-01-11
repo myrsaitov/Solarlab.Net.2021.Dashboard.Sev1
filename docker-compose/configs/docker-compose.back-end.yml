@@ -14,12 +14,15 @@ services:
   ##############################################################
   
   accounts.api:
-    image: ${DOCKER_REGISTRY-}accountsapi
+    image: accounts.api
+    container_name: accounts.api
     build:
       context: ./../..
       args:
         MODE: ${MODE}
       dockerfile: ./docker-compose/configs/Dockerfile_Accounts
+      labels:
+        developer: "myrsaitov"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
@@ -38,12 +41,15 @@ services:
   ##############################################################
   
   advertisements.api:
-    image: ${DOCKER_REGISTRY-}advertisementsapi
+    image: advertisements.api
+    container_name: advertisements.api
     build:
       context: ./../..
       args:
         MODE: ${MODE}
       dockerfile: ./docker-compose/configs/Dockerfile_Advertisements
+      labels:
+        developer: "myrsaitov"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
@@ -60,12 +66,15 @@ services:
   ##############################################################
   
   user_files.api:
-    image: ${DOCKER_REGISTRY-}userfilesapi
+    image: user_files.api
+    container_name: user_files.api
     build:
       context: ./../..
       args:
         MODE: ${MODE}
       dockerfile: ./docker-compose/configs/Dockerfile_UserFiles
+      labels:
+        developer: "myrsaitov"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro

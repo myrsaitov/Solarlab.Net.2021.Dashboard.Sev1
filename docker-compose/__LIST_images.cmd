@@ -5,6 +5,8 @@
 TITLE %~0
 
 :: Выводит список запущенных контейнеров
-docker images -a
+:: https://docs.docker.com/engine/reference/commandline/image_prune/
+docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.ID}}\t{{.CreatedAt}}\t{{.Size}}"
+
 
 PAUSE

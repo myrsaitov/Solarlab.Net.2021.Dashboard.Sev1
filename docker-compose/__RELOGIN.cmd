@@ -7,13 +7,17 @@
 TITLE %~0
 
 :: Предупреждение
-ECHO Logout?
+ECHO;
+ECHO;
+ECHO Docker Logout?!!!!!!!!!!!!!!!!!!!!!
+ECHO;
+ECHO;
 PAUSE
 
 :: Выход из докера
 docker logout
 
 :: Вход в докер
-docker login -u myrsaitov -p
+docker login -u USERNAME -p PASSWORD
 
 PAUSE
