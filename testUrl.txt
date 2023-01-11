@@ -1,14 +1,23 @@
-https://localhost:44301/api/v1/accounts?PageSize=10&Page=0
-https://localhost:44302/api/v1/advertisements?PageSize=10&Page=0
-https://localhost:44303/api/v1/userfiles?PageSize=10&Page=0
+Debug:
+    http://localhost:49001/swagger/index.html
+    http://localhost:49002/swagger/index.html
+    http://localhost:49003/swagger/index.html
 
-https://localhost:44301/swagger/index.html
-https://localhost:44302/swagger/index.html
-https://localhost:44303/swagger/index.html
+Debug SLL:
+    https://localhost:44301/swagger/index.html
+    https://localhost:44302/swagger/index.html
+    https://localhost:44303/swagger/index.html
 
-http://localhost:49001/swagger/index.html
-http://localhost:49002/swagger/index.html
-http://localhost:49003/swagger/index.html
+Release:
+	http://localhost:49001/api/v1/accounts?PageSize=10&Page=0
+    http://localhost:49002/api/v1/advertisements?PageSize=10&Page=0
+    http://localhost:49003/api/v1/userfiles?PageSize=10&Page=0
+
+Release SSL:
+	https://localhost:44301/api/v1/accounts?PageSize=10&Page=0
+    https://localhost:44302/api/v1/advertisements?PageSize=10&Page=0
+    https://localhost:44303/api/v1/userfiles?PageSize=10&Page=0
+
 
 https://www.reddit.com/r/dotnet/comments/xp7c7e/how_do_i_replace_a_value_in_appsettingsjson_with/
 Loads app configuration from:

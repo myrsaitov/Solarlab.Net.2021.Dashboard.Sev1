@@ -9,7 +9,7 @@
         <UserSecretsId>28939add-08d3-45f3-a225-f5e2ae1864af</UserSecretsId>
     </PropertyGroup>
 
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\net5.0\Advertisements.Api.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>

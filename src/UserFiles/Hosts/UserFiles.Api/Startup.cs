@@ -22,7 +22,9 @@ namespace Sev1.UserFiles.Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(
+            IConfiguration configuration,
+            IWebHostEnvironment environment)
         {
             
             // https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0
@@ -46,11 +48,16 @@ namespace Sev1.UserFiles.Api
                 .AddEnvironmentVariables();
             
             Configuration = builder.Build();
+
+            WebHostEnvironment = environment;
             
         }
 
         // Represents a set of key/value application configuration properties.
         public IConfiguration Configuration { get; }
+
+        public IWebHostEnvironment WebHostEnvironment { get; }
+
 
         // This method gets called by the runtime.
         // Use this method to add services to the container.
@@ -121,7 +128,7 @@ namespace Sev1.UserFiles.Api
                 );
 
             // Подключение Swagger
-            if (Configuration.GetSection("SwaggerOptions:UseSwagger").Get<bool>())
+            if (WebHostEnvironment.IsDevelopment())
             {
                 services.AddSwaggerModule();
             }
@@ -233,25 +240,28 @@ namespace Sev1.UserFiles.Api
                 .AllowAnyHeader()
                 .AllowAnyMethod());
 
-            // In the Startup.Configure method, 
-            // enable the middleware for serving the generated JSON document 
-            // and the Swagger UI.
-            // This line enables the app to use Swagger, 
-            // with the configuration in the ConfigureServices method.
-            if (Configuration.GetSection("SwaggerOptions:UseSwagger").Get<bool>())
+            // Swagger
+            if (WebHostEnvironment.IsDevelopment())
             {
-                app.UseSwagger();
-            }
 
-            // This line enables Swagger UI, 
-            // which provides us with a nice, simple UI 
-            // with which we can view our API calls.
-            app.UseSwaggerUI(c =>
-            { 
-                c.SwaggerEndpoint(
-                    "/swagger/v1/swagger.json",
-                    "PublicApi v1");
-            });
+                // In the Startup.Configure method, 
+                // enable the middleware for serving the generated JSON document 
+                // and the Swagger UI.
+                // This line enables the app to use Swagger, 
+                // with the configuration in the ConfigureServices method.
+                app.UseSwagger();
+                
+                // This line enables Swagger UI, 
+                // which provides us with a nice, simple UI 
+                // with which we can view our API calls.
+                app.UseSwaggerUI(c =>
+                { 
+                    c.SwaggerEndpoint(
+                        "/swagger/v1/swagger.json",
+                        "PublicApi v1");
+                });
+
+            }
             
             // Обработка исключительных ситуаций
             app.UseApplicationException();
