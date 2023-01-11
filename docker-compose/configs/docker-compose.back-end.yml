@@ -14,7 +14,7 @@ services:
   ##############################################################
   
   accounts.api:
-    image: accounts.api
+    image: bulleting_board/accounts.api
     container_name: accounts.api
     build:
       context: ./../..
@@ -41,7 +41,7 @@ services:
   ##############################################################
   
   advertisements.api:
-    image: advertisements.api
+    image: bulleting_board/advertisements.api
     container_name: advertisements.api
     build:
       context: ./../..
@@ -66,7 +66,7 @@ services:
   ##############################################################
   
   user_files.api:
-    image: user_files.api
+    image: bulleting_board/user_files.api
     container_name: user_files.api
     build:
       context: ./../..
