@@ -7,7 +7,6 @@
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>accounts.api</DockerServiceName>
-    
     <!-- 
     https://learn.microsoft.com/en-us/visualstudio/containers/docker-compose-properties?view=vs-2022
     https://github.com/microsoft/DockerTools/issues/121
@@ -19,7 +18,6 @@
     
     -->
     <DockerComposeBaseFilePath>configs/docker-compose.back-end</DockerComposeBaseFilePath>
-
     <!--
     AdditionalComposeFilePaths specifies additional compose files in 
     a semicolon-delimited list to be sent out to docker-compose.exe 
@@ -28,8 +26,8 @@
 
     -->
     <AdditionalComposeFilePaths>configs/docker-compose.networks.yml;configs/docker-compose.postgres.yml;configs/docker-compose.redis.yml</AdditionalComposeFilePaths>
-
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" />
   <ItemGroup>
     <None Include="configs/docker-compose.back-end.override.yml">
       <DependentUpon>configs/docker-compose.back-end.yml</DependentUpon>
