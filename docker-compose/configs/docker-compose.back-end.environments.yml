@@ -15,8 +15,6 @@ services:
   
   accounts.api:
     environment:
-      - DOCKER_BUILDKIT=0
-      - COMPOSE_DOCKER_CLI_BUILD=0
       - ASPNETCORE_ENVIRONMENT=${ACTIVE_ENVIRONMENT}
       - ASPNETCORE_URLS=${HTTP_URLS}
       - ASPNETCORE_HTTPS_PORT=${PORT_SSL_ACCOUNTS}
@@ -29,8 +27,6 @@ services:
       - ConnectionStrings__MsSqlAccountsDb=${ACCOUNTS_MSSQL_CONNECTION}
       - ConnectionStrings__Redis=${REDIS_CONNECTION}
       - RegionValidateApiClientUri=${REGION_VALIDATE_API_CLIENT_URI}
-    ports:
-      - "${PORT_MAP_ACCOUNTS}"
 
 
   ##############################################################
@@ -39,8 +35,6 @@ services:
   
   advertisements.api:
     environment:
-      - DOCKER_BUILDKIT=0
-      - COMPOSE_DOCKER_CLI_BUILD=0
       - ASPNETCORE_ENVIRONMENT=${ACTIVE_ENVIRONMENT}
       - ASPNETCORE_URLS=${HTTP_URLS}
       - ASPNETCORE_HTTPS_PORT=${PORT_SSL_ADVERTISEMENTS}
@@ -53,8 +47,6 @@ services:
       - ConnectionStrings__MsSqlAdvertisementsDb=${ADVERTISEMENTS_MSSQL_CONNECTION}
       - UserValidateApiClientUri=${USER_VALIDATE_API_CLIENT_URI}
       - UserFilesUploadApiClientUri=${USER_FILES_UPLOAD_API_CLIENT_URI}
-    ports:
-      - "${PORT_MAP_ADVERTISEMENTS}"
 
 
   ##############################################################
@@ -63,8 +55,6 @@ services:
   
   user_files.api:
     environment:
-      - DOCKER_BUILDKIT=0
-      - COMPOSE_DOCKER_CLI_BUILD=0
       - ASPNETCORE_ENVIRONMENT=${ACTIVE_ENVIRONMENT}
       - ASPNETCORE_URLS=${HTTP_URLS}
       - ASPNETCORE_HTTPS_PORT=${PORT_SSL_USER_FILES}
@@ -81,5 +71,3 @@ services:
       - YandexDisk__URI=${YANDEX_DISK_URI}
       - YandexDisk__BasePath=${YANDEX_DISK_BASE_PATH}
       - YandexDisk__OAuthValue=${YANDEX_DISK_OAUTH_VALUE}
-    ports:
-      - "${PORT_MAP_USER_FILES}"

@@ -23,16 +23,27 @@
     a semicolon-delimited list to be sent out to docker-compose.exe 
     for all commands. Relative paths from the docker-compose project file 
     (dcproj) are allowed.
+	
+<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" />
 
     -->
-    <AdditionalComposeFilePaths>configs/docker-compose.networks.yml;configs/docker-compose.postgres.yml;configs/docker-compose.redis.yml</AdditionalComposeFilePaths>
+    <AdditionalComposeFilePaths>configs/docker-compose.back-end.environments.yml;configs/docker-compose.networks.yml;configs/docker-compose.postgres.yml;configs/docker-compose.redis.yml</AdditionalComposeFilePaths>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" />
-  <ItemGroup>
-    <None Include="configs/docker-compose.back-end.override.yml">
+  
+  <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" >
+    <None Include="configs/docker-compose.back-end.override.debug.yml">
       <DependentUpon>configs/docker-compose.back-end.yml</DependentUpon>
     </None>
     <None Include="configs/docker-compose.back-end.yml" />
     <None Include="./../.dockerignore" />
   </ItemGroup>
+  
+  <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" >
+    <None Include="configs/docker-compose.back-end.override.release.yml">
+      <DependentUpon>configs/docker-compose.back-end.yml</DependentUpon>
+    </None>
+    <None Include="configs/docker-compose.back-end.yml" />
+    <None Include="./../.dockerignore" />
+  </ItemGroup>
+  
 </Project>

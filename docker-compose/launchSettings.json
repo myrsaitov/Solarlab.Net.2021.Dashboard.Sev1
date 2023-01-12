@@ -12,7 +12,8 @@
         "user_files.api": "StartDebugging",
         "accounts.postgres": "StartWithoutDebugging",
         "advertisements.postgres": "StartWithoutDebugging",
-        "user_files.postgres": "StartWithoutDebugging"
+        "user_files.postgres": "StartWithoutDebugging",
+		"redis": "StartWithoutDebugging"
       }
     },
     "Start All Without Debugging": {
@@ -24,7 +25,8 @@
         "advertisements.api": "StartWithoutDebugging",
         "advertisements.postgres": "StartWithoutDebugging",
         "user_files.api": "StartWithoutDebugging",
-        "user_files.postgres": "StartWithoutDebugging"
+        "user_files.postgres": "StartWithoutDebugging",
+		"redis": "StartWithoutDebugging"
       }
     },
     "Start Postgres": {
@@ -36,7 +38,8 @@
         "advertisements.api": "DoNotStart",
         "advertisements.postgres": "StartWithoutDebugging",
         "user_files.api": "DoNotStart",
-        "user_files.postgres": "StartWithoutDebugging"
+        "user_files.postgres": "StartWithoutDebugging",
+		"redis": "StartWithoutDebugging"
       }
     },
     "Start Services Without Debugging": {

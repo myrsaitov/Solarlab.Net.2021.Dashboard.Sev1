@@ -1,0 +1,51 @@
+version: '3.4'
+
+##############################################################
+##############################################################
+## Services
+##############################################################
+##############################################################
+
+services:
+
+
+  ##############################################################
+  # Accounts
+  ##############################################################
+  
+  accounts.api:
+    build:
+      context: ./../..
+      args:
+        MODE: Debug
+      dockerfile: ./docker-compose/configs/Dockerfile_Accounts
+      labels:
+        developer: "myrsaitov"
+
+
+  ##############################################################
+  # Advertisements
+  ##############################################################
+  
+  advertisements.api:
+    build:
+      context: ./../..
+      args:
+        MODE: Debug
+      dockerfile: ./docker-compose/configs/Dockerfile_Advertisements
+      labels:
+        developer: "myrsaitov"
+      
+
+  ##############################################################
+  # UserFiles
+  ##############################################################
+  
+  user_files.api:
+    build:
+      context: ./../..
+      args:
+        MODE: Debug
+      dockerfile: ./docker-compose/configs/Dockerfile_UserFiles
+      labels:
+        developer: "myrsaitov"

@@ -10,7 +10,8 @@ docker-compose --env-file=configs/.env^
                --file configs/docker-compose.postgres.yml^
                --file configs/docker-compose.redis.yml^
                --file configs/docker-compose.back-end.yml^
-               --file configs/docker-compose.back-end.override.yml^
+               --file configs/docker-compose.back-end.build.yml^
+               --file configs/docker-compose.back-end.environments.yml^
                down
 
 

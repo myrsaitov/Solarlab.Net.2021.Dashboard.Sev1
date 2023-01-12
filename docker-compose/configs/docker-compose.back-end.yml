@@ -16,13 +16,8 @@ services:
   accounts.api:
     image: bulleting_board/accounts.api
     container_name: accounts.api
-    build:
-      context: ./../..
-      args:
-        MODE: ${MODE}
-      dockerfile: ./docker-compose/configs/Dockerfile_Accounts
-      labels:
-        developer: "myrsaitov"
+    ports:
+      - "${PORT_MAP_ACCOUNTS}"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
@@ -43,13 +38,8 @@ services:
   advertisements.api:
     image: bulleting_board/advertisements.api
     container_name: advertisements.api
-    build:
-      context: ./../..
-      args:
-        MODE: ${MODE}
-      dockerfile: ./docker-compose/configs/Dockerfile_Advertisements
-      labels:
-        developer: "myrsaitov"
+    ports:
+      - "${PORT_MAP_ADVERTISEMENTS}"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
@@ -68,13 +58,8 @@ services:
   user_files.api:
     image: bulleting_board/user_files.api
     container_name: user_files.api
-    build:
-      context: ./../..
-      args:
-        MODE: ${MODE}
-      dockerfile: ./docker-compose/configs/Dockerfile_UserFiles
-      labels:
-        developer: "myrsaitov"
+    ports:
+      - "${PORT_MAP_USER_FILES}"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/DataProtection-Keys:ro
